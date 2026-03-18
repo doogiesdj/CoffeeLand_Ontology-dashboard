@@ -2106,7 +2106,14 @@
                 
                 const _pr = await fetch('ontology_data.json');
             window._od = await _pr.json();
-            ontologyData = {count:window._od.meta.totalTriples, classes:window._od.meta.totalClasses, objectProperties:window._od.meta.objectProperties, dataProperties:window._od.meta.dataProperties};
+            ontologyData = {
+                count: window._od.meta.totalTriples,
+                classes: new Array(window._od.meta.totalClasses).fill(null),
+                objectProperties: new Array(window._od.meta.objectProperties).fill(null),
+                dataProperties: new Array(window._od.meta.dataProperties).fill(null),
+                triples: window._od.meta.totalTriples,
+                meta: window._od.meta
+            };
             const parseRes = {ok:true};
                 console.log(`✅ Loaded ${ontologyData.count} triples`);
                 
