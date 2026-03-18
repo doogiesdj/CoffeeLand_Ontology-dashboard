@@ -5,7 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CoffeeLand - Ontology Dashboard</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script src="/js/beverage-images.js"></script>
+    <script>
+    // ============================================================
+    // BEVERAGE IMAGES (inlined from beverage-images.js)
+    // ============================================================
+    window.BEVERAGE_IMAGES = {
+        'Espresso': 'https://sspark.genspark.ai/cfimages?u1=4mmLLPKHmFw1bQ7Oioc%2B3drPhfXLZUoVx3GWKXb0dKgZZTj2liTn9DLu2ywgxd7UlYzaV6WD%2FPPL7PEObmklSo5ZwmYfPUAXdB4HVrivybaaWIJrpSXdDEHXRWI%3D&u2=LC0Qv0P4HQMs%2BsL9&width=2560',
+        'Double_Espresso': 'https://sspark.genspark.ai/cfimages?u1=GqPdGMHQ%2FLwXKsB46KcmbI9T3pNjjQ7I9qRdu8Rzv5QzLSRK03ciUddfmF8D1cMMyNa0sDqwGJu5LQVDCbpoWgHARyzqR6uZjWBCkgljKEoJIlFeIU8CbGR11caIzwk5RmhK&u2=QfDcaMFM9vMmg6Lc&width=2560',
+        'Americano': 'https://sspark.genspark.ai/cfimages?u1=oVO%2Fxys9drfV89NXI1zgShi0%2FRLNsdquajOuO9%2FlPzxHVvTIVy2PV6eCnNZbC%2F%2BkBBZHqa%2B56uQP%2BpRHgXGyiLDi0LvsX4q84pBK%2BoT7SALxHLUS0EYXkzoZOjFcUiD9gAXDDka%2BrfOO&u2=Noe8C%2BXpzcFzbn2q&width=2560',
+        'Caffe_Latte': 'https://sspark.genspark.ai/cfimages?u1=4rVjKkCM3qJM0vVErb%2FUskS1DzZQvnt05%2BMOS2kz3Fbqa7yHUA%2Fl7AZpJq8JquBlROw9gDsbVCEnDest9Uy%2F9Vv382Qr%2BEXHYIaw3aQ6xKlGHQ%3D%3D&u2=X%2Fzxr8naGbWajSRk&width=2560',
+        'Cappuccino': 'https://sspark.genspark.ai/cfimages?u1=W1boMG0HTCmEEutDjUcRLTlmejfXXw7urW%2Bd1Wch1EtEotcf133uuNZmK%2B3HNwiOSX4%2Bj7AD3Zy4ions%2FjDJRldQhEXyxRATl3Db57jilfd6DPCBRCGrOlIBdY%2FVEkNGbtBFBhw5oclLme%2B26zBPRPC48lMoYqTxruTGiBALFEcQ%2Fo2DXsZy8G8yO2dC03FVSA%3D%3D&u2=V3tjCVmNbg6QgFtT&width=2560',
+        'Flat_White': 'https://sspark.genspark.ai/cfimages?u1=1hzEl%2Fof7HjpSJ9fNAE%2FTLmFzJwTMmgAr9akUESOlfUIjVzoNmry18MS2FKJAfSpsPm1lYJaE%2BmH853UqujHbOBD4SPHL6h7PnG2Pjj1p5VBvkZZBnOseQ538iAEsNOMNuiBV%2B0VQOirHZZgy9GrjT0PIMUg8sATSzwOlLxoYr2Ld2YzkI2LJDg%2B1A%3D%3D&u2=pchYuMq3PX47lp%2BB&width=2560',
+        'Macchiato': 'https://sspark.genspark.ai/cfimages?u1=db3nOu%2FaeQ27hRYoS7q%2BbsU%2FlNJZpZyjuVLEvVhqM6umIuEoFFa6JG2SdfrRh5eBZbH7ku4ISCxLhs%2FLfLlF5neKwqaadTAaD3koAmiftYDNoud4ZJ8oRw%3D%3D&u2=uDtZ4Tml6G8zUjUu&width=2560',
+        'Mocha': 'https://sspark.genspark.ai/cfimages?u1=2nsVMknXXH2o8Ckp726wTg1JtDu%2BCyvVg8hzUi5WKU1JTSHsMI9rmGROEmmEK2Zv0sv6nFPg4ZPOSl0K%2BmUFe%2B5S583XfyGw89u3%2FoO%2BMborRWv5tCIMc16HN2VFICJjF8Rx0OC5%2BoCm&u2=3g%2Flj2ELCqXvQzWY&width=2560',
+        'Caramel_Macchiato': 'https://sspark.genspark.ai/cfimages?u1=OVawvta%2FlgUMh9YN%2B83qybvMmvjfbcsFY%2Blse5S6Zpa8C7Kd%2FVI8m1z2At6OPUiCLe%2FHop8QcwMyTVPQeOnTJqqktITbC6fW5MPcodtcy%2Bx2u3uHcUZ%2F3sPDDZmInufyVucIhAiEECW6jUirUSJVqzOn4s9umDXzfGoyUdakhUY%3D&u2=KOG6QrPj1LL%2FaiQc&width=2560',
+        'Vanilla_Latte': 'https://sspark.genspark.ai/cfimages?u1=B9Ys9NelOlVbV2KH2hEv3qWh4YtsUPtHBmGwo1Vcs9e5y61oGSjQQEOfOW0SWI6Mw2hoJRJ9ijYLj%2BaMFKkTaUIG%2FFFUuBaAXwqe8Wdsb7FwA9DyEcDXHSFduBbXMKb0BO%2BrbUPG2y22sQ%3D%3D&u2=PUO8nrLwfr1%2BO%2FN5&width=2560',
+        'Cold_Brew': 'https://sspark.genspark.ai/cfimages?u1=URSQ8RJ3tXXx96P2mKdq3X%2BAAohXiCi%2BxyyAS5mjS2qseMZqEVoXo7R9fa4UbMW4tOjxbJLJ7eKNm%2FYqvBMkryRlBlABkLRoVWiXCjSz5zpGeGR5u8DEtv6oDz5Gq95vUeTkBEkz3Rw7PdbvojXZ8MhLVBe%2B6%2BIlkEtWag%2Bj&u2=moaN3mr7TVp9lBZ2&width=2560',
+        'Nitro_Cold_Brew': 'https://sspark.genspark.ai/cfimages?u1=7MjuM82pAb5Y%2FAiNin9b964udLRiq7H875CfiYE5WuZk6hXP20jgciYmpaP0qeJ0KjlCLmfj2PjzpJ%2Fd1cuZQ8bnwCc3%2BD6%2Fts33zEwUbFRILexnnLIMfvbaj5lBf1wq8JFcLuM%2Ffw%3D%3D&u2=F9tkx31G5VXOjuE%2B&width=2560',
+        'Iced_Americano': 'https://sspark.genspark.ai/cfimages?u1=DYn%2BjPtnwzdL8Y5WQ%2B%2FwiVxMios8RPusujKG3SxVAwF%2BLNNzzqkxe9Qhnmj%2Fc8mGZFBc8SwCbME%2Bc7lptWRavY3iljMIlHSkINF0Z49Z%2BRHpWagfQrGbNw9qTmWXUU32jF46%2F3jZM5ZvnshSWKDelZ1NUXARiL63PnRM0qWgLlgEYPYK&u2=s6%2B%2BC2wjDhDlPD%2F5&width=2560',
+        'Iced_Latte': 'https://sspark.genspark.ai/cfimages?u1=P7w3oCQPQpIl1KPZ%2Bsa79e3A%2FEf7naGo45zc4pvQXYyu8JjZM7KkEtORWYOGilv3nPVISxusjlwr1M4SaduxQk9JWp5fJ6BVMM2p4lzp1O3ZDM%2BeD6enVJoJQu7ACwe3URJKlOoNycBhFDnAu%2Ba5mC5aQJ%2BijwHAWE9SNx9%2Bjj8%3D&u2=bl4U%2BfVGwUQtWq6z&width=2560',
+        'Iced_Mocha': 'https://sspark.genspark.ai/cfimages?u1=Iz3C%2BLSjqhad46Q%2BQg0lLFYMWqNeuzkaBj31cdtYTNznmWJu%2BSvQi8p0Wo5IeWmDkfxDxno8wbK5HZPi6MJB2Rl6HnC46O6rfWadapzodJKk%2FgNta1yR64BUEYRinauiZGU%3D&u2=vOgskNphSGRdfsBJ&width=2560',
+        'Affogato': 'https://sspark.genspark.ai/cfimages?u1=jVTmcPY7jvYEwEeFOUnVJb4tHDk6zIz9iJHmW4tviC4seryGB0jrZR2ahGOytQwcLbHkQqdREC%2BLqubvdOBLj9S405JvXTi0zS7fHKzrdAgcnHhS6e7aFiKwKgdxQ%2FuXFA3My1QpdYBXe39IovMT9jMuSVSd%2FDjKQJ1EO1bmkQAhjfAw1gExqan%2B3DhWce5hPXM13RUT3SSLB3syG0cNiZdh02bikA4ypD84qZrng5pKB2aBsi0q1CdLn%2FSWnTB9FfkZHkUKQPFZPgT1qtDhBR3%2B&u2=SxVI9XSEVbBv1K1B&width=2560',
+        'Cortado': 'https://sspark.genspark.ai/cfimages?u1=cWykqhI%2FPjkqTt7IrDqk4W7I0LlGVHXgPp9i1Dwl%2B6iX%2BVh8Ei2K%2BJDURlGNGttyuwvKWjeP2mK0RIVRLfb%2B%2BoC6xf8xUcTqUjpmlI1%2BkHQQgq5Xi%2BVj36WzMsTcVl7zBqij%2BnTkLePnYfrTt9ldSGTpRDKm4vOIxDTSa%2BN34j9S6CsAN5TiFQ%3D%3D&u2=EHZTZmJQSE5KacYB&width=2560',
+        'Pour_Over': 'https://sspark.genspark.ai/cfimages?u1=0UL5VzepiN5hOlXwVluxLQZiXNY2vGZKNkuvlAhlaLHcBSzeARAPWWuahrgbnp7DYVSD3klWVJ3lmC9VORtJNGEnTbiqoZS1HTrku2ar7hr2a5387Hb1Dz5O4hBRbFbRJ0gQ%2BrAys2wbbT56dJLTJr6Xw%2BWJ22apWynhc7plFf1%2BWa05oaNs%2FXbZjbOe5qdSDG1hRd8Yu1xXfFM4yR%2BpnHLrKLcabseLdOPvkcM5LOy9Ql7KyzGfSOEEOvUO0FD3hXL4j2yOdhAbxnJXj2zopxgBwjHLe7lChPCBEcw%3D&u2=BV8y4cX6rS72mgXR&width=2560',
+        'French_Press': 'https://sspark.genspark.ai/cfimages?u1=cnzoxt3voP1txjDxDVGmsQ7Ray3Ch6hoyPIhIAR59tqJ8lUCSPk9btiBcJlH46EKrmQbc66gPmSNwaglDelqZhthOBZvHNm5WmhfuFON4Lq8pgHHmr7iKg%3D%3D&u2=qPCYGGE6WZNpJDCK&width=2560',
+        'Aeropress': 'https://sspark.genspark.ai/cfimages?u1=Df1zRbLbkSNjEvdRLTf4pXydW2%2Fc0vc%2FKoVv1gx29Tacbzp3RMHBFbP%2Bi1A8bwIUJyqY8phohMM%2Fgl2CaXHJGBEPnDTmpk%2FxPCwZRcS5xAdgyCFNliVUa7wXPFewf5KGgcS4rHAtoQWGKZ42f0lz%2Fzg%2Ff9uT%2BUiWzeah6Lrwn6MKRDD75xc2B7eM2X95pjcAoHE96KudZkCfvA%3D%3D&u2=%2BEPMtpPi%2FWWFBK9t&width=2560'
+    };
+    console.log('🖼️ BEVERAGE_IMAGES loaded:', Object.keys(window.BEVERAGE_IMAGES).length, 'images');
+    </script>
     <style>
         :root {
             --bg-dark: #0a0e1a;
@@ -22,1251 +49,233 @@
             --low: #22c55e;
             --success: #10b981;
         }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: var(--bg-dark);
-            color: var(--text-primary);
-            overflow-x: hidden;
-        }
-
-        /* Sidebar Navigation */
-        .sidebar {
-            position: fixed;
-            left: 0;
-            top: 0;
-            width: 280px;
-            height: 100vh;
-            background: var(--bg-card);
-            border-right: 1px solid var(--border);
-            overflow-y: auto;
-            z-index: 1000;
-        }
-
-        .sidebar-header {
-            padding: 1.5rem;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .logo-text {
-            font-size: 1.25rem;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: var(--accent);
-        }
-
-        .logo-subtitle {
-            font-size: 0.75rem;
-            color: var(--text-secondary);
-            margin-top: 0.25rem;
-        }
-
-        .nav-section {
-            padding: 1rem 0;
-        }
-
-        .nav-section-title {
-            padding: 0.5rem 1.5rem;
-            font-size: 0.75rem;
-            font-weight: 600;
-            color: var(--text-secondary);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-
-        .nav-item {
-            padding: 0.875rem 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            cursor: pointer;
-            transition: all 0.2s;
-            border-left: 3px solid transparent;
-            color: var(--text-secondary);
-        }
-
-        .nav-item:hover {
-            background: rgba(139, 69, 19, 0.1);
-            border-left-color: var(--accent);
-            color: var(--text-primary);
-        }
-
-        .nav-item.active {
-            background: rgba(139, 69, 19, 0.15);
-            border-left-color: var(--accent);
-            color: var(--text-primary);
-        }
-
-        .nav-item i {
-            width: 20px;
-            text-align: center;
-        }
-
-        .nav-divider {
-            height: 1px;
-            background: var(--border);
-            margin: 0.5rem 1.5rem;
-        }
-
-        /* Main Content */
-        .main-content {
-            margin-left: 280px;
-            padding: 2rem;
-            min-height: 100vh;
-        }
-
-        /* Header */
-        .dashboard-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 2rem;
-        }
-
-        .dashboard-title {
-            font-size: 1.875rem;
-            font-weight: 700;
-        }
-
-        .header-actions {
-            display: flex;
-            gap: 1rem;
-        }
-
-        .btn {
-            padding: 0.625rem 1.25rem;
-            border-radius: 0.5rem;
-            border: 1px solid var(--border);
-            background: var(--bg-elevated);
-            color: var(--text-primary);
-            cursor: pointer;
-            transition: all 0.2s;
-            font-size: 0.875rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .btn:hover {
-            background: var(--bg-card);
-            border-color: var(--accent);
-        }
-
-        .btn-primary {
-            background: var(--accent);
-            border-color: var(--accent);
-            color: white;
-        }
-
-        .btn-primary:hover {
-            background: var(--coffee);
-            border-color: var(--coffee);
-        }
-
-        /* Stats Grid */
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 2rem;
-        }
-
-        .stat-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 0.75rem;
-            padding: 1.5rem;
-            transition: all 0.2s;
-        }
-
-        .stat-card:hover {
-            border-color: var(--accent);
-            transform: translateY(-2px);
-        }
-
-        .stat-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1rem;
-        }
-
-        .stat-title {
-            font-size: 0.875rem;
-            color: var(--text-secondary);
-            font-weight: 500;
-        }
-
-        .stat-badge {
-            padding: 0.25rem 0.5rem;
-            border-radius: 0.375rem;
-            font-size: 0.75rem;
-            font-weight: 600;
-        }
-
-        .badge-success {
-            background: rgba(16, 185, 129, 0.1);
-            color: var(--success);
-        }
-
-        .badge-warning {
-            background: rgba(245, 158, 11, 0.1);
-            color: var(--high);
-        }
-
-        .stat-value {
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-        }
-
-        .stat-label {
-            font-size: 0.75rem;
-            color: var(--text-secondary);
-        }
-
-        /* Content Grid */
-        .content-grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 1.5rem;
-            margin-bottom: 2rem;
-        }
-
-        .card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 0.75rem;
-            padding: 1.5rem;
-        }
-
-        .card-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1.5rem;
-        }
-
-        .card-title {
-            font-size: 1.125rem;
-            font-weight: 600;
-        }
-
-        .card-link {
-            color: var(--accent);
-            font-size: 0.875rem;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .card-link:hover {
-            color: var(--coffee);
-        }
-
-        /* Graph Container */
-        #cy {
-            width: 100%;
-            height: 600px;
-            background: var(--bg-dark);
-            border-radius: 0.5rem;
-            border: 1px solid var(--border);
-        }
-
-        /* Category List */
-        .category-list {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-        }
-
-        .category-item {
-            padding: 1rem;
-            background: var(--bg-elevated);
-            border: 1px solid var(--border);
-            border-radius: 0.5rem;
-            cursor: pointer;
-            transition: all 0.2s;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .category-item:hover {
-            background: var(--bg-card);
-            border-color: var(--accent);
-        }
-
-        .category-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 0.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.25rem;
-        }
-
-        .icon-location { background: rgba(239, 68, 68, 0.1); color: #ef4444; }
-        .icon-organization { background: rgba(59, 130, 246, 0.1); color: #3b82f6; }
-        .icon-market { background: rgba(34, 197, 94, 0.1); color: #22c55e; }
-        .icon-product { background: rgba(139, 69, 19, 0.1); color: #8b4513; }
-        .icon-quality { background: rgba(245, 158, 11, 0.1); color: #f59e0b; }
-
-        .category-info {
-            flex: 1;
-        }
-
-        .category-name {
-            font-weight: 600;
-            margin-bottom: 0.25rem;
-        }
-
-        .category-count {
-            font-size: 0.75rem;
-            color: var(--text-secondary);
-        }
-
-        /* Activity Feed */
-        .activity-feed {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .activity-item {
-            display: flex;
-            gap: 1rem;
-            padding: 1rem;
-            background: var(--bg-elevated);
-            border-radius: 0.5rem;
-        }
-
-        .activity-icon {
-            width: 32px;
-            height: 32px;
-            border-radius: 0.375rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(139, 69, 19, 0.1);
-            color: var(--accent);
-            flex-shrink: 0;
-        }
-
-        .activity-content {
-            flex: 1;
-        }
-
-        .activity-title {
-            font-size: 0.875rem;
-            font-weight: 500;
-            margin-bottom: 0.25rem;
-        }
-
-        .activity-time {
-            font-size: 0.75rem;
-            color: var(--text-secondary);
-        }
-
-        /* System Status */
-        .status-list {
-            display: flex;
-            flex-direction: column;
-            gap: 0.75rem;
-        }
-
-        .status-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0.75rem;
-            background: var(--bg-elevated);
-            border-radius: 0.5rem;
-        }
-
-        .status-name {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            font-size: 0.875rem;
-        }
-
-        .status-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-        }
-
-        .status-online {
-            background: var(--success);
-            box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.2);
-        }
-
-        .status-offline {
-            background: var(--critical);
-            box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.2);
-        }
-
-        .status-badge {
-            padding: 0.25rem 0.625rem;
-            border-radius: 0.375rem;
-            font-size: 0.75rem;
-            font-weight: 600;
-        }
-
-        /* Quick Actions */
-        .quick-actions {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1rem;
-        }
-
-        .quick-action {
-            padding: 1.5rem;
-            background: var(--bg-elevated);
-            border: 1px solid var(--border);
-            border-radius: 0.5rem;
-            cursor: pointer;
-            transition: all 0.2s;
-            text-align: center;
-        }
-
-        .quick-action:hover {
-            background: var(--bg-card);
-            border-color: var(--accent);
-        }
-
-        .quick-action i {
-            font-size: 1.5rem;
-            color: var(--accent);
-            margin-bottom: 0.5rem;
-        }
-
-        .quick-action-text {
-            font-size: 0.875rem;
-            font-weight: 500;
-        }
-
-        /* Loading */
-        .loading-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(10, 14, 26, 0.8);
-            z-index: 9999;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .loading-overlay.active {
-            display: flex;
-        }
-
-        .spinner {
-            border: 3px solid var(--border);
-            border-top: 3px solid var(--accent);
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            animation: spin 1s linear infinite;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        /* Category Hierarchy Tree */
-        .hierarchy-tree {
-            padding: 1rem 0;
-        }
-
-        .tree-node {
-            margin-bottom: 0.5rem;
-        }
-
-        .tree-item {
-            padding: 0.75rem 1rem;
-            background: var(--bg-elevated);
-            border: 1px solid var(--border);
-            border-radius: 0.5rem;
-            cursor: pointer;
-            transition: all 0.2s;
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-
-        .tree-item:hover {
-            background: var(--bg-card);
-            border-color: var(--accent);
-        }
-
-        .tree-item-icon {
-            width: 32px;
-            height: 32px;
-            border-radius: 0.375rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(139, 69, 19, 0.1);
-            color: var(--accent);
-            flex-shrink: 0;
-        }
-
-        .tree-item-content {
-            flex: 1;
-        }
-
-        .tree-item-name {
-            font-weight: 600;
-            margin-bottom: 0.25rem;
-        }
-
-        .tree-item-uri {
-            font-size: 0.75rem;
-            color: var(--text-secondary);
-            font-family: monospace;
-        }
-
-        .tree-children {
-            margin-left: 2rem;
-            margin-top: 0.5rem;
-            padding-left: 1rem;
-            border-left: 2px solid var(--border);
-        }
-
-        .tree-level-1 { margin-left: 0; }
-        .tree-level-2 { margin-left: 2rem; }
-        .tree-level-3 { margin-left: 4rem; }
-
-        /* Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-            height: 8px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: var(--bg-dark);
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: var(--border);
-            border-radius: 4px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: var(--text-secondary);
-        }
-
-        /* Instance Cards Grid */
-        .instance-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 1rem;
-            padding: 1rem;
-        }
-
-        .instance-card {
-            background: var(--bg-elevated);
-            border: 2px solid var(--border);
-            border-radius: 0.75rem;
-            padding: 1.5rem;
-            cursor: pointer;
-            transition: all 0.3s;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .instance-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--accent);
-            box-shadow: 0 10px 25px rgba(139, 69, 19, 0.2);
-            background: var(--bg-card);
-        }
-
-        .instance-card-icon {
-            width: 60px;
-            height: 60px;
-            margin: 0 auto 1rem;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.75rem;
-            background: rgba(139, 69, 19, 0.1);
-            color: var(--accent);
-        }
-
-        .instance-card-name {
-            font-size: 1rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            color: var(--text-primary);
-        }
-
-        .instance-card-count {
-            font-size: 0.75rem;
-            color: var(--text-secondary);
-        }
-
-        .instance-card-description {
-            font-size: 0.8rem;
-            color: var(--text-secondary);
-            margin: 0.75rem 0 0.5rem 0;
-            line-height: 1.4;
-            text-align: left;
-            padding: 0 0.25rem;
-            max-height: 60px;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            display: -webkit-box;
-            -webkit-line-clamp: 3;
-            -webkit-box-orient: vertical;
-        }
-
-        /* Beverage Image Styling */
-        .beverage-card-image {
-            width: 100%;
-            height: 160px;
-            object-fit: cover;
-            border-radius: 0.5rem;
-            margin-bottom: 1rem;
-            border: 2px solid var(--border);
-            transition: all 0.3s;
-        }
-
-        .instance-card:hover .beverage-card-image {
-            border-color: var(--accent);
-            box-shadow: 0 4px 12px rgba(139, 69, 19, 0.3);
-        }
-
-        .beverage-card .instance-card-icon {
-            display: none;
-        }
-
-        .beverage-card {
-            min-height: 320px;
-        }
-
-        /* POS System Card Styling */
-        .pos-card {
-            background: linear-gradient(135deg, rgba(139, 69, 19, 0.05) 0%, rgba(46, 125, 50, 0.05) 100%);
-            border: 2px solid var(--border);
-            padding: 1.5rem;
-            min-height: 280px;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .pos-card:hover {
-            border-color: var(--accent);
-            box-shadow: 0 8px 24px rgba(139, 69, 19, 0.2);
-            transform: translateY(-4px);
-        }
-
-        .pos-card-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1rem;
-        }
-
-        .pos-card-icon {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--accent) 0%, #A0522D 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.5rem;
-            box-shadow: 0 4px 12px rgba(139, 69, 19, 0.3);
-        }
-
-        .pos-card-badge {
-            background: rgba(139, 69, 19, 0.1);
-            color: var(--accent);
-            padding: 0.25rem 0.75rem;
-            border-radius: 1rem;
-            font-size: 0.75rem;
-            font-weight: 600;
-            border: 1px solid var(--accent);
-        }
-
-        .pos-card-name {
-            font-size: 1.125rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            margin-bottom: 1rem;
-        }
-
-        .pos-card-pricing {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 0.75rem;
-            margin-bottom: 1rem;
-            padding: 1rem;
-            background: rgba(139, 69, 19, 0.05);
-            border-radius: 0.5rem;
-            border: 1px solid var(--border);
-        }
-
-        .pos-price-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .pos-price-label {
-            font-size: 0.7rem;
-            color: var(--text-secondary);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 0.25rem;
-        }
-
-        .pos-price-value {
-            font-size: 1rem;
-            font-weight: 700;
-            color: var(--accent);
-        }
-
-        .pos-card-features {
-            font-size: 0.85rem;
-            color: var(--text-secondary);
-            line-height: 1.5;
-            margin-bottom: 1rem;
-            flex-grow: 1;
-            display: flex;
-            align-items: flex-start;
-            gap: 0.5rem;
-        }
-
-        .pos-card-features i {
-            color: #2e7d32;
-            margin-top: 0.2rem;
-            flex-shrink: 0;
-        }
-
-        .pos-card-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding-top: 0.75rem;
-            border-top: 1px solid var(--border);
-            font-size: 0.75rem;
-            color: var(--text-secondary);
-        }
-
-        .pos-card-footer i {
-            color: var(--accent);
-        }
-
-        /* Modal */
-        .modal-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(10, 14, 26, 0.85);
-            z-index: 10000;
-            align-items: center;
-            justify-content: center;
-            backdrop-filter: blur(4px);
-            animation: fadeIn 0.3s;
-        }
-
-        .modal-overlay.active {
-            display: flex;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-
-        .modal-container {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 1rem;
-            max-width: 800px;
-            max-height: 90vh;
-            width: 90%;
-            overflow: hidden;
-            animation: slideUp 0.3s;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-        }
-
-        @keyframes slideUp {
-            from {
-                transform: translateY(50px);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-
-        .modal-header {
-            padding: 1.5rem;
-            border-bottom: 1px solid var(--border);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: var(--bg-elevated);
-        }
-
-        .modal-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--accent);
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-
-        .modal-close {
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            border: none;
-            background: var(--bg-dark);
-            color: var(--text-secondary);
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.2s;
-            font-size: 1.25rem;
-        }
-
-        .modal-close:hover {
-            background: var(--critical);
-            color: white;
-            transform: rotate(90deg);
-        }
-
-        .modal-body {
-            padding: 1.5rem;
-            max-height: calc(90vh - 140px);
-            overflow-y: auto;
-        }
-
-        .property-grid {
-            display: grid;
-            gap: 1rem;
-        }
-
-        .property-card {
-            padding: 1rem;
-            background: var(--bg-elevated);
-            border-radius: 0.5rem;
-            border-left: 3px solid var(--accent);
-        }
-
-        .property-name {
-            font-weight: 600;
-            margin-bottom: 0.75rem;
-            color: var(--accent);
-            font-size: 0.875rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-
-        .property-value {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.5rem;
-            background: var(--bg-dark);
-            border-radius: 0.375rem;
-            margin-top: 0.5rem;
-            font-size: 0.875rem;
-        }
-
-        .property-value-link {
-            border-left: 3px solid var(--accent);
-        }
-
-        .property-value i {
-            color: var(--accent);
-        }
-
-        .modal-description {
-            padding: 1rem;
-            background: rgba(139, 69, 19, 0.1);
-            border-left: 3px solid var(--accent);
-            border-radius: 0.5rem;
-            margin-bottom: 1.5rem;
-            font-size: 0.9rem;
-            line-height: 1.6;
-            color: var(--text-primary);
-        }
-
-        .modal-uri {
-            padding: 1rem;
-            background: var(--bg-dark);
-            border-radius: 0.5rem;
-            margin-bottom: 1.5rem;
-            border: 1px solid var(--border);
-        }
-
-        .modal-uri-label {
-            font-size: 0.75rem;
-            color: var(--text-secondary);
-            margin-bottom: 0.5rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-
-        .modal-uri-value {
-            font-family: monospace;
-            font-size: 0.75rem;
-            color: var(--text-primary);
-            word-break: break-all;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background: var(--bg-dark); color: var(--text-primary); overflow-x: hidden; }
+        .sidebar { position: fixed; left: 0; top: 0; width: 280px; height: 100vh; background: var(--bg-card); border-right: 1px solid var(--border); overflow-y: auto; z-index: 1000; }
+        .sidebar-header { padding: 1.5rem; border-bottom: 1px solid var(--border); }
+        .logo-text { font-size: 1.25rem; font-weight: 700; display: flex; align-items: center; gap: 0.5rem; color: var(--accent); }
+        .logo-subtitle { font-size: 0.75rem; color: var(--text-secondary); margin-top: 0.25rem; }
+        .nav-section { padding: 1rem 0; }
+        .nav-section-title { padding: 0.5rem 1.5rem; font-size: 0.75rem; font-weight: 600; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em; }
+        .nav-item { padding: 0.875rem 1.5rem; display: flex; align-items: center; gap: 0.75rem; cursor: pointer; transition: all 0.2s; border-left: 3px solid transparent; color: var(--text-secondary); }
+        .nav-item:hover { background: rgba(139,69,19,0.1); border-left-color: var(--accent); color: var(--text-primary); }
+        .nav-item.active { background: rgba(139,69,19,0.15); border-left-color: var(--accent); color: var(--text-primary); }
+        .nav-item i { width: 20px; text-align: center; }
+        .nav-divider { height: 1px; background: var(--border); margin: 0.5rem 1.5rem; }
+        .main-content { margin-left: 280px; padding: 2rem; min-height: 100vh; }
+        .dashboard-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; }
+        .dashboard-title { font-size: 1.875rem; font-weight: 700; }
+        .header-actions { display: flex; gap: 1rem; }
+        .btn { padding: 0.625rem 1.25rem; border-radius: 0.5rem; border: 1px solid var(--border); background: var(--bg-elevated); color: var(--text-primary); cursor: pointer; transition: all 0.2s; font-size: 0.875rem; display: flex; align-items: center; gap: 0.5rem; }
+        .btn:hover { background: var(--bg-card); border-color: var(--accent); }
+        .btn-primary { background: var(--accent); border-color: var(--accent); color: white; }
+        .btn-primary:hover { background: var(--coffee); border-color: var(--coffee); }
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-bottom: 2rem; }
+        .stat-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 0.75rem; padding: 1.5rem; transition: all 0.2s; }
+        .stat-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+        .stat-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
+        .stat-title { font-size: 0.875rem; color: var(--text-secondary); font-weight: 500; }
+        .stat-badge { padding: 0.25rem 0.5rem; border-radius: 0.375rem; font-size: 0.75rem; font-weight: 600; }
+        .badge-success { background: rgba(16,185,129,0.1); color: var(--success); }
+        .badge-warning { background: rgba(245,158,11,0.1); color: var(--high); }
+        .stat-value { font-size: 2rem; font-weight: 700; margin-bottom: 0.5rem; }
+        .stat-label { font-size: 0.75rem; color: var(--text-secondary); }
+        .content-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 1.5rem; margin-bottom: 2rem; }
+        .card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 0.75rem; padding: 1.5rem; }
+        .card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; }
+        .card-title { font-size: 1.125rem; font-weight: 600; }
+        .card-link { color: var(--accent); font-size: 0.875rem; text-decoration: none; display: flex; align-items: center; gap: 0.5rem; }
+        #cy { width: 100%; height: 600px; background: var(--bg-dark); border-radius: 0.5rem; border: 1px solid var(--border); }
+        .category-list { display: flex; flex-direction: column; gap: 0.5rem; }
+        .category-item { padding: 1rem; background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 0.5rem; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; gap: 1rem; }
+        .category-item:hover { background: var(--bg-card); border-color: var(--accent); }
+        .category-icon { width: 40px; height: 40px; border-radius: 0.5rem; display: flex; align-items: center; justify-content: center; font-size: 1.25rem; }
+        .icon-location { background: rgba(239,68,68,0.1); color: #ef4444; }
+        .icon-organization { background: rgba(59,130,246,0.1); color: #3b82f6; }
+        .icon-market { background: rgba(34,197,94,0.1); color: #22c55e; }
+        .icon-product { background: rgba(139,69,19,0.1); color: #8b4513; }
+        .icon-quality { background: rgba(245,158,11,0.1); color: #f59e0b; }
+        .category-info { flex: 1; }
+        .category-name { font-weight: 600; margin-bottom: 0.25rem; }
+        .category-count { font-size: 0.75rem; color: var(--text-secondary); }
+        .status-list { display: flex; flex-direction: column; gap: 0.75rem; }
+        .status-item { display: flex; justify-content: space-between; align-items: center; padding: 0.75rem; background: var(--bg-elevated); border-radius: 0.5rem; }
+        .status-name { display: flex; align-items: center; gap: 0.75rem; font-size: 0.875rem; }
+        .status-dot { width: 8px; height: 8px; border-radius: 50%; }
+        .status-online { background: var(--success); box-shadow: 0 0 0 2px rgba(16,185,129,0.2); }
+        .status-badge { padding: 0.25rem 0.625rem; border-radius: 0.375rem; font-size: 0.75rem; font-weight: 600; }
+        .quick-actions { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+        .quick-action { padding: 1.5rem; background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 0.5rem; cursor: pointer; transition: all 0.2s; text-align: center; }
+        .quick-action:hover { background: var(--bg-card); border-color: var(--accent); }
+        .quick-action i { font-size: 1.5rem; color: var(--accent); margin-bottom: 0.5rem; }
+        .quick-action-text { font-size: 0.875rem; font-weight: 500; }
+        .loading-overlay { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(10,14,26,0.8); z-index: 9999; align-items: center; justify-content: center; }
+        .loading-overlay.active { display: flex; }
+        .spinner { border: 3px solid var(--border); border-top: 3px solid var(--accent); border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        .hierarchy-tree { padding: 1rem 0; }
+        .tree-node { margin-bottom: 0.5rem; }
+        .tree-item { padding: 0.75rem 1rem; background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 0.5rem; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; gap: 0.75rem; }
+        .tree-item:hover { background: var(--bg-card); border-color: var(--accent); }
+        .tree-item-icon { width: 32px; height: 32px; border-radius: 0.375rem; display: flex; align-items: center; justify-content: center; background: rgba(139,69,19,0.1); color: var(--accent); flex-shrink: 0; }
+        .tree-item-content { flex: 1; }
+        .tree-item-name { font-weight: 600; margin-bottom: 0.25rem; }
+        .tree-item-uri { font-size: 0.75rem; color: var(--text-secondary); font-family: monospace; }
+        .tree-children { margin-left: 2rem; margin-top: 0.5rem; padding-left: 1rem; border-left: 2px solid var(--border); }
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-dark); }
+        ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--text-secondary); }
+        .instance-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; padding: 1rem; }
+        .instance-card { background: var(--bg-elevated); border: 2px solid var(--border); border-radius: 0.75rem; padding: 1.5rem; cursor: pointer; transition: all 0.3s; text-align: center; position: relative; overflow: hidden; }
+        .instance-card:hover { transform: translateY(-5px); border-color: var(--accent); box-shadow: 0 10px 25px rgba(139,69,19,0.2); background: var(--bg-card); }
+        .instance-card-icon { width: 60px; height: 60px; margin: 0 auto 1rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.75rem; background: rgba(139,69,19,0.1); color: var(--accent); }
+        .instance-card-name { font-size: 1rem; font-weight: 600; margin-bottom: 0.5rem; color: var(--text-primary); }
+        .instance-card-count { font-size: 0.75rem; color: var(--text-secondary); }
+        .instance-card-description { font-size: 0.8rem; color: var(--text-secondary); margin: 0.75rem 0 0.5rem 0; line-height: 1.4; text-align: left; padding: 0 0.25rem; max-height: 60px; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; }
+        .beverage-card-image { width: 100%; height: 160px; object-fit: cover; border-radius: 0.5rem; margin-bottom: 1rem; border: 2px solid var(--border); transition: all 0.3s; }
+        .instance-card:hover .beverage-card-image { border-color: var(--accent); box-shadow: 0 4px 12px rgba(139,69,19,0.3); }
+        .beverage-card .instance-card-icon { display: none; }
+        .beverage-card { min-height: 320px; }
+        .pos-card { background: linear-gradient(135deg, rgba(139,69,19,0.05) 0%, rgba(46,125,50,0.05) 100%); border: 2px solid var(--border); padding: 1.5rem; min-height: 280px; display: flex; flex-direction: column; }
+        .pos-card:hover { border-color: var(--accent); box-shadow: 0 8px 24px rgba(139,69,19,0.2); transform: translateY(-4px); }
+        .pos-card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
+        .pos-card-icon { width: 50px; height: 50px; border-radius: 50%; background: linear-gradient(135deg, var(--accent) 0%, #A0522D 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem; box-shadow: 0 4px 12px rgba(139,69,19,0.3); }
+        .pos-card-badge { background: rgba(139,69,19,0.1); color: var(--accent); padding: 0.25rem 0.75rem; border-radius: 1rem; font-size: 0.75rem; font-weight: 600; border: 1px solid var(--accent); }
+        .pos-card-name { font-size: 1.125rem; font-weight: 700; color: var(--text-primary); margin-bottom: 1rem; }
+        .pos-card-pricing { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 1rem; padding: 1rem; background: rgba(139,69,19,0.05); border-radius: 0.5rem; border: 1px solid var(--border); }
+        .pos-price-item { display: flex; flex-direction: column; align-items: center; }
+        .pos-price-label { font-size: 0.7rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 0.25rem; }
+        .pos-price-value { font-size: 1rem; font-weight: 700; color: var(--accent); }
+        .pos-card-features { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; margin-bottom: 1rem; flex-grow: 1; display: flex; align-items: flex-start; gap: 0.5rem; }
+        .pos-card-features i { color: #2e7d32; margin-top: 0.2rem; flex-shrink: 0; }
+        .pos-card-footer { display: flex; justify-content: space-between; align-items: center; padding-top: 0.75rem; border-top: 1px solid var(--border); font-size: 0.75rem; color: var(--text-secondary); }
+        .pos-card-footer i { color: var(--accent); }
+        .modal-overlay { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(10,14,26,0.85); z-index: 10000; align-items: center; justify-content: center; backdrop-filter: blur(4px); animation: fadeIn 0.3s; }
+        .modal-overlay.active { display: flex; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .modal-container { background: var(--bg-card); border: 1px solid var(--border); border-radius: 1rem; max-width: 800px; max-height: 90vh; width: 90%; overflow: hidden; animation: slideUp 0.3s; box-shadow: 0 20px 60px rgba(0,0,0,0.5); }
+        @keyframes slideUp { from { transform: translateY(50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        .modal-header { padding: 1.5rem; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; background: var(--bg-elevated); }
+        .modal-title { font-size: 1.5rem; font-weight: 700; color: var(--accent); display: flex; align-items: center; gap: 0.75rem; }
+        .modal-close { width: 36px; height: 36px; border-radius: 50%; border: none; background: var(--bg-dark); color: var(--text-secondary); cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s; font-size: 1.25rem; }
+        .modal-close:hover { background: var(--critical); color: white; transform: rotate(90deg); }
+        .modal-body { padding: 1.5rem; max-height: calc(90vh - 140px); overflow-y: auto; }
+        .property-grid { display: grid; gap: 1rem; }
+        .property-card { padding: 1rem; background: var(--bg-elevated); border-radius: 0.5rem; border-left: 3px solid var(--accent); }
+        .property-name { font-weight: 600; margin-bottom: 0.75rem; color: var(--accent); font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.05em; }
+        .property-value { display: flex; align-items: center; gap: 0.5rem; padding: 0.5rem; background: var(--bg-dark); border-radius: 0.375rem; margin-top: 0.5rem; font-size: 0.875rem; }
+        .property-value-link { border-left: 3px solid var(--accent); }
+        .property-value i { color: var(--accent); }
+        .modal-description { padding: 1rem; background: rgba(139,69,19,0.1); border-left: 3px solid var(--accent); border-radius: 0.5rem; margin-bottom: 1.5rem; font-size: 0.9rem; line-height: 1.6; color: var(--text-primary); }
+        .modal-uri { padding: 1rem; background: var(--bg-dark); border-radius: 0.5rem; margin-bottom: 1.5rem; border: 1px solid var(--border); }
+        .modal-uri-label { font-size: 0.75rem; color: var(--text-secondary); margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 0.05em; }
+        .modal-uri-value { font-family: monospace; font-size: 0.75rem; color: var(--text-primary); word-break: break-all; }
     </style>
 </head>
 <body>
-    <!-- Loading Overlay -->
-    <div class="loading-overlay" id="loadingOverlay">
-        <div class="spinner"></div>
-    </div>
+    <div class="loading-overlay" id="loadingOverlay"><div class="spinner"></div></div>
 
-    <!-- Instance Detail Modal -->
     <div class="modal-overlay" id="instanceModal">
         <div class="modal-container">
             <div class="modal-header">
-                <div class="modal-title">
-                    <i class="fas fa-info-circle"></i>
-                    <span id="modalTitle">Instance Details</span>
-                </div>
-                <button class="modal-close" id="modalClose">
-                    <i class="fas fa-times"></i>
-                </button>
+                <div class="modal-title"><i class="fas fa-info-circle"></i><span id="modalTitle">Instance Details</span></div>
+                <button class="modal-close" id="modalClose"><i class="fas fa-times"></i></button>
             </div>
-            <div class="modal-body" id="modalBody">
-                <!-- Content will be inserted here -->
-            </div>
+            <div class="modal-body" id="modalBody"></div>
         </div>
     </div>
 
-    <!-- Sidebar -->
     <aside class="sidebar">
         <div class="sidebar-header">
-            <div class="logo-text">
-                <i class="fas fa-coffee"></i>
-                <span>CoffeeLand</span>
-            </div>
+            <div class="logo-text"><i class="fas fa-coffee"></i><span>CoffeeLand</span></div>
             <div class="logo-subtitle">Ontology System</div>
         </div>
-
         <nav class="nav-section">
             <div class="nav-section-title">Main</div>
-            <div class="nav-item active" data-view="dashboard">
-                <i class="fas fa-th-large"></i>
-                <span>Dashboard</span>
-            </div>
-            <div class="nav-item" data-view="graph">
-                <i class="fas fa-project-diagram"></i>
-                <span>Graph View</span>
-            </div>
-            <div class="nav-item" data-view="categories">
-                <i class="fas fa-layer-group"></i>
-                <span>Categories</span>
-            </div>
-            <div class="nav-item" data-view="statistics">
-                <i class="fas fa-chart-bar"></i>
-                <span>Statistics</span>
-            </div>
+            <div class="nav-item active" data-view="dashboard"><i class="fas fa-th-large"></i><span>Dashboard</span></div>
+            <div class="nav-item" data-view="graph"><i class="fas fa-project-diagram"></i><span>Graph View</span></div>
+            <div class="nav-item" data-view="categories"><i class="fas fa-layer-group"></i><span>Categories</span></div>
+            <div class="nav-item" data-view="statistics"><i class="fas fa-chart-bar"></i><span>Statistics</span></div>
         </nav>
-
         <div class="nav-divider"></div>
-
         <nav class="nav-section">
             <div class="nav-section-title">Shop Operations</div>
-            <div class="nav-item" id="allOperationsBtn">
-                <i class="fas fa-store"></i>
-                <span>All Operations</span>
-            </div>
+            <div class="nav-item" id="allOperationsBtn"><i class="fas fa-store"></i><span>All Operations</span></div>
         </nav>
-
         <div class="nav-divider"></div>
-
         <nav class="nav-section">
             <div class="nav-section-title">Menu & Service</div>
-            <div class="nav-item" data-category="BeverageMenu">
-                <i class="fas fa-mug-hot"></i>
-                <span>Beverage Menu</span>
-            </div>
-            <div class="nav-item" data-category="PosSystem">
-                <i class="fas fa-cash-register"></i>
-                <span>POS System</span>
-            </div>
-            <div class="nav-item" data-category="Recipe">
-                <i class="fas fa-book"></i>
-                <span>Recipe</span>
-            </div>
-            <div class="nav-item" data-category="TrainingProgram">
-                <i class="fas fa-graduation-cap"></i>
-                <span>Training Program</span>
-            </div>
+            <div class="nav-item" data-category="BeverageMenu"><i class="fas fa-mug-hot"></i><span>Beverage Menu</span></div>
+            <div class="nav-item" data-category="PosSystem"><i class="fas fa-cash-register"></i><span>POS System</span></div>
+            <div class="nav-item" data-category="Recipe"><i class="fas fa-book"></i><span>Recipe</span></div>
+            <div class="nav-item" data-category="TrainingProgram"><i class="fas fa-graduation-cap"></i><span>Training Program</span></div>
         </nav>
-
         <div class="nav-divider"></div>
-
         <nav class="nav-section">
             <div class="nav-section-title">Resources</div>
-            <div class="nav-item" data-category="Equipment">
-                <i class="fas fa-tools"></i>
-                <span>Equipment</span>
-            </div>
-            <div class="nav-item" data-category="Ingredient">
-                <i class="fas fa-seedling"></i>
-                <span>Ingredient</span>
-            </div>
-            <div class="nav-item" data-category="Consumable">
-                <i class="fas fa-box"></i>
-                <span>Consumable</span>
-            </div>
+            <div class="nav-item" data-category="Equipment"><i class="fas fa-tools"></i><span>Equipment</span></div>
+            <div class="nav-item" data-category="Ingredient"><i class="fas fa-seedling"></i><span>Ingredient</span></div>
+            <div class="nav-item" data-category="Consumable"><i class="fas fa-box"></i><span>Consumable</span></div>
         </nav>
-
         <div class="nav-divider"></div>
-
         <nav class="nav-section">
             <div class="nav-section-title">Partners</div>
-            <div class="nav-item" data-category="EquipmentSupplier">
-                <i class="fas fa-truck"></i>
-                <span>Equipment Supplier</span>
-            </div>
-            <div class="nav-item" data-category="IngredientVendor">
-                <i class="fas fa-store-alt"></i>
-                <span>Ingredient Vendor</span>
-            </div>
-            <div class="nav-item" data-category="MaintenanceService">
-                <i class="fas fa-wrench"></i>
-                <span>Maintenance Service</span>
-            </div>
+            <div class="nav-item" data-category="EquipmentSupplier"><i class="fas fa-truck"></i><span>Equipment Supplier</span></div>
+            <div class="nav-item" data-category="IngredientVendor"><i class="fas fa-store-alt"></i><span>Ingredient Vendor</span></div>
+            <div class="nav-item" data-category="MaintenanceService"><i class="fas fa-wrench"></i><span>Maintenance Service</span></div>
         </nav>
-
         <div class="nav-divider"></div>
-
         <nav class="nav-section">
             <div class="nav-section-title">Tools</div>
-            <div class="nav-item" id="uploadBtn">
-                <i class="fas fa-upload"></i>
-                <span>Upload RDF/OWL</span>
-            </div>
-            <div class="nav-item" id="downloadBtn">
-                <i class="fas fa-download"></i>
-                <span>Download Data</span>
-            </div>
-        </nav>
-
-        <div class="nav-divider"></div>
-
-        <nav class="nav-section">
-            <div class="nav-section-title">Analytics</div>
-            <a class="nav-item"
-               href="https://doogiesdj.github.io/coffeeland-web/"
-               target="_blank"
-               style="text-decoration:none;color:inherit;display:flex;align-items:center;gap:0.75rem">
-                <i class="fas fa-chart-line" style="color:#e8a870;width:16px"></i>
-                <span style="color:#e8a870;font-weight:500">데이터 분석 대시보드 ↗</span>
-            </a>
+            <div class="nav-item" id="uploadBtn"><i class="fas fa-upload"></i><span>Upload RDF/OWL</span></div>
+            <div class="nav-item" id="downloadBtn"><i class="fas fa-download"></i><span>Download Data</span></div>
         </nav>
     </aside>
 
-    <!-- Main Content -->
     <main class="main-content">
         <!-- Dashboard View -->
         <div class="view active" id="dashboardView">
             <div class="dashboard-header">
                 <h1 class="dashboard-title">Dashboard</h1>
                 <div class="header-actions">
-                    <button class="btn" id="refreshBtn">
-                        <i class="fas fa-sync-alt"></i>
-                        Refresh
-                    </button>
-                    <button class="btn btn-primary" id="loadDataBtn">
-                        <i class="fas fa-database"></i>
-                        Load Data
-                    </button>
+                    <button class="btn" id="refreshBtn"><i class="fas fa-sync-alt"></i>Refresh</button>
+                    <button class="btn btn-primary" id="loadDataBtn"><i class="fas fa-database"></i>Load Data</button>
                 </div>
             </div>
-
-            <!-- Stats Grid -->
             <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-header">
-                        <span class="stat-title">Total Classes</span>
-                        <span class="stat-badge badge-success">+2</span>
-                    </div>
-                    <div class="stat-value" id="statClasses">0</div>
-                    <div class="stat-label">Ontology Classes</div>
-                </div>
-
-                <div class="stat-card">
-                    <div class="stat-header">
-                        <span class="stat-title">Properties</span>
-                        <span class="stat-badge badge-success">+5</span>
-                    </div>
-                    <div class="stat-value" id="statProperties">0</div>
-                    <div class="stat-label">Object & Data Properties</div>
-                </div>
-
-                <div class="stat-card">
-                    <div class="stat-header">
-                        <span class="stat-title">RDF Triples</span>
-                        <span class="stat-badge badge-warning">Today</span>
-                    </div>
-                    <div class="stat-value" id="statTriples">0</div>
-                    <div class="stat-label">Total Statements</div>
-                </div>
-
-                <div class="stat-card">
-                    <div class="stat-header">
-                        <span class="stat-title">System Health</span>
-                        <span class="stat-badge badge-success">98%</span>
-                    </div>
-                    <div class="stat-value">100%</div>
-                    <div class="stat-label">All Systems Operational</div>
-                </div>
+                <div class="stat-card"><div class="stat-header"><span class="stat-title">Total Classes</span><span class="stat-badge badge-success">+2</span></div><div class="stat-value" id="statClasses">0</div><div class="stat-label">Ontology Classes</div></div>
+                <div class="stat-card"><div class="stat-header"><span class="stat-title">Properties</span><span class="stat-badge badge-success">+5</span></div><div class="stat-value" id="statProperties">0</div><div class="stat-label">Object & Data Properties</div></div>
+                <div class="stat-card"><div class="stat-header"><span class="stat-title">RDF Triples</span><span class="stat-badge badge-warning">Today</span></div><div class="stat-value" id="statTriples">0</div><div class="stat-label">Total Statements</div></div>
+                <div class="stat-card"><div class="stat-header"><span class="stat-title">System Health</span><span class="stat-badge badge-success">98%</span></div><div class="stat-value">100%</div><div class="stat-label">All Systems Operational</div></div>
             </div>
-
-            <!-- Content Grid -->
             <div class="content-grid">
                 <div class="card">
-                    <div class="card-header">
-                        <h2 class="card-title">Categories Overview</h2>
-                        <a href="#" class="card-link">
-                            View All
-                            <i class="fas fa-arrow-right"></i>
-                        </a>
-                    </div>
+                    <div class="card-header"><h2 class="card-title">Categories Overview</h2><a href="#" class="card-link">View All <i class="fas fa-arrow-right"></i></a></div>
                     <div class="category-list">
-                        <div class="category-item" data-category="Location">
-                            <div class="category-icon icon-location">
-                                <i class="fas fa-map-marker-alt"></i>
-                            </div>
-                            <div class="category-info">
-                                <div class="category-name">Location</div>
-                                <div class="category-count" id="countLocation">0 subclasses</div>
-                            </div>
-                        </div>
-                        <div class="category-item" data-category="Organization">
-                            <div class="category-icon icon-organization">
-                                <i class="fas fa-building"></i>
-                            </div>
-                            <div class="category-info">
-                                <div class="category-name">Organization</div>
-                                <div class="category-count" id="countOrganization">0 subclasses</div>
-                            </div>
-                        </div>
-                        <div class="category-item" data-category="MarketAndEconomics">
-                            <div class="category-icon icon-market">
-                                <i class="fas fa-chart-line"></i>
-                            </div>
-                            <div class="category-info">
-                                <div class="category-name">Market & Economics</div>
-                                <div class="category-count" id="countMarketAndEconomics">0 subclasses</div>
-                            </div>
-                        </div>
-                        <div class="category-item" data-category="Product">
-                            <div class="category-icon icon-product">
-                                <i class="fas fa-box"></i>
-                            </div>
-                            <div class="category-info">
-                                <div class="category-name">Product</div>
-                                <div class="category-count" id="countProduct">0 subclasses</div>
-                            </div>
-                        </div>
-                        <div class="category-item" data-category="QualityAndProcessing">
-                            <div class="category-icon icon-quality">
-                                <i class="fas fa-star"></i>
-                            </div>
-                            <div class="category-info">
-                                <div class="category-name">Quality & Processing</div>
-                                <div class="category-count" id="countQualityAndProcessing">0 subclasses</div>
-                            </div>
-                        </div>
+                        <div class="category-item" data-category="Location"><div class="category-icon icon-location"><i class="fas fa-map-marker-alt"></i></div><div class="category-info"><div class="category-name">Location</div><div class="category-count" id="countLocation">0 subclasses</div></div></div>
+                        <div class="category-item" data-category="Organization"><div class="category-icon icon-organization"><i class="fas fa-building"></i></div><div class="category-info"><div class="category-name">Organization</div><div class="category-count" id="countOrganization">0 subclasses</div></div></div>
+                        <div class="category-item" data-category="MarketAndEconomics"><div class="category-icon icon-market"><i class="fas fa-chart-line"></i></div><div class="category-info"><div class="category-name">Market & Economics</div><div class="category-count" id="countMarketAndEconomics">0 subclasses</div></div></div>
+                        <div class="category-item" data-category="Product"><div class="category-icon icon-product"><i class="fas fa-box"></i></div><div class="category-info"><div class="category-name">Product</div><div class="category-count" id="countProduct">0 subclasses</div></div></div>
+                        <div class="category-item" data-category="QualityAndProcessing"><div class="category-icon icon-quality"><i class="fas fa-star"></i></div><div class="category-info"><div class="category-name">Quality & Processing</div><div class="category-count" id="countQualityAndProcessing">0 subclasses</div></div></div>
                     </div>
                 </div>
-
                 <div>
-                    <div class="card" style="margin-bottom: 1.5rem;">
-                        <div class="card-header">
-                            <h2 class="card-title">System Status</h2>
-                        </div>
+                    <div class="card" style="margin-bottom:1.5rem;">
+                        <div class="card-header"><h2 class="card-title">System Status</h2></div>
                         <div class="status-list">
-                            <div class="status-item">
-                                <div class="status-name">
-                                    <span class="status-dot status-online"></span>
-                                    <span>RDF Parser</span>
-                                </div>
-                                <span class="status-badge badge-success">Online</span>
-                            </div>
-                            <div class="status-item">
-                                <div class="status-name">
-                                    <span class="status-dot status-online"></span>
-                                    <span>Ontology System</span>
-                                </div>
-                                <span class="status-badge badge-success">Online</span>
-                            </div>
-                            <div class="status-item">
-                                <div class="status-name">
-                                    <span class="status-dot status-online"></span>
-                                    <span>Graph Renderer</span>
-                                </div>
-                                <span class="status-badge badge-success">Online</span>
-                            </div>
+                            <div class="status-item"><div class="status-name"><span class="status-dot status-online"></span><span>RDF Parser</span></div><span class="status-badge badge-success">Online</span></div>
+                            <div class="status-item"><div class="status-name"><span class="status-dot status-online"></span><span>Ontology System</span></div><span class="status-badge badge-success">Online</span></div>
+                            <div class="status-item"><div class="status-name"><span class="status-dot status-online"></span><span>Graph Renderer</span></div><span class="status-badge badge-success">Online</span></div>
                         </div>
                     </div>
-
                     <div class="card">
-                        <div class="card-header">
-                            <h2 class="card-title">Quick Actions</h2>
-                        </div>
+                        <div class="card-header"><h2 class="card-title">Quick Actions</h2></div>
                         <div class="quick-actions">
-                            <div class="quick-action" id="actionGraph">
-                                <i class="fas fa-project-diagram"></i>
-                                <div class="quick-action-text">View Graph</div>
-                            </div>
-                            <div class="quick-action" id="actionUpload">
-                                <i class="fas fa-upload"></i>
-                                <div class="quick-action-text">Upload File</div>
-                            </div>
-                            <div class="quick-action" id="actionAnalysis">
-                                <i class="fas fa-chart-bar"></i>
-                                <div class="quick-action-text">Run Analysis</div>
-                            </div>
-                            <div class="quick-action" id="actionExport">
-                                <i class="fas fa-download"></i>
-                                <div class="quick-action-text">Export Data</div>
-                            </div>
+                            <div class="quick-action" id="actionGraph"><i class="fas fa-project-diagram"></i><div class="quick-action-text">View Graph</div></div>
+                            <div class="quick-action" id="actionUpload"><i class="fas fa-upload"></i><div class="quick-action-text">Upload File</div></div>
+                            <div class="quick-action" id="actionAnalysis"><i class="fas fa-chart-bar"></i><div class="quick-action-text">Run Analysis</div></div>
+                            <div class="quick-action" id="actionExport"><i class="fas fa-download"></i><div class="quick-action-text">Export Data</div></div>
                         </div>
                     </div>
                 </div>
@@ -1274,1481 +283,823 @@
         </div>
 
         <!-- Graph View -->
-        <div class="view" id="graphView" style="display: none;">
+        <div class="view" id="graphView" style="display:none;">
             <div class="dashboard-header">
                 <h1 class="dashboard-title">Graph Visualization</h1>
                 <div class="header-actions">
-                    <button class="btn" id="fitGraphBtn">
-                        <i class="fas fa-compress-arrows-alt"></i>
-                        Fit
-                    </button>
-                    <button class="btn" id="resetGraphBtn">
-                        <i class="fas fa-redo"></i>
-                        Reset
-                    </button>
+                    <button class="btn" id="fitGraphBtn"><i class="fas fa-compress-arrows-alt"></i>Fit</button>
+                    <button class="btn" id="resetGraphBtn"><i class="fas fa-redo"></i>Reset</button>
                 </div>
             </div>
-            <div class="card" style="position: relative;">
+            <div class="card" style="position:relative;">
                 <div id="cy"></div>
-                <div style="position: absolute; bottom: 20px; left: 20px; background: var(--bg-elevated); padding: 15px; border-radius: 8px; border: 1px solid var(--border);">
-                    <div style="font-weight: 600; margin-bottom: 10px; color: var(--text-primary);">Legend</div>
-                    <div style="display: flex; flex-direction: column; gap: 8px;">
-                        <div style="display: flex; align-items: center; gap: 10px;">
-                            <div style="width: 30px; height: 30px; background: #ef4444; border-radius: 50%; border: 2px solid white;"></div>
-                            <span style="font-size: 12px; color: var(--text-secondary);">Location</span>
-                        </div>
-                        <div style="display: flex; align-items: center; gap: 10px;">
-                            <div style="width: 30px; height: 30px; background: #3b82f6; border-radius: 50%; border: 2px solid white;"></div>
-                            <span style="font-size: 12px; color: var(--text-secondary);">Organization</span>
-                        </div>
-                        <div style="display: flex; align-items: center; gap: 10px;">
-                            <div style="width: 30px; height: 30px; background: #22c55e; border-radius: 50%; border: 2px solid white;"></div>
-                            <span style="font-size: 12px; color: var(--text-secondary);">Market</span>
-                        </div>
-                        <div style="display: flex; align-items: center; gap: 10px;">
-                            <div style="width: 30px; height: 30px; background: #8b4513; border-radius: 50%; border: 2px solid white;"></div>
-                            <span style="font-size: 12px; color: var(--text-secondary);">Product</span>
-                        </div>
-                        <div style="display: flex; align-items: center; gap: 10px;">
-                            <div style="width: 30px; height: 30px; background: #f59e0b; border-radius: 50%; border: 2px solid white;"></div>
-                            <span style="font-size: 12px; color: var(--text-secondary);">Quality / Property</span>
-                        </div>
-                        <div style="height: 1px; background: var(--border); margin: 5px 0;"></div>
-                        <div style="display: flex; align-items: center; gap: 10px;">
-                            <div style="width: 30px; height: 2px; background: #94a3b8;"></div>
-                            <span style="font-size: 12px; color: var(--text-secondary);">Hierarchy</span>
-                        </div>
-                        <div style="display: flex; align-items: center; gap: 10px;">
-                            <div style="width: 30px; height: 2px; background: #3b82f6;"></div>
-                            <span style="font-size: 12px; color: var(--text-secondary);">Domain</span>
-                        </div>
-                        <div style="display: flex; align-items: center; gap: 10px;">
-                            <div style="width: 30px; height: 2px; background: #10b981; border-top: 2px dashed;"></div>
-                            <span style="font-size: 12px; color: var(--text-secondary);">Range</span>
-                        </div>
+                <div style="position:absolute;bottom:20px;left:20px;background:var(--bg-elevated);padding:15px;border-radius:8px;border:1px solid var(--border);">
+                    <div style="font-weight:600;margin-bottom:10px;">Legend</div>
+                    <div style="display:flex;flex-direction:column;gap:8px;">
+                        <div style="display:flex;align-items:center;gap:10px;"><div style="width:30px;height:30px;background:#ef4444;border-radius:50%;border:2px solid white;"></div><span style="font-size:12px;color:var(--text-secondary);">Location</span></div>
+                        <div style="display:flex;align-items:center;gap:10px;"><div style="width:30px;height:30px;background:#3b82f6;border-radius:50%;border:2px solid white;"></div><span style="font-size:12px;color:var(--text-secondary);">Organization</span></div>
+                        <div style="display:flex;align-items:center;gap:10px;"><div style="width:30px;height:30px;background:#22c55e;border-radius:50%;border:2px solid white;"></div><span style="font-size:12px;color:var(--text-secondary);">Market</span></div>
+                        <div style="display:flex;align-items:center;gap:10px;"><div style="width:30px;height:30px;background:#8b4513;border-radius:50%;border:2px solid white;"></div><span style="font-size:12px;color:var(--text-secondary);">Product</span></div>
+                        <div style="display:flex;align-items:center;gap:10px;"><div style="width:30px;height:30px;background:#f59e0b;border-radius:50%;border:2px solid white;"></div><span style="font-size:12px;color:var(--text-secondary);">Quality / Property</span></div>
+                        <div style="height:1px;background:var(--border);margin:5px 0;"></div>
+                        <div style="display:flex;align-items:center;gap:10px;"><div style="width:30px;height:2px;background:#94a3b8;"></div><span style="font-size:12px;color:var(--text-secondary);">Hierarchy</span></div>
+                        <div style="display:flex;align-items:center;gap:10px;"><div style="width:30px;height:2px;background:#3b82f6;"></div><span style="font-size:12px;color:var(--text-secondary);">Domain</span></div>
+                        <div style="display:flex;align-items:center;gap:10px;"><div style="width:30px;height:2px;background:#10b981;border-top:2px dashed;"></div><span style="font-size:12px;color:var(--text-secondary);">Range</span></div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Categories List View -->
-        <div class="view" id="categoriesView" style="display: none;">
-            <div class="dashboard-header">
-                <h1 class="dashboard-title">All Categories</h1>
-            </div>
+        <!-- Categories View -->
+        <div class="view" id="categoriesView" style="display:none;">
+            <div class="dashboard-header"><h1 class="dashboard-title">All Categories</h1></div>
             <div class="category-list">
-                <div class="category-item" data-category="Location">
-                    <div class="category-icon icon-location">
-                        <i class="fas fa-map-marker-alt"></i>
-                    </div>
-                    <div class="category-info">
-                        <div class="category-name">Location</div>
-                        <div class="category-count" id="catCountLocation">0 subclasses</div>
-                    </div>
-                </div>
-                <div class="category-item" data-category="Organization">
-                    <div class="category-icon icon-organization">
-                        <i class="fas fa-building"></i>
-                    </div>
-                    <div class="category-info">
-                        <div class="category-name">Organization</div>
-                        <div class="category-count" id="catCountOrganization">0 subclasses</div>
-                    </div>
-                </div>
-                <div class="category-item" data-category="MarketAndEconomics">
-                    <div class="category-icon icon-market">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <div class="category-info">
-                        <div class="category-name">Market & Economics</div>
-                        <div class="category-count" id="catCountMarketAndEconomics">0 subclasses</div>
-                    </div>
-                </div>
-                <div class="category-item" data-category="Product">
-                    <div class="category-icon icon-product">
-                        <i class="fas fa-box"></i>
-                    </div>
-                    <div class="category-info">
-                        <div class="category-name">Product</div>
-                        <div class="category-count" id="catCountProduct">0 subclasses</div>
-                    </div>
-                </div>
-                <div class="category-item" data-category="QualityAndProcessing">
-                    <div class="category-icon icon-quality">
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <div class="category-info">
-                        <div class="category-name">Quality & Processing</div>
-                        <div class="category-count" id="catCountQualityAndProcessing">0 subclasses</div>
-                    </div>
-                </div>
+                <div class="category-item" data-category="Location"><div class="category-icon icon-location"><i class="fas fa-map-marker-alt"></i></div><div class="category-info"><div class="category-name">Location</div><div class="category-count" id="catCountLocation">0 subclasses</div></div></div>
+                <div class="category-item" data-category="Organization"><div class="category-icon icon-organization"><i class="fas fa-building"></i></div><div class="category-info"><div class="category-name">Organization</div><div class="category-count" id="catCountOrganization">0 subclasses</div></div></div>
+                <div class="category-item" data-category="MarketAndEconomics"><div class="category-icon icon-market"><i class="fas fa-chart-line"></i></div><div class="category-info"><div class="category-name">Market & Economics</div><div class="category-count" id="catCountMarketAndEconomics">0 subclasses</div></div></div>
+                <div class="category-item" data-category="Product"><div class="category-icon icon-product"><i class="fas fa-box"></i></div><div class="category-info"><div class="category-name">Product</div><div class="category-count" id="catCountProduct">0 subclasses</div></div></div>
+                <div class="category-item" data-category="QualityAndProcessing"><div class="category-icon icon-quality"><i class="fas fa-star"></i></div><div class="category-info"><div class="category-name">Quality & Processing</div><div class="category-count" id="catCountQualityAndProcessing">0 subclasses</div></div></div>
             </div>
         </div>
 
         <!-- Statistics View -->
-        <div class="view" id="statisticsView" style="display: none;">
-            <div class="dashboard-header">
-                <h1 class="dashboard-title">Ontology Statistics</h1>
-            </div>
+        <div class="view" id="statisticsView" style="display:none;">
+            <div class="dashboard-header"><h1 class="dashboard-title">Ontology Statistics</h1></div>
             <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-header">
-                        <span class="stat-title">Total Classes</span>
-                    </div>
-                    <div class="stat-value" id="statsClasses">0</div>
-                    <div class="stat-label">Ontology Classes</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-header">
-                        <span class="stat-title">Object Properties</span>
-                    </div>
-                    <div class="stat-value" id="statsObjProps">0</div>
-                    <div class="stat-label">Object Properties</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-header">
-                        <span class="stat-title">Data Properties</span>
-                    </div>
-                    <div class="stat-value" id="statsDataProps">0</div>
-                    <div class="stat-label">Data Properties</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-header">
-                        <span class="stat-title">RDF Triples</span>
-                    </div>
-                    <div class="stat-value" id="statsTriples">0</div>
-                    <div class="stat-label">Total Statements</div>
-                </div>
+                <div class="stat-card"><div class="stat-header"><span class="stat-title">Total Classes</span></div><div class="stat-value" id="statsClasses">0</div><div class="stat-label">Ontology Classes</div></div>
+                <div class="stat-card"><div class="stat-header"><span class="stat-title">Object Properties</span></div><div class="stat-value" id="statsObjProps">0</div><div class="stat-label">Object Properties</div></div>
+                <div class="stat-card"><div class="stat-header"><span class="stat-title">Data Properties</span></div><div class="stat-value" id="statsDataProps">0</div><div class="stat-label">Data Properties</div></div>
+                <div class="stat-card"><div class="stat-header"><span class="stat-title">RDF Triples</span></div><div class="stat-value" id="statsTriples">0</div><div class="stat-label">Total Statements</div></div>
             </div>
-            <div class="card" style="margin-top: 2rem;">
-                <div class="card-header">
-                    <h2 class="card-title">Category Distribution</h2>
-                </div>
+            <div class="card" style="margin-top:2rem;">
+                <div class="card-header"><h2 class="card-title">Category Distribution</h2></div>
                 <div class="category-list">
-                    <div class="category-item" style="cursor: default;">
-                        <div class="category-icon icon-location">
-                            <i class="fas fa-map-marker-alt"></i>
-                        </div>
-                        <div class="category-info">
-                            <div class="category-name">Location</div>
-                            <div class="category-count" id="statsCatLocation">0 classes</div>
-                        </div>
-                    </div>
-                    <div class="category-item" style="cursor: default;">
-                        <div class="category-icon icon-organization">
-                            <i class="fas fa-building"></i>
-                        </div>
-                        <div class="category-info">
-                            <div class="category-name">Organization</div>
-                            <div class="category-count" id="statsCatOrganization">0 classes</div>
-                        </div>
-                    </div>
-                    <div class="category-item" style="cursor: default;">
-                        <div class="category-icon icon-market">
-                            <i class="fas fa-chart-line"></i>
-                        </div>
-                        <div class="category-info">
-                            <div class="category-name">Market & Economics</div>
-                            <div class="category-count" id="statsCatMarket">0 classes</div>
-                        </div>
-                    </div>
-                    <div class="category-item" style="cursor: default;">
-                        <div class="category-icon icon-product">
-                            <i class="fas fa-box"></i>
-                        </div>
-                        <div class="category-info">
-                            <div class="category-name">Product</div>
-                            <div class="category-count" id="statsCatProduct">0 classes</div>
-                        </div>
-                    </div>
-                    <div class="category-item" style="cursor: default;">
-                        <div class="category-icon icon-quality">
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <div class="category-info">
-                            <div class="category-name">Quality & Processing</div>
-                            <div class="category-count" id="statsCatQuality">0 classes</div>
-                        </div>
-                    </div>
+                    <div class="category-item" style="cursor:default;"><div class="category-icon icon-location"><i class="fas fa-map-marker-alt"></i></div><div class="category-info"><div class="category-name">Location</div><div class="category-count" id="statsCatLocation">0 classes</div></div></div>
+                    <div class="category-item" style="cursor:default;"><div class="category-icon icon-organization"><i class="fas fa-building"></i></div><div class="category-info"><div class="category-name">Organization</div><div class="category-count" id="statsCatOrganization">0 classes</div></div></div>
+                    <div class="category-item" style="cursor:default;"><div class="category-icon icon-market"><i class="fas fa-chart-line"></i></div><div class="category-info"><div class="category-name">Market & Economics</div><div class="category-count" id="statsCatMarket">0 classes</div></div></div>
+                    <div class="category-item" style="cursor:default;"><div class="category-icon icon-product"><i class="fas fa-box"></i></div><div class="category-info"><div class="category-name">Product</div><div class="category-count" id="statsCatProduct">0 classes</div></div></div>
+                    <div class="category-item" style="cursor:default;"><div class="category-icon icon-quality"><i class="fas fa-star"></i></div><div class="category-info"><div class="category-name">Quality & Processing</div><div class="category-count" id="statsCatQuality">0 classes</div></div></div>
                 </div>
             </div>
         </div>
 
         <!-- Category Detail View -->
-        <div class="view" id="categoryView" style="display: none;">
+        <div class="view" id="categoryView" style="display:none;">
             <div class="dashboard-header">
                 <h1 class="dashboard-title" id="categoryTitle">Category</h1>
-                <div class="header-actions">
-                    <button class="btn" id="backToDashboard">
-                        <i class="fas fa-arrow-left"></i>
-                        Back to Dashboard
-                    </button>
-                </div>
+                <div class="header-actions"><button class="btn" id="backToDashboard"><i class="fas fa-arrow-left"></i>Back to Dashboard</button></div>
             </div>
-
-            <div class="stats-grid" style="margin-bottom: 2rem;">
-                <div class="stat-card">
-                    <div class="stat-header">
-                        <span class="stat-title">Direct Subclasses</span>
-                    </div>
-                    <div class="stat-value" id="categorySubclassCount">0</div>
-                    <div class="stat-label">Immediate Children</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-header">
-                        <span class="stat-title">Total Descendants</span>
-                    </div>
-                    <div class="stat-value" id="categoryTotalCount">0</div>
-                    <div class="stat-label">Including All Levels</div>
-                </div>
+            <div class="stats-grid" style="margin-bottom:2rem;">
+                <div class="stat-card"><div class="stat-header"><span class="stat-title">Direct Subclasses</span></div><div class="stat-value" id="categorySubclassCount">0</div><div class="stat-label">Immediate Children</div></div>
+                <div class="stat-card"><div class="stat-header"><span class="stat-title">Total Descendants</span></div><div class="stat-value" id="categoryTotalCount">0</div><div class="stat-label">Including All Levels</div></div>
             </div>
-
-            <div class="card">
-                <div class="card-header">
-                    <h2 class="card-title">Class Hierarchy</h2>
-                </div>
-                <div id="categoryHierarchy"></div>
-            </div>
+            <div class="card"><div class="card-header"><h2 class="card-title">Class Hierarchy</h2></div><div id="categoryHierarchy"></div></div>
         </div>
 
         <!-- All Operations View -->
-        <div class="view" id="allOperationsView" style="display: none;">
+        <div class="view" id="allOperationsView" style="display:none;">
             <div class="dashboard-header">
                 <h1 class="dashboard-title">☕ Shop Operations Guide</h1>
-                <div class="header-actions">
-                    <button class="btn" id="backToDashboardFromOps">
-                        <i class="fas fa-arrow-left"></i>
-                        Back to Dashboard
-                    </button>
-                </div>
+                <div class="header-actions"><button class="btn" id="backToDashboardFromOps"><i class="fas fa-arrow-left"></i>Back to Dashboard</button></div>
             </div>
-
-            <div class="card" style="margin-bottom: 2rem;">
-                <div class="card-header">
-                    <h2 class="card-title">커피숍 운영 필수 가이드</h2>
-                </div>
-                <div style="padding: 1.5rem; color: var(--text-secondary); line-height: 1.6;">
-                    커피숍을 성공적으로 운영하기 위한 핵심 정보와 체크리스트입니다. 각 항목을 클릭하여 자세한 내용을 확인하세요.
-                </div>
-            </div>
-
-            <div class="stats-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
-                <!-- 1. Daily Operations -->
-                <div class="card" style="cursor: pointer; transition: all 0.3s ease;" onclick="expandOperationCard(this)">
-                    <div class="card-header" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;">
-                        <h3 style="margin: 0; display: flex; align-items: center; gap: 10px;">
-                            <i class="fas fa-calendar-day"></i>
-                            <span>일일 운영 체크리스트</span>
-                        </h3>
-                    </div>
-                    <div class="operation-content" style="padding: 1.5rem;">
-                        <h4 style="color: var(--text-primary); margin-bottom: 1rem;">📋 매일 확인 사항</h4>
-                        <ul style="list-style: none; padding: 0; color: var(--text-secondary); line-height: 2;">
-                            <li>✅ 개점 전 청소 및 위생 점검</li>
-                            <li>✅ 커피 머신 워밍업 및 캘리브레이션</li>
-                            <li>✅ 원두 및 우유 재고 확인</li>
-                            <li>✅ 소모품 재고 체크 (컵, 뚜껑, 빨대 등)</li>
-                            <li>✅ POS 시스템 점검 및 일보 시작</li>
-                            <li>✅ 직원 출근 및 배치 확인</li>
-                            <li>✅ 프로모션 및 특별 메뉴 준비</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- 2. Inventory Management -->
-                <div class="card" style="cursor: pointer; transition: all 0.3s ease;" onclick="expandOperationCard(this)">
-                    <div class="card-header" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color: white;">
-                        <h3 style="margin: 0; display: flex; align-items: center; gap: 10px;">
-                            <i class="fas fa-boxes"></i>
-                            <span>재고 관리</span>
-                        </h3>
-                    </div>
-                    <div class="operation-content" style="padding: 1.5rem;">
-                        <h4 style="color: var(--text-primary); margin-bottom: 1rem;">📦 재고 관리 기준</h4>
-                        <ul style="list-style: none; padding: 0; color: var(--text-secondary); line-height: 2;">
-                            <li>📌 <strong>원두:</strong> 로스팅 날짜 기준 2주 내 소비</li>
-                            <li>📌 <strong>우유:</strong> 유통기한 3일 전 확인</li>
-                            <li>📌 <strong>시럽:</strong> 개봉 후 1개월 이내 사용</li>
-                            <li>📌 <strong>소모품:</strong> 주 2회 재고 확인</li>
-                            <li>📌 <strong>발주 시점:</strong> 안전 재고 30% 도달 시</li>
-                            <li>📌 <strong>재고 회전율:</strong> 월 1회 이상</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- 3. Equipment Maintenance -->
-                <div class="card" style="cursor: pointer; transition: all 0.3s ease;" onclick="expandOperationCard(this)">
-                    <div class="card-header" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); color: white;">
-                        <h3 style="margin: 0; display: flex; align-items: center; gap: 10px;">
-                            <i class="fas fa-tools"></i>
-                            <span>장비 유지보수</span>
-                        </h3>
-                    </div>
-                    <div class="operation-content" style="padding: 1.5rem;">
-                        <h4 style="color: var(--text-primary); margin-bottom: 1rem;">🔧 정기 점검 일정</h4>
-                        <ul style="list-style: none; padding: 0; color: var(--text-secondary); line-height: 2;">
-                            <li>🔹 <strong>매일:</strong> 에스프레소 머신 백플러시</li>
-                            <li>🔹 <strong>주 1회:</strong> 그라인더 청소 및 캘리브레이션</li>
-                            <li>🔹 <strong>월 1회:</strong> 워터 필터 교체</li>
-                            <li>🔹 <strong>분기 1회:</strong> 머신 전문가 점검</li>
-                            <li>🔹 <strong>연 1회:</strong> 전체 장비 오버홀</li>
-                            <li>🔹 <strong>냉장고:</strong> 주 1회 온도 및 청결 점검</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- 4. Quality Control -->
-                <div class="card" style="cursor: pointer; transition: all 0.3s ease;" onclick="expandOperationCard(this)">
-                    <div class="card-header" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); color: white;">
-                        <h3 style="margin: 0; display: flex; align-items: center; gap: 10px;">
-                            <i class="fas fa-star"></i>
-                            <span>품질 관리</span>
-                        </h3>
-                    </div>
-                    <div class="operation-content" style="padding: 1.5rem;">
-                        <h4 style="color: var(--text-primary); margin-bottom: 1rem;">⭐ 품질 기준</h4>
-                        <ul style="list-style: none; padding: 0; color: var(--text-secondary); line-height: 2;">
-                            <li>☕ <strong>에스프레소 추출:</strong> 25-30초, 1-2oz</li>
-                            <li>☕ <strong>우유 스티밍:</strong> 60-65°C, 미세한 거품</li>
-                            <li>☕ <strong>라떼아트:</strong> 기본 하트/리프 이상</li>
-                            <li>☕ <strong>온도 제공:</strong> 65-70°C</li>
-                            <li>☕ <strong>제공 시간:</strong> 주문 후 5분 이내</li>
-                            <li>☕ <strong>맛 테스트:</strong> 매일 오픈 시 시음</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- 5. Staff Management -->
-                <div class="card" style="cursor: pointer; transition: all 0.3s ease;" onclick="expandOperationCard(this)">
-                    <div class="card-header" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); color: white;">
-                        <h3 style="margin: 0; display: flex; align-items: center; gap: 10px;">
-                            <i class="fas fa-users"></i>
-                            <span>인력 관리</span>
-                        </h3>
-                    </div>
-                    <div class="operation-content" style="padding: 1.5rem;">
-                        <h4 style="color: var(--text-primary); margin-bottom: 1rem;">👥 직원 관리 기준</h4>
-                        <ul style="list-style: none; padding: 0; color: var(--text-secondary); line-height: 2;">
-                            <li>👤 <strong>신입 교육:</strong> 기본 2주 OJT</li>
-                            <li>👤 <strong>정기 교육:</strong> 월 1회 기술 향상 세션</li>
-                            <li>👤 <strong>근무 시간:</strong> 주 40시간 기준</li>
-                            <li>👤 <strong>피크 타임:</strong> 최소 2인 이상 배치</li>
-                            <li>👤 <strong>스킬 레벨:</strong> 초급/중급/고급 구분</li>
-                            <li>👤 <strong>평가:</strong> 분기별 성과 리뷰</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- 6. Customer Service -->
-                <div class="card" style="cursor: pointer; transition: all 0.3s ease;" onclick="expandOperationCard(this)">
-                    <div class="card-header" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); color: #333;">
-                        <h3 style="margin: 0; display: flex; align-items: center; gap: 10px;">
-                            <i class="fas fa-heart"></i>
-                            <span>고객 서비스</span>
-                        </h3>
-                    </div>
-                    <div class="operation-content" style="padding: 1.5rem;">
-                        <h4 style="color: var(--text-primary); margin-bottom: 1rem;">💝 고객 경험 관리</h4>
-                        <ul style="list-style: none; padding: 0; color: var(--text-secondary); line-height: 2;">
-                            <li>😊 <strong>인사:</strong> 3초 이내 아이컨택 및 인사</li>
-                            <li>😊 <strong>주문 확인:</strong> 반복 확인으로 오류 방지</li>
-                            <li>😊 <strong>대기 시간:</strong> 5분 이상 시 안내</li>
-                            <li>😊 <strong>불만 처리:</strong> 즉시 매니저 보고</li>
-                            <li>😊 <strong>단골 관리:</strong> 이름 및 선호 기억</li>
-                            <li>😊 <strong>피드백:</strong> 월 1회 고객 설문</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- 7. Financial Management -->
-                <div class="card" style="cursor: pointer; transition: all 0.3s ease;" onclick="expandOperationCard(this)">
-                    <div class="card-header" style="background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%); color: #333;">
-                        <h3 style="margin: 0; display: flex; align-items: center; gap: 10px;">
-                            <i class="fas fa-coins"></i>
-                            <span>재무 관리</span>
-                        </h3>
-                    </div>
-                    <div class="operation-content" style="padding: 1.5rem;">
-                        <h4 style="color: var(--text-primary); margin-bottom: 1rem;">💰 재무 관리 포인트</h4>
-                        <ul style="list-style: none; padding: 0; color: var(--text-secondary); line-height: 2;">
-                            <li>💵 <strong>일일 마감:</strong> 매출 및 현금 정산</li>
-                            <li>💵 <strong>원가율:</strong> 25-30% 유지 목표</li>
-                            <li>💵 <strong>인건비율:</strong> 매출의 30% 이하</li>
-                            <li>💵 <strong>손익분기점:</strong> 월별 추적</li>
-                            <li>💵 <strong>카드 수수료:</strong> 2-3% 고려</li>
-                            <li>💵 <strong>세금 신고:</strong> 월별/분기별 정리</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- 8. Hygiene & Safety -->
-                <div class="card" style="cursor: pointer; transition: all 0.3s ease;" onclick="expandOperationCard(this)">
-                    <div class="card-header" style="background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%); color: #333;">
-                        <h3 style="margin: 0; display: flex; align-items: center; gap: 10px;">
-                            <i class="fas fa-shield-alt"></i>
-                            <span>위생 및 안전</span>
-                        </h3>
-                    </div>
-                    <div class="operation-content" style="padding: 1.5rem;">
-                        <h4 style="color: var(--text-primary); margin-bottom: 1rem;">🛡️ 위생 안전 기준</h4>
-                        <ul style="list-style: none; padding: 0; color: var(--text-secondary); line-height: 2;">
-                            <li>🧼 <strong>손 씻기:</strong> 조리 전/후 필수</li>
-                            <li>🧼 <strong>작업대:</strong> 2시간마다 소독</li>
-                            <li>🧼 <strong>도구 세척:</strong> 사용 후 즉시</li>
-                            <li>🧼 <strong>식품 보관:</strong> 냉장 5°C 이하</li>
-                            <li>🧼 <strong>쓰레기:</strong> 하루 3회 이상 배출</li>
-                            <li>🧼 <strong>소독:</strong> 영업 종료 후 전체 소독</li>
-                        </ul>
-                    </div>
-                </div>
+            <div class="card" style="margin-bottom:2rem;"><div class="card-header"><h2 class="card-title">커피숍 운영 필수 가이드</h2></div><div style="padding:1.5rem;color:var(--text-secondary);line-height:1.6;">커피숍을 성공적으로 운영하기 위한 핵심 정보와 체크리스트입니다. 각 항목을 클릭하여 자세한 내용을 확인하세요.</div></div>
+            <div class="stats-grid" style="grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;">
+                <div class="card" style="cursor:pointer;transition:all 0.3s ease;" onclick="expandOperationCard(this)"><div class="card-header" style="background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);color:white;"><h3 style="margin:0;display:flex;align-items:center;gap:10px;"><i class="fas fa-calendar-day"></i><span>일일 운영 체크리스트</span></h3></div><div class="operation-content" style="padding:1.5rem;"><h4 style="color:var(--text-primary);margin-bottom:1rem;">📋 매일 확인 사항</h4><ul style="list-style:none;padding:0;color:var(--text-secondary);line-height:2;"><li>✅ 개점 전 청소 및 위생 점검</li><li>✅ 커피 머신 워밍업 및 캘리브레이션</li><li>✅ 원두 및 우유 재고 확인</li><li>✅ 소모품 재고 체크 (컵, 뚜껑, 빨대 등)</li><li>✅ POS 시스템 점검 및 일보 시작</li><li>✅ 직원 출근 및 배치 확인</li><li>✅ 프로모션 및 특별 메뉴 준비</li></ul></div></div>
+                <div class="card" style="cursor:pointer;transition:all 0.3s ease;" onclick="expandOperationCard(this)"><div class="card-header" style="background:linear-gradient(135deg,#f093fb 0%,#f5576c 100%);color:white;"><h3 style="margin:0;display:flex;align-items:center;gap:10px;"><i class="fas fa-boxes"></i><span>재고 관리</span></h3></div><div class="operation-content" style="padding:1.5rem;"><h4 style="color:var(--text-primary);margin-bottom:1rem;">📦 재고 관리 기준</h4><ul style="list-style:none;padding:0;color:var(--text-secondary);line-height:2;"><li>📌 <strong>원두:</strong> 로스팅 날짜 기준 2주 내 소비</li><li>📌 <strong>우유:</strong> 유통기한 3일 전 확인</li><li>📌 <strong>시럽:</strong> 개봉 후 1개월 이내 사용</li><li>📌 <strong>소모품:</strong> 주 2회 재고 확인</li><li>📌 <strong>발주 시점:</strong> 안전 재고 30% 도달 시</li><li>📌 <strong>재고 회전율:</strong> 월 1회 이상</li></ul></div></div>
+                <div class="card" style="cursor:pointer;transition:all 0.3s ease;" onclick="expandOperationCard(this)"><div class="card-header" style="background:linear-gradient(135deg,#4facfe 0%,#00f2fe 100%);color:white;"><h3 style="margin:0;display:flex;align-items:center;gap:10px;"><i class="fas fa-tools"></i><span>장비 유지보수</span></h3></div><div class="operation-content" style="padding:1.5rem;"><h4 style="color:var(--text-primary);margin-bottom:1rem;">🔧 정기 점검 일정</h4><ul style="list-style:none;padding:0;color:var(--text-secondary);line-height:2;"><li>🔹 <strong>매일:</strong> 에스프레소 머신 백플러시</li><li>🔹 <strong>주 1회:</strong> 그라인더 청소 및 캘리브레이션</li><li>🔹 <strong>월 1회:</strong> 워터 필터 교체</li><li>🔹 <strong>분기 1회:</strong> 머신 전문가 점검</li><li>🔹 <strong>연 1회:</strong> 전체 장비 오버홀</li><li>🔹 <strong>냉장고:</strong> 주 1회 온도 및 청결 점검</li></ul></div></div>
+                <div class="card" style="cursor:pointer;transition:all 0.3s ease;" onclick="expandOperationCard(this)"><div class="card-header" style="background:linear-gradient(135deg,#43e97b 0%,#38f9d7 100%);color:white;"><h3 style="margin:0;display:flex;align-items:center;gap:10px;"><i class="fas fa-star"></i><span>품질 관리</span></h3></div><div class="operation-content" style="padding:1.5rem;"><h4 style="color:var(--text-primary);margin-bottom:1rem;">⭐ 품질 기준</h4><ul style="list-style:none;padding:0;color:var(--text-secondary);line-height:2;"><li>☕ <strong>에스프레소 추출:</strong> 25-30초, 1-2oz</li><li>☕ <strong>우유 스티밍:</strong> 60-65°C, 미세한 거품</li><li>☕ <strong>라떼아트:</strong> 기본 하트/리프 이상</li><li>☕ <strong>온도 제공:</strong> 65-70°C</li><li>☕ <strong>제공 시간:</strong> 주문 후 5분 이내</li><li>☕ <strong>맛 테스트:</strong> 매일 오픈 시 시음</li></ul></div></div>
+                <div class="card" style="cursor:pointer;transition:all 0.3s ease;" onclick="expandOperationCard(this)"><div class="card-header" style="background:linear-gradient(135deg,#fa709a 0%,#fee140 100%);color:white;"><h3 style="margin:0;display:flex;align-items:center;gap:10px;"><i class="fas fa-users"></i><span>인력 관리</span></h3></div><div class="operation-content" style="padding:1.5rem;"><h4 style="color:var(--text-primary);margin-bottom:1rem;">👥 직원 관리 기준</h4><ul style="list-style:none;padding:0;color:var(--text-secondary);line-height:2;"><li>👤 <strong>신입 교육:</strong> 기본 2주 OJT</li><li>👤 <strong>정기 교육:</strong> 월 1회 기술 향상 세션</li><li>👤 <strong>근무 시간:</strong> 주 40시간 기준</li><li>👤 <strong>피크 타임:</strong> 최소 2인 이상 배치</li><li>👤 <strong>스킬 레벨:</strong> 초급/중급/고급 구분</li><li>👤 <strong>평가:</strong> 분기별 성과 리뷰</li></ul></div></div>
+                <div class="card" style="cursor:pointer;transition:all 0.3s ease;" onclick="expandOperationCard(this)"><div class="card-header" style="background:linear-gradient(135deg,#a8edea 0%,#fed6e3 100%);color:#333;"><h3 style="margin:0;display:flex;align-items:center;gap:10px;"><i class="fas fa-heart"></i><span>고객 서비스</span></h3></div><div class="operation-content" style="padding:1.5rem;"><h4 style="color:var(--text-primary);margin-bottom:1rem;">💝 고객 경험 관리</h4><ul style="list-style:none;padding:0;color:var(--text-secondary);line-height:2;"><li>😊 <strong>인사:</strong> 3초 이내 아이컨택 및 인사</li><li>😊 <strong>주문 확인:</strong> 반복 확인으로 오류 방지</li><li>😊 <strong>대기 시간:</strong> 5분 이상 시 안내</li><li>😊 <strong>불만 처리:</strong> 즉시 매니저 보고</li><li>😊 <strong>단골 관리:</strong> 이름 및 선호 기억</li><li>😊 <strong>피드백:</strong> 월 1회 고객 설문</li></ul></div></div>
+                <div class="card" style="cursor:pointer;transition:all 0.3s ease;" onclick="expandOperationCard(this)"><div class="card-header" style="background:linear-gradient(135deg,#ffecd2 0%,#fcb69f 100%);color:#333;"><h3 style="margin:0;display:flex;align-items:center;gap:10px;"><i class="fas fa-coins"></i><span>재무 관리</span></h3></div><div class="operation-content" style="padding:1.5rem;"><h4 style="color:var(--text-primary);margin-bottom:1rem;">💰 재무 관리 포인트</h4><ul style="list-style:none;padding:0;color:var(--text-secondary);line-height:2;"><li>💵 <strong>일일 마감:</strong> 매출 및 현금 정산</li><li>💵 <strong>원가율:</strong> 25-30% 유지 목표</li><li>💵 <strong>인건비율:</strong> 매출의 30% 이하</li><li>💵 <strong>손익분기점:</strong> 월별 추적</li><li>💵 <strong>카드 수수료:</strong> 2-3% 고려</li><li>💵 <strong>세금 신고:</strong> 월별/분기별 정리</li></ul></div></div>
+                <div class="card" style="cursor:pointer;transition:all 0.3s ease;" onclick="expandOperationCard(this)"><div class="card-header" style="background:linear-gradient(135deg,#ff9a9e 0%,#fecfef 100%);color:#333;"><h3 style="margin:0;display:flex;align-items:center;gap:10px;"><i class="fas fa-shield-alt"></i><span>위생 및 안전</span></h3></div><div class="operation-content" style="padding:1.5rem;"><h4 style="color:var(--text-primary);margin-bottom:1rem;">🛡️ 위생 안전 기준</h4><ul style="list-style:none;padding:0;color:var(--text-secondary);line-height:2;"><li>🧼 <strong>손 씻기:</strong> 조리 전/후 필수</li><li>🧼 <strong>작업대:</strong> 2시간마다 소독</li><li>🧼 <strong>도구 세척:</strong> 사용 후 즉시</li><li>🧼 <strong>식품 보관:</strong> 냉장 5°C 이하</li><li>🧼 <strong>쓰레기:</strong> 하루 3회 이상 배출</li><li>🧼 <strong>소독:</strong> 영업 종료 후 전체 소독</li></ul></div></div>
             </div>
         </div>
 
         <!-- Instance View -->
-        <div class="view" id="instanceView" style="display: none;">
+        <div class="view" id="instanceView" style="display:none;">
             <div class="dashboard-header">
                 <h1 class="dashboard-title" id="instanceTitle">Instances</h1>
-                <div class="header-actions">
-                    <button class="btn" id="backToCategory">
-                        <i class="fas fa-arrow-left"></i>
-                        Back to Category
-                    </button>
-                </div>
+                <div class="header-actions"><button class="btn" id="backToCategory"><i class="fas fa-arrow-left"></i>Back to Category</button></div>
             </div>
-
-            <div class="stats-grid" style="margin-bottom: 2rem;">
-                <div class="stat-card">
-                    <div class="stat-header">
-                        <span class="stat-title">Total Instances</span>
-                    </div>
-                    <div class="stat-value" id="instanceCount">0</div>
-                    <div class="stat-label">Objects in this class</div>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-header">
-                    <h2 class="card-title">Instance List</h2>
-                </div>
-                <div id="instanceList" class="instance-grid"></div>
-            </div>
+            <div class="stats-grid" style="margin-bottom:2rem;"><div class="stat-card"><div class="stat-header"><span class="stat-title">Total Instances</span></div><div class="stat-value" id="instanceCount">0</div><div class="stat-label">Objects in this class</div></div></div>
+            <div class="card"><div class="card-header"><h2 class="card-title">Instance List</h2></div><div id="instanceList" class="instance-grid"></div></div>
         </div>
     </main>
 
-    <input type="file" id="fileInput" accept=".rdf,.owl,.ttl" style="display: none;">
+    <input type="file" id="fileInput" accept=".rdf,.owl,.ttl" style="display:none;">
 
-    <script src="/lib/cytoscape.min.js?v=2.0"></script>
+    <!-- Cytoscape from CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.26.0/cytoscape.min.js"></script>
+
     <script>
-        // Global State
-        let ontologyData = null;
-        let hierarchyData = [];
-        let cy = null;
+    // ============================================================
+    // CLIENT-SIDE RDF PARSER
+    // Replaces all /api/rdf/* backend calls
+    // ============================================================
 
-        const colorMap = {
-            Location: '#ef4444',
-            Organization: '#3b82f6',
-            MarketAndEconomics: '#22c55e',
-            Market: '#22c55e',
-            Product: '#8b4513',
-            Quality: '#f59e0b',
-            QualityAndProcessing: '#f59e0b'
+    const BASE_NS = 'http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#';
+    const OWL_NS = 'http://www.w3.org/2002/07/owl#';
+    const RDF_NS = 'http://www.w3.org/1999/02/22-rdf-syntax-ns#';
+    const RDFS_NS = 'http://www.w3.org/2000/01/rdf-schema#';
+
+    // Parsed RDF document (global cache)
+    let rdfDoc = null;
+
+    function getLocalName(uri) {
+        if (!uri) return '';
+        const hashIdx = uri.lastIndexOf('#');
+        const slashIdx = uri.lastIndexOf('/');
+        return uri.substring(Math.max(hashIdx, slashIdx) + 1);
+    }
+
+    function getAttr(el, ns, localName) {
+        return el.getAttributeNS(ns, localName) || el.getAttribute(localName);
+    }
+
+    // Get rdf:about or rdf:ID from an element
+    function getAboutURI(el, baseURI) {
+        let about = el.getAttributeNS(RDF_NS, 'about') || el.getAttribute('rdf:about');
+        if (about) {
+            if (about.startsWith('#')) return baseURI + about.slice(1);
+            return about;
+        }
+        let id = el.getAttributeNS(RDF_NS, 'ID') || el.getAttribute('rdf:ID');
+        if (id) return baseURI + id;
+        return null;
+    }
+
+    // Get rdf:resource value
+    function getResource(el) {
+        return el.getAttributeNS(RDF_NS, 'resource') || el.getAttribute('rdf:resource') || '';
+    }
+
+    async function fetchAndParseRDF(filename) {
+        const response = await fetch(filename);
+        if (!response.ok) throw new Error(`Failed to fetch ${filename}: ${response.status}`);
+        const text = await response.text();
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(text, 'application/xml');
+        if (doc.querySelector('parsererror')) {
+            // Try text/xml
+            const doc2 = parser.parseFromString(text, 'text/xml');
+            return doc2;
+        }
+        return doc;
+    }
+
+    // Parse RDF: returns { classes, objectProperties, dataProperties, count, instances }
+    function parseOntology(doc) {
+        const result = {
+            classes: [],
+            objectProperties: [],
+            dataProperties: [],
+            count: 0,
+            // map: classURI -> { uri, label, children:[] }
+            classMap: {},
+            // map: classURI -> parentURI
+            subClassOf: {},
+            // instances: uri -> { uri, name, classURI, description, properties:{} }
+            instanceMap: {}
         };
 
-        function getNodeColor(nodeName) {
-            for (const [key, color] of Object.entries(colorMap)) {
-                if (nodeName.includes(key) || nodeName === key) return color;
-            }
-            return '#94a3b8';
-        }
+        const allElements = doc.querySelectorAll('[rdf\\:about], [rdf\\:ID]');
 
-        // View Management
-        function showView(viewId) {
-            document.querySelectorAll('.view').forEach(v => v.style.display = 'none');
-            document.getElementById(viewId).style.display = 'block';
-            
-            document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
-            const activeNav = document.querySelector(`[data-view="${viewId.replace('View', '')}"]`);
-            if (activeNav) activeNav.classList.add('active');
-        }
+        // Also select elements by namespace approach
+        const descriptions = Array.from(doc.getElementsByTagNameNS(RDF_NS, 'Description'));
+        const owlClasses = Array.from(doc.getElementsByTagNameNS(OWL_NS, 'Class'));
+        const owlObjProps = Array.from(doc.getElementsByTagNameNS(OWL_NS, 'ObjectProperty'));
+        const owlDataProps = Array.from(doc.getElementsByTagNameNS(OWL_NS, 'DatatypeProperty'));
+        const namedIndividuals = Array.from(doc.getElementsByTagNameNS(OWL_NS, 'NamedIndividual'));
 
-        // Update Stats
-        function updateStats() {
-            if (!ontologyData) return;
-            
-            const classCount = ontologyData.classes?.length || 0;
-            const objPropCount = ontologyData.objectProperties?.length || 0;
-            const dataPropCount = ontologyData.dataProperties?.length || 0;
-            const propertyCount = objPropCount + dataPropCount;
-            const tripleCount = ontologyData.count || 0;
-            
-            // Update header stats
-            document.getElementById('statClasses').textContent = classCount;
-            document.getElementById('statProperties').textContent = propertyCount;
-            document.getElementById('statTriples').textContent = tripleCount;
+        // Process classes
+        owlClasses.forEach(el => {
+            const uri = getAboutURI(el, BASE_NS);
+            if (!uri || uri.includes('Thing') || uri.includes('Nothing')) return;
+            const label = getLocalName(uri);
+            if (!label) return;
 
-            // Update statistics view
-            document.getElementById('statsClasses').textContent = classCount;
-            document.getElementById('statsObjProps').textContent = objPropCount;
-            document.getElementById('statsDataProps').textContent = dataPropCount;
-            document.getElementById('statsTriples').textContent = tripleCount;
+            result.classes.push({ uri, name: label });
+            result.classMap[uri] = { uri, label, children: [] };
 
-            // Update category counts in dashboard
-            hierarchyData.forEach(rootClass => {
-                const countEl = document.getElementById(`count${rootClass.label}`);
-                if (countEl && rootClass.children) {
-                    countEl.textContent = `${rootClass.children.length} subclasses`;
-                }
-                
-                // Update categories view counts
-                const catCountEl = document.getElementById(`catCount${rootClass.label}`);
-                if (catCountEl && rootClass.children) {
-                    catCountEl.textContent = `${rootClass.children.length} subclasses`;
-                }
-                
-                // Update statistics view category counts
-                function countAllClasses(node) {
-                    let count = 1;
-                    if (node.children) {
-                        node.children.forEach(child => {
-                            count += countAllClasses(child);
-                        });
-                    }
-                    return count;
-                }
-                
-                const totalClasses = countAllClasses(rootClass);
-                const statsId = rootClass.label === 'MarketAndEconomics' ? 'statsCatMarket' : 
-                               rootClass.label === 'QualityAndProcessing' ? 'statsCatQuality' :
-                               `statsCat${rootClass.label}`;
-                const statsCatEl = document.getElementById(statsId);
-                if (statsCatEl) {
-                    statsCatEl.textContent = `${totalClasses} classes`;
+            // Get subClassOf
+            const subClassEls = el.getElementsByTagNameNS(RDFS_NS, 'subClassOf');
+            Array.from(subClassEls).forEach(sc => {
+                const parentURI = getResource(sc);
+                if (parentURI && !parentURI.includes('Thing')) {
+                    result.subClassOf[uri] = parentURI;
                 }
             });
-            
-            console.log('✅ Stats updated:', { classCount, objPropCount, dataPropCount, tripleCount });
+        });
+
+        // Also handle rdf:Description with rdf:type owl:Class
+        descriptions.forEach(el => {
+            const uri = getAboutURI(el, BASE_NS);
+            if (!uri) return;
+            const typeEls = el.getElementsByTagNameNS(RDF_NS, 'type');
+            Array.from(typeEls).forEach(t => {
+                const typeRes = getResource(t);
+                if (typeRes === OWL_NS + 'Class') {
+                    const label = getLocalName(uri);
+                    if (label && !result.classMap[uri]) {
+                        result.classes.push({ uri, name: label });
+                        result.classMap[uri] = { uri, label, children: [] };
+                    }
+                }
+            });
+            // subClassOf in descriptions
+            const subClassEls = el.getElementsByTagNameNS(RDFS_NS, 'subClassOf');
+            Array.from(subClassEls).forEach(sc => {
+                const parentURI = getResource(sc);
+                if (parentURI && uri && !parentURI.includes('Thing')) {
+                    result.subClassOf[uri] = parentURI;
+                }
+            });
+        });
+
+        // Process object properties
+        owlObjProps.forEach(el => {
+            const uri = getAboutURI(el, BASE_NS);
+            if (!uri) return;
+            const name = getLocalName(uri);
+
+            let domain = null;
+            const domainEls = el.getElementsByTagNameNS(RDFS_NS, 'domain');
+            if (domainEls.length > 0) domain = getResource(domainEls[0]);
+
+            let range = [];
+            const rangeEls = el.getElementsByTagNameNS(RDFS_NS, 'range');
+            Array.from(rangeEls).forEach(r => {
+                const rv = getResource(r);
+                if (rv) range.push(rv);
+            });
+
+            result.objectProperties.push({ uri, name, domain, range });
+        });
+
+        // Also handle rdf:Description with rdf:type owl:ObjectProperty
+        descriptions.forEach(el => {
+            const uri = getAboutURI(el, BASE_NS);
+            if (!uri) return;
+            const typeEls = el.getElementsByTagNameNS(RDF_NS, 'type');
+            let isObjProp = false;
+            Array.from(typeEls).forEach(t => {
+                if (getResource(t) === OWL_NS + 'ObjectProperty') isObjProp = true;
+            });
+            if (isObjProp && !result.objectProperties.find(p => p.uri === uri)) {
+                const name = getLocalName(uri);
+                let domain = null;
+                const domainEls = el.getElementsByTagNameNS(RDFS_NS, 'domain');
+                if (domainEls.length > 0) domain = getResource(domainEls[0]);
+                let range = [];
+                const rangeEls = el.getElementsByTagNameNS(RDFS_NS, 'range');
+                Array.from(rangeEls).forEach(r => { const rv = getResource(r); if (rv) range.push(rv); });
+                result.objectProperties.push({ uri, name, domain, range });
+            }
+        });
+
+        // Process data properties
+        owlDataProps.forEach(el => {
+            const uri = getAboutURI(el, BASE_NS);
+            if (!uri) return;
+            const name = getLocalName(uri);
+            result.dataProperties.push({ uri, name });
+        });
+
+        descriptions.forEach(el => {
+            const uri = getAboutURI(el, BASE_NS);
+            if (!uri) return;
+            const typeEls = el.getElementsByTagNameNS(RDF_NS, 'type');
+            let isDataProp = false;
+            Array.from(typeEls).forEach(t => {
+                if (getResource(t) === OWL_NS + 'DatatypeProperty') isDataProp = true;
+            });
+            if (isDataProp && !result.dataProperties.find(p => p.uri === uri)) {
+                result.dataProperties.push({ uri, name: getLocalName(uri) });
+            }
+        });
+
+        // Process named individuals (instances)
+        const processIndividual = (el, uri) => {
+            if (!uri) return;
+            const name = getLocalName(uri);
+            if (!name || result.instanceMap[uri]) return;
+
+            const instance = { uri, name, classURIs: [], description: '', properties: {} };
+
+            // Get rdf:type → class URIs
+            const typeEls = el.getElementsByTagNameNS(RDF_NS, 'type');
+            Array.from(typeEls).forEach(t => {
+                const typeRes = getResource(t);
+                if (typeRes && !typeRes.includes('#NamedIndividual') && !typeRes.includes('owl#')) {
+                    instance.classURIs.push(typeRes);
+                }
+            });
+
+            // Get rdfs:comment as description
+            const commentEls = el.getElementsByTagNameNS(RDFS_NS, 'comment');
+            if (commentEls.length > 0) instance.description = commentEls[0].textContent || '';
+
+            // Get rdfs:label
+            const labelEls = el.getElementsByTagNameNS(RDFS_NS, 'label');
+            if (labelEls.length > 0) {
+                const lbl = labelEls[0].textContent;
+                if (lbl) instance.name = lbl;
+            }
+
+            // Collect all other properties
+            Array.from(el.children).forEach(child => {
+                const tagLocal = child.localName;
+                if (['type', 'comment', 'label'].includes(tagLocal)) return;
+
+                const propURI = child.namespaceURI + tagLocal;
+                const propName = tagLocal;
+
+                const res = getResource(child);
+                const txt = child.textContent;
+
+                if (!instance.properties[propName]) instance.properties[propName] = [];
+                if (res) {
+                    instance.properties[propName].push({ type: 'uri', value: getLocalName(res) || res });
+                } else if (txt && txt.trim()) {
+                    instance.properties[propName].push({ type: 'literal', value: txt.trim() });
+                }
+            });
+
+            result.instanceMap[uri] = instance;
+        };
+
+        namedIndividuals.forEach(el => {
+            const uri = getAboutURI(el, BASE_NS);
+            processIndividual(el, uri);
+        });
+
+        // Also check descriptions with NamedIndividual type
+        descriptions.forEach(el => {
+            const uri = getAboutURI(el, BASE_NS);
+            if (!uri) return;
+            const typeEls = el.getElementsByTagNameNS(RDF_NS, 'type');
+            let isIndividual = false;
+            Array.from(typeEls).forEach(t => {
+                if (getResource(t) === OWL_NS + 'NamedIndividual') isIndividual = true;
+            });
+            if (isIndividual) processIndividual(el, uri);
+        });
+
+        // Count triples (rough: all child elements of all descriptions)
+        let tripleCount = 0;
+        doc.querySelectorAll('*').forEach(() => tripleCount++);
+        result.count = Math.floor(tripleCount * 0.3); // approximate
+
+        return result;
+    }
+
+    // Build hierarchy from subClassOf map
+    function buildHierarchy(ontData) {
+        const ROOT_CLASSES = ['Location', 'Organization', 'MarketAndEconomics', 'Product', 'QualityAndProcessing'];
+        const classMap = ontData.classMap;
+        const subClassOf = ontData.subClassOf;
+
+        // Reset children
+        Object.values(classMap).forEach(c => c.children = []);
+
+        // Assign children
+        Object.entries(subClassOf).forEach(([childURI, parentURI]) => {
+            if (classMap[parentURI] && classMap[childURI]) {
+                if (!classMap[parentURI].children.find(c => c.uri === childURI)) {
+                    classMap[parentURI].children.push(classMap[childURI]);
+                }
+            }
+        });
+
+        // Return root classes
+        return ROOT_CLASSES
+            .map(name => {
+                const uri = BASE_NS + name;
+                return classMap[uri] || { uri, label: name, children: [] };
+            });
+    }
+
+    // Get instances for a class URI
+    function getInstancesForClass(ontData, classURI) {
+        const instances = [];
+        Object.values(ontData.instanceMap).forEach(inst => {
+            if (inst.classURIs.includes(classURI)) {
+                instances.push(inst);
+            }
+        });
+        return instances;
+    }
+
+    // ============================================================
+    // MAIN APPLICATION
+    // ============================================================
+
+    let ontologyData = null;
+    let hierarchyData = [];
+    let cy = null;
+
+    const colorMap = {
+        Location: '#ef4444',
+        Organization: '#3b82f6',
+        MarketAndEconomics: '#22c55e',
+        Market: '#22c55e',
+        Product: '#8b4513',
+        Quality: '#f59e0b',
+        QualityAndProcessing: '#f59e0b'
+    };
+
+    function getNodeColor(nodeName) {
+        for (const [key, color] of Object.entries(colorMap)) {
+            if (nodeName.includes(key) || nodeName === key) return color;
+        }
+        return '#94a3b8';
+    }
+
+    function showView(viewId) {
+        document.querySelectorAll('.view').forEach(v => v.style.display = 'none');
+        document.getElementById(viewId).style.display = 'block';
+        document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
+        const activeNav = document.querySelector(`[data-view="${viewId.replace('View', '')}"]`);
+        if (activeNav) activeNav.classList.add('active');
+    }
+
+    function updateStats() {
+        if (!ontologyData) return;
+        const classCount = ontologyData.classes?.length || 0;
+        const objPropCount = ontologyData.objectProperties?.length || 0;
+        const dataPropCount = ontologyData.dataProperties?.length || 0;
+        const tripleCount = ontologyData.count || 0;
+
+        document.getElementById('statClasses').textContent = classCount;
+        document.getElementById('statProperties').textContent = objPropCount + dataPropCount;
+        document.getElementById('statTriples').textContent = tripleCount;
+        document.getElementById('statsClasses').textContent = classCount;
+        document.getElementById('statsObjProps').textContent = objPropCount;
+        document.getElementById('statsDataProps').textContent = dataPropCount;
+        document.getElementById('statsTriples').textContent = tripleCount;
+
+        hierarchyData.forEach(rootClass => {
+            const direct = rootClass.children ? rootClass.children.length : 0;
+            ['count', 'catCount'].forEach(prefix => {
+                const el = document.getElementById(`${prefix}${rootClass.label}`);
+                if (el) el.textContent = `${direct} subclasses`;
+            });
+
+            function countAll(node) {
+                let c = 1;
+                if (node.children) node.children.forEach(ch => c += countAll(ch));
+                return c;
+            }
+            const total = countAll(rootClass);
+            const statsId = rootClass.label === 'MarketAndEconomics' ? 'statsCatMarket' :
+                            rootClass.label === 'QualityAndProcessing' ? 'statsCatQuality' :
+                            `statsCat${rootClass.label}`;
+            const el = document.getElementById(statsId);
+            if (el) el.textContent = `${total} classes`;
+        });
+    }
+
+    function showCategoryDetail(categoryName) {
+        const category = hierarchyData.find(c => c.label === categoryName);
+        if (!category) return;
+
+        document.getElementById('categoryTitle').textContent = category.label;
+
+        function countDesc(node) {
+            let c = node.children ? node.children.length : 0;
+            if (node.children) node.children.forEach(ch => c += countDesc(ch));
+            return c;
         }
 
-        // Show Category Detail
-        function showCategoryDetail(categoryName) {
-            console.log('📂 Showing category:', categoryName);
-            
-            const category = hierarchyData.find(c => c.label === categoryName);
-            if (!category) {
-                console.error('❌ Category not found:', categoryName);
-                return;
-            }
+        document.getElementById('categorySubclassCount').textContent = category.children ? category.children.length : 0;
+        document.getElementById('categoryTotalCount').textContent = countDesc(category);
 
-            document.getElementById('categoryTitle').textContent = category.label;
-            
-            // Count descendants
-            function countDescendants(node) {
-                let count = node.children ? node.children.length : 0;
-                if (node.children) {
-                    node.children.forEach(child => {
-                        count += countDescendants(child);
-                    });
-                }
-                return count;
-            }
-            
-            const directCount = category.children ? category.children.length : 0;
-            const totalCount = countDescendants(category);
-            
-            document.getElementById('categorySubclassCount').textContent = directCount;
-            document.getElementById('categoryTotalCount').textContent = totalCount;
-            
-            // Render hierarchy tree
-            const hierarchyContainer = document.getElementById('categoryHierarchy');
-            hierarchyContainer.innerHTML = '';
-            
-            function renderTree(nodes, level = 1) {
-                if (!nodes || nodes.length === 0) return '';
-                
-                return nodes.map(node => `
-                    <div class="tree-node tree-level-${level}">
-                        <div class="tree-item">
-                            <div class="tree-item-icon">
-                                <i class="fas fa-cube"></i>
-                            </div>
-                            <div class="tree-item-content">
-                                <div class="tree-item-name">${node.label}</div>
-                                <div class="tree-item-uri">${node.uri}</div>
-                            </div>
+        const container = document.getElementById('categoryHierarchy');
+        function renderTree(nodes, level = 1) {
+            if (!nodes || nodes.length === 0) return '';
+            return nodes.map(node => `
+                <div class="tree-node">
+                    <div class="tree-item" style="${level > 1 ? 'margin-left:' + ((level-1)*2) + 'rem;' : ''}">
+                        <div class="tree-item-icon"><i class="fas fa-cube"></i></div>
+                        <div class="tree-item-content">
+                            <div class="tree-item-name">${node.label}</div>
+                            <div class="tree-item-uri">${node.uri}</div>
                         </div>
-                        ${node.children && node.children.length > 0 ? `
-                            <div class="tree-children">
-                                ${renderTree(node.children, level + 1)}
-                            </div>
-                        ` : ''}
                     </div>
-                `).join('');
-            }
-            
-            hierarchyContainer.innerHTML = `
-                <div class="hierarchy-tree">
-                    ${renderTree(category.children || [])}
+                    ${node.children && node.children.length > 0 ? `<div class="tree-children">${renderTree(node.children, level+1)}</div>` : ''}
                 </div>
-            `;
-            
-            // Add click handlers to tree items
-            setTimeout(() => {
-                document.querySelectorAll('.tree-item').forEach(item => {
-                    item.style.cursor = 'pointer';
-                    item.addEventListener('click', function(e) {
-                        e.stopPropagation();
-                        const nameEl = this.querySelector('.tree-item-name');
-                        const uriEl = this.querySelector('.tree-item-uri');
-                        if (nameEl && uriEl) {
-                            showClassInstances(nameEl.textContent, uriEl.textContent);
-                        }
-                    });
-                });
-            }, 100);
-            
-            showView('categoryView');
+            `).join('');
         }
+        container.innerHTML = `<div class="hierarchy-tree">${renderTree(category.children || [])}</div>`;
 
-        // Show instances of a class
-        let currentCategory = null;
-        let currentClassName = null;
-        
-        async function showClassInstances(className, classUri) {
-            console.log('📋 Loading instances for:', className, classUri);
-            
-            currentClassName = className;
-            
-            const overlay = document.getElementById('loadingOverlay');
-            overlay.classList.add('active');
-            
-            try {
-                const res = await fetch('/api/rdf/instances', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ 
-                        filename: 'coffeeland-new.rdf',
-                        classUri: classUri 
-                    })
-                });
-                
-                const data = await res.json();
-                console.log(`✅ Loaded ${data.count} instances`);
-                
-                // Update UI
-                document.getElementById('instanceTitle').textContent = `${className} - Instances`;
-                document.getElementById('instanceCount').textContent = data.count;
-                
-                const instanceList = document.getElementById('instanceList');
-                instanceList.innerHTML = '';
-                
-                if (data.instances && data.instances.length > 0) {
-                    data.instances.forEach(instance => {
-                        const instanceCard = document.createElement('div');
-                        instanceCard.className = 'instance-card';
-                        
-                        // Choose icon based on class name
-                        let icon = 'fa-cube';
-                        if (className.toLowerCase().includes('country')) icon = 'fa-flag';
-                        else if (className.toLowerCase().includes('farm')) icon = 'fa-tractor';
-                        else if (className.toLowerCase().includes('city')) icon = 'fa-city';
-                        else if (className.toLowerCase().includes('coffee')) icon = 'fa-coffee';
-                        else if (className.toLowerCase().includes('broker')) icon = 'fa-handshake';
-                        else if (className.toLowerCase().includes('consumer')) icon = 'fa-user';
-                        else if (className.toLowerCase().includes('chain')) icon = 'fa-store';
-                        else if (className.toLowerCase().includes('variety')) icon = 'fa-seedling';
-                        else if (className.toLowerCase().includes('beverage') || className.toLowerCase().includes('menu')) icon = 'fa-mug-hot';
-                        
-                        // Check if this is a beverage menu item and we have an image for it
-                        const isBeverage = className.toLowerCase().includes('beverage') || className.toLowerCase().includes('menu');
-                        const beverageKey = instance.name.replace(/\s+/g, '_');
-                        const hasImage = isBeverage && window.BEVERAGE_IMAGES && window.BEVERAGE_IMAGES[beverageKey];
-                        
-                        // Check if this is a POS System
-                        const isPosSystem = className.toLowerCase().includes('possystem') || className.toLowerCase().includes('pos');
-                        
-                        // Debug logging for beverage images
-                        if (isBeverage) {
-                            console.log(`🍵 Beverage: "${instance.name}" → Key: "${beverageKey}" → Has Image: ${hasImage}`);
-                            if (!hasImage && window.BEVERAGE_IMAGES) {
-                                console.log(`❌ Image not found for "${beverageKey}". Available keys:`, Object.keys(window.BEVERAGE_IMAGES));
-                            }
-                        }
-                        
-                        if (hasImage) {
-                            instanceCard.classList.add('beverage-card');
-                        }
-                        
-                        if (isPosSystem) {
-                            instanceCard.classList.add('pos-card');
-                            icon = 'fa-cash-register';
-                            
-                            // Extract POS System specific properties
-                            const provider = instance.properties['hasProvider'] ? instance.properties['hasProvider'][0].value : 'Unknown Provider';
-                            const monthlyFee = instance.properties['hasMonthlyFee'] ? `$${instance.properties['hasMonthlyFee'][0].value}/mo` : 'N/A';
-                            const transactionFee = instance.properties['hasTransactionFee'] ? `${instance.properties['hasTransactionFee'][0].value}%` : 'N/A';
-                            const features = instance.properties['hasFeatures'] ? instance.properties['hasFeatures'][0].value.split(',').slice(0, 3).join(', ') : 'No features listed';
-                            
-                            instanceCard.innerHTML = `
-                                <div class="pos-card-header">
-                                    <div class="pos-card-icon">
-                                        <i class="fas ${icon}"></i>
-                                    </div>
-                                    <div class="pos-card-badge">${provider}</div>
-                                </div>
-                                <div class="pos-card-name">${instance.name}</div>
-                                <div class="pos-card-pricing">
-                                    <div class="pos-price-item">
-                                        <span class="pos-price-label">Monthly</span>
-                                        <span class="pos-price-value">${monthlyFee}</span>
-                                    </div>
-                                    <div class="pos-price-item">
-                                        <span class="pos-price-label">Transaction</span>
-                                        <span class="pos-price-value">${transactionFee}</span>
-                                    </div>
-                                </div>
-                                <div class="pos-card-features">
-                                    <i class="fas fa-check-circle"></i> ${features}
-                                </div>
-                                <div class="pos-card-footer">
-                                    <span>${Object.keys(instance.properties).length} properties</span>
-                                    <i class="fas fa-arrow-right"></i>
-                                </div>
-                            `;
-                        } else {
-                            instanceCard.innerHTML = `
-                                ${hasImage ? `<img src="${window.BEVERAGE_IMAGES[beverageKey]}" alt="${instance.name}" class="beverage-card-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">` : ''}
-                                <div class="instance-card-icon" ${hasImage ? 'style="display:none;"' : ''}>
-                                    <i class="fas ${icon}"></i>
-                                </div>
-                                <div class="instance-card-name">${instance.name}</div>
-                                ${instance.description ? `<div class="instance-card-description">${instance.description}</div>` : ''}
-                                <div class="instance-card-count">${Object.keys(instance.properties).length} properties</div>
-                            `;
-                        }
-                        
-                        instanceCard.addEventListener('click', () => {
-                            showInstanceDetailModal(instance, className);
-                        });
-                        
-                        instanceList.appendChild(instanceCard);
-                    });
-                } else {
-                    instanceList.innerHTML = '<p style="padding: 2rem; text-align: center; color: var(--text-secondary); grid-column: 1 / -1;">No instances found for this class.</p>';
-                }
-                
-                showView('instanceView');
-                
-            } catch (error) {
-                console.error('❌ Error loading instances:', error);
-                alert('Failed to load instances: ' + error.message);
-            } finally {
-                overlay.classList.remove('active');
-            }
-        }
-
-        // Show instance detail in modal
-        function showInstanceDetailModal(instance, className) {
-            console.log('📝 Showing modal for:', instance.name);
-            
-            const modal = document.getElementById('instanceModal');
-            const modalTitle = document.getElementById('modalTitle');
-            const modalBody = document.getElementById('modalBody');
-            
-            // Choose icon
-            let icon = 'fa-cube';
-            if (className.toLowerCase().includes('country')) icon = 'fa-flag';
-            else if (className.toLowerCase().includes('farm')) icon = 'fa-tractor';
-            else if (className.toLowerCase().includes('city')) icon = 'fa-city';
-            else if (className.toLowerCase().includes('coffee')) icon = 'fa-coffee';
-            
-            modalTitle.innerHTML = `<i class="fas ${icon}"></i> ${instance.name}`;
-            
-            let html = '';
-            
-            // Description section (if available)
-            if (instance.description) {
-                html += `<div class="modal-description">`;
-                html += `<i class="fas fa-info-circle" style="color: var(--accent); margin-right: 0.5rem;"></i>`;
-                html += `<span>${instance.description}</span>`;
-                html += `</div>`;
-            }
-            
-            // URI section
-            html += `<div class="modal-uri">`;
-            html += `<div class="modal-uri-label">Resource URI</div>`;
-            html += `<div class="modal-uri-value">${instance.uri}</div>`;
-            html += `</div>`;
-            
-            // Properties
-            if (Object.keys(instance.properties).length > 0) {
-                html += '<div class="property-grid">';
-                
-                Object.entries(instance.properties).forEach(([propName, values]) => {
-                    html += `<div class="property-card">`;
-                    html += `<div class="property-name">${propName}</div>`;
-                    
-                    values.forEach(val => {
-                        if (val.type === 'uri') {
-                            html += `<div class="property-value property-value-link">`;
-                            html += `<i class="fas fa-link"></i>`;
-                            html += `<span>${val.value}</span>`;
-                            html += `</div>`;
-                        } else {
-                            html += `<div class="property-value">`;
-                            html += `<i class="fas fa-quote-right"></i>`;
-                            html += `<span>${val.value}</span>`;
-                            html += `</div>`;
-                        }
-                    });
-                    
-                    html += `</div>`;
-                });
-                
-                html += '</div>';
-            } else {
-                html += '<p style="text-align: center; color: var(--text-secondary); padding: 2rem;">No additional properties available.</p>';
-            }
-            
-            modalBody.innerHTML = html;
-            modal.classList.add('active');
-        }
-
-        // Load Data
-        async function loadOntologyData(filename) {
-            const overlay = document.getElementById('loadingOverlay');
-            overlay.classList.add('active');
-            
-            try {
-                console.log('📂 Loading:', filename);
-                
-                const parseRes = await fetch('/api/rdf/parse', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ filename })
-                });
-                ontologyData = await parseRes.json();
-                console.log(`✅ Loaded ${ontologyData.count} triples`);
-                
-                const hierRes = await fetch('/api/rdf/hierarchy', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ filename })
-                });
-                const hierData = await hierRes.json();
-                hierarchyData = hierData.hierarchy || [];
-                console.log(`✅ Loaded ${hierarchyData.length} root classes`);
-                
-                updateStats();
-                
-            } catch (e) {
-                console.error('❌ Error:', e);
-                alert('❌ Failed to load: ' + e.message);
-            } finally {
-                overlay.classList.remove('active');
-            }
-        }
-
-        // Initialize Graph
-        function initGraph() {
-            console.log('🎨 initGraph() called');
-            
-            if (cy) {
-                console.log('✅ Graph already exists, fitting view');
-                cy.fit();
-                return;
-            }
-
-            if (!ontologyData || !hierarchyData.length) {
-                console.error('❌ Data not loaded:', { ontologyData: !!ontologyData, hierarchyDataLength: hierarchyData.length });
-                alert('⚠️ Please load data first!');
-                return;
-            }
-
-            console.log('🎨 Starting graph initialization...');
-            console.log('📊 Data available:', {
-                classes: ontologyData.classes?.length,
-                objectProperties: ontologyData.objectProperties?.length,
-                hierarchyRoots: hierarchyData.length
-            });
-            
-            const container = document.getElementById('cy');
-            if (!container) {
-                console.error('❌ Graph container #cy not found!');
-                return;
-            }
-            
-            // IMPORTANT: Make sure graph view is actually visible
-            const graphView = document.getElementById('graphView');
-            if (graphView && graphView.style.display === 'none') {
-                console.log('⚠️ Graph view is hidden, making it visible...');
-                graphView.style.display = 'block';
-            }
-            
-            // Force container to be visible and properly sized
-            container.style.display = 'block';
-            container.style.width = '100%';
-            container.style.height = '600px';
-            console.log('✅ Container styled');
-            
-            // Use double requestAnimationFrame to ensure layout is complete
-            requestAnimationFrame(() => {
-                requestAnimationFrame(() => {
-                    const rect = container.getBoundingClientRect();
-                    console.log(`📐 Container dimensions after RAF: ${rect.width}x${rect.height}`);
-                    
-                    if (rect.width === 0 || rect.height === 0) {
-                        console.error('❌ Container STILL has zero dimensions!');
-                        console.error('   Container display:', window.getComputedStyle(container).display);
-                        console.error('   Container visibility:', window.getComputedStyle(container).visibility);
-                        console.error('   Parent display:', window.getComputedStyle(container.parentElement).display);
-                        alert('❌ Graph container error! The container has zero size.');
-                        return;
-                    }
-                    
-                    console.log('✅ Container has valid dimensions, creating graph...');
-                    createGraph();
-                });
-            });
-        }
-        
-        // Separate function to create the graph
-        function createGraph() {
-            console.log('🎨 createGraph() called');
-            
-            const container = document.getElementById('cy');
-            if (!container) {
-                console.error('❌ Container not found in createGraph!');
-                return;
-            }
-            
-            console.log('📦 Container found:', container);
-            console.log('📐 Container client size:', container.clientWidth, 'x', container.clientHeight);
-            console.log('📐 Container offset size:', container.offsetWidth, 'x', container.offsetHeight);
-            console.log('📐 Container display:', window.getComputedStyle(container).display);
-            console.log('📐 Container visibility:', window.getComputedStyle(container).visibility);
-            
-            if (typeof cytoscape === 'undefined') {
-                console.error('❌ Cytoscape library not loaded!');
-                alert('❌ Cytoscape library failed to load!');
-                return;
-            }
-            
-            console.log('✅ Cytoscape library is available');
-            console.log('📊 ontologyData:', ontologyData);
-            console.log('📊 hierarchyData:', hierarchyData);
-            
-            const elements = [];
-            
-            function addNodes(nodes, parentId = null) {
-                nodes.forEach(node => {
-                    elements.push({
-                        data: {
-                            id: node.uri,
-                            label: node.label,
-                            color: getNodeColor(node.label),
-                            nodeType: 'class'
-                        }
-                    });
-                    
-                    if (parentId) {
-                        elements.push({
-                            data: {
-                                id: `${parentId}-subclass-${node.uri}`,
-                                source: parentId,
-                                target: node.uri,
-                                edgeType: 'hierarchy'
-                            }
-                        });
-                    }
-                    
-                    if (node.children && node.children.length > 0) {
-                        addNodes(node.children, node.uri);
-                    }
-                });
-            }
-            
-            addNodes(hierarchyData);
-            
-            // Create a Set of all existing node IDs for quick lookup
-            const existingNodeIds = new Set(elements.filter(el => el.data && !el.data.source).map(el => el.data.id));
-            console.log(`📦 Total class nodes: ${existingNodeIds.size}`);
-            
-            // Add object property relationships
-            if (ontologyData.objectProperties && ontologyData.objectProperties.length > 0) {
-                console.log(`🔗 Processing ${ontologyData.objectProperties.length} object properties`);
-                
-                let addedProperties = 0;
-                let skippedProperties = 0;
-                
-                ontologyData.objectProperties.forEach(prop => {
-                    if (!prop.domain || !prop.range || prop.range.length === 0) {
-                        return;
-                    }
-                    
-                    // Check if domain exists in our class hierarchy
-                    if (!existingNodeIds.has(prop.domain)) {
-                        console.warn(`⚠️ Skipping property "${prop.name}": domain "${prop.domain}" not found in hierarchy`);
-                        skippedProperties++;
-                        return;
-                    }
-                    
-                    // Filter ranges to only include existing nodes
-                    const validRanges = prop.range.filter(range => {
-                        // Skip blank nodes (starting with 'n' followed by numbers)
-                        if (range.match(/^n\d+$/)) {
-                            console.warn(`⚠️ Skipping blank node range: ${range}`);
-                            return false;
-                        }
-                        
-                        if (!existingNodeIds.has(range)) {
-                            console.warn(`⚠️ Range "${range}" not found in hierarchy for property "${prop.name}"`);
-                            return false;
-                        }
-                        
-                        return true;
-                    });
-                    
-                    // Only add property if it has at least one valid range
-                    if (validRanges.length > 0) {
-                        // Add property as a node
-                        elements.push({
-                            data: {
-                                id: prop.uri,
-                                label: prop.name,
-                                color: '#f59e0b',
-                                nodeType: 'property'
-                            }
-                        });
-                        
-                        // Add to existing nodes set
-                        existingNodeIds.add(prop.uri);
-                        
-                        // Add edge from domain to property
-                        elements.push({
-                            data: {
-                                id: `${prop.domain}-to-${prop.uri}`,
-                                source: prop.domain,
-                                target: prop.uri,
-                                edgeType: 'domain'
-                            }
-                        });
-                        
-                        // Add edges from property to valid ranges
-                        validRanges.forEach(range => {
-                            elements.push({
-                                data: {
-                                    id: `${prop.uri}-to-${range}`,
-                                    source: prop.uri,
-                                    target: range,
-                                    edgeType: 'range'
-                                }
-                            });
-                        });
-                        
-                        addedProperties++;
-                    } else {
-                        skippedProperties++;
-                    }
-                });
-                
-                console.log(`✅ Added ${addedProperties} properties with valid connections`);
-                if (skippedProperties > 0) {
-                    console.warn(`⚠️ Skipped ${skippedProperties} properties (no valid ranges or domains)`);
-                }
-            }
-            
-            console.log(`📊 Creating graph with ${elements.length} elements`);
-            console.log(`📊 Elements:`, elements);
-            
-            cy = cytoscape({
-                container: container,
-                elements: elements,
-                style: [
-                    {
-                        selector: 'node[nodeType="property"]',
-                        style: {
-                            'background-color': 'data(color)',
-                            'label': 'data(label)',
-                            'shape': 'diamond',
-                            'width': 50,
-                            'height': 50,
-                            'font-size': 10,
-                            'color': '#e2e8f0',
-                            'text-outline-width': 2,
-                            'text-outline-color': '#0a0e1a',
-                            'border-width': 2,
-                            'border-color': '#fff'
-                        }
-                    },
-                    {
-                        selector: 'node:not([nodeType="property"])',
-                        style: {
-                            'background-color': 'data(color)',
-                            'label': 'data(label)',
-                            'shape': 'ellipse',
-                            'width': 70,
-                            'height': 70,
-                            'font-size': 12,
-                            'color': '#e2e8f0',
-                            'text-outline-width': 2,
-                            'text-outline-color': '#0a0e1a',
-                            'border-width': 3,
-                            'border-color': '#fff'
-                        }
-                    },
-                    {
-                        selector: 'edge[edgeType="hierarchy"]',
-                        style: {
-                            'width': 3,
-                            'line-color': '#94a3b8',
-                            'target-arrow-color': '#94a3b8',
-                            'target-arrow-shape': 'triangle',
-                            'curve-style': 'bezier'
-                        }
-                    },
-                    {
-                        selector: 'edge[edgeType="domain"]',
-                        style: {
-                            'width': 2,
-                            'line-color': '#3b82f6',
-                            'target-arrow-color': '#3b82f6',
-                            'target-arrow-shape': 'triangle',
-                            'curve-style': 'bezier',
-                            'line-style': 'solid'
-                        }
-                    },
-                    {
-                        selector: 'edge[edgeType="range"]',
-                        style: {
-                            'width': 2,
-                            'line-color': '#10b981',
-                            'target-arrow-color': '#10b981',
-                            'target-arrow-shape': 'triangle',
-                            'curve-style': 'bezier',
-                            'line-style': 'dashed'
-                        }
-                    },
-                    {
-                        selector: 'node:selected',
-                        style: {
-                            'border-width': 5,
-                            'border-color': '#FFD700'
-                        }
-                    },
-                    {
-                        selector: 'edge:selected',
-                        style: {
-                            'width': 5,
-                            'line-color': '#FFD700',
-                            'target-arrow-color': '#FFD700'
-                        }
-                    }
-                ],
-                layout: {
-                    name: 'cose',
-                    directed: true,
-                    padding: 50,
-                    animate: true,
-                    animationDuration: 1000,
-                    idealEdgeLength: 150,
-                    nodeOverlap: 20,
-                    refresh: 20,
-                    randomize: false,
-                    componentSpacing: 100,
-                    nodeRepulsion: 400000,
-                    edgeElasticity: 100,
-                    nestingFactor: 5,
-                    gravity: 80,
-                    numIter: 1000,
-                    initialTemp: 200,
-                    coolingFactor: 0.95,
-                    minTemp: 1.0
-                }
-            });
-            
-            console.log(`✅ Graph created successfully!`);
-            console.log(`📊 Nodes: ${cy.nodes().length}, Edges: ${cy.edges().length}`);
-            
-            // Node interaction - highlight connected nodes
-            cy.on('tap', 'node', (evt) => {
-                const node = evt.target;
-                cy.elements().removeClass('highlighted').style({
-                    'opacity': 0.3
-                });
-                
-                node.style('opacity', 1);
-                node.addClass('highlighted');
-                
-                // Highlight connected nodes and edges
-                const connectedEdges = node.connectedEdges();
-                const connectedNodes = connectedEdges.connectedNodes();
-                
-                connectedEdges.style('opacity', 1).addClass('highlighted');
-                connectedNodes.style('opacity', 1).addClass('highlighted');
-                
-                console.log(`🎯 Selected: ${node.data('label')}`);
-                console.log(`   Connected to ${connectedNodes.length} nodes`);
-            });
-            
-            // Click on background to reset
-            cy.on('tap', (evt) => {
-                if (evt.target === cy) {
-                    cy.elements().removeClass('highlighted').style({
-                        'opacity': 1
-                    });
-                }
-            });
-            
-            // Double click on node to focus
-            cy.on('dbltap', 'node', (evt) => {
-                const node = evt.target;
-                cy.animate({
-                    fit: {
-                        eles: node.neighborhood(),
-                        padding: 50
-                    },
-                    duration: 500
-                });
-            });
-            
-            // Fit the graph after layout completes
-            cy.on('layoutstop', () => {
-                console.log('✅ Layout completed, fitting view');
-                cy.fit();
-            });
-        }
-
-        // Event Handlers
-        function setupEventHandlers() {
-            // Navigation items (Dashboard, Graph, Categories, Statistics)
-            document.querySelectorAll('.nav-item[data-view]').forEach(item => {
-                item.addEventListener('click', function() {
-                    const view = this.getAttribute('data-view');
-                    console.log('🔄 Nav clicked, switching to view:', view);
-                    
-                    if (!ontologyData && view !== 'dashboard') {
-                        alert('⚠️ Please load data first!');
-                        return;
-                    }
-                    
-                    showView(view + 'View');
-                    
-                    if (view === 'graph') {
-                        console.log('📊 Preparing graph view...');
-                        setTimeout(() => {
-                            console.log('📊 Initializing graph after delay...');
-                            initGraph();
-                        }, 300);
-                    }
-                });
-            });
-
-            // Category navigation in sidebar
-            document.querySelectorAll('.nav-item[data-category]').forEach(item => {
-                item.addEventListener('click', function() {
-                    const category = this.getAttribute('data-category');
-                    console.log('📁 Sidebar category clicked:', category);
-                    if (!ontologyData || !hierarchyData.length) {
-                        alert('⚠️ Please load data first!');
-                        return;
-                    }
-                    
-                    // Special handling for direct class instances
-                    if (category === 'BeverageMenu') {
-                        showClassInstances('BeverageMenu', 'http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#BeverageMenu');
-                        return;
-                    }
-                    if (category === 'PosSystem') {
-                        showClassInstances('PosSystem', 'http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#PosSystem');
-                        return;
-                    }
-                    if (category === 'Recipe') {
-                        showClassInstances('Recipe', 'http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Recipe');
-                        return;
-                    }
-                    if (category === 'TrainingProgram') {
-                        showClassInstances('TrainingProgram', 'http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#TrainingProgram');
-                        return;
-                    }
-                    if (category === 'Equipment') {
-                        showClassInstances('Equipment', 'http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Equipment');
-                        return;
-                    }
-                    if (category === 'Ingredient') {
-                        showClassInstances('Ingredient', 'http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Ingredient');
-                        return;
-                    }
-                    if (category === 'Consumable') {
-                        showClassInstances('Consumable', 'http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Consumable');
-                        return;
-                    }
-                    if (category === 'EquipmentSupplier') {
-                        showClassInstances('EquipmentSupplier', 'http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#EquipmentSupplier');
-                        return;
-                    }
-                    if (category === 'IngredientVendor') {
-                        showClassInstances('IngredientVendor', 'http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#IngredientVendor');
-                        return;
-                    }
-                    if (category === 'MaintenanceService') {
-                        showClassInstances('MaintenanceService', 'http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#MaintenanceService');
-                        return;
-                    }
-                    
-                    showCategoryDetail(category);
-                });
-            });
-
-            // Category items in dashboard and categories view
-            document.querySelectorAll('.category-item[data-category]').forEach(item => {
-                item.addEventListener('click', function() {
-                    const category = this.getAttribute('data-category');
-                    console.log('📁 Category item clicked:', category);
-                    if (!ontologyData || !hierarchyData.length) {
-                        alert('⚠️ Please load data first!');
-                        return;
-                    }
-                    showCategoryDetail(category);
-                });
-            });
-        }
-        
-        // Setup handlers on load
-        setupEventHandlers();
-
-        // Back to dashboard button
-        document.getElementById('backToDashboard').addEventListener('click', () => {
-            showView('dashboardView');
-        });
-
-        document.getElementById('backToCategory').addEventListener('click', () => {
-            showView('categoryView');
-        });
-
-        document.getElementById('backToDashboardFromOps').addEventListener('click', () => {
-            showView('dashboardView');
-        });
-
-        // All Operations button
-        document.getElementById('allOperationsBtn').addEventListener('click', () => {
-            showView('allOperationsView');
-        });
-
-        // Expand operation card function
-        window.expandOperationCard = function(card) {
-            const content = card.querySelector('.operation-content');
-            if (content.style.display === 'none') {
-                content.style.display = 'block';
-                card.style.transform = 'translateY(-5px)';
-                card.style.boxShadow = '0 10px 30px rgba(0,0,0,0.2)';
-            } else {
-                content.style.display = 'none';
-                card.style.transform = '';
-                card.style.boxShadow = '';
-            }
-        };
-
-        // Modal close handlers
-        document.getElementById('modalClose').addEventListener('click', () => {
-            document.getElementById('instanceModal').classList.remove('active');
-        });
-
-        // Close modal on overlay click
-        document.getElementById('instanceModal').addEventListener('click', (e) => {
-            if (e.target.id === 'instanceModal') {
-                document.getElementById('instanceModal').classList.remove('active');
-            }
-        });
-
-        // Close modal on Escape key
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') {
-                document.getElementById('instanceModal').classList.remove('active');
-            }
-        });
-
-        document.getElementById('loadDataBtn').addEventListener('click', () => {
-            loadOntologyData('coffeeland-new.rdf');
-        });
-
-        document.getElementById('refreshBtn').addEventListener('click', () => {
-            location.reload();
-        });
-
-        document.getElementById('actionGraph').addEventListener('click', () => {
-            if (!ontologyData || !hierarchyData.length) {
-                alert('⚠️ Please load data first!');
-                return;
-            }
-            console.log('📊 Quick action: View Graph');
-            showView('graphView');
-            setTimeout(() => {
-                console.log('📊 Initializing graph from quick action...');
-                initGraph();
-            }, 300);
-        });
-
-        document.getElementById('uploadBtn').addEventListener('click', () => {
-            document.getElementById('fileInput').click();
-        });
-
-        document.getElementById('fileInput').addEventListener('change', async (e) => {
-            const file = e.target.files[0];
-            if (!file) return;
-            
-            const formData = new FormData();
-            formData.append('file', file);
-            
-            try {
-                const res = await fetch('/api/upload', {
-                    method: 'POST',
-                    body: formData
-                });
-                const data = await res.json();
-                await loadOntologyData(data.filename);
-            } catch (e) {
-                alert('❌ Upload failed: ' + e.message);
-            }
-        });
-
-        document.getElementById('fitGraphBtn').onclick = () => {
-            if (cy) {
-                cy.fit();
-                console.log('✅ Graph fitted');
-            }
-        };
-
-        document.getElementById('resetGraphBtn').onclick = () => {
-            if (cy) {
-                cy.layout({
-                    name: 'cose',
-                    directed: true,
-                    padding: 50,
-                    animate: true,
-                    animationDuration: 1000,
-                    idealEdgeLength: 150,
-                    nodeOverlap: 20,
-                    refresh: 20,
-                    randomize: true,
-                    componentSpacing: 100,
-                    nodeRepulsion: 400000,
-                    edgeElasticity: 100,
-                    nestingFactor: 5,
-                    gravity: 80,
-                    numIter: 1000,
-                    initialTemp: 200,
-                    coolingFactor: 0.95,
-                    minTemp: 1.0
-                }).run();
-                console.log('✅ Graph layout reset');
-            }
-        };
-
-        // Auto-load on start
-        console.log('🚀 Starting CoffeeLand Dashboard...');
         setTimeout(() => {
-            loadOntologyData('coffeeland-new.rdf');
-        }, 500);
+            container.querySelectorAll('.tree-item').forEach(item => {
+                item.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const name = this.querySelector('.tree-item-name')?.textContent;
+                    const uri = this.querySelector('.tree-item-uri')?.textContent;
+                    if (name && uri) showClassInstances(name, uri);
+                });
+            });
+        }, 100);
+
+        showView('categoryView');
+    }
+
+    let currentClassName = null;
+
+    function showClassInstances(className, classUri) {
+        currentClassName = className;
+        const overlay = document.getElementById('loadingOverlay');
+        overlay.classList.add('active');
+
+        try {
+            const instances = getInstancesForClass(ontologyData, classUri);
+            document.getElementById('instanceTitle').textContent = `${className} - Instances`;
+            document.getElementById('instanceCount').textContent = instances.length;
+
+            const instanceList = document.getElementById('instanceList');
+            instanceList.innerHTML = '';
+
+            if (instances.length > 0) {
+                instances.forEach(instance => {
+                    const card = document.createElement('div');
+                    card.className = 'instance-card';
+
+                    let icon = 'fa-cube';
+                    if (className.toLowerCase().includes('country')) icon = 'fa-flag';
+                    else if (className.toLowerCase().includes('farm')) icon = 'fa-tractor';
+                    else if (className.toLowerCase().includes('city')) icon = 'fa-city';
+                    else if (className.toLowerCase().includes('coffee')) icon = 'fa-coffee';
+                    else if (className.toLowerCase().includes('broker')) icon = 'fa-handshake';
+                    else if (className.toLowerCase().includes('consumer')) icon = 'fa-user';
+                    else if (className.toLowerCase().includes('chain')) icon = 'fa-store';
+                    else if (className.toLowerCase().includes('variety')) icon = 'fa-seedling';
+                    else if (className.toLowerCase().includes('beverage') || className.toLowerCase().includes('menu')) icon = 'fa-mug-hot';
+
+                    const isBeverage = className.toLowerCase().includes('beverage') || className.toLowerCase().includes('menu');
+                    const beverageKey = instance.name.replace(/\s+/g, '_');
+                    const hasImage = isBeverage && window.BEVERAGE_IMAGES && window.BEVERAGE_IMAGES[beverageKey];
+                    const isPOS = className.toLowerCase().includes('possystem') || className.toLowerCase().includes('pos');
+
+                    if (hasImage) card.classList.add('beverage-card');
+
+                    if (isPOS) {
+                        card.classList.add('pos-card');
+                        const provider = instance.properties['hasProvider']?.[0]?.value || 'Unknown Provider';
+                        const monthlyFee = instance.properties['hasMonthlyFee'] ? `$${instance.properties['hasMonthlyFee'][0].value}/mo` : 'N/A';
+                        const transactionFee = instance.properties['hasTransactionFee'] ? `${instance.properties['hasTransactionFee'][0].value}%` : 'N/A';
+                        const features = instance.properties['hasFeatures']?.[0]?.value?.split(',').slice(0,3).join(', ') || 'No features listed';
+                        card.innerHTML = `
+                            <div class="pos-card-header"><div class="pos-card-icon"><i class="fas fa-cash-register"></i></div><div class="pos-card-badge">${provider}</div></div>
+                            <div class="pos-card-name">${instance.name}</div>
+                            <div class="pos-card-pricing"><div class="pos-price-item"><span class="pos-price-label">Monthly</span><span class="pos-price-value">${monthlyFee}</span></div><div class="pos-price-item"><span class="pos-price-label">Transaction</span><span class="pos-price-value">${transactionFee}</span></div></div>
+                            <div class="pos-card-features"><i class="fas fa-check-circle"></i> ${features}</div>
+                            <div class="pos-card-footer"><span>${Object.keys(instance.properties).length} properties</span><i class="fas fa-arrow-right"></i></div>`;
+                    } else {
+                        card.innerHTML = `
+                            ${hasImage ? `<img src="${window.BEVERAGE_IMAGES[beverageKey]}" alt="${instance.name}" class="beverage-card-image" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">` : ''}
+                            <div class="instance-card-icon" ${hasImage ? 'style="display:none;"' : ''}><i class="fas ${icon}"></i></div>
+                            <div class="instance-card-name">${instance.name}</div>
+                            ${instance.description ? `<div class="instance-card-description">${instance.description}</div>` : ''}
+                            <div class="instance-card-count">${Object.keys(instance.properties).length} properties</div>`;
+                    }
+
+                    card.addEventListener('click', () => showInstanceDetailModal(instance, className));
+                    instanceList.appendChild(card);
+                });
+            } else {
+                instanceList.innerHTML = '<p style="padding:2rem;text-align:center;color:var(--text-secondary);grid-column:1/-1;">No instances found for this class.</p>';
+            }
+
+            showView('instanceView');
+        } catch (err) {
+            console.error('Error showing instances:', err);
+            alert('Error loading instances: ' + err.message);
+        } finally {
+            overlay.classList.remove('active');
+        }
+    }
+
+    function showInstanceDetailModal(instance, className) {
+        const modal = document.getElementById('instanceModal');
+        document.getElementById('modalTitle').innerHTML = `<i class="fas fa-info-circle"></i> ${instance.name}`;
+
+        let html = '';
+        if (instance.description) {
+            html += `<div class="modal-description"><i class="fas fa-info-circle" style="color:var(--accent);margin-right:0.5rem;"></i>${instance.description}</div>`;
+        }
+        html += `<div class="modal-uri"><div class="modal-uri-label">Resource URI</div><div class="modal-uri-value">${instance.uri}</div></div>`;
+
+        if (Object.keys(instance.properties).length > 0) {
+            html += '<div class="property-grid">';
+            Object.entries(instance.properties).forEach(([propName, values]) => {
+                html += `<div class="property-card"><div class="property-name">${propName}</div>`;
+                values.forEach(val => {
+                    if (val.type === 'uri') {
+                        html += `<div class="property-value property-value-link"><i class="fas fa-link"></i><span>${val.value}</span></div>`;
+                    } else {
+                        html += `<div class="property-value"><i class="fas fa-quote-right"></i><span>${val.value}</span></div>`;
+                    }
+                });
+                html += '</div>';
+            });
+            html += '</div>';
+        } else {
+            html += '<p style="text-align:center;color:var(--text-secondary);padding:2rem;">No additional properties available.</p>';
+        }
+
+        document.getElementById('modalBody').innerHTML = html;
+        modal.classList.add('active');
+    }
+
+    // Load ontology data (client-side)
+    async function loadOntologyData(filename) {
+        const overlay = document.getElementById('loadingOverlay');
+        overlay.classList.add('active');
+        try {
+            console.log('📂 Fetching RDF file:', filename);
+            rdfDoc = await fetchAndParseRDF(filename);
+            console.log('✅ RDF file fetched and parsed');
+
+            ontologyData = parseOntology(rdfDoc);
+            console.log(`✅ Parsed: ${ontologyData.classes.length} classes, ${ontologyData.objectProperties.length} obj props, ${ontologyData.dataProperties.length} data props`);
+            console.log(`✅ Instances found: ${Object.keys(ontologyData.instanceMap).length}`);
+
+            hierarchyData = buildHierarchy(ontologyData);
+            console.log(`✅ Hierarchy built: ${hierarchyData.length} root classes`);
+
+            updateStats();
+        } catch (e) {
+            console.error('❌ Error loading RDF:', e);
+            alert('❌ Failed to load RDF file: ' + e.message + '\n\nMake sure coffeeland-new.rdf is in the repository.');
+        } finally {
+            overlay.classList.remove('active');
+        }
+    }
+
+    // Graph
+    function initGraph() {
+        if (cy) { cy.fit(); return; }
+        if (!ontologyData || !hierarchyData.length) { alert('⚠️ Please load data first!'); return; }
+
+        const container = document.getElementById('cy');
+        container.style.display = 'block';
+        container.style.width = '100%';
+        container.style.height = '600px';
+
+        requestAnimationFrame(() => requestAnimationFrame(() => createGraph()));
+    }
+
+    function createGraph() {
+        const container = document.getElementById('cy');
+        if (typeof cytoscape === 'undefined') { alert('❌ Cytoscape failed to load from CDN!'); return; }
+
+        const elements = [];
+
+        function addNodes(nodes, parentId = null) {
+            nodes.forEach(node => {
+                elements.push({ data: { id: node.uri, label: node.label, color: getNodeColor(node.label), nodeType: 'class' } });
+                if (parentId) {
+                    elements.push({ data: { id: `${parentId}-sub-${node.uri}`, source: parentId, target: node.uri, edgeType: 'hierarchy' } });
+                }
+                if (node.children && node.children.length > 0) addNodes(node.children, node.uri);
+            });
+        }
+        addNodes(hierarchyData);
+
+        const existingNodeIds = new Set(elements.filter(el => !el.data.source).map(el => el.data.id));
+
+        ontologyData.objectProperties.forEach(prop => {
+            if (!prop.domain || !prop.range || prop.range.length === 0) return;
+            if (!existingNodeIds.has(prop.domain)) return;
+            const validRanges = prop.range.filter(r => !r.match(/^n\d+$/) && existingNodeIds.has(r));
+            if (validRanges.length > 0) {
+                elements.push({ data: { id: prop.uri, label: prop.name, color: '#f59e0b', nodeType: 'property' } });
+                existingNodeIds.add(prop.uri);
+                elements.push({ data: { id: `${prop.domain}-to-${prop.uri}`, source: prop.domain, target: prop.uri, edgeType: 'domain' } });
+                validRanges.forEach(range => {
+                    elements.push({ data: { id: `${prop.uri}-to-${range}`, source: prop.uri, target: range, edgeType: 'range' } });
+                });
+            }
+        });
+
+        cy = cytoscape({
+            container,
+            elements,
+            style: [
+                { selector: 'node[nodeType="property"]', style: { 'background-color': 'data(color)', 'label': 'data(label)', 'shape': 'diamond', 'width': 50, 'height': 50, 'font-size': 10, 'color': '#e2e8f0', 'text-outline-width': 2, 'text-outline-color': '#0a0e1a', 'border-width': 2, 'border-color': '#fff' } },
+                { selector: 'node:not([nodeType="property"])', style: { 'background-color': 'data(color)', 'label': 'data(label)', 'shape': 'ellipse', 'width': 70, 'height': 70, 'font-size': 12, 'color': '#e2e8f0', 'text-outline-width': 2, 'text-outline-color': '#0a0e1a', 'border-width': 3, 'border-color': '#fff' } },
+                { selector: 'edge[edgeType="hierarchy"]', style: { 'width': 3, 'line-color': '#94a3b8', 'target-arrow-color': '#94a3b8', 'target-arrow-shape': 'triangle', 'curve-style': 'bezier' } },
+                { selector: 'edge[edgeType="domain"]', style: { 'width': 2, 'line-color': '#3b82f6', 'target-arrow-color': '#3b82f6', 'target-arrow-shape': 'triangle', 'curve-style': 'bezier' } },
+                { selector: 'edge[edgeType="range"]', style: { 'width': 2, 'line-color': '#10b981', 'target-arrow-color': '#10b981', 'target-arrow-shape': 'triangle', 'curve-style': 'bezier', 'line-style': 'dashed' } },
+                { selector: 'node:selected', style: { 'border-width': 5, 'border-color': '#FFD700' } }
+            ],
+            layout: { name: 'cose', directed: true, padding: 50, animate: true, animationDuration: 1000, idealEdgeLength: 150, nodeOverlap: 20, randomize: false, nodeRepulsion: 400000, edgeElasticity: 100, gravity: 80, numIter: 1000 }
+        });
+
+        cy.on('tap', 'node', evt => {
+            const node = evt.target;
+            cy.elements().style({ 'opacity': 0.3 });
+            node.style('opacity', 1);
+            node.connectedEdges().style('opacity', 1);
+            node.connectedEdges().connectedNodes().style('opacity', 1);
+        });
+        cy.on('tap', evt => { if (evt.target === cy) cy.elements().style({ 'opacity': 1 }); });
+        cy.on('layoutstop', () => cy.fit());
+    }
+
+    // Event setup
+    function setupEventHandlers() {
+        document.querySelectorAll('.nav-item[data-view]').forEach(item => {
+            item.addEventListener('click', function() {
+                const view = this.getAttribute('data-view');
+                if (!ontologyData && view !== 'dashboard') { alert('⚠️ Please load data first!'); return; }
+                showView(view + 'View');
+                if (view === 'graph') setTimeout(() => initGraph(), 300);
+            });
+        });
+
+        const directCategories = {
+            BeverageMenu: BASE_NS + 'BeverageMenu',
+            PosSystem: BASE_NS + 'PosSystem',
+            Recipe: BASE_NS + 'Recipe',
+            TrainingProgram: BASE_NS + 'TrainingProgram',
+            Equipment: BASE_NS + 'Equipment',
+            Ingredient: BASE_NS + 'Ingredient',
+            Consumable: BASE_NS + 'Consumable',
+            EquipmentSupplier: BASE_NS + 'EquipmentSupplier',
+            IngredientVendor: BASE_NS + 'IngredientVendor',
+            MaintenanceService: BASE_NS + 'MaintenanceService'
+        };
+
+        document.querySelectorAll('.nav-item[data-category]').forEach(item => {
+            item.addEventListener('click', function() {
+                const cat = this.getAttribute('data-category');
+                if (!ontologyData) { alert('⚠️ Please load data first!'); return; }
+                if (directCategories[cat]) {
+                    showClassInstances(cat, directCategories[cat]);
+                } else {
+                    showCategoryDetail(cat);
+                }
+            });
+        });
+
+        document.querySelectorAll('.category-item[data-category]').forEach(item => {
+            item.addEventListener('click', function() {
+                const cat = this.getAttribute('data-category');
+                if (!ontologyData) { alert('⚠️ Please load data first!'); return; }
+                showCategoryDetail(cat);
+            });
+        });
+    }
+
+    setupEventHandlers();
+
+    document.getElementById('backToDashboard').addEventListener('click', () => showView('dashboardView'));
+    document.getElementById('backToCategory').addEventListener('click', () => showView('categoryView'));
+    document.getElementById('backToDashboardFromOps').addEventListener('click', () => showView('dashboardView'));
+    document.getElementById('allOperationsBtn').addEventListener('click', () => showView('allOperationsView'));
+    document.getElementById('modalClose').addEventListener('click', () => document.getElementById('instanceModal').classList.remove('active'));
+    document.getElementById('instanceModal').addEventListener('click', e => { if (e.target.id === 'instanceModal') document.getElementById('instanceModal').classList.remove('active'); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') document.getElementById('instanceModal').classList.remove('active'); });
+
+    document.getElementById('loadDataBtn').addEventListener('click', () => loadOntologyData('coffeeland-new.rdf'));
+    document.getElementById('refreshBtn').addEventListener('click', () => location.reload());
+
+    document.getElementById('actionGraph').addEventListener('click', () => {
+        if (!ontologyData) { alert('⚠️ Please load data first!'); return; }
+        showView('graphView');
+        setTimeout(() => initGraph(), 300);
+    });
+
+    document.getElementById('uploadBtn').addEventListener('click', () => document.getElementById('fileInput').click());
+    document.getElementById('fileInput').addEventListener('change', async e => {
+        const file = e.target.files[0];
+        if (!file) return;
+        const text = await file.text();
+        const parser = new DOMParser();
+        rdfDoc = parser.parseFromString(text, 'application/xml');
+        ontologyData = parseOntology(rdfDoc);
+        hierarchyData = buildHierarchy(ontologyData);
+        updateStats();
+        alert(`✅ Loaded: ${ontologyData.classes.length} classes, ${Object.keys(ontologyData.instanceMap).length} instances`);
+    });
+
+    document.getElementById('fitGraphBtn').addEventListener('click', () => { if (cy) cy.fit(); });
+    document.getElementById('resetGraphBtn').addEventListener('click', () => {
+        if (cy) cy.layout({ name: 'cose', directed: true, padding: 50, animate: true, animationDuration: 1000, idealEdgeLength: 150, nodeOverlap: 20, randomize: true, nodeRepulsion: 400000, gravity: 80, numIter: 1000 }).run();
+    });
+
+    window.expandOperationCard = function(card) {
+        const content = card.querySelector('.operation-content');
+        if (content.style.display === 'none') { content.style.display = 'block'; card.style.transform = 'translateY(-5px)'; }
+        else { content.style.display = 'none'; card.style.transform = ''; }
+    };
+
+    // Auto-load on start
+    console.log('🚀 CoffeeLand Dashboard starting (client-side mode)...');
+    setTimeout(() => loadOntologyData('coffeeland-new.rdf'), 500);
     </script>
 </body>
 </html>
