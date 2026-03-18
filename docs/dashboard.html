@@ -1909,14 +1909,10 @@
             overlay.classList.add('active');
             
             try {
-                const res = await fetch('/api/rdf/instances', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ 
-                        filename: 'coffeeland-new.rdf',
-                        classUri: classUri 
-                    })
-                });
+                const _r = await fetch('ontology_data.json');
+            const _d = await _r.json();
+            const _inst = Object.entries(_d.instanceDetails||{}).filter(([k,v])=>v.types&&v.types.includes(className)).map(([k,v])=>({uri:v.uri,localName:k,properties:v.properties}));
+            const res = {ok:true, json: async()=>({instances:_inst})};
                 
                 const data = await res.json();
                 console.log(`✅ Loaded ${data.count} instances`);
@@ -2108,21 +2104,14 @@
             try {
                 console.log('📂 Loading:', filename);
                 
-                const parseRes = await fetch('/api/rdf/parse', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ filename })
-                });
-                ontologyData = await parseRes.json();
+                const _pr = await fetch('ontology_data.json');
+            window._od = await _pr.json();
+            ontologyData = {count:window._od.meta.totalTriples, classes:window._od.meta.totalClasses, objectProperties:window._od.meta.objectProperties, dataProperties:window._od.meta.dataProperties};
+            const parseRes = {ok:true};
                 console.log(`✅ Loaded ${ontologyData.count} triples`);
                 
-                const hierRes = await fetch('/api/rdf/hierarchy', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ filename })
-                });
-                const hierData = await hierRes.json();
-                hierarchyData = hierData.hierarchy || [];
+                const hierData = window._od || {};
+            hierarchyData = hierData.classHierarchy || [];
                 console.log(`✅ Loaded ${hierarchyData.length} root classes`);
                 
                 updateStats();
