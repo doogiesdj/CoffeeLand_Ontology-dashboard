@@ -1909,9 +1909,9 @@
             overlay.classList.add('active');
             
             try {
-                const _r = await fetch('ontology_data.json');
-            const _d = await _r.json();
-            const _inst = Object.entries(_d.instanceDetails||{}).filter(([k,v])=>v.types&&v.types.includes(className)).map(([k,v])=>({uri:v.uri,localName:k,properties:v.properties}));
+                const _r2 = await fetch('ontology_data.json');
+            const _d2 = await _r2.json();
+            const _inst = Object.entries(_d2.instanceDetails||{}).filter(([k,v])=>v.types&&v.types.includes(className)).map(([k,v])=>({uri:v.uri,localName:k,properties:v.properties}));
             const res = {ok:true, json: async()=>({instances:_inst})};
                 
                 const data = await res.json();
@@ -2106,19 +2106,14 @@
                 
                 const _pr = await fetch('ontology_data.json');
             window._od = await _pr.json();
+            const _meta = window._od.meta;
             ontologyData = {
-                count: window._od.meta.totalTriples,
-                classes: new Array(window._od.meta.totalClasses).fill(null),
-                objectProperties: new Array(window._od.meta.objectProperties).fill(null),
-                dataProperties: new Array(window._od.meta.dataProperties).fill(null),
-                triples: window._od.meta.totalTriples,
-                meta: window._od.meta
+                count: _meta.totalTriples,
+                classes: new Array(_meta.totalClasses),
+                objectProperties: new Array(_meta.objectProperties),
+                dataProperties: new Array(_meta.dataProperties)
             };
-            const parseRes = {ok:true};
-                console.log(`✅ Loaded ${ontologyData.count} triples`);
-                
-                const hierData = window._od || {};
-            hierarchyData = hierData.classHierarchy || [];
+            hierarchyData = window._od.classHierarchy || [];
                 console.log(`✅ Loaded ${hierarchyData.length} root classes`);
                 
                 updateStats();
