@@ -1,0 +1,58 @@
+name: CoffeeLand Auto Deploy
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'data/coffeeland_final_v2.rdf'        # RDF 파일 변경 시 자동 실행
+      - 'data/coffeeland_data_enrichment.ttl'  # TTL 파일 변경 시 자동 실행
+      - 'scripts/**'                           # 스크립트 변경 시 자동 실행
+  workflow_dispatch:                           # 수동 실행도 가능
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pages: write
+      id-token: write
+
+    steps:
+      # 1. 저장소 체크아웃
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # 2. Python 설치
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      # 3. 필요한 패키지 설치
+      - name: Install dependencies
+        run: |
+          pip install rdflib
+
+      # 4. RDF → JSON 변환 실행
+      - name: Generate JSON from RDF
+        run: |
+          python scripts/rdf_to_json.py
+          echo "JSON 생성 완료"
+          ls -la docs/
+
+      # 5. 변환된 파일을 docs/ 폴더에 커밋
+      - name: Commit generated files
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add docs/
+          git diff --staged --quiet || git commit -m "auto: Update JSON data from RDF [skip ci]"
+          git push
+
+      # 6. GitHub Pages 배포
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./docs
+          publish_branch: gh-pages

@@ -1,0 +1,262 @@
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+@prefix cof:  <http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#> .
+
+# ================================================================
+# 커피랜드 온톨로지 데이터 보강 파일
+# 추가 속성: sourcedFrom, hasBrandImpact, hasPricePerKg,
+#            usesMethod, certifies, ProcessingMethod 인스턴스
+# ================================================================
+
+
+# ----------------------------------------------------------------
+# 1. ProcessingMethod 인스턴스 (현재 0개 → 4개 추가)
+# ----------------------------------------------------------------
+
+cof:Washed_Process a owl:NamedIndividual, cof:ProcessingMethod ;
+    rdfs:label "수세식 가공"@ko ;
+    rdfs:label "Washed Process"@en ;
+    rdfs:comment "체리를 물로 씻어 과육을 제거한 뒤 건조. 깔끔하고 산미가 높음."@ko .
+
+cof:Natural_Process a owl:NamedIndividual, cof:ProcessingMethod ;
+    rdfs:label "내추럴 가공"@ko ;
+    rdfs:label "Natural Process"@en ;
+    rdfs:comment "체리째 그대로 건조. 과일향과 바디감이 풍부함."@ko .
+
+cof:Honey_Process a owl:NamedIndividual, cof:ProcessingMethod ;
+    rdfs:label "허니 가공"@ko ;
+    rdfs:label "Honey Process"@en ;
+    rdfs:comment "과육 일부를 남긴 채 건조. 단맛과 산미의 균형."@ko .
+
+cof:WetHulled_Process a owl:NamedIndividual, cof:ProcessingMethod ;
+    rdfs:label "습식 탈곡 가공"@ko ;
+    rdfs:label "Wet-Hulled Process"@en ;
+    rdfs:comment "인도네시아 특유의 가공법. 낮은 산미, 무거운 바디."@ko .
+
+
+# ----------------------------------------------------------------
+# 2. sourcedFrom — CoffeeBrand → Farm (producedFor 역방향)
+# ----------------------------------------------------------------
+
+cof:Colombian_Supremo
+    cof:sourcedFrom cof:Farm_Narino_San_Juan_Farm ;
+    cof:sourcedFrom cof:Farm_Antioquia_La_Esperanza .
+
+cof:Tarrazu_Reserve
+    cof:sourcedFrom cof:Farm_West_Valley_Helsar_Farm ;
+    cof:sourcedFrom cof:Farm_Tarrazu_La_Minita_Farm .
+
+cof:Sumatra_Mandheling
+    cof:sourcedFrom cof:Farm_Sumatra_Mandheling_Gayo_Farm .
+
+cof:Sidamo_Natural
+    cof:sourcedFrom cof:Farm_Sidamo_Guji_Farm .
+
+cof:Santos_Premium
+    cof:sourcedFrom cof:Farm_Sao_Paulo_Fazenda_Ipe ;
+    cof:sourcedFrom cof:Farm_Minas_Gerais_Fazenda_Sertao .
+
+cof:Antigua_Premium
+    cof:sourcedFrom cof:Farm_Antigua_Finca_El_Injerto ;
+    cof:sourcedFrom cof:Farm_Huehuetenango_Finca_Vista_Hermosa .
+
+cof:Kenya_AA
+    cof:sourcedFrom cof:Farm_Nyeri_Gatomboya_Farm ;
+    cof:sourcedFrom cof:Farm_Kiambu_Kagumo_Estate .
+
+cof:Peruvian_Organic
+    cof:sourcedFrom cof:Farm_Cajamarca_Villa_Rica_Farm .
+
+cof:Huila_Reserve
+    cof:sourcedFrom cof:Farm_Huila_El_Paraiso_Farm .
+
+cof:Honduras_SHG
+    cof:sourcedFrom cof:Farm_Copan_San_Marcos_Farm .
+
+cof:Yirgacheffe_Special
+    cof:sourcedFrom cof:Farm_Yirgacheffe_Kochere_Farm .
+
+cof:Java_Estate
+    cof:sourcedFrom cof:Farm_Java_Ijen_Estate .
+
+cof:Robusta_Select
+    cof:sourcedFrom cof:Farm_Dak_Lak_Central_Highlands_Farm .
+
+cof:Bourbon_Santos
+    cof:sourcedFrom cof:Farm_Minas_Gerais_Fazenda_Sertao .
+
+
+# ----------------------------------------------------------------
+# 3. hasBrandImpact — CoffeeBrand → SustainabilityMetric
+#    (Farm의 hasImpact를 브랜드 레벨로 연결)
+# ----------------------------------------------------------------
+
+# Colombian_Supremo: Farm_Narino(저탄소·공정임금·유기농) + Farm_Antioquia(저탄소·공정임금·유기농)
+cof:Colombian_Supremo
+    cof:hasBrandImpact cof:Metric_CO2_Low ;
+    cof:hasBrandImpact cof:Metric_FairWage_High ;
+    cof:hasBrandImpact cof:Metric_Organic_Farming .
+
+# Yirgacheffe_Special: Farm_Yirgacheffe(저탄소·공정임금·유기농·그늘재배)
+cof:Yirgacheffe_Special
+    cof:hasBrandImpact cof:Metric_CO2_Low ;
+    cof:hasBrandImpact cof:Metric_FairWage_High ;
+    cof:hasBrandImpact cof:Metric_Organic_Farming ;
+    cof:hasBrandImpact cof:Metric_Shade_Grown .
+
+# Kenya_AA: Farm_Nyeri(유기농·그늘재배) + Farm_Kiambu(유기농·그늘재배)
+cof:Kenya_AA
+    cof:hasBrandImpact cof:Metric_Organic_Farming ;
+    cof:hasBrandImpact cof:Metric_Shade_Grown .
+
+# Peruvian_Organic: Farm_Cajamarca(저탄소·공정임금·유기농)
+cof:Peruvian_Organic
+    cof:hasBrandImpact cof:Metric_CO2_Low ;
+    cof:hasBrandImpact cof:Metric_FairWage_High ;
+    cof:hasBrandImpact cof:Metric_Organic_Farming .
+
+# Sumatra_Mandheling: Farm_Sumatra(유기농·절수)
+cof:Sumatra_Mandheling
+    cof:hasBrandImpact cof:Metric_Organic_Farming ;
+    cof:hasBrandImpact cof:Metric_Water_Efficient .
+
+# Robusta_Select: Farm_Dak_Lak(고탄소·집약수자원·저임금)
+cof:Robusta_Select
+    cof:hasBrandImpact cof:Metric_CO2_High ;
+    cof:hasBrandImpact cof:Metric_Water_Heavy ;
+    cof:hasBrandImpact cof:Metric_FairWage_Low .
+
+# Sidamo_Natural: Farm_Sidamo(저탄소·그늘재배)
+cof:Sidamo_Natural
+    cof:hasBrandImpact cof:Metric_CO2_Low ;
+    cof:hasBrandImpact cof:Metric_Shade_Grown .
+
+# Santos_Premium: Farm_Sao_Paulo(절수) + Farm_Minas(저탄소·절수)
+cof:Santos_Premium
+    cof:hasBrandImpact cof:Metric_CO2_Low ;
+    cof:hasBrandImpact cof:Metric_Water_Efficient .
+
+# Huila_Reserve: Farm_Huila — 데이터 미수집
+# Tarrazu_Reserve: Farm_West_Valley(미수집) + Farm_Tarrazu(미수집)
+# Antigua_Premium, Honduras_SHG, Java_Estate, Bourbon_Santos — 추후 보완
+
+
+# ----------------------------------------------------------------
+# 4. hasPricePerKg — CoffeeBrand → xsd:decimal (USD/kg 기준)
+#    (현재 ObjectProperty → DatatypeProperty로 별도 선언)
+# ----------------------------------------------------------------
+
+cof:hasPricePerKg a owl:DatatypeProperty ;
+    rdfs:domain cof:CoffeeBrand ;
+    rdfs:range  xsd:decimal ;
+    rdfs:label  "kg당 가격 (USD)"@ko ;
+    rdfs:label  "Price per kg (USD)"@en .
+
+cof:Yirgacheffe_Special  cof:hasPricePerKg  "12.00"^^xsd:decimal .
+cof:Kenya_AA             cof:hasPricePerKg  "10.50"^^xsd:decimal .
+cof:Peruvian_Organic     cof:hasPricePerKg  "9.80"^^xsd:decimal .
+cof:Colombian_Supremo    cof:hasPricePerKg  "8.50"^^xsd:decimal .
+cof:Antigua_Premium      cof:hasPricePerKg  "11.20"^^xsd:decimal .
+cof:Tarrazu_Reserve      cof:hasPricePerKg  "10.00"^^xsd:decimal .
+cof:Huila_Reserve        cof:hasPricePerKg  "9.20"^^xsd:decimal .
+cof:Sumatra_Mandheling   cof:hasPricePerKg  "7.80"^^xsd:decimal .
+cof:Java_Estate          cof:hasPricePerKg  "8.00"^^xsd:decimal .
+cof:Sidamo_Natural       cof:hasPricePerKg  "9.50"^^xsd:decimal .
+cof:Santos_Premium       cof:hasPricePerKg  "6.50"^^xsd:decimal .
+cof:Honduras_SHG         cof:hasPricePerKg  "7.20"^^xsd:decimal .
+cof:Bourbon_Santos       cof:hasPricePerKg  "6.80"^^xsd:decimal .
+cof:Robusta_Select       cof:hasPricePerKg  "4.20"^^xsd:decimal .
+
+
+# ----------------------------------------------------------------
+# 5. usesMethod — CoffeeBrand → ProcessingMethod
+# ----------------------------------------------------------------
+
+cof:Colombian_Supremo    cof:usesMethod  cof:Washed_Process .
+cof:Yirgacheffe_Special  cof:usesMethod  cof:Washed_Process .
+cof:Kenya_AA             cof:usesMethod  cof:Washed_Process .
+cof:Tarrazu_Reserve      cof:usesMethod  cof:Honey_Process .
+cof:Huila_Reserve        cof:usesMethod  cof:Honey_Process .
+cof:Peruvian_Organic     cof:usesMethod  cof:Washed_Process .
+cof:Sidamo_Natural       cof:usesMethod  cof:Natural_Process .
+cof:Bourbon_Santos       cof:usesMethod  cof:Natural_Process .
+cof:Antigua_Premium      cof:usesMethod  cof:Washed_Process .
+cof:Honduras_SHG         cof:usesMethod  cof:Washed_Process .
+cof:Sumatra_Mandheling   cof:usesMethod  cof:WetHulled_Process .
+cof:Java_Estate          cof:usesMethod  cof:WetHulled_Process .
+cof:Santos_Premium       cof:usesMethod  cof:Natural_Process .
+cof:Robusta_Select       cof:usesMethod  cof:Natural_Process .
+
+
+# ----------------------------------------------------------------
+# 6. certifies — Certification → Farm/Cooperative (역방향)
+# ----------------------------------------------------------------
+
+cof:Fair_Trade
+    cof:certifies cof:Farm_Narino_San_Juan_Farm ;
+    cof:certifies cof:Farm_Antioquia_La_Esperanza ;
+    cof:certifies cof:Farm_Cajamarca_Villa_Rica_Farm ;
+    cof:certifies cof:Farm_Yirgacheffe_Kochere_Farm ;
+    cof:certifies cof:Farm_Nyeri_Gatomboya_Farm ;
+    cof:certifies cof:Farm_Kiambu_Kagumo_Estate ;
+    cof:certifies cof:Farm_Copan_San_Marcos_Farm ;
+    cof:certifies cof:Farm_Western_Province_Huye_Mountain .
+
+cof:Organic
+    cof:certifies cof:Farm_Narino_San_Juan_Farm ;
+    cof:certifies cof:Farm_Antioquia_La_Esperanza ;
+    cof:certifies cof:Farm_Cajamarca_Villa_Rica_Farm ;
+    cof:certifies cof:Farm_Yirgacheffe_Kochere_Farm ;
+    cof:certifies cof:Farm_Nyeri_Gatomboya_Farm ;
+    cof:certifies cof:Farm_Kiambu_Kagumo_Estate ;
+    cof:certifies cof:Farm_Sumatra_Mandheling_Gayo_Farm ;
+    cof:certifies cof:Farm_Western_Province_Huye_Mountain .
+
+cof:Rainforest_Alliance
+    cof:certifies cof:Farm_Java_Ijen_Estate ;
+    cof:certifies cof:Farm_Antigua_Finca_El_Injerto ;
+    cof:certifies cof:Farm_Huehuetenango_Finca_Vista_Hermosa ;
+    cof:certifies cof:Farm_Sidamo_Guji_Farm .
+
+cof:UTZ
+    cof:certifies cof:Farm_Huila_El_Paraiso_Farm ;
+    cof:certifies cof:Farm_Sao_Paulo_Fazenda_Ipe .
+
+
+# ----------------------------------------------------------------
+# 7. CO2 수치 데이터 (SWRL/SPARQL 추론 준비)
+#    hasCO2PerKg: Farm → xsd:decimal (kg CO2 per kg coffee)
+# ----------------------------------------------------------------
+
+cof:hasCO2PerKg a owl:DatatypeProperty ;
+    rdfs:domain cof:Farm ;
+    rdfs:range  xsd:decimal ;
+    rdfs:label  "kg당 CO2 배출량"@ko ;
+    rdfs:label  "CO2 per kg coffee"@en .
+
+cof:Farm_Narino_San_Juan_Farm         cof:hasCO2PerKg  "2.8"^^xsd:decimal .
+cof:Farm_Antioquia_La_Esperanza       cof:hasCO2PerKg  "2.9"^^xsd:decimal .
+cof:Farm_Cajamarca_Villa_Rica_Farm    cof:hasCO2PerKg  "2.6"^^xsd:decimal .
+cof:Farm_Yirgacheffe_Kochere_Farm     cof:hasCO2PerKg  "2.5"^^xsd:decimal .
+cof:Farm_Nyeri_Gatomboya_Farm         cof:hasCO2PerKg  "3.1"^^xsd:decimal .
+cof:Farm_Kiambu_Kagumo_Estate         cof:hasCO2PerKg  "3.3"^^xsd:decimal .
+cof:Farm_Sidamo_Guji_Farm             cof:hasCO2PerKg  "2.7"^^xsd:decimal .
+cof:Farm_Sumatra_Mandheling_Gayo_Farm cof:hasCO2PerKg  "3.1"^^xsd:decimal .
+cof:Farm_Java_Ijen_Estate             cof:hasCO2PerKg  "3.8"^^xsd:decimal .
+cof:Farm_Sao_Paulo_Fazenda_Ipe        cof:hasCO2PerKg  "4.2"^^xsd:decimal .
+cof:Farm_Minas_Gerais_Fazenda_Sertao  cof:hasCO2PerKg  "3.5"^^xsd:decimal .
+cof:Farm_Huila_El_Paraiso_Farm        cof:hasCO2PerKg  "3.0"^^xsd:decimal .
+cof:Farm_West_Valley_Helsar_Farm      cof:hasCO2PerKg  "3.4"^^xsd:decimal .
+cof:Farm_Tarrazu_La_Minita_Farm       cof:hasCO2PerKg  "3.2"^^xsd:decimal .
+cof:Farm_Antigua_Finca_El_Injerto     cof:hasCO2PerKg  "3.6"^^xsd:decimal .
+cof:Farm_Huehuetenango_Finca_Vista_Hermosa cof:hasCO2PerKg "3.7"^^xsd:decimal .
+cof:Farm_Copan_San_Marcos_Farm        cof:hasCO2PerKg  "3.9"^^xsd:decimal .
+cof:Farm_Western_Province_Huye_Mountain cof:hasCO2PerKg "2.9"^^xsd:decimal .
+cof:Farm_Dak_Lak_Central_Highlands_Farm cof:hasCO2PerKg "6.8"^^xsd:decimal .
+cof:Farm_Espirito_Santo_Fazenda_Santa_Rita cof:hasCO2PerKg "7.2"^^xsd:decimal .
+cof:Farm_Harrar_Estate                cof:hasCO2PerKg  "4.1"^^xsd:decimal .
+cof:Farm_Jinotega_Finca_Mierisch      cof:hasCO2PerKg  "3.5"^^xsd:decimal .
+cof:Farm_Kilimanjaro_Moshi_Estate     cof:hasCO2PerKg  "3.3"^^xsd:decimal .
+cof:Farm_Lam_Dong_Arabica_Farm        cof:hasCO2PerKg  "5.1"^^xsd:decimal .
