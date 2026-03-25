@@ -1081,6 +1081,7 @@
         .bev-info-item.full { grid-column: 1 / -1; }
         .bev-tag-row { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 0.2rem; }
         .bev-tag { font-size: 0.7rem; background: rgba(139,69,19,.18); color: var(--accent); border-radius: 20px; padding: 0.15rem 0.6rem; border: 1px solid rgba(139,69,19,.3); }
+        .country-section-header { grid-column: 1 / -1; width: 100%; padding: 0.65rem 1rem; margin: 0.8rem 0 0.2rem; background: linear-gradient(135deg, rgba(99,102,241,0.13), rgba(139,92,246,0.08)); border-left: 3px solid var(--accent-primary, #6366f1); border-radius: 0 8px 8px 0; color: var(--text-primary); font-size: 0.88rem; font-weight: 600; display: flex; align-items: center; gap: 0.45rem; }
     </style>
 </head>
 <body>
@@ -2234,7 +2235,31 @@
                 instanceList.innerHTML = '';
                 
                 if (data.instances && data.instances.length > 0) {
-                    data.instances.forEach(instance => {
+                    // Country: split into producer / consumer sections
+                    let instancesToRender = data.instances;
+                    let producerCount = 0;
+                    if (className.toLowerCase() === 'country' && window.COUNTRY_DATA) {
+                        const producers = data.instances.filter(i => { const d = window.COUNTRY_DATA[i.name]; return !d || d.type !== 'consumer'; });
+                        const consumers = data.instances.filter(i => { const d = window.COUNTRY_DATA[i.name]; return d && d.type === 'consumer'; });
+                        producerCount = producers.length;
+                        instancesToRender = [...producers, ...consumers];
+                        if (producers.length) {
+                            const ph = document.createElement('div');
+                            ph.className = 'country-section-header';
+                            ph.innerHTML = '<i class="fas fa-seedling"></i> 생산국 (Coffee Producing Countries)';
+                            instanceList.appendChild(ph);
+                        }
+                    }
+
+                    instancesToRender.forEach((instance, _idx) => {
+                        // Consumer section header inserted before first consumer card
+                        if (className.toLowerCase() === 'country' && _idx === producerCount && producerCount > 0 && producerCount < instancesToRender.length) {
+                            const ch = document.createElement('div');
+                            ch.className = 'country-section-header';
+                            ch.innerHTML = '<i class="fas fa-mug-hot"></i> 소비국 (Coffee Consuming Countries)';
+                            instanceList.appendChild(ch);
+                        }
+
                         const instanceCard = document.createElement('div');
                         instanceCard.className = 'instance-card';
                         
@@ -2374,45 +2399,75 @@
             const isCountryInst   = className.toLowerCase() === 'country';
 
             if (isCountryInst) {
-                // ── Country detail view (uses COUNTRY_DATA lookup table) ──
-                const ct = (window.COUNTRY_DATA && window.COUNTRY_DATA[instance.name]) || {};
-
-                const continent   = ct.continent   || '—';
-                const capital     = ct.capital     || '—';
-                const role        = ct.role        || '—';
-                const prodRank    = ct.prodRank    || '—';
-                const annualProd  = ct.annualProd  || '—';
-                const desc        = ct.desc        || '';
-                const regions     = ct.regions     || [];
-                const varietals   = ct.varietals   || [];
-                const processing  = ct.processing  || [];
-                const flavor      = ct.flavor      || [];
-                const harvest     = ct.harvest     || '—';
-                const certif      = ct.certif      || [];
-                const brands      = ct.brands      || [];
-                const exportInfo  = ct.exportInfo  || '—';
-                const cafeCulture = ct.cafeCulture || '—';
-
+                // ── Country detail view ───────────────────────────────────
+                const ct    = (window.COUNTRY_DATA && window.COUNTRY_DATA[instance.name]) || {};
+                const ctype = ct.type || 'producer';
+                const continent = ct.continent || '—';
+                const capital   = ct.capital   || '—';
+                const desc      = ct.desc      || '';
+                const brands    = ct.brands    || [];
                 let html = '';
-                html += `<div class="bev-stats">`;
-                html += `<div class="bev-stat"><div class="bev-stat-val">${continent}</div><div class="bev-stat-lbl">대륙</div></div>`;
-                html += `<div class="bev-stat"><div class="bev-stat-val">${capital}</div><div class="bev-stat-lbl">수도</div></div>`;
-                html += `<div class="bev-stat"><div class="bev-stat-val">${role}</div><div class="bev-stat-lbl">커피 역할</div></div>`;
-                html += `<div class="bev-stat"><div class="bev-stat-val">${prodRank}</div><div class="bev-stat-lbl">생산 순위</div></div>`;
-                html += `</div>`;
-                if (desc) html += `<div class="bev-desc">${desc}</div>`;
-                html += `<div class="bev-info-grid">`;
-                html += `<div class="bev-info-item"><span class="bev-info-label">연간 생산량</span><span class="bev-info-value">${annualProd}</span></div>`;
-                html += `<div class="bev-info-item"><span class="bev-info-label">수출 규모</span><span class="bev-info-value">${exportInfo}</span></div>`;
-                html += `<div class="bev-info-item"><span class="bev-info-label">수확 시즌</span><span class="bev-info-value">${harvest}</span></div>`;
-                html += `<div class="bev-info-item"><span class="bev-info-label">카페 문화</span><span class="bev-info-value">${cafeCulture}</span></div>`;
-                if (regions.length)    html += `<div class="bev-info-item full"><span class="bev-info-label">주요 커피 산지</span><div class="bev-tag-row">${regions.map(r=>`<span class="bev-tag">${r}</span>`).join('')}</div></div>`;
-                if (varietals.length)  html += `<div class="bev-info-item full"><span class="bev-info-label">주요 품종</span><div class="bev-tag-row">${varietals.map(v=>`<span class="bev-tag">${v}</span>`).join('')}</div></div>`;
-                if (processing.length) html += `<div class="bev-info-item full"><span class="bev-info-label">가공 방식</span><div class="bev-tag-row">${processing.map(p=>`<span class="bev-tag">${p}</span>`).join('')}</div></div>`;
-                if (flavor.length)     html += `<div class="bev-info-item full"><span class="bev-info-label">플레이버 프로파일</span><div class="bev-tag-row">${flavor.map(f=>`<span class="bev-tag">${f}</span>`).join('')}</div></div>`;
-                if (certif.length)     html += `<div class="bev-info-item full"><span class="bev-info-label">주요 인증</span><div class="bev-tag-row">${certif.map(c=>`<span class="bev-tag">${c}</span>`).join('')}</div></div>`;
-                if (brands.length)     html += `<div class="bev-info-item full"><span class="bev-info-label">유명 브랜드 / 로스터</span><div class="bev-tag-row">${brands.map(b=>`<span class="bev-tag">${b}</span>`).join('')}</div></div>`;
-                html += `</div>`;
+
+                if (ctype === 'consumer') {
+                    // ── 소비국 레이아웃 ────────────────────────────────────
+                    const importVol      = ct.importVol      || '—';
+                    const perCapita      = ct.perCapita      || '—';
+                    const mainOrigins    = ct.mainOrigins    || [];
+                    const coffeeStyle    = ct.coffeeStyle    || [];
+                    const specialtyScene = ct.specialtyScene || '—';
+                    const history        = ct.history        || '—';
+                    const drinkingCulture= ct.drinkingCulture|| '—';
+
+                    html += `<div class="bev-stats">`;
+                    html += `<div class="bev-stat"><div class="bev-stat-val">${continent}</div><div class="bev-stat-lbl">대륙</div></div>`;
+                    html += `<div class="bev-stat"><div class="bev-stat-val">${capital}</div><div class="bev-stat-lbl">수도</div></div>`;
+                    html += `<div class="bev-stat"><div class="bev-stat-val">${importVol}</div><div class="bev-stat-lbl">연간 수입량</div></div>`;
+                    html += `<div class="bev-stat"><div class="bev-stat-val">${perCapita}</div><div class="bev-stat-lbl">1인당 소비</div></div>`;
+                    html += `</div>`;
+                    if (desc) html += `<div class="bev-desc">${desc}</div>`;
+                    html += `<div class="bev-info-grid">`;
+                    html += `<div class="bev-info-item full"><span class="bev-info-label">☕ 음용 문화</span><span class="bev-info-value">${drinkingCulture}</span></div>`;
+                    html += `<div class="bev-info-item full"><span class="bev-info-label">🏆 스페셜티 씬</span><span class="bev-info-value">${specialtyScene}</span></div>`;
+                    html += `<div class="bev-info-item full"><span class="bev-info-label">📜 커피 역사</span><span class="bev-info-value">${history}</span></div>`;
+                    if (mainOrigins.length)  html += `<div class="bev-info-item full"><span class="bev-info-label">🌍 주요 수입 원산지</span><div class="bev-tag-row">${mainOrigins.map(o=>`<span class="bev-tag">${o}</span>`).join('')}</div></div>`;
+                    if (coffeeStyle.length)  html += `<div class="bev-info-item full"><span class="bev-info-label">🥤 대표 커피 스타일</span><div class="bev-tag-row">${coffeeStyle.map(s=>`<span class="bev-tag">${s}</span>`).join('')}</div></div>`;
+                    if (brands.length)       html += `<div class="bev-info-item full"><span class="bev-info-label">🏪 주요 브랜드 / 체인</span><div class="bev-tag-row">${brands.map(b=>`<span class="bev-tag">${b}</span>`).join('')}</div></div>`;
+                    html += `</div>`;
+
+                } else {
+                    // ── 생산국 레이아웃 ────────────────────────────────────
+                    const role       = ct.role       || '—';
+                    const prodRank   = ct.prodRank   || '—';
+                    const annualProd = ct.annualProd || '—';
+                    const exportInfo = ct.exportInfo || '—';
+                    const harvest    = ct.harvest    || '—';
+                    const cafeCulture= ct.cafeCulture|| '—';
+                    const regions    = ct.regions    || [];
+                    const varietals  = ct.varietals  || [];
+                    const processing = ct.processing || [];
+                    const flavor     = ct.flavor     || [];
+                    const certif     = ct.certif     || [];
+
+                    html += `<div class="bev-stats">`;
+                    html += `<div class="bev-stat"><div class="bev-stat-val">${continent}</div><div class="bev-stat-lbl">대륙</div></div>`;
+                    html += `<div class="bev-stat"><div class="bev-stat-val">${capital}</div><div class="bev-stat-lbl">수도</div></div>`;
+                    html += `<div class="bev-stat"><div class="bev-stat-val">${role}</div><div class="bev-stat-lbl">커피 역할</div></div>`;
+                    html += `<div class="bev-stat"><div class="bev-stat-val">${prodRank}</div><div class="bev-stat-lbl">생산 순위</div></div>`;
+                    html += `</div>`;
+                    if (desc) html += `<div class="bev-desc">${desc}</div>`;
+                    html += `<div class="bev-info-grid">`;
+                    html += `<div class="bev-info-item"><span class="bev-info-label">연간 생산량</span><span class="bev-info-value">${annualProd}</span></div>`;
+                    html += `<div class="bev-info-item"><span class="bev-info-label">수출 규모</span><span class="bev-info-value">${exportInfo}</span></div>`;
+                    html += `<div class="bev-info-item"><span class="bev-info-label">수확 시즌</span><span class="bev-info-value">${harvest}</span></div>`;
+                    html += `<div class="bev-info-item"><span class="bev-info-label">카페 문화</span><span class="bev-info-value">${cafeCulture}</span></div>`;
+                    if (regions.length)    html += `<div class="bev-info-item full"><span class="bev-info-label">주요 커피 산지</span><div class="bev-tag-row">${regions.map(r=>`<span class="bev-tag">${r}</span>`).join('')}</div></div>`;
+                    if (varietals.length)  html += `<div class="bev-info-item full"><span class="bev-info-label">주요 품종</span><div class="bev-tag-row">${varietals.map(v=>`<span class="bev-tag">${v}</span>`).join('')}</div></div>`;
+                    if (processing.length) html += `<div class="bev-info-item full"><span class="bev-info-label">가공 방식</span><div class="bev-tag-row">${processing.map(p=>`<span class="bev-tag">${p}</span>`).join('')}</div></div>`;
+                    if (flavor.length)     html += `<div class="bev-info-item full"><span class="bev-info-label">플레이버 프로파일</span><div class="bev-tag-row">${flavor.map(f=>`<span class="bev-tag">${f}</span>`).join('')}</div></div>`;
+                    if (certif.length)     html += `<div class="bev-info-item full"><span class="bev-info-label">주요 인증</span><div class="bev-tag-row">${certif.map(c=>`<span class="bev-tag">${c}</span>`).join('')}</div></div>`;
+                    if (brands.length)     html += `<div class="bev-info-item full"><span class="bev-info-label">유명 브랜드 / 로스터</span><div class="bev-tag-row">${brands.map(b=>`<span class="bev-tag">${b}</span>`).join('')}</div></div>`;
+                    html += `</div>`;
+                }
                 modalBody.innerHTML = html;
 
             } else if (isCityInst) {
@@ -2729,7 +2784,9 @@
         // COUNTRY DATA — geographic + coffee production info for 18 countries
         // ============================================================
         window.COUNTRY_DATA = {
+          // ── 생산국 ────────────────────────────────────────────────────
           'Colombia': {
+            type:'producer',
             continent:'남아메리카', capital:'보고타', role:'생산국 (Arabica 특화)',
             prodRank:'세계 3위 (Arabica 2위)',
             annualProd:'약 1,400만 포대 (60kg 기준)',
@@ -2737,7 +2794,7 @@
             harvest:'10–2월 (메인), 4–6월 (미타카)',
             cafeCulture:'보고타·메데인 스페셜티 씬 성장 중. Juan Valdez가 내수 브랜드 대표',
             desc:'안데스 산맥의 지형과 적도 기후가 교차하는 콜롬비아는 연중 두 번 수확이 가능한 세계 유일의 대형 생산국입니다. 해발 1,200–2,200m의 고지대에서 재배된 워시드 아라비카는 밸런스와 산미로 세계 시장을 선도합니다.',
-            regions:['우일라(Huila)','나리뇨(Nariño)','안티오키아(Antioquia)','카우카(Cauca)','시에라 네바다(Sierra Nevada)','툼바도(Tolima)'],
+            regions:['우일라(Huila)','나리뇨(Nariño)','안티오키아(Antioquia)','카우카(Cauca)','시에라 네바다','툼바도(Tolima)'],
             varietals:['Castillo','Caturra','Colombia','Bourbon','Typica'],
             processing:['완전 수세(Washed)','허니(Honey) — 일부 스페셜티'],
             flavor:['카라멜','밀크초콜릿','오렌지·레몬 산미','적포도','너티'],
@@ -2745,6 +2802,7 @@
             brands:['Juan Valdez','Amor Perfecto','Pergamino Coffee','Azahar Coffee']
           },
           'Brazil': {
+            type:'producer',
             continent:'남아메리카', capital:'브라질리아', role:'생산국 (세계 최대)',
             prodRank:'세계 1위',
             annualProd:'약 6,000–6,500만 포대',
@@ -2752,7 +2810,7 @@
             harvest:'5–9월 (남반구 건기 수확)',
             cafeCulture:'내수 소비도 세계 2위. 달콤한 에스프레소 스타일 카페지뇨(Cafezinho) 문화',
             desc:'세계 커피 생산량의 약 35–40%를 차지하는 브라질은 나추럴 가공과 낮은 산미, 풍부한 바디감으로 블렌드 베이스를 지배합니다. 세라도, 미나스 제라이스 등 대규모 플랜테이션이 특징입니다.',
-            regions:['미나스 제라이스(Minas Gerais)','상파울루(São Paulo)','에스피리투 산투(Espírito Santo)','바이아(Bahia)','세라도(Cerrado)','술 지 미나스(Sul de Minas)'],
+            regions:['미나스 제라이스(Minas Gerais)','상파울루(São Paulo)','에스피리투 산투','바이아(Bahia)','세라도(Cerrado)','술 지 미나스'],
             varietals:['Mundo Novo','Bourbon','Catuaí Amarelo','Catuaí Vermelho','Icatu'],
             processing:['나추럴(Natural/Dry)','펄프드 나추럴(Pulped Natural)','세미-워시드'],
             flavor:['다크초콜릿','헤이즐넛','저산미','풀바디','캐러멜','건과일'],
@@ -2760,6 +2818,7 @@
             brands:['Cafés do Brasil','Illy (블렌드 사용)','Lavazza (블렌드 사용)','Três Corações']
           },
           'Ethiopia': {
+            type:'producer',
             continent:'아프리카', capital:'아디스 아바바', role:'생산국 (Arabica 원산지)',
             prodRank:'세계 5위 (아프리카 1위)',
             annualProd:'약 750만 포대',
@@ -2772,9 +2831,10 @@
             processing:['나추럴(Natural)','워시드(Washed)','허니(Honey)'],
             flavor:['블루베리','재스민','장미','와인','복숭아','열대과일'],
             certif:['COE','Fairtrade','Organic','SCAE 추천 원산지'],
-            brands:['Yirgacheffe Coffee Farmers Cooperative','Tracon Trading','Toma Coffee']
+            brands:['Yirgacheffe Coffee Farmers Coop','Tracon Trading','Toma Coffee']
           },
           'Vietnam': {
+            type:'producer',
             continent:'아시아', capital:'하노이', role:'생산국 (Robusta 세계 1위)',
             prodRank:'세계 2위 (Robusta 1위)',
             annualProd:'약 2,800–3,000만 포대',
@@ -2790,6 +2850,7 @@
             brands:['Trung Nguyên (G7)','Highlands Coffee','The Coffee House']
           },
           'Indonesia': {
+            type:'producer',
             continent:'아시아', capital:'자카르타', role:'생산국 (Arabica·Robusta 복합)',
             prodRank:'세계 4위',
             annualProd:'약 1,100만 포대',
@@ -2797,7 +2858,7 @@
             harvest:'5–10월 (섬마다 상이)',
             cafeCulture:'코피 루왁(Kopi Luwak) 세계 최고가 커피로 유명. 수마트라식 걸쭉한 Kopi Tubruk 전통 음용',
             desc:'1만 7천여 개의 섬으로 구성된 군도 국가로, 각 섬마다 독특한 테루아르를 자랑합니다. 수마트라의 습식 탈곡(Giling Basah)은 세계 어디에도 없는 독특한 가공법으로, 낮은 산미와 강한 어시(Earthy) 풍미를 만듭니다.',
-            regions:['수마트라(만델링·토바이(Sumatra Mandheling)','자바(Java)','슬라웨시(Sulawesi Toraja)','발리 킨타마니(Bali Kintamani)','플로레스(Flores Bajawa)'],
+            regions:['수마트라(Sumatra Mandheling)','자바(Java)','슬라웨시(Sulawesi Toraja)','발리 킨타마니(Bali Kintamani)','플로레스(Flores Bajawa)'],
             varietals:['Robusta','Tim Tim (Timor Hybrid)','Catimor','Typica (자바)'],
             processing:['Giling Basah (습식 탈곡 — 수마트라 특유)','나추럴','워시드'],
             flavor:['어시(Earthy)','허브','다크초콜릿','낮은 산미','풀바디','트로피칼'],
@@ -2805,11 +2866,12 @@
             brands:['PT Perkebunan Nusantara','Anomali Coffee','Tanamera Coffee']
           },
           'Kenya': {
+            type:'producer',
             continent:'아프리카', capital:'나이로비', role:'생산국 (Arabica 프리미엄)',
             prodRank:'세계 10위권, 스페셜티 가격 최상위',
             annualProd:'약 45만 포대 (소량이지만 고가)',
             exportInfo:'약 40만 포대, 유럽·미국 스페셜티 시장 집중',
-            harvest:'10–12월 (메인 플라이), 6–7월 (플라이 크롭)',
+            harvest:'10–12월 (메인), 6–7월 (플라이 크롭)',
             cafeCulture:'나이로비 스페셜티 씬 성장 중. Java House, Dormans Coffee 체인 활성화',
             desc:'케냐는 세계 최고 수준의 산미(Blackcurrant Acidity)와 복잡한 과일 풍미로 스페셜티 시장에서 kg당 가장 높은 가격을 받는 원산지 중 하나입니다. SL28·SL34 품종과 72시간 발효 워시드 가공이 특징입니다.',
             regions:['키리냐가(Kirinyaga)','니에리(Nyeri)','엠부(Embu)','키암부(Kiambu)','마차코스(Machakos)'],
@@ -2820,6 +2882,7 @@
             brands:['Kenya Coffee Traders','Dormans Coffee','Artcaffe (나이로비)']
           },
           'Guatemala': {
+            type:'producer',
             continent:'북아메리카 (중앙아메리카)', capital:'과테말라시티', role:'생산국 (Arabica)',
             prodRank:'중앙아메리카 2위, 세계 10위권',
             annualProd:'약 380만 포대',
@@ -2835,6 +2898,7 @@
             brands:['Anacafé 인증 원산지','Finca El Injerto','La Hermosa']
           },
           'Honduras': {
+            type:'producer',
             continent:'북아메리카 (중앙아메리카)', capital:'테구시갈파', role:'생산국 (Arabica)',
             prodRank:'중앙아메리카 1위, 세계 6위',
             annualProd:'약 750만 포대',
@@ -2842,7 +2906,7 @@
             harvest:'11–3월',
             cafeCulture:'스페셜티 씬 태동 중. Ihcafé(국립 커피 협회)가 지역 개발 주도',
             desc:'온두라스는 중앙아메리카 최대 커피 생산국으로 코판, 산타바르바라, 몬테시요스 등의 고지대에서 뛰어난 품질의 아라비카를 생산합니다. 과거 저가 블렌드 베이스로 알려졌으나 COE 수상 이후 스페셜티 시장에서도 주목받고 있습니다.',
-            regions:['코판(Copán)','산타바르바라(Santa Bárbara)','몬테시요스(Montecillos)','아가우카(Agalta)','코마야과(Comayagua)','엘 파라이소(El Paraíso)'],
+            regions:['코판(Copán)','산타바르바라(Santa Bárbara)','몬테시요스(Montecillos)','아가우카(Agalta)','코마야과(Comayagua)'],
             varietals:['Catuaí','Bourbon','Caturra','Pacas','Lempira'],
             processing:['워시드(Washed)'],
             flavor:['캐러멜','복숭아','시트러스','달콤한 산미','밀크초콜릿'],
@@ -2850,6 +2914,7 @@
             brands:['Ihcafé 인증','Comsa Cooperative','Beneficio San Vicente']
           },
           'Costa_Rica': {
+            type:'producer',
             continent:'북아메리카 (중앙아메리카)', capital:'산호세', role:'생산국 (Arabica 100%)',
             prodRank:'세계 15위권',
             annualProd:'약 170–200만 포대',
@@ -2858,13 +2923,14 @@
             cafeCulture:'스페셜티 마이크로 밀 운동 발상지. 허니 가공법 개척. 산호세 카페 씬 활성',
             desc:'코스타리카는 세계 최초로 Robusta 재배를 법으로 금지한 나라입니다. 모든 커피가 100% 아라비카이며, 허니(Honey) 가공법의 발상지로 꿀처럼 달콤한 풍미가 특징입니다. 타라수(Tarrazú)는 세계 최고가 원산지 중 하나입니다.',
             regions:['타라수(Tarrazú)','트레스 리오스(Tres Ríos)','발레 센트럴(Valle Central)','오로시(Orosi)','나란호(Naranjo)','투리알바(Turrialba)'],
-            varietals:['Catuaí','Villalobos','Caturra','SL28 — 소량'],
+            varietals:['Catuaí','Villalobos','Caturra'],
             processing:['허니(Yellow/Red/Black Honey)','워시드','나추럴 — 소량'],
             flavor:['허니·달콤함','열대과일','밀크초콜릿','청사과 산미','카라멜'],
             certif:['COE','Rainforest Alliance','Fairtrade','Organic','Café de Costa Rica 인증'],
             brands:['La Minita','Café Britt','Coopedota','Dota Coffee']
           },
           'Peru': {
+            type:'producer',
             continent:'남아메리카', capital:'리마', role:'생산국 (Arabica, Organic 특화)',
             prodRank:'세계 9위',
             annualProd:'약 400만 포대',
@@ -2872,131 +2938,119 @@
             harvest:'6–8월',
             cafeCulture:'수도 리마 스페셜티 씬 성장 중. 소작농 협동조합 중심 생산 구조',
             desc:'페루는 세계 최대 유기농 인증 커피 수출국 중 하나입니다. 안데스 고산지대의 소규모 농가들이 협동조합을 통해 고품질 커피를 생산하며, 유럽의 유기농·공정무역 시장에서 높은 점유율을 보입니다.',
-            regions:['카하마르카(Cajamarca)','산 마르틴(San Martín)','쿠스코(Cusco)','우누코(Huánuco)','아마조나스(Amazonas)'],
+            regions:['카하마르카(Cajamarca)','산 마르틴(San Martín)','쿠스코(Cusco)','우아누코(Huánuco)','아마조나스(Amazonas)'],
             varietals:['Typica','Caturra','Bourbon','Catimor'],
             processing:['워시드(Washed)'],
             flavor:['밀크초콜릿','견과류','소프트 산미','캐러멜','허브'],
             certif:['Organic','Fairtrade','Rainforest Alliance','COE — 소량'],
             brands:['Cafe Machu Picchu','COCLA Cooperative','Incapto']
           },
-          'Japan': {
-            continent:'아시아', capital:'도쿄', role:'소비국 (세계 3대 수입국)',
-            prodRank:'생산 없음 (오키나와 소량 제외)',
-            annualProd:'—',
-            exportInfo:'약 700–800만 포대 수입 (세계 3위 수입국)',
-            harvest:'—',
-            cafeCulture:'세계 최고 수준의 커피 문화. 킷사텐(喫茶店) 전통 커피숍, 캔커피(UCC), 제3의 물결 스페셜티 씬, 핸드드립·사이폰 방식 집착',
-            desc:'일본은 고가 스페셜티 커피의 최대 수입국 중 하나로, 킷사텐(喫茶店) 문화와 제3의 물결 스페셜티 씬이 공존합니다. Blue Bottle Coffee의 아시아 첫 진출지이며, 세계 최고 수준의 바리스타 기술 국가입니다.',
-            regions:['도쿄 커피 씬','교토 킷사텐 문화','오사카 블루 보틀'],
-            varietals:['수입 원두 전 품종'],
-            processing:['로스팅·브루잉 기술에 집중'],
-            flavor:['라이트 로스트 선호','클린 컵','繊細(섬세함) 추구'],
-            certif:['JAS 유기농 인증','Rainforest Alliance 인증 제품 선호'],
-            brands:['UCC 上島珈琲','Key Coffee','Doutor','Blue Bottle Coffee Japan','%Arabica']
-          },
-          'Italy': {
-            continent:'유럽', capital:'로마', role:'소비국 (에스프레소 문화 본거지)',
-            prodRank:'생산 없음 (소비·가공·수출국)',
-            annualProd:'—',
-            exportInfo:'약 40만 포대 가공 후 재수출. 이탈리아 브랜드 커피 전 세계 수출',
-            harvest:'—',
-            cafeCulture:'에스프레소 Bar 문화. 서서 마시는 에스프레소, 카푸치노는 오전만 허용. 나폴리식 에스프레소, 토리노식 비체린(Bicerin). 트리에스테 로스터리 전통',
-            desc:'이탈리아는 커피를 생산하지 않지만 에스프레소 문화를 세계에 전파한 나라입니다. Illy, Lavazza 등 세계적 브랜드 본거지이며, 토리노와 트리에스테의 클래식 커피하우스는 UNESCO 무형문화유산 후보입니다.',
-            regions:['나폴리(에스프레소 전통)','트리에스테(로스터리 문화)','토리노(Bicerin 발상지)','밀라노(모던 바 문화)'],
-            varietals:['수입 원두 블렌드 전문'],
-            processing:['에스프레소 로스팅·블렌딩 특화'],
-            flavor:['다크 로스트','크레마','쓴맛·바디 강조','헤이즐넛','카라멜'],
-            certif:['INEI 에스프레소 이탈리아노 인증','DOP — 일부 블렌드'],
-            brands:['Illy','Lavazza','Segafredo','Kimbo','Caffè Florian(베네치아)']
-          },
-          'USA': {
-            continent:'북아메리카', capital:'워싱턴 D.C.', role:'소비국 (세계 최대 수입국)',
-            prodRank:'생산 없음 (하와이 소량 제외)',
-            annualProd:'—',
-            exportInfo:'약 2,400만 포대 수입 (세계 1위)',
-            harvest:'—',
-            cafeCulture:'시애틀 = 스타벅스 발원지. 포틀랜드·NYC·SF 제3의 물결 선도. 드립 커피 전통. 콜드브루·나이트로 문화 발상지',
-            desc:'세계 최대 커피 소비국인 미국은 스타벅스를 통해 에스프레소 문화를 대중화하고, 블루보틀·인텔리젠시아·스텀프타운 등으로 스페셜티 혁명을 이끌었습니다. 하와이 코나(Kona) 커피는 미국 유일의 상업적 원산지입니다.',
-            regions:['시애틀(Seattle)','포틀랜드(Portland)','샌프란시스코(SF)','뉴욕(NYC)','하와이 코나(Hawaii Kona)'],
-            varietals:['수입 전 품종, 하와이 Kona Typica'],
-            processing:['스페셜티 품질 기준 엄격 적용'],
-            flavor:['라이트–미디엄 로스트 트렌드','Single Origin 선호','과일·플로럴'],
-            certif:['USDA Organic','Rainforest Alliance','Direct Trade 선호'],
-            brands:['Starbucks','Blue Bottle Coffee','Intelligentsia','Stumptown','Counter Culture']
-          },
-          'Canada': {
-            continent:'북아메리카', capital:'오타와', role:'소비국',
-            prodRank:'생산 없음',
-            annualProd:'—',
-            exportInfo:'약 500만 포대 수입',
-            harvest:'—',
-            cafeCulture:'팀홀튼스(Tim Hortons) 국민 커피 문화. 밴쿠버·토론토 스페셜티 씬 성장. 캐나다만의 더블더블(Double Double) 문화',
-            desc:'캐나다는 팀홀튼스가 지배하는 대중 커피 시장과 세계적 수준의 스페셜티 씬이 공존합니다. 밴쿠버는 북미 스페셜티 커피 중심지 중 하나로 Revolver, 49th Parallel 등이 세계적으로 알려져 있습니다.',
-            regions:['밴쿠버(Vancouver)','토론토(Toronto)','몬트리올(Montréal)'],
-            varietals:['수입 전 품종'],
-            processing:['스페셜티 브루잉 문화'],
-            flavor:['미디엄 로스트','너티','달콤한 프로파일 선호'],
-            certif:['Fairtrade Canada','Organic Canada'],
-            brands:['Tim Hortons','49th Parallel Roasters','Pilot Coffee','Sam James Coffee Bar']
-          },
-          'Australia': {
-            continent:'오세아니아', capital:'캔버라', role:'소비국 (스페셜티 선진국)',
-            prodRank:'생산 없음 (퀸즐랜드 소량 제외)',
-            annualProd:'—',
-            exportInfo:'약 300만 포대 수입',
-            harvest:'—',
-            cafeCulture:'멜버른 = 세계 커피 수도 후보. 플랫화이트(Flat White) 발상지. 카페 문화 세계 최고 수준. 바리스타 대회 강국',
-            desc:'호주는 세계에서 가장 발전된 카페 문화를 가진 나라 중 하나입니다. 멜버른의 Independent Cafe 씬은 스타벅스가 철수할 만큼 강력하며, 플랫화이트·매직·피콜로 라떼 등 독자적인 에스프레소 메뉴를 세계에 전파했습니다.',
-            regions:['멜버른(Melbourne)','시드니(Sydney)','브리즈번(Brisbane)'],
-            varietals:['수입 전 품종'],
-            processing:['에스프레소 기반 스페셜티'],
-            flavor:['미디엄 로스트','균형','플로럴·과일 스페셜티'],
-            certif:['ASCA(호주 커피 협회) 인증','Rainforest Alliance'],
-            brands:['Seven Seeds','ST. ALi','Market Lane','Proud Mary','Patricia Coffee Brewers']
-          },
-          'South_Korea': {
-            continent:'아시아', capital:'서울', role:'소비국 (아시아 스페셜티 선진국)',
-            prodRank:'생산 없음',
-            annualProd:'—',
-            exportInfo:'약 200만 포대 수입, 1인당 아시아 3위',
-            harvest:'—',
-            cafeCulture:'세계 최고 밀도의 카페 국가(서울 강남·홍대·성수). 달고나 커피 발상지. K-카페 문화 세계 수출. 커피 프랜차이즈 경쟁 세계 최고',
-            desc:'한국은 1인당 카페 수가 세계 최고 수준이며, 스페셜티 커피 교육·바리스타 문화가 매우 발달해 있습니다. 달고나 커피가 전 세계 SNS 트렌드를 만든 나라이며, 폴 바셋, 블루보틀, 프리츠 등 세계 최고급 브랜드가 집중되어 있습니다.',
-            regions:['서울 성수동','서울 홍대','제주도 카페 로드','부산 해운대'],
-            varietals:['수입 전 품종, Single Origin 선호'],
-            processing:['스페셜티 브루잉 집중'],
-            flavor:['라이트 로스트 선호','플로럴·과일','Clean Cup 추구'],
-            certif:['KCA(한국 커피 협회) 인증','SCA 인증 바리스타'],
-            brands:['빽다방','메가커피','폴 바셋(Paul Bassett)','프리츠(Fritz)','모모스커피']
-          },
           'China': {
-            continent:'아시아', capital:'베이징', role:'생산·소비국 (성장 중)',
-            prodRank:'생산: 세계 12위권 (윈난), 소비 급성장',
-            annualProd:'약 100만 포대 (윈난성, 급증 추세)',
-            exportInfo:'약 80만 포대 수출, 일본·EU로 수출',
+            type:'producer',
+            continent:'아시아', capital:'베이징', role:'생산·소비 급성장국',
+            prodRank:'세계 12위권 (윈난성 중심)',
+            annualProd:'약 100만 포대 (급증 추세)',
+            exportInfo:'약 80만 포대 수출 (일본·EU). 내수 소비 폭발적 성장',
             harvest:'11–3월 (윈난성)',
-            cafeCulture:'럭킨커피(Luckin Coffee) 돌풍. 20–30대 중심 스페셜티 씬 폭발적 성장. 상하이 세계 최다 카페 도시 등극(2023). 차(茶) 문화에서 커피 문화로 세대 전환',
-            desc:'중국 윈난성(雲南省)은 아라비카 재배 가능한 고도(1,000–2,000m)와 아열대 기후로 커피 생산지로 급부상하고 있습니다. 동시에 세계 최대 소비 성장 시장으로, 2030년까지 세계 최대 소비국이 될 것으로 전망됩니다.',
-            regions:['윈난성(Yunnan)','푸얼(Pu\'er)','린창(Lincang)','바오산(Baoshan)'],
+            cafeCulture:'럭킨커피(Luckin Coffee) 돌풍. 상하이 세계 최다 카페 도시(2023). 20–30대 스페셜티 씬 급성장. 차(茶) 문화에서 커피 문화로 세대 전환',
+            desc:'중국 윈난성(雲南省)은 1,000–2,000m 아열대 고원 기후로 아라비카 생산지로 급부상 중입니다. 동시에 세계 최대 소비 성장 시장으로, 2030년 세계 최대 소비국이 될 것으로 전망됩니다.',
+            regions:['윈난성(Yunnan)','푸얼(Puer)','린창(Lincang)','바오산(Baoshan)'],
             varietals:['Catimor','Bourbon','Typica — 윈난'],
             processing:['워시드','나추럴 — 윈난'],
             flavor:['밀크초콜릿','견과류','저산미','허브'],
             certif:['Rainforest Alliance — 일부','Organic — 일부'],
-            brands:['Luckin Coffee(瑞幸)','Manner Coffee','M Stand','Seesaw Coffee','Peet\'s Coffee China']
+            brands:['Luckin Coffee(瑞幸)','Manner Coffee','M Stand','Seesaw Coffee']
+          },
+          // ── 소비국 ────────────────────────────────────────────────────
+          'Japan': {
+            type:'consumer',
+            continent:'아시아', capital:'도쿄',
+            importVol:'약 700–800만 포대 (세계 3위 수입국)',
+            perCapita:'약 3.3kg/인·년',
+            desc:'일본은 킷사텐(喫茶店) 전통과 제3의 물결 스페셜티 씬이 공존하는 세계 최고 수준의 커피 소비국입니다. %Arabica·Blue Bottle·Fuglen이 아시아 첫 진출지로 선택한 나라이며, 세계 바리스타 챔피언십 강국입니다.',
+            mainOrigins:['브라질','콜롬비아','에티오피아','베트남','과테말라','인도네시아'],
+            coffeeStyle:['핸드드립 (V60·사이폰·케멕스)','아이스 캔커피','라테아트 에스프레소','킷사텐 블렌드 커피'],
+            specialtyScene:'도쿄·교토·오사카 세계 최고 수준 스페셜티 씬. %Arabica·Fuglen Tokyo·Blue Bottle Japan 아시아 첫 진출지. WBC 입상 다수 배출',
+            history:'1888년 도쿄 최초 카피하우스(可否茶館) 개업. 전후 킷사텐 문화 전성기. 1969년 UCC 세계 최초 캔커피 출시. 2000년대 스페셜티 혁명 도래',
+            drinkingCulture:'킷사텐(喫茶店) 나폴리탄+커피 세트 문화. 자판기 캔커피 일상화. 핸드드립·사이폰에 집착하는 장인 정신. 완벽한 서비스 카페 문화',
+            brands:['UCC 上島珈琲','Key Coffee','Doutor','Blue Bottle Coffee Japan','%Arabica']
+          },
+          'Italy': {
+            type:'consumer',
+            continent:'유럽', capital:'로마',
+            importVol:'약 400–500만 포대',
+            perCapita:'약 5.5kg/인·년 (유럽 최상위)',
+            desc:'이탈리아는 커피를 생산하지 않지만 에스프레소 문화를 세계에 전파한 나라입니다. Illy·Lavazza 세계적 브랜드 본거지이며, 나폴리식 에스프레소 바는 UNESCO 무형문화유산 후보입니다.',
+            mainOrigins:['브라질','베트남','콜롬비아','인도네시아','온두라스','인도'],
+            coffeeStyle:['에스프레소(Espresso)','카푸치노(Cappuccino — 오전限)','마키아토(Macchiato)','리스트레토(Ristretto)','비체린(Bicerin)','코레토(Corretto)'],
+            specialtyScene:'전통 에스프레소 바 씬 강세. 스페셜티 제3의 물결 태동 중 (로마·밀라노). 전통 vs. 스페셜티 공존 구도',
+            history:'17세기 베네치아 유럽 최초 커피하우스 개업. 1884년 토리노 에스프레소 머신 특허. 1933년 Bialetti 모카포트 발명. 1935년 Illy 창업. 전후 에스프레소 바 문화 세계 수출',
+            drinkingCulture:'서서 마시는 에스프레소 바 문화. 카푸치노는 오전에만 허용. 나폴리식 설탕 필수. 코레토(Corretto — 그라파 첨가). 바에서 에스프레소 1유로 이하',
+            brands:['Illy','Lavazza','Segafredo','Kimbo','Caffè Florian(베네치아)']
+          },
+          'USA': {
+            type:'consumer',
+            continent:'북아메리카', capital:'워싱턴 D.C.',
+            importVol:'약 2,400만 포대 (세계 1위)',
+            perCapita:'약 4.5kg/인·년',
+            desc:'세계 최대 커피 소비국. 스타벅스가 에스프레소 문화를 대중화하고, Blue Bottle·Intelligentsia·Stumptown이 스페셜티 혁명을 이끌었습니다. 하와이 코나(Kona)는 유일한 자국 상업 원산지입니다.',
+            mainOrigins:['콜롬비아','브라질','에티오피아','온두라스','과테말라','멕시코','페루'],
+            coffeeStyle:['드립 커피 (필터 커피)','에스프레소 기반 라테','콜드 브루(Cold Brew)','나이트로 커피(Nitro Cold Brew)','Pour Over'],
+            specialtyScene:'시애틀·포틀랜드·NYC·SF 제3의 물결 선도. SCA(스페셜티커피협회) 본부. Starbucks·Blue Bottle·Intelligentsia·Stumptown·Counter Culture 발원지',
+            history:'1773년 보스턴 차 사건 이후 커피가 애국 음료로 급부상. 1971년 시애틀 스타벅스 1호점. 1990년대 에스프레소 붐. 2000년대 스페셜티 혁명',
+            drinkingCulture:'투고(To-go) 컵·드라이브스루 문화. 대용량 사이즈(Venti·Trenta) 선호. 사무실 자동 드립 커피. 24시간 다이너 커피 문화',
+            brands:['Starbucks','Blue Bottle Coffee','Intelligentsia','Stumptown','Counter Culture']
+          },
+          'Canada': {
+            type:'consumer',
+            continent:'북아메리카', capital:'오타와',
+            importVol:'약 500만 포대',
+            perCapita:'약 6.5kg/인·년 (G7 최상위권)',
+            desc:'팀홀튼스가 지배하는 대중 커피 시장과 세계 수준의 스페셜티 씬이 공존합니다. 밴쿠버는 북미 스페셜티 커피 중심지 중 하나로 49th Parallel·Pilot Coffee가 세계적으로 알려져 있습니다.',
+            mainOrigins:['콜롬비아','브라질','에티오피아','과테말라','코스타리카'],
+            coffeeStyle:['더블더블(Double Double — 크림 2+설탕 2)','드립 커피','에스프레소 라테','아이스드 카푸치노','콜드 브루'],
+            specialtyScene:'밴쿠버·토론토 스페셜티 씬 세계 수준. 49th Parallel·Pilot Coffee·Sam James 글로벌 명성. 캐나다 바리스타 챔피언십 강국',
+            history:'18세기 영국 식민지 시절 커피하우스 전래. 1964년 온타리오에서 팀홀튼스(Tim Hortons) 창업 (하키 선수 팀 호턴). 캐나다 국민 커피 아이콘으로 성장. 2000년대 스페셜티 씬 부상',
+            drinkingCulture:'팀홀튼스 드라이브스루 국민 의식. Double Double 캐나다만의 주문어. 추운 기후 덕에 뜨거운 커피 연중 소비. Timbits + 커피 세트 문화',
+            brands:['Tim Hortons','49th Parallel Roasters','Pilot Coffee','Sam James Coffee Bar','Revolver Coffee']
+          },
+          'Australia': {
+            type:'consumer',
+            continent:'오세아니아', capital:'캔버라',
+            importVol:'약 250–300만 포대',
+            perCapita:'약 3.0kg/인·년',
+            desc:'세계에서 카페 문화가 가장 발달한 나라 중 하나입니다. 멜버른은 스타벅스가 철수할 만큼 강력한 독립 카페 씬을 보유하고 있으며, Flat White·Magic·Piccolo Latte 등 독자 메뉴를 세계에 전파했습니다.',
+            mainOrigins:['에티오피아','케냐','콜롬비아','인도네시아','파푸아뉴기니','코스타리카'],
+            coffeeStyle:['플랫화이트(Flat White)','롱블랙(Long Black)','매직(Magic — 3/4 플랫화이트)','피콜로 라테(Piccolo Latte)','쇼트 블랙(Short Black)'],
+            specialtyScene:'멜버른 세계 커피 수도 후보. 독립 카페 씬 압도적 강세 (스타벅스 호주 철수). Seven Seeds·ST. ALi·Market Lane·Proud Mary 세계 수준',
+            history:'20세기 초 이탈리아 이민자가 에스프레소 바 전파. 1950년대 멜버른 에스프레소 붐. 1980년대 Flat White·Long Black 자체 메뉴 개발. 2000년대 세계 최고 카페 씬 완성',
+            drinkingCulture:'체인보다 독립 카페(Independent Cafe) 압도적 선호. 바리스타 기술과 원두 품질에 매우 엄격한 소비자. 브런치 카페 문화. 모닝 커피 = 하루 시작 의식',
+            brands:['Seven Seeds','ST. ALi','Market Lane','Proud Mary','Patricia Coffee Brewers']
+          },
+          'South_Korea': {
+            type:'consumer',
+            continent:'아시아', capital:'서울',
+            importVol:'약 200만 포대',
+            perCapita:'약 3.1kg/인·년 (아시아 3위)',
+            desc:'1인당 카페 수 세계 최고 수준. 스페셜티 교육·바리스타 문화가 매우 발달해 있습니다. 달고나 커피로 전 세계 SNS 트렌드를 만든 나라이며, 폴 바셋·프리츠·모모스 등 세계 수준의 스페셜티 브랜드가 밀집해 있습니다.',
+            mainOrigins:['에티오피아','콜롬비아','케냐','과테말라','브라질','코스타리카'],
+            coffeeStyle:['아이스 아메리카노 (압도적 1위 — "아아")','달고나 커피','에스프레소 라테','핸드드립','더치 커피(콜드 브루)'],
+            specialtyScene:'서울 성수·홍대·강남 세계 최고 밀도 카페 씬. 폴 바셋·프리츠·모모스·테라로사·커피리브레 세계 수준. WBC(세계 바리스타 챔피언십) 입상 다수',
+            history:'1896년 고종황제 커피 음용 최초 기록. 한국전쟁 후 미군 PX 통해 인스턴트 커피 대중화. 1999년 스타벅스 진출로 원두 커피 붐. 2010년대 스페셜티 혁명 및 카페 공화국화',
+            drinkingCulture:'아이스 아메리카노 사계절 음용("아아"). SNS 인증샷 카페 문화. 카페 공부(카공) 문화. 24시간 카페. 달고나·흑당 트렌드 세계 수출',
+            brands:['빽다방','메가커피','폴 바셋(Paul Bassett)','프리츠(Fritz)','모모스커피(MOMOS)']
           },
           'UK': {
-            continent:'유럽', capital:'런던', role:'소비국 (스페셜티 선진국)',
-            prodRank:'생산 없음',
-            annualProd:'—',
-            exportInfo:'약 250–300만 포대 수입',
-            harvest:'—',
-            cafeCulture:'런던 스페셜티 씬 세계 최고 수준. Monmouth Coffee, Square Mile, Workshop. 테이크아웃 컵 문화. 플랫화이트 영국 정착. 클래식 카페테리아(Caff) 문화',
-            desc:'영국은 역사적으로 차(Tea) 문화 국가였으나 현재는 런던을 중심으로 세계 최고 수준의 스페셜티 커피 씬을 보유하고 있습니다. 런던 이스트 엔드·쇼디치의 Independent Roaster들이 유럽 스페셜티 트렌드를 선도하고 있습니다.',
-            regions:['런던(London)','맨체스터(Manchester)','에든버러(Edinburgh)'],
-            varietals:['수입 전 품종'],
-            processing:['스페셜티 브루잉 문화'],
-            flavor:['미디엄–라이트 로스트','플로럴·과일','스페셜티 Single Origin'],
-            certif:['Fairtrade UK','Rainforest Alliance','SCA 교육 강국'],
+            type:'consumer',
+            continent:'유럽', capital:'런던',
+            importVol:'약 250–300만 포대',
+            perCapita:'약 2.8kg/인·년',
+            desc:'역사적 차(Tea) 문화 국가에서 세계 최고 수준의 스페셜티 커피 씬으로 전환한 나라입니다. 런던 쇼디치·클라켄웰의 독립 로스터들이 유럽 스페셜티 트렌드를 선도하고 있습니다.',
+            mainOrigins:['에티오피아','콜롬비아','케냐','코스타리카','과테말라','브라질'],
+            coffeeStyle:['플랫화이트(Flat White)','카푸치노','아메리카노','에스프레소','핸드드립 필터 커피'],
+            specialtyScene:'런던 쇼디치·클라켄웰 세계 최고 스페셜티 씬. Monmouth Coffee·Square Mile·Workshop·Nude Espresso. SCA(스페셜티커피협회) 유럽 허브',
+            history:'1652년 런던 최초 커피하우스 개업. 17–18세기 커피하우스가 Lloyd\'s 보험·런던 증권거래소 발상지. 18세기 차(Tea) 문화로 전환. 2000년대 에스프레소 재도입. 2010년대 스페셜티 폭발',
+            drinkingCulture:'런던 테이크어웨이 컵 문화. 오피스 카푸치노 문화. 독립 카페 씬 강세. 전통 영국식 카페(Greasy Spoon Caff) vs. 현대 스페셜티 공존',
             brands:['Monmouth Coffee','Square Mile Coffee','Workshop Coffee','Nude Espresso','Taylor Street Baristas']
           },
         };
