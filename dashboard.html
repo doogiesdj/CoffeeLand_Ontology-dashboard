@@ -1116,6 +1116,11 @@
         .map-legend-item { display: flex; align-items: center; gap: 0.35rem; font-size: 0.74rem; color: var(--text-secondary); }
         .map-legend-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
         .map-status-bar { font-size: 0.78rem; color: #2c3e50; font-weight: 500; margin-top: 0.2rem; min-height: 1.1em; }
+        .map-route-btn { padding: 0.35rem 0.85rem; font-size: 0.78rem; font-weight: 600; border-radius: 6px; border: 1.5px solid #6366f1; background: transparent; color: #6366f1; cursor: pointer; transition: all .2s; white-space: nowrap; }
+        .map-route-btn:hover { background: #6366f1; color: #fff; }
+        .map-route-btn.active { background: #6366f1; color: #fff; border-color: #6366f1; }
+        .map-legend-line { width: 24px; height: 3px; border-radius: 2px; flex-shrink: 0; }
+        .leaflet-tooltip.route-tooltip { background: #1e293b; color: #f1f5f9; border: 1px solid #334155; border-radius: 5px; font-size: 0.72rem; padding: 3px 8px; box-shadow: 0 2px 8px rgba(0,0,0,.35); }
         .map-entity-popup-name { font-weight: 700; font-size: 0.88rem; color: #1e293b; }
         .map-entity-popup-meta { color: #475569; font-size: 0.75rem; margin-top: 0.15rem; }
         .map-entity-popup-btn { margin-top: 0.5rem; padding: 0.28rem 0.7rem; background: #4f46e5; border: none; border-radius: 4px; color: #fff; cursor: pointer; font-size: 0.75rem; width: 100%; font-weight: 600; }
@@ -1560,15 +1565,23 @@
                 <div id="locationMapPanel">
                     <div class="card" style="overflow:hidden; padding:0;">
                         <div class="card-header" style="padding:0.85rem 1.25rem 0.6rem;">
-                            <h2 class="card-title"><i class="fas fa-globe-asia"></i> Interactive World Map</h2>
+                            <div style="display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;">
+                                <h2 class="card-title" style="margin:0;"><i class="fas fa-globe-asia"></i> Interactive World Map</h2>
+                                <button id="tradeRouteBtn" class="map-route-btn" onclick="toggleTradeRoutes()">
+                                    <i class="fas fa-route"></i> 수송 경로 표시
+                                </button>
+                            </div>
                             <div class="map-status-bar" id="mapStatusBar">국가를 클릭하면 해당 지역으로 확대됩니다</div>
                         </div>
                         <div id="locationMapContainer"></div>
-                        <div class="map-legend">
+                        <div class="map-legend" id="mapLegend">
                             <div class="map-legend-item"><div class="map-legend-dot" style="background:#3b82f6;"></div> 도시(City)</div>
                             <div class="map-legend-item"><div class="map-legend-dot" style="background:#22c55e;"></div> 농장(Farm)</div>
                             <div class="map-legend-item"><div class="map-legend-dot" style="background:#f97316;"></div> 항구(Port)</div>
                             <div class="map-legend-item"><div class="map-legend-dot" style="background:#a855f7;"></div> 창고(Warehouse)</div>
+                            <div class="map-legend-item route-legend-item" style="display:none;"><div class="map-legend-line" style="background:#22c55e;"></div> 육상(수출)</div>
+                            <div class="map-legend-item route-legend-item" style="display:none;"><div class="map-legend-line" style="background:#3b82f6;"></div> 해상</div>
+                            <div class="map-legend-item route-legend-item" style="display:none;"><div class="map-legend-line" style="background:#f59e0b;"></div> 육상(배송)</div>
                         </div>
                     </div>
                 </div>
@@ -3086,6 +3099,8 @@
         let _locCountryLayer = null;
         let _locHighlighted = null;
         let _locAllMarkerObjs = {}; // name → marker
+        let _locRouteLayer = null;
+        let _locRoutesVisible = false;
 
         function _makeMarkerIcon(color, emoji) {
           return L.divIcon({
@@ -4327,6 +4342,161 @@
             notes:'황색과일, 캐러멜, 헤이즐넛, 다크초콜릿, 낮은 산미'
           },
         };
+
+        // ============================================================
+        // TRADE ROUTES — coffee supply chain transport paths
+        // land_export: farm → export port  (green dashed)
+        // sea:         export port → import port  (blue solid, with canal waypoints)
+        // land_import: import port → warehouse  (orange dashed)
+        // ============================================================
+        window.TRADE_ROUTES = {
+          land_export: [
+            // Colombia
+            { from:[1.21,-77.28],  to:[3.90,-77.03],  label:'Nariño Farm → Buenaventura' },
+            { from:[2.54,-75.53],  to:[3.90,-77.03],  label:'Huila Farm → Buenaventura' },
+            { from:[6.25,-75.57],  to:[10.42,-75.53], label:'Antioquia Farm → Cartagena' },
+            { from:[4.71,-74.07],  to:[3.90,-77.03],  label:'Bogotá → Buenaventura' },
+            // Brazil
+            { from:[-22.90,-47.06], to:[-23.95,-46.34], label:'São Paulo Farm → Santos' },
+            { from:[-20.83,-43.77], to:[-23.95,-46.34], label:'Minas Gerais Farm → Santos' },
+            { from:[-19.19,-40.34], to:[-23.95,-46.34], label:'Espírito Santo Farm → Santos' },
+            // Ethiopia
+            { from:[5.88,38.26],  to:[9.03,38.75],   label:'Sidamo Farm → Addis Ababa' },
+            { from:[6.16,38.21],  to:[9.03,38.75],   label:'Yirgacheffe Farm → Addis Ababa' },
+            { from:[9.03,38.75],  to:[11.60,43.15],  label:'Addis Ababa → Djibouti' },
+            { from:[9.31,42.12],  to:[11.60,43.15],  label:'Harrar Farm → Djibouti' },
+            // Kenya
+            { from:[-0.42,36.95], to:[-1.29,36.82],  label:'Nyeri Farm → Nairobi' },
+            { from:[-1.03,36.80], to:[-1.29,36.82],  label:'Kiambu Farm → Nairobi' },
+            { from:[-1.29,36.82], to:[-4.04,39.67],  label:'Nairobi → Mombasa' },
+            { from:[-3.35,37.34], to:[-4.04,39.67],  label:'Kilimanjaro Farm → Mombasa' },
+            { from:[-2.59,29.74], to:[-1.29,36.82],  label:'Western Province Farm → Nairobi' },
+            // Vietnam
+            { from:[12.67,108.04], to:[10.77,106.70], label:'Dak Lak Farm → HCMC Port' },
+            { from:[11.57,108.19], to:[10.77,106.70], label:'Lam Dong Farm → HCMC Port' },
+            // Indonesia
+            { from:[4.69,96.75],  to:[3.79,98.68],   label:'Sumatra Farm → Belawan' },
+            { from:[3.79,98.68],  to:[1.26,103.82],  label:'Belawan → Singapore' },
+            { from:[-8.06,114.24],to:[-6.10,106.88], label:'Java Farm → Tanjung Priok' },
+            { from:[-6.10,106.88],to:[1.26,103.82],  label:'Tanjung Priok → Singapore' },
+            // Guatemala & Honduras
+            { from:[14.56,-90.73], to:[13.93,-90.80], label:'Antigua Farm → Pto. Quetzal' },
+            { from:[15.32,-91.47], to:[13.93,-90.80], label:'Huehuetenango Farm → Pto. Quetzal' },
+            { from:[14.84,-89.15], to:[15.85,-87.95], label:'Copan Farm → Pto. Cortés' },
+            { from:[13.09,-85.99], to:[15.85,-87.95], label:'Jinotega Farm → Pto. Cortés' },
+            // Costa Rica
+            { from:[9.95,-84.15],  to:[9.90,-84.72],  label:'West Valley Farm → Caldera' },
+            { from:[9.60,-83.90],  to:[9.90,-84.72],  label:'Tarrazú Farm → Caldera' },
+            // Peru
+            { from:[-7.16,-78.50], to:[-12.05,-77.12], label:'Cajamarca Farm → Callao' },
+          ],
+          sea: [
+            // Brazil Santos → Europe
+            { from:[-23.95,-46.34], waypoints:[[-5,0],[35.98,-5.35]], to:[53.55,9.99],   label:'Santos → Hamburg', type:'sea' },
+            { from:[-23.95,-46.34], waypoints:[[-5,0],[35.98,-5.35]], to:[51.92,4.49],   label:'Santos → Rotterdam', type:'sea' },
+            { from:[-23.95,-46.34], waypoints:[[-5,0],[35.98,-5.35]], to:[51.22,4.40],   label:'Santos → Antwerp', type:'sea' },
+            // Brazil Santos → USA
+            { from:[-23.95,-46.34], waypoints:[[10,-60],[20,-80]], to:[29.94,-90.07],  label:'Santos → New Orleans', type:'sea' },
+            // Colombia → USA (Pacific via Panama)
+            { from:[3.90,-77.03],  waypoints:[[9.38,-79.92],[9.38,-79.08],[13,-85]], to:[29.94,-90.07], label:'Buenaventura → New Orleans (Panama)', type:'sea' },
+            { from:[3.90,-77.03],  waypoints:[[9.38,-79.92],[9.38,-79.08],[15,-100],[25,-110]], to:[33.75,-118.19], label:'Buenaventura → Long Beach', type:'sea' },
+            // Colombia Caribbean → Europe
+            { from:[10.42,-75.53], waypoints:[[15,-65],[35.98,-5.35]], to:[53.55,9.99],  label:'Cartagena → Hamburg', type:'sea' },
+            { from:[10.42,-75.53], waypoints:[[15,-65],[35.98,-5.35]], to:[44.41,8.93],  label:'Cartagena → Genoa', type:'sea' },
+            // Ethiopia/Kenya Mombasa → Europe (Suez)
+            { from:[11.60,43.15],  waypoints:[[12.60,43.40],[15,42],[27.92,32.55],[30.02,32.55],[31.5,32.5],[35,27]], to:[53.55,9.99],  label:'Djibouti → Hamburg (Suez)', type:'sea' },
+            { from:[11.60,43.15],  waypoints:[[12.60,43.40],[15,42],[27.92,32.55],[30.02,32.55],[31.5,32.5],[35,27],[36,20]], to:[51.92,4.49],  label:'Djibouti → Rotterdam (Suez)', type:'sea' },
+            { from:[11.60,43.15],  waypoints:[[12.60,43.40],[15,42],[27.92,32.55],[30.02,32.55],[31.5,32.5],[35,27],[37,18]], to:[44.41,8.93],  label:'Djibouti → Genoa (Suez)', type:'sea' },
+            { from:[-4.04,39.67],  waypoints:[[2,45],[11.60,43.15],[12.60,43.40],[27.92,32.55],[30.02,32.55],[35.98,-5.35]], to:[51.22,4.40],  label:'Mombasa → Antwerp (Suez)', type:'sea' },
+            { from:[-4.04,39.67],  waypoints:[[2,45],[11.60,43.15],[12.60,43.40],[27.92,32.55],[30.02,32.55],[35.98,-5.35]], to:[51.96,1.35],  label:'Mombasa → Felixstowe', type:'sea' },
+            // Central America → USA
+            { from:[13.93,-90.80], waypoints:[[8,-85],[15,-90],[20,-87]], to:[29.94,-90.07], label:'Pto. Quetzal → New Orleans', type:'sea' },
+            { from:[15.85,-87.95], waypoints:[[20,-85],[22,-82]], to:[29.94,-90.07], label:'Pto. Cortés → New Orleans', type:'sea' },
+            { from:[9.90,-84.72],  waypoints:[[9.38,-79.92],[9.38,-79.08],[15,-85]], to:[29.94,-90.07], label:'Caldera → New Orleans (Panama)', type:'sea' },
+            // Peru → USA/Europe
+            { from:[-12.05,-77.12], waypoints:[[-5,-80],[10,-90],[20,-100]], to:[33.75,-118.19], label:'Callao → Long Beach', type:'sea' },
+            { from:[-12.05,-77.12], waypoints:[[9.38,-79.92],[9.38,-79.08],[10,-60],[20,-60],[35.98,-5.35]], to:[53.55,9.99], label:'Callao → Hamburg (Panama)', type:'sea' },
+            // Vietnam/Singapore → Asia-Pacific
+            { from:[10.77,106.70], waypoints:[[1.26,103.82],[5,108],[15,120]], to:[35.62,139.78], label:'HCMC → Tokyo', type:'sea' },
+            { from:[10.77,106.70], waypoints:[[1.26,103.82],[5,110],[20,125]], to:[35.10,129.04], label:'HCMC → Busan', type:'sea' },
+            { from:[10.77,106.70], waypoints:[[1.26,103.82],[-5,115],[-20,130]], to:[-33.86,151.21], label:'HCMC → Sydney', type:'sea' },
+            // Vietnam/Singapore → USA (Trans-Pacific)
+            { from:[1.26,103.82],  waypoints:[[5,120],[20,140],[35,155],[40,160]], to:[33.75,-118.19], label:'Singapore → Long Beach (Pacific)', type:'sea' },
+            // Singapore → Europe (Suez)
+            { from:[1.26,103.82],  waypoints:[[5,90],[10,65],[15,50],[27.92,32.55],[30.02,32.55],[35,27]], to:[53.55,9.99], label:'Singapore → Hamburg (Suez)', type:'sea' },
+          ],
+          land_import: [
+            // Germany
+            { from:[53.55,9.99],   to:[53.58,10.02],  label:'Hamburg Port → Hamburg Warehouse' },
+            // Netherlands
+            { from:[51.92,4.49],   to:[51.93,4.47],   label:'Rotterdam Port → Rotterdam Warehouse' },
+            { from:[51.92,4.49],   to:[52.37,4.90],   label:'Rotterdam Port → Amsterdam Warehouse' },
+            // Belgium
+            { from:[51.22,4.40],   to:[51.23,4.42],   label:'Antwerp Port → Antwerp Warehouse' },
+            // Italy
+            { from:[44.41,8.93],   to:[44.40,8.93],   label:'Genoa Port → Genoa Warehouse' },
+            // Spain
+            { from:[39.45,-0.33],  to:[39.47,-0.38],  label:'Valencia Port → Valencia Warehouse' },
+            { from:[39.45,-0.33],  to:[41.36,2.17],   label:'Valencia Port → Barcelona Warehouse' },
+            // UK
+            { from:[51.96,1.35],   to:[51.96,1.36],   label:'Felixstowe Port → Felixstowe Warehouse' },
+            // USA
+            { from:[33.75,-118.19],to:[33.76,-118.20], label:'Long Beach Port → LB Warehouse' },
+            { from:[33.75,-118.19],to:[47.61,-122.33], label:'Long Beach → Seattle Warehouse' },
+            { from:[29.94,-90.07], to:[29.96,-90.07],  label:'New Orleans Port → NOLA Warehouse' },
+            { from:[29.94,-90.07], to:[25.78,-80.23],  label:'New Orleans → Miami Warehouse' },
+            // Japan
+            { from:[35.62,139.78], to:[35.63,139.79],  label:'Tokyo Port → Tokyo Warehouse' },
+            // South Korea
+            { from:[35.10,129.04], to:[35.11,129.05],  label:'Busan Port → Busan Warehouse' },
+            // Australia
+            { from:[-33.86,151.21],to:[-33.90,151.21], label:'Sydney Port → Sydney Warehouse' },
+            { from:[-33.86,151.21],to:[-37.82,144.93], label:'Sydney Port → Melbourne Warehouse' },
+            // Singapore
+            { from:[1.26,103.82],  to:[1.26,103.79],   label:'Singapore Port → Singapore Warehouse' },
+          ]
+        };
+
+        function toggleTradeRoutes() {
+          if (!_locMap) return;
+          _locRoutesVisible = !_locRoutesVisible;
+          const btn = document.getElementById('tradeRouteBtn');
+          const legendItems = document.querySelectorAll('.route-legend-item');
+
+          if (_locRoutesVisible) {
+            // Draw routes
+            if (_locRouteLayer) _locRouteLayer.remove();
+            _locRouteLayer = L.layerGroup().addTo(_locMap);
+
+            const routes = window.TRADE_ROUTES;
+            const landStyle  = { color:'#22c55e', weight:1.8, opacity:0.85, dashArray:'7,5' };
+            const seaStyle   = { color:'#3b82f6', weight:2.0, opacity:0.80 };
+            const distStyle  = { color:'#f59e0b', weight:1.8, opacity:0.85, dashArray:'7,5' };
+
+            // Land export (green dashed)
+            (routes.land_export || []).forEach(r => {
+              const pts = [r.from, ...(r.waypoints||[]), r.to];
+              L.polyline(pts, landStyle).bindTooltip(r.label, {sticky:true, className:'route-tooltip'}).addTo(_locRouteLayer);
+            });
+            // Sea (blue solid)
+            (routes.sea || []).forEach(r => {
+              const pts = [r.from, ...(r.waypoints||[]), r.to];
+              L.polyline(pts, seaStyle).bindTooltip(r.label, {sticky:true, className:'route-tooltip'}).addTo(_locRouteLayer);
+            });
+            // Land import (orange dashed)
+            (routes.land_import || []).forEach(r => {
+              const pts = [r.from, ...(r.waypoints||[]), r.to];
+              L.polyline(pts, distStyle).bindTooltip(r.label, {sticky:true, className:'route-tooltip'}).addTo(_locRouteLayer);
+            });
+
+            if (btn) { btn.classList.add('active'); btn.innerHTML = '<i class="fas fa-route"></i> 수송 경로 숨기기'; }
+            legendItems.forEach(el => el.style.display = 'flex');
+          } else {
+            if (_locRouteLayer) { _locRouteLayer.remove(); _locRouteLayer = null; }
+            if (btn) { btn.classList.remove('active'); btn.innerHTML = '<i class="fas fa-route"></i> 수송 경로 표시'; }
+            legendItems.forEach(el => el.style.display = 'none');
+          }
+        }
 
         // ============================================================
         // HARVEST DATA — 14 coffee-growing regions, annual production (thousands of 60kg bags), 2000-2023
