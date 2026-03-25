@@ -2369,6 +2369,7 @@
             const isBeverage = className.toLowerCase().includes('beverage') || className.toLowerCase().includes('menu');
             const isFarm     = className.toLowerCase().includes('farm');
             const isCityInst = className.toLowerCase() === 'city';
+            const isPortInst = className.toLowerCase() === 'port';
 
             if (isCityInst) {
                 // ── City detail view (uses CITY_DATA lookup table) ────────
@@ -2412,6 +2413,49 @@
                 if (culture) html += `<div class="bev-info-item full">🎭 커피 문화&nbsp; <span>${culture}</span></div>`;
                 if (history) html += `<div class="bev-info-item full">📜 커피 역사&nbsp; <span>${history}</span></div>`;
                 if (style)   html += `<div class="bev-info-item full">🫗 대표 커피 스타일&nbsp; <span>${style}</span></div>`;
+
+                html += `</div>`;
+                modalBody.innerHTML = html;
+
+            } else if (isPortInst) {
+                // ── Port detail view (uses PORT_DATA lookup table) ────────
+                const pd = (window.PORT_DATA && window.PORT_DATA[instance.name]) || {};
+
+                const country   = pd.country   || '—';
+                const continent = pd.continent || '—';
+                const capacity  = pd.capacity  || null;
+                const type      = pd.type      || '—';
+                const desc      = pd.desc      || null;
+                const role      = pd.role      || [];
+                const coffee    = pd.coffee    || null;
+                const history   = pd.history   || null;
+                const partners  = pd.partners  || [];
+
+                let html = '';
+
+                html += `<div class="bev-stats">`;
+                html += `<div class="bev-stat"><div class="bev-stat-val">${country}</div><div class="bev-stat-lbl">🌍 국가</div></div>`;
+                html += `<div class="bev-stat"><div class="bev-stat-val">${continent}</div><div class="bev-stat-lbl">🗺️ 대륙</div></div>`;
+                html += `<div class="bev-stat"><div class="bev-stat-val">${type}</div><div class="bev-stat-lbl">⚓ 유형</div></div>`;
+                html += `<div class="bev-stat"><div class="bev-stat-val">${capacity || '—'}</div><div class="bev-stat-lbl">📦 처리량</div></div>`;
+                html += `</div>`;
+
+                if (desc) html += `<div class="bev-desc">${desc}</div>`;
+
+                html += `<div class="bev-info-grid">`;
+
+                if (role.length) {
+                    html += `<div class="bev-info-item full">☕ 커피 무역 역할&nbsp;
+                        <span class="bev-tag-row">${role.map(r => `<span class="bev-tag">${r}</span>`).join('')}</span>
+                    </div>`;
+                }
+                if (coffee)   html += `<div class="bev-info-item full">🫘 커피 물류 현황&nbsp; <span>${coffee}</span></div>`;
+                if (history)  html += `<div class="bev-info-item full">📜 커피 역사&nbsp; <span>${history}</span></div>`;
+                if (partners.length) {
+                    html += `<div class="bev-info-item full">🤝 주요 연계 산지·로스터&nbsp;
+                        <span class="bev-tag-row">${partners.map(p => `<span class="bev-tag">${p}</span>`).join('')}</span>
+                    </div>`;
+                }
 
                 html += `</div>`;
                 modalBody.innerHTML = html;
@@ -2592,6 +2636,148 @@
         }
 
         // ============================================================
+        // ============================================================
+        // PORT DATA — geographic + coffee trade info for 15 ports
+        // Keys match instance.name (instanceDetails key)
+        // ============================================================
+        window.PORT_DATA = {
+          'Port_Santos': {
+            country:'Brazil', continent:'South America', capacity:'약 4.5M TEU/년',
+            type:'커피 수출항',
+            desc:'브라질 상파울루 주 해안의 항구 도시. 세계 최대 커피 생산국 브라질의 심장부이자 역사적으로 "세계의 커피 수출 수도"로 불린 항구.',
+            role:['세계 최대 커피 수출항 (역사적)','브라질 원두 전 세계 공급 관문','19~20세기 글로벌 커피 경제 중심'],
+            coffee:'현재도 브라질 커피 수출의 약 40~50%가 산투스 항을 통해 이루어집니다. 연간 수출량은 약 3,000만 포대(60kg 기준) 규모. 미나스 제라이스·상파울루·에스피리투 산투 주의 원두가 철도·도로로 집산됩니다.',
+            history:'1867년 상파울루-산투스 철도 개통으로 내륙 커피가 항구로 집산. 1900년대 초 전 세계 커피 공급량의 70%를 담당하며 "커피 항구(Porto do Café)"라는 별칭 획득. 1922년 건립된 Bolsa do Café(커피 거래소)는 현재 커피 박물관(Museu do Café)으로 운영 중.',
+            partners:['Minas Gerais 농장','Sul de Minas 생산자','Cooxupé(세계 최대 커피 협동조합)','Volcafé','Neumann Kaffee Gruppe']
+          },
+          'Port_Hamburg': {
+            country:'Germany', continent:'Europe', capacity:'약 9.7M TEU/년',
+            type:'커피 수입·유통항',
+            desc:'독일 북부 엘베 강 하구의 유럽 제2의 컨테이너 항구. "독일의 관문"이라 불리며, 유럽 최대 커피 무역 도시 중 하나입니다.',
+            role:['유럽 최대 커피 무역항','독일 커피 로스터 원두 공급 허브','커피 선물 거래 중심지'],
+            coffee:'함부르크는 유럽 최대 커피 수입·가공 도시로, 연간 약 100만 톤의 생두가 이 항구를 통해 유통됩니다. 전 세계 커피 거래량의 약 15%가 함부르크를 경유합니다. Tchibo·Jacobs·Melitta 등 독일 대형 로스터들이 함부르크와 긴밀히 연결되어 있습니다.',
+            history:'17세기부터 커피 무역 중심지. 1887년 Deutsche Kaffee-Verband(독일 커피 협회) 창설. 함부르크 커피 거래소(Hamburg Coffee Exchange)는 19세기부터 유럽 커피 선물 시장의 핵심. 2차 세계대전 이후 유럽 재건 과정에서 커피 수입 최대 거점으로 부상.',
+            partners:['브라질 Santos','콜롬비아 Buenaventura','베트남 HoChiMinh','Ethiopia ECX','Tchibo','Jacobs Douwe Egberts','Hamburg Coffee Exchange']
+          },
+          'Port_Rotterdam': {
+            country:'Netherlands', continent:'Europe', capacity:'약 15.3M TEU/년 (유럽 1위)',
+            type:'커피 수입·환적항',
+            desc:'라인-뫼즈-스헬더 강 하구의 유럽 최대 항구. "유럽의 관문(Gateway to Europe)"으로 불리며, 전 세계 물류의 핵심 허브입니다.',
+            role:['유럽 최대 컨테이너 항구','커피 환적 1번지','유럽 내 커피 재분배 허브'],
+            coffee:'로테르담은 유럽으로 들어오는 커피의 최대 환적 거점입니다. 연간 약 50만 톤 이상의 생두·가공두가 통과하며, 네덜란드는 유럽 최대 커피 재수출국입니다. Amsterdam의 커피 선물 시장(ICE Futures Europe)과 연계해 글로벌 커피 가격 형성에 직접 영향을 줍니다.',
+            history:'네덜란드 동인도 회사(VOC)가 1696년 자바(인도네시아)에 커피를 이식해 유럽에 공급한 역사. 암스테르담이 17~18세기 세계 커피 무역의 중심이었으며, 로테르담이 그 역할을 계승. 현재도 암스테르담 커피 거래소와 로테르담 항만이 유럽 커피 시장을 지배.',
+            partners:['브라질','베트남','콜롬비아','인도네시아','Jacobs Douwe Egberts 본사(Utrecht)','Sucafina','Ecom Coffee Group']
+          },
+          'Port_Antwerp': {
+            country:'Belgium', continent:'Europe', capacity:'약 13.5M TEU/년 (유럽 2위)',
+            type:'커피 수입·가공항',
+            desc:'스헬더 강변의 벨기에 최대 항구이자 유럽 제2의 컨테이너 항구. 다이아몬드·초콜릿과 함께 커피가 앤트워프의 3대 무역 상품입니다.',
+            role:['유럽 아프리카산 커피 수입 핵심 항','벨기에 커피 가공 산업 허브','Fair Trade 아프리카 커피 주요 경유지'],
+            coffee:'앤트워프는 아프리카(에티오피아·케냐·르완다·탄자니아·DR콩고)에서 오는 커피의 유럽 진입 관문입니다. 항구 인근에 대형 커피 창고·가공 시설이 밀집해 있으며, 벨기에의 공정무역 커피 문화(Oxfam Belgium 등)와 연계된 소싱이 활발합니다.',
+            history:'중세 시대부터 유럽 최대 무역항. 19세기 벨기에 식민지(콩고)를 통한 아프리카 커피 무역 시작. 20세기 이후 아프리카 스페셜티 커피 수입의 유럽 관문으로 특화. 벨기에의 초콜릿·커피 페어링 문화와 시너지.',
+            partners:['에티오피아 ECX','르완다 NAEB','케냐 NCE','Sucafina Europe','Olam Coffee','Barry Callebaut (초콜릿-커피 복합 무역)']
+          },
+          'Port_Genoa': {
+            country:'Italy', continent:'Europe', capacity:'약 3.2M TEU/년',
+            type:'커피 수입항',
+            desc:'리구리아 해안 이탈리아 북서부의 역사적 항구 도시. 중세 무역 공화국의 유산을 지닌 이탈리아 최대 항구 중 하나.',
+            role:['이탈리아 최대 커피 수입항','이탈리아 에스프레소 원두 공급 관문','지중해 커피 무역 허브'],
+            coffee:'제노바는 이탈리아로 들어오는 커피의 주요 입항지입니다. 이탈리아는 세계 최대 에스프레소 소비국 중 하나로, 연간 약 60만 톤의 생두를 수입합니다. 그 중 상당 부분이 제노바·트리에스테를 통해 입항 후 이탈리아 전국 로스터리로 분배됩니다.',
+            history:'14~16세기 제노바 공화국이 지중해 무역을 주도하며 아랍 커피 무역의 유럽 창구 역할. 18세기 커피하우스(Caffè) 문화가 이탈리아 전역으로 확산되는 데 기여. Lavazza(토리노)·Illy(트리에스테) 등 이탈리아 커피 기업들이 제노바·트리에스테 항구와 역사적으로 연계.',
+            partners:['브라질','콜롬비아','에티오피아','베트남','Lavazza','illycaffè','Segafredo Zanetti']
+          },
+          'Port_Valencia': {
+            country:'Spain', continent:'Europe', capacity:'약 5.5M TEU/년 (지중해 1위)',
+            type:'커피 수입·유통항',
+            desc:'스페인 동부 지중해 연안의 최대 항구 도시. 지중해 최대 컨테이너 항구로, 유럽·북아프리카·중동 연결의 핵심 물류 허브.',
+            role:['지중해 최대 컨테이너 항구','스페인 커피 수입 1번지','중남미·아프리카 커피 유럽 진입 관문'],
+            coffee:'발렌시아는 스페인 최대 커피 수입 항구입니다. 스페인은 연간 약 35만 톤의 커피를 수입하는 유럽 주요 소비국으로, 발렌시아 항구를 통해 브라질·콜롬비아·베트남 원두가 대량 입항합니다. Marcilla·Bonka 등 스페인 대형 로스터 공급망의 핵심.',
+            history:'18세기 스페인 식민지 무역 시대에 중남미 커피의 유럽 수입 창구로 성장. 19세기 쿠바·푸에르토리코 커피 산업과 긴밀히 연계. 스페인 특유의 "카페 꼰 레체(Café con Leche)" 문화와 함께 발전한 커피 수입 역사.',
+            partners:['브라질','콜롬비아','온두라스','베트남','Marcilla Coffee','Nestlé España','Jacobs (스페인 유통)']
+          },
+          'Port_Mombasa': {
+            country:'Kenya', continent:'Africa', capacity:'약 1.7M TEU/년',
+            type:'커피 수출항',
+            desc:'케냐 인도양 연안의 동아프리카 최대 항구 도시. 동아프리카 5개국(케냐·우간다·르완다·부룬디·남수단)의 무역 관문.',
+            role:['동아프리카 최대 커피 수출항','케냐·에티오피아·르완다·우간다 원두 해외 수출 관문','아프리카 스페셜티 커피 국제 공급 허브'],
+            coffee:'몸바사 항은 케냐(연간 약 5만 톤), 우간다(연간 약 50만 포대), 르완다·부룬디 등 동아프리카 전역의 커피가 집산되는 수출 허브입니다. 나이로비 커피 거래소(NCE)에서 경매된 케냐 AA·AB·PB 등급 커피가 이 항구를 통해 유럽·미국·일본으로 수출됩니다.',
+            history:'14세기부터 인도양 스와힐리 해안 무역의 중심지. 19세기 영국 식민지 시대에 케냐 커피 수출 창구로 성장. 1930년대 이후 케냐 스페셜티 커피의 국제화를 이끈 역사적 항구. 현재도 동아프리카 커피 벨트의 해외 진출 관문.',
+            partners:['Nairobi Coffee Exchange (NCE)','케냐 KCTA','우간다 UCDA','Olam Coffee','Sucafina Africa','루이 드레퓌스(Louis Dreyfus)']
+          },
+          'Port_HoChiMinh': {
+            country:'Vietnam', continent:'Asia', capacity:'약 7.5M TEU/년',
+            type:'커피 수출항',
+            desc:'베트남 남부 메콩 삼각주 관문의 최대 도시. 구 사이공으로 불렸으며, 베트남 경제의 중심이자 동남아시아 물류의 요충지.',
+            role:['세계 2위 커피 수출국 베트남의 핵심 수출항','로부스타 세계 최대 공급 항구','인스턴트 커피 원료 글로벌 공급 관문'],
+            coffee:'호치민 항은 세계 2위 커피 수출국 베트남의 주요 수출 창구입니다. 베트남은 연간 약 180만 톤의 커피를 수출하며, 주로 달락(Đắk Lắk)·자라이(Gia Lai) 고원의 로부스타가 이 항구를 통해 전 세계 인스턴트 커피·에스프레소 블렌드 공장으로 공급됩니다.',
+            history:'프랑스 식민지 시대(1860년대) 베트남 커피 산업 태동과 함께 사이공 항구가 수출 창구로 성장. 베트남 전쟁(1955~75) 이후 도이머이(Doi Moi) 개혁(1986)으로 커피 수출이 폭발적으로 증가. 1990년대 세계 2위 수출국 도약의 핵심 인프라.',
+            partners:['Trung Nguyên Coffee (베트남 최대 커피 기업)','Nestlé Vietnam (Nescafé 생산)','Olam Coffee','Louis Dreyfus Vietnam','Volcafé']
+          },
+          'Port_Singapore': {
+            country:'Singapore', continent:'Asia', capacity:'약 37.5M TEU/년 (세계 2위)',
+            type:'커피 환적·유통항',
+            desc:'말라카 해협 관문의 도시국가 싱가포르. 세계 2위 컨테이너 항구이자 아시아 최대 물류·금융 허브.',
+            role:['동남아시아 커피 환적 1번지','아시아 커피 선물 거래 허브','스페셜티 커피 아시아 유통 중심'],
+            coffee:'싱가포르 항은 인도네시아·베트남·미얀마·라오스 등 동남아시아 커피 생산국의 원두가 아시아·유럽·미국으로 재분배되는 핵심 환적 거점입니다. 싱가포르는 아시아 커피 선물 거래의 중심지이기도 하며, 로컬 커피 문화인 "코피(Kopi)"로도 유명합니다.',
+            history:'영국 식민지 시대(1819~)부터 말라카 해협 교역의 중심. 19세기 네덜란드령 인도네시아 커피가 싱가포르를 통해 유럽으로 수출. 현재 싱가포르 코피(Kopi) 문화는 남중국·말레이시아 이민자들이 가져온 버터 로스팅 커피 전통. Ya Kun Kaya Toast가 코피 문화의 상징.',
+            partners:['인도네시아 Sumatra·Java·Sulawesi','베트남 Central Highlands','Volcafé Asia','Olam International (싱가포르 본사)','Louis Dreyfus Asia']
+          },
+          'Port_Busan': {
+            country:'South Korea', continent:'Asia', capacity:'약 22.0M TEU/년 (세계 6위)',
+            type:'커피 수입항',
+            desc:'대한민국 남동부 해안의 제2의 도시이자 최대 항구. 세계 6위 컨테이너 항구로, 한국 무역의 70% 이상이 부산항을 통해 이루어집니다.',
+            role:['한국 커피 수입 관문','세계 최고 카페 밀집국 원두 공급 허브','아시아 커피 환적 거점'],
+            coffee:'한국은 세계 인당 커피 소비 상위국으로, 연간 약 18만 톤의 생두·가공두를 수입합니다. 부산항은 한국으로 들어오는 커피의 주요 입항지로, 에티오피아·콜롬비아·브라질·과테말라의 스페셜티 원두부터 베트남·브라질의 상업 원두까지 다양한 커피가 입항합니다.',
+            history:'1876년 개항 이후 한국 대외 무역의 관문. 1980년대 동서식품(맥심) 인스턴트 커피 원료 수입 시작. 2000년대 스타벅스·커피빈 등 글로벌 체인 확장과 함께 생두 수입량 급증. 2010년대 Third Wave 스페셜티 붐으로 에티오피아·콜롬비아 고품질 원두 수입 폭발적 증가.',
+            partners:['에티오피아 ECX','콜롬비아 FNC','과테말라 Anacafé','동서식품','스타벅스 코리아','Cafe Bene','Fritz Coffee']
+          },
+          'Port_LongBeach': {
+            country:'USA', continent:'North America', capacity:'약 9.4M TEU/년',
+            type:'커피 수입항',
+            desc:'캘리포니아 남부 로스앤젤레스 항만 복합체의 일부. 로스앤젤레스 항(Port of LA)과 함께 미국 최대 컨테이너 항만 단지를 구성합니다.',
+            role:['미국 서부 최대 커피 수입항','아시아·중남미 원두 미국 진입 관문','캘리포니아 스페셜티 로스터 공급 허브'],
+            coffee:'롱비치·LA 항만 복합체는 미국에서 뉴어크(NJ)와 함께 최대 커피 수입 거점입니다. 인도네시아·베트남·파푸아뉴기니 등 아시아 원두와 과테말라·콜롬비아·페루 등 중남미 원두가 대거 입항합니다. Blue Bottle·Intelligentsia·Stumptown 등 서부 스페셜티 로스터들의 주요 소싱 입항지.',
+            history:'19세기 캘리포니아 골드러시 이후 태평양 무역 관문으로 성장. 1950년대 대형 커피 기업(Folgers·MJB) 원두 수입 허브. 2000년대 Third Wave 혁명으로 스페셜티 생두 소량 컨테이너 수입 급증. 현재 미국 서부 스페셜티 생두 소싱의 핵심 인프라.',
+            partners:['인도네시아 PTPN','파푸아뉴기니 CIC','과테말라 Anacafé','Blue Bottle Coffee','Intelligentsia','Stumptown Coffee','Folgers (남부 캘리포니아 공장)']
+          },
+          'Port_NewOrleans': {
+            country:'USA', continent:'North America', capacity:'약 6.0M 톤/년 (벌크화물 기준)',
+            type:'커피 수입·로스팅 허브',
+            desc:'미시시피 강 하구의 루이지애나 주 최대 도시. 재즈·크리올 요리·마르디그라로 유명한 미국 남부의 문화 수도.',
+            role:['19~20세기 미국 최대 커피 수입항 (역사적)','치커리 커피 문화 발상지','미국 남부 커피 무역 역사의 심장'],
+            coffee:'뉴올리언스는 19세기~20세기 초 미국 최대 커피 수입 항구였습니다. 라틴아메리카에서 오는 커피선이 미시시피 강을 거슬러 내륙으로 공급됐습니다. 특히 남북전쟁 중 커피 부족으로 치커리 뿌리를 혼합한 "뉴올리언스 스타일 치커리 커피"가 탄생해 지역 전통이 되었습니다.',
+            history:'18세기 프랑스·스페인 식민지 시대에 카리브해 커피 무역의 북미 관문. 1840~1900년 미국 커피 수입의 30~40%를 담당. 1862년 남북전쟁 시 커피 공급 차단으로 치커리 혼합 문화 탄생. 20세기 이후 뉴어크·볼티모어에 수입 지위를 넘겨줬지만 치커리 커피 전통은 현재도 유지.',
+            partners:['Community Coffee (뉴올리언스 110년 전통 로스터)','Café Du Monde (치커리 카페오레의 성지)','카리브해·중남미 산지','Sucafina Americas']
+          },
+          'Port_Felixstowe': {
+            country:'United Kingdom', continent:'Europe', capacity:'약 4.0M TEU/년 (영국 1위)',
+            type:'커피 수입항',
+            desc:'잉글랜드 동부 서퍽 주 해안의 영국 최대 컨테이너 항구. 북해와 맞닿은 영국 동부 해안의 물류 관문.',
+            role:['영국 최대 커피 수입항','UK Third Wave 스페셜티 원두 공급 관문','유럽 커피에서 영국 시장 연결 허브'],
+            coffee:'펠릭스토우 항은 영국으로 들어오는 컨테이너 화물의 약 36%를 처리합니다. 영국은 연간 약 15만 톤의 커피를 수입하는 유럽 주요 소비국으로, 이 중 상당 부분이 펠릭스토우·사우샘프턴·틸버리를 통해 입항합니다. Monmouth·Workshop·Square Mile 등 런던 Third Wave 로스터들의 원두 주요 입항지.',
+            history:'1960년대 컨테이너 혁명 이후 영국 최대 항구로 성장. 영국의 전통적 차(Tea) 문화에서 커피 문화로의 전환과 함께 커피 수입량 급증. 2010년대 Third Wave 붐으로 에티오피아·콜롬비아·과테말라 스페셜티 생두 수입 폭발적 증가.',
+            partners:['에티오피아','케냐','콜롬비아','과테말라','Monmouth Coffee','Workshop Coffee','Square Mile','Taylors of Harrogate']
+          },
+          'Port_Sydney': {
+            country:'Australia', continent:'Oceania', capacity:'약 2.5M TEU/년',
+            type:'커피 수입항',
+            desc:'뉴사우스웨일스 주 시드니 하버의 호주 최대 도시 항구. 오페라하우스가 내려다보이는 세계에서 가장 아름다운 항구 중 하나.',
+            role:['호주 커피 수입 관문','아시아-태평양 스페셜티 원두 허브','호주 Third Wave 카페 문화 원두 공급'],
+            coffee:'시드니 항은 호주로 들어오는 커피 물량의 주요 입항지입니다. 호주는 연간 약 8만 톤의 커피를 수입하며, 멜버른과 함께 세계적 커피 문화를 자랑합니다. Single O·Mecca·Artificer 등 시드니 스페셜티 로스터들이 에티오피아·콜롬비아·파나마 게이샤 등 고품질 원두를 주로 시드니 항을 통해 소싱합니다.',
+            history:'1788년 영국 식민지 시대 개항 이후 아시아-태평양 무역의 호주 관문. 19세기 이탈리아·그리스 이민자들이 에스프레소 기계와 함께 커피 문화를 도입. 시드니 항을 통한 이민자 물결이 호주 커피 문화의 토대. 1980~90년대 이후 스페셜티 붐으로 고급 생두 수입 급증.',
+            partners:['에티오피아','콜롬비아','파나마(Gesha)','인도네시아 발리','Single O Coffee','Mecca Coffee','Artificer Coffee','Toby\'s Estate']
+          },
+          'Port_Tokyo': {
+            country:'Japan', continent:'Asia', capacity:'약 4.7M TEU/년',
+            type:'커피 수입항',
+            desc:'도쿄 만에 위치한 일본의 수도권 항만. 도쿄·요코하마 항만 복합체는 일본 최대 무역 거점으로, 일본 수입 물량의 약 30%를 처리합니다.',
+            role:['일본 최대 커피 수입항','아시아 스페셜티 커피 1위 소비국 공급 관문','일본식 커피 문화(킷사텐) 원료 수입 허브'],
+            coffee:'일본은 인당 스페셜티 커피 수입량이 세계 최고 수준입니다. 연간 약 46만 톤의 커피를 수입하며, 세계 4위 커피 수입국입니다. 도쿄·요코하마 항은 에티오피아·콜롬비아·브라질·과테말라의 고품질 원두가 집중되며, 일본의 정밀한 품질 기준(SCAJ 기준)에 맞는 원두가 엄선되어 통관됩니다.',
+            history:'1888년 도쿄 최초 킷사텐 개업 이후 커피 수입 시작. 1970년대 UCC·키(Key)커피 등 일본 로스터의 성장과 함께 수입량 급증. 1990년대 일본의 스페셜티 커피 문화 선도 — 세계 바리스타 챔피언십에서 일본 바리스타들이 두각. 2015년 Blue Bottle Coffee 일본 1호점 오픈(도쿄 기요스미) 이후 Third Wave 폭발.',
+            partners:['에티오피아 ECX','콜롬비아 FNC','과테말라 Anacafé','UCC (일본 최대 커피 기업)','Key Coffee','Sarutahiko Coffee','Onibus Coffee','Blue Bottle Japan']
+          },
+        };
+
         // ============================================================
         // CITY DATA — geographic + coffee-oriented info for 20 cities
         // Keys match instance.name (instanceDetails key)
