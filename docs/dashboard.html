@@ -723,27 +723,30 @@
         }
 
         /* Beverage Image Styling */
+        .beverage-card {
+            padding: 0;
+            overflow: hidden;
+            min-height: 0;
+        }
         .beverage-card-image {
             width: 100%;
-            height: 160px;
+            height: 170px;
             object-fit: cover;
-            border-radius: 0.5rem;
-            margin-bottom: 1rem;
-            border: 2px solid var(--border);
-            transition: all 0.3s;
+            display: block;
+            transition: transform 0.35s ease;
         }
-
-        .instance-card:hover .beverage-card-image {
-            border-color: var(--accent);
-            box-shadow: 0 4px 12px rgba(139, 69, 19, 0.3);
+        .beverage-card:hover .beverage-card-image {
+            transform: scale(1.05);
         }
-
-        .beverage-card .instance-card-icon {
-            display: none;
-        }
-
-        .beverage-card {
-            min-height: 320px;
+        .beverage-card .instance-card-icon { display: none; }
+        .beverage-card .instance-card-name { padding: 0.75rem 1rem 0.15rem; }
+        .beverage-card .instance-card-description { padding: 0 1rem 0.4rem; }
+        .beverage-card .instance-card-count { padding: 0 1rem 0.75rem; font-size: 0.72rem; }
+        /* image overflow clip */
+        .beverage-card .bev-img-wrap {
+            overflow: hidden;
+            border-radius: 0;
+            line-height: 0;
         }
 
         /* POS System Card Styling */
@@ -1064,6 +1067,20 @@
             color: var(--text-primary);
             word-break: break-all;
         }
+
+        /* Beverage detail modal */
+        .bev-modal-hero { width: 100%; height: 200px; object-fit: cover; border-radius: 0.6rem; margin-bottom: 1.2rem; display: block; }
+        .bev-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.6rem; margin-bottom: 1.2rem; }
+        .bev-stat { background: var(--bg-dark); border: 1px solid var(--border); border-radius: 0.5rem; padding: 0.65rem 0.5rem; text-align: center; }
+        .bev-stat-val { font-size: 1.05rem; font-weight: 700; color: var(--accent); line-height: 1; }
+        .bev-stat-lbl { font-size: 0.62rem; color: var(--text-secondary); margin-top: 0.3rem; }
+        .bev-desc { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1.2rem; padding: 0.8rem 1rem; background: var(--bg-dark); border-radius: 0.5rem; border-left: 3px solid var(--accent); }
+        .bev-info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; margin-bottom: 1rem; }
+        .bev-info-item { display: flex; align-items: flex-start; gap: 0.5rem; font-size: 0.8rem; color: var(--text-secondary); padding: 0.5rem 0.7rem; background: var(--bg-dark); border-radius: 0.4rem; }
+        .bev-info-item span { color: var(--text-primary); }
+        .bev-info-item.full { grid-column: 1 / -1; }
+        .bev-tag-row { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 0.2rem; }
+        .bev-tag { font-size: 0.7rem; background: rgba(139,69,19,.18); color: var(--accent); border-radius: 20px; padding: 0.15rem 0.6rem; border: 1px solid rgba(139,69,19,.3); }
     </style>
 </head>
 <body>
@@ -2291,13 +2308,13 @@
                             `;
                         } else {
                             instanceCard.innerHTML = `
-                                ${hasImage ? `<img src="${window.BEVERAGE_IMAGES[beverageKey]}" alt="${instance.name}" class="beverage-card-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">` : ''}
+                                ${hasImage ? `<div class="bev-img-wrap"><img src="${window.BEVERAGE_IMAGES[beverageKey]}" alt="${instance.name}" class="beverage-card-image" onerror="this.parentElement.style.display='none'; this.closest('.instance-card').querySelector('.instance-card-icon').style.display='flex';"></div>` : ''}
                                 <div class="instance-card-icon" ${hasImage ? 'style="display:none;"' : ''}>
                                     <i class="fas ${icon}"></i>
                                 </div>
                                 <div class="instance-card-name">${instance.name}</div>
                                 ${instance.description ? `<div class="instance-card-description">${instance.description}</div>` : ''}
-                                <div class="instance-card-count">${Object.keys(instance.properties).length} properties</div>
+                                <div class="instance-card-count">${Object.keys(instance.properties).length} 개 속성</div>
                             `;
                         }
                         
@@ -2334,69 +2351,166 @@
         // Show instance detail in modal
         function showInstanceDetailModal(instance, className) {
             console.log('📝 Showing modal for:', instance.name);
-            
+
             const modal = document.getElementById('instanceModal');
             const modalTitle = document.getElementById('modalTitle');
             const modalBody = document.getElementById('modalBody');
-            
+
             // Choose icon
             let icon = 'fa-cube';
             if (className.toLowerCase().includes('country')) icon = 'fa-flag';
             else if (className.toLowerCase().includes('farm')) icon = 'fa-tractor';
             else if (className.toLowerCase().includes('city')) icon = 'fa-city';
             else if (className.toLowerCase().includes('coffee')) icon = 'fa-coffee';
-            
+            else if (className.toLowerCase().includes('beverage') || className.toLowerCase().includes('menu')) icon = 'fa-mug-hot';
+
             modalTitle.innerHTML = `<i class="fas ${icon}"></i> ${instance.name}`;
-            
-            let html = '';
-            
-            // Description section (if available)
-            if (instance.description) {
-                html += `<div class="modal-description">`;
-                html += `<i class="fas fa-info-circle" style="color: var(--accent); margin-right: 0.5rem;"></i>`;
-                html += `<span>${instance.description}</span>`;
+
+            const isBeverage = className.toLowerCase().includes('beverage') || className.toLowerCase().includes('menu');
+
+            if (isBeverage) {
+                // ── Beverage detail view ──────────────────────────────────
+                const p = (key) => instance.properties[key]?.[0]?.value || null;
+                const getLabel = (uri) => uri.split('#').pop().replace(/_/g, ' ');
+
+                const calories   = p('hasCalories');
+                const caffeine   = p('hasCaffeineContent');
+                const rating     = p('hasRating');
+                const prepTime   = p('hasPrepTime');
+                const desc       = p('hasDescription') || instance.description || '';
+                const priceS     = p('hasPriceSmall');
+                const priceM     = p('hasPriceMedium');
+                const priceL     = p('hasPriceLarge');
+                const temp       = p('hasTemperature');
+                const category   = p('hasCategory');
+                const roast      = p('hasRoastLevel');
+                const milkAlt    = p('hasMilkAlternatives');
+                const syrups     = p('hasFlavorSyrups');
+                const custom     = p('hasCustomOptions');
+                const origin     = p('hasCoffeeBeanOrigin');
+
+                // Ingredients (object property — multiple values)
+                const ingredientVals = instance.properties['containsIngredient'] || [];
+                const ingredients = ingredientVals.map(v => v.type === 'uri' ? getLabel(v.value) : v.value);
+
+                // Hero image
+                const beverageKey = instance.name.replace(/\s+/g, '_');
+                const imgUrl = window.BEVERAGE_IMAGES && window.BEVERAGE_IMAGES[beverageKey];
+
+                let html = '';
+                if (imgUrl) {
+                    html += `<img src="${imgUrl}" alt="${instance.name}" class="bev-modal-hero" onerror="this.style.display='none'">`;
+                }
+
+                // Stats bar
+                html += `<div class="bev-stats">`;
+                html += `<div class="bev-stat"><div class="bev-stat-val">${calories ? calories + ' kcal' : '—'}</div><div class="bev-stat-lbl">칼로리</div></div>`;
+                html += `<div class="bev-stat"><div class="bev-stat-val">${caffeine ? caffeine + ' mg' : '—'}</div><div class="bev-stat-lbl">카페인</div></div>`;
+                html += `<div class="bev-stat"><div class="bev-stat-val">${rating ? '★ ' + rating : '—'}</div><div class="bev-stat-lbl">평점</div></div>`;
+                html += `<div class="bev-stat"><div class="bev-stat-val">${prepTime || '—'}</div><div class="bev-stat-lbl">준비 시간</div></div>`;
                 html += `</div>`;
-            }
-            
-            // URI section
-            html += `<div class="modal-uri">`;
-            html += `<div class="modal-uri-label">Resource URI</div>`;
-            html += `<div class="modal-uri-value">${instance.uri}</div>`;
-            html += `</div>`;
-            
-            // Properties
-            if (Object.keys(instance.properties).length > 0) {
-                html += '<div class="property-grid">';
-                
-                Object.entries(instance.properties).forEach(([propName, values]) => {
-                    html += `<div class="property-card">`;
-                    html += `<div class="property-name">${propName}</div>`;
-                    
-                    values.forEach(val => {
-                        if (val.type === 'uri') {
-                            html += `<div class="property-value property-value-link">`;
-                            html += `<i class="fas fa-link"></i>`;
-                            html += `<span>${val.value}</span>`;
-                            html += `</div>`;
-                        } else {
-                            html += `<div class="property-value">`;
-                            html += `<i class="fas fa-quote-right"></i>`;
-                            html += `<span>${val.value}</span>`;
-                            html += `</div>`;
-                        }
-                    });
-                    
-                    html += `</div>`;
-                });
-                
-                html += '</div>';
+
+                // Description
+                if (desc) html += `<div class="bev-desc">${desc}</div>`;
+
+                // Info grid
+                html += `<div class="bev-info-grid">`;
+
+                // Price
+                const prices = [priceS && `Small $${priceS}`, priceM && `Med $${priceM}`, priceL && `Large $${priceL}`].filter(Boolean);
+                if (prices.length) {
+                    html += `<div class="bev-info-item full">💰 <span>${prices.join(' · ')}</span></div>`;
+                }
+                if (temp)     html += `<div class="bev-info-item">🌡️ 온도&nbsp; <span>${temp}</span></div>`;
+                if (category) html += `<div class="bev-info-item">📂 카테고리&nbsp; <span>${category}</span></div>`;
+                if (roast)    html += `<div class="bev-info-item">🔥 로스트&nbsp; <span>${roast}</span></div>`;
+                if (origin)   html += `<div class="bev-info-item">🌍 원두 원산지&nbsp; <span>${origin}</span></div>`;
+
+                if (ingredients.length) {
+                    html += `<div class="bev-info-item full">🫙 재료&nbsp;
+                        <span class="bev-tag-row">${ingredients.map(i => `<span class="bev-tag">${i}</span>`).join('')}</span>
+                    </div>`;
+                }
+                if (milkAlt) {
+                    html += `<div class="bev-info-item full">🥛 우유 대체&nbsp;
+                        <span class="bev-tag-row">${milkAlt.split('/').map(m => `<span class="bev-tag">${m.trim()}</span>`).join('')}</span>
+                    </div>`;
+                }
+                if (syrups) {
+                    html += `<div class="bev-info-item full">🍯 시럽 옵션&nbsp;
+                        <span class="bev-tag-row">${syrups.split('/').map(s => `<span class="bev-tag">${s.trim()}</span>`).join('')}</span>
+                    </div>`;
+                }
+                if (custom) {
+                    html += `<div class="bev-info-item full">⚙️ 커스텀 옵션&nbsp; <span>${custom}</span></div>`;
+                }
+
+                html += `</div>`;
+                modalBody.innerHTML = html;
+
             } else {
-                html += '<p style="text-align: center; color: var(--text-secondary); padding: 2rem;">No additional properties available.</p>';
+                // ── Generic detail view (non-beverage) ───────────────────
+                let html = '';
+                if (instance.description) {
+                    html += `<div class="modal-description">`;
+                    html += `<i class="fas fa-info-circle" style="color: var(--accent); margin-right: 0.5rem;"></i>`;
+                    html += `<span>${instance.description}</span>`;
+                    html += `</div>`;
+                }
+                // URI section
+                html += `<div class="modal-uri">`;
+                html += `<div class="modal-uri-label">Resource URI</div>`;
+                html += `<div class="modal-uri-value">${instance.uri}</div>`;
+                html += `</div>`;
+                if (Object.keys(instance.properties).length > 0) {
+                    html += '<div class="property-grid">';
+                    Object.entries(instance.properties).forEach(([propName, values]) => {
+                        html += `<div class="property-card">`;
+                        html += `<div class="property-name">${propName}</div>`;
+                        values.forEach(val => {
+                            if (val.type === 'uri') {
+                                html += `<div class="property-value property-value-link"><i class="fas fa-link"></i><span>${val.value}</span></div>`;
+                            } else {
+                                html += `<div class="property-value"><i class="fas fa-quote-right"></i><span>${val.value}</span></div>`;
+                            }
+                        });
+                        html += `</div>`;
+                    });
+                    html += '</div>';
+                } else {
+                    html += '<p style="text-align:center;color:var(--text-secondary);padding:2rem;">No additional properties available.</p>';
+                }
+                modalBody.innerHTML = html;
             }
-            
-            modalBody.innerHTML = html;
+
             modal.classList.add('active');
         }
+
+        // ============================================================
+        // BEVERAGE IMAGES (Unsplash CDN — no auth required)
+        // ============================================================
+        window.BEVERAGE_IMAGES = {
+            'Espresso':          'https://images.unsplash.com/photo-1510707577719-ae7c14805e3a?w=400&q=80&fit=crop',
+            'Double_Espresso':   'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=400&q=80&fit=crop',
+            'Americano':         'https://images.unsplash.com/photo-1551030173-122aabc4489c?w=400&q=80&fit=crop',
+            'Caffe_Latte':       'https://images.unsplash.com/photo-1570968915860-54d5c301fa9f?w=400&q=80&fit=crop',
+            'Cappuccino':        'https://images.unsplash.com/photo-1534778101976-62847782c213?w=400&q=80&fit=crop',
+            'Flat_White':        'https://images.unsplash.com/photo-1517701604599-bb29b565090c?w=400&q=80&fit=crop',
+            'Macchiato':         'https://images.unsplash.com/photo-1485808191679-5f86510bd9d4?w=400&q=80&fit=crop',
+            'Mocha':             'https://images.unsplash.com/photo-1578314675249-a6910f80cc4e?w=400&q=80&fit=crop',
+            'Caramel_Macchiato': 'https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=400&q=80&fit=crop',
+            'Vanilla_Latte':     'https://images.unsplash.com/photo-1597099542164-b8e8f5329d93?w=400&q=80&fit=crop',
+            'Cold_Brew':         'https://images.unsplash.com/photo-1517434655415-f4b4cf30f8a8?w=400&q=80&fit=crop',
+            'Nitro_Cold_Brew':   'https://images.unsplash.com/photo-1622473590773-f588134b6ce7?w=400&q=80&fit=crop',
+            'Iced_Americano':    'https://images.unsplash.com/photo-1525385133512-2f3bdd039054?w=400&q=80&fit=crop',
+            'Iced_Latte':        'https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=400&q=80&fit=crop',
+            'Iced_Mocha':        'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400&q=80&fit=crop',
+            'Affogato':          'https://images.unsplash.com/photo-1488477181946-6428a0291777?w=400&q=80&fit=crop',
+            'Cortado':           'https://images.unsplash.com/photo-1504630083234-14187a9df0f5?w=400&q=80&fit=crop',
+            'Pour_Over':         'https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=400&q=80&fit=crop',
+            'French_Press':      'https://images.unsplash.com/photo-1510591509098-f4fdc6d0ff04?w=400&q=80&fit=crop',
+            'Aeropress':         'https://images.unsplash.com/photo-1516743619420-154b70a65fea?w=400&q=80&fit=crop',
+        };
 
         // ============================================================
         // CLIENT-SIDE RDF PARSER (replaces /api/rdf/* backend calls)
