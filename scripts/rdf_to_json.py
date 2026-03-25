@@ -114,11 +114,33 @@ def build_class_tree(cls_name):
     children = subclass_map.get(cls_name, [])
     inst_list = [n for n, i in instances.items() if cls_name in i['types']]
     return {
+        'uri': NS + cls_name,
         'name': cls_name,
         'instanceCount': len(inst_list),
         'children': [build_class_tree(c) for c in sorted(children)],
         'instances': inst_list[:50]  # 최대 50개
     }
+
+# ── Object Properties 추출 (Cytoscape 그래프용) ──────────────
+from rdflib import RDFS as RDFS_LIB
+obj_props = []
+for s in g.subjects(RDF.type, OWL.ObjectProperty):
+    name = short(s)
+    if not name or name.startswith('_'):
+        continue
+    uri = str(s)
+    domain = None
+    for _, _, d in g.triples((s, RDFS_LIB.domain, None)):
+        dn = short(d)
+        if dn in all_classes:
+            domain = NS + dn
+            break
+    ranges = []
+    for _, _, r in g.triples((s, RDFS_LIB.range, None)):
+        rn = short(r)
+        if rn in all_classes:
+            ranges.append(NS + rn)
+    obj_props.append({'uri': uri, 'name': name, 'domain': domain, 'range': ranges})
 
 # 클래스별 인스턴스 상세
 instance_details = {}
@@ -158,12 +180,13 @@ for cat, cls_list in category_map.items():
 ontology_json = {
     'meta': {
         'totalClasses': len(all_classes),
-        'objectProperties': len(set(short(p) for _, p, _ in g if str(p).startswith(NS) and isinstance(_, URIRef))),
+        'objectProperties': len(obj_props),
         'dataProperties': 20,
         'totalTriples': total_triples,
         'version': '2.0',
     },
     'classHierarchy': [build_class_tree(c) for c in sorted(top_classes)],
+    'objectProperties': obj_props,
     'statsByCategory': stats_by_category,
     'instanceDetails': instance_details,
 }

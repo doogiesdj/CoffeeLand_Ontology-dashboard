@@ -2290,17 +2290,65 @@
             const overlay = document.getElementById('loadingOverlay');
             overlay.classList.add('active');
             try {
-                console.log('📂 Fetching RDF file:', filename);
-                rdfDoc = await fetchAndParseRDF(filename);
-                console.log('✅ RDF file fetched and parsed');
-                ontologyData = parseOntologyFromRDF(rdfDoc);
-                console.log(`✅ Parsed: ${ontologyData.classes.length} classes, ${ontologyData.objectProperties.length} obj props`);
-                hierarchyData = buildHierarchyFromRDF(ontologyData);
-                console.log(`✅ Hierarchy built: ${hierarchyData.length} root classes`);
+                // Primary: load pre-generated JSON (always available on GitHub Pages)
+                console.log('📂 Loading ontology_data.json...');
+                const r = await fetch('ontology_data.json');
+                if (!r.ok) throw new Error('ontology_data.json not found: ' + r.status);
+                const OD = await r.json();
+                console.log(`✅ JSON loaded: ${OD.meta.totalClasses} classes`);
+
+                // Build hierarchyData from classHierarchy (add URI to each node)
+                function mapHierarchy(nodes) {
+                    return nodes.map(n => ({
+                        uri: BASE_NS + n.name,
+                        label: n.name,
+                        children: mapHierarchy(n.children || [])
+                    }));
+                }
+                hierarchyData = mapHierarchy(OD.classHierarchy || []);
+
+                // Build ontologyData compatible with createGraph()
+                const classMap = {};
+                const subClassOf = {};
+                function indexClasses(nodes, parentUri) {
+                    nodes.forEach(n => {
+                        const uri = BASE_NS + n.name;
+                        classMap[uri] = { uri, label: n.name, children: [] };
+                        if (parentUri) subClassOf[uri] = parentUri;
+                        indexClasses(n.children || [], uri);
+                    });
+                }
+                indexClasses(OD.classHierarchy || [], null);
+
+                ontologyData = {
+                    count: OD.meta.totalTriples,
+                    classes: Object.values(classMap).map(c => ({ uri: c.uri, name: c.label })),
+                    objectProperties: OD.objectProperties || [],
+                    dataProperties: [],
+                    classMap,
+                    subClassOf,
+                    instanceMap: {}
+                };
+
+                // Build instanceMap from instanceDetails
+                if (OD.instanceDetails) {
+                    Object.entries(OD.instanceDetails).forEach(([name, detail]) => {
+                        ontologyData.instanceMap[detail.uri] = {
+                            uri: detail.uri,
+                            name,
+                            classURIs: detail.types.map(t => BASE_NS + t),
+                            description: '',
+                            properties: {}
+                        };
+                    });
+                }
+
+                console.log(`✅ ontologyData ready: ${ontologyData.classes.length} classes, ${ontologyData.objectProperties.length} obj props`);
+                console.log(`✅ hierarchyData: ${hierarchyData.length} root classes`);
                 updateStats();
             } catch (e) {
-                console.error('❌ Error loading RDF:', e);
-                alert('❌ Failed to load RDF file: ' + e.message);
+                console.error('❌ Error loading data:', e);
+                alert('❌ Failed to load ontology data: ' + e.message);
             } finally {
                 overlay.classList.remove('active');
             }
