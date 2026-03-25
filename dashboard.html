@@ -782,6 +782,39 @@
             color: var(--accent);
         }
 
+        /* Shared Info Card Elements (Recipe, Training, Consumable, Vendor, Maintenance) */
+        .recipe-card, .training-card, .consumable-card, .vendor-card, .maintenance-card {
+            border: 2px solid var(--border);
+            padding: 1.5rem;
+            min-height: 260px;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s;
+        }
+        .recipe-card    { background: linear-gradient(135deg, rgba(139,92,246,.06) 0%, rgba(109,40,217,.04) 100%); }
+        .training-card  { background: linear-gradient(135deg, rgba(59,130,246,.06) 0%, rgba(37,99,235,.04) 100%); }
+        .consumable-card{ background: linear-gradient(135deg, rgba(34,197,94,.06) 0%, rgba(22,163,74,.04) 100%); }
+        .vendor-card    { background: linear-gradient(135deg, rgba(245,158,11,.06) 0%, rgba(217,119,6,.04) 100%); }
+        .maintenance-card{ background: linear-gradient(135deg, rgba(239,68,68,.06) 0%, rgba(220,38,38,.04) 100%); }
+
+        .recipe-card:hover     { border-color: #8b5cf6; box-shadow: 0 8px 24px rgba(139,92,246,.2); transform: translateY(-4px); }
+        .training-card:hover   { border-color: #3b82f6; box-shadow: 0 8px 24px rgba(59,130,246,.2); transform: translateY(-4px); }
+        .consumable-card:hover { border-color: #22c55e; box-shadow: 0 8px 24px rgba(34,197,94,.2); transform: translateY(-4px); }
+        .vendor-card:hover     { border-color: #f59e0b; box-shadow: 0 8px 24px rgba(245,158,11,.2); transform: translateY(-4px); }
+        .maintenance-card:hover{ border-color: #ef4444; box-shadow: 0 8px 24px rgba(239,68,68,.2); transform: translateY(-4px); }
+
+        .info-card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
+        .info-card-icon   { width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.25rem; }
+        .info-card-badge  { padding: 0.25rem 0.75rem; border-radius: 1rem; font-size: 0.75rem; font-weight: 600; }
+        .info-card-name   { font-size: 1.1rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.75rem; }
+        .info-card-meta   { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; margin-bottom: 0.75rem; padding: 0.75rem; border-radius: 0.5rem; border: 1px solid var(--border); }
+        .info-meta-item   { display: flex; flex-direction: column; align-items: center; }
+        .info-meta-label  { font-size: 0.65rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 0.2rem; }
+        .info-meta-value  { font-size: 0.85rem; font-weight: 700; }
+        .info-card-tags   { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-bottom: 0.5rem; flex-grow: 1; align-content: flex-start; }
+        .info-card-tag    { font-size: 0.7rem; padding: 0.2rem 0.5rem; border-radius: 0.35rem; background: rgba(255,255,255,.04); color: var(--text-secondary); border: 1px solid var(--border); }
+        .info-card-footer { display: flex; justify-content: space-between; align-items: center; padding-top: 0.75rem; border-top: 1px solid var(--border); font-size: 0.75rem; color: var(--text-secondary); margin-top: auto; }
+
         /* Modal */
         .modal-overlay {
             display: none;
@@ -1844,10 +1877,154 @@
             showView('categoryView');
         }
 
+        // Demo instances for classes with no RDF individuals defined yet
+        function getDemoInstances(className) {
+            const demos = {
+                PosSystem: [
+                    { name:'Square for Restaurants', provider:'Square Inc.',    monthlyFee:'$60',  transactionFee:'2.6%+10¢', features:'Inventory Mgmt, Staff Scheduling, Customer Analytics, Loyalty Program' },
+                    { name:'Toast POS',              provider:'Toast Inc.',     monthlyFee:'$110', transactionFee:'2.49%+15¢',features:'Online Ordering, Table Management, Kitchen Display, Payroll Integration' },
+                    { name:'Lightspeed Restaurant',  provider:'Lightspeed',     monthlyFee:'$189', transactionFee:'2.6%',     features:'Menu Engineering, Loyalty Program, Advanced Reporting, CRM, Multi-location' },
+                    { name:'TouchBistro',            provider:'TouchBistro',    monthlyFee:'$69',  transactionFee:'2.4%',     features:'Table Management, Menu Mgmt, Staff Scheduling, Customer Insights, Offline Mode' }
+                ],
+                Recipe: [
+                    { name:'Classic Espresso',    category:'Espresso-based', prepTime:'2 min',  servings:'1', ingredients:['30ml Espresso Shot','No additives'],                              difficulty:'Beginner' },
+                    { name:'Flat White',           category:'Espresso-based', prepTime:'4 min',  servings:'1', ingredients:['60ml Double Espresso','120ml Steamed Milk','Thin Microfoam'],     difficulty:'Intermediate' },
+                    { name:'Cold Brew Concentrate',category:'Cold Brew',      prepTime:'720 min',servings:'6', ingredients:['Coarse Ground Coffee','Cold Filtered Water','1:8 ratio'],         difficulty:'Beginner' },
+                    { name:'Matcha Latte',         category:'Specialty',      prepTime:'5 min',  servings:'1', ingredients:['2g Matcha Powder','200ml Steamed Oat Milk','Vanilla Syrup'],      difficulty:'Beginner' },
+                    { name:'Caramel Macchiato',    category:'Espresso-based', prepTime:'5 min',  servings:'1', ingredients:['Vanilla Syrup','160ml Steamed Milk','Double Espresso','Caramel'], difficulty:'Intermediate' }
+                ],
+                TrainingProgram: [
+                    { name:'Barista Basics',         level:'Beginner',  modules:'5', duration:'2 Weeks', topics:['Espresso Fundamentals','Milk Steaming','Coffee Origins','Equipment Care','POS Usage'] },
+                    { name:'Advanced Espresso',      level:'Advanced',  modules:'8', duration:'4 Weeks', topics:['Espresso Calibration','Grind Profile','Latte Art','Cupping','Flavor Profiling','Competition Prep'] },
+                    { name:'Customer Service',       level:'Beginner',  modules:'3', duration:'1 Week',  topics:['Communication Skills','Complaint Handling','Upselling Techniques'] },
+                    { name:'Food Safety & Hygiene',  level:'Mandatory', modules:'6', duration:'3 Weeks', topics:['HACCP Principles','Allergen Awareness','Temperature Control','Cleaning Procedures','Personal Hygiene','Certification'] }
+                ],
+                Consumable: [
+                    { name:'Paper Cup',    category:'Packaging', sizes:'8oz / 12oz / 16oz',    material:'Recycled Fiber',  monthlyUsage:'~2,000 pcs', eco:'Compostable' },
+                    { name:'Napkin',       category:'Packaging', sizes:'Standard / Dinner',    material:'2-ply Recycled',  monthlyUsage:'~5,000 pcs', eco:'Recycled' },
+                    { name:'Straw',        category:'Packaging', sizes:'Regular / Wide',       material:'Paper / PLA',     monthlyUsage:'~1,500 pcs', eco:'Biodegradable' },
+                    { name:'Takeout Lid',  category:'Packaging', sizes:'Hot Dome / Cold Flat', material:'rPET Plastic',    monthlyUsage:'~2,000 pcs', eco:'Recyclable' },
+                    { name:'Cup Carrier',  category:'Packaging', sizes:'2-Cup / 4-Cup',        material:'Kraft Paper',     monthlyUsage:'~500 pcs',   eco:'Compostable' }
+                ],
+                IngredientVendor: [
+                    { name:'Pacific Foods',   specialty:'Dairy & Alternatives', products:['Whole Milk','Oat Milk','Almond Milk','Heavy Cream'],                 moq:'50 L/week',   delivery:'Daily' },
+                    { name:'Torani Syrups',   specialty:'Flavored Syrups',      products:['Vanilla','Caramel','Hazelnut','Lavender','Seasonal Specials'],        moq:'24 bottles',  delivery:'Weekly' },
+                    { name:'Monin',           specialty:'Syrups & Sauces',      products:['Caramel Sauce','Chocolate Sauce','Fruit Purees','Tea Concentrates'],  moq:'12 units',    delivery:'Bi-weekly' },
+                    { name:'Oregon Chai',     specialty:'Tea & Specialty',      products:['Chai Concentrate','Matcha Powder','Green Tea Base','Herbal Blends'],  moq:'10 units',    delivery:'Weekly' }
+                ],
+                MaintenanceService: [
+                    { name:'CoffeeTech Service', coverage:'Espresso Machines',    responseTime:'4 Hours',  schedule:'Monthly PM',    cert:'La Marzocco Certified' },
+                    { name:'Grinder Pro',        coverage:'Grinders & Dosers',    responseTime:'24 Hours', schedule:'Quarterly',     cert:'Mahlkönig Authorized' },
+                    { name:'AquaPure Systems',   coverage:'Water Filtration',     responseTime:'48 Hours', schedule:'Bi-annual',     cert:'NSF Certified' },
+                    { name:'Cold Side Solutions',coverage:'Refrigeration & Ice',  responseTime:'8 Hours',  schedule:'Monthly PM',    cert:'EPA 608 Certified' }
+                ]
+            };
+            return demos[className] || null;
+        }
+
+        function renderDemoCard(demo, className) {
+            const card = document.createElement('div');
+            card.className = 'instance-card';
+            if (className === 'PosSystem') {
+                card.classList.add('pos-card');
+                card.innerHTML = `
+                    <div class="pos-card-header">
+                        <div class="pos-card-icon"><i class="fas fa-cash-register"></i></div>
+                        <div class="pos-card-badge">${demo.provider}</div>
+                    </div>
+                    <div class="pos-card-name">${demo.name}</div>
+                    <div class="pos-card-pricing">
+                        <div class="pos-price-item"><span class="pos-price-label">Monthly</span><span class="pos-price-value">${demo.monthlyFee}</span></div>
+                        <div class="pos-price-item"><span class="pos-price-label">Transaction</span><span class="pos-price-value">${demo.transactionFee}</span></div>
+                    </div>
+                    <div class="pos-card-features"><i class="fas fa-check-circle"></i> ${demo.features}</div>
+                    <div class="pos-card-footer"><span>POS System</span><i class="fas fa-arrow-right"></i></div>`;
+            } else if (className === 'Recipe') {
+                card.classList.add('recipe-card');
+                const tags = demo.ingredients.map(i => `<span class="info-card-tag">${i}</span>`).join('');
+                card.innerHTML = `
+                    <div class="info-card-header">
+                        <div class="info-card-icon" style="background:linear-gradient(135deg,#8b5cf6,#6d28d9)"><i class="fas fa-mortar-pestle"></i></div>
+                        <div class="info-card-badge" style="background:rgba(139,92,246,.1);color:#8b5cf6;border:1px solid #8b5cf6">${demo.category}</div>
+                    </div>
+                    <div class="info-card-name">${demo.name}</div>
+                    <div class="info-card-meta" style="background:rgba(139,92,246,.05)">
+                        <div class="info-meta-item"><span class="info-meta-label">Prep Time</span><span class="info-meta-value" style="color:#8b5cf6">${demo.prepTime}</span></div>
+                        <div class="info-meta-item"><span class="info-meta-label">Servings</span><span class="info-meta-value" style="color:#8b5cf6">${demo.servings}</span></div>
+                    </div>
+                    <div class="info-card-tags">${tags}</div>
+                    <div class="info-card-footer"><span>Difficulty: ${demo.difficulty}</span><i class="fas fa-arrow-right" style="color:#8b5cf6"></i></div>`;
+            } else if (className === 'TrainingProgram') {
+                card.classList.add('training-card');
+                const tags = demo.topics.map(t => `<span class="info-card-tag">${t}</span>`).join('');
+                card.innerHTML = `
+                    <div class="info-card-header">
+                        <div class="info-card-icon" style="background:linear-gradient(135deg,#3b82f6,#1d4ed8)"><i class="fas fa-graduation-cap"></i></div>
+                        <div class="info-card-badge" style="background:rgba(59,130,246,.1);color:#3b82f6;border:1px solid #3b82f6">${demo.level}</div>
+                    </div>
+                    <div class="info-card-name">${demo.name}</div>
+                    <div class="info-card-meta" style="background:rgba(59,130,246,.05)">
+                        <div class="info-meta-item"><span class="info-meta-label">Modules</span><span class="info-meta-value" style="color:#3b82f6">${demo.modules}</span></div>
+                        <div class="info-meta-item"><span class="info-meta-label">Duration</span><span class="info-meta-value" style="color:#3b82f6">${demo.duration}</span></div>
+                    </div>
+                    <div class="info-card-tags">${tags}</div>
+                    <div class="info-card-footer"><span>Training Program</span><i class="fas fa-arrow-right" style="color:#3b82f6"></i></div>`;
+            } else if (className === 'Consumable') {
+                card.classList.add('consumable-card');
+                card.innerHTML = `
+                    <div class="info-card-header">
+                        <div class="info-card-icon" style="background:linear-gradient(135deg,#22c55e,#16a34a)"><i class="fas fa-box-open"></i></div>
+                        <div class="info-card-badge" style="background:rgba(34,197,94,.1);color:#22c55e;border:1px solid #22c55e">${demo.eco}</div>
+                    </div>
+                    <div class="info-card-name">${demo.name}</div>
+                    <div class="info-card-meta" style="background:rgba(34,197,94,.05)">
+                        <div class="info-meta-item"><span class="info-meta-label">Sizes</span><span class="info-meta-value" style="color:#22c55e;font-size:0.75rem">${demo.sizes}</span></div>
+                        <div class="info-meta-item"><span class="info-meta-label">Monthly</span><span class="info-meta-value" style="color:#22c55e;font-size:0.75rem">${demo.monthlyUsage}</span></div>
+                    </div>
+                    <div class="info-card-tags">
+                        <span class="info-card-tag"><i class="fas fa-leaf"></i> ${demo.material}</span>
+                        <span class="info-card-tag">${demo.category}</span>
+                    </div>
+                    <div class="info-card-footer"><span>Consumable Supply</span><i class="fas fa-arrow-right" style="color:#22c55e"></i></div>`;
+            } else if (className === 'IngredientVendor') {
+                card.classList.add('vendor-card');
+                const tags = demo.products.map(p => `<span class="info-card-tag">${p}</span>`).join('');
+                card.innerHTML = `
+                    <div class="info-card-header">
+                        <div class="info-card-icon" style="background:linear-gradient(135deg,#f59e0b,#d97706)"><i class="fas fa-truck"></i></div>
+                        <div class="info-card-badge" style="background:rgba(245,158,11,.1);color:#f59e0b;border:1px solid #f59e0b">${demo.delivery}</div>
+                    </div>
+                    <div class="info-card-name">${demo.name}</div>
+                    <div class="info-card-meta" style="background:rgba(245,158,11,.05)">
+                        <div class="info-meta-item"><span class="info-meta-label">Specialty</span><span class="info-meta-value" style="color:#f59e0b;font-size:0.72rem">${demo.specialty}</span></div>
+                        <div class="info-meta-item"><span class="info-meta-label">Min Order</span><span class="info-meta-value" style="color:#f59e0b;font-size:0.72rem">${demo.moq}</span></div>
+                    </div>
+                    <div class="info-card-tags">${tags}</div>
+                    <div class="info-card-footer"><span>Ingredient Vendor</span><i class="fas fa-arrow-right" style="color:#f59e0b"></i></div>`;
+            } else if (className === 'MaintenanceService') {
+                card.classList.add('maintenance-card');
+                card.innerHTML = `
+                    <div class="info-card-header">
+                        <div class="info-card-icon" style="background:linear-gradient(135deg,#ef4444,#dc2626)"><i class="fas fa-tools"></i></div>
+                        <div class="info-card-badge" style="background:rgba(239,68,68,.1);color:#ef4444;border:1px solid #ef4444">${demo.responseTime}</div>
+                    </div>
+                    <div class="info-card-name">${demo.name}</div>
+                    <div class="info-card-meta" style="background:rgba(239,68,68,.05)">
+                        <div class="info-meta-item"><span class="info-meta-label">Coverage</span><span class="info-meta-value" style="color:#ef4444;font-size:0.72rem">${demo.coverage}</span></div>
+                        <div class="info-meta-item"><span class="info-meta-label">Schedule</span><span class="info-meta-value" style="color:#ef4444;font-size:0.72rem">${demo.schedule}</span></div>
+                    </div>
+                    <div class="info-card-tags">
+                        <span class="info-card-tag"><i class="fas fa-certificate"></i> ${demo.cert}</span>
+                    </div>
+                    <div class="info-card-footer"><span>Maintenance Service</span><i class="fas fa-arrow-right" style="color:#ef4444"></i></div>`;
+            }
+            return card;
+        }
+
         // Show instances of a class
         let currentCategory = null;
         let currentClassName = null;
-        
+
         async function showClassInstances(className, classUri) {
             console.log('📋 Loading instances for:', className, classUri);
             
@@ -1964,9 +2141,19 @@
                         instanceList.appendChild(instanceCard);
                     });
                 } else {
-                    instanceList.innerHTML = '<p style="padding: 2rem; text-align: center; color: var(--text-secondary); grid-column: 1 / -1;">No instances found for this class.</p>';
+                    // Try demo instances for classes with no RDF individuals yet
+                    const demoData = getDemoInstances(className);
+                    if (demoData && demoData.length > 0) {
+                        document.getElementById('instanceCount').textContent = demoData.length;
+                        demoData.forEach(demo => {
+                            const card = renderDemoCard(demo, className);
+                            instanceList.appendChild(card);
+                        });
+                    } else {
+                        instanceList.innerHTML = '<p style="padding: 2rem; text-align: center; color: var(--text-secondary); grid-column: 1 / -1;">No instances found for this class.</p>';
+                    }
                 }
-                
+
                 showView('instanceView');
                 
             } catch (error) {
