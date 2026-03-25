@@ -361,13 +361,17 @@
         .bar-track { flex: 1; height: 7px; background: rgba(255,255,255,.06); border-radius: 4px; overflow: hidden; }
         .bar-fill { height: 100%; border-radius: 4px; transition: width .6s ease; }
         .bar-val { font-size: 0.7rem; color: var(--text-secondary); width: 36px; text-align: right; flex-shrink: 0; font-family: monospace; }
-        .freq-grid { display: grid; gap: 0.3rem; }
-        .freq-row { display: grid; grid-template-columns: 80px repeat(5,1fr); gap: 0.3rem; align-items: center; }
-        .freq-hd { font-size: 0.65rem; color: var(--text-secondary); text-align: center; }
-        .freq-nm { font-size: 0.72rem; color: var(--text-secondary); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-        .freq-dot { width: 20px; height: 20px; border-radius: 5px; margin: 0 auto; }
+        .freq-grid { display: grid; gap: 0.25rem; width: 100%; }
+        .freq-row { display: grid; grid-template-columns: 62px repeat(5, 1fr); gap: 0.2rem; align-items: center; min-width: 0; }
+        .freq-hd { font-size: 0.58rem; color: var(--text-secondary); text-align: center; line-height: 1.2; }
+        .freq-nm { font-size: 0.62rem; color: var(--text-secondary); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        .freq-dot { width: 16px; height: 16px; border-radius: 4px; margin: 0 auto; }
         .freq-dot.on { background: var(--op-color, #888); opacity: .9; }
         .freq-dot.off { background: rgba(255,255,255,.05); }
+        /* freq-grid 카드는 full-width 레이아웃 사용 */
+        .op-card-body--full { grid-template-columns: 1fr !important; }
+        .op-card-body--full .op-list { border-right: none; border-bottom: 1px solid var(--border); }
+        .op-card-body--full .op-visual { max-width: 480px; }
         .gauge-row { display: flex; flex-direction: column; gap: 0.55rem; }
         .gauge-item { }
         .gauge-hd { display: flex; justify-content: space-between; font-size: 0.72rem; margin-bottom: 0.25rem; }
@@ -1580,11 +1584,11 @@
                         </div>
                         <i class="fas fa-chevron-down op-card-arrow"></i>
                     </div>
-                    <div class="op-card-body">
+                    <div class="op-card-body op-card-body--full">
                         <div class="op-list">
                             <div class="op-item"><div class="op-dot" style="background:rgba(59,130,246,.2);color:#3b82f6">●</div><span><b>매일:</b> 에스프레소 머신 백플러시</span></div>
                             <div class="op-item"><div class="op-dot" style="background:rgba(59,130,246,.2);color:#3b82f6">●</div><span><b>주 1회:</b> 그라인더 청소·캘리브레이션</span></div>
-                            <div class="op-item"><div class="op-dot" style="background:rgba(59,130,246,.2);color:#3b82f6">●</div><span><b>월 1회:</b> 워터 필터 교체</span></div>
+                            <div class="op-item"><div class="op-dot" style="background:rgba(59,130,246,.2);color:#3b82f6">●</div><span><b>월 1회:</b> 워터필터 교체</span></div>
                             <div class="op-item"><div class="op-dot" style="background:rgba(59,130,246,.2);color:#3b82f6">●</div><span><b>분기 1회:</b> 머신 전문가 점검</span></div>
                             <div class="op-item"><div class="op-dot" style="background:rgba(59,130,246,.2);color:#3b82f6">●</div><span><b>연 1회:</b> 전체 장비 오버홀</span></div>
                             <div class="op-item"><div class="op-dot" style="background:rgba(59,130,246,.2);color:#3b82f6">●</div><span><b>냉장고:</b> 주 1회 온도·청결 점검</span></div>
