@@ -1105,9 +1105,8 @@
         #catMainFlex { display: flex; gap: 1.5rem; align-items: flex-start; }
         #catHierarchyWrapper { flex: 0 0 330px; min-width: 0; }
         #locationMapPanel { flex: 1; min-width: 0; display: none; }
-        #locationMapContainer { height: 530px; width: 100%; overflow: hidden; }
-        #locationMapContainer .leaflet-overlay-pane { overflow: hidden; }
-        #locationMapContainer .leaflet-overlay-pane svg { overflow: hidden; }
+        #locationMapContainer { height: 530px; width: 100%; }
+        #locationMapContainer .leaflet-overlay-pane svg { will-change: transform; transform: translateZ(0); }
         .leaflet-container { background: #1a1a2e; }
         .leaflet-popup-content-wrapper { background: #fff; color: #1e293b; border: 1px solid #cbd5e1; border-radius: 8px; box-shadow: 0 4px 16px rgba(0,0,0,0.18); }
         .leaflet-popup-tip { background: #fff; }
@@ -3119,8 +3118,7 @@
             zoomControl: true, attributionControl: true,
             worldCopyJump: false,
             maxBounds: [[-90, -200], [90, 200]],
-            maxBoundsViscosity: 1.0,
-            renderer: L.svg({ padding: 0.5 })
+            maxBoundsViscosity: 1.0
           }).setView([20, 15], 2);
 
           L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -3196,8 +3194,11 @@
 
         function _locOnCountryClick(countryName, layer) {
           // Reset previous highlight
-          if (_locHighlighted) _locHighlighted.setStyle({ fillColor:'transparent', fillOpacity:0 });
-          layer.setStyle({ fillColor:'#6366f1', fillOpacity:0.22 });
+          if (_locHighlighted) {
+            _locHighlighted.setStyle({ fillColor:'transparent', fillOpacity:0 });
+          }
+          layer.setStyle({ color:'#6366f1', weight:1.5, fillColor:'#6366f1', fillOpacity:0.30 });
+          try { layer.bringToFront(); } catch(e) {}
           _locHighlighted = layer;
 
           // Zoom to country
@@ -4420,8 +4421,8 @@
             { from:[10.77,106.70], waypoints:[[1.26,103.82],[5,108],[15,120]], to:[35.62,139.78], label:'HCMC → Tokyo', type:'sea' },
             { from:[10.77,106.70], waypoints:[[1.26,103.82],[5,110],[20,125]], to:[35.10,129.04], label:'HCMC → Busan', type:'sea' },
             { from:[10.77,106.70], waypoints:[[1.26,103.82],[-5,115],[-20,130]], to:[-33.86,151.21], label:'HCMC → Sydney', type:'sea' },
-            // Vietnam/Singapore → USA (Trans-Pacific)
-            { from:[1.26,103.82],  waypoints:[[5,120],[20,140],[35,155],[40,160]], to:[33.75,-118.19], label:'Singapore → Long Beach (Pacific)', type:'sea' },
+            // Vietnam/Singapore → USA West Coast (via Suez + Panama)
+            { from:[1.26,103.82],  waypoints:[[5,90],[10,65],[27.92,32.55],[30.02,32.55],[35.98,-5.35],[5,-20],[9.38,-79.92],[9.38,-79.08],[15,-100]], to:[33.75,-118.19], label:'Singapore → Long Beach (Suez+Panama)', type:'sea' },
             // Singapore → Europe (Suez)
             { from:[1.26,103.82],  waypoints:[[5,90],[10,65],[15,50],[27.92,32.55],[30.02,32.55],[35,27]], to:[53.55,9.99], label:'Singapore → Hamburg (Suez)', type:'sea' },
           ],
@@ -4457,8 +4458,8 @@
           ]
         };
 
-        function toggleTradeRoutes() {
-          if (!_locMap) return;
+        window.toggleTradeRoutes = function toggleTradeRoutes() {
+          if (!_locMap) { console.warn('Map not ready'); return; }
           _locRoutesVisible = !_locRoutesVisible;
           const btn = document.getElementById('tradeRouteBtn');
           const legendItems = document.querySelectorAll('.route-legend-item');
