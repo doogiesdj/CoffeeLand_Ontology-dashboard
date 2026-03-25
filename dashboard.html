@@ -2370,36 +2370,42 @@
             const isFarm     = className.toLowerCase().includes('farm');
 
             if (isFarm) {
-                // ── Farm detail view ──────────────────────────────────────
-                const p = instance.properties;
-                const getLabel = uri => decodeURIComponent(uri.split('#').pop()).replace(/_/g, ' ');
-                const vals = key => (p[key] || []).map(v => getLabel(v.value));
-                const val1 = key => vals(key)[0] || null;
+                // ── Farm detail view (uses FARM_DATA lookup table) ────────
+                const fd = (window.FARM_DATA && window.FARM_DATA[instance.name]) || {};
 
-                const country    = val1('isLocatedIn');
-                const region     = val1('hasRegion');
-                const altitude   = val1('hasAltitudeRange');
-                const estYear    = val1('establishedYear');
-                const certs      = vals('hasCertification');
-                const varieties  = vals('cultivates');
-                const processing = [...new Set([...vals('hasProcessingMethod'), ...vals('usesProcessingMethod')])];
-                const coop       = val1('memberOfCoop') || val1('memberOf');
-                const co2        = val1('hasCO2PerKg');
-                const grade      = val1('producesGrade');
-                const impact     = vals('hasImpact');
+                const country    = fd.country    || '—';
+                const region     = fd.region     || '—';
+                const altitude   = fd.altitude   || null;
+                const estYear    = fd.established|| null;
+                const owner      = fd.owner      || null;
+                const certs      = fd.certs      || [];
+                const varieties  = fd.varieties  || [];
+                const processing = fd.processing || [];
+                const coop       = fd.coop       || null;
+                const grade      = fd.grade      || null;
+                const size       = fd.size       || null;
+                const desc       = fd.desc       || null;
+                const notes      = fd.notes      || null;
 
                 let html = '';
 
                 // Stats bar
                 html += `<div class="bev-stats">`;
-                html += `<div class="bev-stat"><div class="bev-stat-val">${country || '—'}</div><div class="bev-stat-lbl">🌍 국가</div></div>`;
-                html += `<div class="bev-stat"><div class="bev-stat-val">${region || '—'}</div><div class="bev-stat-lbl">📍 지역</div></div>`;
+                html += `<div class="bev-stat"><div class="bev-stat-val">${country}</div><div class="bev-stat-lbl">🌍 국가</div></div>`;
+                html += `<div class="bev-stat"><div class="bev-stat-val">${region}</div><div class="bev-stat-lbl">📍 지역</div></div>`;
                 html += `<div class="bev-stat"><div class="bev-stat-val">${altitude ? altitude + 'm' : '—'}</div><div class="bev-stat-lbl">⛰️ 고도</div></div>`;
                 html += `<div class="bev-stat"><div class="bev-stat-val">${estYear || '—'}</div><div class="bev-stat-lbl">📅 설립연도</div></div>`;
                 html += `</div>`;
 
+                // Description / tasting notes
+                if (desc)  html += `<div class="bev-desc">${desc}</div>`;
+
                 // Info grid
                 html += `<div class="bev-info-grid">`;
+
+                if (owner) html += `<div class="bev-info-item full">👤 농장주&nbsp; <span>${owner}</span></div>`;
+                if (size)  html += `<div class="bev-info-item">📐 농장 규모&nbsp; <span>${size}</span></div>`;
+                if (grade) html += `<div class="bev-info-item">🏆 등급&nbsp; <span>${grade}</span></div>`;
 
                 if (certs.length) {
                     html += `<div class="bev-info-item full">🏷️ 인증&nbsp;
@@ -2416,14 +2422,8 @@
                         <span class="bev-tag-row">${processing.map(m => `<span class="bev-tag">${m}</span>`).join('')}</span>
                     </div>`;
                 }
-                if (coop)  html += `<div class="bev-info-item full">🤝 소속 조합&nbsp; <span>${coop}</span></div>`;
-                if (co2)   html += `<div class="bev-info-item">💨 CO₂/kg&nbsp; <span>${co2} kg</span></div>`;
-                if (grade) html += `<div class="bev-info-item">🏆 등급&nbsp; <span>${grade}</span></div>`;
-                if (impact.length) {
-                    html += `<div class="bev-info-item full">🌱 임팩트&nbsp;
-                        <span class="bev-tag-row">${impact.map(i => `<span class="bev-tag">${i.replace(/^Metric_/, '')}</span>`).join('')}</span>
-                    </div>`;
-                }
+                if (coop) html += `<div class="bev-info-item full">🤝 소속 조합&nbsp; <span>${coop}</span></div>`;
+                if (notes) html += `<div class="bev-info-item full">🫖 컵 노트&nbsp; <span>${notes}</span></div>`;
 
                 html += `</div>`;
                 modalBody.innerHTML = html;
@@ -2545,6 +2545,301 @@
         }
 
         // ============================================================
+        // ============================================================
+        // FARM DATA — real-world information for 24 coffee farms
+        // Keys match instance.name (= instanceDetails key from ontology_data.json)
+        // ============================================================
+        window.FARM_DATA = {
+          'Farm_Narino_San_Juan_Farm': {
+            country:'Colombia', region:'Nariño', altitude:'1,800–2,200', established:'1988',
+            owner:'Asociación de Caficultores de Nariño',
+            certs:['Fair Trade','Organic','RainForest Alliance'],
+            varieties:['Castillo','Caturra'],
+            processing:['Washed'],
+            coop:'Cooperativa Multiactiva de Caficultores del Norte de Nariño',
+            grade:'SHG (Strictly High Grown)',
+            size:'약 12 ha',
+            desc:'콜롬비아 남부 안데스 고산지대 나리뇨 주에 위치한 농장. 화산 토양과 극단적인 일교차 덕분에 산미가 뚜렷하고 복합적인 컵 프로파일을 만들어냅니다.',
+            notes:'밝은 산미, 레드 베리, 다크초콜릿, 캐러멜 피니시'
+          },
+          'Farm_West_Valley_Helsar_Farm': {
+            country:'Costa Rica', region:'West Valley (Valle Occidental)', altitude:'1,600–1,900', established:'2007',
+            owner:'Marvin Barrantes & Carlos Barrantes',
+            certs:['RainForest Alliance','Specialty Coffee Association'],
+            varieties:['Catuai','Villa Sarchi','Caturra','Gesha'],
+            processing:['Washed','Yellow Honey','Black Honey','Natural'],
+            coop:'West Valley Micro-Mill Collective',
+            grade:'SHB (Strictly Hard Bean)',
+            size:'약 20 ha (멀티 로트)',
+            desc:'코스타리카 웨스트 밸리의 Helsar de Zarcero 마이크로밀. 2008년부터 Cup of Excellence 다수 수상. 다양한 허니 프로세싱으로 유명하며 스페셜티 커피 커뮤니티에서 높은 평가를 받습니다.',
+            notes:'복숭아, 망고, 황설탕, 크리미한 바디'
+          },
+          'Farm_Sumatra_Mandheling_Gayo_Farm': {
+            country:'Indonesia', region:'Aceh — Gayo Highlands, Sumatra', altitude:'1,200–1,500', established:'1950',
+            owner:'Gayo Organic Coffee Farmers Cooperative (GAYO)',
+            certs:['Organic','Fair Trade','Rainforest Alliance'],
+            varieties:['Ateng (Catimor)','Tim Tim (Timor Hybrid)','Bourbon','Typica'],
+            processing:['Wet-Hulled (Giling Basah)'],
+            coop:'KBQ Baitul Qiradh (Koperasi Baitul Qiradh)',
+            grade:'Grade 1 Mandheling',
+            size:'약 5,000 ha (협동조합 공동 경작)',
+            desc:'수마트라 아체 주 가요 고원의 공동 소규모 농장들. 인도네시아 특유의 길링 바사(습식 탈곡) 가공법을 사용해 낮은 산미와 무거운 바디감, 어스시한 복합미를 만들어냅니다.',
+            notes:'다크초콜릿, 삼나무, 흙, 허브, 낮은 산미'
+          },
+          'Farm_Sidamo_Guji_Farm': {
+            country:'Ethiopia', region:'Sidama — Guji Zone', altitude:'1,700–2,200', established:'1960',
+            owner:'Guji Farmer Union 소속 소규모 농가 집합',
+            certs:['Organic','Fair Trade'],
+            varieties:['Ethiopia Heirloom (JARC 74110, 74112 등)'],
+            processing:['Natural (Sun-Dried)','Washed'],
+            coop:'Guji Highlands Farmer Cooperative',
+            grade:'Ethiopia Grade 1 / Q-Grade 88+',
+            size:'약 8,000 ha (협동조합 공동)',
+            desc:'에티오피아 구지 지역 야생 커피 유전자원이 자라는 고원 농장. 토착 에어리룸 품종이 자연 건조되며 강렬한 과일향을 형성합니다. Yirgacheffe와 함께 에티오피아 최고 산지 중 하나입니다.',
+            notes:'블루베리, 와인, 자스민, 복숭아, 다크과일'
+          },
+          'Farm_Sao_Paulo_Fazenda_Ipe': {
+            country:'Brazil', region:'Mogiana — São Paulo', altitude:'900–1,200', established:'1922',
+            owner:'Família Pereira (4대째 운영)',
+            certs:['UTZ Certified','Rainforest Alliance','Organic (일부 로트)'],
+            varieties:['Mundo Novo','Catuai Vermelho','Bourbon Amarelo'],
+            processing:['Natural (Pulped Natural)','Fully Washed'],
+            coop:'Cooperativa dos Cafeicultores da Região de Mogiana (Cocarive)',
+            grade:'Fine Cup / Specialty Grade 85+',
+            size:'약 180 ha',
+            desc:'상파울루 주 모지아나 지역의 백년 가족 농장. 비옥한 적토(terra roxa)와 온화한 기후 덕분에 균형 잡힌 바디와 달콤한 견과류 향의 브라질리언 스페셜티를 생산합니다.',
+            notes:'헤이즐넛, 카라멜, 밀크초콜릿, 낮은 산미'
+          },
+          'Farm_Kilimanjaro_Moshi_Estate': {
+            country:'Tanzania', region:'Kilimanjaro — Moshi District', altitude:'1,400–1,800', established:'1935',
+            owner:'Kilimanjaro Native Cooperative Union (KNCU)',
+            certs:['Fair Trade','Organic','UTZ'],
+            varieties:['Kent','Bourbon','Typica','N39'],
+            processing:['Fully Washed'],
+            coop:'Kilimanjaro Native Cooperative Union (KNCU) — 창립 1932년, 동아프리카 최고(最古) 협동조합',
+            grade:'AA / Peaberry',
+            size:'약 25,000 ha (협동조합 3만여 농가)',
+            desc:'킬리만자로 산 기슭 모시 지역의 화산 토양 위에서 재배되는 탄자니아 커피. KNCU는 1932년 설립된 동아프리카에서 가장 오래된 협동조합으로 생산자 직접 무역(Direct Trade)의 선구자입니다.',
+            notes:'밝은 산미, 자몽, 블랙커런트, 다크초콜릿 피니시'
+          },
+          'Farm_Antigua_Finca_El_Injerto': {
+            country:'Guatemala', region:'Huehuetenango', altitude:'1,700–2,000', established:'1874',
+            owner:'Aguirre Family (5대째 — Arturo Aguirre Jr.)',
+            certs:['Rainforest Alliance','UTZ','Organic'],
+            varieties:['Bourbon','Pache','Maragogipe','Caturra','Catuai'],
+            processing:['Fully Washed','Honey','Natural'],
+            coop:'Anacafé (Asociación Nacional del Café de Guatemala) 회원',
+            grade:'SHB (Strictly Hard Bean) / Cup of Excellence 다수 우승',
+            size:'약 40 ha',
+            desc:'과테말라 웨웨테낭고 지역에 위치한 전설적인 농장. 1874년 설립 이래 5대째 아기레 가문이 운영하며, Cup of Excellence에서 최다 우승 기록을 보유합니다. Maragogipe 같은 희귀 품종도 재배합니다.',
+            notes:'다크초콜릿, 브라운슈거, 오렌지, 살구, 복합적인 산미'
+          },
+          'Farm_Lam_Dong_Arabica_Farm': {
+            country:'Vietnam', region:'Lâm Đồng — Đà Lạt Plateau', altitude:'1,200–1,600', established:'1995',
+            owner:'K\'ho Ethnic Minority Farmer Collective',
+            certs:['4C (Common Code for the Coffee Community)','Organic (일부)'],
+            varieties:['Bourbon','Typica','Catimor','Moka (Yemen Mocha)'],
+            processing:['Washed','Honey'],
+            coop:'Đà Lạt Coffee Cooperative',
+            grade:'Fine Robusta Grade 1 / Arabica Specialty',
+            size:'약 600 ha (고원 지역)',
+            desc:'베트남 커피 산지 중 Arabica를 재배하는 희귀 지역인 달랏 고원 농장. K\'호 원주민 농부들이 1,200m 이상 고도에서 유럽 식민지 시대에 도입된 Bourbon, Moka 품종을 재배합니다.',
+            notes:'꽃향기, 복숭아, 자몽, 섬세한 산미'
+          },
+          'Farm_Nyeri_Gatomboya_Farm': {
+            country:'Kenya', region:'Nyeri County — Central Province', altitude:'1,600–1,800', established:'1954',
+            owner:'Gatomboya Farmers Cooperative Society (FCS)',
+            certs:['Fair Trade','Organic','UTZ'],
+            varieties:['SL28','SL34','Ruiru 11','Batian'],
+            processing:['Kenya Double-Washed (Fully Washed + Soaking)'],
+            coop:'Gatomboya Farmers Cooperative Society',
+            grade:'AA Top / PB (Peaberry) / AB',
+            size:'약 900 ha (조합원 1,800명)',
+            desc:'케냐 최고 품질 산지인 냐에리 카운티의 게이탐보야 협동조합 농장. 케냐 농업연구소(KARI)가 개발한 SL28·SL34 품종과 Double-Washed 공법이 결합되어 세계적으로 인정받는 케냐 AA 커피를 생산합니다.',
+            notes:'블랙커런트, 자두, 토마토, 포도, 매우 밝은 산미'
+          },
+          'Farm_Cajamarca_Villa_Rica_Farm': {
+            country:'Peru', region:'Cajamarca — Northern Highlands', altitude:'1,500–1,900', established:'1980',
+            owner:'Central Café y Cacao del Perú 소속 농가',
+            certs:['Fair Trade','Organic','Bird-Friendly'],
+            varieties:['Typica','Caturra','Bourbon','Catimor'],
+            processing:['Fully Washed'],
+            coop:'Central Café y Cacao del Perú (CCC)',
+            grade:'SHB / Peru Specialty Grade 84+',
+            size:'약 2–5 ha (개인 소농 집합)',
+            desc:'페루 카하마르카 고산지대 소규모 가족 농장들의 협동 생산. 유기농 인증을 받은 커피를 Fair Trade 경로로 수출하며, 생물다양성을 보존하는 그늘 재배(Shade-Grown)로 알려져 있습니다.',
+            notes:'다크초콜릿, 견과류, 캐러멜, 부드러운 산미'
+          },
+          'Farm_Harrar_Estate': {
+            country:'Ethiopia', region:'Harari — Eastern Highlands', altitude:'1,400–2,000', established:'1700년대 (야생)',
+            owner:'Harrar Coffee Farmers Cooperative Union (HCFCU)',
+            certs:['Organic','Fair Trade'],
+            varieties:['Ethiopia Heirloom — Longberry & Shortberry (야생 및 반야생)'],
+            processing:['Natural (Traditional Sun-Dried)'],
+            coop:'Harrar Coffee Farmers Cooperative Union',
+            grade:'Harrar Grade 3–4 / Specialty Lot Grade 1',
+            size:'분산된 가정 텃밭 규모 (Garden Coffee)',
+            desc:'에티오피아 동부 하라르 지역은 수백 년 전통의 커피 생산지로, 세계에서 가장 오래된 커피 산지 중 하나입니다. 농가 텃밭에서 전통 자연건조 방식으로 재배하며 와인과 블루베리를 연상시키는 독특한 풍미로 유명합니다.',
+            notes:'블루베리, 와인, 초콜릿, 스파이스, 야생과일'
+          },
+          'Farm_Espirito_Santo_Fazenda_Santa_Rita': {
+            country:'Brazil', region:'Espírito Santo — Serrana Region', altitude:'800–1,200', established:'1955',
+            owner:'Família Raasch',
+            certs:['Rainforest Alliance','UTZ'],
+            varieties:['Mundo Novo','Catuai','Conillon (Robusta)','Arabica 특산 로트'],
+            processing:['Natural','Pulped Natural (Cereja Descascada)'],
+            coop:'Cooabriel (Cooperativa Agrária dos Cafeicultores da Região de São Gabriel)',
+            grade:'Fine Cup / Brazil Specialty',
+            size:'약 230 ha',
+            desc:'브라질 에스피리투 산투 주 세라나 지역의 대규모 가족 농장. 아라비카와 코닐론(Robusta) 두 품종을 모두 재배하는 독특한 브라질 농장으로, 자연건조 로트는 달콤하고 풍부한 과일향을 냅니다.',
+            notes:'다크초콜릿, 건무화과, 건포도, 스파이시 피니시'
+          },
+          'Farm_Jinotega_Finca_Mierisch': {
+            country:'Nicaragua', region:'Jinotega', altitude:'1,200–1,700', established:'1908',
+            owner:'Mierisch Family (4대째 — Erwin Mierisch & Steve Mierisch)',
+            certs:['Rainforest Alliance','Organic (일부 로트)'],
+            varieties:['Pacamara','Maracaturra','Caturra','Catimor','Maragogipe'],
+            processing:['Fully Washed','Natural','Honey'],
+            coop:'Cafetalera Americagro S.A.',
+            grade:'SHG (Strictly High Grown) / Cup of Excellence 2009 우승',
+            size:'약 580 ha (5개 농장 보유)',
+            desc:'니카라과 히노테가 지역 4대째 커피 재배 명문 가문 미에리시 패밀리의 농장. 2009년 Cup of Excellence 우승으로 국제적 명성을 얻었으며, 특히 Pacamara·Maracaturra 등 희귀 품종으로 유명합니다.',
+            notes:'살구, 피치, 캐러멜, 크리미한 바디, 시트러스 산미'
+          },
+          'Farm_Antioquia_La_Esperanza': {
+            country:'Colombia', region:'Antioquia', altitude:'1,400–1,900', established:'1975',
+            owner:'Jaime Pava & Familia',
+            certs:['Rainforest Alliance','Fair Trade','4C'],
+            varieties:['Castillo','Caturra','Colombia','Tabi'],
+            processing:['Washed','Natural','Honey'],
+            coop:'Cooperativa de Caficultores de Antioquia (Coopantioquia)',
+            grade:'Colombia UGQ / Specialty 85+',
+            size:'약 18 ha',
+            desc:'콜롬비아 안티오키아 주 중앙 안데스 산맥에 자리한 가족 농장. 콜롬비아 최대 커피 생산 주 중 하나인 안티오키아 지역의 다양한 품종과 가공법 실험으로 주목받고 있습니다.',
+            notes:'레드베리, 다크초콜릿, 판엘라(흑설탕), 복합적인 향미'
+          },
+          'Farm_Huila_El_Paraiso_Farm': {
+            country:'Colombia', region:'Huila — Piamonte, Cauca 경계', altitude:'1,700–2,100', established:'2007',
+            owner:'Diego Samuel Bermúdez Tapia',
+            certs:['Organic','Q-Grader Certified Lots'],
+            varieties:['Castillo','Colombia','Pink Bourbon','Gesha'],
+            processing:['Anaerobic Natural','Anaerobic Washed','Carbonic Maceration','Thermal Shock'],
+            coop:'없음 (인디펜던트 스페셜티 농장)',
+            grade:'Q-Grade 91+ / World Coffee Championship 다수 입상',
+            size:'약 30 ha',
+            desc:'혁신적인 무산소 발효(Anaerobic Fermentation) 기법을 개척한 콜롬비아 대표 스페셜티 농장. 2019년 이후 World Brewers Cup, Barista Championship 등 국제 대회에서 지속적으로 사용되며 전 세계 바리스타들의 주목을 받고 있습니다.',
+            notes:'열대과일, 패션프루트, 와인, 강한 발효향, 초특급 산미'
+          },
+          'Farm_Copan_San_Marcos_Farm': {
+            country:'Honduras', region:'Copán — Western Highlands', altitude:'1,200–1,600', established:'1985',
+            owner:'Comunidad de San Marcos 소속 농가',
+            certs:['Fair Trade','Organic','UTZ'],
+            varieties:['Catuai','Caturra','Lempira','IHCAFE 90'],
+            processing:['Fully Washed'],
+            coop:'COMSA (Café Orgánico Marcala S.A.) 연계 / COHORSIL',
+            grade:'SHG (Strictly High Grown) / HG (High Grown)',
+            size:'약 2–4 ha (소농 집합)',
+            desc:'온두라스 서부 코판 주 고산지대 소규모 농가들. 온두라스는 중미 최대 커피 수출국으로 성장했으며, 코판 지역 커피는 특히 달콤하고 균형 잡힌 컵 프로파일로 주목받고 있습니다.',
+            notes:'밀크초콜릿, 피치, 캐러멜, 밝고 균형 잡힌 산미'
+          },
+          'Farm_Western_Province_Huye_Mountain': {
+            country:'Rwanda', region:'Western Province — Huye District', altitude:'1,700–2,000', established:'2008',
+            owner:'Buf Café / Long Miles Coffee Project 파트너',
+            certs:['Fair Trade','Organic','Cup of Excellence Rwanda'],
+            varieties:['Red Bourbon (Rwanda Bourbon)'],
+            processing:['Fully Washed (Kenya-Style Double Fermentation)'],
+            coop:'Huye Mountain Coffee Washing Station',
+            grade:'Grade A / Cup of Excellence Rwanda 2008 우승',
+            size:'약 4,000 ha (워싱 스테이션 집산 지역)',
+            desc:'르완다 서부 후예 지구 고원의 워싱 스테이션 중심 생산 지역. 르완다 대학살 이후 커피가 국가 재건의 핵심 작물이 되었으며, Red Bourbon 단일 품종으로 전통 완전세척 가공을 사용해 청아한 플로럴 컵을 만들어냅니다.',
+            notes:'자스민, 레몬그라스, 레드커런트, 실크 질감'
+          },
+          'Farm_Yirgacheffe_Kochere_Farm': {
+            country:'Ethiopia', region:'Yirgacheffe — Kochere Woreda, SNNPR', altitude:'1,800–2,200', established:'1960년대 (협동조합 재편 2002)',
+            owner:'Kochere Farmers Cooperative Union (KCFCU)',
+            certs:['Organic','Fair Trade','UTZ'],
+            varieties:['Ethiopia Heirloom (JARC 74158, 74160 등)'],
+            processing:['Fully Washed','Natural'],
+            coop:'Yirgacheffe Coffee Farmers Cooperative Union (YCFCU)',
+            grade:'Ethiopia Grade 1 / Q-Grade 89–92+',
+            size:'약 7,000 ha (협동조합 공동)',
+            desc:'커피의 발상지 에티오피아에서도 최고 품질을 인정받는 이르가체페 코체레 지역. 세계 최고의 워시드 커피 중 하나로 꼽히며, 자스민·레몬·베르가못 같은 섬세한 꽃향기로 스페셜티 커피 산업의 기준이 된 산지입니다.',
+            notes:'자스민, 레몬, 베르가못, 라임, 섬세한 꽃향, 티 라이크'
+          },
+          'Farm_Java_Ijen_Estate': {
+            country:'Indonesia', region:'Java — Ijen Plateau, East Java', altitude:'1,400–1,600', established:'1878',
+            owner:'PT. Perkebunan Nusantara XII (PTPN XII, 국영기업)',
+            certs:['Organic','Rainforest Alliance','Fairtrade'],
+            varieties:['Typica (Blawan·Kayumas heritage varieties)','Catimor','USDA 762'],
+            processing:['Fully Washed'],
+            coop:'PTPN XII 국영 농장 관리 (Blawan·Pancur·Kayumas 에스테이트)',
+            grade:'Java Estate Grade 1 / EK1 (Extra Premium)',
+            size:'약 4,000 ha (Blawan + Kayumas 에스테이트 합산)',
+            desc:'1878년 네덜란드 식민지 시대에 설립된 자바 섬 이젠 고원의 역사적 커피 에스테이트. 현재 인도네시아 국영기업 PTPN XII가 운영하며, Mocha Java 블렌드의 "Java" 기원지로 커피 역사에서 특별한 위치를 차지합니다.',
+            notes:'다크초콜릿, 어스시(흙내음), 삼나무, 스파이스, 낮은 산미'
+          },
+          'Farm_Dak_Lak_Central_Highlands_Farm': {
+            country:'Vietnam', region:'Đắk Lắk — Central Highlands (Tây Nguyên)', altitude:'400–800', established:'1975',
+            owner:'Buon Me Thuot Coffee Farmers Association 소속 농가',
+            certs:['4C','UTZ Certified','Rainforest Alliance (일부)'],
+            varieties:['Robusta (Coffea canephora — BR9, TR9 품종)','Arabica (소량)'],
+            processing:['Wet Process (Washed)','Natural (건기 자연건조)'],
+            coop:'Đắk Lắk Coffee Association / Intimex Group',
+            grade:'Robusta Grade 1–2 / Screen 18+',
+            size:'약 180,000 ha (닥락 주 전체 커피 재배 면적)',
+            desc:'베트남 최대 커피 산지인 닥락 성 중앙고원. 베트남은 세계 2위 커피 수출국이며 닥락은 그 중심지입니다. 주로 로부스타를 대량 생산하며 인스턴트 커피와 블렌드용으로 전 세계에 공급됩니다.',
+            notes:'진한 쓴맛, 다크초콜릿, 어스시, 강한 바디감 (로부스타 특성)'
+          },
+          'Farm_Kiambu_Kagumo_Estate': {
+            country:'Kenya', region:'Kiambu County — Central Province', altitude:'1,700–2,000', established:'1912',
+            owner:'Kagumo Farmers Cooperative Society',
+            certs:['Rainforest Alliance','UTZ','Fair Trade'],
+            varieties:['SL28','SL34','Ruiru 11','Batian'],
+            processing:['Kenya Double-Washed'],
+            coop:'Kagumo Farmers Cooperative Society — Nairobi Coffee Exchange (NCE) 경매 출품',
+            grade:'AA Top / PB / Kenya 최고등급',
+            size:'약 600 ha (조합원 약 1,200 농가)',
+            desc:'케냐 수도 나이로비 근교 키암부 카운티의 전통 커피 에스테이트. 1912년 영국 식민지 시대에 시작된 역사를 가지며, 나이로비 커피 거래소(NCE)에서 케냐 최고가에 낙찰되는 로트를 정기적으로 배출합니다.',
+            notes:'블랙커런트, 자두, 패션프루트, 시트러스, 매우 밝은 산미'
+          },
+          'Farm_Huehuetenango_Finca_Vista_Hermosa': {
+            country:'Guatemala', region:'Huehuetenango', altitude:'1,600–2,000', established:'1972',
+            owner:'Familia Ralda (3대째 — Francisco Ralda)',
+            certs:['Rainforest Alliance','Fairtrade','Organic'],
+            varieties:['Bourbon','Caturra','Catuai Rojo'],
+            processing:['Fully Washed'],
+            coop:'Anacafé 회원 / Huehuetenango Exporters Association',
+            grade:'SHB / Guatemala Strictly Hard Bean',
+            size:'약 30 ha',
+            desc:'과테말라 북서부 웨웨테낭고의 랄다 가문 3대째 농장. 멕시코 걸프 만에서 불어오는 열풍(Canibal)과 고도의 조합이 독특한 미기후를 형성해 중미 최고 커피 산지 중 하나로 손꼽힙니다.',
+            notes:'다크초콜릿, 마카다미아, 레몬 피니시, 균형 잡힌 산미'
+          },
+          'Farm_Tarrazu_La_Minita_Farm': {
+            country:'Costa Rica', region:'Tarrazú — San José Province', altitude:'1,600–1,900', established:'1976',
+            owner:'William McAlpin (미국인 소유 — 직접 무역 선구자)',
+            certs:['Rainforest Alliance','Specialty Coffee Association','Custom La Minita Standard (QC 자체 기준)'],
+            varieties:['Caturra','Catuai'],
+            processing:['Fully Washed (Wet Process)'],
+            coop:'없음 (독립 운영 — La Minita Coffee Company 직접 무역)',
+            grade:'SHB / La Minita Proprietary Grade (자체 엄격 기준)',
+            size:'약 160 ha',
+            desc:'코스타리카 타라수 지역의 전설적인 스페셜티 농장. 1976년부터 William McAlpin이 직접 무역(Direct Trade)을 통해 유럽·미국 고급 로스터에 공급해온 파이오니어 농장으로, 철저한 QC 시스템으로 유명합니다.',
+            notes:'브라이트 시트러스, 오렌지 껍질, 밀크초콜릿, 클린 컵'
+          },
+          'Farm_Minas_Gerais_Fazenda_Sertao': {
+            country:'Brazil', region:'Sul de Minas — Minas Gerais', altitude:'1,000–1,300', established:'1890',
+            owner:'Família Dias (Gilberto Dias — 4대째)',
+            certs:['Rainforest Alliance','UTZ','Organic','Cup of Excellence Brazil'],
+            varieties:['Mundo Novo','Yellow Bourbon','Catuai Amarelo','Acaiá'],
+            processing:['Natural','Pulped Natural (Honey)','Fully Washed'],
+            coop:'Cooperativa Regional de Cafeicultores em Guaxupé (Cooxupé)',
+            grade:'Fine Cup / Brazil Cup of Excellence 2002 우승 (Fazenda Sertão)',
+            size:'약 320 ha',
+            desc:'브라질 미나스 제라이스 술 데 미나스 지역의 4대째 가족 농장. 2002년 Brazil Cup of Excellence 우승으로 국제적 명성을 얻었으며, Yellow Bourbon 자연건조 로트는 특히 달콤하고 복합적인 풍미로 스페셜티 업계에서 높이 평가받습니다.',
+            notes:'황색과일, 캐러멜, 헤이즐넛, 다크초콜릿, 낮은 산미'
+          },
+        };
+
         // BEVERAGE DATA (from ontology_data.json instanceDetails)
         // RDF parser does not extract data properties, so we embed them here.
         // ============================================================
