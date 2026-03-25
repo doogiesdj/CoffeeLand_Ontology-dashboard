@@ -2367,8 +2367,68 @@
             modalTitle.innerHTML = `<i class="fas ${icon}"></i> ${instance.name}`;
 
             const isBeverage = className.toLowerCase().includes('beverage') || className.toLowerCase().includes('menu');
+            const isFarm     = className.toLowerCase().includes('farm');
 
-            if (isBeverage) {
+            if (isFarm) {
+                // ── Farm detail view ──────────────────────────────────────
+                const p = instance.properties;
+                const getLabel = uri => decodeURIComponent(uri.split('#').pop()).replace(/_/g, ' ');
+                const vals = key => (p[key] || []).map(v => getLabel(v.value));
+                const val1 = key => vals(key)[0] || null;
+
+                const country    = val1('isLocatedIn');
+                const region     = val1('hasRegion');
+                const altitude   = val1('hasAltitudeRange');
+                const estYear    = val1('establishedYear');
+                const certs      = vals('hasCertification');
+                const varieties  = vals('cultivates');
+                const processing = [...new Set([...vals('hasProcessingMethod'), ...vals('usesProcessingMethod')])];
+                const coop       = val1('memberOfCoop') || val1('memberOf');
+                const co2        = val1('hasCO2PerKg');
+                const grade      = val1('producesGrade');
+                const impact     = vals('hasImpact');
+
+                let html = '';
+
+                // Stats bar
+                html += `<div class="bev-stats">`;
+                html += `<div class="bev-stat"><div class="bev-stat-val">${country || '—'}</div><div class="bev-stat-lbl">🌍 국가</div></div>`;
+                html += `<div class="bev-stat"><div class="bev-stat-val">${region || '—'}</div><div class="bev-stat-lbl">📍 지역</div></div>`;
+                html += `<div class="bev-stat"><div class="bev-stat-val">${altitude ? altitude + 'm' : '—'}</div><div class="bev-stat-lbl">⛰️ 고도</div></div>`;
+                html += `<div class="bev-stat"><div class="bev-stat-val">${estYear || '—'}</div><div class="bev-stat-lbl">📅 설립연도</div></div>`;
+                html += `</div>`;
+
+                // Info grid
+                html += `<div class="bev-info-grid">`;
+
+                if (certs.length) {
+                    html += `<div class="bev-info-item full">🏷️ 인증&nbsp;
+                        <span class="bev-tag-row">${certs.map(c => `<span class="bev-tag">${c}</span>`).join('')}</span>
+                    </div>`;
+                }
+                if (varieties.length) {
+                    html += `<div class="bev-info-item full">☕ 재배 품종&nbsp;
+                        <span class="bev-tag-row">${varieties.map(v => `<span class="bev-tag">${v}</span>`).join('')}</span>
+                    </div>`;
+                }
+                if (processing.length) {
+                    html += `<div class="bev-info-item full">⚙️ 가공 방식&nbsp;
+                        <span class="bev-tag-row">${processing.map(m => `<span class="bev-tag">${m}</span>`).join('')}</span>
+                    </div>`;
+                }
+                if (coop)  html += `<div class="bev-info-item full">🤝 소속 조합&nbsp; <span>${coop}</span></div>`;
+                if (co2)   html += `<div class="bev-info-item">💨 CO₂/kg&nbsp; <span>${co2} kg</span></div>`;
+                if (grade) html += `<div class="bev-info-item">🏆 등급&nbsp; <span>${grade}</span></div>`;
+                if (impact.length) {
+                    html += `<div class="bev-info-item full">🌱 임팩트&nbsp;
+                        <span class="bev-tag-row">${impact.map(i => `<span class="bev-tag">${i.replace(/^Metric_/, '')}</span>`).join('')}</span>
+                    </div>`;
+                }
+
+                html += `</div>`;
+                modalBody.innerHTML = html;
+
+            } else if (isBeverage) {
                 // ── Beverage detail view ──────────────────────────────────
                 // instance.properties is always {} (RDF parser doesn't extract data props)
                 // Use BEVERAGE_DATA lookup table instead
