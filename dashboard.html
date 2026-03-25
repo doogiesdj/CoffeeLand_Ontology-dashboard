@@ -2368,8 +2368,55 @@
 
             const isBeverage = className.toLowerCase().includes('beverage') || className.toLowerCase().includes('menu');
             const isFarm     = className.toLowerCase().includes('farm');
+            const isCityInst = className.toLowerCase() === 'city';
 
-            if (isFarm) {
+            if (isCityInst) {
+                // ── City detail view (uses CITY_DATA lookup table) ────────
+                const cd = (window.CITY_DATA && window.CITY_DATA[instance.name]) || {};
+
+                const country   = cd.country   || '—';
+                const continent = cd.continent || '—';
+                const pop       = cd.pop       || '—';
+                const altitude  = cd.altitude  || null;
+                const desc      = cd.desc      || null;
+                const role      = cd.role      || [];
+                const roasters  = cd.roasters  || [];
+                const culture   = cd.culture   || null;
+                const history   = cd.history   || null;
+                const style     = cd.style     || null;
+
+                let html = '';
+
+                // Stats bar
+                html += `<div class="bev-stats">`;
+                html += `<div class="bev-stat"><div class="bev-stat-val">${country}</div><div class="bev-stat-lbl">🌍 국가</div></div>`;
+                html += `<div class="bev-stat"><div class="bev-stat-val">${continent}</div><div class="bev-stat-lbl">🗺️ 대륙</div></div>`;
+                html += `<div class="bev-stat"><div class="bev-stat-val">${pop}</div><div class="bev-stat-lbl">👥 인구</div></div>`;
+                html += `<div class="bev-stat"><div class="bev-stat-val">${altitude ? altitude + 'm' : '해발 평균'}</div><div class="bev-stat-lbl">⛰️ 고도</div></div>`;
+                html += `</div>`;
+
+                if (desc) html += `<div class="bev-desc">${desc}</div>`;
+
+                html += `<div class="bev-info-grid">`;
+
+                if (role.length) {
+                    html += `<div class="bev-info-item full">☕ 커피 역할&nbsp;
+                        <span class="bev-tag-row">${role.map(r => `<span class="bev-tag">${r}</span>`).join('')}</span>
+                    </div>`;
+                }
+                if (roasters.length) {
+                    html += `<div class="bev-info-item full">🏪 주요 카페·로스터&nbsp;
+                        <span class="bev-tag-row">${roasters.map(r => `<span class="bev-tag">${r}</span>`).join('')}</span>
+                    </div>`;
+                }
+                if (culture) html += `<div class="bev-info-item full">🎭 커피 문화&nbsp; <span>${culture}</span></div>`;
+                if (history) html += `<div class="bev-info-item full">📜 커피 역사&nbsp; <span>${history}</span></div>`;
+                if (style)   html += `<div class="bev-info-item full">🫗 대표 커피 스타일&nbsp; <span>${style}</span></div>`;
+
+                html += `</div>`;
+                modalBody.innerHTML = html;
+
+            } else if (isFarm) {
                 // ── Farm detail view (uses FARM_DATA lookup table) ────────
                 const fd = (window.FARM_DATA && window.FARM_DATA[instance.name]) || {};
 
@@ -2545,6 +2592,193 @@
         }
 
         // ============================================================
+        // ============================================================
+        // CITY DATA — geographic + coffee-oriented info for 20 cities
+        // Keys match instance.name (instanceDetails key)
+        // ============================================================
+        window.CITY_DATA = {
+          'Nairobi': {
+            country:'Kenya', continent:'Africa', pop:'4.9M', altitude:'1,795',
+            desc:'케냐의 수도이자 동아프리카 최대 도시. 적도 바로 아래 고원에 위치해 "녹색 도시(Green City in the Sun)"라 불립니다.',
+            role:['글로벌 커피 경매 허브','아프리카 최대 커피 거래 중심지'],
+            roasters:['Dormans Coffee (1950년 창립)','Java House','Kahawa 1893','Nairobi Coffee Exchange (NCE)'],
+            culture:'나이로비 커피 거래소(Nairobi Coffee Exchange)는 아프리카 최대 커피 경매소로, 매주 케냐 전역의 AA·AB·PB 등급 커피가 이곳에서 경매됩니다. 스페셜티 카페 씬도 빠르게 성장 중이며, Karen·Westlands 지역에 Third Wave 카페가 늘고 있습니다.',
+            history:'케냐 커피는 1893년 프랑스 선교사들이 부르봉 종을 들여오며 시작. 1930년대 케냐 정부의 SL28·SL34 품종 개발로 세계 최고 품질의 커피 산지로 부상. NCE는 1935년 설립.',
+            style:'케냐 더블 워시드(Kenya AA) — 물로 두 번 세척하는 독자적 공법으로 블랙커런트·자두·토마토의 강렬한 산미와 클린 컵을 구현'
+          },
+          'Melbourne': {
+            country:'Australia', continent:'Oceania', pop:'5.2M', altitude:'31',
+            desc:'빅토리아 주의 주도이자 호주 제2의 도시. 포트필립 만에 위치하며, 다문화 도시로 예술·음식·스포츠 문화로 유명합니다.',
+            role:['세계 3대 커피 도시','Flat White 발상지 (논쟁)','Third Wave 커피 선구 도시'],
+            roasters:['Proud Mary Coffee','St Ali','Market Lane Coffee','Seven Seeds','Patricia Coffee','Dukes Coffee Roasters'],
+            culture:'멜버른은 세계에서 가장 세련된 커피 문화를 보유한 도시 중 하나로 꼽힙니다. 1950~60년대 이탈리아 이민자들이 에스프레소 문화를 정착시켰고, 1980년대 플랫 화이트가 탄생했으며, 2000년대 Third Wave 운동이 전 세계로 퍼지는 중심지가 되었습니다. 매년 Melbourne International Coffee Expo(MICE) 개최.',
+            history:'1956년 Olympic Games로 유입된 유럽 이민자들이 에스프레소 바 문화를 가져옴. 1980년대 Pellegrini\'s, Caffe e Cucina 등이 정통 이탈리아식 에스프레소 문화를 전파. 2000년대 스페셜티 붐으로 글로벌 커피 순례지 부상.',
+            style:'플랫 화이트(Flat White) — 리스트레토 더블샷에 벨벳 같은 마이크로폼 스팀밀크. 멜버른식 롱블랙(Long Black) — 미국식 아메리카노와 달리 물 위에 에스프레소를 붓는 방식'
+          },
+          'Jakarta': {
+            country:'Indonesia', continent:'Asia', pop:'10.6M', altitude:'8',
+            desc:'인도네시아의 수도(현재 이전 진행 중)이자 자바 섬 북서쪽에 위치한 동남아시아 최대 대도시. 열대 기후의 해안 도시입니다.',
+            role:['세계 4위 커피 생산국 무역 허브','스페셜티 커피 급성장 도시'],
+            roasters:['Anomali Coffee','Folks Coffee','Tanamera Coffee','One Fifteenth Coffee','Kintamani Bali Coffee'],
+            culture:'인도네시아 특유의 "코피 투브룩(Kopi Tubruk)" — 끓는 물에 원두가루와 설탕을 직접 넣어 끓이는 전통 커피가 일상적입니다. 최근 5년간 스페셜티 카페가 폭발적으로 증가하며 젊은 층 중심으로 Third Wave 문화가 빠르게 확산 중입니다.',
+            history:'인도네시아 커피는 1696년 네덜란드 식민지 시대에 자바 섬에서 시작. "Java"라는 단어가 커피의 대명사가 된 역사적 배경. 수마트라·술라웨시·발리 등 다양한 섬별 테루아 커피 문화 보유.',
+            style:'코피 투브룩(Kopi Tubruk) — 전통 자바식 커피; 길링 바사(Giling Basah, Wet-Hulled) — 독특한 습식 탈곡법으로 낮은 산미와 무거운 바디감의 인도네시아 특유 풍미 구현'
+          },
+          'Bogota': {
+            country:'Colombia', continent:'South America', pop:'8.0M', altitude:'2,640',
+            desc:'콜롬비아의 수도. 해발 2,640m 안데스 고원에 위치한 세계에서 가장 높은 고도의 수도 중 하나. 풍부한 커피 역사와 문화의 중심지입니다.',
+            role:['콜롬비아 커피 산업 본부','남미 스페셜티 커피 선도 도시'],
+            roasters:['Juan Valdez Café (FNC 플래그십)','Amor Perfecto','Pergamino Coffee','Azahar Coffee','Quindío Coffee'],
+            culture:'보고타는 콜롬비아 커피 생산자 협회(FNC)의 본부가 있는 커피 산업의 심장부입니다. 역사지구 라 칸델라리아와 우살라케 지구를 중심으로 Third Wave 카페가 급성장 중이며, 국제 커피 대회 개최지로도 유명합니다. Usaquén·Chapinero Alto 지역이 스페셜티 핫스팟.',
+            history:'콜롬비아 커피는 1730년대 예수회 선교사들이 도입. 1927년 FNC(Federación Nacional de Cafeteros) 설립으로 체계적 품질 관리 시작. "Juan Valdez" 캐릭터는 1958년 전 세계에 콜롬비아 커피를 알린 아이콘.',
+            style:'콜롬비아 수프레모(Colombia Supremo) — 완전 세척 가공의 균형 잡힌 산미와 바디; 후일라·나리뇨 싱글 오리진 — 보고타 스페셜티 바에서 가장 인기 있는 메뉴'
+          },
+          'New_York': {
+            country:'USA', continent:'North America', pop:'8.3M', altitude:'10',
+            desc:'미국 최대 도시이자 세계 금융·문화·패션의 중심지. 맨해튼 섬을 중심으로 5개 자치구로 구성된 글로벌 메가시티.',
+            role:['미국 최대 커피 소비 시장','Third Wave 핵심 거점','커피 칵테일 문화 발신지'],
+            roasters:['Stumptown Coffee (2009 뉴욕 진출)','Blue Bottle Coffee','Intelligentsia Coffee','La Colombe','Café Grumpy','Toby\'s Estate'],
+            culture:'뉴욕은 미국에서 인당 커피 소비량이 가장 높은 도시 중 하나입니다. 브루클린을 중심으로 Third Wave 혁명이 일어났으며, 에스프레소 토닉·커피 칵테일 등 실험적인 커피 문화가 발달했습니다. 코리아타운 근처 K-카페 스타일도 인기.',
+            history:'18세기 영국 지배 시절 코피하우스(Coffeehouse)가 사교 중심지. 금주법(1920~33) 시대에 커피 소비 폭발적 증가. 2009년 Stumptown 뉴욕 진출이 동부 Third Wave 혁명의 기폭제.',
+            style:'뉴욕 드립(NY Drip) — 대용량 필터 커피가 전통; 콜드 브루 니트로 — 뉴욕 카페가 대중화; 에스프레소 토닉 — 브루클린 바 씬에서 유행'
+          },
+          'Seattle': {
+            country:'USA', continent:'North America', pop:'780K', altitude:'52',
+            desc:'미국 태평양 북서부 워싱턴 주의 최대 도시. 퓨젯 사운드와 캐스케이드 산맥 사이에 위치하며, 아마존·마이크로소프트 등 테크 기업의 본거지.',
+            role:['Starbucks 발상지','미국 커피 혁명의 진원지','Pacific Northwest 커피 문화 수도'],
+            roasters:['Starbucks (1971, Pike Place Market)','Victrola Coffee','Slate Coffee Roasters','Kuma Coffee','Lighthouse Roasters','Caffe Ladro'],
+            culture:'시애틀은 "커피 도시(Coffee City)"라는 별명이 있을 정도로 강렬한 커피 문화를 가집니다. 인구 대비 독립 카페 수가 미국에서 가장 많으며, 흐린 날씨와 커피 소비량의 상관관계는 도시 전설이 됐습니다. SCA(Specialty Coffee Association) 행사 단골 개최지.',
+            history:'1971년 파이크 플레이스 마켓에 스타벅스 1호점 개업. 1982년 하워드 슐츠가 이탈리아 에스프레소 바 개념을 접목해 현재의 스타벅스로 변모. 1990년대 Starbucks 확장이 전 세계 커피 문화를 바꿔놓음.',
+            style:'파이크 플레이스 블렌드 — 시애틀 특유의 다크 로스트; 시애틀 스타일 드리즐 라떼 — 바닐라·카라멜 시럽이 대중화된 배경'
+          },
+          'Addis_Ababa': {
+            country:'Ethiopia', continent:'Africa', pop:'5.2M', altitude:'2,355',
+            desc:'에티오피아의 수도이자 아프리카 연합(AU) 본부 소재지. 해발 2,355m 고원에 위치한 아프리카에서 가장 높은 고도의 수도.',
+            role:['커피 발상지 에티오피아의 수도','전통 커피 세리모니 문화의 중심','ECX 에티오피아 커피 거래소 소재'],
+            roasters:['Tomoca Coffee (1953년 창립, 에티오피아 최고(最古) 카페)','Kaldis Coffee','Mokarar','Buna Qela (부나 껄라)'],
+            culture:'에티오피아어로 커피는 "부나(Buna)"라고 불립니다. 전통 커피 세리모니(Buna Ceremony)는 생두를 볶고 갈아 짜이 세 잔을 나누는 문화 의식으로, 에티오피아 일상생활의 핵심입니다. 아디스아바바 전역에 수천 개의 "부나 벳(Buna Bet, 커피 하우스)"이 있습니다.',
+            history:'커피는 9세기 에티오피아 카파(Kaffa) 지방의 염소 목동 칼디(Kaldi)가 커피 열매를 발견했다는 전설에서 시작. 에티오피아는 Coffea arabica의 유전적 고향. 1950년대 이탈리아 점령 영향으로 에스프레소 문화도 일찍이 정착.',
+            style:'부나(Buna) — 전통 세리모니 커피(진하고 향신료를 넣기도 함); 마키아토 — 에티오피아식 에스프레소 마키아토가 일상 음료로 매우 인기; 아와즈 커피 — 에티오피아식 버터커피'
+          },
+          'Los_Angeles': {
+            country:'USA', continent:'North America', pop:'4.0M', altitude:'93',
+            desc:'캘리포니아 남부의 미국 제2의 도시. 엔터테인먼트 산업과 다문화 문화로 유명하며, 연중 화창한 날씨와 야외 라이프스타일의 도시.',
+            role:['미국 웨스트코스트 스페셜티 허브','커피+웰니스 트렌드 선도','콜드브루·니트로 대중화 도시'],
+            roasters:['Blue Bottle Coffee','Intelligentsia (실버레이크 플래그십)','G&B Coffee','Verve Coffee Roasters','Groundwork Coffee','Maru Coffee','Go Get Em Tiger'],
+            culture:'LA는 건강·웰니스 문화와 커피가 결합된 독특한 씬을 보유합니다. 오트밀크 라떼, 콜드브루, 버섯 커피 등 대안 음료의 미국 발신지. 할리우드·실버레이크·아트스 디스트릭트에 인스타그래머블 카페가 밀집. K-Coffee(한국식 카페)도 코리아타운 중심으로 확산.',
+            history:'1990년대 Intelligentsia의 실버레이크 진출이 LA 스페셜티 씬의 시작점. 2010년대 Blue Bottle·Verve 진출로 Third Wave 완전 정착. 픽사·구글 등 테크·엔터 문화와 커피 문화의 융합이 활발.',
+            style:'아이스 오트 라떼 — LA 스타일의 대명사; 콜드브루 토닉 — 여름 LA의 국민 음료; Dirty Chai — 차이 라떼에 에스프레소 추가, LA 발 유행'
+          },
+          'London': {
+            country:'United Kingdom', continent:'Europe', pop:'9.7M', altitude:'11',
+            desc:'영국의 수도이자 유럽 최대 도시. 템스 강을 따라 2천 년 역사를 지닌 세계 금융·문화의 중심지.',
+            role:['유럽 Third Wave 커피 혁명 선도 도시','역사적 커피하우스 전통 보유','세계 바리스타 챔피언십 단골 개최지'],
+            roasters:['Monmouth Coffee (1978년 창립)','Workshop Coffee','Square Mile Coffee Roasters','Association Coffee','Prufrock Coffee','Caravan Coffee Roasters'],
+            culture:'런던은 17세기 세계 최초 커피하우스 문화를 발전시킨 도시입니다. 현재 3,000개 이상의 커피숍이 있으며, 쇼레디치·클러큰웰 지역이 Third Wave 중심지입니다. 영국은 전통적으로 차(Tea) 문화지만, 2010년대 이후 커피 소비가 차를 앞질렀습니다.',
+            history:'1652년 런던 최초 커피하우스 "파스카 로시(Pasqua Rosée)"개업. 17~18세기 Lloyd\'s of London 보험, 왕립 협회, 신문사 등이 커피하우스에서 탄생. 2010년대 Monmouth·Workshop이 이끄는 Third Wave 혁명으로 세계적 커피 도시 부상.',
+            style:'플랫 화이트 — 호주 스타일이 런던 카페 메뉴 표준화; 필터 커피(Filter/V60) — Third Wave 바에서 에스프레소만큼 인기; 오트 라떼 — 영국은 세계 최대 귀리음료 소비국'
+          },
+          'Santos': {
+            country:'Brazil', continent:'South America', pop:'480K', altitude:'2',
+            desc:'브라질 상파울루 주 해안의 항구 도시. 상파울루에서 약 80km 거리에 위치하며, 브라질 최대 수출 항구를 보유합니다.',
+            role:['역사적 세계 커피 수출 1위 항구','브라질 커피 무역의 역사적 심장부'],
+            roasters:['Café Bom Dia (Santos 전통 로스터)','Café do Museu (커피 박물관 카페)'],
+            culture:'산투스는 20세기 초 "커피 항구(Porto do Café)"로 불리며 전 세계 커피 무역을 주도했습니다. 1900년대 초 산투스를 통해 전 세계 커피 공급의 70%가 수출되었습니다. 현재도 브라질 커피 수출의 핵심 항구 역할을 유지합니다.',
+            history:'1867년 상파울루-산투스 철도 개통으로 내륙 커피 농장의 커피가 산투스 항구로 집산. 1922년 완공된 "볼사 도 카페(Bolsa do Café, 커피 거래소)"는 커피 경제 전성기의 상징. 현재 커피 박물관(Museu do Café)으로 운영 중.',
+            style:'브라질리언 카페 지뉴(Cafezinho) — 설탕을 넣어 진하게 끓인 작은 잔 커피; 브라질 내추럴 — 자연건조 로부스타·아라비카가 섞인 전통 블렌드'
+          },
+          'Sydney': {
+            country:'Australia', continent:'Oceania', pop:'5.3M', altitude:'39',
+            desc:'뉴사우스웨일스 주의 주도이자 호주 최대 도시. 하버브리지와 오페라하우스로 유명한 항구도시로, 멜버른과 함께 호주 커피 문화를 이끕니다.',
+            role:['호주 커피 문화 양대 도시','Single Origin 스페셜티 선구 도시'],
+            roasters:['Single O (Single Origin Coffee)','Artificer Coffee','Supreme Coffee','Reuben Hills','The Grounds of Alexandria','Mecca Coffee'],
+            culture:'시드니는 멜버른과 함께 호주 커피 문화를 선도합니다. 서리 힐스(Surry Hills)와 뉴타운(Newtown) 지역이 스페셜티 카페 밀집 지역으로 유명합니다. 호주 바리스타들이 세계 챔피언십에서 지속적으로 좋은 성적을 내며 글로벌 커피 씬에 영향력을 발휘합니다.',
+            history:'1950~60년대 이탈리아·그리스 이민자들이 에스프레소 문화 도입. 1980년대 플랫 화이트 논쟁(멜버른 vs 시드니). 2000년대 Single O 같은 싱글 오리진 전문점이 세계 스페셜티 트렌드를 선도.',
+            style:'플랫 화이트 — 시드니 스타일은 마이크로폼이 핵심; 롱 맥키아토 — 더블 에스프레소에 소량의 우유; 배치 브루(Batch Brew) — Third Wave 카페의 표준 필터 옵션'
+          },
+          'Tokyo': {
+            country:'Japan', continent:'Asia', pop:'14.0M', altitude:'40',
+            desc:'일본의 수도이자 세계 최대 도시권을 형성하는 메가시티. 정밀함·청결함·혁신이 공존하는 아시아 문화·경제 중심지.',
+            role:['아시아 Third Wave 커피 1번지','세계 최고 스페셜티 커피 소비국','일본식 Kiss-aten(喫茶店) 문화 발신지'],
+            roasters:['Blue Bottle Coffee Japan (아시아 1호점 2015)','% Arabica','Fuglen Tokyo','Sarutahiko Coffee','Onibus Coffee','Bear Pond Espresso','Streamer Coffee'],
+            culture:'도쿄는 1950년대부터 "킷사텐(喫茶店, 일본식 다방)"이 발달한 독자적 카페 문화를 가집니다. 현재 Third Wave와 킷사텐 전통이 공존하는 독특한 씬을 형성합니다. 일본은 인당 스페셜티 커피 수입량이 세계 최고 수준이며, 원두 품질에 대한 집착이 세계적으로 유명합니다.',
+            history:'1888년 도쿄 최초의 킷사텐 "가히차칸(可否茶館)" 개업. 1950~60년대 재즈 킷사텐 문화로 지식인·예술가의 사교 공간. 2015년 Blue Bottle Coffee 도쿄 진출이 Third Wave 혁명의 도화선.',
+            style:'킷사텐 스타일 — 사이폰(Syphon) 추출 필터 커피; 일본식 아이스 커피(Hot Bloom Ice Drop) — 뜨거운 물로 추출해 얼음 위에 낙하시키는 기법; % Arabica 에스프레소 — 도쿄 관광 명소화'
+          },
+          'Boston': {
+            country:'USA', continent:'North America', pop:'700K', altitude:'43',
+            desc:'매사추세츠 주의 주도. 미국에서 가장 오래된 도시 중 하나로 하버드·MIT 등 세계적 명문대가 밀집한 학문의 도시.',
+            role:['미국 스페셜티 커피 초기 선구 도시','보스턴 티 파티 이후 커피 전환 역사 보유'],
+            roasters:['George Howell Coffee (스페셜티 커피 선구자)','Barismo','La Colombe','Render Coffee','Gracenote Coffee'],
+            culture:'보스턴은 미국 Third Wave 커피의 초기 개척지입니다. George Howell이 1970년대 Coffee Connection을 설립해 미국 최초로 싱글 오리진과 스페셜티 개념을 도입했습니다(후에 스타벅스에 인수). MIT·하버드의 젊은 인구가 커피 문화를 활발하게 유지합니다.',
+            history:'1773년 보스턴 티 파티(Boston Tea Party) 이후 미국인들이 차 대신 커피를 마시기 시작한 역사적 배경. 1974년 George Howell의 Coffee Connection 창업이 미국 스페셜티 커피 원년. 1994년 스타벅스에 인수됐으나 George Howell Coffee로 재창업(2004).',
+            style:'조지 하웰 스타일 라이트 로스트 — 미국 스페셜티 라이트 로스트 문화의 원조; 뉴잉글랜드 스타일 드립 — 강한 라이트 로스트 필터'
+          },
+          'Chicago': {
+            country:'USA', continent:'North America', pop:'2.7M', altitude:'182',
+            desc:'일리노이 주의 최대 도시이자 미국 중서부의 중심. 오대호 미시간 호수 연안에 위치하며, 건축·재즈·블루스 문화로 유명한 "바람의 도시".',
+            role:['Intelligentsia Coffee 발상지','미국 Third Wave 트라이앵글 핵심 (시카고-시애틀-LA)'],
+            roasters:['Intelligentsia Coffee (1995년 창립)','Dark Matter Coffee','Sawada Coffee','Metric Coffee','Halfwit Coffee Roasters'],
+            culture:'시카고는 1995년 Intelligentsia Coffee 창립으로 미국 Third Wave 운동의 핵심 도시가 되었습니다. Intelligentsia는 Direct Trade(직접 무역) 개념을 커피 업계에 최초로 도입했으며, 이 개념이 전 세계로 확산됐습니다. 웨스트 루프·위커 파크 지역이 스페셜티 핫스팟.',
+            history:'1995년 Doug Zell이 링컨파크에 Intelligentsia Coffee 1호점 개업. 2003년 Direct Trade 프로그램 시작으로 생산자-소비자 직거래 혁명. 시카고 스타일 블루스·재즈 클럽과 커피 문화의 접점.',
+            style:'Intelligentsia 시그니처 라이트 로스트 싱글 오리진; 블랙 캣 에스프레소 블렌드 — Intelligentsia의 시그니처 에스프레소 블렌드로 미국 카페 벤치마크'
+          },
+          'Seoul': {
+            country:'South Korea', continent:'Asia', pop:'9.7M', altitude:'38',
+            desc:'대한민국의 수도이자 최대 도시. 한강을 중심으로 고궁과 현대 건축이 공존하는 K-컬처의 중심지.',
+            role:['세계 최고 카페 밀집도 도시','K-Coffee 트렌드 글로벌 발신지','아시아 바리스타 챔피언십 허브'],
+            roasters:['Fritz Coffee Company','Namusairo','Café Onion','Felt Coffee','The Barn (서울점)','Momos Coffee','Café Comma','Blue Bottle Korea'],
+            culture:'서울은 인구 150명당 카페 1개로 세계 최고 카페 밀집도를 자랑합니다. 성수동·연남동·이태원·망원동이 스페셜티 핫스팟. "카페 투어"가 젊은 층의 주요 여가 문화로 자리잡았으며, 인스타그래머블한 카페 인테리어로 전 세계 관광객을 유치하는 독특한 "카페 문화 관광"이 발달했습니다.',
+            history:'2000년대 초 커피빈·스타벅스 진출로 에스프레소 문화 대중화. 2010년대 Fritz·Namusairo 등이 이끄는 Third Wave 붐. 2020년대 세계 바리스타 챔피언십 한국인 수상자 급증으로 글로벌 스페셜티 강국 부상. 테이크아웃 전문 저가 브랜드(메가커피·컴포즈)의 동시 폭발적 성장.',
+            style:'달고나 커피(Dalgona Coffee) — COVID-19 팬데믹 중 전 세계로 확산된 한국 발 트렌드; 아이스 아메리카노(아아) — 한국인의 국민 음료; 플레이버 라떼 — 고구마·흑임자·유자 등 한국 식재료 활용'
+          },
+          'Toronto': {
+            country:'Canada', continent:'North America', pop:'2.9M', altitude:'76',
+            desc:'온타리오 주의 주도이자 캐나다 최대 도시. 오대호 온타리오 호반에 위치하며, 세계에서 가장 다문화적인 도시 중 하나.',
+            role:['캐나다 스페셜티 커피 중심지','Second Cup 발상지','다문화 커피 문화 융합 도시'],
+            roasters:['Sam James Coffee Bar','Pilot Coffee Roasters','Te Aro Coffee','Sense Appeal','Balzac\'s Coffee Roasters','De Mello Palheta'],
+            culture:'토론토는 200개 이상의 언어가 사용되는 다문화 도시 특성상 에티오피아·콜롬비아·이탈리아·일본 등 다양한 커피 문화가 공존합니다. Kensington Market·Ossington Ave 지역이 인디 카페 밀집 지역. 캐나다 특유의 팀홀튼(Tim Hortons) 대중 커피 문화와 스페셜티 씬이 극명하게 대조됩니다.',
+            history:'1975년 캐나다 2위 커피 체인 Second Cup 토론토 창립. 2000년대 Sam James Coffee Bar가 토론토 Third Wave 혁명 선도. 이탈리아 이민자 밀집 지역인 리틀 이탈리(Little Italy)가 에스프레소 문화의 초기 거점.',
+            style:'팀홀튼 더블-더블(Double-Double) — 크림 2+설탕 2를 넣은 캐나다 국민 커피; 토론토 스타일 에스프레소 토닉 — 현지 아르티산 카페의 시그니처'
+          },
+          'Turin': {
+            country:'Italy', continent:'Europe', pop:'880K', altitude:'240',
+            desc:'피에몬테 주의 주도이자 이탈리아 북서부 알프스 기슭의 역사 도시. 사보이아 왕조의 옛 수도로 초콜릿·와인·커피 문화의 정수가 살아있습니다.',
+            role:['에스프레소 머신 발명 도시','비체린(Bicerin) 발상지','라바짜(Lavazza) 창업 도시'],
+            roasters:['Lavazza (1895년 창립, 세계 최대 커피 기업 중 하나)','Vergnano (1882년 창립)','Caffè Torino','Al Bicerin (1763년 창립)'],
+            culture:'토리노는 커피 역사에서 독보적 위치를 차지합니다. 1901년 에스프레소 머신의 원형인 베제라(Bezzera) 특허가 이 도시에서 등록됐습니다. "비체린(Bicerin)"이라는 1763년 탄생한 음료(에스프레소+핫초코+크림)는 알 비체린 카페에서 지금도 원조 레시피로 제공됩니다.',
+            history:'1882년 Vergnano, 1895년 Lavazza 창립으로 이탈리아 커피 산업의 기반 형성. 1901년 루이지 베제라(Luigi Bezzera)의 에스프레소 머신 원형 특허(후에 파보니가 상용화). 사보이아 왕실이 즐긴 비체린이 도시 정체성의 일부.',
+            style:'비체린(Bicerin) — 에스프레소+이탈리안 핫초코+생크림의 토리노 3층 음료 (1763년 이래 불변 레시피); 마로키노(Marocchino) — 에스프레소+코코아파우더+우유폼, 피에몬테 지역 특산 커피'
+          },
+          'San_Francisco': {
+            country:'USA', continent:'North America', pop:'875K', altitude:'52',
+            desc:'캘리포니아 북부 베이에리어의 중심 도시. 골든게이트 브리지와 알카트라즈로 유명하며, 실리콘밸리의 관문이자 기술 혁신의 수도.',
+            role:['Blue Bottle Coffee 발상지','미국 스페셜티 커피 선구 도시','테크 문화+커피 문화 융합 선도'],
+            roasters:['Blue Bottle Coffee (2002년 창립, James Freeman)','Ritual Coffee Roasters','Sightglass Coffee','Equator Coffee','Verve (베이에리어 진출)','Four Barrel Coffee'],
+            culture:'샌프란시스코는 2002년 Blue Bottle Coffee 창업으로 전 세계 Third Wave 커피 운동의 중심지가 되었습니다. 미션 디스트릭트·카스트로·헤이즈밸리가 스페셜티 핫스팟. 실리콘밸리 테크 문화와 결합해 커피 스타트업 투자가 가장 활발한 도시이기도 합니다.',
+            history:'19세기 골드러시 시대 커피가 광부들의 필수품으로 정착. 1970년대 히피·반문화 운동과 카페 문화의 접점. 2002년 James Freeman이 파머스 마켓에 소형 키오스크로 Blue Bottle 시작 → 전 세계 스페셜티 체인으로 성장.',
+            style:'블루 보틀 시그니처 오리지널 — 18시간 내 신선 원두만 사용하는 원칙; 뉴올리언스 스타일 아이스 커피(Blue Bottle) — 치커리+커피 콜드브루; 핸드드립(V60) — SF 스페셜티 카페 표준'
+          },
+          'Beijing': {
+            country:'China', continent:'Asia', pop:'21.5M', altitude:'43',
+            desc:'중화인민공화국의 수도이자 약 3,000년 역사를 가진 세계 최고(最古) 수도 중 하나. 자금성·만리장성 등 유산과 현대 건축이 공존합니다.',
+            role:['세계 최고속 성장 커피 시장','Luckin Coffee 성장 진원지','중국 스페셜티 커피 폭발적 확산 도시'],
+            roasters:['Luckin Coffee (2017년 창립, 2023년 스타벅스 점포 수 추월)','Seesaw Coffee','M Stand','Tim Hortons China','Manner Coffee','% Arabica 베이징'],
+            culture:'베이징은 전통 차(茶) 문화의 중심지였으나, 2015년 이후 커피 소비가 연간 15%씩 성장하며 세계 최고속 성장 커피 시장이 되었습니다. 산리툰(Sanlitun)·우다오코우(Wudaokou)·798 예술구가 스페셜티 핫스팟. 2023년 Luckin Coffee가 중국 내 스타벅스 점포 수를 추월하는 역사적 전환점.',
+            history:'1999년 스타벅스 중국 1호점 베이징 개업. 2017년 Luckin Coffee 창업으로 저가 앱 기반 커피 시장 혁명. 2020년 회계 스캔들 후 재기한 Luckin이 2023년 시장점유율 1위 달성. 젊은 세대(MZ세대) 중심의 커피 문화 급속 확산.',
+            style:'루이킨 스타일 우유커피(生椰拿铁, 생코코넛라떼) — 중국 SNS 바이럴 1위 음료; 중국식 아이스 아메리카노 — 여름 필수품으로 정착; 챠이(Cha/茶) 라떼 — 커피+전통차 퓨전'
+          },
+          'Minneapolis': {
+            country:'USA', continent:'North America', pop:'430K', altitude:'260',
+            desc:'미네소타 주의 최대 도시이자 쌍둥이 도시(Twin Cities) 중 하나. 오대호 수계의 미시시피 강 상류에 위치하며, 미국 중서부의 문화·경제 중심지.',
+            role:['Dunn Brothers Coffee 발상지','미국 미드웨스트 스페셜티 선구 도시','인당 커피 소비량 미국 상위권'],
+            roasters:['Dunn Brothers Coffee (1987년 창립, 인스토어 로스팅 선구자)','Five Watts Coffee','Spyhouse Coffee','Dogwood Coffee','Cafe Imports (세계적 생두 수입상)'],
+            culture:'미니애폴리스는 혹독한 추위(-30°C)로 인한 실내 카페 문화가 발달했습니다. 1987년 Dunn Brothers Coffee는 미국 최초로 매장에서 직접 원두를 로스팅하는 인스토어 로스팅 개념을 도입했습니다. Cafe Imports(세계 최대 생두 수입상 중 하나)의 본사가 있어 글로벌 스페셜티 공급망의 중요 거점이기도 합니다.',
+            history:'1987년 Ed·Dan Dunn 형제가 인스토어 로스팅 카페 1호점 개업. 1990년대 미드웨스트 스페셜티 씬의 선구자 역할. 스칸디나비아 이민자 후손이 많아 스칸디나비아식 라이트 로스트 커피 문화와 친화성 높음. Cafe Imports가 에티오피아·콜롬비아 등 산지 생두를 직접 소싱해 미국 전역에 공급.',
+            style:'던 브라더스 시그니처 인스토어 로스트 하우스 블렌드; 스칸디나비아 스타일 라이트 로스트 필터 커피 — 미니애폴리스 카페 표준'
+          },
+        };
+
         // ============================================================
         // FARM DATA — real-world information for 24 coffee farms
         // Keys match instance.name (= instanceDetails key from ontology_data.json)
