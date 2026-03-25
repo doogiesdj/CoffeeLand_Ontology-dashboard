@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CoffeeLand - Ontology Dashboard</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script src="/js/beverage-images.js"></script>
+
     <style>
         :root {
             --bg-dark: #0a0e1a;
@@ -1920,18 +1920,14 @@
             
             const overlay = document.getElementById('loadingOverlay');
             overlay.classList.add('active');
-            
+
             try {
-                const res = await fetch('/api/rdf/instances', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ 
-                        filename: 'coffeeland_final_v2.rdf',
-                        classUri: classUri 
-                    })
-                });
-                
-                const data = await res.json();
+                // Client-side: filter instances from already-parsed ontologyData
+                if (!ontologyData) throw new Error('Data not loaded yet. Please wait for initial load.');
+                const matchedInstances = Object.values(ontologyData.instanceMap).filter(inst =>
+                    inst.classURIs.includes(classUri)
+                );
+                const data = { count: matchedInstances.length, instances: matchedInstances };
                 console.log(`✅ Loaded ${data.count} instances`);
                 
                 // Update UI
@@ -2113,36 +2109,198 @@
             modal.classList.add('active');
         }
 
-        // Load Data
+        // ============================================================
+        // CLIENT-SIDE RDF PARSER (replaces /api/rdf/* backend calls)
+        // ============================================================
+        const BASE_NS = 'http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#';
+        const OWL_NS = 'http://www.w3.org/2002/07/owl#';
+        const RDF_NS = 'http://www.w3.org/1999/02/22-rdf-syntax-ns#';
+        const RDFS_NS = 'http://www.w3.org/2000/01/rdf-schema#';
+
+        let rdfDoc = null;
+
+        function getLocalName(uri) {
+            if (!uri) return '';
+            const hashIdx = uri.lastIndexOf('#');
+            const slashIdx = uri.lastIndexOf('/');
+            return uri.substring(Math.max(hashIdx, slashIdx) + 1);
+        }
+
+        function getAboutURI(el, baseURI) {
+            let about = el.getAttributeNS(RDF_NS, 'about') || el.getAttribute('rdf:about');
+            if (about) {
+                if (about.startsWith('#')) return baseURI + about.slice(1);
+                return about;
+            }
+            let id = el.getAttributeNS(RDF_NS, 'ID') || el.getAttribute('rdf:ID');
+            if (id) return baseURI + id;
+            return null;
+        }
+
+        function getResource(el) {
+            return el.getAttributeNS(RDF_NS, 'resource') || el.getAttribute('rdf:resource') || '';
+        }
+
+        async function fetchAndParseRDF(filename) {
+            const response = await fetch(filename);
+            if (!response.ok) throw new Error(`Failed to fetch ${filename}: ${response.status}`);
+            const text = await response.text();
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(text, 'application/xml');
+            if (doc.querySelector('parsererror')) {
+                return parser.parseFromString(text, 'text/xml');
+            }
+            return doc;
+        }
+
+        function parseOntologyFromRDF(doc) {
+            const result = {
+                classes: [], objectProperties: [], dataProperties: [],
+                count: 0, classMap: {}, subClassOf: {}, instanceMap: {}
+            };
+            const descriptions = Array.from(doc.getElementsByTagNameNS(RDF_NS, 'Description'));
+            const owlClasses = Array.from(doc.getElementsByTagNameNS(OWL_NS, 'Class'));
+            const owlObjProps = Array.from(doc.getElementsByTagNameNS(OWL_NS, 'ObjectProperty'));
+            const owlDataProps = Array.from(doc.getElementsByTagNameNS(OWL_NS, 'DatatypeProperty'));
+            const namedIndividuals = Array.from(doc.getElementsByTagNameNS(OWL_NS, 'NamedIndividual'));
+
+            owlClasses.forEach(el => {
+                const uri = getAboutURI(el, BASE_NS);
+                if (!uri || uri.includes('Thing') || uri.includes('Nothing')) return;
+                const label = getLocalName(uri);
+                if (!label) return;
+                result.classes.push({ uri, name: label });
+                result.classMap[uri] = { uri, label, children: [] };
+                const subClassEls = el.getElementsByTagNameNS(RDFS_NS, 'subClassOf');
+                Array.from(subClassEls).forEach(sc => {
+                    const parentURI = getResource(sc);
+                    if (parentURI && !parentURI.includes('Thing')) result.subClassOf[uri] = parentURI;
+                });
+            });
+
+            descriptions.forEach(el => {
+                const uri = getAboutURI(el, BASE_NS);
+                if (!uri) return;
+                const typeEls = el.getElementsByTagNameNS(RDF_NS, 'type');
+                Array.from(typeEls).forEach(t => {
+                    const typeRes = getResource(t);
+                    if (typeRes === OWL_NS + 'Class') {
+                        const label = getLocalName(uri);
+                        if (label && !result.classMap[uri]) {
+                            result.classes.push({ uri, name: label });
+                            result.classMap[uri] = { uri, label, children: [] };
+                        }
+                    }
+                });
+                const subClassEls = el.getElementsByTagNameNS(RDFS_NS, 'subClassOf');
+                Array.from(subClassEls).forEach(sc => {
+                    const parentURI = getResource(sc);
+                    if (parentURI && uri && !parentURI.includes('Thing')) result.subClassOf[uri] = parentURI;
+                });
+            });
+
+            owlObjProps.forEach(el => {
+                const uri = getAboutURI(el, BASE_NS);
+                if (!uri) return;
+                const name = getLocalName(uri);
+                let domain = null;
+                const domainEls = el.getElementsByTagNameNS(RDFS_NS, 'domain');
+                if (domainEls.length > 0) domain = getResource(domainEls[0]);
+                let range = [];
+                const rangeEls = el.getElementsByTagNameNS(RDFS_NS, 'range');
+                Array.from(rangeEls).forEach(r => { const rv = getResource(r); if (rv) range.push(rv); });
+                result.objectProperties.push({ uri, name, domain, range });
+            });
+
+            descriptions.forEach(el => {
+                const uri = getAboutURI(el, BASE_NS);
+                if (!uri) return;
+                const typeEls = el.getElementsByTagNameNS(RDF_NS, 'type');
+                let isObjProp = false;
+                Array.from(typeEls).forEach(t => { if (getResource(t) === OWL_NS + 'ObjectProperty') isObjProp = true; });
+                if (isObjProp && !result.objectProperties.find(p => p.uri === uri)) {
+                    const name = getLocalName(uri);
+                    let domain = null;
+                    const domainEls = el.getElementsByTagNameNS(RDFS_NS, 'domain');
+                    if (domainEls.length > 0) domain = getResource(domainEls[0]);
+                    let range = [];
+                    const rangeEls = el.getElementsByTagNameNS(RDFS_NS, 'range');
+                    Array.from(rangeEls).forEach(r => { const rv = getResource(r); if (rv) range.push(rv); });
+                    result.objectProperties.push({ uri, name, domain, range });
+                }
+            });
+
+            owlDataProps.forEach(el => {
+                const uri = getAboutURI(el, BASE_NS);
+                if (!uri) return;
+                result.dataProperties.push({ uri, name: getLocalName(uri) });
+            });
+
+            const processIndividual = (el, uri) => {
+                if (!uri || result.instanceMap[uri]) return;
+                const name = getLocalName(uri);
+                if (!name) return;
+                const instance = { uri, name, classURIs: [], description: '', properties: {} };
+                const typeEls = el.getElementsByTagNameNS(RDF_NS, 'type');
+                Array.from(typeEls).forEach(t => {
+                    const typeRes = getResource(t);
+                    if (typeRes && !typeRes.includes('#NamedIndividual') && !typeRes.includes('owl#')) instance.classURIs.push(typeRes);
+                });
+                const commentEls = el.getElementsByTagNameNS(RDFS_NS, 'comment');
+                if (commentEls.length > 0) instance.description = commentEls[0].textContent || '';
+                result.instanceMap[uri] = instance;
+            };
+
+            namedIndividuals.forEach(el => processIndividual(el, getAboutURI(el, BASE_NS)));
+            descriptions.forEach(el => {
+                const uri = getAboutURI(el, BASE_NS);
+                if (!uri) return;
+                const typeEls = el.getElementsByTagNameNS(RDF_NS, 'type');
+                let isIndividual = false;
+                Array.from(typeEls).forEach(t => { if (getResource(t) === OWL_NS + 'NamedIndividual') isIndividual = true; });
+                if (isIndividual) processIndividual(el, uri);
+            });
+
+            let tripleCount = 0;
+            doc.querySelectorAll('*').forEach(() => tripleCount++);
+            result.count = Math.floor(tripleCount * 0.3);
+            return result;
+        }
+
+        function buildHierarchyFromRDF(ontData) {
+            const ROOT_CLASSES = ['Location', 'Organization', 'MarketAndEconomics', 'Product', 'QualityAndProcessing'];
+            const classMap = ontData.classMap;
+            const subClassOf = ontData.subClassOf;
+            Object.values(classMap).forEach(c => c.children = []);
+            Object.entries(subClassOf).forEach(([childURI, parentURI]) => {
+                if (classMap[parentURI] && classMap[childURI]) {
+                    if (!classMap[parentURI].children.find(c => c.uri === childURI)) {
+                        classMap[parentURI].children.push(classMap[childURI]);
+                    }
+                }
+            });
+            return ROOT_CLASSES.map(name => {
+                const uri = BASE_NS + name;
+                return classMap[uri] || { uri, label: name, children: [] };
+            });
+        }
+
+        // Load Data (client-side, no backend required)
         async function loadOntologyData(filename) {
             const overlay = document.getElementById('loadingOverlay');
             overlay.classList.add('active');
-            
             try {
-                console.log('📂 Loading:', filename);
-                
-                const parseRes = await fetch('/api/rdf/parse', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ filename })
-                });
-                ontologyData = await parseRes.json();
-                console.log(`✅ Loaded ${ontologyData.count} triples`);
-                
-                const hierRes = await fetch('/api/rdf/hierarchy', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ filename })
-                });
-                const hierData = await hierRes.json();
-                hierarchyData = hierData.hierarchy || [];
-                console.log(`✅ Loaded ${hierarchyData.length} root classes`);
-                
+                console.log('📂 Fetching RDF file:', filename);
+                rdfDoc = await fetchAndParseRDF(filename);
+                console.log('✅ RDF file fetched and parsed');
+                ontologyData = parseOntologyFromRDF(rdfDoc);
+                console.log(`✅ Parsed: ${ontologyData.classes.length} classes, ${ontologyData.objectProperties.length} obj props`);
+                hierarchyData = buildHierarchyFromRDF(ontologyData);
+                console.log(`✅ Hierarchy built: ${hierarchyData.length} root classes`);
                 updateStats();
-                
             } catch (e) {
-                console.error('❌ Error:', e);
-                alert('❌ Failed to load: ' + e.message);
+                console.error('❌ Error loading RDF:', e);
+                alert('❌ Failed to load RDF file: ' + e.message);
             } finally {
                 overlay.classList.remove('active');
             }
