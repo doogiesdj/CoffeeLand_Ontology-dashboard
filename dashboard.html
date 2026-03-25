@@ -1082,6 +1082,7 @@
         .bev-tag-row { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 0.2rem; }
         .bev-tag { font-size: 0.7rem; background: rgba(139,69,19,.18); color: var(--accent); border-radius: 20px; padding: 0.15rem 0.6rem; border: 1px solid rgba(139,69,19,.3); }
         .country-section-header { grid-column: 1 / -1; width: 100%; padding: 0.65rem 1rem; margin: 0.8rem 0 0.2rem; background: linear-gradient(135deg, rgba(99,102,241,0.13), rgba(139,92,246,0.08)); border-left: 3px solid var(--accent-primary, #6366f1); border-radius: 0 8px 8px 0; color: var(--text-primary); font-size: 0.88rem; font-weight: 600; display: flex; align-items: center; gap: 0.45rem; }
+        .country-flag-img { width: 72px; height: auto; border-radius: 4px; box-shadow: 0 2px 6px rgba(0,0,0,0.35); display: block; }
     </style>
 </head>
 <body>
@@ -2282,6 +2283,13 @@
                         
                         // Check if this is a POS System
                         const isPosSystem = className.toLowerCase().includes('possystem') || className.toLowerCase().includes('pos');
+
+                        // Country flag image (flagcdn.com)
+                        const _flagMap = window.COUNTRY_FLAGS || {};
+                        const _flagCode = (className.toLowerCase() === 'country' && _flagMap[instance.name]) || null;
+                        const iconHtml = _flagCode
+                            ? `<img src="https://flagcdn.com/w80/${_flagCode}.png" class="country-flag-img" alt="${instance.name}" onerror="this.outerHTML='<i class=\\'fas fa-flag\\'></i>'">`
+                            : `<i class="fas ${icon}"></i>`;
                         
                         // Debug logging for beverage images
                         if (isBeverage) {
@@ -2335,7 +2343,7 @@
                             instanceCard.innerHTML = `
                                 ${hasImage ? `<div class="bev-img-wrap"><img src="${window.BEVERAGE_IMAGES[beverageKey]}" alt="${instance.name}" class="beverage-card-image" onerror="this.parentElement.style.display='none'; this.closest('.instance-card').querySelector('.instance-card-icon').style.display='flex';"></div>` : ''}
                                 <div class="instance-card-icon" ${hasImage ? 'style="display:none;"' : ''}>
-                                    <i class="fas ${icon}"></i>
+                                    ${iconHtml}
                                 </div>
                                 <div class="instance-card-name">${instance.name}</div>
                                 ${instance.description ? `<div class="instance-card-description">${instance.description}</div>` : ''}
@@ -2779,6 +2787,18 @@
 
             modal.classList.add('active');
         }
+
+        // ============================================================
+        // COUNTRY FLAGS — ISO 3166-1 alpha-2 codes for flagcdn.com
+        // ============================================================
+        window.COUNTRY_FLAGS = {
+          'Colombia':    'co', 'Brazil':      'br', 'Ethiopia':    'et',
+          'Vietnam':     'vn', 'Indonesia':   'id', 'Kenya':       'ke',
+          'Guatemala':   'gt', 'Honduras':    'hn', 'Costa_Rica':  'cr',
+          'Peru':        'pe', 'China':       'cn', 'Japan':       'jp',
+          'Italy':       'it', 'USA':         'us', 'Canada':      'ca',
+          'Australia':   'au', 'South_Korea': 'kr', 'UK':          'gb',
+        };
 
         // ============================================================
         // COUNTRY DATA — geographic + coffee production info for 18 countries
