@@ -2366,10 +2366,11 @@
 
             modalTitle.innerHTML = `<i class="fas ${icon}"></i> ${instance.name}`;
 
-            const isBeverage = className.toLowerCase().includes('beverage') || className.toLowerCase().includes('menu');
-            const isFarm     = className.toLowerCase().includes('farm');
-            const isCityInst = className.toLowerCase() === 'city';
-            const isPortInst = className.toLowerCase() === 'port';
+            const isBeverage      = className.toLowerCase().includes('beverage') || className.toLowerCase().includes('menu');
+            const isFarm          = className.toLowerCase().includes('farm');
+            const isCityInst      = className.toLowerCase() === 'city';
+            const isPortInst      = className.toLowerCase() === 'port';
+            const isWarehouseInst = className.toLowerCase() === 'warehouse';
 
             if (isCityInst) {
                 // ── City detail view (uses CITY_DATA lookup table) ────────
@@ -2413,6 +2414,52 @@
                 if (culture) html += `<div class="bev-info-item full">🎭 커피 문화&nbsp; <span>${culture}</span></div>`;
                 if (history) html += `<div class="bev-info-item full">📜 커피 역사&nbsp; <span>${history}</span></div>`;
                 if (style)   html += `<div class="bev-info-item full">🫗 대표 커피 스타일&nbsp; <span>${style}</span></div>`;
+
+                html += `</div>`;
+                modalBody.innerHTML = html;
+
+            } else if (isWarehouseInst) {
+                // ── Warehouse detail view ─────────────────────────────────
+                const wd = (window.WAREHOUSE_DATA && window.WAREHOUSE_DATA[instance.name]) || {};
+
+                const country   = wd.country   || '—';
+                const city      = wd.city      || '—';
+                const port      = wd.port      || '—';
+                const type      = wd.type      || '—';
+                const capacity  = wd.capacity  || null;
+                const desc      = wd.desc      || null;
+                const role      = wd.role      || [];
+                const ops       = wd.ops       || null;
+                const tenants   = wd.tenants   || [];
+                const history   = wd.history   || null;
+
+                let html = '';
+
+                html += `<div class="bev-stats">`;
+                html += `<div class="bev-stat"><div class="bev-stat-val">${country}</div><div class="bev-stat-lbl">🌍 국가</div></div>`;
+                html += `<div class="bev-stat"><div class="bev-stat-val">${city}</div><div class="bev-stat-lbl">🏙️ 도시</div></div>`;
+                html += `<div class="bev-stat"><div class="bev-stat-val">${type}</div><div class="bev-stat-lbl">🏭 창고 유형</div></div>`;
+                html += `<div class="bev-stat"><div class="bev-stat-val">${capacity || '—'}</div><div class="bev-stat-lbl">📦 보관 용량</div></div>`;
+                html += `</div>`;
+
+                if (desc) html += `<div class="bev-desc">${desc}</div>`;
+
+                html += `<div class="bev-info-grid">`;
+
+                html += `<div class="bev-info-item full">⚓ 인접 항구&nbsp; <span>${port}</span></div>`;
+
+                if (role.length) {
+                    html += `<div class="bev-info-item full">☕ 커피 물류 역할&nbsp;
+                        <span class="bev-tag-row">${role.map(r => `<span class="bev-tag">${r}</span>`).join('')}</span>
+                    </div>`;
+                }
+                if (ops)    html += `<div class="bev-info-item full">⚙️ 운영 방식&nbsp; <span>${ops}</span></div>`;
+                if (tenants.length) {
+                    html += `<div class="bev-info-item full">🏢 주요 이용 기업·기관&nbsp;
+                        <span class="bev-tag-row">${tenants.map(t => `<span class="bev-tag">${t}</span>`).join('')}</span>
+                    </div>`;
+                }
+                if (history) html += `<div class="bev-info-item full">📜 역사&nbsp; <span>${history}</span></div>`;
 
                 html += `</div>`;
                 modalBody.innerHTML = html;
@@ -2636,6 +2683,212 @@
         }
 
         // ============================================================
+        // ============================================================
+        // WAREHOUSE DATA — geographic + coffee logistics info for 20 warehouses
+        // ============================================================
+        window.WAREHOUSE_DATA = {
+          'Warehouse_Hamburg_Central': {
+            country:'Germany', city:'Hamburg', port:'Port_Hamburg',
+            type:'보세창고 (Bonded)',
+            capacity:'약 250,000 톤 (생두 기준)',
+            desc:'유럽 최대 커피 무역 도시 함부르크 항구 인근의 중앙 보세창고. 유럽 전체 커피 유통량의 15%가 이 창고 단지를 경유합니다.',
+            role:['유럽 최대 커피 장기보관 창고','선물 시장 실물 인도 거점','독일·북유럽 로스터 원두 재고 허브'],
+            ops:'입항한 생두는 ICC 기준 품질 검사 후 보세 상태로 장기 보관. 온도 15~20°C, 습도 60~65% 항온항습 관리. 선물 계약 실물 인도(Delivery) 지정 창고로 ICE Futures Europe 연계.',
+            tenants:['Neumann Kaffee Gruppe (세계 최대 커피 무역사)','Volcafé','Ecom Agroindustrial','Tchibo','Jacobs Douwe Egberts','Hamburg Coffee Exchange'],
+            history:'19세기 함부르크 자유무역항(Freihafen) 시대부터 커피 보관 허브. 20세기 초 유럽 최대 커피 창고 단지로 확립. 2차 세계대전 후 유럽 커피 재건의 중심 인프라로 재건. 현재 연간 유통 커피량 약 100만 톤 이상.'
+          },
+          'Warehouse_Rotterdam_West': {
+            country:'Netherlands', city:'Rotterdam', port:'Port_Rotterdam',
+            type:'보세창고 (Bonded) / 유럽 분배 센터',
+            capacity:'약 180,000 톤',
+            desc:'유럽 최대 항구 로테르담 마스블락테(Maasvlakte) 항만 지구 내 커피 전용 분배 창고. 아시아·남미에서 입항한 커피가 북유럽 각지로 재분배되는 관문.',
+            role:['유럽 커피 환적 분배 허브','브라질·베트남 대량 로트 장기보관','암스테르담 커피 선물 시장 실물 연계'],
+            ops:'컨테이너 개방 후 Bag-in-bag 단위로 재포장·분류. 네덜란드는 유럽 최대 커피 재수출국으로, 이 창고에서 독일·프랑스·영국·스칸디나비아로 소분 출하. GreenCoffee BV 등 네덜란드 생두 무역사 운영.',
+            tenants:['Sucafina Europe','Louis Dreyfus Netherlands','GreenCoffee BV','Koffie & Zo','Lavazza Netherlands'],
+            history:'로테르담 유로포트(Europoort) 개발(1960년대)과 함께 커피 창고 단지 조성. 네덜란드 VOC의 17세기 커피 무역 전통 계승. 암스테르담 커피 선물 시장(1991년 LIFFE로 통합)과 연동된 실물 보관 시스템 운영.'
+          },
+          'Warehouse_Antwerp_North': {
+            country:'Belgium', city:'Antwerp', port:'Port_Antwerp',
+            type:'보세창고 / Fair Trade 인증 창고',
+            capacity:'약 120,000 톤',
+            desc:'앤트워프 노르트 항구 지구의 아프리카·중미 커피 특화 보세창고. 벨기에의 Fair Trade 커피 전통과 결합해 윤리적 소싱 원두의 유럽 진입 거점.',
+            role:['아프리카 스페셜티 커피 유럽 게이트웨이','Fair Trade 인증 원두 전용 보관','에티오피아·케냐·르완다 커피 분배 허브'],
+            ops:'Fair Trade·Organic 인증 원두의 분리 보관 설비 완비. 벨기에 식품안전청(FAVV) 규격 준수. 네슬레·몬델리즈 등 초콜릿 기업 연계 커피 재료 보관도 담당. 연간 처리량 약 80만 포대(60kg).',
+            tenants:['Olam Coffee Europe','Max Havelaar Belgium (Fair Trade 인증기관)','Barry Callebaut','Oxfam-Magasins du Monde','Efico (앤트워프 생두 무역사)'],
+            history:'앤트워프가 벨기에 식민지(콩고) 시대부터 아프리카 무역 허브로 성장. 1971년 Max Havelaar 공정무역 운동과 연계된 특수 보관 시설 도입. 벨기에의 초콜릿-커피 복합 무역 문화가 창고 운영에 반영.'
+          },
+          'Warehouse_Amsterdam_West': {
+            country:'Netherlands', city:'Amsterdam', port:'Port_Rotterdam',
+            type:'스페셜티 생두 보관 창고',
+            capacity:'약 60,000 톤',
+            desc:'암스테르담 서부 항만 지구에 위치한 스페셜티·마이크로로트 특화 창고. 로테르담 항 입항 후 암스테르담의 스페셜티 커피 거래 생태계로 연결되는 허브.',
+            role:['스페셜티 마이크로로트 보관 특화','Cup of Excellence 낙찰 원두 보관','유럽 스페셜티 임포터 소싱 허브'],
+            ops:'소량 마이크로로트(1~5 포대) 단위 개별 관리. 그레인프로(GrainPro) 백 보관으로 생두 신선도 극대화. 암스테르담 소재 스페셜티 임포터(Trabocca, Kalsbeek 등)와 직결. 바이어 샘플 요청 시 24시간 내 발송 서비스.',
+            tenants:['Trabocca BV (네덜란드 최대 스페셜티 임포터)','Kalsbeek Coffee','Osito Coffee','Friedhats Amsterdam','Black Eagle Coffee'],
+            history:'암스테르담은 17~18세기 유럽 최대 커피 무역 도시. 현재 Trabocca 등 네덜란드 스페셜티 임포터들이 이 지역을 거점으로 에티오피아·콜롬비아·파나마 게이샤 등 희귀 원두를 유럽 전역에 공급.'
+          },
+          'Warehouse_Santos_A': {
+            country:'Brazil', city:'Santos', port:'Port_Santos',
+            type:'커피 수출 스테이징 창고',
+            capacity:'약 300,000 포대 (60kg 기준)',
+            desc:'세계 최대 커피 수출항 산투스 항구 A 구역의 수출 전용 스테이징 창고. 미나스 제라이스·상파울루·에스피리투 산투 주의 생두가 집산되어 전 세계로 출항하는 브라질 커피의 마지막 집결지.',
+            role:['브라질 커피 수출 1번지','전 세계 생두 공급 스테이징 포인트','브라질 선물 가격(BM&F) 연동 실물 창고'],
+            ops:'ICO(국제커피기구) 규격 포대(60kg 황마 포대) 단위 관리. 브라질 농업부(MAPA) 검역 완료 후 수출 대기. Cooxupé·Volcafé·Neumann 등 대형 무역사가 임차 운영. 연간 출항량 약 2,500만 포대.',
+            tenants:['Cooxupé (세계 최대 커피 협동조합)','Volcafé Brasil','Neumann Kaffee Gruppe','Cecafé (브라질 커피 수출협회)','Cargill Coffee Brazil'],
+            history:'1867년 상파울루-산투스 철도 개통 직후 첫 커피 창고 설립. 1900년대 초 전 세계 커피 70% 수출 시절 창고 단지 폭발적 확장. 1922년 Bolsa do Café 건립과 연계한 현물-선물 복합 시스템. 현재 브라질 CECAFÉ 감독 하 운영.'
+          },
+          'Warehouse_Mombasa_Central': {
+            country:'Kenya', city:'Mombasa', port:'Port_Mombasa',
+            type:'동아프리카 커피 수출 집산 창고',
+            capacity:'약 80,000 포대 (60kg 기준)',
+            desc:'동아프리카 최대 항구 몸바사 중앙 항만 지구의 커피 전용 집산 창고. 케냐 NCE 경매 낙찰 원두와 우간다·르완다·부룬디 통과 화물이 이 창고에서 수출 전 최종 검품됩니다.',
+            role:['동아프리카 커피 수출 허브','케냐 NCE 경매 낙찰품 출하 거점','우간다·르완다·에티오피아 환적 창고'],
+            ops:'케냐 커피국(KCB) 및 나이로비 커피 거래소(NCE) 규정 준수. AA·AB·PB·C 등급별 분리 보관. 스페셜티 바이어 요청 시 오픈 컨테이너 검품(Open Container Inspection) 서비스 제공. 연간 처리량 케냐산 약 5만 톤 + 인접국 환적분.',
+            tenants:['Kenya Coffee Board (KCB)','Nairobi Coffee Exchange 위탁 창고','Olam Kenya','Louis Dreyfus East Africa','Sucafina Africa','Uganda Coffee Development Authority 연계'],
+            history:'19세기 영국 동아프리카 식민지 무역 인프라. 1935년 NCE 설립과 함께 경매 시스템 전용 창고 체계 구축. 케냐 독립(1963) 후 국가 주도 커피 인프라 현대화. 현재 동아프리카 스페셜티 붐을 반영한 소량 프리미엄 보관 구역 신설.'
+          },
+          'Warehouse_HoChiMinh_District7': {
+            country:'Vietnam', city:'Ho Chi Minh City (District 7)', port:'Port_HoChiMinh',
+            type:'로부스타 수출 스테이징 창고',
+            capacity:'약 500,000 포대 (60kg 기준)',
+            desc:'호치민 시 디스트릭트7(푸미흥 경제 구역) 내 대규모 로부스타 수출 전용 창고. 닥락·지아라이·람동 고원의 로부스타가 집산되어 전 세계 인스턴트 커피 공장으로 출항합니다.',
+            role:['세계 최대 로부스타 수출 창고 단지','인스턴트 커피 원료 글로벌 공급 허브','베트남 중앙고원 커피 해외 출하 관문'],
+            ops:'VICOFA(베트남 커피코코아협회) 규정 준수. 대량 벌크(Bulk) 또는 60kg 포대 단위 선적. Trung Nguyên·Nestlé 공장과 도로 직결. 연간 처리량 약 2,000만 포대 규모. 로부스타 Grade 1·2 분리 보관.',
+            tenants:['Trung Nguyên Coffee (베트남 최대 커피 기업)','Nestlé Vietnam (Nescafé 생산 공장 연계)','Olam Vietnam','Louis Dreyfus Vietnam','Sucafina Vietnam','Intimex Group'],
+            history:'1986년 도이머이 개혁 이후 베트남 커피 수출 급증에 대응해 창고 단지 조성. 1990년대 세계 2위 수출국 도약과 함께 대규모 확장. 2000년대 Robusta 선물 시장(LIFFE) 규격 창고 인증 획득.'
+          },
+          'Warehouse_Singapore_West': {
+            country:'Singapore', city:'Singapore (Jurong West)', port:'Port_Singapore',
+            type:'자유무역지대 창고 (FTZ Bonded)',
+            capacity:'약 150,000 톤',
+            desc:'싱가포르 주롱 서부 자유무역지대(Jurong FTZ) 내 아시아 최대 커피 환적 창고. 인도네시아·베트남·미얀마 커피가 아시아·유럽·미국으로 재분배되는 동남아 커피 물류의 심장.',
+            role:['아시아 커피 환적 최대 허브','동남아시아 스페셜티 소싱 플랫폼','커피 선물 시장(SGX) 실물 인도 창고'],
+            ops:'싱가포르 관세청(IRAS) 자유무역지대 규정 적용으로 무관세 보관. Olam International 싱가포르 본사와 직결. 커피 외 코코아·스파이스 복합 보관 시설. 아시아 바이어 대상 샘플 서비스 허브.',
+            tenants:['Olam International (싱가포르 본사)','Sucafina Asia','Ecom Asia','Louis Dreyfus Singapore','% Arabica 공급망','파나마·예멘 스페셜티 아시아 유통'],
+            history:'싱가포르 독립(1965) 이후 자유무역항 발전과 함께 커피 환적 허브로 성장. Olam International이 1989년 싱가포르에서 창업해 현재 세계 최대 농산물 무역사 중 하나로 성장. 싱가포르 로컬 코피(Kopi) 문화와 글로벌 스페셜티 무역의 공존.'
+          },
+          'Warehouse_Tokyo_Bay': {
+            country:'Japan', city:'Tokyo (Kōtō Ward, Tatsumi)', port:'Port_Tokyo',
+            type:'보세창고 / 스페셜티 전용 냉장보관',
+            capacity:'약 80,000 포대 (60kg 기준)',
+            desc:'도쿄만 고토 구 다쓰미 지역의 커피 전용 보세창고. 일본의 극도로 엄격한 품질 기준에 맞는 스페셜티·마이크로로트 전용 보관 시설로, 섭씨 15°C 이하 냉장 구역도 운영합니다.',
+            role:['일본 스페셜티 커피 1번 수입 창고','Q-Grade·SCAJ 기준 원두 보관 특화','일본 전국 로스터 원두 분배 허브'],
+            ops:'일본 식물방역소(Plant Protection Station) 검역 완료 필수. SCAJ(일본스페셜티커피협회) 권장 보관 기준 준수. 온도 15~18°C, 습도 55~60% 항온항습. 일본 전국 300여 독립 로스터 소분 배송 서비스.',
+            tenants:['UCC (일본 최대 커피 기업)','Key Coffee','Sarutahiko Coffee','Onibus Coffee','Fuglen Tokyo 공급망','Blue Bottle Japan 소싱'],
+            history:'1945년 전후 일본 재건기에 커피 수입 재개와 함께 도쿄만 창고 단지 조성. 1970년대 UCC가 최초 캔커피 판매와 함께 대용량 보관 체계 구축. 2010년대 Third Wave 붐으로 소형 마이크로로트 전용 구역 신설.'
+          },
+          'Warehouse_Sydney_South': {
+            country:'Australia', city:'Sydney (Port Botany)', port:'Port_Sydney',
+            type:'수입 생두 보관 창고',
+            capacity:'약 40,000 포대 (60kg 기준)',
+            desc:'시드니 포트 보태니(Port Botany) 항만 지구 내 커피 전용 수입 창고. 호주 최대 도시 시드니의 활발한 스페셜티 씬을 뒷받침하는 생두 공급 인프라.',
+            role:['시드니 스페셜티 로스터 원두 공급 창고','에티오피아·콜롬비아 싱글 오리진 보관','호주 동부 해안 커피 분배 거점'],
+            ops:'호주 식물방역청(DAFF) 검역 통과 후 입고. Single O·Mecca 등 시드니 로스터와 직계약 보관. 소형 마이크로로트(1~10 포대) 온디맨드 출고 서비스. 연간 처리량 약 60만 포대.',
+            tenants:['Single O (Single Origin Coffee)','Mecca Coffee','Artificer Coffee','Toby\'s Estate','ONA Coffee (Canberra 기반, 시드니 배송)'],
+            history:'1950~60년대 이탈리아·그리스 이민자 유입으로 에스프레소 문화 정착, 수입 수요 급증. 2000년대 호주 Third Wave 붐으로 스페셜티 생두 소량 수입 체계 구축. 현재 호주-파나마 Gesha, 에티오피아 Natural 등 희귀 원두 보관 특화.'
+          },
+          'Warehouse_Melbourne_Docks': {
+            country:'Australia', city:'Melbourne (Docklands)', port:'Port_Sydney',
+            type:'스페셜티 생두 전용 창고',
+            capacity:'약 50,000 포대 (60kg 기준)',
+            desc:'멜버른 도클랜즈 항만 지구 인근의 스페셜티 커피 전용 보관 창고. 세계적 커피 도시 멜버른의 Third Wave 씬을 지탱하는 원두 공급 인프라.',
+            role:['멜버른 스페셜티 로스터 원두 허브','MICE(멜버른 국제커피박람회) 연계 샘플 창고','호주-뉴질랜드 Flat White 문화 원두 공급'],
+            ops:'Proud Mary·Market Lane·Seven Seeds 등 멜버른 명문 로스터 전용 보관 구역 운영. 연 1회 MICE(Melbourne International Coffee Expo) 기간 중 신규 바이어 소싱 행사 개최. 그레인프로(GrainPro) 백 표준 보관.',
+            tenants:['Proud Mary Coffee (멜버른 스페셜티 아이콘)','Market Lane Coffee','Seven Seeds','Dukes Coffee Roasters','Patricia Coffee','Streat Coffee'],
+            history:'멜버른의 커피 문화는 1950~60년대 이탈리아 이민자가 가져온 에스프레소 전통에서 시작. 1980년대 플랫 화이트 탄생 이후 세계적 커피 도시로 부상. 2000년대 MICE 창설과 함께 전문 스페셜티 창고 인프라 정비.'
+          },
+          'Warehouse_LongBeach_South': {
+            country:'USA', city:'Long Beach, California', port:'Port_LongBeach',
+            type:'수입 보세창고 / 서부 분배 센터',
+            capacity:'약 200,000 포대 (60kg 기준)',
+            desc:'롱비치 항구 남부 터미널 인근의 미국 서부 최대 커피 수입 보세창고. 아시아·중남미에서 입항한 원두가 캘리포니아·태평양 북서부 로스터로 분배되는 웨스트코스트 커피 물류 허브.',
+            role:['미국 서부 최대 커피 수입 보세창고','LA·SF 스페셜티 로스터 원두 공급','아시아산 로부스타·중남미 아라비카 분류 허브'],
+            ops:'CBP(미국 세관국경보호국) 보세창고 인가. 인도네시아·파푸아뉴기니·과테말라·콜롬비아 원두 혼재 보관. Blue Bottle·Stumptown 소량 주문 즉시 출고 시스템. ICE Futures US(뉴욕 커피 선물) 연동 실물 보관.',
+            tenants:['Blue Bottle Coffee','Intelligentsia (LA 로스터리 공급)','Stumptown Coffee (LA 지사)','Verve Coffee Roasters','Equator Coffee','Royal Coffee (북캘리포니아 임포터)'],
+            history:'1990년대 LA 항만 확장과 함께 커피 전용 창고 단지 조성. 2000년대 Third Wave 혁명으로 스페셜티 소량 로트 보관 수요 급증. 현재 미국 서부 스페셜티 생두 수입량의 약 35%를 처리.'
+          },
+          'Warehouse_Busan_Port': {
+            country:'South Korea', city:'Busan', port:'Port_Busan',
+            type:'수입 보세창고 / 내륙 분배 센터',
+            capacity:'약 100,000 포대 (60kg 기준)',
+            desc:'부산 신항(Busan New Port) 인접 커피 전용 보세창고. 세계 최고 카페 밀집도를 자랑하는 한국 커피 시장의 생두 수입 관문으로, 서울·수도권 로스터까지 이틀 내 배송 가능한 물류 인프라.',
+            role:['한국 커피 생두 수입 1번 창고','서울·수도권 스페셜티 로스터 원두 공급','에티오피아·콜롬비아 고가 원두 보관 특화'],
+            ops:'관세청 보세창고 인가. 그레인프로 백 표준 보관. Fritz·Namusairo 등 서울 스페셜티 로스터 주문 48시간 내 출고. 연간 처리량 약 18만 톤. SCAE Korea 규격 준수.',
+            tenants:['Fritz Coffee Company (부산→서울 공급)','Namusairo','동서식품 (맥심 원료)','스타벅스 코리아 소싱','Cafe Imports Korea 파트너','Felt Coffee'],
+            history:'1876년 부산 개항 이후 한국 최초 커피 수입 항구. 1970년대 동서식품 설립과 함께 인스턴트 커피 원료 수입 급증. 2010년대 Third Wave 붐으로 에티오피아·콜롬비아 스페셜티 소량 수입 폭발적 증가. 현재 한국 커피 수입의 약 45% 처리.'
+          },
+          'Warehouse_Genoa_Harbor': {
+            country:'Italy', city:'Genoa', port:'Port_Genoa',
+            type:'커피 수입 보세창고',
+            capacity:'약 70,000 포대 (60kg 기준)',
+            desc:'제노바 항구 항만 지구(Porto Vecchio / Porto Nuovo) 내 커피 수입 보세창고. 이탈리아 에스프레소 문화의 원두 공급 인프라로, 북부 이탈리아 로스터들의 주요 소싱 거점.',
+            role:['이탈리아 북부 커피 수입 허브','Lavazza·Illy 원두 공급망 연계','지중해 커피 무역 거점'],
+            ops:'이탈리아 관세청(Agenzia delle Dogane) 보세 승인. 주요 원두: 브라질·콜롬비아·에티오피아·베트남. Lavazza 전용 보관 구역 운영. 트리에스테(Illy 본사) 항구와 분업해 이탈리아 동·서부 수입 분담.',
+            tenants:['Lavazza (일부 물량)','Segafredo Zanetti','Caffè Vergnano (1882년 창립, 피에몬테 기반)','Pellini Coffee','illy caffè 연계'],
+            history:'14~16세기 제노바 공화국의 지중해 무역 패권 시대부터 이국 상품 보관 허브. 18세기 아라비아·오스만 제국 경유 커피 수입의 이탈리아 관문. 19세기 Lavazza(1895) 등 이탈리아 커피 기업 성장과 함께 수입 창고 기능 강화.'
+          },
+          'Warehouse_Seattle_Port': {
+            country:'USA', city:'Seattle, Washington', port:'Port of Seattle',
+            type:'수입 생두 보관 창고',
+            capacity:'약 80,000 포대 (60kg 기준)',
+            desc:'시애틀 항구(Elliott Bay Terminal) 인근의 커피 수입 생두 보관 창고. 스타벅스 발상지이자 태평양 북서부 커피 문화의 수도 시애틀의 로스터들에게 원두를 공급하는 핵심 인프라.',
+            role:['스타벅스·PNW 독립 로스터 원두 공급 창고','PNW(태평양 북서부) 스페셜티 커피 소싱 허브','아시아·중남미 원두 PNW 분배 거점'],
+            ops:'Starbucks Reserve 특수 원두 전용 보관 구역 포함. Victrola·Slate·Kuma 등 시애틀 독립 로스터 소량 맞춤 출고. 연간 스타벅스 로스팅 플랜트(SODO) 공급량: 약 30만 포대. CBP 보세창고 인가.',
+            tenants:['Starbucks (SODO Roastery 공급)','Victrola Coffee Roasters','Slate Coffee Roasters','Kuma Coffee','Lighthouse Roasters','Caffe Ladro'],
+            history:'1971년 스타벅스 창립 이후 시애틀 커피 수요 급증. 1987년 하워드 슐츠의 스타벅스 인수·확장으로 항구 창고 물량 폭발. 1990년대 스타벅스 글로벌 확장 지원 생두 집산지. 현재 스타벅스 Reserve 희귀 원두 전용 구역 운영.'
+          },
+          'Warehouse_Miami_FreeZone': {
+            country:'USA', city:'Miami, Florida', port:'Port_NewOrleans (연계)',
+            type:'자유무역지대 창고 (FTZ)',
+            capacity:'약 120,000 포대 (60kg 기준)',
+            desc:'마이애미 자유무역지대(Miami Free Zone, MFZ) 내 중남미 커피 전문 보관 창고. 카리브해·중앙아메리카와 지리적으로 가까운 위치를 활용해 과테말라·온두라스·코스타리카·쿠바산 커피를 미국에 공급합니다.',
+            role:['중남미·카리브해 커피 미국 진입 관문','과테말라·코스타리카 스페셜티 미국 동부 분배','쿠바 커피 미국 수입 허브 (무역 정상화 이후)'],
+            ops:'FTZ 운영으로 무관세 입고·재수출 가능. 중미 5개국(과테말라·온두라스·코스타리카·니카라과·파나마) 원두 혼재 보관. Counter Culture·Intelligentsia 등 미국 동부 임포터 공급. 쿠바 커피 수입 정상화 대비 전용 구역 확보.',
+            tenants:['Counter Culture Coffee','Intelligentsia (동부 공급)','Cafe Imports (플로리다 지사)','Royal Coffee Miami','La Minita Coffee 연계','Cuban Coffee Queen 연계'],
+            history:'1980~90년대 마이애미 자유무역지대 설립과 함께 중남미 커피 전문 창고 조성. 쿠바 커피 엠바고(1962~2015) 이후 정상화 과정에서 쿠바 원두 수입 거점으로 주목. 현재 플로리다 주의 히스패닉 인구와 커피 문화가 결합한 독특한 물류 허브.'
+          },
+          'Warehouse_NewOrleans_CBD': {
+            country:'USA', city:'New Orleans, Louisiana', port:'Port_NewOrleans',
+            type:'역사적 커피 창고 (수입 분배)',
+            capacity:'약 90,000 포대 (60kg 기준)',
+            desc:'뉴올리언스 센트럴 비즈니스 디스트릭트(CBD) 항만 지구 내 커피 전통 창고. 한때 미국 최대 커피 수입항이었던 뉴올리언스의 역사를 간직한 창고로, 현재도 남부 미국과 미시시피 강 내륙 수로를 통한 커피 분배 역할을 담당합니다.',
+            role:['미국 남부 커피 분배 허브','치커리 커피 원료(치커리 뿌리) 보관','미시시피 강 내륙 수로 커피 공급 거점'],
+            ops:'치커리 블렌드 커피용 치커리 뿌리 건조 보관 설비 보유(뉴올리언스 특산). Community Coffee·Café Du Monde 전용 임대 구역. 미시시피 강 바지선(Barge) 연계로 중서부 내륙까지 원두 공급. 연간 처리량 약 50만 포대.',
+            tenants:['Community Coffee (뉴올리언스 110년 전통 로스터)','Café Du Monde (치커리 카페오레 아이콘)','French Truck Coffee','HEY! Café','Sucafina Americas 남부 지사'],
+            history:'18세기 프랑스 식민지 시대부터 미시시피 강 무역의 커피 집산지. 1840~1900년 미국 커피 수입의 30~40% 담당한 창고 단지. 남북전쟁(1861~65) 봉쇄령으로 커피 공급 차단 → 치커리 블렌드 탄생, 이후 뉴올리언스 커피 정체성이 됨. 현재 Community Coffee·Café Du Monde가 이 전통 계승.'
+          },
+          'Warehouse_Barcelona_Port': {
+            country:'Spain', city:'Barcelona', port:'Port_Valencia (연계)',
+            type:'지중해 커피 분배 창고',
+            capacity:'약 85,000 포대 (60kg 기준)',
+            desc:'바르셀로나 항구(Port de Barcelona) 인근 산업지구의 커피 수입 분배 창고. 지중해 최대 항구인 발렌시아와 연계해 스페인 동부·카탈루냐 지역 커피 수요를 담당합니다.',
+            role:['카탈루냐·아라곤 커피 공급 허브','지중해 연안 스페인 커피 수입 분배','에스프레소 바 문화 원두 공급 거점'],
+            ops:'스페인 관세청 보세창고 인가. 바르셀로나 특유의 에스프레소 바(Bar) 문화 원두 소규모 빈번 출고 지원. 콜롬비아·에티오피아 스페셜티와 브라질·베트남 상업 원두 혼재 보관. 카탈루냐 독립 스페셜티 로스터 소싱 지원.',
+            tenants:['Nomad Coffee (바르셀로나 대표 스페셜티 로스터)','Right Side Coffee','Cafés El Magnífico (1919년 창립)','Satan\'s Coffee Corner','Costello Coffee'],
+            history:'14~15세기 아라곤 왕국의 지중해 무역 허브 바르셀로나. 19세기 쿠바·필리핀 식민지 커피 수입의 이베리아 관문. 현재 Nomad Coffee 등 바르셀로나 스페셜티 씬이 스페인 3대 커피 도시(마드리드·바르셀로나·세비야) 중 하나로 부상.'
+          },
+          'Warehouse_Felixstowe_East': {
+            country:'United Kingdom', city:'Felixstowe, Suffolk', port:'Port_Felixstowe',
+            type:'수입 보세창고 / 영국 분배 센터',
+            capacity:'약 110,000 포대 (60kg 기준)',
+            desc:'영국 최대 컨테이너 항구 펠릭스토우 동부 터미널 인근 커피 전용 보세창고. 영국으로 들어오는 커피의 약 30%를 처리하며, 런던 Third Wave 로스터들의 주요 원두 공급처.',
+            role:['영국 최대 커피 수입 창고','런던 Third Wave 스페셜티 로스터 공급 허브','UK 커피 선물 거래 실물 연동 창고'],
+            ops:'HMRC(영국 국세청) 보세창고 인가. 브렉시트 이후 EU 재수입 관세 조정 대응 체계 구축. Monmouth·Workshop·Square Mile 등 런던 로스터 주문 24시간 내 출고. 연간 처리량 약 12만 톤.',
+            tenants:['Monmouth Coffee (1978년 창립, 런던 스페셜티 개척자)','Workshop Coffee','Square Mile Coffee Roasters','Union Hand-Roasted','Taylors of Harrogate (Yorkshire)','Caravan Coffee Roasters'],
+            history:'1967년 영국 최초 컨테이너 전용 항구로 개항. 영국의 전통 차(Tea) 문화에서 커피 문화로의 전환(2010년대 커피가 차 소비 추월)과 함께 커피 수입 급증. 브렉시트(2020) 이후 EU 통관 없이 직수입 창고로 역할 강화.'
+          },
+          'Warehouse_Valencia_Industrial': {
+            country:'Spain', city:'Valencia', port:'Port_Valencia',
+            type:'산업단지 커피 가공·분배 창고',
+            capacity:'약 100,000 포대 (60kg 기준)',
+            desc:'발렌시아 항구 인접 산업단지(Zona Industrial) 내 대규모 커피 가공·분배 복합 창고. 지중해 최대 컨테이너 항구인 발렌시아의 커피 물류 허브로, 스페인 내륙과 포르투갈·모로코 재수출을 담당합니다.',
+            role:['지중해 커피 재수출 허브','스페인 내륙·북아프리카 분배 창고','커피 생두 가공(탈곡·선별) 시설 보유'],
+            ops:'스페인 농업부 검역 인증. 탈곡(Hulling)·선별(Sorting) 전처리 시설 내장. 모로코·알제리 재수출 위한 할랄(Halal) 인증 보관 구역. 연간 처리량 약 30만 포대. Marcilla·Bonka 스페인 대형 로스터 원료 공급.',
+            tenants:['Marcilla Coffee (스페인 최대 로스터 브랜드)','Bonka (Nestlé España)','Lavazza España','Malongo España','스페인 공정무역 커피 협회(CECJ)'],
+            history:'발렌시아의 지중해 무역 전통(15세기 아라곤 왕국 시대)에서 출발. 20세기 스페인 경제 성장과 함께 남미 커피 수입 급증. 현재 지중해 최대 컨테이너 항구(MSC·CMA CGM 기항)와 연계된 고효율 물류 허브.'
+          },
+        };
+
         // ============================================================
         // PORT DATA — geographic + coffee trade info for 15 ports
         // Keys match instance.name (instanceDetails key)
