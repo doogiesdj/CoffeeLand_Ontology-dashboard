@@ -2370,31 +2370,29 @@
 
             if (isBeverage) {
                 // ── Beverage detail view ──────────────────────────────────
-                const p = (key) => instance.properties[key]?.[0]?.value || null;
-                const getLabel = (uri) => uri.split('#').pop().replace(/_/g, ' ');
+                // instance.properties is always {} (RDF parser doesn't extract data props)
+                // Use BEVERAGE_DATA lookup table instead
+                const beverageKey = instance.name.replace(/\s+/g, '_');
+                const bd = (window.BEVERAGE_DATA && window.BEVERAGE_DATA[beverageKey]) || {};
 
-                const calories   = p('hasCalories');
-                const caffeine   = p('hasCaffeineContent');
-                const rating     = p('hasRating');
-                const prepTime   = p('hasPrepTime');
-                const desc       = p('hasDescription') || instance.description || '';
-                const priceS     = p('hasPriceSmall');
-                const priceM     = p('hasPriceMedium');
-                const priceL     = p('hasPriceLarge');
-                const temp       = p('hasTemperature');
-                const category   = p('hasCategory');
-                const roast      = p('hasRoastLevel');
-                const milkAlt    = p('hasMilkAlternatives');
-                const syrups     = p('hasFlavorSyrups');
-                const custom     = p('hasCustomOptions');
-                const origin     = p('hasCoffeeBeanOrigin');
-
-                // Ingredients (object property — multiple values)
-                const ingredientVals = instance.properties['containsIngredient'] || [];
-                const ingredients = ingredientVals.map(v => v.type === 'uri' ? getLabel(v.value) : v.value);
+                const calories   = bd.cal    != null ? String(bd.cal)   : null;
+                const caffeine   = bd.caf    != null ? String(bd.caf)   : null;
+                const rating     = bd.rating || null;
+                const prepTime   = bd.prep   || null;
+                const desc       = bd.desc   || instance.description || '';
+                const priceS     = bd.priceS || null;
+                const priceM     = bd.priceM || null;
+                const priceL     = bd.priceL || null;
+                const temp       = bd.temp   || null;
+                const category   = bd.category || null;
+                const roast      = bd.roast  || null;
+                const milkAlt    = bd.milkAlt || null;
+                const syrups     = bd.syrups || null;
+                const custom     = bd.custom || null;
+                const origin     = bd.origin || null;
+                const ingredients = bd.ingredients || [];
 
                 // Hero image
-                const beverageKey = instance.name.replace(/\s+/g, '_');
                 const imgUrl = window.BEVERAGE_IMAGES && window.BEVERAGE_IMAGES[beverageKey];
 
                 let html = '';
@@ -2485,6 +2483,33 @@
 
             modal.classList.add('active');
         }
+
+        // ============================================================
+        // BEVERAGE DATA (from ontology_data.json instanceDetails)
+        // RDF parser does not extract data properties, so we embed them here.
+        // ============================================================
+        window.BEVERAGE_DATA = {
+          'Espresso':          { cal:5,   caf:63,  rating:'4.8', prep:'1 min', desc:'Rich, concentrated coffee shot with intense flavor and golden crema',                          priceS:'2.50',                            temp:'Hot',           category:'Espresso',       roast:'Medium-Dark', origin:'Ethiopia/Colombia',   ingredients:['Espresso Shot'] },
+          'Double_Espresso':   { cal:10,  caf:126, rating:'4.7', prep:'1 min', desc:'Double dose of espresso for intense coffee experience',                                        priceS:'3.50',                            temp:'Hot',           category:'Espresso',       roast:'Medium-Dark', origin:'Ethiopia/Colombia',   ingredients:['Espresso Shot'] },
+          'Americano':         { cal:5,   caf:95,  rating:'4.9', prep:'2 min', desc:'Espresso diluted with hot water, smooth and bold',                                             priceS:'3.00', priceM:'3.50', priceL:'4.00', temp:'Hot',           category:'Espresso-based', roast:'Medium-Dark', origin:'Ethiopia/Colombia',   ingredients:['Water','Espresso Shot'],              syrups:'Vanilla/Caramel/Hazelnut' },
+          'Caffe_Latte':       { cal:150, caf:95,  rating:'4.9', prep:'3 min', desc:'Espresso with steamed milk and light foam, creamy and smooth',                                priceS:'4.00', priceM:'4.50', priceL:'5.00', temp:'Hot',           category:'Espresso-based', roast:'Medium',      origin:'Brazil/Colombia',     ingredients:['Steamed Milk','Espresso Shot','Milk Foam'], milkAlt:'Oat/Almond/Soy/Coconut', syrups:'Vanilla/Caramel/Hazelnut' },
+          'Cappuccino':        { cal:120, caf:95,  rating:'4.8', prep:'3 min', desc:'Equal parts espresso, steamed milk, and foam, balanced classic',                              priceS:'4.00', priceM:'4.50', priceL:'5.00', temp:'Hot',           category:'Espresso-based', roast:'Medium',      origin:'Brazil/Colombia',     ingredients:['Steamed Milk','Espresso Shot','Milk Foam'], milkAlt:'Oat/Almond/Soy/Coconut', syrups:'Vanilla/Caramel', custom:'Extra Shot/Foam Level/Sugar' },
+          'Flat_White':        { cal:130, caf:130, rating:'4.7', prep:'3 min', desc:'Microfoam milk with espresso, velvety smooth texture from Australia/New Zealand',             priceS:'3.80', priceM:'4.20',               temp:'Hot',           category:'Espresso-based', roast:'Medium',      origin:'Colombia/Guatemala',  ingredients:['Steamed Milk','Espresso Shot'],              milkAlt:'Oat/Almond/Soy/Coconut' },
+          'Macchiato':         { cal:20,  caf:75,  rating:'4.5', prep:'2 min', desc:'Espresso marked with a dollop of foamed milk',                                                priceS:'3.20',                            temp:'Hot',           category:'Espresso-based', roast:'Medium-Dark', origin:'Ethiopia/Colombia',   ingredients:['Steamed Milk','Milk Foam','Espresso Shot'],  milkAlt:'Oat/Almond/Soy/Coconut' },
+          'Mocha':             { cal:290, caf:95,  rating:'4.6', prep:'4 min', desc:'Chocolate-flavored variant of caffè latte with whipped cream',                               priceS:'4.50', priceM:'5.00', priceL:'5.50', temp:'Hot',           category:'Espresso-based', roast:'Medium',      origin:'Brazil/Colombia',     ingredients:['Chocolate Syrup','Espresso Shot','Steamed Milk'], milkAlt:'Oat/Almond/Soy/Coconut', syrups:'Chocolate' },
+          'Caramel_Macchiato': { cal:250, caf:95,  rating:'4.7', prep:'4 min', desc:'Vanilla-flavored latte with caramel drizzle and foam',                                       priceS:'5.00', priceM:'5.50', priceL:'6.00', temp:'Hot',           category:'Specialty',      roast:'Medium',      origin:'Colombia',             ingredients:['Espresso Shot','Caramel Syrup','Steamed Milk','Vanilla Syrup'], milkAlt:'Oat/Almond/Soy/Coconut', syrups:'Caramel' },
+          'Vanilla_Latte':     { cal:200, caf:95,  rating:'4.6', prep:'3 min', desc:'Classic latte with vanilla syrup sweetness',                                                  priceS:'4.50', priceM:'5.00', priceL:'5.50', temp:'Hot',           category:'Specialty',      roast:'Medium',      origin:'Colombia',             ingredients:['Vanilla Syrup','Espresso Shot','Steamed Milk'], milkAlt:'Oat/Almond/Soy/Coconut', syrups:'Vanilla' },
+          'Cold_Brew':         { cal:5,   caf:200, rating:'4.8', prep:'5 min', desc:'Coffee steeped in cold water for 12-24 hours, smooth and less acidic',                       priceS:'4.50', priceM:'5.00', priceL:'5.50', temp:'Cold',          category:'Cold Brew',      roast:'Medium',      origin:'Colombia/Ethiopia',   ingredients:['Ice','Cold Brew Concentrate'],               syrups:'Vanilla/Caramel' },
+          'Nitro_Cold_Brew':   { cal:5,   caf:280, rating:'4.9', prep:'6 min', desc:'Cold brew infused with nitrogen for creamy cascade effect',                                   priceS:'5.50', priceM:'6.00',               temp:'Cold',          category:'Cold Brew',      roast:'Medium',      origin:'Colombia/Ethiopia',   ingredients:['Nitrogen Gas','Cold Brew Concentrate'],     syrups:'Vanilla' },
+          'Iced_Americano':    { cal:5,   caf:95,  rating:'4.8', prep:'2 min', desc:'Espresso shots poured over ice with cold water',                                              priceS:'3.50', priceM:'4.00', priceL:'4.50', temp:'Iced',          category:'Cold Coffee',    roast:'Medium-Dark', origin:'Ethiopia/Colombia',   ingredients:['Water','Ice','Espresso Shot'],               syrups:'Vanilla/Caramel/Hazelnut' },
+          'Iced_Latte':        { cal:150, caf:95,  rating:'4.7', prep:'3 min', desc:'Espresso with cold milk over ice, refreshing',                                                priceS:'4.50', priceM:'5.00', priceL:'5.50', temp:'Iced',          category:'Cold Coffee',    roast:'Medium',      origin:'Brazil/Colombia',     ingredients:['Ice','Espresso Shot','Whole Milk'],          milkAlt:'Oat/Almond/Soy/Coconut', syrups:'Vanilla/Caramel/Hazelnut' },
+          'Iced_Mocha':        { cal:290, caf:95,  rating:'4.5', prep:'4 min', desc:'Iced mocha with chocolate syrup and whipped cream',                                           priceS:'5.00', priceM:'5.50', priceL:'6.00', temp:'Iced',          category:'Cold Coffee',    roast:'Medium',      origin:'Brazil/Colombia',     ingredients:['Chocolate Syrup','Ice','Whole Milk','Espresso Shot'], milkAlt:'Oat/Almond/Soy/Coconut', syrups:'Chocolate' },
+          'Affogato':          { cal:200, caf:63,  rating:'4.9', prep:'2 min', desc:'Hot espresso poured over vanilla ice cream, Italian dessert',                                priceS:'6.00',                            temp:'Hot + Ice Cream', category:'Dessert Coffee', roast:'Medium-Dark', origin:'Ethiopia',             ingredients:['Ice Cream','Espresso Shot'] },
+          'Cortado':           { cal:30,  caf:95,  rating:'4.6', prep:'2 min', desc:'Equal parts espresso and steamed milk, bold Spanish style',                                   priceS:'3.50',                            temp:'Hot',           category:'Espresso-based', roast:'Medium',      origin:'Colombia/Guatemala',  ingredients:['Steamed Milk','Espresso Shot'],              milkAlt:'Oat/Almond/Soy' },
+          'Pour_Over':         { cal:5,   caf:120, rating:'4.7', prep:'5 min', desc:'Hand-poured filter coffee highlighting single-origin flavors',                               priceS:'4.00', priceM:'4.50', priceL:'5.00', temp:'Hot',           category:'Filter Coffee',  roast:'Light-Medium', origin:'Kenya/Ethiopia',      ingredients:['Water','Filter Coffee'] },
+          'French_Press':      { cal:5,   caf:100, rating:'4.5', prep:'6 min', desc:'Full immersion brewing for rich, full-bodied coffee',                                         priceS:'4.50', priceM:'5.00', priceL:'5.50', temp:'Hot',           category:'Filter Coffee',  roast:'Dark',        origin:'Sumatra/Brazil',       ingredients:['Filter Coffee','Water'] },
+          'Aeropress':         { cal:5,   caf:110, rating:'4.8', prep:'4 min', desc:'Air pressure brewing for clean, smooth cup',                                                  priceS:'4.00',                            temp:'Hot',           category:'Filter Coffee',  roast:'Medium',      origin:'Costa Rica/Guatemala', ingredients:['Water','Filter Coffee'] },
+        };
 
         // ============================================================
         // BEVERAGE IMAGES (Unsplash CDN — no auth required)
