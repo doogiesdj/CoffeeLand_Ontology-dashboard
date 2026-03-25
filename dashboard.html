@@ -1087,7 +1087,9 @@
         #catMainFlex { display: flex; gap: 1.5rem; align-items: flex-start; }
         #catHierarchyWrapper { flex: 0 0 330px; min-width: 0; }
         #locationMapPanel { flex: 1; min-width: 0; display: none; }
-        #locationMapContainer { height: 530px; width: 100%; }
+        #locationMapContainer { height: 530px; width: 100%; overflow: hidden; }
+        #locationMapContainer .leaflet-overlay-pane { overflow: hidden; }
+        #locationMapContainer .leaflet-overlay-pane svg { overflow: hidden; }
         .leaflet-container { background: #1a1a2e; }
         .leaflet-popup-content-wrapper { background: #fff; color: #1e293b; border: 1px solid #cbd5e1; border-radius: 8px; box-shadow: 0 4px 16px rgba(0,0,0,0.18); }
         .leaflet-popup-tip { background: #fff; }
@@ -2973,11 +2975,16 @@
           if (!el) return;
           if (_locMap) { setTimeout(() => _locMap.invalidateSize(), 100); return; }
 
-          _locMap = L.map('locationMapContainer', { zoomControl: true, attributionControl: true })
-                     .setView([20, 15], 2);
+          _locMap = L.map('locationMapContainer', {
+            zoomControl: true, attributionControl: true,
+            worldCopyJump: false,
+            maxBounds: [[-90, -200], [90, 200]],
+            maxBoundsViscosity: 1.0,
+            renderer: L.svg({ padding: 0.5 })
+          }).setView([20, 15], 2);
 
           L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; OpenStreetMap contributors', maxZoom: 18
+            attribution: '&copy; OpenStreetMap contributors', maxZoom: 18, noWrap: true
           }).addTo(_locMap);
 
           // Layer groups per entity type
@@ -3016,6 +3023,7 @@
               const countries = topojson.feature(world, world.objects.countries);
               _locCountryLayer = L.geoJSON(countries, {
                 style: { fillColor:'transparent', fillOpacity:0, color:'#6366f1', weight:0.6, opacity:0.45 },
+                smoothFactor: 2,
                 onEachFeature: (feature, layer) => {
                   const numId = parseInt(feature.id);
                   const cName = (window.ISO_NUM_TO_COUNTRY || {})[numId] || null;
