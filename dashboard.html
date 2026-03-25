@@ -1737,7 +1737,7 @@
 
     <input type="file" id="fileInput" accept=".rdf,.owl,.ttl" style="display: none;">
 
-    <script src="/lib/cytoscape.min.js?v=2.0"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.26.0/cytoscape.min.js"></script>
     <script>
         // Global State
         let ontologyData = null;
@@ -1926,7 +1926,7 @@
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ 
-                        filename: 'coffeeland-new.rdf',
+                        filename: 'coffeeland_final_v2.rdf',
                         classUri: classUri 
                     })
                 });
@@ -2668,7 +2668,7 @@
         });
 
         document.getElementById('loadDataBtn').addEventListener('click', () => {
-            loadOntologyData('coffeeland-new.rdf');
+            loadOntologyData('coffeeland_final_v2.rdf');
         });
 
         document.getElementById('refreshBtn').addEventListener('click', () => {
@@ -2747,7 +2747,7 @@
         // Auto-load on start
         console.log('🚀 Starting CoffeeLand Dashboard...');
         setTimeout(() => {
-            loadOntologyData('coffeeland-new.rdf');
+            loadOntologyData('coffeeland_final_v2.rdf');
         }, 500);
     </script>
 </body>
