@@ -1081,6 +1081,24 @@
         .bev-info-item.full { grid-column: 1 / -1; }
         .bev-tag-row { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 0.2rem; }
         .bev-tag { font-size: 0.7rem; background: rgba(139,69,19,.18); color: var(--accent); border-radius: 20px; padding: 0.15rem 0.6rem; border: 1px solid rgba(139,69,19,.3); }
+        /* Harvest modal styles */
+        .harvest-hero { display:flex; align-items:center; gap:1rem; margin-bottom:1.2rem; padding:0.9rem 1rem; background:linear-gradient(135deg,rgba(16,185,129,.12),rgba(5,150,105,.07)); border-radius:0.6rem; border-left:4px solid #10b981; }
+        .harvest-flag { font-size:2rem; line-height:1; }
+        .harvest-hero-info { flex:1; min-width:0; }
+        .harvest-hero-region { font-size:1.15rem; font-weight:700; color:var(--text-primary); }
+        .harvest-hero-country { font-size:0.8rem; color:var(--text-secondary); margin-top:0.1rem; }
+        .harvest-stats { display:grid; grid-template-columns:repeat(4,1fr); gap:0.6rem; margin-bottom:1.1rem; }
+        .harvest-stat { background:var(--bg-dark); border:1px solid var(--border); border-radius:0.5rem; padding:0.6rem 0.4rem; text-align:center; }
+        .harvest-stat-val { font-size:0.88rem; font-weight:700; color:#10b981; line-height:1.2; }
+        .harvest-stat-lbl { font-size:0.6rem; color:var(--text-secondary); margin-top:0.25rem; }
+        .harvest-desc { font-size:0.83rem; color:var(--text-secondary); line-height:1.65; margin-bottom:1.1rem; padding:0.75rem 0.9rem; background:var(--bg-dark); border-radius:0.5rem; border-left:3px solid #10b981; }
+        .harvest-info-grid { display:grid; grid-template-columns:1fr 1fr; gap:0.45rem; margin-bottom:1.1rem; }
+        .harvest-info-item { display:flex; align-items:flex-start; gap:0.45rem; font-size:0.79rem; color:var(--text-secondary); padding:0.45rem 0.65rem; background:var(--bg-dark); border-radius:0.4rem; }
+        .harvest-info-item span { color:var(--text-primary); }
+        .harvest-info-item.full { grid-column:1/-1; }
+        .harvest-chart-wrap { background:var(--bg-dark); border:1px solid var(--border); border-radius:0.6rem; padding:1rem; margin-bottom:0.5rem; }
+        .harvest-chart-title { font-size:0.82rem; font-weight:600; color:var(--text-primary); margin-bottom:0.7rem; display:flex; align-items:center; gap:0.4rem; }
+        .harvest-chart-canvas { width:100% !important; height:220px !important; }
         .country-section-header { grid-column: 1 / -1; width: 100%; padding: 0.65rem 1rem; margin: 0.8rem 0 0.2rem; background: linear-gradient(135deg, rgba(99,102,241,0.13), rgba(139,92,246,0.08)); border-left: 3px solid var(--accent-primary, #6366f1); border-radius: 0 8px 8px 0; color: var(--text-primary); font-size: 0.88rem; font-weight: 600; display: flex; align-items: center; gap: 0.45rem; }
         .country-flag-img { width: 72px; height: auto; border-radius: 4px; box-shadow: 0 2px 6px rgba(0,0,0,0.35); display: block; }
         /* Location split view */
@@ -1107,6 +1125,7 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/topojson-client@3/dist/topojson-client.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 </head>
 <body>
     <!-- Loading Overlay -->
@@ -2392,12 +2411,18 @@
                                 </div>
                             `;
                         } else {
-                            instanceCard.innerHTML = `
+                            // Strip _YYYY year suffix from Harvest card display names
+                        const isHarvestCard = className.toLowerCase() === 'harvest';
+                        const cardDisplayName = isHarvestCard
+                            ? instance.name.replace(/_\d{4}$/, '')
+                            : instance.name;
+
+                        instanceCard.innerHTML = `
                                 ${hasImage ? `<div class="bev-img-wrap"><img src="${window.BEVERAGE_IMAGES[beverageKey]}" alt="${instance.name}" class="beverage-card-image" onerror="this.parentElement.style.display='none'; this.closest('.instance-card').querySelector('.instance-card-icon').style.display='flex';"></div>` : ''}
                                 <div class="instance-card-icon" ${hasImage ? 'style="display:none;"' : ''}>
                                     ${iconHtml}
                                 </div>
-                                <div class="instance-card-name">${instance.name}</div>
+                                <div class="instance-card-name">${cardDisplayName}</div>
                                 ${instance.description ? `<div class="instance-card-description">${instance.description}</div>` : ''}
                                 <div class="instance-card-count">${Object.keys(instance.properties).length} 개 속성</div>
                             `;
@@ -2448,8 +2473,13 @@
             else if (className.toLowerCase().includes('city')) icon = 'fa-city';
             else if (className.toLowerCase().includes('coffee')) icon = 'fa-coffee';
             else if (className.toLowerCase().includes('beverage') || className.toLowerCase().includes('menu')) icon = 'fa-mug-hot';
+            else if (className.toLowerCase() === 'harvest') icon = 'fa-leaf';
 
-            modalTitle.innerHTML = `<i class="fas ${icon}"></i> ${instance.name}`;
+            // For Harvest, show region name (strip _YYYY) in title
+            const _harvestDisplayName = className.toLowerCase() === 'harvest'
+                ? instance.name.replace(/_\d{4}$/, '')
+                : instance.name;
+            modalTitle.innerHTML = `<i class="fas ${icon}"></i> ${_harvestDisplayName}`;
 
             const isBeverage      = className.toLowerCase().includes('beverage') || className.toLowerCase().includes('menu');
             const isFarm          = className.toLowerCase().includes('farm');
@@ -2457,8 +2487,103 @@
             const isPortInst      = className.toLowerCase() === 'port';
             const isWarehouseInst = className.toLowerCase() === 'warehouse';
             const isCountryInst   = className.toLowerCase() === 'country';
+            const isHarvestInst   = className.toLowerCase() === 'harvest';
 
-            if (isCountryInst) {
+            if (isHarvestInst) {
+                // ── Harvest detail view ───────────────────────────────────
+                const hKey = instance.name.replace(/_\d{4}$/, '');
+                const hd   = (window.HARVEST_DATA && window.HARVEST_DATA[hKey]) || {};
+                const flagCode  = hd.flag ? `https://flagcdn.com/w40/${hd.flag}.png` : '';
+                const flagImg   = flagCode ? `<img src="${flagCode}" style="height:24px;border-radius:3px;vertical-align:middle;margin-right:4px;" onerror="this.remove()">` : '';
+                const annualData = hd.annual || {};
+                const years  = Object.keys(annualData).map(Number).sort((a,b)=>a-b);
+                const values = years.map(y => annualData[y]);
+                const lastYear = years[years.length - 1] || 2023;
+                const lastVal  = values[values.length - 1] || '—';
+                const maxVal   = values.length ? Math.max(...values) : 0;
+                const minVal   = values.length ? Math.min(...values) : 0;
+                const avgVal   = values.length ? Math.round(values.reduce((a,b)=>a+b,0)/values.length) : 0;
+                const trend    = values.length >= 2 ? ((values[values.length-1] - values[0]) / values[0] * 100).toFixed(1) : 0;
+                const chartId  = 'harvestChart_' + Date.now();
+
+                let html = '';
+                // Hero banner
+                html += `<div class="harvest-hero">
+                    <div class="harvest-flag">${flagImg}🌿</div>
+                    <div class="harvest-hero-info">
+                        <div class="harvest-hero-region">${hd.region || hKey.replace('Harvest_','').replace(/_/g,' ')}</div>
+                        <div class="harvest-hero-country">${hd.country || '—'} · ${hd.altitude || '—'}</div>
+                    </div>
+                </div>`;
+                // Stats row
+                html += `<div class="harvest-stats">
+                    <div class="harvest-stat"><div class="harvest-stat-val">${lastVal.toLocaleString()}</div><div class="harvest-stat-lbl">${lastYear}년 생산량<br>(${hd.unit||'천 포대'})</div></div>
+                    <div class="harvest-stat"><div class="harvest-stat-val">${maxVal.toLocaleString()}</div><div class="harvest-stat-lbl">최대 생산량<br>(${hd.unit||'천 포대'})</div></div>
+                    <div class="harvest-stat"><div class="harvest-stat-val">${avgVal.toLocaleString()}</div><div class="harvest-stat-lbl">평균 생산량<br>(${hd.unit||'천 포대'})</div></div>
+                    <div class="harvest-stat"><div class="harvest-stat-val">${trend > 0 ? '+' : ''}${trend}%</div><div class="harvest-stat-lbl">2000→${lastYear}<br>성장률</div></div>
+                </div>`;
+                // Description
+                if (hd.desc) html += `<div class="harvest-desc">${hd.desc}</div>`;
+                // Info grid
+                html += `<div class="harvest-info-grid">
+                    <div class="harvest-info-item"><i class="fas fa-seedling" style="color:#10b981;margin-top:2px;flex-shrink:0"></i><div><div style="font-size:0.68rem;margin-bottom:2px;">품종 (Variety)</div><span>${hd.variety||'—'}</span></div></div>
+                    <div class="harvest-info-item"><i class="fas fa-tint" style="color:#3b82f6;margin-top:2px;flex-shrink:0"></i><div><div style="font-size:0.68rem;margin-bottom:2px;">가공 방식</div><span>${hd.processing||'—'}</span></div></div>
+                    <div class="harvest-info-item"><i class="fas fa-calendar-alt" style="color:#f59e0b;margin-top:2px;flex-shrink:0"></i><div><div style="font-size:0.68rem;margin-bottom:2px;">수확 시기</div><span>${hd.season||'—'}</span></div></div>
+                    <div class="harvest-info-item"><i class="fas fa-wine-glass-alt" style="color:#a855f7;margin-top:2px;flex-shrink:0"></i><div><div style="font-size:0.68rem;margin-bottom:2px;">풍미 프로필</div><span>${hd.flavor||'—'}</span></div></div>
+                </div>`;
+                // Chart
+                html += `<div class="harvest-chart-wrap">
+                    <div class="harvest-chart-title"><i class="fas fa-chart-line" style="color:#10b981"></i> 연간 수확 생산량 추이 (2000–${lastYear})</div>
+                    <canvas id="${chartId}" class="harvest-chart-canvas"></canvas>
+                </div>`;
+                modalBody.innerHTML = html;
+
+                // Render chart after DOM insert
+                setTimeout(() => {
+                    const ctx = document.getElementById(chartId);
+                    if (!ctx || !window.Chart) return;
+                    new Chart(ctx, {
+                        type: 'bar',
+                        data: {
+                            labels: years,
+                            datasets: [{
+                                label: hd.unit || '천 포대 (60kg)',
+                                data: values,
+                                backgroundColor: years.map(y => y === lastYear ? 'rgba(16,185,129,0.85)' : 'rgba(16,185,129,0.35)'),
+                                borderColor: 'rgba(16,185,129,0.9)',
+                                borderWidth: 1,
+                                borderRadius: 3,
+                            }, {
+                                label: '추세선',
+                                data: values,
+                                type: 'line',
+                                borderColor: '#f59e0b',
+                                borderWidth: 2,
+                                pointRadius: 0,
+                                fill: false,
+                                tension: 0.35,
+                            }]
+                        },
+                        options: {
+                            responsive: true, maintainAspectRatio: false,
+                            interaction: { mode:'index', intersect:false },
+                            plugins: {
+                                legend: { labels: { color:'#94a3b8', font:{ size:11 }, boxWidth:14 } },
+                                tooltip: {
+                                    backgroundColor:'#1e293b', titleColor:'#f1f5f9', bodyColor:'#cbd5e1',
+                                    callbacks: { label: ctx => ` ${ctx.parsed.y.toLocaleString()} ${hd.unit||'천 포대'}` }
+                                }
+                            },
+                            scales: {
+                                x: { ticks:{ color:'#64748b', font:{size:10}, maxRotation:45 }, grid:{ color:'rgba(255,255,255,0.05)' } },
+                                y: { ticks:{ color:'#64748b', font:{size:10} }, grid:{ color:'rgba(255,255,255,0.08)' },
+                                     title:{ display:true, text: hd.unit||'천 포대', color:'#64748b', font:{size:10} } }
+                            }
+                        }
+                    });
+                }, 80);
+
+            } else if (isCountryInst) {
                 // ── Country detail view ───────────────────────────────────
                 const ct    = (window.COUNTRY_DATA && window.COUNTRY_DATA[instance.name]) || {};
                 const ctype = ct.type || 'producer';
@@ -4200,6 +4325,138 @@
             size:'약 320 ha',
             desc:'브라질 미나스 제라이스 술 데 미나스 지역의 4대째 가족 농장. 2002년 Brazil Cup of Excellence 우승으로 국제적 명성을 얻었으며, Yellow Bourbon 자연건조 로트는 특히 달콤하고 복합적인 풍미로 스페셜티 업계에서 높이 평가받습니다.',
             notes:'황색과일, 캐러멜, 헤이즐넛, 다크초콜릿, 낮은 산미'
+          },
+        };
+
+        // ============================================================
+        // HARVEST DATA — 14 coffee-growing regions, annual production (thousands of 60kg bags), 2000-2023
+        // ============================================================
+        window.HARVEST_DATA = {
+          'Harvest_Narino': {
+            region:'Nariño', country:'Colombia', flag:'co',
+            altitude:'1,700–2,300m', variety:'Castillo, Caturra, Colombia',
+            processing:'Water Washed', season:'Mar–May (main) · Oct–Dec (fly crop)',
+            flavor:'Floral, citrus, jasmine, bright acidity, clean finish',
+            desc:'Nariño is Colombia\'s southernmost specialty coffee region, bordering Ecuador. High altitude and volcanic soil produce exceptionally clean, floral cups that consistently rank among Colombia\'s finest.',
+            unit:'천 포대 (60kg)',
+            annual:{2000:52,2001:55,2002:50,2003:53,2004:57,2005:60,2006:63,2007:61,2008:66,2009:70,2010:68,2011:74,2012:78,2013:82,2014:87,2015:91,2016:95,2017:100,2018:107,2019:112,2020:110,2021:115,2022:119,2023:124}
+          },
+          'Harvest_Huila': {
+            region:'Huila', country:'Colombia', flag:'co',
+            altitude:'1,400–2,000m', variety:'Caturra, Colombia, Castillo',
+            processing:'Water Washed', season:'Oct–Dec (main) · May–Jun (fly crop)',
+            flavor:'Caramel, dark chocolate, red apple, medium acidity, full body',
+            desc:'Huila is Colombia\'s largest specialty coffee producing department. Located in the Andes, its diverse microclimates allow two harvests per year and produce consistently rich, chocolatey profiles beloved by roasters worldwide.',
+            unit:'천 포대 (60kg)',
+            annual:{2000:120,2001:125,2002:118,2003:128,2004:133,2005:140,2006:148,2007:145,2008:155,2009:162,2010:158,2011:170,2012:178,2013:188,2014:198,2015:210,2016:220,2017:230,2018:240,2019:248,2020:244,2021:250,2022:256,2023:262}
+          },
+          'Harvest_Yirgacheffe': {
+            region:'Yirgacheffe', country:'Ethiopia', flag:'et',
+            altitude:'1,700–2,200m', variety:'Ethiopian Heirloom (Typica lineage)',
+            processing:'Washed / Natural', season:'Oct–Dec',
+            flavor:'Jasmine, bergamot, lemon zest, peach, floral, tea-like body',
+            desc:'Yirgacheffe is arguably the world\'s most celebrated coffee origin. Birthplace of Arabica coffee, its heirloom varieties grown on ancient forest plots produce uniquely floral and complex cups unmatched elsewhere.',
+            unit:'천 포대 (60kg)',
+            annual:{2000:38,2001:40,2002:37,2003:42,2004:45,2005:48,2006:50,2007:53,2008:56,2009:60,2010:58,2011:63,2012:68,2013:72,2014:78,2015:82,2016:86,2017:90,2018:94,2019:96,2020:93,2021:97,2022:101,2023:105}
+          },
+          'Harvest_Sidamo': {
+            region:'Sidamo', country:'Ethiopia', flag:'et',
+            altitude:'1,550–2,200m', variety:'Ethiopian Heirloom',
+            processing:'Natural / Washed', season:'Oct–Jan',
+            flavor:'Blueberry, wine, dark chocolate, full body, complex',
+            desc:'Sidamo (now Sidama) is Ethiopia\'s largest coffee-growing region. Natural-processed Sidamo coffees develop intense berry and wine-like flavors while washed lots are clean and complex, reflecting diverse microclimates across its vast area.',
+            unit:'천 포대 (60kg)',
+            annual:{2000:78,2001:82,2002:76,2003:84,2004:88,2005:94,2006:100,2007:97,2008:105,2009:112,2010:108,2011:118,2012:126,2013:135,2014:144,2015:152,2016:160,2017:168,2018:176,2019:182,2020:178,2021:185,2022:192,2023:200}
+          },
+          'Harvest_Kiambu': {
+            region:'Kiambu', country:'Kenya', flag:'ke',
+            altitude:'1,500–1,900m', variety:'SL28, SL34, Ruiru 11',
+            processing:'Washed (Kenya Double Fermentation)', season:'Oct–Dec (main) · Mar–Jun (fly)',
+            flavor:'Blackcurrant, tomato, bright citrus, berry jam, wine-like acidity',
+            desc:'Kiambu sits on the fertile slopes of the Aberdare Range near Nairobi. Home to many of Kenya\'s most prestigious washing stations, it produces the intense blackcurrant-forward profiles that define Kenya AA specialty coffee.',
+            unit:'천 포대 (60kg)',
+            annual:{2000:28,2001:27,2002:25,2003:26,2004:28,2005:30,2006:29,2007:31,2008:30,2009:32,2010:31,2011:33,2012:34,2013:36,2014:37,2015:39,2016:40,2017:42,2018:43,2019:44,2020:43,2021:45,2022:46,2023:48}
+          },
+          'Harvest_Nyeri': {
+            region:'Nyeri', country:'Kenya', flag:'ke',
+            altitude:'1,800–2,200m', variety:'SL28, SL34, Batian',
+            processing:'Washed (Kenya Double Fermentation)', season:'Oct–Dec (main) · Apr–Jun (fly)',
+            flavor:'Blackcurrant, grapefruit, rose hip, sparkling acidity, silky body',
+            desc:'Nyeri is widely regarded as Kenya\'s finest coffee county, producing highly sought-after lots from cooperatives like Othaya and Tetu. Its high altitude and rich volcanic red soil from Mount Kenya create some of the world\'s most prized cups.',
+            unit:'천 포대 (60kg)',
+            annual:{2000:35,2001:34,2002:32,2003:35,2004:37,2005:40,2006:38,2007:41,2008:40,2009:43,2010:42,2011:45,2012:47,2013:49,2014:51,2015:53,2016:55,2017:57,2018:59,2019:61,2020:60,2021:62,2022:64,2023:67}
+          },
+          'Harvest_Sumatra': {
+            region:'Sumatra', country:'Indonesia', flag:'id',
+            altitude:'1,100–1,500m', variety:'Typica, Tim Tim, Ateng',
+            processing:'Wet-Hulled (Giling Basah)', season:'Sep–Mar',
+            flavor:'Earthy, cedar, dark chocolate, tobacco, full body, low acidity',
+            desc:'Sumatra produces Indonesia\'s most distinctive coffee, processed by the unique wet-hulling method which creates its trademark earthy, full-bodied character. Mandheling, Lintong, and Gayo highlands each offer distinct regional expressions.',
+            unit:'천 포대 (60kg)',
+            annual:{2000:380,2001:390,2002:370,2003:400,2004:415,2005:430,2006:420,2007:440,2008:455,2009:470,2010:460,2011:480,2012:495,2013:510,2014:525,2015:515,2016:530,2017:545,2018:558,2019:570,2020:560,2021:572,2022:584,2023:596}
+          },
+          'Harvest_Java': {
+            region:'Java', country:'Indonesia', flag:'id',
+            altitude:'1,400–1,800m', variety:'Typica (Bergendal, Sidikalang)',
+            processing:'Washed / Wet-Hulled', season:'May–Sep',
+            flavor:'Dark chocolate, herbal, mild earthiness, medium body',
+            desc:'Java is the origin of the classic "Java coffee" that gave its name to the language and the beverage alike. Government-owned estates on the island\'s eastern plateau produce clean, chocolatey washed coffees distinct from Sumatra\'s earthy profile.',
+            unit:'천 포대 (60kg)',
+            annual:{2000:82,2001:85,2002:79,2003:86,2004:90,2005:95,2006:92,2007:97,2008:100,2009:105,2010:102,2011:108,2012:112,2013:116,2014:120,2015:117,2016:122,2017:126,2018:129,2019:133,2020:130,2021:134,2022:138,2023:142}
+          },
+          'Harvest_Cajamarca': {
+            region:'Cajamarca', country:'Peru', flag:'pe',
+            altitude:'1,400–2,100m', variety:'Typica, Caturra, Bourbon',
+            processing:'Washed', season:'Jun–Sep',
+            flavor:'Mild, sweet, nutty, caramel, gentle citrus, clean',
+            desc:'Cajamarca in northern Peru has emerged as a significant specialty coffee origin over the past two decades. Smallholder farmers growing heirloom varieties at high altitude produce clean, sweet cups with growing international recognition.',
+            unit:'천 포대 (60kg)',
+            annual:{2000:58,2001:62,2002:60,2003:65,2004:70,2005:76,2006:82,2007:88,2008:96,2009:104,2010:112,2011:122,2012:132,2013:143,2014:154,2015:162,2016:170,2017:178,2018:186,2019:194,2020:190,2021:196,2022:202,2023:208}
+          },
+          'Harvest_Antigua': {
+            region:'Antigua', country:'Guatemala', flag:'gt',
+            altitude:'1,500–1,700m', variety:'Bourbon, Caturra, Catuai',
+            processing:'Washed', season:'Dec–Mar',
+            flavor:'Caramel, dark chocolate, brown sugar, balanced acidity, full body',
+            desc:'Antigua Valley, surrounded by three volcanoes including Agua and Fuego, is Guatemala\'s most famous coffee appellation. Volcanic ash-enriched soil and a unique microclimate of warm days and cool nights create its signature rich, balanced cups.',
+            unit:'천 포대 (60kg)',
+            annual:{2000:85,2001:87,2002:83,2003:86,2004:89,2005:92,2006:90,2007:93,2008:96,2009:99,2010:97,2011:100,2012:103,2013:105,2014:107,2015:104,2016:106,2017:109,2018:111,2019:113,2020:110,2021:112,2022:114,2023:116}
+          },
+          'Harvest_MinasGerais': {
+            region:'Minas Gerais', country:'Brazil', flag:'br',
+            altitude:'800–1,300m', variety:'Mundo Novo, Catuai, Yellow Bourbon',
+            processing:'Natural / Pulped Natural (Honey)', season:'May–Aug',
+            flavor:'Chocolate, caramel, hazelnut, low acidity, smooth body',
+            desc:'Minas Gerais is Brazil\'s coffee heartland, accounting for over 50% of national production. The Sul de Minas, Cerrado Mineiro, and Mantiqueira de Minas sub-regions each produce distinct profiles, from nutty naturals to complex specialty honey lots.',
+            unit:'천 포대 (60kg)',
+            annual:{2000:4200,2001:4350,2002:4100,2003:4500,2004:4700,2005:4900,2006:4650,2007:5000,2008:5200,2009:5400,2010:5150,2011:5600,2012:5900,2013:6100,2014:6300,2015:6000,2016:6200,2017:6500,2018:6800,2019:7000,2020:6700,2021:7100,2022:7300,2023:7500}
+          },
+          'Harvest_Tarrazu': {
+            region:'Tarrazú', country:'Costa Rica', flag:'cr',
+            altitude:'1,200–1,900m', variety:'Catuai, Caturra, Gesha',
+            processing:'Washed / Honey', season:'Dec–Feb',
+            flavor:'Bright citrus, apple, stone fruit, clean acidity, elegant body',
+            desc:'Tarrazú (Los Santos region) is Costa Rica\'s premier coffee appellation. The strict Strictly Hard Bean (SHB) designation and progressive micro-mill revolution have made Tarrazú a benchmark for clean, fruit-forward Central American coffees.',
+            unit:'천 포대 (60kg)',
+            annual:{2000:32,2001:33,2002:31,2003:34,2004:36,2005:38,2006:37,2007:39,2008:41,2009:43,2010:41,2011:44,2012:46,2013:47,2014:49,2015:47,2016:49,2017:51,2018:52,2019:54,2020:52,2021:53,2022:55,2023:57}
+          },
+          'Harvest_DakLak': {
+            region:'Đắk Lắk', country:'Vietnam', flag:'vn',
+            altitude:'400–700m', variety:'Robusta (Coffea canephora), some Arabica',
+            processing:'Natural / Semi-Washed', season:'Nov–Feb',
+            flavor:'Bold, full body, earthy, dark chocolate, tobacco, low acidity',
+            desc:'Đắk Lắk in the Central Highlands is Vietnam\'s largest coffee-producing province and a global powerhouse. Vietnam is the world\'s largest Robusta producer, and Đắk Lắk accounts for over 30% of national output, fueling instant coffee and espresso blends worldwide.',
+            unit:'천 포대 (60kg)',
+            annual:{2000:2400,2001:2600,2002:2500,2003:2800,2004:3000,2005:3200,2006:3100,2007:3400,2008:3600,2009:3800,2010:3700,2011:3900,2012:4100,2013:4300,2014:4500,2015:4400,2016:4600,2017:4800,2018:5000,2019:5200,2020:5100,2021:5300,2022:5500,2023:5700}
+          },
+          'Harvest_Copan': {
+            region:'Copán', country:'Honduras', flag:'hn',
+            altitude:'1,200–1,600m', variety:'Catuai, Caturra, Bourbon, Lempira',
+            processing:'Washed', season:'Dec–Mar',
+            flavor:'Chocolate, caramel, brown sugar, light citrus, clean finish',
+            desc:'Copán is Honduras\'s westernmost coffee region, sharing a border with Guatemala\'s Antigua zone. Its similar volcanic terrain and altitude produce round, chocolatey coffees that have helped Honduras become Central America\'s top coffee exporter.',
+            unit:'천 포대 (60kg)',
+            annual:{2000:195,2001:205,2002:198,2003:215,2004:228,2005:242,2006:235,2007:255,2008:270,2009:285,2010:278,2011:300,2012:318,2013:335,2014:350,2015:340,2016:358,2017:374,2018:390,2019:408,2020:398,2021:415,2022:432,2023:450}
           },
         };
 
