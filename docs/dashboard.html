@@ -1095,7 +1095,7 @@
         .map-legend { display: flex; gap: 1rem; padding: 0.55rem 1.25rem; border-top: 1px solid var(--border-color); flex-wrap: wrap; }
         .map-legend-item { display: flex; align-items: center; gap: 0.35rem; font-size: 0.74rem; color: var(--text-secondary); }
         .map-legend-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
-        .map-status-bar { font-size: 0.78rem; color: var(--text-secondary); margin-top: 0.2rem; min-height: 1.1em; }
+        .map-status-bar { font-size: 0.78rem; color: #2c3e50; font-weight: 500; margin-top: 0.2rem; min-height: 1.1em; }
         .map-entity-popup-name { font-weight: 600; font-size: 0.85rem; color: #e2e8f0; }
         .map-entity-popup-meta { color: #94a3b8; font-size: 0.75rem; margin-top: 0.15rem; }
         .map-entity-popup-btn { margin-top: 0.5rem; padding: 0.25rem 0.6rem; background: rgba(99,102,241,0.3); border: 1px solid rgba(99,102,241,0.5); border-radius: 4px; color: #a5b4fc; cursor: pointer; font-size: 0.72rem; width: 100%; }
@@ -2065,9 +2065,8 @@
                             <div class="tree-item-icon">
                                 <i class="fas fa-cube"></i>
                             </div>
-                            <div class="tree-item-content">
+                            <div class="tree-item-content" data-uri="${node.uri}">
                                 <div class="tree-item-name">${node.label}</div>
-                                <div class="tree-item-uri">${node.uri}</div>
                             </div>
                         </div>
                         ${node.children && node.children.length > 0 ? `
@@ -2092,9 +2091,9 @@
                     item.addEventListener('click', function(e) {
                         e.stopPropagation();
                         const nameEl = this.querySelector('.tree-item-name');
-                        const uriEl = this.querySelector('.tree-item-uri');
-                        if (nameEl && uriEl) {
-                            showClassInstances(nameEl.textContent, uriEl.textContent);
+                        const contentEl = this.querySelector('.tree-item-content');
+                        if (nameEl && contentEl) {
+                            showClassInstances(nameEl.textContent, contentEl.dataset.uri);
                         }
                     });
                 });
