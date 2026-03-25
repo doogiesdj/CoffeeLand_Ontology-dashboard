@@ -2393,26 +2393,27 @@
                 const exportInfo  = ct.exportInfo  || '—';
                 const cafeCulture = ct.cafeCulture || '—';
 
-                bodyHtml = `
-                <div class="bev-stats">
-                  <div class="bev-stat"><span class="bev-stat-val">${continent}</span><span class="bev-stat-lbl">대륙</span></div>
-                  <div class="bev-stat"><span class="bev-stat-val">${capital}</span><span class="bev-stat-lbl">수도</span></div>
-                  <div class="bev-stat"><span class="bev-stat-val">${role}</span><span class="bev-stat-lbl">커피 역할</span></div>
-                  <div class="bev-stat"><span class="bev-stat-val">${prodRank}</span><span class="bev-stat-lbl">생산 순위</span></div>
-                </div>
-                ${desc ? `<div class="bev-desc">${desc}</div>` : ''}
-                <div class="bev-info-grid">
-                  <div class="bev-info-item"><span class="bev-info-label">연간 생산량</span><span class="bev-info-value">${annualProd}</span></div>
-                  <div class="bev-info-item"><span class="bev-info-label">수출 규모</span><span class="bev-info-value">${exportInfo}</span></div>
-                  <div class="bev-info-item"><span class="bev-info-label">수확 시즌</span><span class="bev-info-value">${harvest}</span></div>
-                  <div class="bev-info-item"><span class="bev-info-label">카페 문화</span><span class="bev-info-value">${cafeCulture}</span></div>
-                  ${regions.length ? `<div class="bev-info-item full"><span class="bev-info-label">주요 커피 산지</span><div class="bev-tag-row">${regions.map(r=>`<span class="bev-tag">${r}</span>`).join('')}</div></div>` : ''}
-                  ${varietals.length ? `<div class="bev-info-item full"><span class="bev-info-label">주요 품종</span><div class="bev-tag-row">${varietals.map(v=>`<span class="bev-tag">${v}</span>`).join('')}</div></div>` : ''}
-                  ${processing.length ? `<div class="bev-info-item full"><span class="bev-info-label">가공 방식</span><div class="bev-tag-row">${processing.map(p=>`<span class="bev-tag">${p}</span>`).join('')}</div></div>` : ''}
-                  ${flavor.length ? `<div class="bev-info-item full"><span class="bev-info-label">플레이버 프로파일</span><div class="bev-tag-row">${flavor.map(f=>`<span class="bev-tag">${f}</span>`).join('')}</div></div>` : ''}
-                  ${certif.length ? `<div class="bev-info-item full"><span class="bev-info-label">주요 인증</span><div class="bev-tag-row">${certif.map(c=>`<span class="bev-tag">${c}</span>`).join('')}</div></div>` : ''}
-                  ${brands.length ? `<div class="bev-info-item full"><span class="bev-info-label">유명 브랜드 / 로스터</span><div class="bev-tag-row">${brands.map(b=>`<span class="bev-tag">${b}</span>`).join('')}</div></div>` : ''}
-                </div>`;
+                let html = '';
+                html += `<div class="bev-stats">`;
+                html += `<div class="bev-stat"><div class="bev-stat-val">${continent}</div><div class="bev-stat-lbl">대륙</div></div>`;
+                html += `<div class="bev-stat"><div class="bev-stat-val">${capital}</div><div class="bev-stat-lbl">수도</div></div>`;
+                html += `<div class="bev-stat"><div class="bev-stat-val">${role}</div><div class="bev-stat-lbl">커피 역할</div></div>`;
+                html += `<div class="bev-stat"><div class="bev-stat-val">${prodRank}</div><div class="bev-stat-lbl">생산 순위</div></div>`;
+                html += `</div>`;
+                if (desc) html += `<div class="bev-desc">${desc}</div>`;
+                html += `<div class="bev-info-grid">`;
+                html += `<div class="bev-info-item"><span class="bev-info-label">연간 생산량</span><span class="bev-info-value">${annualProd}</span></div>`;
+                html += `<div class="bev-info-item"><span class="bev-info-label">수출 규모</span><span class="bev-info-value">${exportInfo}</span></div>`;
+                html += `<div class="bev-info-item"><span class="bev-info-label">수확 시즌</span><span class="bev-info-value">${harvest}</span></div>`;
+                html += `<div class="bev-info-item"><span class="bev-info-label">카페 문화</span><span class="bev-info-value">${cafeCulture}</span></div>`;
+                if (regions.length)    html += `<div class="bev-info-item full"><span class="bev-info-label">주요 커피 산지</span><div class="bev-tag-row">${regions.map(r=>`<span class="bev-tag">${r}</span>`).join('')}</div></div>`;
+                if (varietals.length)  html += `<div class="bev-info-item full"><span class="bev-info-label">주요 품종</span><div class="bev-tag-row">${varietals.map(v=>`<span class="bev-tag">${v}</span>`).join('')}</div></div>`;
+                if (processing.length) html += `<div class="bev-info-item full"><span class="bev-info-label">가공 방식</span><div class="bev-tag-row">${processing.map(p=>`<span class="bev-tag">${p}</span>`).join('')}</div></div>`;
+                if (flavor.length)     html += `<div class="bev-info-item full"><span class="bev-info-label">플레이버 프로파일</span><div class="bev-tag-row">${flavor.map(f=>`<span class="bev-tag">${f}</span>`).join('')}</div></div>`;
+                if (certif.length)     html += `<div class="bev-info-item full"><span class="bev-info-label">주요 인증</span><div class="bev-tag-row">${certif.map(c=>`<span class="bev-tag">${c}</span>`).join('')}</div></div>`;
+                if (brands.length)     html += `<div class="bev-info-item full"><span class="bev-info-label">유명 브랜드 / 로스터</span><div class="bev-tag-row">${brands.map(b=>`<span class="bev-tag">${b}</span>`).join('')}</div></div>`;
+                html += `</div>`;
+                modalBody.innerHTML = html;
 
             } else if (isCityInst) {
                 // ── City detail view (uses CITY_DATA lookup table) ────────
