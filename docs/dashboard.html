@@ -1107,7 +1107,9 @@
         #locationMapPanel { flex: 1; min-width: 0; display: none; }
         #locationMapContainer { height: 530px; width: 100%; }
         #locationMapContainer .leaflet-overlay-pane svg { will-change: transform; transform: translateZ(0); }
-        .leaflet-container { background: #1a1a2e; }
+        .leaflet-container { background: #aad3df; }
+        .leaflet-tile-pane img.leaflet-tile { width: 256.5px !important; height: 256.5px !important; }
+        .leaflet-fade-anim .leaflet-tile { will-change: auto !important; }
         .leaflet-popup-content-wrapper { background: #fff; color: #1e293b; border: 1px solid #cbd5e1; border-radius: 8px; box-shadow: 0 4px 16px rgba(0,0,0,0.18); }
         .leaflet-popup-tip { background: #fff; }
         .leaflet-popup-content { margin: 10px 14px; font-size: 0.82rem; }
@@ -3121,8 +3123,9 @@
             maxBoundsViscosity: 1.0
           }).setView([20, 15], 2);
 
-          L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; OpenStreetMap contributors', maxZoom: 18, noWrap: true
+          L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/">CARTO</a>',
+            subdomains: 'abcd', maxZoom: 19, noWrap: true
           }).addTo(_locMap);
 
           // Layer groups per entity type
@@ -4392,39 +4395,40 @@
             { from:[-7.16,-78.50], to:[-12.05,-77.12], label:'Cajamarca Farm → Callao' },
           ],
           sea: [
-            // Brazil Santos → Europe
-            { from:[-23.95,-46.34], waypoints:[[-5,0],[35.98,-5.35]], to:[53.55,9.99],   label:'Santos → Hamburg', type:'sea' },
-            { from:[-23.95,-46.34], waypoints:[[-5,0],[35.98,-5.35]], to:[51.92,4.49],   label:'Santos → Rotterdam', type:'sea' },
-            { from:[-23.95,-46.34], waypoints:[[-5,0],[35.98,-5.35]], to:[51.22,4.40],   label:'Santos → Antwerp', type:'sea' },
-            // Brazil Santos → USA
-            { from:[-23.95,-46.34], waypoints:[[10,-60],[20,-80]], to:[29.94,-90.07],  label:'Santos → New Orleans', type:'sea' },
-            // Colombia → USA (Pacific via Panama)
-            { from:[3.90,-77.03],  waypoints:[[9.38,-79.92],[9.38,-79.08],[13,-85]], to:[29.94,-90.07], label:'Buenaventura → New Orleans (Panama)', type:'sea' },
-            { from:[3.90,-77.03],  waypoints:[[9.38,-79.92],[9.38,-79.08],[15,-100],[25,-110]], to:[33.75,-118.19], label:'Buenaventura → Long Beach', type:'sea' },
-            // Colombia Caribbean → Europe
-            { from:[10.42,-75.53], waypoints:[[15,-65],[35.98,-5.35]], to:[53.55,9.99],  label:'Cartagena → Hamburg', type:'sea' },
-            { from:[10.42,-75.53], waypoints:[[15,-65],[35.98,-5.35]], to:[44.41,8.93],  label:'Cartagena → Genoa', type:'sea' },
-            // Ethiopia/Kenya Mombasa → Europe (Suez)
-            { from:[11.60,43.15],  waypoints:[[12.60,43.40],[15,42],[27.92,32.55],[30.02,32.55],[31.5,32.5],[35,27]], to:[53.55,9.99],  label:'Djibouti → Hamburg (Suez)', type:'sea' },
-            { from:[11.60,43.15],  waypoints:[[12.60,43.40],[15,42],[27.92,32.55],[30.02,32.55],[31.5,32.5],[35,27],[36,20]], to:[51.92,4.49],  label:'Djibouti → Rotterdam (Suez)', type:'sea' },
-            { from:[11.60,43.15],  waypoints:[[12.60,43.40],[15,42],[27.92,32.55],[30.02,32.55],[31.5,32.5],[35,27],[37,18]], to:[44.41,8.93],  label:'Djibouti → Genoa (Suez)', type:'sea' },
-            { from:[-4.04,39.67],  waypoints:[[2,45],[11.60,43.15],[12.60,43.40],[27.92,32.55],[30.02,32.55],[35.98,-5.35]], to:[51.22,4.40],  label:'Mombasa → Antwerp (Suez)', type:'sea' },
-            { from:[-4.04,39.67],  waypoints:[[2,45],[11.60,43.15],[12.60,43.40],[27.92,32.55],[30.02,32.55],[35.98,-5.35]], to:[51.96,1.35],  label:'Mombasa → Felixstowe', type:'sea' },
-            // Central America → USA
-            { from:[13.93,-90.80], waypoints:[[8,-85],[15,-90],[20,-87]], to:[29.94,-90.07], label:'Pto. Quetzal → New Orleans', type:'sea' },
-            { from:[15.85,-87.95], waypoints:[[20,-85],[22,-82]], to:[29.94,-90.07], label:'Pto. Cortés → New Orleans', type:'sea' },
-            { from:[9.90,-84.72],  waypoints:[[9.38,-79.92],[9.38,-79.08],[15,-85]], to:[29.94,-90.07], label:'Caldera → New Orleans (Panama)', type:'sea' },
-            // Peru → USA/Europe
-            { from:[-12.05,-77.12], waypoints:[[-5,-80],[10,-90],[20,-100]], to:[33.75,-118.19], label:'Callao → Long Beach', type:'sea' },
-            { from:[-12.05,-77.12], waypoints:[[9.38,-79.92],[9.38,-79.08],[10,-60],[20,-60],[35.98,-5.35]], to:[53.55,9.99], label:'Callao → Hamburg (Panama)', type:'sea' },
-            // Vietnam/Singapore → Asia-Pacific
-            { from:[10.77,106.70], waypoints:[[1.26,103.82],[5,108],[15,120]], to:[35.62,139.78], label:'HCMC → Tokyo', type:'sea' },
-            { from:[10.77,106.70], waypoints:[[1.26,103.82],[5,110],[20,125]], to:[35.10,129.04], label:'HCMC → Busan', type:'sea' },
-            { from:[10.77,106.70], waypoints:[[1.26,103.82],[-5,115],[-20,130]], to:[-33.86,151.21], label:'HCMC → Sydney', type:'sea' },
-            // Vietnam/Singapore → USA West Coast (via Suez + Panama)
-            { from:[1.26,103.82],  waypoints:[[5,90],[10,65],[27.92,32.55],[30.02,32.55],[35.98,-5.35],[5,-20],[9.38,-79.92],[9.38,-79.08],[15,-100]], to:[33.75,-118.19], label:'Singapore → Long Beach (Suez+Panama)', type:'sea' },
-            // Singapore → Europe (Suez)
-            { from:[1.26,103.82],  waypoints:[[5,90],[10,65],[15,50],[27.92,32.55],[30.02,32.55],[35,27]], to:[53.55,9.99], label:'Singapore → Hamburg (Suez)', type:'sea' },
+            // ── Brazil Santos → Europe (South Atlantic, well off W.Africa coast) ──
+            { from:[-23.95,-46.34], waypoints:[[-24,-42],[-20,-38],[-15,-32],[-8,-28],[0,-25],[8,-22],[15,-20],[22,-18],[30,-15],[38,-12],[44,-10],[48,-6]], to:[53.55,9.99], label:'Santos → Hamburg', type:'sea' },
+            { from:[-23.95,-46.34], waypoints:[[-24,-42],[-20,-38],[-15,-32],[-8,-28],[0,-25],[8,-22],[15,-20],[22,-18],[30,-15],[38,-12],[44,-10],[48,-4]], to:[51.92,4.49], label:'Santos → Rotterdam', type:'sea' },
+            { from:[-23.95,-46.34], waypoints:[[-24,-42],[-20,-38],[-15,-32],[-8,-28],[0,-25],[8,-22],[15,-20],[22,-18],[30,-15],[38,-12],[44,-10],[48,-4]], to:[51.22,4.40], label:'Santos → Antwerp', type:'sea' },
+            // Brazil Santos → USA (open Atlantic → Caribbean)
+            { from:[-23.95,-46.34], waypoints:[[-24,-42],[-18,-38],[-10,-38],[0,-42],[5,-50],[10,-58],[14,-65],[18,-72],[22,-78],[26,-84]], to:[29.94,-90.07], label:'Santos → New Orleans', type:'sea' },
+            // ── Colombia Pacific → USA (Panama Canal) ──
+            { from:[3.90,-77.03], waypoints:[[5,-78],[7,-79],[8.5,-79.5],[9.38,-79.92],[9.38,-79.08],[10,-80],[13,-84],[17,-86],[21,-87],[26,-88]], to:[29.94,-90.07], label:'Buenaventura → New Orleans (Panama)', type:'sea' },
+            { from:[3.90,-77.03], waypoints:[[5,-79],[7,-81],[10,-85],[14,-92],[18,-100],[22,-107],[27,-112],[30,-116]], to:[33.75,-118.19], label:'Buenaventura → Long Beach', type:'sea' },
+            // ── Colombia Caribbean → Europe (open Atlantic) ──
+            { from:[10.42,-75.53], waypoints:[[12,-72],[14,-65],[16,-55],[18,-45],[20,-38],[24,-30],[28,-22],[33,-16],[38,-12],[44,-10],[48,-6]], to:[53.55,9.99], label:'Cartagena → Hamburg', type:'sea' },
+            { from:[10.42,-75.53], waypoints:[[12,-72],[14,-65],[16,-55],[18,-45],[22,-35],[26,-25],[30,-18],[34,-12],[36,-8],[38,-4],[40,0],[42,4]], to:[44.41,8.93], label:'Cartagena → Genoa', type:'sea' },
+            // ── Djibouti → Europe (Red Sea → Suez → Med → Gibraltar → Atlantic) ──
+            { from:[11.60,43.15], waypoints:[[12.8,43.3],[14,42.5],[16,41.5],[20,38.5],[24,36],[27.5,34],[30,32.6],[30.5,32.3],[31.3,32.3],[31.6,31.8],[32.5,30.5],[33.5,29],[35.5,24],[36,18],[36,12],[35.8,5],[35.5,0],[35.8,-5.5],[36,-6],[44,-10],[48,-6]], to:[53.55,9.99], label:'Djibouti → Hamburg (Suez)', type:'sea' },
+            { from:[11.60,43.15], waypoints:[[12.8,43.3],[14,42.5],[16,41.5],[20,38.5],[24,36],[27.5,34],[30,32.6],[30.5,32.3],[31.3,32.3],[31.6,31.8],[32.5,30.5],[33.5,29],[35.5,24],[36,18],[36,12],[35.8,5],[35.5,0],[35.8,-5.5],[36,-6],[44,-10],[48,-4]], to:[51.92,4.49], label:'Djibouti → Rotterdam (Suez)', type:'sea' },
+            { from:[11.60,43.15], waypoints:[[12.8,43.3],[14,42.5],[16,41.5],[20,38.5],[24,36],[27.5,34],[30,32.6],[30.5,32.3],[31.3,32.3],[31.6,31.8],[32.5,30.5],[34,28],[36,20],[37.5,12],[38,8]], to:[44.41,8.93], label:'Djibouti → Genoa (Suez)', type:'sea' },
+            // ── Mombasa → Europe (Indian Ocean → Red Sea → Suez → Med → Gibraltar) ──
+            { from:[-4.04,39.67], waypoints:[[-2,41],[1,43],[5,44],[9,44],[11.6,43.15],[12.8,43.3],[14,42.5],[16,41.5],[20,38.5],[24,36],[27.5,34],[30,32.6],[30.5,32.3],[31.3,32.3],[31.6,31.8],[32.5,30.5],[33.5,29],[35.5,24],[36,18],[36,12],[35.8,5],[35.5,0],[35.8,-5.5],[36,-6],[44,-10],[48,-4]], to:[51.22,4.40], label:'Mombasa → Antwerp (Suez)', type:'sea' },
+            { from:[-4.04,39.67], waypoints:[[-2,41],[1,43],[5,44],[9,44],[11.6,43.15],[12.8,43.3],[14,42.5],[16,41.5],[20,38.5],[24,36],[27.5,34],[30,32.6],[30.5,32.3],[31.3,32.3],[31.6,31.8],[32.5,30.5],[33.5,29],[35.5,24],[36,18],[36,12],[35.8,5],[35.5,0],[35.8,-5.5],[36,-6],[44,-10],[48,-2]], to:[51.96,1.35], label:'Mombasa → Felixstowe', type:'sea' },
+            // ── Central America → USA (Gulf of Mexico) ──
+            { from:[13.93,-90.80], waypoints:[[12,-92],[11,-90],[12,-88],[15,-88],[18,-88],[22,-88],[26,-89]], to:[29.94,-90.07], label:'Pto. Quetzal → New Orleans', type:'sea' },
+            { from:[15.85,-87.95], waypoints:[[16,-88],[18,-88],[21,-88],[25,-89]], to:[29.94,-90.07], label:'Pto. Cortés → New Orleans', type:'sea' },
+            { from:[9.90,-84.72], waypoints:[[9,-83],[8.5,-81],[8.8,-80],[9.38,-79.92],[9.38,-79.08],[10,-80],[13,-84],[16,-87],[20,-88],[25,-89]], to:[29.94,-90.07], label:'Caldera → New Orleans (Panama)', type:'sea' },
+            // ── Peru → USA/Europe ──
+            { from:[-12.05,-77.12], waypoints:[[-10,-79],[-6,-82],[-2,-84],[3,-86],[8,-90],[12,-95],[16,-100],[20,-106],[25,-112],[30,-117]], to:[33.75,-118.19], label:'Callao → Long Beach', type:'sea' },
+            { from:[-12.05,-77.12], waypoints:[[-8,-78],[-3,-79],[3,-79],[7,-79.5],[9.38,-79.92],[9.38,-79.08],[10,-76],[12,-70],[14,-62],[17,-52],[20,-42],[24,-32],[28,-22],[34,-14],[38,-12],[44,-10],[48,-6]], to:[53.55,9.99], label:'Callao → Hamburg (Panama)', type:'sea' },
+            // ── Vietnam → Asia-Pacific (South China Sea) ──
+            { from:[10.77,106.70], waypoints:[[8,108],[5,106],[1.26,103.82],[4,107],[8,112],[13,116],[18,120],[23,124],[28,130],[32,135]], to:[35.62,139.78], label:'HCMC → Tokyo', type:'sea' },
+            { from:[10.77,106.70], waypoints:[[8,108],[5,106],[1.26,103.82],[4,107],[8,112],[13,116],[18,120],[23,124],[28,128],[32,129]], to:[35.10,129.04], label:'HCMC → Busan', type:'sea' },
+            { from:[10.77,106.70], waypoints:[[7,107],[4,105],[1.26,103.82],[-1,105],[-5,110],[-8,116],[-12,120],[-18,128],[-23,136],[-28,145],[-31,149]], to:[-33.86,151.21], label:'HCMC → Sydney', type:'sea' },
+            // ── Singapore → USA (Cape of Good Hope + Panama) ──
+            { from:[1.26,103.82], waypoints:[[0,100],[-3,92],[-7,80],[-10,68],[-14,55],[-18,45],[-24,38],[-32,25],[-35,18],[-35,10],[-34,2],[-30,-10],[-22,-22],[-12,-28],[0,-32],[10,-40],[18,-52],[22,-62],[20,-70],[15,-76],[9.38,-79.92],[9.38,-79.08],[12,-85],[18,-98],[24,-110],[30,-117]], to:[33.75,-118.19], label:'Singapore → Long Beach (Cape+Panama)', type:'sea' },
+            // ── Singapore → Europe (Indian Ocean → Suez → Med → Gibraltar) ──
+            { from:[1.26,103.82], waypoints:[[2,100],[4,93],[6,85],[8,76],[10,66],[11,56],[11.6,48],[11.6,43.15],[12.8,43.3],[14,42.5],[16,41.5],[20,38.5],[24,36],[27.5,34],[30,32.6],[30.5,32.3],[31.3,32.3],[31.6,31.8],[32.5,30.5],[33.5,29],[35.5,24],[36,18],[36,12],[35.8,5],[35.5,0],[35.8,-5.5],[36,-6],[44,-10],[48,-6]], to:[53.55,9.99], label:'Singapore → Hamburg (Suez)', type:'sea' },
           ],
           land_import: [
             // Germany
