@@ -1083,7 +1083,28 @@
         .bev-tag { font-size: 0.7rem; background: rgba(139,69,19,.18); color: var(--accent); border-radius: 20px; padding: 0.15rem 0.6rem; border: 1px solid rgba(139,69,19,.3); }
         .country-section-header { grid-column: 1 / -1; width: 100%; padding: 0.65rem 1rem; margin: 0.8rem 0 0.2rem; background: linear-gradient(135deg, rgba(99,102,241,0.13), rgba(139,92,246,0.08)); border-left: 3px solid var(--accent-primary, #6366f1); border-radius: 0 8px 8px 0; color: var(--text-primary); font-size: 0.88rem; font-weight: 600; display: flex; align-items: center; gap: 0.45rem; }
         .country-flag-img { width: 72px; height: auto; border-radius: 4px; box-shadow: 0 2px 6px rgba(0,0,0,0.35); display: block; }
+        /* Location split view */
+        #catMainFlex { display: flex; gap: 1.5rem; align-items: flex-start; }
+        #catHierarchyWrapper { flex: 0 0 330px; min-width: 0; }
+        #locationMapPanel { flex: 1; min-width: 0; display: none; }
+        #locationMapContainer { height: 530px; width: 100%; }
+        .leaflet-container { background: #1a1a2e; }
+        .leaflet-popup-content-wrapper { background: #1e1e3a; color: #e2e8f0; border: 1px solid rgba(255,255,255,0.15); border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.5); }
+        .leaflet-popup-tip { background: #1e1e3a; }
+        .leaflet-popup-content { margin: 10px 14px; font-size: 0.82rem; }
+        .map-legend { display: flex; gap: 1rem; padding: 0.55rem 1.25rem; border-top: 1px solid var(--border-color); flex-wrap: wrap; }
+        .map-legend-item { display: flex; align-items: center; gap: 0.35rem; font-size: 0.74rem; color: var(--text-secondary); }
+        .map-legend-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+        .map-status-bar { font-size: 0.78rem; color: var(--text-secondary); margin-top: 0.2rem; min-height: 1.1em; }
+        .map-entity-popup-name { font-weight: 600; font-size: 0.85rem; color: #e2e8f0; }
+        .map-entity-popup-meta { color: #94a3b8; font-size: 0.75rem; margin-top: 0.15rem; }
+        .map-entity-popup-btn { margin-top: 0.5rem; padding: 0.25rem 0.6rem; background: rgba(99,102,241,0.3); border: 1px solid rgba(99,102,241,0.5); border-radius: 4px; color: #a5b4fc; cursor: pointer; font-size: 0.72rem; width: 100%; }
+        .map-entity-popup-btn:hover { background: rgba(99,102,241,0.5); }
     </style>
+    <!-- Leaflet map -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/topojson-client@3/dist/topojson-client.min.js"></script>
 </head>
 <body>
     <!-- Loading Overlay -->
@@ -1506,11 +1527,30 @@
                 </div>
             </div>
 
-            <div class="card">
-                <div class="card-header">
-                    <h2 class="card-title">Class Hierarchy</h2>
+            <div id="catMainFlex">
+                <div id="catHierarchyWrapper">
+                    <div class="card">
+                        <div class="card-header">
+                            <h2 class="card-title">Class Hierarchy</h2>
+                        </div>
+                        <div id="categoryHierarchy"></div>
+                    </div>
                 </div>
-                <div id="categoryHierarchy"></div>
+                <div id="locationMapPanel">
+                    <div class="card" style="overflow:hidden; padding:0;">
+                        <div class="card-header" style="padding:0.85rem 1.25rem 0.6rem;">
+                            <h2 class="card-title"><i class="fas fa-globe-asia"></i> Interactive World Map</h2>
+                            <div class="map-status-bar" id="mapStatusBar">국가를 클릭하면 해당 지역으로 확대됩니다</div>
+                        </div>
+                        <div id="locationMapContainer"></div>
+                        <div class="map-legend">
+                            <div class="map-legend-item"><div class="map-legend-dot" style="background:#3b82f6;"></div> 도시(City)</div>
+                            <div class="map-legend-item"><div class="map-legend-dot" style="background:#22c55e;"></div> 농장(Farm)</div>
+                            <div class="map-legend-item"><div class="map-legend-dot" style="background:#f97316;"></div> 항구(Port)</div>
+                            <div class="map-legend-item"><div class="map-legend-dot" style="background:#a855f7;"></div> 창고(Warehouse)</div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -2061,6 +2101,17 @@
             }, 100);
             
             showView('categoryView');
+
+            // Show/hide map panel for Location category
+            const _mapPanel = document.getElementById('locationMapPanel');
+            if (_mapPanel) {
+                if (categoryName === 'Location') {
+                    _mapPanel.style.display = 'block';
+                    setTimeout(() => initLocationMap(), 80);
+                } else {
+                    _mapPanel.style.display = 'none';
+                }
+            }
         }
 
         // Demo instances for classes with no RDF individuals defined yet
@@ -2786,6 +2837,243 @@
             }
 
             modal.classList.add('active');
+        }
+
+        // ============================================================
+        // LOCATION MAP — entity coordinates & country interaction
+        // ============================================================
+        window.LOCATION_ENTITY_COORDS = {
+          // ── Cities ──────────────────────────────────────────────────
+          'Nairobi':       { lat:-1.2921,  lng:36.8219,  type:'city', country:'Kenya' },
+          'Melbourne':     { lat:-37.8136, lng:144.9631, type:'city', country:'Australia' },
+          'Jakarta':       { lat:-6.2088,  lng:106.8456, type:'city', country:'Indonesia' },
+          'Bogota':        { lat:4.7110,   lng:-74.0721, type:'city', country:'Colombia' },
+          'New_York':      { lat:40.7128,  lng:-74.0060, type:'city', country:'USA' },
+          'Seattle':       { lat:47.6062,  lng:-122.3321,type:'city', country:'USA' },
+          'Addis_Ababa':   { lat:9.0320,   lng:38.7469,  type:'city', country:'Ethiopia' },
+          'Los_Angeles':   { lat:34.0522,  lng:-118.2437,type:'city', country:'USA' },
+          'London':        { lat:51.5074,  lng:-0.1278,  type:'city', country:'UK' },
+          'Santos':        { lat:-23.9608, lng:-46.3336, type:'city', country:'Brazil' },
+          'Sydney':        { lat:-33.8688, lng:151.2093, type:'city', country:'Australia' },
+          'Tokyo':         { lat:35.6762,  lng:139.6503, type:'city', country:'Japan' },
+          'Boston':        { lat:42.3601,  lng:-71.0589, type:'city', country:'USA' },
+          'Chicago':       { lat:41.8781,  lng:-87.6298, type:'city', country:'USA' },
+          'Seoul':         { lat:37.5665,  lng:126.9780, type:'city', country:'South_Korea' },
+          'Toronto':       { lat:43.6532,  lng:-79.3832, type:'city', country:'Canada' },
+          'Turin':         { lat:45.0703,  lng:7.6869,   type:'city', country:'Italy' },
+          'San_Francisco': { lat:37.7749,  lng:-122.4194,type:'city', country:'USA' },
+          'Beijing':       { lat:39.9042,  lng:116.4074, type:'city', country:'China' },
+          'Minneapolis':   { lat:44.9778,  lng:-93.2650, type:'city', country:'USA' },
+          // ── Farms ───────────────────────────────────────────────────
+          'Farm_Narino_San_Juan_Farm':              { lat:1.21,   lng:-77.28,  type:'farm', country:'Colombia' },
+          'Farm_West_Valley_Helsar_Farm':           { lat:9.95,   lng:-84.15,  type:'farm', country:'Costa_Rica' },
+          'Farm_Sumatra_Mandheling_Gayo_Farm':      { lat:4.69,   lng:96.75,   type:'farm', country:'Indonesia' },
+          'Farm_Sidamo_Guji_Farm':                  { lat:5.88,   lng:38.26,   type:'farm', country:'Ethiopia' },
+          'Farm_Sao_Paulo_Fazenda_Ipe':             { lat:-22.90, lng:-47.06,  type:'farm', country:'Brazil' },
+          'Farm_Kilimanjaro_Moshi_Estate':          { lat:-3.35,  lng:37.34,   type:'farm', country:'Kenya' },
+          'Farm_Antigua_Finca_El_Injerto':          { lat:14.56,  lng:-90.73,  type:'farm', country:'Guatemala' },
+          'Farm_Lam_Dong_Arabica_Farm':             { lat:11.57,  lng:108.19,  type:'farm', country:'Vietnam' },
+          'Farm_Nyeri_Gatomboya_Farm':              { lat:-0.42,  lng:36.95,   type:'farm', country:'Kenya' },
+          'Farm_Cajamarca_Villa_Rica_Farm':         { lat:-7.16,  lng:-78.50,  type:'farm', country:'Peru' },
+          'Farm_Harrar_Estate':                     { lat:9.31,   lng:42.12,   type:'farm', country:'Ethiopia' },
+          'Farm_Espirito_Santo_Fazenda_Santa_Rita': { lat:-19.19, lng:-40.34,  type:'farm', country:'Brazil' },
+          'Farm_Jinotega_Finca_Mierisch':           { lat:13.09,  lng:-85.99,  type:'farm', country:'Honduras' },
+          'Farm_Antioquia_La_Esperanza':            { lat:6.25,   lng:-75.57,  type:'farm', country:'Colombia' },
+          'Farm_Huila_El_Paraiso_Farm':             { lat:2.54,   lng:-75.53,  type:'farm', country:'Colombia' },
+          'Farm_Copan_San_Marcos_Farm':             { lat:14.84,  lng:-89.15,  type:'farm', country:'Honduras' },
+          'Farm_Western_Province_Huye_Mountain':    { lat:-2.59,  lng:29.74,   type:'farm', country:'Kenya' },
+          'Farm_Yirgacheffe_Kochere_Farm':          { lat:6.16,   lng:38.21,   type:'farm', country:'Ethiopia' },
+          'Farm_Java_Ijen_Estate':                  { lat:-8.06,  lng:114.24,  type:'farm', country:'Indonesia' },
+          'Farm_Dak_Lak_Central_Highlands_Farm':    { lat:12.67,  lng:108.04,  type:'farm', country:'Vietnam' },
+          'Farm_Kiambu_Kagumo_Estate':              { lat:-1.03,  lng:36.80,   type:'farm', country:'Kenya' },
+          'Farm_Huehuetenango_Finca_Vista_Hermosa': { lat:15.32,  lng:-91.47,  type:'farm', country:'Guatemala' },
+          'Farm_Tarrazu_La_Minita_Farm':            { lat:9.60,   lng:-83.90,  type:'farm', country:'Costa_Rica' },
+          'Farm_Minas_Gerais_Fazenda_Sertao':       { lat:-20.83, lng:-43.77,  type:'farm', country:'Brazil' },
+          // ── Ports ───────────────────────────────────────────────────
+          'Port_Santos':     { lat:-23.95, lng:-46.34, type:'port', country:'Brazil' },
+          'Port_Hamburg':    { lat:53.55,  lng:9.99,   type:'port', country:'Germany' },
+          'Port_Rotterdam':  { lat:51.92,  lng:4.49,   type:'port', country:'Netherlands' },
+          'Port_Antwerp':    { lat:51.22,  lng:4.40,   type:'port', country:'Belgium' },
+          'Port_Genoa':      { lat:44.41,  lng:8.93,   type:'port', country:'Italy' },
+          'Port_Valencia':   { lat:39.45,  lng:-0.33,  type:'port', country:'Spain' },
+          'Port_Mombasa':    { lat:-4.04,  lng:39.67,  type:'port', country:'Kenya' },
+          'Port_HoChiMinh':  { lat:10.77,  lng:106.70, type:'port', country:'Vietnam' },
+          'Port_Singapore':  { lat:1.26,   lng:103.82, type:'port', country:'Singapore' },
+          'Port_Busan':      { lat:35.10,  lng:129.04, type:'port', country:'South_Korea' },
+          'Port_LongBeach':  { lat:33.75,  lng:-118.19,type:'port', country:'USA' },
+          'Port_NewOrleans': { lat:29.94,  lng:-90.07, type:'port', country:'USA' },
+          'Port_Felixstowe': { lat:51.96,  lng:1.35,   type:'port', country:'UK' },
+          'Port_Sydney':     { lat:-33.86, lng:151.21, type:'port', country:'Australia' },
+          'Port_Tokyo':      { lat:35.62,  lng:139.78, type:'port', country:'Japan' },
+          // ── Warehouses ──────────────────────────────────────────────
+          'Warehouse_Hamburg_Central':     { lat:53.58,  lng:10.02,   type:'warehouse', country:'Germany' },
+          'Warehouse_Rotterdam_West':      { lat:51.93,  lng:4.47,    type:'warehouse', country:'Netherlands' },
+          'Warehouse_Antwerp_North':       { lat:51.23,  lng:4.42,    type:'warehouse', country:'Belgium' },
+          'Warehouse_Amsterdam_West':      { lat:52.37,  lng:4.90,    type:'warehouse', country:'Netherlands' },
+          'Warehouse_Santos_A':            { lat:-23.96, lng:-46.34,  type:'warehouse', country:'Brazil' },
+          'Warehouse_Mombasa_Central':     { lat:-4.05,  lng:39.67,   type:'warehouse', country:'Kenya' },
+          'Warehouse_HoChiMinh_District7': { lat:10.73,  lng:106.70,  type:'warehouse', country:'Vietnam' },
+          'Warehouse_Singapore_West':      { lat:1.26,   lng:103.79,  type:'warehouse', country:'Singapore' },
+          'Warehouse_Tokyo_Bay':           { lat:35.63,  lng:139.79,  type:'warehouse', country:'Japan' },
+          'Warehouse_Sydney_South':        { lat:-33.90, lng:151.21,  type:'warehouse', country:'Australia' },
+          'Warehouse_Melbourne_Docks':     { lat:-37.82, lng:144.93,  type:'warehouse', country:'Australia' },
+          'Warehouse_LongBeach_South':     { lat:33.76,  lng:-118.20, type:'warehouse', country:'USA' },
+          'Warehouse_Busan_Port':          { lat:35.11,  lng:129.05,  type:'warehouse', country:'South_Korea' },
+          'Warehouse_Genoa_Harbor':        { lat:44.40,  lng:8.93,    type:'warehouse', country:'Italy' },
+          'Warehouse_Seattle_Port':        { lat:47.61,  lng:-122.33, type:'warehouse', country:'USA' },
+          'Warehouse_Miami_FreeZone':      { lat:25.78,  lng:-80.23,  type:'warehouse', country:'USA' },
+          'Warehouse_NewOrleans_CBD':      { lat:29.96,  lng:-90.07,  type:'warehouse', country:'USA' },
+          'Warehouse_Barcelona_Port':      { lat:41.36,  lng:2.17,    type:'warehouse', country:'Spain' },
+          'Warehouse_Felixstowe_East':     { lat:51.96,  lng:1.36,    type:'warehouse', country:'UK' },
+          'Warehouse_Valencia_Industrial': { lat:39.47,  lng:-0.38,   type:'warehouse', country:'Spain' },
+        };
+
+        // Country bounding boxes [sw, ne] for fitBounds
+        window.COUNTRY_MAP_BOUNDS = {
+          'Colombia':    [[-4.2,-81.7],[12.4,-66.9]], 'Brazil':[[-33.7,-73.9],[5.3,-34.8]],
+          'Ethiopia':    [[3.4,33.0],[14.9,47.9]],    'Vietnam':[[8.6,102.1],[23.4,109.5]],
+          'Indonesia':   [[-10.9,95.0],[5.9,141.0]],  'Kenya':[[-4.7,33.9],[4.6,41.9]],
+          'Guatemala':   [[13.7,-92.2],[17.8,-88.2]], 'Honduras':[[13.0,-89.3],[16.5,-83.2]],
+          'Costa_Rica':  [[8.0,-85.9],[11.2,-82.6]],  'Peru':[[-18.4,-81.3],[-0.1,-68.7]],
+          'China':       [[18.2,73.5],[53.6,134.8]],  'Japan':[[24.0,122.9],[45.5,145.8]],
+          'Italy':       [[36.6,6.6],[47.1,18.5]],    'USA':[[24.4,-125.0],[49.4,-66.9]],
+          'Canada':      [[42.0,-141.0],[83.1,-52.6]],'Australia':[[-43.6,113.3],[-10.7,153.6]],
+          'South_Korea': [[33.1,126.1],[38.6,129.6]], 'UK':[[49.9,-8.1],[60.8,1.8]],
+          'Germany':     [[47.3,5.9],[55.1,15.0]],    'Netherlands':[[50.8,3.4],[53.5,7.2]],
+          'Belgium':     [[49.5,2.5],[51.5,6.4]],     'Spain':[[35.9,-9.4],[43.8,4.3]],
+          'Singapore':   [[1.15,103.6],[1.47,104.0]],
+        };
+
+        // ISO numeric → our country key (for world-atlas TopoJSON)
+        window.ISO_NUM_TO_COUNTRY = {
+          170:'Colombia', 76:'Brazil', 231:'Ethiopia', 704:'Vietnam',
+          360:'Indonesia', 404:'Kenya', 320:'Guatemala', 340:'Honduras',
+          188:'Costa_Rica', 604:'Peru', 156:'China', 392:'Japan',
+          380:'Italy', 840:'USA', 124:'Canada', 36:'Australia',
+          410:'South_Korea', 826:'UK',
+          276:'Germany', 528:'Netherlands', 56:'Belgium', 724:'Spain', 702:'Singapore',
+        };
+
+        // ── Map state ─────────────────────────────────────────────────
+        let _locMap = null;
+        let _locLayers = {};     // type → L.LayerGroup
+        let _locCountryLayer = null;
+        let _locHighlighted = null;
+        let _locAllMarkerObjs = {}; // name → marker
+
+        function _makeMarkerIcon(color, emoji) {
+          return L.divIcon({
+            className: '',
+            html: `<div style="width:26px;height:26px;border-radius:50%;background:${color};border:2px solid rgba(255,255,255,0.9);box-shadow:0 2px 6px rgba(0,0,0,.5);display:flex;align-items:center;justify-content:center;font-size:12px;">${emoji}</div>`,
+            iconSize: [26, 26], iconAnchor: [13, 13], popupAnchor: [0, -16]
+          });
+        }
+
+        function initLocationMap() {
+          const el = document.getElementById('locationMapContainer');
+          if (!el) return;
+          if (_locMap) { setTimeout(() => _locMap.invalidateSize(), 100); return; }
+
+          _locMap = L.map('locationMapContainer', { zoomControl: true, attributionControl: true })
+                     .setView([20, 15], 2);
+
+          L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; OpenStreetMap contributors', maxZoom: 18
+          }).addTo(_locMap);
+
+          // Layer groups per entity type
+          const typeConf = [
+            { key:'city',      color:'#3b82f6', emoji:'🏙', label:'도시' },
+            { key:'farm',      color:'#22c55e', emoji:'🌿', label:'농장' },
+            { key:'port',      color:'#f97316', emoji:'⚓', label:'항구' },
+            { key:'warehouse', color:'#a855f7', emoji:'🏭', label:'창고' },
+          ];
+          typeConf.forEach(tc => { _locLayers[tc.key] = L.layerGroup().addTo(_locMap); });
+
+          // Layer control
+          const overlays = {};
+          typeConf.forEach(tc => { overlays[`<span style="color:${tc.color}">${tc.emoji}</span> ${tc.label}`] = _locLayers[tc.key]; });
+          L.control.layers(null, overlays, { collapsed: false }).addTo(_locMap);
+
+          // Add entity markers
+          const coords = window.LOCATION_ENTITY_COORDS || {};
+          const iconMap = {};
+          typeConf.forEach(tc => { iconMap[tc.key] = _makeMarkerIcon(tc.color, tc.emoji); });
+
+          Object.entries(coords).forEach(([name, d]) => {
+            if (!_locLayers[d.type]) return;
+            const displayName = name.replace(/_/g, ' ');
+            const popupHtml = `<div class="map-entity-popup-name">${displayName}</div><div class="map-entity-popup-meta">${d.type} · ${d.country || ''}</div><button class="map-entity-popup-btn" onclick="window._locOpenModal('${name}','${d.type}')">상세 정보 보기</button>`;
+            const m = L.marker([d.lat, d.lng], { icon: iconMap[d.type] })
+                       .bindPopup(popupHtml, { maxWidth: 220 });
+            m.addTo(_locLayers[d.type]);
+            _locAllMarkerObjs[name] = m;
+          });
+
+          // Load country boundaries via world-atlas TopoJSON
+          fetch('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json')
+            .then(r => r.json())
+            .then(world => {
+              const countries = topojson.feature(world, world.objects.countries);
+              _locCountryLayer = L.geoJSON(countries, {
+                style: { fillColor:'transparent', fillOpacity:0, color:'#6366f1', weight:0.6, opacity:0.45 },
+                onEachFeature: (feature, layer) => {
+                  const numId = parseInt(feature.id);
+                  const cName = (window.ISO_NUM_TO_COUNTRY || {})[numId] || null;
+                  layer.on('mouseover', () => {
+                    layer.setStyle({ fillColor:'#6366f1', fillOpacity: cName ? 0.18 : 0.06 });
+                  });
+                  layer.on('mouseout', () => {
+                    if (_locHighlighted !== layer)
+                      layer.setStyle({ fillColor:'transparent', fillOpacity:0 });
+                  });
+                  layer.on('click', (e) => {
+                    L.DomEvent.stopPropagation(e);
+                    _locOnCountryClick(cName, layer);
+                  });
+                }
+              }).addTo(_locMap);
+            })
+            .catch(() => console.warn('Could not load country boundaries'));
+        }
+
+        window._locOpenModal = function(name, type) {
+          const inst = ontologyData && ontologyData.instanceMap && ontologyData.instanceMap[name];
+          if (inst) {
+            const clsMap = { city:'City', farm:'Farm', port:'Port', warehouse:'Warehouse' };
+            showInstanceDetailModal(inst, clsMap[type] || type);
+          }
+        };
+
+        function _locOnCountryClick(countryName, layer) {
+          // Reset previous highlight
+          if (_locHighlighted) _locHighlighted.setStyle({ fillColor:'transparent', fillOpacity:0 });
+          layer.setStyle({ fillColor:'#6366f1', fillOpacity:0.22 });
+          _locHighlighted = layer;
+
+          // Zoom to country
+          const bounds = countryName && (window.COUNTRY_MAP_BOUNDS || {})[countryName];
+          if (bounds) {
+            _locMap.fitBounds(bounds, { padding:[40,40], maxZoom:8 });
+          } else {
+            try { _locMap.fitBounds(layer.getBounds(), { padding:[40,40], maxZoom:8 }); } catch(e) {}
+          }
+
+          // Update status bar
+          const statusEl = document.getElementById('mapStatusBar');
+          if (statusEl) {
+            const displayName = countryName ? countryName.replace(/_/g,' ') : '알 수 없는 국가';
+            const coords = window.LOCATION_ENTITY_COORDS || {};
+            const entities = Object.entries(coords).filter(([,d]) => d.country === countryName);
+            const counts = { city:0, farm:0, port:0, warehouse:0 };
+            entities.forEach(([,d]) => { if (counts[d.type] !== undefined) counts[d.type]++; });
+            const parts = [];
+            if (counts.city)      parts.push(`🏙 도시 ${counts.city}`);
+            if (counts.farm)      parts.push(`🌿 농장 ${counts.farm}`);
+            if (counts.port)      parts.push(`⚓ 항구 ${counts.port}`);
+            if (counts.warehouse) parts.push(`🏭 창고 ${counts.warehouse}`);
+            statusEl.innerHTML = `<b>${displayName}</b>${parts.length ? ' — ' + parts.join(' · ') : ' (등록된 엔티티 없음)'}`;
+          }
         }
 
         // ============================================================
