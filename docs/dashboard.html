@@ -321,6 +321,9 @@
         .icon-market { background: rgba(34, 197, 94, 0.1); color: #22c55e; }
         .icon-product { background: rgba(139, 69, 19, 0.1); color: #8b4513; }
         .icon-quality { background: rgba(245, 158, 11, 0.1); color: #f59e0b; }
+        .icon-shop { background: rgba(168, 85, 247, 0.1); color: #a855f7; }
+        .icon-agri { background: rgba(16, 185, 129, 0.1); color: #10b981; }
+        .icon-sustainability { background: rgba(6, 182, 212, 0.1); color: #06b6d4; }
 
         .category-info {
             flex: 1;
@@ -1213,6 +1216,33 @@
                                 <div class="category-count" id="countQualityAndProcessing">0 subclasses</div>
                             </div>
                         </div>
+                        <div class="category-item" data-category="ShopOperation">
+                            <div class="category-icon icon-shop">
+                                <i class="fas fa-store"></i>
+                            </div>
+                            <div class="category-info">
+                                <div class="category-name">Shop Operation</div>
+                                <div class="category-count" id="countShopOperation">0 subclasses</div>
+                            </div>
+                        </div>
+                        <div class="category-item" data-category="AgriEvent">
+                            <div class="category-icon icon-agri">
+                                <i class="fas fa-seedling"></i>
+                            </div>
+                            <div class="category-info">
+                                <div class="category-name">Agri Event</div>
+                                <div class="category-count" id="countAgriEvent">0 subclasses</div>
+                            </div>
+                        </div>
+                        <div class="category-item" data-category="Sustainability">
+                            <div class="category-icon icon-sustainability">
+                                <i class="fas fa-leaf"></i>
+                            </div>
+                            <div class="category-info">
+                                <div class="category-name">Sustainability</div>
+                                <div class="category-count" id="countSustainability">0 subclasses</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -1382,6 +1412,33 @@
                         <div class="category-count" id="catCountQualityAndProcessing">0 subclasses</div>
                     </div>
                 </div>
+                <div class="category-item" data-category="ShopOperation">
+                    <div class="category-icon icon-shop">
+                        <i class="fas fa-store"></i>
+                    </div>
+                    <div class="category-info">
+                        <div class="category-name">Shop Operation</div>
+                        <div class="category-count" id="catCountShopOperation">0 subclasses</div>
+                    </div>
+                </div>
+                <div class="category-item" data-category="AgriEvent">
+                    <div class="category-icon icon-agri">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <div class="category-info">
+                        <div class="category-name">Agri Event</div>
+                        <div class="category-count" id="catCountAgriEvent">0 subclasses</div>
+                    </div>
+                </div>
+                <div class="category-item" data-category="Sustainability">
+                    <div class="category-icon icon-sustainability">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <div class="category-info">
+                        <div class="category-name">Sustainability</div>
+                        <div class="category-count" id="catCountSustainability">0 subclasses</div>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -1468,6 +1525,33 @@
                         <div class="category-info">
                             <div class="category-name">Quality & Processing</div>
                             <div class="category-count" id="statsCatQuality">0 classes</div>
+                        </div>
+                    </div>
+                    <div class="category-item" style="cursor: default;">
+                        <div class="category-icon icon-shop">
+                            <i class="fas fa-store"></i>
+                        </div>
+                        <div class="category-info">
+                            <div class="category-name">Shop Operation</div>
+                            <div class="category-count" id="statsCatShopOperation">0 classes</div>
+                        </div>
+                    </div>
+                    <div class="category-item" style="cursor: default;">
+                        <div class="category-icon icon-agri">
+                            <i class="fas fa-seedling"></i>
+                        </div>
+                        <div class="category-info">
+                            <div class="category-name">Agri Event</div>
+                            <div class="category-count" id="statsCatAgriEvent">0 classes</div>
+                        </div>
+                    </div>
+                    <div class="category-item" style="cursor: default;">
+                        <div class="category-icon icon-sustainability">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <div class="category-info">
+                            <div class="category-name">Sustainability</div>
+                            <div class="category-count" id="statsCatSustainability">0 classes</div>
                         </div>
                     </div>
                 </div>
@@ -1751,7 +1835,10 @@
             Market: '#22c55e',
             Product: '#8b4513',
             Quality: '#f59e0b',
-            QualityAndProcessing: '#f59e0b'
+            QualityAndProcessing: '#f59e0b',
+            ShopOperation: '#a855f7',
+            AgriEvent: '#10b981',
+            Sustainability: '#06b6d4'
         };
 
         function getNodeColor(nodeName) {
@@ -2268,7 +2355,7 @@
         }
 
         function buildHierarchyFromRDF(ontData) {
-            const ROOT_CLASSES = ['Location', 'Organization', 'MarketAndEconomics', 'Product', 'QualityAndProcessing'];
+            const ROOT_CLASSES = ['Location', 'Organization', 'MarketAndEconomics', 'Product', 'QualityAndProcessing', 'ShopOperation', 'AgriEvent', 'Sustainability'];
             const classMap = ontData.classMap;
             const subClassOf = ontData.subClassOf;
             Object.values(classMap).forEach(c => c.children = []);
