@@ -714,12 +714,29 @@
             });
         }
 
+        // Also check classMap children recursively
+        function addChildrenFromMap(uri) {
+            const cls = ontData.classMap[uri];
+            if (cls && cls.children) {
+                cls.children.forEach(child => {
+                    if (!allURIs.has(child.uri)) {
+                        allURIs.add(child.uri);
+                        addChildrenFromMap(child.uri);
+                    }
+                });
+            }
+        }
+        addChildrenFromMap(classURI);
+
+        console.log(`🔍 getInstancesForClass(${classURI.split('#')[1]}):`, [...allURIs].map(u=>u.split('#')[1]));
+
         const instances = [];
         Object.values(ontData.instanceMap).forEach(inst => {
             if (inst.classURIs.some(u => allURIs.has(u))) {
                 instances.push(inst);
             }
         });
+        console.log(`   → Found ${instances.length} instances`);
         return instances;
     }
 
