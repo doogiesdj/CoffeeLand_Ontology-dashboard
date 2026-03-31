@@ -728,12 +728,20 @@
         }
         addChildrenFromMap(classURI);
 
-        console.log(`🔍 getInstancesForClass(${classURI.split('#')[1]}):`, [...allURIs].map(u=>u.split('#')[1]));
+        const shortURIs = [...allURIs].map(u=>u.split('#')[1]);
+        console.log(`🔍 getInstancesForClass(${classURI.split('#')[1]}):`, shortURIs);
 
         const instances = [];
+        let checked = 0;
         Object.values(ontData.instanceMap).forEach(inst => {
-            if (inst.classURIs.some(u => allURIs.has(u))) {
+            const match = inst.classURIs.some(u => allURIs.has(u));
+            if (match) {
                 instances.push(inst);
+            }
+            // Log first few Consumable-related instances for debugging
+            if (inst.name && inst.name.startsWith('Con_') && checked < 3) {
+                console.log(`   🏷️ ${inst.name} classURIs:`, inst.classURIs.map(u=>u.split('#')[1]), 'match:', match);
+                checked++;
             }
         });
         console.log(`   → Found ${instances.length} instances`);
