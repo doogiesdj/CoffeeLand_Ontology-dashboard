@@ -251,6 +251,16 @@
             <div class="nav-item" id="uploadBtn"><i class="fas fa-upload"></i><span>Upload RDF/OWL</span></div>
             <div class="nav-item" id="downloadBtn"><i class="fas fa-download"></i><span>Download Data</span></div>
         </nav>
+
+        <div class="nav-divider" style="border-top:1px solid var(--border);margin:0.5rem 1rem"></div>
+
+        <nav class="nav-section">
+            <div class="nav-section-title">Analytics</div>
+            <a class="nav-item" href="https://doogiesdj.github.io/coffeeland-web/" target="_blank" style="text-decoration:none;color:inherit;display:flex;align-items:center;gap:0.75rem">
+                <i class="fas fa-chart-line" style="color:#e8a870;width:20px;text-align:center"></i>
+                <span style="color:#e8a870;font-weight:500">데이터 분석 대시보드 ↗</span>
+            </a>
+        </nav>
     </aside>
 
     <main class="main-content">
@@ -728,23 +738,12 @@
         }
         addChildrenFromMap(classURI);
 
-        const shortURIs = [...allURIs].map(u=>u.split('#')[1]);
-        console.log(`🔍 getInstancesForClass(${classURI.split('#')[1]}):`, shortURIs);
-
         const instances = [];
-        let checked = 0;
         Object.values(ontData.instanceMap).forEach(inst => {
-            const match = inst.classURIs.some(u => allURIs.has(u));
-            if (match) {
+            if (inst.classURIs.some(u => allURIs.has(u))) {
                 instances.push(inst);
             }
-            // Log first few Consumable-related instances for debugging
-            if (inst.name && inst.name.startsWith('Con_') && checked < 3) {
-                console.log(`   🏷️ ${inst.name} classURIs:`, inst.classURIs.map(u=>u.split('#')[1]), 'match:', match);
-                checked++;
-            }
         });
-        console.log(`   → Found ${instances.length} instances`);
         return instances;
     }
 
@@ -983,13 +982,6 @@
             ontologyData = parseOntology(rdfDoc);
             console.log(`✅ Parsed: ${ontologyData.classes.length} classes, ${ontologyData.objectProperties.length} obj props, ${ontologyData.dataProperties.length} data props`);
             console.log(`✅ Instances found: ${Object.keys(ontologyData.instanceMap).length}`);
-            const conInsts = Object.keys(ontologyData.instanceMap).filter(k=>k.includes('Con_'));
-            const emInsts = Object.keys(ontologyData.instanceMap).filter(k=>k.includes('EM_'));
-            console.log(`   🏷️ Con_ instances in map: ${conInsts.length}`, conInsts.slice(0,3));
-            console.log(`   🏷️ EM_ instances in map: ${emInsts.length}`, emInsts.slice(0,3));
-            console.log(`   📂 subClassOf entries: ${Object.keys(ontologyData.subClassOf).length}`);
-            const conSubs = Object.entries(ontologyData.subClassOf).filter(([k,v])=>v.includes('Consumable'));
-            console.log(`   📂 Consumable children in subClassOf:`, conSubs.map(([k])=>k.split('#')[1]));
 
             hierarchyData = buildHierarchy(ontologyData);
             console.log(`✅ Hierarchy built: ${hierarchyData.length} root classes`);
