@@ -983,6 +983,13 @@
             ontologyData = parseOntology(rdfDoc);
             console.log(`✅ Parsed: ${ontologyData.classes.length} classes, ${ontologyData.objectProperties.length} obj props, ${ontologyData.dataProperties.length} data props`);
             console.log(`✅ Instances found: ${Object.keys(ontologyData.instanceMap).length}`);
+            const conInsts = Object.keys(ontologyData.instanceMap).filter(k=>k.includes('Con_'));
+            const emInsts = Object.keys(ontologyData.instanceMap).filter(k=>k.includes('EM_'));
+            console.log(`   🏷️ Con_ instances in map: ${conInsts.length}`, conInsts.slice(0,3));
+            console.log(`   🏷️ EM_ instances in map: ${emInsts.length}`, emInsts.slice(0,3));
+            console.log(`   📂 subClassOf entries: ${Object.keys(ontologyData.subClassOf).length}`);
+            const conSubs = Object.entries(ontologyData.subClassOf).filter(([k,v])=>v.includes('Consumable'));
+            console.log(`   📂 Consumable children in subClassOf:`, conSubs.map(([k])=>k.split('#')[1]));
 
             hierarchyData = buildHierarchy(ontologyData);
             console.log(`✅ Hierarchy built: ${hierarchyData.length} root classes`);
