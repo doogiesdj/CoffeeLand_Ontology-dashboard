@@ -701,17 +701,18 @@
 
     // Get instances for a class URI
     function getInstancesForClass(ontData, classURI) {
-        // Collect this class URI + all descendant class URIs
+        // Collect this class URI + all descendant class URIs using subClassOf map
         const allURIs = new Set([classURI]);
-        function addDescendants(uri) {
-            ontData.classes.forEach(c => {
-                if (c.parentURI === uri && !allURIs.has(c.uri)) {
-                    allURIs.add(c.uri);
-                    addDescendants(c.uri);
+        let changed = true;
+        while (changed) {
+            changed = false;
+            Object.entries(ontData.subClassOf).forEach(([child, parent]) => {
+                if (allURIs.has(parent) && !allURIs.has(child)) {
+                    allURIs.add(child);
+                    changed = true;
                 }
             });
         }
-        addDescendants(classURI);
 
         const instances = [];
         Object.values(ontData.instanceMap).forEach(inst => {
