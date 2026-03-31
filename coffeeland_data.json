@@ -12,8 +12,8 @@
     {
       "name": "Narino San Juan Farm",
       "id": "Farm_Narino_San_Juan_Farm",
-      "lat": 3.9,
-      "lng": -73.7,
+      "lat": 3.0,
+      "lng": -74.6,
       "country": "Colombia",
       "brands": [
         "Colombian_Supremo"
@@ -24,8 +24,8 @@
     {
       "name": "West Valley Helsar Farm",
       "id": "Farm_West_Valley_Helsar_Farm",
-      "lat": 9.7,
-      "lng": -83.8,
+      "lat": 9.1,
+      "lng": -84.7,
       "country": "Costa Rica",
       "brands": [
         "Tarrazu_Reserve"
@@ -36,7 +36,7 @@
     {
       "name": "Sumatra Mandheling Gayo Farm",
       "id": "Farm_Sumatra_Mandheling_Gayo_Farm",
-      "lat": -6.2,
+      "lat": -7.1,
       "lng": 106.5,
       "country": "Indonesia",
       "brands": [
@@ -48,8 +48,8 @@
     {
       "name": "Sidamo Guji Farm",
       "id": "Farm_Sidamo_Guji_Farm",
-      "lat": 8.7,
-      "lng": 37.800000000000004,
+      "lat": 7.8,
+      "lng": 39.0,
       "country": "Ethiopia",
       "brands": [
         "Sidamo_Natural"
@@ -60,8 +60,8 @@
     {
       "name": "Sao Paulo Fazenda Ipe",
       "id": "Farm_Sao_Paulo_Fazenda_Ipe",
-      "lat": -13.899999999999999,
-      "lng": -52.5,
+      "lat": -14.2,
+      "lng": -52.8,
       "country": "Brazil",
       "brands": [
         "Santos_Premium"
@@ -72,8 +72,8 @@
     {
       "name": "Kilimanjaro Moshi Estate",
       "id": "Farm_Kilimanjaro_Moshi_Estate",
-      "lat": -6.1000000000000005,
-      "lng": 34.6,
+      "lat": -7.9,
+      "lng": 34.9,
       "country": "Tanzania",
       "brands": [],
       "co2": 3.3,
@@ -82,8 +82,8 @@
     {
       "name": "Antigua Finca El Injerto",
       "id": "Farm_Antigua_Finca_El_Injerto",
-      "lat": 15.5,
-      "lng": -90.5,
+      "lat": 14.9,
+      "lng": -90.2,
       "country": "Guatemala",
       "brands": [
         "Antigua_Premium"
@@ -94,8 +94,8 @@
     {
       "name": "Lam Dong Arabica Farm",
       "id": "Farm_Lam_Dong_Arabica_Farm",
-      "lat": 15.299999999999999,
-      "lng": 108.0,
+      "lat": 14.4,
+      "lng": 108.3,
       "country": "Vietnam",
       "brands": [],
       "co2": 5.1,
@@ -104,7 +104,7 @@
     {
       "name": "Nyeri Gatomboya Farm",
       "id": "Farm_Nyeri_Gatomboya_Farm",
-      "lat": -2.2,
+      "lat": -1.9,
       "lng": 37.099999999999994,
       "country": "Kenya",
       "brands": [
@@ -116,7 +116,7 @@
     {
       "name": "Cajamarca Villa Rica Farm",
       "id": "Farm_Cajamarca_Villa_Rica_Farm",
-      "lat": -8.6,
+      "lat": -9.5,
       "lng": -75.0,
       "country": "Peru",
       "brands": [
@@ -128,8 +128,8 @@
     {
       "name": "Harrar Estate",
       "id": "Farm_Harrar_Estate",
-      "lat": 9.3,
-      "lng": 37.800000000000004,
+      "lat": 9.9,
+      "lng": 38.7,
       "country": "Ethiopia",
       "brands": [],
       "co2": 4.1,
@@ -138,8 +138,8 @@
     {
       "name": "Espirito Santo Fazenda Santa Rita",
       "id": "Farm_Espirito_Santo_Fazenda_Santa_Rita",
-      "lat": -13.6,
-      "lng": -51.0,
+      "lat": -14.799999999999999,
+      "lng": -52.199999999999996,
       "country": "Brazil",
       "brands": [],
       "co2": 7.2,
@@ -148,7 +148,7 @@
     {
       "name": "Jinotega Finca Mierisch",
       "id": "Farm_Jinotega_Finca_Mierisch",
-      "lat": 13.5,
+      "lat": 11.700000000000001,
       "lng": -85.2,
       "country": "Nicaragua",
       "brands": [],
@@ -158,8 +158,8 @@
     {
       "name": "Antioquia La Esperanza",
       "id": "Farm_Antioquia_La_Esperanza",
-      "lat": 5.1,
-      "lng": -73.4,
+      "lat": 4.2,
+      "lng": -73.1,
       "country": "Colombia",
       "brands": [
         "Colombian_Supremo"
@@ -170,8 +170,8 @@
     {
       "name": "Huila El Paraiso Farm",
       "id": "Farm_Huila_El_Paraiso_Farm",
-      "lat": 4.8,
-      "lng": -73.1,
+      "lat": 3.9,
+      "lng": -74.0,
       "country": "Colombia",
       "brands": [
         "Huila_Reserve"
@@ -182,8 +182,8 @@
     {
       "name": "Copan San Marcos Farm",
       "id": "Farm_Copan_San_Marcos_Farm",
-      "lat": 14.6,
-      "lng": -86.8,
+      "lat": 14.899999999999999,
+      "lng": -86.5,
       "country": "Honduras",
       "brands": [
         "Honduras_SHG"
@@ -194,8 +194,8 @@
     {
       "name": "Western Province Huye Mountain",
       "id": "Farm_Western_Province_Huye_Mountain",
-      "lat": -2.6,
-      "lng": 29.599999999999998,
+      "lat": -1.1,
+      "lng": 29.0,
       "country": "Rwanda",
       "brands": [],
       "co2": 2.9,
@@ -204,8 +204,8 @@
     {
       "name": "Yirgacheffe Kochere Farm",
       "id": "Farm_Yirgacheffe_Kochere_Farm",
-      "lat": 9.3,
-      "lng": 38.400000000000006,
+      "lat": 10.2,
+      "lng": 38.1,
       "country": "Ethiopia",
       "brands": [
         "Yirgacheffe_Special"
@@ -216,8 +216,8 @@
     {
       "name": "Java Ijen Estate",
       "id": "Farm_Java_Ijen_Estate",
-      "lat": -5.9,
-      "lng": 107.39999999999999,
+      "lat": -6.2,
+      "lng": 107.7,
       "country": "Indonesia",
       "brands": [
         "Java_Estate"
@@ -228,8 +228,8 @@
     {
       "name": "Dak Lak Central Highlands Farm",
       "id": "Farm_Dak_Lak_Central_Highlands_Farm",
-      "lat": 12.6,
-      "lng": 108.89999999999999,
+      "lat": 13.5,
+      "lng": 108.6,
       "country": "Vietnam",
       "brands": [
         "Robusta_Select"
@@ -240,8 +240,8 @@
     {
       "name": "Kiambu Kagumo Estate",
       "id": "Farm_Kiambu_Kagumo_Estate",
-      "lat": -2.8,
-      "lng": 37.4,
+      "lat": -2.2,
+      "lng": 36.5,
       "country": "Kenya",
       "brands": [
         "Kenya_AA"
@@ -252,7 +252,7 @@
     {
       "name": "Huehuetenango Finca Vista Hermosa",
       "id": "Farm_Huehuetenango_Finca_Vista_Hermosa",
-      "lat": 16.400000000000002,
+      "lat": 15.8,
       "lng": -90.5,
       "country": "Guatemala",
       "brands": [
@@ -265,7 +265,7 @@
       "name": "Tarrazu La Minita Farm",
       "id": "Farm_Tarrazu_La_Minita_Farm",
       "lat": 10.899999999999999,
-      "lng": -84.39999999999999,
+      "lng": -83.8,
       "country": "Costa Rica",
       "brands": [
         "Tarrazu_Reserve"
@@ -276,8 +276,8 @@
     {
       "name": "Minas Gerais Fazenda Sertao",
       "id": "Farm_Minas_Gerais_Fazenda_Sertao",
-      "lat": -13.299999999999999,
-      "lng": -52.5,
+      "lat": -14.2,
+      "lng": -52.199999999999996,
       "country": "Brazil",
       "brands": [
         "Bourbon_Santos",
@@ -387,8 +387,8 @@
       "method": "Washed",
       "segment": "Luxury",
       "certs": [
-        "Fair_Trade",
-        "Organic"
+        "Organic",
+        "Fair_Trade"
       ],
       "esg": {
         "co2": 10,
@@ -401,10 +401,10 @@
         "Yirgacheffe Kochere Farm"
       ],
       "impacts": [
-        "Metric_Organic_Farming",
         "Metric_FairWage_High",
         "Metric_CO2_Low",
-        "Metric_Shade_Grown"
+        "Metric_Shade_Grown",
+        "Metric_Organic_Farming"
       ]
     },
     {
@@ -424,8 +424,8 @@
         "water": 7
       },
       "farms": [
-        "Huehuetenango Finca Vista Hermosa",
-        "Antigua Finca El Injerto"
+        "Antigua Finca El Injerto",
+        "Huehuetenango Finca Vista Hermosa"
       ],
       "impacts": []
     },
@@ -436,8 +436,8 @@
       "method": "Washed",
       "segment": "Specialty",
       "certs": [
-        "Organic",
-        "Fair_Trade"
+        "Fair_Trade",
+        "Organic"
       ],
       "esg": {
         "co2": 6,
@@ -451,8 +451,8 @@
         "Nyeri Gatomboya Farm"
       ],
       "impacts": [
-        "Metric_Organic_Farming",
-        "Metric_Shade_Grown"
+        "Metric_Shade_Grown",
+        "Metric_Organic_Farming"
       ]
     },
     {
@@ -484,8 +484,8 @@
       "method": "Washed",
       "segment": "Specialty",
       "certs": [
-        "Fair_Trade",
-        "Organic"
+        "Organic",
+        "Fair_Trade"
       ],
       "esg": {
         "co2": 10,
@@ -498,9 +498,9 @@
         "Cajamarca Villa Rica Farm"
       ],
       "impacts": [
-        "Metric_Organic_Farming",
         "Metric_FairWage_High",
-        "Metric_CO2_Low"
+        "Metric_CO2_Low",
+        "Metric_Organic_Farming"
       ]
     },
     {
@@ -616,8 +616,8 @@
         "Sumatra Mandheling Gayo Farm"
       ],
       "impacts": [
-        "Metric_Organic_Farming",
-        "Metric_Water_Efficient"
+        "Metric_Water_Efficient",
+        "Metric_Organic_Farming"
       ]
     },
     {
@@ -679,8 +679,8 @@
         "water": 7
       },
       "farms": [
-        "Sao Paulo Fazenda Ipe",
-        "Minas Gerais Fazenda Sertao"
+        "Minas Gerais Fazenda Sertao",
+        "Sao Paulo Fazenda Ipe"
       ],
       "impacts": [
         "Metric_CO2_Low",
@@ -706,8 +706,8 @@
       ],
       "impacts": [
         "Metric_CO2_High",
-        "Metric_Water_Heavy",
-        "Metric_FairWage_Low"
+        "Metric_FairWage_Low",
+        "Metric_Water_Heavy"
       ]
     }
   ],
@@ -750,17 +750,17 @@
     },
     {
       "menu": "Aeropress",
-      "brand": "Huila_Reserve",
-      "farm": "Farm_Huila_El_Paraiso_Farm",
-      "country": "Colombia"
-    },
-    {
-      "menu": "Aeropress",
       "brand": "Yirgacheffe_Special",
       "farm": "Farm_Yirgacheffe_Kochere_Farm",
       "country": "Ethiopia"
     },
     {
+      "menu": "Aeropress",
+      "brand": "Huila_Reserve",
+      "farm": "Farm_Huila_El_Paraiso_Farm",
+      "country": "Colombia"
+    },
+    {
       "menu": "Vanilla_Latte",
       "brand": "Colombian_Supremo",
       "farm": "Farm_Narino_San_Juan_Farm",
@@ -768,18 +768,6 @@
     },
     {
       "menu": "Vanilla_Latte",
-      "brand": "Colombian_Supremo",
-      "farm": "Farm_Antioquia_La_Esperanza",
-      "country": "Colombia"
-    },
-    {
-      "menu": "Caramel_Macchiato",
-      "brand": "Colombian_Supremo",
-      "farm": "Farm_Narino_San_Juan_Farm",
-      "country": "Colombia"
-    },
-    {
-      "menu": "Caramel_Macchiato",
       "brand": "Colombian_Supremo",
       "farm": "Farm_Antioquia_La_Esperanza",
       "country": "Colombia"
@@ -788,6 +776,18 @@
       "menu": "Caramel_Macchiato",
       "brand": "Huila_Reserve",
       "farm": "Farm_Huila_El_Paraiso_Farm",
+      "country": "Colombia"
+    },
+    {
+      "menu": "Caramel_Macchiato",
+      "brand": "Colombian_Supremo",
+      "farm": "Farm_Narino_San_Juan_Farm",
+      "country": "Colombia"
+    },
+    {
+      "menu": "Caramel_Macchiato",
+      "brand": "Colombian_Supremo",
+      "farm": "Farm_Antioquia_La_Esperanza",
       "country": "Colombia"
     },
     {
@@ -846,12 +846,6 @@
     },
     {
       "menu": "Mocha",
-      "brand": "Sidamo_Natural",
-      "farm": "Farm_Sidamo_Guji_Farm",
-      "country": "Ethiopia"
-    },
-    {
-      "menu": "Mocha",
       "brand": "Colombian_Supremo",
       "farm": "Farm_Narino_San_Juan_Farm",
       "country": "Colombia"
@@ -861,6 +855,12 @@
       "brand": "Colombian_Supremo",
       "farm": "Farm_Antioquia_La_Esperanza",
       "country": "Colombia"
+    },
+    {
+      "menu": "Mocha",
+      "brand": "Sidamo_Natural",
+      "farm": "Farm_Sidamo_Guji_Farm",
+      "country": "Ethiopia"
     },
     {
       "menu": "Affogato",
@@ -918,12 +918,6 @@
     },
     {
       "menu": "Americano",
-      "brand": "Huila_Reserve",
-      "farm": "Farm_Huila_El_Paraiso_Farm",
-      "country": "Colombia"
-    },
-    {
-      "menu": "Americano",
       "brand": "Colombian_Supremo",
       "farm": "Farm_Narino_San_Juan_Farm",
       "country": "Colombia"
@@ -933,6 +927,18 @@
       "brand": "Colombian_Supremo",
       "farm": "Farm_Antioquia_La_Esperanza",
       "country": "Colombia"
+    },
+    {
+      "menu": "Americano",
+      "brand": "Huila_Reserve",
+      "farm": "Farm_Huila_El_Paraiso_Farm",
+      "country": "Colombia"
+    },
+    {
+      "menu": "Pour_Over",
+      "brand": "Yirgacheffe_Special",
+      "farm": "Farm_Yirgacheffe_Kochere_Farm",
+      "country": "Ethiopia"
     },
     {
       "menu": "Pour_Over",
@@ -953,12 +959,6 @@
       "country": "Kenya"
     },
     {
-      "menu": "Pour_Over",
-      "brand": "Yirgacheffe_Special",
-      "farm": "Farm_Yirgacheffe_Kochere_Farm",
-      "country": "Ethiopia"
-    },
-    {
       "menu": "Iced_Latte",
       "brand": "Colombian_Supremo",
       "farm": "Farm_Narino_San_Juan_Farm",
@@ -972,6 +972,12 @@
     },
     {
       "menu": "French_Press",
+      "brand": "Sumatra_Mandheling",
+      "farm": "Farm_Sumatra_Mandheling_Gayo_Farm",
+      "country": "Indonesia"
+    },
+    {
+      "menu": "French_Press",
       "brand": "Colombian_Supremo",
       "farm": "Farm_Narino_San_Juan_Farm",
       "country": "Colombia"
@@ -983,7 +989,7 @@
       "country": "Colombia"
     },
     {
-      "menu": "French_Press",
+      "menu": "Cold_Brew",
       "brand": "Sumatra_Mandheling",
       "farm": "Farm_Sumatra_Mandheling_Gayo_Farm",
       "country": "Indonesia"
@@ -993,12 +999,6 @@
       "brand": "Sidamo_Natural",
       "farm": "Farm_Sidamo_Guji_Farm",
       "country": "Ethiopia"
-    },
-    {
-      "menu": "Cold_Brew",
-      "brand": "Sumatra_Mandheling",
-      "farm": "Farm_Sumatra_Mandheling_Gayo_Farm",
-      "country": "Indonesia"
     },
     {
       "menu": "Cortado",
@@ -1011,7 +1011,7 @@
     {
       "farm": "Dak Lak Central Highlands Farm",
       "brand": "Robusta Select",
-      "chain": "Dunkin Donuts",
+      "chain": "McCafe",
       "co2": "6.8"
     },
     {
@@ -1023,7 +1023,7 @@
     {
       "farm": "Dak Lak Central Highlands Farm",
       "brand": "Robusta Select",
-      "chain": "McCafe",
+      "chain": "Dunkin Donuts",
       "co2": "6.8"
     }
   ],
@@ -1031,22 +1031,22 @@
     {
       "name": "Peruvian Organic",
       "certs": [
-        "Fair_Trade",
-        "Organic"
+        "Organic",
+        "Fair_Trade"
       ]
     },
     {
       "name": "Yirgacheffe Special",
       "certs": [
-        "Fair_Trade",
-        "Organic"
+        "Organic",
+        "Fair_Trade"
       ]
     },
     {
       "name": "Kenya AA",
       "certs": [
-        "Organic",
-        "Fair_Trade"
+        "Fair_Trade",
+        "Organic"
       ]
     }
   ],
@@ -1221,7 +1221,7 @@
     },
     {
       "brand": "Robusta Select",
-      "chain": "Dunkin Donuts"
+      "chain": "McCafe"
     },
     {
       "brand": "Robusta Select",
@@ -1229,7 +1229,7 @@
     },
     {
       "brand": "Robusta Select",
-      "chain": "McCafe"
+      "chain": "Dunkin Donuts"
     },
     {
       "brand": "Java Estate",
@@ -1237,6 +1237,10 @@
     },
     {
       "brand": "Java Estate",
+      "chain": "Starbucks"
+    },
+    {
+      "brand": "Antigua Premium",
       "chain": "Starbucks"
     },
     {
@@ -1244,20 +1248,16 @@
       "chain": "Peet Coffee"
     },
     {
-      "brand": "Antigua Premium",
-      "chain": "Starbucks"
-    },
-    {
       "brand": "Bourbon Santos",
       "chain": "Caffe Nero"
     },
     {
       "brand": "Bourbon Santos",
-      "chain": "Costa Coffee"
+      "chain": "Lavazza"
     },
     {
       "brand": "Bourbon Santos",
-      "chain": "Lavazza"
+      "chain": "Costa Coffee"
     },
     {
       "brand": "Sidamo Natural",
@@ -1269,11 +1269,11 @@
     },
     {
       "brand": "Tarrazu Reserve",
-      "chain": "Starbucks"
+      "chain": "Philz Coffee"
     },
     {
       "brand": "Tarrazu Reserve",
-      "chain": "Philz Coffee"
+      "chain": "Starbucks"
     },
     {
       "brand": "Yirgacheffe Special",
@@ -1297,10 +1297,6 @@
     },
     {
       "brand": "Kenya AA",
-      "chain": "Intelligentsia Coffee"
-    },
-    {
-      "brand": "Kenya AA",
       "chain": "Caffe Nero"
     },
     {
@@ -1308,8 +1304,12 @@
       "chain": "Blue Bottle"
     },
     {
-      "brand": "Colombian Supremo",
+      "brand": "Kenya AA",
       "chain": "Intelligentsia Coffee"
+    },
+    {
+      "brand": "Colombian Supremo",
+      "chain": "Starbucks"
     },
     {
       "brand": "Colombian Supremo",
@@ -1317,19 +1317,19 @@
     },
     {
       "brand": "Colombian Supremo",
+      "chain": "Intelligentsia Coffee"
+    },
+    {
+      "brand": "Sumatra Mandheling",
+      "chain": "Costa Coffee"
+    },
+    {
+      "brand": "Sumatra Mandheling",
       "chain": "Starbucks"
     },
     {
       "brand": "Sumatra Mandheling",
       "chain": "Peet Coffee"
-    },
-    {
-      "brand": "Sumatra Mandheling",
-      "chain": "Starbucks"
-    },
-    {
-      "brand": "Sumatra Mandheling",
-      "chain": "Costa Coffee"
     },
     {
       "brand": "Honduras SHG",
@@ -1337,15 +1337,15 @@
     },
     {
       "brand": "Honduras SHG",
-      "chain": "Dunkin Donuts"
-    },
-    {
-      "brand": "Honduras SHG",
       "chain": "McCafe"
     },
     {
+      "brand": "Honduras SHG",
+      "chain": "Dunkin Donuts"
+    },
+    {
       "brand": "Huila Reserve",
-      "chain": "Peet Coffee"
+      "chain": "Blue Bottle"
     },
     {
       "brand": "Huila Reserve",
@@ -1353,7 +1353,7 @@
     },
     {
       "brand": "Huila Reserve",
-      "chain": "Blue Bottle"
+      "chain": "Peet Coffee"
     }
   ],
   "flow_nodes": [
@@ -1596,8 +1596,8 @@
       "type": "chain"
     },
     {
-      "id": "chain_Dunkin_Donuts",
-      "label": "Dunkin Donuts",
+      "id": "chain_McCafe",
+      "label": "McCafe",
       "type": "chain"
     },
     {
@@ -1606,8 +1606,8 @@
       "type": "chain"
     },
     {
-      "id": "chain_McCafe",
-      "label": "McCafe",
+      "id": "chain_Dunkin_Donuts",
+      "label": "Dunkin Donuts",
       "type": "chain"
     },
     {
@@ -1764,7 +1764,7 @@
     },
     {
       "source": "brand_Robusta_Select",
-      "target": "chain_Dunkin_Donuts",
+      "target": "chain_McCafe",
       "type": "supplies"
     },
     {
@@ -1774,7 +1774,7 @@
     },
     {
       "source": "brand_Robusta_Select",
-      "target": "chain_McCafe",
+      "target": "chain_Dunkin_Donuts",
       "type": "supplies"
     },
     {
@@ -1784,6 +1784,11 @@
     },
     {
       "source": "brand_Java_Estate",
+      "target": "chain_Starbucks",
+      "type": "supplies"
+    },
+    {
+      "source": "brand_Antigua_Premium",
       "target": "chain_Starbucks",
       "type": "supplies"
     },
@@ -1793,23 +1798,18 @@
       "type": "supplies"
     },
     {
-      "source": "brand_Antigua_Premium",
-      "target": "chain_Starbucks",
-      "type": "supplies"
-    },
-    {
       "source": "brand_Bourbon_Santos",
       "target": "chain_Caffe_Nero",
       "type": "supplies"
     },
     {
       "source": "brand_Bourbon_Santos",
-      "target": "chain_Costa_Coffee",
+      "target": "chain_Lavazza",
       "type": "supplies"
     },
     {
       "source": "brand_Bourbon_Santos",
-      "target": "chain_Lavazza",
+      "target": "chain_Costa_Coffee",
       "type": "supplies"
     },
     {
@@ -1824,12 +1824,12 @@
     },
     {
       "source": "brand_Tarrazu_Reserve",
-      "target": "chain_Starbucks",
+      "target": "chain_Philz_Coffee",
       "type": "supplies"
     },
     {
       "source": "brand_Tarrazu_Reserve",
-      "target": "chain_Philz_Coffee",
+      "target": "chain_Starbucks",
       "type": "supplies"
     },
     {
@@ -1859,11 +1859,6 @@
     },
     {
       "source": "brand_Kenya_AA",
-      "target": "chain_Intelligentsia_Coffee",
-      "type": "supplies"
-    },
-    {
-      "source": "brand_Kenya_AA",
       "target": "chain_Caffe_Nero",
       "type": "supplies"
     },
@@ -1873,8 +1868,13 @@
       "type": "supplies"
     },
     {
-      "source": "brand_Colombian_Supremo",
+      "source": "brand_Kenya_AA",
       "target": "chain_Intelligentsia_Coffee",
+      "type": "supplies"
+    },
+    {
+      "source": "brand_Colombian_Supremo",
+      "target": "chain_Starbucks",
       "type": "supplies"
     },
     {
@@ -1884,22 +1884,22 @@
     },
     {
       "source": "brand_Colombian_Supremo",
+      "target": "chain_Intelligentsia_Coffee",
+      "type": "supplies"
+    },
+    {
+      "source": "brand_Sumatra_Mandheling",
+      "target": "chain_Costa_Coffee",
+      "type": "supplies"
+    },
+    {
+      "source": "brand_Sumatra_Mandheling",
       "target": "chain_Starbucks",
       "type": "supplies"
     },
     {
       "source": "brand_Sumatra_Mandheling",
       "target": "chain_Peet_Coffee",
-      "type": "supplies"
-    },
-    {
-      "source": "brand_Sumatra_Mandheling",
-      "target": "chain_Starbucks",
-      "type": "supplies"
-    },
-    {
-      "source": "brand_Sumatra_Mandheling",
-      "target": "chain_Costa_Coffee",
       "type": "supplies"
     },
     {
@@ -1909,17 +1909,17 @@
     },
     {
       "source": "brand_Honduras_SHG",
-      "target": "chain_Dunkin_Donuts",
-      "type": "supplies"
-    },
-    {
-      "source": "brand_Honduras_SHG",
       "target": "chain_McCafe",
       "type": "supplies"
     },
     {
+      "source": "brand_Honduras_SHG",
+      "target": "chain_Dunkin_Donuts",
+      "type": "supplies"
+    },
+    {
       "source": "brand_Huila_Reserve",
-      "target": "chain_Peet_Coffee",
+      "target": "chain_Blue_Bottle",
       "type": "supplies"
     },
     {
@@ -1929,7 +1929,7 @@
     },
     {
       "source": "brand_Huila_Reserve",
-      "target": "chain_Blue_Bottle",
+      "target": "chain_Peet_Coffee",
       "type": "supplies"
     }
   ]
