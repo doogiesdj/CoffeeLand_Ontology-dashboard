@@ -4540,4 +4540,571 @@
     <rdfs:comment xml:lang="en">Connects a Warehouse to a nearby Port. Declared Symmetric so adjacency is automatically inferred in both directions. No domain or range restriction to avoid contradiction with Port DisjointWith Warehouse.</rdfs:comment>
   </rdf:Description>
 
+
+  <!-- ═══ NEW BeverageMenu Individuals (20) ═══ -->
+
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Ristretto">
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#BeverageMenu"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <untitled-ontology-2:hasBeverageName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ristretto</untitled-ontology-2:hasBeverageName>
+    <untitled-ontology-2:hasCategory rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Espresso</untitled-ontology-2:hasCategory>
+    <untitled-ontology-2:hasTemperature rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Hot</untitled-ontology-2:hasTemperature>
+    <untitled-ontology-2:hasCalories rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</untitled-ontology-2:hasCalories>
+    <untitled-ontology-2:hasCaffeineContent rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">75</untitled-ontology-2:hasCaffeineContent>
+    <untitled-ontology-2:hasRating rdf:datatype="http://www.w3.org/2001/XMLSchema#float">4.4</untitled-ontology-2:hasRating>
+    <untitled-ontology-2:hasPriceSmall rdf:datatype="http://www.w3.org/2001/XMLSchema#float">2.5</untitled-ontology-2:hasPriceSmall>
+    <untitled-ontology-2:hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Very short espresso pull, intense and concentrated</untitled-ontology-2:hasDescription>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Lungo">
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#BeverageMenu"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <untitled-ontology-2:hasBeverageName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Lungo</untitled-ontology-2:hasBeverageName>
+    <untitled-ontology-2:hasCategory rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Espresso</untitled-ontology-2:hasCategory>
+    <untitled-ontology-2:hasTemperature rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Hot</untitled-ontology-2:hasTemperature>
+    <untitled-ontology-2:hasCalories rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</untitled-ontology-2:hasCalories>
+    <untitled-ontology-2:hasCaffeineContent rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">90</untitled-ontology-2:hasCaffeineContent>
+    <untitled-ontology-2:hasRating rdf:datatype="http://www.w3.org/2001/XMLSchema#float">4.2</untitled-ontology-2:hasRating>
+    <untitled-ontology-2:hasPriceSmall rdf:datatype="http://www.w3.org/2001/XMLSchema#float">2.8</untitled-ontology-2:hasPriceSmall>
+    <untitled-ontology-2:hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Long-pull espresso, milder flavor with more volume</untitled-ontology-2:hasDescription>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Cafe_au_Lait">
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#BeverageMenu"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <untitled-ontology-2:hasBeverageName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Cafe au Lait</untitled-ontology-2:hasBeverageName>
+    <untitled-ontology-2:hasCategory rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Espresso</untitled-ontology-2:hasCategory>
+    <untitled-ontology-2:hasTemperature rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Hot</untitled-ontology-2:hasTemperature>
+    <untitled-ontology-2:hasCalories rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">140</untitled-ontology-2:hasCalories>
+    <untitled-ontology-2:hasCaffeineContent rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">80</untitled-ontology-2:hasCaffeineContent>
+    <untitled-ontology-2:hasRating rdf:datatype="http://www.w3.org/2001/XMLSchema#float">4.4</untitled-ontology-2:hasRating>
+    <untitled-ontology-2:hasPriceSmall rdf:datatype="http://www.w3.org/2001/XMLSchema#float">3.5</untitled-ontology-2:hasPriceSmall>
+    <untitled-ontology-2:hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Equal parts brewed coffee and steamed milk, French classic</untitled-ontology-2:hasDescription>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Espresso_Con_Panna">
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#BeverageMenu"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <untitled-ontology-2:hasBeverageName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Espresso Con Panna</untitled-ontology-2:hasBeverageName>
+    <untitled-ontology-2:hasCategory rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Espresso</untitled-ontology-2:hasCategory>
+    <untitled-ontology-2:hasTemperature rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Hot</untitled-ontology-2:hasTemperature>
+    <untitled-ontology-2:hasCalories rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">60</untitled-ontology-2:hasCalories>
+    <untitled-ontology-2:hasCaffeineContent rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">63</untitled-ontology-2:hasCaffeineContent>
+    <untitled-ontology-2:hasRating rdf:datatype="http://www.w3.org/2001/XMLSchema#float">4.3</untitled-ontology-2:hasRating>
+    <untitled-ontology-2:hasPriceSmall rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</untitled-ontology-2:hasPriceSmall>
+    <untitled-ontology-2:hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Espresso topped with a dollop of whipped cream</untitled-ontology-2:hasDescription>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Doppio">
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#BeverageMenu"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <untitled-ontology-2:hasBeverageName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Doppio</untitled-ontology-2:hasBeverageName>
+    <untitled-ontology-2:hasCategory rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Espresso</untitled-ontology-2:hasCategory>
+    <untitled-ontology-2:hasTemperature rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Hot</untitled-ontology-2:hasTemperature>
+    <untitled-ontology-2:hasCalories rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">10</untitled-ontology-2:hasCalories>
+    <untitled-ontology-2:hasCaffeineContent rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">126</untitled-ontology-2:hasCaffeineContent>
+    <untitled-ontology-2:hasRating rdf:datatype="http://www.w3.org/2001/XMLSchema#float">4.4</untitled-ontology-2:hasRating>
+    <untitled-ontology-2:hasPriceSmall rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</untitled-ontology-2:hasPriceSmall>
+    <untitled-ontology-2:hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Double shot of espresso, bold and full-bodied</untitled-ontology-2:hasDescription>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Vienna_Coffee">
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#BeverageMenu"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <untitled-ontology-2:hasBeverageName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Vienna Coffee</untitled-ontology-2:hasBeverageName>
+    <untitled-ontology-2:hasCategory rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Signature</untitled-ontology-2:hasCategory>
+    <untitled-ontology-2:hasTemperature rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Hot</untitled-ontology-2:hasTemperature>
+    <untitled-ontology-2:hasCalories rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">180</untitled-ontology-2:hasCalories>
+    <untitled-ontology-2:hasCaffeineContent rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">95</untitled-ontology-2:hasCaffeineContent>
+    <untitled-ontology-2:hasRating rdf:datatype="http://www.w3.org/2001/XMLSchema#float">4.5</untitled-ontology-2:hasRating>
+    <untitled-ontology-2:hasPriceSmall rdf:datatype="http://www.w3.org/2001/XMLSchema#float">4.5</untitled-ontology-2:hasPriceSmall>
+    <untitled-ontology-2:hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Strong espresso topped with whipped cream and chocolate powder</untitled-ontology-2:hasDescription>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Irish_Coffee">
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#BeverageMenu"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <untitled-ontology-2:hasBeverageName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Irish Coffee</untitled-ontology-2:hasBeverageName>
+    <untitled-ontology-2:hasCategory rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Signature</untitled-ontology-2:hasCategory>
+    <untitled-ontology-2:hasTemperature rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Hot</untitled-ontology-2:hasTemperature>
+    <untitled-ontology-2:hasCalories rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">210</untitled-ontology-2:hasCalories>
+    <untitled-ontology-2:hasCaffeineContent rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">80</untitled-ontology-2:hasCaffeineContent>
+    <untitled-ontology-2:hasRating rdf:datatype="http://www.w3.org/2001/XMLSchema#float">4.6</untitled-ontology-2:hasRating>
+    <untitled-ontology-2:hasPriceSmall rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">6</untitled-ontology-2:hasPriceSmall>
+    <untitled-ontology-2:hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Hot coffee with Irish whiskey, sugar, and cream</untitled-ontology-2:hasDescription>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Cafe_Bombon">
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#BeverageMenu"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <untitled-ontology-2:hasBeverageName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Cafe Bombon</untitled-ontology-2:hasBeverageName>
+    <untitled-ontology-2:hasCategory rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Signature</untitled-ontology-2:hasCategory>
+    <untitled-ontology-2:hasTemperature rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Hot</untitled-ontology-2:hasTemperature>
+    <untitled-ontology-2:hasCalories rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">220</untitled-ontology-2:hasCalories>
+    <untitled-ontology-2:hasCaffeineContent rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">63</untitled-ontology-2:hasCaffeineContent>
+    <untitled-ontology-2:hasRating rdf:datatype="http://www.w3.org/2001/XMLSchema#float">4.3</untitled-ontology-2:hasRating>
+    <untitled-ontology-2:hasPriceSmall rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</untitled-ontology-2:hasPriceSmall>
+    <untitled-ontology-2:hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Spanish-style espresso with sweetened condensed milk</untitled-ontology-2:hasDescription>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Einspanner">
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#BeverageMenu"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <untitled-ontology-2:hasBeverageName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Einspanner</untitled-ontology-2:hasBeverageName>
+    <untitled-ontology-2:hasCategory rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Signature</untitled-ontology-2:hasCategory>
+    <untitled-ontology-2:hasTemperature rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Hot</untitled-ontology-2:hasTemperature>
+    <untitled-ontology-2:hasCalories rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">190</untitled-ontology-2:hasCalories>
+    <untitled-ontology-2:hasCaffeineContent rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">126</untitled-ontology-2:hasCaffeineContent>
+    <untitled-ontology-2:hasRating rdf:datatype="http://www.w3.org/2001/XMLSchema#float">4.5</untitled-ontology-2:hasRating>
+    <untitled-ontology-2:hasPriceSmall rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</untitled-ontology-2:hasPriceSmall>
+    <untitled-ontology-2:hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Austrian double espresso topped with whipped cream</untitled-ontology-2:hasDescription>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Honey_Latte">
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#BeverageMenu"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <untitled-ontology-2:hasBeverageName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Honey Latte</untitled-ontology-2:hasBeverageName>
+    <untitled-ontology-2:hasCategory rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Signature</untitled-ontology-2:hasCategory>
+    <untitled-ontology-2:hasTemperature rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Hot</untitled-ontology-2:hasTemperature>
+    <untitled-ontology-2:hasCalories rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">230</untitled-ontology-2:hasCalories>
+    <untitled-ontology-2:hasCaffeineContent rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">75</untitled-ontology-2:hasCaffeineContent>
+    <untitled-ontology-2:hasRating rdf:datatype="http://www.w3.org/2001/XMLSchema#float">4.6</untitled-ontology-2:hasRating>
+    <untitled-ontology-2:hasPriceSmall rdf:datatype="http://www.w3.org/2001/XMLSchema#float">4.5</untitled-ontology-2:hasPriceSmall>
+    <untitled-ontology-2:hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Espresso with steamed milk and honey drizzle</untitled-ontology-2:hasDescription>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Shakerato">
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#BeverageMenu"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <untitled-ontology-2:hasBeverageName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Shakerato</untitled-ontology-2:hasBeverageName>
+    <untitled-ontology-2:hasCategory rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Cold_Blended</untitled-ontology-2:hasCategory>
+    <untitled-ontology-2:hasTemperature rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Cold</untitled-ontology-2:hasTemperature>
+    <untitled-ontology-2:hasCalories rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">40</untitled-ontology-2:hasCalories>
+    <untitled-ontology-2:hasCaffeineContent rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">95</untitled-ontology-2:hasCaffeineContent>
+    <untitled-ontology-2:hasRating rdf:datatype="http://www.w3.org/2001/XMLSchema#float">4.4</untitled-ontology-2:hasRating>
+    <untitled-ontology-2:hasPriceSmall rdf:datatype="http://www.w3.org/2001/XMLSchema#float">4.5</untitled-ontology-2:hasPriceSmall>
+    <untitled-ontology-2:hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Italian iced espresso shaken with ice and sugar</untitled-ontology-2:hasDescription>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Iced_Cappuccino">
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#BeverageMenu"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <untitled-ontology-2:hasBeverageName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Iced Cappuccino</untitled-ontology-2:hasBeverageName>
+    <untitled-ontology-2:hasCategory rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Cold_Blended</untitled-ontology-2:hasCategory>
+    <untitled-ontology-2:hasTemperature rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Cold</untitled-ontology-2:hasTemperature>
+    <untitled-ontology-2:hasCalories rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">130</untitled-ontology-2:hasCalories>
+    <untitled-ontology-2:hasCaffeineContent rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">75</untitled-ontology-2:hasCaffeineContent>
+    <untitled-ontology-2:hasRating rdf:datatype="http://www.w3.org/2001/XMLSchema#float">4.5</untitled-ontology-2:hasRating>
+    <untitled-ontology-2:hasPriceSmall rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</untitled-ontology-2:hasPriceSmall>
+    <untitled-ontology-2:hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Chilled espresso with cold milk foam over ice</untitled-ontology-2:hasDescription>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Frappuccino">
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#BeverageMenu"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <untitled-ontology-2:hasBeverageName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Frappuccino</untitled-ontology-2:hasBeverageName>
+    <untitled-ontology-2:hasCategory rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Cold_Blended</untitled-ontology-2:hasCategory>
+    <untitled-ontology-2:hasTemperature rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Cold</untitled-ontology-2:hasTemperature>
+    <untitled-ontology-2:hasCalories rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">380</untitled-ontology-2:hasCalories>
+    <untitled-ontology-2:hasCaffeineContent rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">65</untitled-ontology-2:hasCaffeineContent>
+    <untitled-ontology-2:hasRating rdf:datatype="http://www.w3.org/2001/XMLSchema#float">4.4</untitled-ontology-2:hasRating>
+    <untitled-ontology-2:hasPriceSmall rdf:datatype="http://www.w3.org/2001/XMLSchema#float">4.5</untitled-ontology-2:hasPriceSmall>
+    <untitled-ontology-2:hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Blended iced coffee with milk, ice, and whipped cream</untitled-ontology-2:hasDescription>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Dalgona_Coffee">
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#BeverageMenu"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <untitled-ontology-2:hasBeverageName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Dalgona Coffee</untitled-ontology-2:hasBeverageName>
+    <untitled-ontology-2:hasCategory rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Cold_Blended</untitled-ontology-2:hasCategory>
+    <untitled-ontology-2:hasTemperature rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Cold</untitled-ontology-2:hasTemperature>
+    <untitled-ontology-2:hasCalories rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">260</untitled-ontology-2:hasCalories>
+    <untitled-ontology-2:hasCaffeineContent rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">90</untitled-ontology-2:hasCaffeineContent>
+    <untitled-ontology-2:hasRating rdf:datatype="http://www.w3.org/2001/XMLSchema#float">4.3</untitled-ontology-2:hasRating>
+    <untitled-ontology-2:hasPriceSmall rdf:datatype="http://www.w3.org/2001/XMLSchema#float">4.5</untitled-ontology-2:hasPriceSmall>
+    <untitled-ontology-2:hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Whipped instant coffee foam over cold milk, Korean trend</untitled-ontology-2:hasDescription>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Chai_Latte">
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#BeverageMenu"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <untitled-ontology-2:hasBeverageName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Chai Latte</untitled-ontology-2:hasBeverageName>
+    <untitled-ontology-2:hasCategory rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Tea</untitled-ontology-2:hasCategory>
+    <untitled-ontology-2:hasTemperature rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Hot</untitled-ontology-2:hasTemperature>
+    <untitled-ontology-2:hasCalories rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">200</untitled-ontology-2:hasCalories>
+    <untitled-ontology-2:hasCaffeineContent rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">50</untitled-ontology-2:hasCaffeineContent>
+    <untitled-ontology-2:hasRating rdf:datatype="http://www.w3.org/2001/XMLSchema#float">4.5</untitled-ontology-2:hasRating>
+    <untitled-ontology-2:hasPriceSmall rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</untitled-ontology-2:hasPriceSmall>
+    <untitled-ontology-2:hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Spiced chai tea concentrate with steamed milk</untitled-ontology-2:hasDescription>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Matcha_Latte">
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#BeverageMenu"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <untitled-ontology-2:hasBeverageName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Matcha Latte</untitled-ontology-2:hasBeverageName>
+    <untitled-ontology-2:hasCategory rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Tea</untitled-ontology-2:hasCategory>
+    <untitled-ontology-2:hasTemperature rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Hot</untitled-ontology-2:hasTemperature>
+    <untitled-ontology-2:hasCalories rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">190</untitled-ontology-2:hasCalories>
+    <untitled-ontology-2:hasCaffeineContent rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">70</untitled-ontology-2:hasCaffeineContent>
+    <untitled-ontology-2:hasRating rdf:datatype="http://www.w3.org/2001/XMLSchema#float">4.6</untitled-ontology-2:hasRating>
+    <untitled-ontology-2:hasPriceSmall rdf:datatype="http://www.w3.org/2001/XMLSchema#float">4.5</untitled-ontology-2:hasPriceSmall>
+    <untitled-ontology-2:hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ceremonial grade matcha whisked with steamed milk</untitled-ontology-2:hasDescription>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Hot_Chocolate">
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#BeverageMenu"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <untitled-ontology-2:hasBeverageName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Hot Chocolate</untitled-ontology-2:hasBeverageName>
+    <untitled-ontology-2:hasCategory rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Tea</untitled-ontology-2:hasCategory>
+    <untitled-ontology-2:hasTemperature rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Hot</untitled-ontology-2:hasTemperature>
+    <untitled-ontology-2:hasCalories rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">320</untitled-ontology-2:hasCalories>
+    <untitled-ontology-2:hasCaffeineContent rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</untitled-ontology-2:hasCaffeineContent>
+    <untitled-ontology-2:hasRating rdf:datatype="http://www.w3.org/2001/XMLSchema#float">4.5</untitled-ontology-2:hasRating>
+    <untitled-ontology-2:hasPriceSmall rdf:datatype="http://www.w3.org/2001/XMLSchema#float">3.5</untitled-ontology-2:hasPriceSmall>
+    <untitled-ontology-2:hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Rich chocolate sauce blended with steamed milk</untitled-ontology-2:hasDescription>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Turkish_Coffee">
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#BeverageMenu"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <untitled-ontology-2:hasBeverageName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Turkish Coffee</untitled-ontology-2:hasBeverageName>
+    <untitled-ontology-2:hasCategory rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Alternative</untitled-ontology-2:hasCategory>
+    <untitled-ontology-2:hasTemperature rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Hot</untitled-ontology-2:hasTemperature>
+    <untitled-ontology-2:hasCalories rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">10</untitled-ontology-2:hasCalories>
+    <untitled-ontology-2:hasCaffeineContent rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">165</untitled-ontology-2:hasCaffeineContent>
+    <untitled-ontology-2:hasRating rdf:datatype="http://www.w3.org/2001/XMLSchema#float">4.5</untitled-ontology-2:hasRating>
+    <untitled-ontology-2:hasPriceSmall rdf:datatype="http://www.w3.org/2001/XMLSchema#float">3.5</untitled-ontology-2:hasPriceSmall>
+    <untitled-ontology-2:hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Finely ground coffee boiled in cezve, unfiltered</untitled-ontology-2:hasDescription>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Moka_Pot">
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#BeverageMenu"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <untitled-ontology-2:hasBeverageName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Moka Pot</untitled-ontology-2:hasBeverageName>
+    <untitled-ontology-2:hasCategory rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Alternative</untitled-ontology-2:hasCategory>
+    <untitled-ontology-2:hasTemperature rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Hot</untitled-ontology-2:hasTemperature>
+    <untitled-ontology-2:hasCalories rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</untitled-ontology-2:hasCalories>
+    <untitled-ontology-2:hasCaffeineContent rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">130</untitled-ontology-2:hasCaffeineContent>
+    <untitled-ontology-2:hasRating rdf:datatype="http://www.w3.org/2001/XMLSchema#float">4.3</untitled-ontology-2:hasRating>
+    <untitled-ontology-2:hasPriceSmall rdf:datatype="http://www.w3.org/2001/XMLSchema#float">3.5</untitled-ontology-2:hasPriceSmall>
+    <untitled-ontology-2:hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Stovetop brewed coffee, Italian Bialetti style</untitled-ontology-2:hasDescription>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Decaf_Latte">
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#BeverageMenu"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <untitled-ontology-2:hasBeverageName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Decaf Latte</untitled-ontology-2:hasBeverageName>
+    <untitled-ontology-2:hasCategory rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Decaf</untitled-ontology-2:hasCategory>
+    <untitled-ontology-2:hasTemperature rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Hot</untitled-ontology-2:hasTemperature>
+    <untitled-ontology-2:hasCalories rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">190</untitled-ontology-2:hasCalories>
+    <untitled-ontology-2:hasCaffeineContent rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</untitled-ontology-2:hasCaffeineContent>
+    <untitled-ontology-2:hasRating rdf:datatype="http://www.w3.org/2001/XMLSchema#float">4.2</untitled-ontology-2:hasRating>
+    <untitled-ontology-2:hasPriceSmall rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</untitled-ontology-2:hasPriceSmall>
+    <untitled-ontology-2:hasDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Decaffeinated espresso with steamed milk</untitled-ontology-2:hasDescription>
+  </rdf:Description>
+
+  <!-- ═══ NEW Equipment Individuals (14) ═══ -->
+
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#EM_LaMarzocco_Linea">
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#EspressoMachine"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <untitled-ontology-2:hasModel rdf:datatype="http://www.w3.org/2001/XMLSchema#string">La Marzocco Linea PB</untitled-ontology-2:hasModel>
+    <untitled-ontology-2:hasManufacturer rdf:datatype="http://www.w3.org/2001/XMLSchema#string">La Marzocco</untitled-ontology-2:hasManufacturer>
+    <untitled-ontology-2:hasCountry rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Italy</untitled-ontology-2:hasCountry>
+    <untitled-ontology-2:hasPowerWatt rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3200</untitled-ontology-2:hasPowerWatt>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#EM_Synesso_MVP">
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#EspressoMachine"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <untitled-ontology-2:hasModel rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Synesso MVP Hydra</untitled-ontology-2:hasModel>
+    <untitled-ontology-2:hasManufacturer rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Synesso</untitled-ontology-2:hasManufacturer>
+    <untitled-ontology-2:hasCountry rdf:datatype="http://www.w3.org/2001/XMLSchema#string">USA</untitled-ontology-2:hasCountry>
+    <untitled-ontology-2:hasPowerWatt rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4500</untitled-ontology-2:hasPowerWatt>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#EM_Nuova_Simonelli">
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#EspressoMachine"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <untitled-ontology-2:hasModel rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Nuova Simonelli Aurelia</untitled-ontology-2:hasModel>
+    <untitled-ontology-2:hasManufacturer rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Nuova Simonelli</untitled-ontology-2:hasManufacturer>
+    <untitled-ontology-2:hasCountry rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Italy</untitled-ontology-2:hasCountry>
+    <untitled-ontology-2:hasPowerWatt rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3800</untitled-ontology-2:hasPowerWatt>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#EM_DeLonghi_Pro">
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#EspressoMachine"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <untitled-ontology-2:hasModel rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DeLonghi La Specialista</untitled-ontology-2:hasModel>
+    <untitled-ontology-2:hasManufacturer rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DeLonghi</untitled-ontology-2:hasManufacturer>
+    <untitled-ontology-2:hasCountry rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Italy</untitled-ontology-2:hasCountry>
+    <untitled-ontology-2:hasPowerWatt rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1450</untitled-ontology-2:hasPowerWatt>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#GR_Mahlkonig_EK43">
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Grinder"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <untitled-ontology-2:hasModel rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Mahlkönig EK43S</untitled-ontology-2:hasModel>
+    <untitled-ontology-2:hasManufacturer rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Mahlkönig</untitled-ontology-2:hasManufacturer>
+    <untitled-ontology-2:hasCountry rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Germany</untitled-ontology-2:hasCountry>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#GR_Baratza_Forte">
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Grinder"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <untitled-ontology-2:hasModel rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Baratza Forte BG</untitled-ontology-2:hasModel>
+    <untitled-ontology-2:hasManufacturer rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Baratza</untitled-ontology-2:hasManufacturer>
+    <untitled-ontology-2:hasCountry rdf:datatype="http://www.w3.org/2001/XMLSchema#string">USA</untitled-ontology-2:hasCountry>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#GR_Mazzer_Major">
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Grinder"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <untitled-ontology-2:hasModel rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Mazzer Major V</untitled-ontology-2:hasModel>
+    <untitled-ontology-2:hasManufacturer rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Mazzer</untitled-ontology-2:hasManufacturer>
+    <untitled-ontology-2:hasCountry rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Italy</untitled-ontology-2:hasCountry>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#IM_Hoshizaki_KM">
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#IceMaker"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <untitled-ontology-2:hasModel rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Hoshizaki KM-320MAJ</untitled-ontology-2:hasModel>
+    <untitled-ontology-2:hasManufacturer rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Hoshizaki</untitled-ontology-2:hasManufacturer>
+    <untitled-ontology-2:hasCountry rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Japan</untitled-ontology-2:hasCountry>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#IM_Scotsman_NDE">
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#IceMaker"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <untitled-ontology-2:hasModel rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Scotsman NDE 654</untitled-ontology-2:hasModel>
+    <untitled-ontology-2:hasManufacturer rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Scotsman</untitled-ontology-2:hasManufacturer>
+    <untitled-ontology-2:hasCountry rdf:datatype="http://www.w3.org/2001/XMLSchema#string">USA</untitled-ontology-2:hasCountry>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#RM_Probat_P25">
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#RoasterMachine"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <untitled-ontology-2:hasModel rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Probat P25</untitled-ontology-2:hasModel>
+    <untitled-ontology-2:hasManufacturer rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Probat</untitled-ontology-2:hasManufacturer>
+    <untitled-ontology-2:hasCountry rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Germany</untitled-ontology-2:hasCountry>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#RM_Giesen_W15">
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#RoasterMachine"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <untitled-ontology-2:hasModel rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Giesen W15A</untitled-ontology-2:hasModel>
+    <untitled-ontology-2:hasManufacturer rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Giesen</untitled-ontology-2:hasManufacturer>
+    <untitled-ontology-2:hasCountry rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Netherlands</untitled-ontology-2:hasCountry>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#RM_Loring_S35">
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#RoasterMachine"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <untitled-ontology-2:hasModel rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Loring S35 Kestrel</untitled-ontology-2:hasModel>
+    <untitled-ontology-2:hasManufacturer rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Loring</untitled-ontology-2:hasManufacturer>
+    <untitled-ontology-2:hasCountry rdf:datatype="http://www.w3.org/2001/XMLSchema#string">USA</untitled-ontology-2:hasCountry>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#WF_Brita_Purity">
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#WaterFilter"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <untitled-ontology-2:hasModel rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Brita Purity C1100</untitled-ontology-2:hasModel>
+    <untitled-ontology-2:hasManufacturer rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Brita</untitled-ontology-2:hasManufacturer>
+    <untitled-ontology-2:hasCountry rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Germany</untitled-ontology-2:hasCountry>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#WF_Everpure_4C">
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#WaterFilter"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <untitled-ontology-2:hasModel rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Everpure 4C</untitled-ontology-2:hasModel>
+    <untitled-ontology-2:hasManufacturer rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Everpure</untitled-ontology-2:hasManufacturer>
+    <untitled-ontology-2:hasCountry rdf:datatype="http://www.w3.org/2001/XMLSchema#string">USA</untitled-ontology-2:hasCountry>
+  </rdf:Description>
+
+  <!-- ═══ NEW Ingredient Individuals (20) ═══ -->
+
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Ing_Croissant">
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Bakery"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <untitled-ontology-2:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Butter Croissant</untitled-ontology-2:hasName>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Ing_Muffin">
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Bakery"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <untitled-ontology-2:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Blueberry Muffin</untitled-ontology-2:hasName>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Ing_Scone">
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Bakery"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <untitled-ontology-2:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Classic Scone</untitled-ontology-2:hasName>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Ing_Brownie">
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Bakery"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <untitled-ontology-2:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Chocolate Brownie</untitled-ontology-2:hasName>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Ing_ChocolateSauce_GH">
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Sauce"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <untitled-ontology-2:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Dark Chocolate Sauce</untitled-ontology-2:hasName>
+    <untitled-ontology-2:hasBrand rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ghirardelli</untitled-ontology-2:hasBrand>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Ing_CaramelDrizzle">
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Sauce"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <untitled-ontology-2:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Caramel Drizzle</untitled-ontology-2:hasName>
+    <untitled-ontology-2:hasBrand rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Torani</untitled-ontology-2:hasBrand>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Ing_WhiteMocha">
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Sauce"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <untitled-ontology-2:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">White Mocha Sauce</untitled-ontology-2:hasName>
+    <untitled-ontology-2:hasBrand rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Monin</untitled-ontology-2:hasBrand>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Ing_VanillaSyrup_M">
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Syrup"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <untitled-ontology-2:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Vanilla Syrup</untitled-ontology-2:hasName>
+    <untitled-ontology-2:hasBrand rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Monin</untitled-ontology-2:hasBrand>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Ing_HazelnutSyrup">
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Syrup"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <untitled-ontology-2:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Hazelnut Syrup</untitled-ontology-2:hasName>
+    <untitled-ontology-2:hasBrand rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Torani</untitled-ontology-2:hasBrand>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Ing_CaramelSyrup_M">
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Syrup"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <untitled-ontology-2:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Caramel Syrup</untitled-ontology-2:hasName>
+    <untitled-ontology-2:hasBrand rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Monin</untitled-ontology-2:hasBrand>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Ing_PumpkinSpice">
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Syrup"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <untitled-ontology-2:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Pumpkin Spice Syrup</untitled-ontology-2:hasName>
+    <untitled-ontology-2:hasBrand rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DaVinci</untitled-ontology-2:hasBrand>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Ing_HoneySyrup">
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Syrup"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <untitled-ontology-2:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Honey Syrup</untitled-ontology-2:hasName>
+    <untitled-ontology-2:hasBrand rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Monin</untitled-ontology-2:hasBrand>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Ing_ChaiConcentrate">
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#TeaBase"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <untitled-ontology-2:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Chai Tea Concentrate</untitled-ontology-2:hasName>
+    <untitled-ontology-2:hasBrand rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Oregon Chai</untitled-ontology-2:hasBrand>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Ing_MatchaPowder">
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#TeaBase"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <untitled-ontology-2:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ceremonial Grade Matcha</untitled-ontology-2:hasName>
+    <untitled-ontology-2:hasBrand rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ippodo</untitled-ontology-2:hasBrand>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Ing_HibiscusTea">
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#TeaBase"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <untitled-ontology-2:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Hibiscus Herbal Tea</untitled-ontology-2:hasName>
+    <untitled-ontology-2:hasBrand rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Harney & Sons</untitled-ontology-2:hasBrand>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Ing_EarlGrey">
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#TeaBase"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <untitled-ontology-2:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Earl Grey Tea</untitled-ontology-2:hasName>
+    <untitled-ontology-2:hasBrand rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Twinings</untitled-ontology-2:hasBrand>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Ing_OatMilk">
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Milk"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <untitled-ontology-2:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Oat Milk</untitled-ontology-2:hasName>
+    <untitled-ontology-2:hasBrand rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Oatly</untitled-ontology-2:hasBrand>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Ing_AlmondMilk">
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Milk"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <untitled-ontology-2:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Almond Milk</untitled-ontology-2:hasName>
+    <untitled-ontology-2:hasBrand rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Califia Farms</untitled-ontology-2:hasBrand>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Ing_SoyMilk">
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Milk"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <untitled-ontology-2:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Soy Milk</untitled-ontology-2:hasName>
+    <untitled-ontology-2:hasBrand rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Silk</untitled-ontology-2:hasBrand>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Ing_CoconutMilk">
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Milk"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <untitled-ontology-2:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Coconut Milk</untitled-ontology-2:hasName>
+    <untitled-ontology-2:hasBrand rdf:datatype="http://www.w3.org/2001/XMLSchema#string">So Delicious</untitled-ontology-2:hasBrand>
+  </rdf:Description>
+
+  <!-- ═══ NEW Consumable Individuals (16) ═══ -->
+
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Con_SmallCup_8oz">
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#PaperCup"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <untitled-ontology-2:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Small Hot Cup 8oz</untitled-ontology-2:hasName>
+    <untitled-ontology-2:hasMaterial rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Double-wall Paper</untitled-ontology-2:hasMaterial>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Con_MediumCup_12oz">
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#PaperCup"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <untitled-ontology-2:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Medium Hot Cup 12oz</untitled-ontology-2:hasName>
+    <untitled-ontology-2:hasMaterial rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Double-wall Paper</untitled-ontology-2:hasMaterial>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Con_LargeCup_16oz">
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#PaperCup"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <untitled-ontology-2:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Large Hot Cup 16oz</untitled-ontology-2:hasName>
+    <untitled-ontology-2:hasMaterial rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Double-wall Paper</untitled-ontology-2:hasMaterial>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Con_ColdCup_16oz">
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#PaperCup"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <untitled-ontology-2:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Cold Cup 16oz</untitled-ontology-2:hasName>
+    <untitled-ontology-2:hasMaterial rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PET Plastic</untitled-ontology-2:hasMaterial>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Con_ColdCup_24oz">
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#PaperCup"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <untitled-ontology-2:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Cold Cup 24oz</untitled-ontology-2:hasName>
+    <untitled-ontology-2:hasMaterial rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PET Plastic</untitled-ontology-2:hasMaterial>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Con_HotLid_Dome">
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#TakeoutLid"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <untitled-ontology-2:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Hot Cup Dome Lid</untitled-ontology-2:hasName>
+    <untitled-ontology-2:hasMaterial rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PS Plastic</untitled-ontology-2:hasMaterial>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Con_HotLid_Sipthrough">
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#TakeoutLid"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <untitled-ontology-2:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Sip-through Hot Lid</untitled-ontology-2:hasName>
+    <untitled-ontology-2:hasMaterial rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PS Plastic</untitled-ontology-2:hasMaterial>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Con_ColdLid_Flat">
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#TakeoutLid"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <untitled-ontology-2:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Flat Cold Lid</untitled-ontology-2:hasName>
+    <untitled-ontology-2:hasMaterial rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PET Plastic</untitled-ontology-2:hasMaterial>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Con_PaperStraw">
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Straw"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <untitled-ontology-2:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Paper Straw</untitled-ontology-2:hasName>
+    <untitled-ontology-2:hasMaterial rdf:datatype="http://www.w3.org/2001/XMLSchema#string">FSC Paper</untitled-ontology-2:hasMaterial>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Con_BioplasticStraw">
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Straw"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <untitled-ontology-2:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bioplastic Straw (PLA)</untitled-ontology-2:hasName>
+    <untitled-ontology-2:hasMaterial rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PLA Bioplastic</untitled-ontology-2:hasMaterial>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Con_ReedStraw">
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Straw"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <untitled-ontology-2:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Reed Straw</untitled-ontology-2:hasName>
+    <untitled-ontology-2:hasMaterial rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Natural Reed</untitled-ontology-2:hasMaterial>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Con_CocktailNapkin">
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Napkin"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <untitled-ontology-2:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Cocktail Napkin (1-ply)</untitled-ontology-2:hasName>
+    <untitled-ontology-2:hasMaterial rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Recycled Paper</untitled-ontology-2:hasMaterial>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Con_LunchNapkin">
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Napkin"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <untitled-ontology-2:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Lunch Napkin (2-ply)</untitled-ontology-2:hasName>
+    <untitled-ontology-2:hasMaterial rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Virgin Pulp</untitled-ontology-2:hasMaterial>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Con_2CupCarrier">
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Carrier"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <untitled-ontology-2:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2-Cup Carrier</untitled-ontology-2:hasName>
+    <untitled-ontology-2:hasMaterial rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Corrugated Board</untitled-ontology-2:hasMaterial>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Con_4CupCarrier">
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Carrier"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <untitled-ontology-2:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">4-Cup Carrier</untitled-ontology-2:hasName>
+    <untitled-ontology-2:hasMaterial rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Molded Pulp</untitled-ontology-2:hasMaterial>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Con_ToteCarrier">
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Carrier"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <untitled-ontology-2:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Kraft Tote Bag</untitled-ontology-2:hasName>
+    <untitled-ontology-2:hasMaterial rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Kraft Paper</untitled-ontology-2:hasMaterial>
+  </rdf:Description>
+
 </rdf:RDF>
