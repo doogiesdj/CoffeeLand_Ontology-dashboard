@@ -7,6 +7,7 @@ on:
       - 'data/coffeeland_final_v2.rdf'        # RDF 파일 변경 시 자동 실행
       - 'data/coffeeland_data_enrichment.ttl'  # TTL 파일 변경 시 자동 실행
       - 'scripts/**'                           # 스크립트 변경 시 자동 실행
+      - 'dashboard.html'                       # 대시보드 HTML 변경 시 자동 실행
   workflow_dispatch:                           # 수동 실행도 가능
 
 jobs:
@@ -34,10 +35,12 @@ jobs:
           pip install rdflib
 
       # 4. RDF → JSON 변환 실행
-      - name: Generate JSON from RDF
+      - name: Generate JSON from RDF and copy RDF to docs
         run: |
           python scripts/rdf_to_json.py
-          echo "JSON 생성 완료"
+          cp data/coffeeland_final_v2.rdf docs/coffeeland-new.rdf
+          cp dashboard.html docs/dashboard.html
+          echo "JSON 생성 + RDF/HTML 복사 완료"
           ls -la docs/
 
       # 5. 변환된 파일을 docs/ 폴더에 커밋
