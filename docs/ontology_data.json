@@ -469,37 +469,58 @@
             {
               "uri": "http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Carrier",
               "name": "Carrier",
-              "instanceCount": 0,
+              "instanceCount": 3,
               "children": [],
-              "instances": []
+              "instances": [
+                "Con_2CupCarrier",
+                "Con_4CupCarrier",
+                "Con_ToteCarrier"
+              ]
             },
             {
               "uri": "http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Napkin",
               "name": "Napkin",
-              "instanceCount": 0,
+              "instanceCount": 2,
               "children": [],
-              "instances": []
+              "instances": [
+                "Con_CocktailNapkin",
+                "Con_LunchNapkin"
+              ]
             },
             {
               "uri": "http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#PaperCup",
               "name": "PaperCup",
-              "instanceCount": 0,
+              "instanceCount": 5,
               "children": [],
-              "instances": []
+              "instances": [
+                "Con_SmallCup_8oz",
+                "Con_MediumCup_12oz",
+                "Con_LargeCup_16oz",
+                "Con_ColdCup_16oz",
+                "Con_ColdCup_24oz"
+              ]
             },
             {
               "uri": "http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Straw",
               "name": "Straw",
-              "instanceCount": 0,
+              "instanceCount": 3,
               "children": [],
-              "instances": []
+              "instances": [
+                "Con_PaperStraw",
+                "Con_BioplasticStraw",
+                "Con_ReedStraw"
+              ]
             },
             {
               "uri": "http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#TakeoutLid",
               "name": "TakeoutLid",
-              "instanceCount": 0,
+              "instanceCount": 3,
               "children": [],
-              "instances": []
+              "instances": [
+                "Con_HotLid_Dome",
+                "Con_HotLid_Sipthrough",
+                "Con_ColdLid_Flat"
+              ]
             }
           ],
           "instances": []
@@ -507,47 +528,64 @@
         {
           "uri": "http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Equipment",
           "name": "Equipment",
-          "instanceCount": 1,
+          "instanceCount": 0,
           "children": [
             {
               "uri": "http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#EspressoMachine",
               "name": "EspressoMachine",
-              "instanceCount": 0,
+              "instanceCount": 4,
               "children": [],
-              "instances": []
+              "instances": [
+                "EM_LaMarzocco_Linea",
+                "EM_Synesso_MVP",
+                "EM_Nuova_Simonelli",
+                "EM_DeLonghi_Pro"
+              ]
             },
             {
               "uri": "http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Grinder",
               "name": "Grinder",
-              "instanceCount": 0,
+              "instanceCount": 3,
               "children": [],
-              "instances": []
+              "instances": [
+                "GR_Mahlkonig_EK43",
+                "GR_Baratza_Forte",
+                "GR_Mazzer_Major"
+              ]
             },
             {
               "uri": "http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#IceMaker",
               "name": "IceMaker",
-              "instanceCount": 0,
+              "instanceCount": 2,
               "children": [],
-              "instances": []
+              "instances": [
+                "IM_Hoshizaki_KM",
+                "IM_Scotsman_NDE"
+              ]
             },
             {
               "uri": "http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#RoasterMachine",
               "name": "RoasterMachine",
-              "instanceCount": 0,
+              "instanceCount": 3,
               "children": [],
-              "instances": []
+              "instances": [
+                "RM_Probat_P25",
+                "RM_Giesen_W15",
+                "RM_Loring_S35"
+              ]
             },
             {
               "uri": "http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#WaterFilter",
               "name": "WaterFilter",
-              "instanceCount": 0,
+              "instanceCount": 2,
               "children": [],
-              "instances": []
+              "instances": [
+                "WF_Brita_Purity",
+                "WF_Everpure_4C"
+              ]
             }
           ],
-          "instances": [
-            "Machine_B"
-          ]
+          "instances": []
         },
         {
           "uri": "http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Ingredient",
@@ -557,41 +595,65 @@
             {
               "uri": "http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Bakery",
               "name": "Bakery",
-              "instanceCount": 0,
+              "instanceCount": 4,
               "children": [],
-              "instances": []
+              "instances": [
+                "Ing_Croissant",
+                "Ing_Muffin",
+                "Ing_Scone",
+                "Ing_Brownie"
+              ]
             },
             {
               "uri": "http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Milk",
               "name": "Milk",
-              "instanceCount": 3,
+              "instanceCount": 7,
               "children": [],
               "instances": [
                 "Ing_WholeMilk",
                 "Ing_SteamedMilk",
-                "Ing_MilkFoam"
+                "Ing_MilkFoam",
+                "Ing_OatMilk",
+                "Ing_AlmondMilk",
+                "Ing_SoyMilk",
+                "Ing_CoconutMilk"
               ]
             },
             {
               "uri": "http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Sauce",
               "name": "Sauce",
-              "instanceCount": 0,
+              "instanceCount": 3,
               "children": [],
-              "instances": []
+              "instances": [
+                "Ing_ChocolateSauce",
+                "Ing_CaramelDrizzle",
+                "Ing_WhiteMocha"
+              ]
             },
             {
               "uri": "http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Syrup",
               "name": "Syrup",
-              "instanceCount": 0,
+              "instanceCount": 5,
               "children": [],
-              "instances": []
+              "instances": [
+                "Ing_VanillaSyrup_Monin",
+                "Ing_HazelnutSyrup",
+                "Ing_CaramelSyrup_Monin",
+                "Ing_PumpkinSpice",
+                "Ing_HoneySyrup"
+              ]
             },
             {
               "uri": "http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#TeaBase",
               "name": "TeaBase",
-              "instanceCount": 0,
+              "instanceCount": 4,
               "children": [],
-              "instances": []
+              "instances": [
+                "Ing_ChaiConcentrate",
+                "Ing_MatchaPowder",
+                "Ing_HibiscusTea",
+                "Ing_EarlGrey"
+              ]
             }
           ],
           "instances": [
@@ -9262,13 +9324,6 @@
         }
       }
     },
-    "Machine_B": {
-      "uri": "http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Machine_B",
-      "types": [
-        "Equipment"
-      ],
-      "properties": {}
-    },
     "Vendor_A": {
       "uri": "http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Vendor_A",
       "types": [
@@ -10285,6 +10340,555 @@
         "ProcessingMethod"
       ],
       "properties": {}
+    },
+    "EM_LaMarzocco_Linea": {
+      "uri": "http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#EM_LaMarzocco_Linea",
+      "types": [
+        "EspressoMachine"
+      ],
+      "properties": {
+        "hasModel": "La Marzocco Linea PB",
+        "hasManufacturer": "La Marzocco",
+        "hasCountry": "Italy",
+        "hasPowerWatt": "3200"
+      }
+    },
+    "EM_Synesso_MVP": {
+      "uri": "http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#EM_Synesso_MVP",
+      "types": [
+        "EspressoMachine"
+      ],
+      "properties": {
+        "hasModel": "Synesso MVP Hydra",
+        "hasManufacturer": "Synesso",
+        "hasCountry": "USA",
+        "hasPowerWatt": "4500"
+      }
+    },
+    "EM_Nuova_Simonelli": {
+      "uri": "http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#EM_Nuova_Simonelli",
+      "types": [
+        "EspressoMachine"
+      ],
+      "properties": {
+        "hasModel": "Nuova Simonelli Aurelia",
+        "hasManufacturer": "Nuova Simonelli",
+        "hasCountry": "Italy",
+        "hasPowerWatt": "3800"
+      }
+    },
+    "EM_DeLonghi_Pro": {
+      "uri": "http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#EM_DeLonghi_Pro",
+      "types": [
+        "EspressoMachine"
+      ],
+      "properties": {
+        "hasModel": "DeLonghi La Specialista",
+        "hasManufacturer": "DeLonghi",
+        "hasCountry": "Italy",
+        "hasPowerWatt": "1450"
+      }
+    },
+    "GR_Mahlkonig_EK43": {
+      "uri": "http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#GR_Mahlkonig_EK43",
+      "types": [
+        "Grinder"
+      ],
+      "properties": {
+        "hasModel": "Mahlkönig EK43S",
+        "hasManufacturer": "Mahlkönig",
+        "hasCountry": "Germany",
+        "hasBurrSize": "98mm"
+      }
+    },
+    "GR_Baratza_Forte": {
+      "uri": "http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#GR_Baratza_Forte",
+      "types": [
+        "Grinder"
+      ],
+      "properties": {
+        "hasModel": "Baratza Forte BG",
+        "hasManufacturer": "Baratza",
+        "hasCountry": "USA",
+        "hasBurrSize": "54mm"
+      }
+    },
+    "GR_Mazzer_Major": {
+      "uri": "http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#GR_Mazzer_Major",
+      "types": [
+        "Grinder"
+      ],
+      "properties": {
+        "hasModel": "Mazzer Major V",
+        "hasManufacturer": "Mazzer",
+        "hasCountry": "Italy",
+        "hasBurrSize": "83mm"
+      }
+    },
+    "IM_Hoshizaki_KM": {
+      "uri": "http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#IM_Hoshizaki_KM",
+      "types": [
+        "IceMaker"
+      ],
+      "properties": {
+        "hasModel": "Hoshizaki KM-320MAJ",
+        "hasManufacturer": "Hoshizaki",
+        "hasCountry": "Japan",
+        "hasCapacityKg": "320"
+      }
+    },
+    "IM_Scotsman_NDE": {
+      "uri": "http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#IM_Scotsman_NDE",
+      "types": [
+        "IceMaker"
+      ],
+      "properties": {
+        "hasModel": "Scotsman NDE 654",
+        "hasManufacturer": "Scotsman",
+        "hasCountry": "USA",
+        "hasCapacityKg": "300"
+      }
+    },
+    "RM_Probat_P25": {
+      "uri": "http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#RM_Probat_P25",
+      "types": [
+        "RoasterMachine"
+      ],
+      "properties": {
+        "hasModel": "Probat P25",
+        "hasManufacturer": "Probat",
+        "hasCountry": "Germany",
+        "hasCapacityKg": "25"
+      }
+    },
+    "RM_Giesen_W15": {
+      "uri": "http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#RM_Giesen_W15",
+      "types": [
+        "RoasterMachine"
+      ],
+      "properties": {
+        "hasModel": "Giesen W15A",
+        "hasManufacturer": "Giesen",
+        "hasCountry": "Netherlands",
+        "hasCapacityKg": "15"
+      }
+    },
+    "RM_Loring_S35": {
+      "uri": "http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#RM_Loring_S35",
+      "types": [
+        "RoasterMachine"
+      ],
+      "properties": {
+        "hasModel": "Loring S35 Kestrel",
+        "hasManufacturer": "Loring",
+        "hasCountry": "USA",
+        "hasCapacityKg": "35"
+      }
+    },
+    "WF_Brita_Purity": {
+      "uri": "http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#WF_Brita_Purity",
+      "types": [
+        "WaterFilter"
+      ],
+      "properties": {
+        "hasModel": "Brita Purity C1100",
+        "hasManufacturer": "Brita",
+        "hasCountry": "Germany"
+      }
+    },
+    "WF_Everpure_4C": {
+      "uri": "http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#WF_Everpure_4C",
+      "types": [
+        "WaterFilter"
+      ],
+      "properties": {
+        "hasModel": "Everpure 4C",
+        "hasManufacturer": "Everpure",
+        "hasCountry": "USA"
+      }
+    },
+    "Ing_Croissant": {
+      "uri": "http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Ing_Croissant",
+      "types": [
+        "Bakery"
+      ],
+      "properties": {
+        "hasName": "Butter Croissant",
+        "hasType": "Pastry"
+      }
+    },
+    "Ing_Muffin": {
+      "uri": "http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Ing_Muffin",
+      "types": [
+        "Bakery"
+      ],
+      "properties": {
+        "hasName": "Blueberry Muffin",
+        "hasType": "Pastry"
+      }
+    },
+    "Ing_Scone": {
+      "uri": "http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Ing_Scone",
+      "types": [
+        "Bakery"
+      ],
+      "properties": {
+        "hasName": "Classic Scone",
+        "hasType": "Pastry"
+      }
+    },
+    "Ing_Brownie": {
+      "uri": "http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Ing_Brownie",
+      "types": [
+        "Bakery"
+      ],
+      "properties": {
+        "hasName": "Chocolate Brownie",
+        "hasType": "Dessert"
+      }
+    },
+    "Ing_ChocolateSauce": {
+      "uri": "http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Ing_ChocolateSauce",
+      "types": [
+        "Sauce"
+      ],
+      "properties": {
+        "hasName": "Dark Chocolate Sauce",
+        "hasBrand": "Ghirardelli"
+      }
+    },
+    "Ing_CaramelDrizzle": {
+      "uri": "http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Ing_CaramelDrizzle",
+      "types": [
+        "Sauce"
+      ],
+      "properties": {
+        "hasName": "Caramel Drizzle",
+        "hasBrand": "Torani"
+      }
+    },
+    "Ing_WhiteMocha": {
+      "uri": "http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Ing_WhiteMocha",
+      "types": [
+        "Sauce"
+      ],
+      "properties": {
+        "hasName": "White Mocha Sauce",
+        "hasBrand": "Monin"
+      }
+    },
+    "Ing_VanillaSyrup_Monin": {
+      "uri": "http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Ing_VanillaSyrup_Monin",
+      "types": [
+        "Syrup"
+      ],
+      "properties": {
+        "hasName": "Vanilla Syrup",
+        "hasBrand": "Monin",
+        "hasVolumeMl": "750"
+      }
+    },
+    "Ing_HazelnutSyrup": {
+      "uri": "http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Ing_HazelnutSyrup",
+      "types": [
+        "Syrup"
+      ],
+      "properties": {
+        "hasName": "Hazelnut Syrup",
+        "hasBrand": "Torani",
+        "hasVolumeMl": "750"
+      }
+    },
+    "Ing_CaramelSyrup_Monin": {
+      "uri": "http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Ing_CaramelSyrup_Monin",
+      "types": [
+        "Syrup"
+      ],
+      "properties": {
+        "hasName": "Caramel Syrup",
+        "hasBrand": "Monin",
+        "hasVolumeMl": "750"
+      }
+    },
+    "Ing_PumpkinSpice": {
+      "uri": "http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Ing_PumpkinSpice",
+      "types": [
+        "Syrup"
+      ],
+      "properties": {
+        "hasName": "Pumpkin Spice Syrup",
+        "hasBrand": "DaVinci",
+        "hasVolumeMl": "750"
+      }
+    },
+    "Ing_HoneySyrup": {
+      "uri": "http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Ing_HoneySyrup",
+      "types": [
+        "Syrup"
+      ],
+      "properties": {
+        "hasName": "Honey Syrup",
+        "hasBrand": "Monin",
+        "hasVolumeMl": "750"
+      }
+    },
+    "Ing_ChaiConcentrate": {
+      "uri": "http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Ing_ChaiConcentrate",
+      "types": [
+        "TeaBase"
+      ],
+      "properties": {
+        "hasName": "Chai Tea Concentrate",
+        "hasBrand": "Oregon Chai"
+      }
+    },
+    "Ing_MatchaPowder": {
+      "uri": "http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Ing_MatchaPowder",
+      "types": [
+        "TeaBase"
+      ],
+      "properties": {
+        "hasName": "Ceremonial Grade Matcha",
+        "hasBrand": "Ippodo",
+        "hasOrigin": "Kyoto, Japan"
+      }
+    },
+    "Ing_HibiscusTea": {
+      "uri": "http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Ing_HibiscusTea",
+      "types": [
+        "TeaBase"
+      ],
+      "properties": {
+        "hasName": "Hibiscus Herbal Tea",
+        "hasBrand": "Harney & Sons"
+      }
+    },
+    "Ing_EarlGrey": {
+      "uri": "http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Ing_EarlGrey",
+      "types": [
+        "TeaBase"
+      ],
+      "properties": {
+        "hasName": "Earl Grey Tea",
+        "hasBrand": "Twinings",
+        "hasOrigin": "UK"
+      }
+    },
+    "Ing_OatMilk": {
+      "uri": "http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Ing_OatMilk",
+      "types": [
+        "Milk"
+      ],
+      "properties": {
+        "hasName": "Oat Milk",
+        "hasBrand": "Oatly"
+      }
+    },
+    "Ing_AlmondMilk": {
+      "uri": "http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Ing_AlmondMilk",
+      "types": [
+        "Milk"
+      ],
+      "properties": {
+        "hasName": "Almond Milk",
+        "hasBrand": "Califia Farms"
+      }
+    },
+    "Ing_SoyMilk": {
+      "uri": "http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Ing_SoyMilk",
+      "types": [
+        "Milk"
+      ],
+      "properties": {
+        "hasName": "Soy Milk",
+        "hasBrand": "Silk"
+      }
+    },
+    "Ing_CoconutMilk": {
+      "uri": "http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Ing_CoconutMilk",
+      "types": [
+        "Milk"
+      ],
+      "properties": {
+        "hasName": "Coconut Milk",
+        "hasBrand": "So Delicious"
+      }
+    },
+    "Con_SmallCup_8oz": {
+      "uri": "http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Con_SmallCup_8oz",
+      "types": [
+        "PaperCup"
+      ],
+      "properties": {
+        "hasName": "Small Hot Cup 8oz",
+        "hasMaterial": "Double-wall Paper",
+        "hasSupplier": "Solo Cup Co"
+      }
+    },
+    "Con_MediumCup_12oz": {
+      "uri": "http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Con_MediumCup_12oz",
+      "types": [
+        "PaperCup"
+      ],
+      "properties": {
+        "hasName": "Medium Hot Cup 12oz",
+        "hasMaterial": "Double-wall Paper",
+        "hasSupplier": "Solo Cup Co"
+      }
+    },
+    "Con_LargeCup_16oz": {
+      "uri": "http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Con_LargeCup_16oz",
+      "types": [
+        "PaperCup"
+      ],
+      "properties": {
+        "hasName": "Large Hot Cup 16oz",
+        "hasMaterial": "Double-wall Paper",
+        "hasSupplier": "Solo Cup Co"
+      }
+    },
+    "Con_ColdCup_16oz": {
+      "uri": "http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Con_ColdCup_16oz",
+      "types": [
+        "PaperCup"
+      ],
+      "properties": {
+        "hasName": "Cold Cup 16oz",
+        "hasMaterial": "PET Plastic",
+        "hasSupplier": "Dart Container"
+      }
+    },
+    "Con_ColdCup_24oz": {
+      "uri": "http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Con_ColdCup_24oz",
+      "types": [
+        "PaperCup"
+      ],
+      "properties": {
+        "hasName": "Cold Cup 24oz",
+        "hasMaterial": "PET Plastic",
+        "hasSupplier": "Dart Container"
+      }
+    },
+    "Con_HotLid_Dome": {
+      "uri": "http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Con_HotLid_Dome",
+      "types": [
+        "TakeoutLid"
+      ],
+      "properties": {
+        "hasName": "Hot Cup Dome Lid",
+        "hasMaterial": "PS Plastic",
+        "hasSupplier": "Solo Cup Co"
+      }
+    },
+    "Con_HotLid_Sipthrough": {
+      "uri": "http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Con_HotLid_Sipthrough",
+      "types": [
+        "TakeoutLid"
+      ],
+      "properties": {
+        "hasName": "Sip-through Hot Lid",
+        "hasMaterial": "PS Plastic",
+        "hasSupplier": "Eco-Products"
+      }
+    },
+    "Con_ColdLid_Flat": {
+      "uri": "http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Con_ColdLid_Flat",
+      "types": [
+        "TakeoutLid"
+      ],
+      "properties": {
+        "hasName": "Flat Cold Lid",
+        "hasMaterial": "PET Plastic",
+        "hasSupplier": "Dart Container"
+      }
+    },
+    "Con_PaperStraw": {
+      "uri": "http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Con_PaperStraw",
+      "types": [
+        "Straw"
+      ],
+      "properties": {
+        "hasName": "Paper Straw",
+        "hasMaterial": "FSC Paper",
+        "hasSupplier": "Aardvark Straws"
+      }
+    },
+    "Con_BioplasticStraw": {
+      "uri": "http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Con_BioplasticStraw",
+      "types": [
+        "Straw"
+      ],
+      "properties": {
+        "hasName": "Bioplastic Straw (PLA)",
+        "hasMaterial": "PLA Bioplastic",
+        "hasSupplier": "World Centric"
+      }
+    },
+    "Con_ReedStraw": {
+      "uri": "http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Con_ReedStraw",
+      "types": [
+        "Straw"
+      ],
+      "properties": {
+        "hasName": "Reed Straw",
+        "hasMaterial": "Natural Reed",
+        "hasSupplier": "HAY! Straws"
+      }
+    },
+    "Con_CocktailNapkin": {
+      "uri": "http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Con_CocktailNapkin",
+      "types": [
+        "Napkin"
+      ],
+      "properties": {
+        "hasName": "Cocktail Napkin (1-ply)",
+        "hasMaterial": "Recycled Paper",
+        "hasSupplier": "Georgia-Pacific"
+      }
+    },
+    "Con_LunchNapkin": {
+      "uri": "http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Con_LunchNapkin",
+      "types": [
+        "Napkin"
+      ],
+      "properties": {
+        "hasName": "Lunch Napkin (2-ply)",
+        "hasMaterial": "Virgin Pulp",
+        "hasSupplier": "Kimberly-Clark"
+      }
+    },
+    "Con_2CupCarrier": {
+      "uri": "http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Con_2CupCarrier",
+      "types": [
+        "Carrier"
+      ],
+      "properties": {
+        "hasName": "2-Cup Carrier",
+        "hasMaterial": "Corrugated Board",
+        "hasSupplier": "Pactiv"
+      }
+    },
+    "Con_4CupCarrier": {
+      "uri": "http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Con_4CupCarrier",
+      "types": [
+        "Carrier"
+      ],
+      "properties": {
+        "hasName": "4-Cup Carrier",
+        "hasMaterial": "Molded Pulp",
+        "hasSupplier": "Pactiv"
+      }
+    },
+    "Con_ToteCarrier": {
+      "uri": "http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Con_ToteCarrier",
+      "types": [
+        "Carrier"
+      ],
+      "properties": {
+        "hasName": "Kraft Tote Bag",
+        "hasMaterial": "Kraft Paper",
+        "hasSupplier": "Novamont"
+      }
     }
   }
 }
