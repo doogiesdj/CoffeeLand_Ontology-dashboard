@@ -2957,6 +2957,16 @@
 
             } else {
                 // ── Generic detail view (non-beverage) ───────────────────
+                /* Clean property name: strip has/is/uses/by/of prefixes, split camelCase, title case */
+                function cleanPropName(raw) {
+                    let s = raw;
+                    s = s.replace(/^(has|is|uses|by|of|branded|from)(?=[A-Z])/, '');
+                    s = s.replace(/([a-z])([A-Z])/g, '$1 $2');
+                    s = s.replace(/_/g, ' ');
+                    s = s.trim();
+                    if (!s) return raw.replace(/_/g, ' ');
+                    return s.charAt(0).toUpperCase() + s.slice(1);
+                }
                 let html = '';
                 if (instance.description) {
                     html += `<div class="modal-description">`;
@@ -2964,16 +2974,11 @@
                     html += `<span>${instance.description}</span>`;
                     html += `</div>`;
                 }
-                // URI section
-                html += `<div class="modal-uri">`;
-                html += `<div class="modal-uri-label">Resource URI</div>`;
-                html += `<div class="modal-uri-value">${instance.uri}</div>`;
-                html += `</div>`;
                 if (Object.keys(instance.properties).length > 0) {
                     html += '<div class="property-grid">';
                     Object.entries(instance.properties).forEach(([propName, values]) => {
                         html += `<div class="property-card">`;
-                        html += `<div class="property-name">${propName}</div>`;
+                        html += `<div class="property-name">${cleanPropName(propName)}</div>`;
                         values.forEach(val => {
                             if (val.type === 'uri') {
                                 html += `<div class="property-value property-value-link"><i class="fas fa-link"></i><span>${val.value}</span></div>`;
