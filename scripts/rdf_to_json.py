@@ -315,6 +315,71 @@ WAREHOUSE_COORDS = {
     'Warehouse_Piraeus':{'lat':38.0,'lng':23.6},
 }
 
+# Actual farm coordinates (real locations)
+FARM_COORDS = {
+    # Brazil
+    'Farm_Minas_Gerais_Fazenda_Sertao':{'lat':-21.2,'lng':-45.0},
+    'Farm_Sao_Paulo_Fazenda_Ipe':{'lat':-22.8,'lng':-49.2},
+    'Farm_Espirito_Santo_Fazenda_Santa_Rita':{'lat':-20.3,'lng':-41.5},
+    'Farm_Cerrado_Fazenda_Dutra':{'lat':-18.9,'lng':-47.5},
+    # Colombia
+    'Farm_Huila_El_Paraiso_Farm':{'lat':2.0,'lng':-76.0},
+    'Farm_Narino_San_Juan_Farm':{'lat':1.3,'lng':-77.5},
+    'Farm_Antioquia_La_Esperanza':{'lat':6.2,'lng':-75.6},
+    # Ethiopia
+    'Farm_Yirgacheffe_Kochere_Farm':{'lat':6.2,'lng':38.2},
+    'Farm_Sidamo_Guji_Farm':{'lat':5.8,'lng':38.5},
+    'Farm_Harrar_Estate':{'lat':9.3,'lng':42.1},
+    # Kenya
+    'Farm_Nyeri_Gatomboya_Farm':{'lat':-0.4,'lng':36.9},
+    'Farm_Kiambu_Kagumo_Estate':{'lat':-1.2,'lng':36.8},
+    # Indonesia
+    'Farm_Java_Ijen_Estate':{'lat':-8.1,'lng':114.2},
+    'Farm_Sumatra_Mandheling_Gayo_Farm':{'lat':4.6,'lng':96.8},
+    'Farm_Sulawesi_Toraja_Estate':{'lat':-3.0,'lng':119.9},
+    # Guatemala
+    'Farm_Antigua_Finca_El_Injerto':{'lat':14.6,'lng':-90.7},
+    'Farm_Huehuetenango_Finca_Vista_Hermosa':{'lat':15.3,'lng':-91.5},
+    # Honduras
+    'Farm_Copan_San_Marcos_Farm':{'lat':14.8,'lng':-88.8},
+    'Farm_Marcala_Highland_Estate':{'lat':14.2,'lng':-88.0},
+    # Costa Rica
+    'Farm_Tarrazu_La_Minita_Farm':{'lat':9.6,'lng':-84.0},
+    'Farm_West_Valley_Helsar_Farm':{'lat':10.1,'lng':-84.4},
+    # Vietnam
+    'Farm_Dak_Lak_Central_Highlands_Farm':{'lat':12.7,'lng':108.0},
+    'Farm_Lam_Dong_Arabica_Farm':{'lat':11.9,'lng':108.4},
+    # Peru
+    'Farm_Cajamarca_Villa_Rica_Farm':{'lat':-10.7,'lng':-75.3},
+    # India
+    'Farm_Malabar_Coast_Estate':{'lat':11.5,'lng':76.0},
+    # Rwanda
+    'Farm_Western_Province_Huye_Mountain':{'lat':-2.5,'lng':29.5},
+    'Farm_Huye_Mountain_Estate':{'lat':-2.6,'lng':29.6},
+    # Tanzania
+    'Farm_Kilimanjaro_Moshi_Estate':{'lat':-3.3,'lng':37.3},
+    # Uganda
+    'Farm_Bugisu_Sipi_Falls':{'lat':1.3,'lng':34.3},
+    # Mexico
+    'Farm_Chiapas_Finca_Irlanda':{'lat':15.4,'lng':-92.3},
+    # Nicaragua
+    'Farm_Jinotega_Finca_Mierisch':{'lat':13.1,'lng':-86.0},
+    # Panama
+    'Farm_Boquete_Hacienda_Esmeralda':{'lat':8.8,'lng':-82.4},
+    # Jamaica
+    'Farm_Blue_Mountain_Estate':{'lat':18.1,'lng':-76.6},
+    # El Salvador
+    'Farm_Santa_Ana_Los_Pirineos':{'lat':13.9,'lng':-89.6},
+    # Dominican Republic
+    'Farm_Barahona_La_Montana':{'lat':18.2,'lng':-71.1},
+    # Papua New Guinea
+    'Farm_Highlands_Sigri_Estate':{'lat':-5.9,'lng':144.0},
+    # USA (Hawaii Kona)
+    'Farm_Kona_Greenwell':{'lat':19.5,'lng':-155.9},
+    # Yemen
+    'Farm_Sanani_Bani_Matar':{'lat':15.2,'lng':44.0},
+}
+
 # 농장 지도 데이터
 farm_map = []
 for name, inst in instances.items():
@@ -326,10 +391,15 @@ for name, inst in instances.items():
     esg = 'low' if 'Metric_CO2_Low' in impacts else ('high' if 'Metric_CO2_High' in impacts else 'mid')
     for c in countries:
         if c in COORDS:
+            fc = FARM_COORDS.get(name)
+            if fc:
+                flat, flng = fc['lat'], fc['lng']
+            else:
+                flat = COORDS[c]['lat'] + (hash(name)%10-5)*.3
+                flng = COORDS[c]['lng'] + (hash(name)%7-3)*.3
             farm_map.append({
                 'name': name.replace('Farm_','').replace('_',' '),
-                'id': name, 'lat': COORDS[c]['lat'] + (hash(name)%10-5)*.3,
-                'lng': COORDS[c]['lng'] + (hash(name)%7-3)*.3,
+                'id': name, 'lat': flat, 'lng': flng,
                 'country': c.replace('_',' '), 'brands': brands, 'co2': co2, 'esg': esg
             })
 
