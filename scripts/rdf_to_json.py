@@ -525,19 +525,19 @@ for n,i in instances.items():
     else:
         producer_warehouses.append(wh)
 
-# Import Broker: brands(mediates), hq(isHeadquarteredIn), cw(연결된 소비국 창고), cp(연결된 소비국 항구)
+# Import Broker: brands(mediates), hq(isHeadquarteredIn), warehouses(usesWarehouse), ports(transportsTo)
+# 실제 데이터 기반: RDF에서 mediates, usesWarehouse, transportsTo 속성 읽음
 import_brokers = []
 for n,i in instances.items():
     if 'ImportBroker' not in i['types']: continue
     hqs = i['obj'].get('isHeadquarteredIn',[])
     brands = i['obj'].get('mediates',[])
-    # 해당 브로커가 구매하는 농장들이 연결된 창고/항구 매핑
-    cws = [w['id'] for w in consumer_warehouses]  # 모든 소비국 창고 연결
-    cps = [p for p in i['obj'].get('transportsTo',[])] or []
+    cws = i['obj'].get('usesWarehouse',[])
+    cps = i['obj'].get('transportsTo',[])
     import_brokers.append({'id':n,'label':n.replace('_',' '),
                            'hq':hqs[0].replace('_',' ') if hqs else '',
                            'brands':brands,
-                           'warehouses':cws[:3],  # 상위 3개
+                           'warehouses':cws,
                            'ports':cps})
 
 # Export Broker: brands(mediates), hq, ports(연결된 생산국 항구)
@@ -640,87 +640,43 @@ def add_tfl(src, tgt):
 for t in trace:
     add_tfl('m_' + t['menu'], 'b_' + t['brand'])
 
-# 2. Brand → CW: brand uses chains → chains operate in cities/countries → warehouses in those countries
-#    Indirect: link brands to consumer warehouses via the import brokers that mediate them
+# 2. Brand → CW: use RDF-driven mediates (brand→broker) + usesWarehouse (broker→warehouse)
+# Each brand connects to warehouses of its handling brokers (realistic, not all-to-all)
 brand_to_ibs = defaultdict(list)
 for ib in import_brokers:
     for b in ib['brands']:
         brand_to_ibs[b].append(ib['id'])
 
-# Build IB → CW links based on warehouse adjacentTo ports + IB HQ geography
-ib_to_cws = defaultdict(list)
-ib_to_cps = defaultdict(list)
-
-# Map each IB to warehouses: IB HQ country → find warehouses in same region
-# Use port adjacency: warehouse.adjacentTo → port, IB transportsTo → same ports
+ib_to_cws = {}
+ib_to_cps = {}
 for ib_data in import_brokers:
     ib_id = ib_data['id']
-    ib_inst = instances.get(ib_id, {})
-    ib_hqs = ib_inst.get('obj', {}).get('isHeadquarteredIn', [])
-    ib_ports = ib_inst.get('obj', {}).get('transportsTo', [])
+    ib_to_cws[ib_id] = ib_data.get('warehouses', [])
+    ib_to_cps[ib_id] = ib_data.get('ports', [])
 
-    # Link IB to consumer warehouses whose adjacentTo port matches IB's ports
-    matched_cws = set()
-    matched_cps = set()
-    for cw in consumer_warehouses:
-        cw_inst = instances.get(cw['id'], {})
-        cw_ports = cw_inst.get('obj', {}).get('adjacentTo', [])
-        # If IB has specific ports, match; otherwise link to all CWs
-        if ib_ports:
-            if any(p in ib_ports for p in cw_ports):
-                matched_cws.add(cw['id'])
-                for p in cw_ports:
-                    if p in ib_ports:
-                        matched_cps.add(p)
-        else:
-            # No specific ports → link to all consumer warehouses (IB is intermediary)
-            matched_cws.add(cw['id'])
-            for p in cw_ports:
-                matched_cps.add(p)
-
-    # If no matches found, link to all consumer warehouses (fallback)
-    if not matched_cws:
-        for cw in consumer_warehouses:
-            matched_cws.add(cw['id'])
-    if not matched_cps:
-        for cp in consumer_ports:
-            matched_cps.add(cp['id'])
-
-    ib_to_cws[ib_id] = list(matched_cws)
-    ib_to_cps[ib_id] = list(matched_cps)
-
-# Now build Brand → CW links via IB
 for brand_name in [b['id'] for b in brands_list]:
     ibs = brand_to_ibs.get(brand_name, [])
     cw_set = set()
     for ib_id in ibs:
         for cw_id in ib_to_cws.get(ib_id, []):
             cw_set.add(cw_id)
-    # Fallback: brands with no IB get linked to all consumer warehouses
+    # Fallback: brands with no broker get 1 major hub warehouse
     if not cw_set:
-        cw_set = set(cw['id'] for cw in consumer_warehouses[:3])
+        cw_set = {consumer_warehouses[0]['id']} if consumer_warehouses else set()
     for cw_id in cw_set:
         add_tfl('b_' + brand_name, 'cw_' + cw_id)
 
-# 3. CW → IB: warehouse adjacentTo port, IB operates through same ports
+# 3. CW → IB: direct from RDF usesWarehouse (broker has confirmed presence in this warehouse)
 for ib_data in import_brokers:
     ib_id = ib_data['id']
     for cw_id in ib_to_cws.get(ib_id, []):
         add_tfl('cw_' + cw_id, 'ib_' + ib_id)
 
-# 4. IB → CP: import broker linked to consumer ports
-# Also ensure all consumer ports have incoming links
-all_cp_ids = set(cp['id'] for cp in consumer_ports)
-linked_cps = set()
+# 4. IB → CP: direct from RDF transportsTo (broker uses these specific consumer ports)
 for ib_data in import_brokers:
     ib_id = ib_data['id']
     for cp_id in ib_to_cps.get(ib_id, []):
         add_tfl('ib_' + ib_id, 'cp_' + cp_id)
-        linked_cps.add(cp_id)
-# Fallback: unlinked consumer ports get connected to all import brokers
-for cp_id in all_cp_ids - linked_cps:
-    for ib_data in import_brokers[:3]:
-        add_tfl('ib_' + ib_data['id'], 'cp_' + cp_id)
 
 # 5. CP → LP: logistics_provider.transportsTo matches consumer ports
 for lp in logistics_providers:

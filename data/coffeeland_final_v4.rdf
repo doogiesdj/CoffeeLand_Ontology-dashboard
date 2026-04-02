@@ -311,6 +311,28 @@
     <cof:verifies rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Fair_Trade_Certification"/>
     <cof:purchasesFrom rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Farm_Kiambu_Kagumo_Estate"/>
     <cof:purchasesFrom rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Farm_Nyeri_Gatomboya_Farm"/>
+
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Kenya_AA"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Nyeri_Peaberry"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Yirgacheffe_Special"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Sidamo_Natural"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Bugisu_AA"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Rwandan_Bourbon"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Colombian_Supremo"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Huila_Reserve"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Peruvian_Organic"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Sulawesi_Toraja"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Sumatra_Mandheling"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Da_Lat_Arabica"/>
+    <cof:usesWarehouse rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Warehouse_Felixstowe_East"/>
+    <cof:usesWarehouse rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Warehouse_Antwerp_North"/>
+    <cof:usesWarehouse rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Warehouse_LongBeach_South"/>
+    <cof:usesWarehouse rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Warehouse_NewOrleans_CBD"/>
+    <cof:transportsTo rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Port_Felixstowe"/>
+    <cof:transportsTo rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Port_Antwerp"/>
+    <cof:transportsTo rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Port_LongBeach"/>
+    <cof:transportsTo rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Port_NewOrleans"/>
+    <cof:transportsTo rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Port_NewYork"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Farm_Narino_San_Juan_Farm">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
@@ -1291,6 +1313,21 @@
     <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Marcala_Organic"/>
     <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#West_Valley_Honey"/>
     <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Bugisu_AA"/>
+
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Colombian_Supremo"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Narino_Supremo"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Peruvian_Organic"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Honduras_SHG"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Marcala_Organic"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Huehuetenango_SHB"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Matagalpa_SHG"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Rwandan_Bourbon"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Yirgacheffe_Special"/>
+    <cof:usesWarehouse rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Warehouse_LongBeach_South"/>
+    <cof:usesWarehouse rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Warehouse_Seattle_Port"/>
+    <cof:transportsTo rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Port_LongBeach"/>
+    <cof:transportsTo rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Port_Seattle"/>
+    <cof:transportsTo rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Port_NewYork"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Con_2CupCarrier">
     <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Carrier"/>
@@ -2255,6 +2292,21 @@
     <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Sulawesi_Toraja"/>
     <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#PNG_Sigri"/>
     <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Robusta_Select"/>
+
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Yirgacheffe_Special"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Sidamo_Natural"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Harrar_Longberry"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Kenya_AA"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Nyeri_Peaberry"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Kilimanjaro_Peaberry"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Rwandan_Bourbon"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Bugisu_AA"/>
+    <cof:usesWarehouse rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Warehouse_Felixstowe_East"/>
+    <cof:usesWarehouse rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Warehouse_Hamburg_Central"/>
+    <cof:usesWarehouse rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Warehouse_Antwerp_North"/>
+    <cof:transportsTo rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Port_Felixstowe"/>
+    <cof:transportsTo rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Port_Hamburg"/>
+    <cof:transportsTo rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Port_Antwerp"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#QG_Commercial">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
@@ -2522,6 +2574,31 @@
     <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Colombian_Supremo"/>
     <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Chiapas_Altura"/>
     <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Da_Lat_Arabica"/>
+
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Bourbon_Santos"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Santos_Premium"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Cerrado_Natural"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Colombian_Supremo"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Narino_Supremo"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Tarrazu_Reserve"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#West_Valley_Honey"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Yirgacheffe_Special"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Antigua_Premium"/>
+    <cof:usesWarehouse rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Warehouse_Hamburg_Central"/>
+    <cof:usesWarehouse rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Warehouse_Felixstowe_East"/>
+    <cof:usesWarehouse rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Warehouse_LongBeach_South"/>
+    <cof:usesWarehouse rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Warehouse_Seattle_Port"/>
+    <cof:usesWarehouse rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Warehouse_Singapore_West"/>
+    <cof:usesWarehouse rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Warehouse_Sydney_South"/>
+    <cof:usesWarehouse rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Warehouse_Melbourne_Docks"/>
+    <cof:usesWarehouse rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Warehouse_Vancouver"/>
+    <cof:transportsTo rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Port_Hamburg"/>
+    <cof:transportsTo rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Port_Felixstowe"/>
+    <cof:transportsTo rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Port_LongBeach"/>
+    <cof:transportsTo rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Port_Seattle"/>
+    <cof:transportsTo rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Port_Singapore"/>
+    <cof:transportsTo rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Port_Sydney"/>
+    <cof:transportsTo rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Port_Vancouver"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Mill_Cajamarca_Wet">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
@@ -3314,6 +3391,42 @@
     <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Sidamo_Natural"/>
     <cof:verifies rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Organic"/>
     <cof:verifies rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Fair_Trade"/>
+
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Bourbon_Santos"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Santos_Premium"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Cerrado_Natural"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Huila_Reserve"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Narino_Supremo"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Kilimanjaro_Peaberry"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Kenya_AA"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Rwandan_Bourbon"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Bugisu_AA"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Peruvian_Organic"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Honduras_SHG"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Blue_Mountain_Supreme"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Da_Lat_Arabica"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Robusta_Select"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Sulawesi_Toraja"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Sumatra_Mandheling"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#PNG_Sigri"/>
+    <cof:usesWarehouse rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Warehouse_Antwerp_North"/>
+    <cof:usesWarehouse rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Warehouse_Hamburg_Central"/>
+    <cof:usesWarehouse rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Warehouse_Shanghai"/>
+    <cof:usesWarehouse rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Warehouse_Sydney_South"/>
+    <cof:usesWarehouse rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Warehouse_Melbourne_Docks"/>
+    <cof:usesWarehouse rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Warehouse_Singapore_West"/>
+    <cof:usesWarehouse rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Warehouse_Miami_FreeZone"/>
+    <cof:usesWarehouse rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Warehouse_Seattle_Port"/>
+    <cof:usesWarehouse rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Warehouse_LongBeach_South"/>
+    <cof:transportsTo rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Port_Antwerp"/>
+    <cof:transportsTo rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Port_Hamburg"/>
+    <cof:transportsTo rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Port_Shanghai"/>
+    <cof:transportsTo rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Port_Sydney"/>
+    <cof:transportsTo rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Port_Singapore"/>
+    <cof:transportsTo rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Port_LongBeach"/>
+    <cof:transportsTo rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Port_Seattle"/>
+    <cof:transportsTo rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Port_NewYork"/>
+    <cof:transportsTo rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Port_Montreal"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Warehouse_Singapore_West">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
@@ -4810,6 +4923,44 @@
     <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Java_Estate"/>
     <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Sumatra_Mandheling"/>
     <cof:verifies rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Rainforest_Alliance"/>
+
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Bourbon_Santos"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Santos_Premium"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Cerrado_Natural"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Colombian_Supremo"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Chiapas_Altura"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Honduras_SHG"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Marcala_Organic"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Kenya_AA"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Nyeri_Peaberry"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Bugisu_AA"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Kilimanjaro_Peaberry"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Da_Lat_Arabica"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Robusta_Select"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Sulawesi_Toraja"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Java_Estate"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Sumatra_Mandheling"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Malabar_Monsoon"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#PNG_Sigri"/>
+    <cof:usesWarehouse rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Warehouse_Hamburg_Central"/>
+    <cof:usesWarehouse rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Warehouse_Genoa_Harbor"/>
+    <cof:usesWarehouse rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Warehouse_Gdansk"/>
+    <cof:usesWarehouse rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Warehouse_Singapore_West"/>
+    <cof:usesWarehouse rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Warehouse_Busan_Port"/>
+    <cof:usesWarehouse rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Warehouse_Shanghai"/>
+    <cof:usesWarehouse rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Warehouse_NewOrleans_CBD"/>
+    <cof:usesWarehouse rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Warehouse_LongBeach_South"/>
+    <cof:usesWarehouse rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Warehouse_Seattle_Port"/>
+    <cof:transportsTo rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Port_Hamburg"/>
+    <cof:transportsTo rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Port_Genoa"/>
+    <cof:transportsTo rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Port_Gdansk"/>
+    <cof:transportsTo rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Port_Singapore"/>
+    <cof:transportsTo rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Port_Busan"/>
+    <cof:transportsTo rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Port_Shanghai"/>
+    <cof:transportsTo rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Port_NewOrleans"/>
+    <cof:transportsTo rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Port_LongBeach"/>
+    <cof:transportsTo rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Port_Seattle"/>
+    <cof:transportsTo rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Port_NewYork"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Antioquia">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
@@ -4995,6 +5146,18 @@
     <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Java_Estate"/>
     <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Mocha_Sanani"/>
     <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Kilimanjaro_Peaberry"/>
+
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Antigua_Premium"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Huehuetenango_SHB"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Sulawesi_Toraja"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Java_Estate"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Bourbon_Santos"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Yirgacheffe_Special"/>
+    <cof:usesWarehouse rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Warehouse_Tokyo_Bay"/>
+    <cof:usesWarehouse rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Warehouse_Singapore_West"/>
+    <cof:transportsTo rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Port_Tokyo"/>
+    <cof:transportsTo rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Port_Singapore"/>
+    <cof:transportsTo rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Port_Busan"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#hasSustainabilityMetric">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
@@ -5187,6 +5350,18 @@
     <cof:purchasesFrom rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Farm_Kiambu_Kagumo_Estate"/>
     <cof:verifies rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Fair_Trade"/>
     <cof:verifies rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Organic"/>
+
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Blue_Mountain_Supreme"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Kona_Extra_Fancy"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Mocha_Sanani"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Antigua_Premium"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Tarrazu_Reserve"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Java_Estate"/>
+    <cof:usesWarehouse rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Warehouse_LongBeach_South"/>
+    <cof:usesWarehouse rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Warehouse_Vancouver"/>
+    <cof:transportsTo rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Port_LongBeach"/>
+    <cof:transportsTo rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Port_Vancouver"/>
+    <cof:transportsTo rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Port_NewYork"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Ing_MilkFoam">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
@@ -5376,6 +5551,19 @@
     <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Cerrado_Natural"/>
     <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Huila_Reserve"/>
     <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Narino_Supremo"/>
+
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Bourbon_Santos"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Cerrado_Natural"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Colombian_Supremo"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Da_Lat_Arabica"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Robusta_Select"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Honduras_SHG"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Malabar_Monsoon"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Sulawesi_Toraja"/>
+    <cof:usesWarehouse rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Warehouse_Miami_FreeZone"/>
+    <cof:usesWarehouse rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Warehouse_LongBeach_South"/>
+    <cof:transportsTo rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Port_LongBeach"/>
+    <cof:transportsTo rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Port_NewOrleans"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Mill_Vietnam_Dry">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
@@ -5426,6 +5614,21 @@
     <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Narino_Supremo"/>
     <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Peruvian_Organic"/>
     <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Antigua_Premium"/>
+
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Colombian_Supremo"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Narino_Supremo"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Huila_Reserve"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Pacamara_Reserve"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Antigua_Premium"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Huehuetenango_SHB"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Chiapas_Altura"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Matagalpa_SHG"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Peruvian_Organic"/>
+    <cof:usesWarehouse rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Warehouse_Felixstowe_East"/>
+    <cof:usesWarehouse rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Warehouse_Sydney_South"/>
+    <cof:transportsTo rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Port_Felixstowe"/>
+    <cof:transportsTo rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Port_Sydney"/>
+    <cof:transportsTo rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Port_NewYork"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#ECOMAgroindustrial">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
@@ -5909,6 +6112,42 @@
     <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Peruvian_Organic"/>
     <cof:verifies rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#UTZ"/>
     <cof:verifies rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Rainforest_Alliance"/>
+
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Bourbon_Santos"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Santos_Premium"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Cerrado_Natural"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Colombian_Supremo"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Tarrazu_Reserve"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#West_Valley_Honey"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Antigua_Premium"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Huehuetenango_SHB"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Honduras_SHG"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Marcala_Organic"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Kenya_AA"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Kilimanjaro_Peaberry"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Peruvian_Organic"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Da_Lat_Arabica"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#PNG_Sigri"/>
+    <cof:usesWarehouse rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Warehouse_Hamburg_Central"/>
+    <cof:usesWarehouse rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Warehouse_Genoa_Harbor"/>
+    <cof:usesWarehouse rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Warehouse_Barcelona_Port"/>
+    <cof:usesWarehouse rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Warehouse_Felixstowe_East"/>
+    <cof:usesWarehouse rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Warehouse_Tokyo_Bay"/>
+    <cof:usesWarehouse rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Warehouse_Shanghai"/>
+    <cof:usesWarehouse rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Warehouse_Sydney_South"/>
+    <cof:usesWarehouse rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Warehouse_Singapore_West"/>
+    <cof:usesWarehouse rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Warehouse_Piraeus"/>
+    <cof:transportsTo rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Port_Hamburg"/>
+    <cof:transportsTo rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Port_Genoa"/>
+    <cof:transportsTo rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Port_Valencia"/>
+    <cof:transportsTo rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Port_Felixstowe"/>
+    <cof:transportsTo rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Port_Tokyo"/>
+    <cof:transportsTo rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Port_Shanghai"/>
+    <cof:transportsTo rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Port_Sydney"/>
+    <cof:transportsTo rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Port_Singapore"/>
+    <cof:transportsTo rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Port_Piraeus"/>
+    <cof:transportsTo rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Port_NewYork"/>
+    <cof:transportsTo rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Port_LongBeach"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Huehuetenango">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
@@ -6052,6 +6291,16 @@
     <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Huehuetenango_SHB"/>
     <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Marcala_Organic"/>
     <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Matagalpa_SHG"/>
+
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Bourbon_Santos"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Santos_Premium"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Colombian_Supremo"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Tarrazu_Reserve"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Chiapas_Altura"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Antigua_Premium"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Honduras_SHG"/>
+    <cof:usesWarehouse rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Warehouse_NewOrleans_CBD"/>
+    <cof:transportsTo rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Port_NewOrleans"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#chainPriceSegment">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
@@ -7079,6 +7328,17 @@
     <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Rwandan_Bourbon"/>
     <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Kilimanjaro_Peaberry"/>
     <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Sulawesi_Toraja"/>
+
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Colombian_Supremo"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Narino_Supremo"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Huila_Reserve"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Peruvian_Organic"/>
+    <cof:usesWarehouse rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Warehouse_Sydney_South"/>
+    <cof:usesWarehouse rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Warehouse_Singapore_West"/>
+    <cof:usesWarehouse rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Warehouse_Felixstowe_East"/>
+    <cof:transportsTo rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Port_Sydney"/>
+    <cof:transportsTo rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Port_Singapore"/>
+    <cof:transportsTo rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Port_Felixstowe"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2/hasAnnualProduction">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
@@ -7150,6 +7410,19 @@
     <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Kenya_AA"/>
     <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Tarrazu_Reserve"/>
     <cof:verifies rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Fair_Trade"/>
+
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Bourbon_Santos"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Santos_Premium"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Cerrado_Natural"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Robusta_Select"/>
+    <cof:usesWarehouse rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Warehouse_Amsterdam_West"/>
+    <cof:usesWarehouse rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Warehouse_Gdansk"/>
+    <cof:usesWarehouse rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Warehouse_SaintPetersburg"/>
+    <cof:usesWarehouse rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Warehouse_Prague"/>
+    <cof:transportsTo rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Port_Rotterdam"/>
+    <cof:transportsTo rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Port_Gdansk"/>
+    <cof:transportsTo rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Port_SaintPetersburg"/>
+    <cof:transportsTo rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Port_Istanbul"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#transportsTo">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
