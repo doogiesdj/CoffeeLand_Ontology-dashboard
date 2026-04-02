@@ -7,6 +7,7 @@ on:
       - 'data/*.rdf'
       - 'data/*.ttl'
       - 'scripts/rdf_to_json.py'
+      - 'dashboard.html'
 
   workflow_dispatch:
 
@@ -31,10 +32,13 @@ jobs:
       - name: Generate JSON from RDF
         run: python scripts/rdf_to_json.py
 
-      - name: Commit and push generated JSON
+      - name: Sync dashboard.html to docs/
+        run: cp dashboard.html docs/dashboard.html
+
+      - name: Commit and push
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add docs/ontology_data.json docs/coffeeland_data.json
-          git diff --cached --quiet || git commit -m "Auto-generate JSON from RDF [skip ci]"
+          git add docs/
+          git diff --cached --quiet || git commit -m "Auto-generate JSON from RDF and sync dashboard [skip ci]"
           git push
