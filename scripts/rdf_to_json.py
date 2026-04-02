@@ -233,6 +233,55 @@ PORT_COORDS = {
     'Port_Sydney':{'lat':-33.9,'lng':151.2,'label':'Sydney'},
     'Port_Felixstowe':{'lat':51.9,'lng':1.3,'label':'Felixstowe'},
     'Port_Antwerp':{'lat':51.2,'lng':4.4,'label':'Antwerp'},
+    'Port_Buenaventura':{'lat':3.9,'lng':-77.0,'label':'Buenaventura'},
+    'Port_Callao':{'lat':-12.1,'lng':-77.1,'label':'Callao'},
+    'Port_PuertoBarrios':{'lat':15.7,'lng':-88.6,'label':'Puerto Barrios'},
+    'Port_PuertoCortes':{'lat':15.8,'lng':-87.9,'label':'Puerto Cortés'},
+    'Port_PuertoLimon':{'lat':10.0,'lng':-83.0,'label':'Puerto Limón'},
+    'Port_Surabaya':{'lat':-7.2,'lng':112.7,'label':'Surabaya'},
+    'Port_Mumbai':{'lat':19.0,'lng':72.8,'label':'Mumbai'},
+    'Port_LeHavre':{'lat':49.5,'lng':0.1,'label':'Le Havre'},
+    'Port_Trieste':{'lat':45.6,'lng':13.8,'label':'Trieste'},
+    'Port_NewYork':{'lat':40.7,'lng':-74.0,'label':'New York'},
+}
+WAREHOUSE_COORDS = {
+    # Consumer country warehouses
+    'Warehouse_Seattle_Port':{'lat':47.6,'lng':-122.3},
+    'Warehouse_Busan_Port':{'lat':35.1,'lng':129.1},
+    'Warehouse_Amsterdam_West':{'lat':52.4,'lng':4.8},
+    'Warehouse_LongBeach_South':{'lat':33.8,'lng':-118.2},
+    'Warehouse_Genoa_Harbor':{'lat':44.4,'lng':8.9},
+    'Warehouse_Sydney_South':{'lat':-33.9,'lng':151.2},
+    'Warehouse_Hamburg_Central':{'lat':53.5,'lng':10.0},
+    'Warehouse_Tokyo_Bay':{'lat':35.6,'lng':139.8},
+    'Warehouse_Barcelona_Port':{'lat':41.4,'lng':2.2},
+    'Warehouse_Antwerp_North':{'lat':51.3,'lng':4.4},
+    'Warehouse_Rotterdam_West':{'lat':51.9,'lng':4.5},
+    'Warehouse_Miami_FreeZone':{'lat':25.8,'lng':-80.2},
+    'Warehouse_Melbourne_Docks':{'lat':-37.8,'lng':144.9},
+    'Warehouse_NewOrleans_CBD':{'lat':30.0,'lng':-90.1},
+    'Warehouse_Felixstowe_East':{'lat':51.9,'lng':1.3},
+    'Warehouse_Valencia_Industrial':{'lat':39.5,'lng':-0.4},
+    'Warehouse_Singapore_West':{'lat':1.3,'lng':103.7},
+    # Producer country warehouses
+    'Warehouse_Santos_A':{'lat':-23.9,'lng':-46.3},
+    'Warehouse_HoChiMinh_District7':{'lat':10.7,'lng':106.7},
+    'Warehouse_Mombasa_Central':{'lat':-4.0,'lng':39.7},
+    'Warehouse_Buenaventura':{'lat':3.9,'lng':-77.1},
+    'Warehouse_PuertoBarrios':{'lat':15.7,'lng':-88.6},
+    'Warehouse_PuertoCortes':{'lat':15.8,'lng':-88.0},
+    'Warehouse_PuertoLimon':{'lat':10.0,'lng':-83.1},
+    'Warehouse_Callao':{'lat':-12.1,'lng':-77.2},
+    'Warehouse_Surabaya':{'lat':-7.3,'lng':112.7},
+    'Warehouse_Addis_Ababa':{'lat':9.0,'lng':38.7},
+    'Warehouse_Mumbai':{'lat':19.1,'lng':72.9},
+    'Warehouse_Kigali':{'lat':-1.9,'lng':30.1},
+    'Warehouse_Dar_es_Salaam':{'lat':-6.8,'lng':39.3},
+    'Warehouse_Kampala':{'lat':0.3,'lng':32.6},
+    'Warehouse_Veracruz':{'lat':19.2,'lng':-96.1},
+    'Warehouse_Managua':{'lat':12.1,'lng':-86.3},
+    'Warehouse_Kingston':{'lat':18.0,'lng':-76.8},
+    'Warehouse_Sanaa':{'lat':15.4,'lng':44.2},
 }
 
 # 농장 지도 데이터
@@ -437,6 +486,22 @@ all_port_ids = set(p['id'] for p in consumer_ports + producer_ports)
 for n,i in instances.items():
     if 'Port' in i['types'] and n not in all_port_ids:
         producer_ports.append({'id':n,'label':n.replace('Port_','').replace('_',' '),'country':''})
+
+# Add coordinates to ports from PORT_COORDS
+for p_list in [consumer_ports, producer_ports]:
+    for p in p_list:
+        coords = PORT_COORDS.get(p['id'])
+        if coords:
+            p['lat'] = coords['lat']
+            p['lng'] = coords['lng']
+
+# Add coordinates to warehouses from WAREHOUSE_COORDS
+for w_list in [consumer_warehouses, producer_warehouses]:
+    for w in w_list:
+        coords = WAREHOUSE_COORDS.get(w['id'])
+        if coords:
+            w['lat'] = coords['lat']
+            w['lng'] = coords['lng']
 
 # Export Broker ports 채우기
 pp_ids = [p['id'] for p in producer_ports]
