@@ -243,6 +243,21 @@ PORT_COORDS = {
     'Port_LeHavre':{'lat':49.5,'lng':0.1,'label':'Le Havre'},
     'Port_Trieste':{'lat':45.6,'lng':13.8,'label':'Trieste'},
     'Port_NewYork':{'lat':40.7,'lng':-74.0,'label':'New York'},
+    'Port_Shanghai':{'lat':31.2,'lng':121.5,'label':'Shanghai'},
+    'Port_Guangzhou':{'lat':22.6,'lng':113.6,'label':'Guangzhou'},
+    'Port_Vancouver':{'lat':49.3,'lng':-123.1,'label':'Vancouver'},
+    'Port_Montreal':{'lat':45.5,'lng':-73.6,'label':'Montreal'},
+    'Port_SaintPetersburg':{'lat':59.9,'lng':30.3,'label':'Saint Petersburg'},
+    'Port_Gdansk':{'lat':54.4,'lng':18.7,'label':'Gdansk'},
+    'Port_Algiers':{'lat':36.8,'lng':3.1,'label':'Algiers'},
+    'Port_Istanbul':{'lat':41.0,'lng':28.7,'label':'Istanbul'},
+    'Port_Gothenburg':{'lat':57.7,'lng':11.9,'label':'Gothenburg'},
+    'Port_Helsinki':{'lat':60.2,'lng':25.2,'label':'Helsinki'},
+    'Port_Jeddah':{'lat':21.5,'lng':39.2,'label':'Jeddah'},
+    'Port_Vienna':{'lat':48.2,'lng':16.4,'label':'Vienna'},
+    'Port_Prague':{'lat':50.1,'lng':14.4,'label':'Prague'},
+    'Port_Oslo':{'lat':59.9,'lng':10.8,'label':'Oslo'},
+    'Port_Piraeus':{'lat':37.9,'lng':23.6,'label':'Piraeus'},
 }
 WAREHOUSE_COORDS = {
     # Consumer country warehouses
@@ -282,6 +297,22 @@ WAREHOUSE_COORDS = {
     'Warehouse_Managua':{'lat':12.1,'lng':-86.3},
     'Warehouse_Kingston':{'lat':18.0,'lng':-76.8},
     'Warehouse_Sanaa':{'lat':15.4,'lng':44.2},
+    # New consumer country warehouses
+    'Warehouse_Shanghai':{'lat':31.4,'lng':121.6},
+    'Warehouse_Guangzhou':{'lat':22.6,'lng':113.6},
+    'Warehouse_Vancouver':{'lat':49.3,'lng':-123.0},
+    'Warehouse_Montreal':{'lat':45.5,'lng':-73.5},
+    'Warehouse_SaintPetersburg':{'lat':59.8,'lng':29.8},
+    'Warehouse_Gdansk':{'lat':54.4,'lng':18.7},
+    'Warehouse_Algiers':{'lat':36.8,'lng':3.1},
+    'Warehouse_Istanbul':{'lat':41.0,'lng':28.7},
+    'Warehouse_Gothenburg':{'lat':57.7,'lng':12.0},
+    'Warehouse_Helsinki':{'lat':60.2,'lng':25.2},
+    'Warehouse_Jeddah':{'lat':21.5,'lng':39.2},
+    'Warehouse_Vienna':{'lat':48.2,'lng':16.5},
+    'Warehouse_Prague':{'lat':50.0,'lng':14.6},
+    'Warehouse_Oslo':{'lat':59.9,'lng':10.9},
+    'Warehouse_Piraeus':{'lat':38.0,'lng':23.6},
 }
 
 # 농장 지도 데이터
@@ -407,7 +438,7 @@ for name, inst in instances.items():
             flow_links.append({'source':bid,'target':cid,'type':'supplies'})
 
 # 공급망 흐름도에 필요한 엔티티 목록 (coffeeland-web renderTraceFlow용)
-consumer_countries = {'USA','South_Korea','Japan','UK','Australia','Canada','China','Italy','Germany','France','Spain','Netherlands','Belgium','Singapore','Denmark','Taiwan','Switzerland'}
+consumer_countries = {'USA','South_Korea','Japan','UK','Australia','Canada','China','Italy','Germany','France','Spain','Netherlands','Belgium','Singapore','Denmark','Taiwan','Switzerland','Russia','Poland','Algeria','Turkey','Sweden','Finland','Saudi_Arabia','Austria','Czech_Republic','Norway','Greece'}
 
 # 창고: country, port(adjacentTo) 포함
 consumer_warehouses = []
