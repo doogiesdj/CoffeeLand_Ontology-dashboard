@@ -349,43 +349,90 @@ for name, inst in instances.items():
             flow_links.append({'source':bid,'target':cid,'type':'supplies'})
 
 # 공급망 흐름도에 필요한 엔티티 목록 (coffeeland-web renderTraceFlow용)
-consumer_warehouses = [{'id':n,'label':n.replace('Warehouse_','').replace('_',' ')}
-                       for n,i in instances.items() if 'Warehouse' in i['types']
-                       and any(c in ['USA','South_Korea','Japan','UK','Australia','Canada','China','Italy']
-                               for c in i['obj'].get('isLocatedIn',[]))]
-producer_warehouses = [{'id':n,'label':n.replace('Warehouse_','').replace('_',' ')}
-                       for n,i in instances.items() if 'Warehouse' in i['types']
-                       and any(c in ['Colombia','Brazil','Ethiopia','Kenya','Indonesia','Guatemala',
-                                     'Honduras','Costa_Rica','Peru','Vietnam','Jamaica','Panama',
-                                     'Mexico','Rwanda','Tanzania','Uganda','India','Yemen',
-                                     'Nicaragua','El_Salvador','Papua_New_Guinea','Dominican_Republic']
-                               for c in i['obj'].get('isLocatedIn',[]))]
-# 분류 안 된 창고는 producer 쪽에 포함
-all_wh_ids = set(w['id'] for w in consumer_warehouses + producer_warehouses)
-for n,i in instances.items():
-    if 'Warehouse' in i['types'] and n not in all_wh_ids:
-        producer_warehouses.append({'id':n,'label':n.replace('Warehouse_','').replace('_',' ')})
+consumer_countries = {'USA','South_Korea','Japan','UK','Australia','Canada','China','Italy','Germany','France','Spain','Netherlands'}
 
-import_brokers = [{'id':n,'label':n.replace('_',' ')}
-                  for n,i in instances.items() if 'ImportBroker' in i['types']]
-export_brokers = [{'id':n,'label':n.replace('_',' ')}
-                  for n,i in instances.items() if 'ExportBroker' in i['types']]
-logistics_providers = [{'id':n,'label':n.replace('_',' ')}
-                       for n,i in instances.items() if 'LogisticsProvider' in i['types']]
+# 창고: country, port(adjacentTo) 포함
+consumer_warehouses = []
+producer_warehouses = []
+for n,i in instances.items():
+    if 'Warehouse' not in i['types']: continue
+    countries = i['obj'].get('isLocatedIn',[])
+    ports = i['obj'].get('adjacentTo',[])
+    wh = {'id':n,'label':n.replace('Warehouse_','').replace('_',' '),
+          'country':countries[0].replace('_',' ') if countries else '',
+          'port':ports[0] if ports else ''}
+    if any(c in consumer_countries for c in countries):
+        consumer_warehouses.append(wh)
+    else:
+        producer_warehouses.append(wh)
+
+# Import Broker: brands(mediates), hq(isHeadquarteredIn), cw(연결된 소비국 창고), cp(연결된 소비국 항구)
+import_brokers = []
+for n,i in instances.items():
+    if 'ImportBroker' not in i['types']: continue
+    hqs = i['obj'].get('isHeadquarteredIn',[])
+    brands = i['obj'].get('mediates',[])
+    # 해당 브로커가 구매하는 농장들이 연결된 창고/항구 매핑
+    cws = [w['id'] for w in consumer_warehouses]  # 모든 소비국 창고 연결
+    cps = [p for p in i['obj'].get('transportsTo',[])] or []
+    import_brokers.append({'id':n,'label':n.replace('_',' '),
+                           'hq':hqs[0].replace('_',' ') if hqs else '',
+                           'brands':brands,
+                           'warehouses':cws[:3],  # 상위 3개
+                           'ports':cps})
+
+# Export Broker: brands(mediates), hq, ports(연결된 생산국 항구)
+export_brokers = []
+for n,i in instances.items():
+    if 'ExportBroker' not in i['types']: continue
+    hqs = i['obj'].get('isHeadquarteredIn',[])
+    brands = i['obj'].get('mediates',[])
+    farms = i['obj'].get('purchasesFrom',[])
+    # 생산국 항구 연결: 농장이 위치한 국가 근처 항구
+    farm_countries = set()
+    for f in farms:
+        if f in instances:
+            for c in instances[f]['obj'].get('isLocatedIn',[]):
+                farm_countries.add(c)
+    pp_ids = [p['id'] for p in producer_ports] if 'producer_ports' in dir() else []
+    export_brokers.append({'id':n,'label':n.replace('_',' '),
+                           'hq':hqs[0].replace('_',' ') if hqs else '',
+                           'brands':brands,
+                           'ports':[]})  # 아래에서 채움
+
+# Logistics Provider: from(transportsFrom), to(transportsTo), hq
+logistics_providers = []
+for n,i in instances.items():
+    if 'LogisticsProvider' not in i['types']: continue
+    hqs = i['obj'].get('isHeadquarteredIn',[])
+    froms = i['obj'].get('transportsFrom',[])
+    tos = i['obj'].get('transportsTo',[])
+    logistics_providers.append({'id':n,'label':n.replace('_',' '),
+                                'hq':hqs[0].replace('_',' ') if hqs else '',
+                                'from':froms,'to':tos})
 
 # 소비국/생산국 항구 분류
-consumer_countries = {'USA','South_Korea','Japan','UK','Australia','Canada','China','Italy','Germany','France'}
-consumer_ports = [{'id':n,'label':n.replace('Port_','').replace('_',' ')}
-                  for n,i in instances.items() if 'Port' in i['types']
-                  and any(c in consumer_countries for c in i['obj'].get('isLocatedIn',[]))]
-producer_ports = [{'id':n,'label':n.replace('Port_','').replace('_',' ')}
-                  for n,i in instances.items() if 'Port' in i['types']
-                  and not any(c in consumer_countries for c in i['obj'].get('isLocatedIn',[]))]
-# 분류 안 된 항구
+consumer_ports = []
+producer_ports = []
+for n,i in instances.items():
+    if 'Port' not in i['types']: continue
+    countries = i['obj'].get('isLocatedIn',[])
+    port = {'id':n,'label':n.replace('Port_','').replace('_',' '),
+            'country':countries[0].replace('_',' ') if countries else ''}
+    if any(c in consumer_countries for c in countries):
+        consumer_ports.append(port)
+    else:
+        producer_ports.append(port)
+# 분류 안 된 항구는 producer
 all_port_ids = set(p['id'] for p in consumer_ports + producer_ports)
 for n,i in instances.items():
     if 'Port' in i['types'] and n not in all_port_ids:
-        producer_ports.append({'id':n,'label':n.replace('Port_','').replace('_',' ')})
+        producer_ports.append({'id':n,'label':n.replace('Port_','').replace('_',' '),'country':''})
+
+# Export Broker ports 채우기
+pp_ids = [p['id'] for p in producer_ports]
+for eb in export_brokers:
+    eb['ports'] = pp_ids[:3]  # 생산국 항구들과 연결
 
 supply_json = {
     'stats': {
