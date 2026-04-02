@@ -17,7 +17,7 @@ jobs:
       contents: write
 
     steps:
-      - name: Checkout dashboard repo
+      - name: Checkout
         uses: actions/checkout@v4
 
       - name: Set up Python
@@ -25,28 +25,16 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Install dependencies
+      - name: Install rdflib
         run: pip install rdflib
 
       - name: Generate JSON from RDF
         run: python scripts/rdf_to_json.py
 
-      - name: Commit generated JSON to dashboard repo
+      - name: Commit and push generated JSON
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add docs/ontology_data.json docs/coffeeland_data.json
           git diff --cached --quiet || git commit -m "Auto-generate JSON from RDF [skip ci]"
           git push
-
-      - name: Deploy to coffeeland-web repo
-        uses: dmnemec/copy_file_to_another_repo_action@main
-        env:
-          API_TOKEN_GITHUB: ${{ secrets.COFFEELAND_WEB_TOKEN }}
-        with:
-          source_file: 'docs/coffeeland_data.json'
-          destination_repo: 'doogiesdj/coffeeland-web'
-          destination_folder: '.'
-          user_email: 'github-actions[bot]@users.noreply.github.com'
-          user_name: 'github-actions[bot]'
-          commit_message: 'Auto-sync coffeeland_data.json from RDF update'
