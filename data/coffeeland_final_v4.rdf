@@ -6478,4 +6478,96 @@
     <cof:isLocatedIn rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#USA"/>
   </rdf:Description>
 
+  <!-- ═══ Producer Country Warehouses (15 new) ═══ -->
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Warehouse_Buenaventura">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Warehouse"/>
+    <cof:isLocatedIn rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Colombia"/>
+    <cof:adjacentTo rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Port_Buenaventura"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Warehouse_PuertoBarrios">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Warehouse"/>
+    <cof:isLocatedIn rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Guatemala"/>
+    <cof:adjacentTo rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Port_PuertoBarrios"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Warehouse_PuertoCortes">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Warehouse"/>
+    <cof:isLocatedIn rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Honduras"/>
+    <cof:adjacentTo rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Port_PuertoCortes"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Warehouse_PuertoLimon">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Warehouse"/>
+    <cof:isLocatedIn rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Costa_Rica"/>
+    <cof:adjacentTo rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Port_PuertoLimon"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Warehouse_Callao">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Warehouse"/>
+    <cof:isLocatedIn rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Peru"/>
+    <cof:adjacentTo rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Port_Callao"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Warehouse_Surabaya">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Warehouse"/>
+    <cof:isLocatedIn rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Indonesia"/>
+    <cof:adjacentTo rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Port_Surabaya"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Warehouse_Addis_Ababa">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Warehouse"/>
+    <cof:isLocatedIn rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Ethiopia"/>
+    <cof:adjacentTo rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Port_Mombasa"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Warehouse_Mumbai">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Warehouse"/>
+    <cof:isLocatedIn rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#India"/>
+    <cof:adjacentTo rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Port_Mumbai"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Warehouse_Kigali">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Warehouse"/>
+    <cof:isLocatedIn rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Rwanda"/>
+    <cof:adjacentTo rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Port_Mombasa"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Warehouse_Dar_es_Salaam">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Warehouse"/>
+    <cof:isLocatedIn rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Tanzania"/>
+    <cof:adjacentTo rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Port_Mombasa"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Warehouse_Kampala">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Warehouse"/>
+    <cof:isLocatedIn rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Uganda"/>
+    <cof:adjacentTo rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Port_Mombasa"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Warehouse_Veracruz">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Warehouse"/>
+    <cof:isLocatedIn rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Mexico"/>
+    <cof:adjacentTo rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Port_HoChiMinh"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Warehouse_Managua">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Warehouse"/>
+    <cof:isLocatedIn rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Nicaragua"/>
+    <cof:adjacentTo rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Port_PuertoCortes"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Warehouse_Kingston">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Warehouse"/>
+    <cof:isLocatedIn rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Jamaica"/>
+    <cof:adjacentTo rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Port_Santos"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Warehouse_Sanaa">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Warehouse"/>
+    <cof:isLocatedIn rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Yemen"/>
+    <cof:adjacentTo rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Port_Mumbai"/>
+  </rdf:Description>
+
 </rdf:RDF>

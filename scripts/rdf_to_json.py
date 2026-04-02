@@ -445,14 +445,15 @@ for eb in export_brokers:
 
 # 국가별 수출 항구 매핑 (renderTraceFlow의 farm_export_port)
 farm_export_port = {
-    'Colombia':'Port_Buenaventura','Brazil':'Port_Santos','Ethiopia':'Port_Djibouti',
-    'Kenya':'Port_Mombasa','Indonesia':'Port_Jakarta','Guatemala':'Port_SantoTomas',
-    'Honduras':'Port_PuertoCortez','Costa Rica':'Port_Limon','Peru':'Port_Callao',
-    'Vietnam':'Port_HoChiMinh','Jamaica':'Port_Kingston','Panama':'Port_Colon',
-    'Mexico':'Port_Veracruz','Rwanda':'Port_Mombasa','Tanzania':'Port_DarEsSalaam',
-    'Uganda':'Port_Mombasa','India':'Port_Mumbai','Yemen':'Port_Aden',
-    'Nicaragua':'Port_Corinto','El Salvador':'Port_Acajutla',
-    'Papua New Guinea':'Port_Lae','Dominican Republic':'Port_SantoDomingo',
+    'Colombia':'Port_Buenaventura','Brazil':'Port_Santos','Ethiopia':'Port_Mombasa',
+    'USA':'Port_LongBeach',
+    'Kenya':'Port_Mombasa','Indonesia':'Port_Surabaya','Guatemala':'Port_PuertoBarrios',
+    'Honduras':'Port_PuertoCortes','Costa Rica':'Port_PuertoLimon','Peru':'Port_Callao',
+    'Vietnam':'Port_HoChiMinh','Jamaica':'Port_Santos','Panama':'Port_Buenaventura',
+    'Mexico':'Port_HoChiMinh','Rwanda':'Port_Mombasa','Tanzania':'Port_Mombasa',
+    'Uganda':'Port_Mombasa','India':'Port_Mumbai','Yemen':'Port_Mumbai',
+    'Nicaragua':'Port_PuertoCortes','El Salvador':'Port_PuertoBarrios',
+    'Papua New Guinea':'Port_Surabaya','Dominican Republic':'Port_Santos',
 }
 
 # ── trace_flow_links: 11-column supply chain links (RDF-driven) ──
