@@ -12,7 +12,7 @@ from rdflib import Graph, Namespace, RDF, RDFS, OWL, URIRef
 
 # ── 경로 설정 ──────────────────────────────────────────────
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-RDF_FILE = os.path.join(BASE_DIR, 'data', 'coffeeland_final_v2.rdf')
+RDF_FILE = os.path.join(BASE_DIR, 'data', 'coffeeland_final_v3.rdf')
 TTL_FILE = os.path.join(BASE_DIR, 'data', 'coffeeland_data_enrichment.ttl')
 OUT_DIR  = os.path.join(BASE_DIR, 'docs')
 os.makedirs(OUT_DIR, exist_ok=True)
@@ -211,6 +211,11 @@ COORDS = {
     'Italy':{'lat':41.9,'lng':12.5},'Spain':{'lat':40.4,'lng':-3.7},
     'Germany':{'lat':51.2,'lng':10.5},'UK':{'lat':51.5,'lng':-0.1},
     'France':{'lat':46.2,'lng':2.2},'Australia':{'lat':-25.3,'lng':133.8},
+    'Jamaica':{'lat':18.1,'lng':-77.3},'Panama':{'lat':8.5,'lng':-80.8},
+    'Mexico':{'lat':23.6,'lng':-102.6},'Uganda':{'lat':1.4,'lng':32.3},
+    'India':{'lat':20.6,'lng':78.9},'Yemen':{'lat':15.6,'lng':48.5},
+    'El_Salvador':{'lat':13.8,'lng':-88.9},'Papua_New_Guinea':{'lat':-6.3,'lng':143.9},
+    'Dominican_Republic':{'lat':18.7,'lng':-70.2},
 }
 PORT_COORDS = {
     'Port_Busan':{'lat':35.1,'lng':129.0,'label':'Busan'},
