@@ -455,6 +455,139 @@ farm_export_port = {
     'Papua New Guinea':'Port_Lae','Dominican Republic':'Port_SantoDomingo',
 }
 
+# ── trace_flow_links: 11-column supply chain links (RDF-driven) ──
+# Prefixes: m_(menu), b_(brand), cw_(consumer warehouse), ib_(import broker),
+#           cp_(consumer port), lp_(logistics), pp_(producer port),
+#           eb_(export broker), pw_(producer warehouse), f_(farm), co_(country)
+print("🔗 trace_flow_links 생성...")
+trace_flow_links = []
+tfl_set = set()
+
+def add_tfl(src, tgt):
+    key = src + '|' + tgt
+    if key not in tfl_set:
+        tfl_set.add(key)
+        trace_flow_links.append({'source': src, 'target': tgt})
+
+# 1. Menu → Brand (from trace data)
+for t in trace:
+    add_tfl('m_' + t['menu'], 'b_' + t['brand'])
+
+# 2. Brand → CW: brand uses chains → chains operate in cities/countries → warehouses in those countries
+#    Indirect: link brands to consumer warehouses via the import brokers that mediate them
+brand_to_ibs = defaultdict(list)
+for ib in import_brokers:
+    for b in ib['brands']:
+        brand_to_ibs[b].append(ib['id'])
+
+# Build IB → CW links based on warehouse adjacentTo ports + IB HQ geography
+ib_to_cws = defaultdict(list)
+ib_to_cps = defaultdict(list)
+
+# Map each IB to warehouses: IB HQ country → find warehouses in same region
+# Use port adjacency: warehouse.adjacentTo → port, IB transportsTo → same ports
+for ib_data in import_brokers:
+    ib_id = ib_data['id']
+    ib_inst = instances.get(ib_id, {})
+    ib_hqs = ib_inst.get('obj', {}).get('isHeadquarteredIn', [])
+    ib_ports = ib_inst.get('obj', {}).get('transportsTo', [])
+
+    # Link IB to consumer warehouses whose adjacentTo port matches IB's ports
+    matched_cws = set()
+    matched_cps = set()
+    for cw in consumer_warehouses:
+        cw_inst = instances.get(cw['id'], {})
+        cw_ports = cw_inst.get('obj', {}).get('adjacentTo', [])
+        # If IB has specific ports, match; otherwise link to all CWs
+        if ib_ports:
+            if any(p in ib_ports for p in cw_ports):
+                matched_cws.add(cw['id'])
+                for p in cw_ports:
+                    if p in ib_ports:
+                        matched_cps.add(p)
+        else:
+            # No specific ports → link to all consumer warehouses (IB is intermediary)
+            matched_cws.add(cw['id'])
+            for p in cw_ports:
+                matched_cps.add(p)
+
+    # If no matches found, link to all consumer warehouses (fallback)
+    if not matched_cws:
+        for cw in consumer_warehouses:
+            matched_cws.add(cw['id'])
+    if not matched_cps:
+        for cp in consumer_ports:
+            matched_cps.add(cp['id'])
+
+    ib_to_cws[ib_id] = list(matched_cws)
+    ib_to_cps[ib_id] = list(matched_cps)
+
+# Now build Brand → CW links via IB
+for brand_name in [b['id'] for b in brands_list]:
+    ibs = brand_to_ibs.get(brand_name, [])
+    cw_set = set()
+    for ib_id in ibs:
+        for cw_id in ib_to_cws.get(ib_id, []):
+            cw_set.add(cw_id)
+    for cw_id in cw_set:
+        add_tfl('b_' + brand_name, 'cw_' + cw_id)
+
+# 3. CW → IB: warehouse adjacentTo port, IB operates through same ports
+for ib_data in import_brokers:
+    ib_id = ib_data['id']
+    for cw_id in ib_to_cws.get(ib_id, []):
+        add_tfl('cw_' + cw_id, 'ib_' + ib_id)
+
+# 4. IB → CP: import broker linked to consumer ports
+for ib_data in import_brokers:
+    ib_id = ib_data['id']
+    for cp_id in ib_to_cps.get(ib_id, []):
+        add_tfl('ib_' + ib_id, 'cp_' + cp_id)
+
+# 5. CP → LP: logistics_provider.transportsTo matches consumer ports
+for lp in logistics_providers:
+    for cp_id in lp['to']:
+        add_tfl('cp_' + cp_id, 'lp_' + lp['id'])
+
+# 6. LP → PP: logistics_provider.transportsFrom matches producer ports
+for lp in logistics_providers:
+    for pp_id in lp['from']:
+        add_tfl('lp_' + lp['id'], 'pp_' + pp_id)
+
+# 7. PP → EB: export broker's ports (producer ports they operate through)
+for eb in export_brokers:
+    for pp_id in eb['ports']:
+        add_tfl('pp_' + pp_id, 'eb_' + eb['id'])
+
+# 8. EB → PW: producer warehouse adjacentTo matches producer ports used by EB
+pp_to_pw = {}
+for pw in producer_warehouses:
+    pw_inst = instances.get(pw['id'], {})
+    pw_ports = pw_inst.get('obj', {}).get('adjacentTo', [])
+    for p in pw_ports:
+        pp_to_pw[p] = pw['id']
+
+for eb in export_brokers:
+    for pp_id in eb['ports']:
+        pw_id = pp_to_pw.get(pp_id)
+        if pw_id:
+            add_tfl('eb_' + eb['id'], 'pw_' + pw_id)
+
+# 9. PW → Farm: farm isLocatedIn country, warehouse isLocatedIn same country
+for f in farm_map:
+    country = f['country'].replace(' ', '_')
+    ep = farm_export_port.get(f['country'])
+    if ep:
+        pw_id = pp_to_pw.get(ep)
+        if pw_id:
+            add_tfl('pw_' + pw_id, 'f_' + f['id'])
+
+# 10. Farm → Country
+for f in farm_map:
+    add_tfl('f_' + f['id'], 'co_' + f['country'].replace(' ', '_'))
+
+print(f"   trace_flow_links: {len(trace_flow_links)} 링크 생성")
+
 supply_json = {
     'stats': {
         'menus': len([n for n,i in instances.items() if 'BeverageMenu' in i['types']]),
@@ -478,6 +611,7 @@ supply_json = {
     'consumer_ports': consumer_ports,
     'producer_ports': producer_ports,
     'farm_export_port': farm_export_port,
+    'trace_flow_links': trace_flow_links,
 }
 
 with open(os.path.join(OUT_DIR, 'coffeeland_data.json'), 'w', encoding='utf-8') as f:
