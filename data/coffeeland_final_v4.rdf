@@ -6290,4 +6290,192 @@
     <rdfs:label xml:lang="en">has equipment</rdfs:label>
   </rdf:Description>
 
+  <!-- ═══ Additional ImportBroker Individuals (8) ═══ -->
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Atlantic_Coffee">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#ImportBroker"/>
+    <untitled-ontology-2:isHeadquarteredIn rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Germany"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Bourbon_Santos"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Santos_Premium"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Colombian_Supremo"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Cerrado_Natural"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Huila_Reserve"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Narino_Supremo"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Westfeldt_Brothers">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#ImportBroker"/>
+    <untitled-ontology-2:isHeadquarteredIn rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#USA"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Colombian_Supremo"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Honduras_SHG"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Antigua_Premium"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Huehuetenango_SHB"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Marcala_Organic"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Matagalpa_SHG"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Cofinet">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#ImportBroker"/>
+    <untitled-ontology-2:isHeadquarteredIn rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Switzerland"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Yirgacheffe_Special"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Kenya_AA"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Rwandan_Bourbon"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Kilimanjaro_Peaberry"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Sulawesi_Toraja"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Sustainable_Harvest">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#ImportBroker"/>
+    <untitled-ontology-2:isHeadquarteredIn rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#USA"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Peruvian_Organic"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Huehuetenango_SHB"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Rwandan_Bourbon"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Marcala_Organic"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#West_Valley_Honey"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Bugisu_AA"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Ally_Coffee">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#ImportBroker"/>
+    <untitled-ontology-2:isHeadquarteredIn rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#USA"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Bourbon_Santos"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Cerrado_Natural"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Colombian_Supremo"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Chiapas_Altura"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Da_Lat_Arabica"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Caravela_Coffee">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#ImportBroker"/>
+    <untitled-ontology-2:isHeadquarteredIn rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#USA"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Colombian_Supremo"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Huila_Reserve"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Narino_Supremo"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Peruvian_Organic"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Antigua_Premium"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Schluter_SA">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#ImportBroker"/>
+    <untitled-ontology-2:isHeadquarteredIn rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Switzerland"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Sumatra_Mandheling"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Java_Estate"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Malabar_Monsoon"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Sulawesi_Toraja"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#PNG_Sigri"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Robusta_Select"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Itochu_Coffee">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#ImportBroker"/>
+    <untitled-ontology-2:isHeadquarteredIn rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Japan"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Blue_Mountain_Supreme"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Kona_Extra_Fancy"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Sumatra_Mandheling"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Java_Estate"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Mocha_Sanani"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Kilimanjaro_Peaberry"/>
+  </rdf:Description>
+
+  <!-- ═══ Additional ExportBroker Individuals (6) ═══ -->
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Federacion_Nacional_Cafeteros">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#ExportBroker"/>
+    <untitled-ontology-2:isHeadquarteredIn rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Colombia"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Colombian_Supremo"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Huila_Reserve"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Narino_Supremo"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Vinh_Hiep_JSC">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#ExportBroker"/>
+    <untitled-ontology-2:isHeadquarteredIn rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Vietnam"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Robusta_Select"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Da_Lat_Arabica"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Tata_Coffee">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#ExportBroker"/>
+    <untitled-ontology-2:isHeadquarteredIn rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#India"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Malabar_Monsoon"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Robusta_Select"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Compania_Exportadora_Atlantica">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#ExportBroker"/>
+    <untitled-ontology-2:isHeadquarteredIn rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Guatemala"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Antigua_Premium"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Huehuetenango_SHB"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Pacamara_Reserve"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#IHCAFE_Export">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#ExportBroker"/>
+    <untitled-ontology-2:isHeadquarteredIn rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Honduras"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Honduras_SHG"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Marcala_Organic"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Dormans_Coffee">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#ExportBroker"/>
+    <untitled-ontology-2:isHeadquarteredIn rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Kenya"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Kenya_AA"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Nyeri_Peaberry"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Kilimanjaro_Peaberry"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Rwandan_Bourbon"/>
+    <cof:mediates rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Bugisu_AA"/>
+  </rdf:Description>
+
+  <!-- ═══ Additional Port Individuals (10) ═══ -->
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Port_Buenaventura">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Port"/>
+    <cof:isLocatedIn rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Colombia"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Port_Callao">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Port"/>
+    <cof:isLocatedIn rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Peru"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Port_PuertoBarrios">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Port"/>
+    <cof:isLocatedIn rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Guatemala"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Port_PuertoCortes">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Port"/>
+    <cof:isLocatedIn rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Honduras"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Port_PuertoLimon">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Port"/>
+    <cof:isLocatedIn rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Costa_Rica"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Port_Surabaya">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Port"/>
+    <cof:isLocatedIn rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Indonesia"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Port_Mumbai">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Port"/>
+    <cof:isLocatedIn rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#India"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Port_LeHavre">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Port"/>
+    <cof:isLocatedIn rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#France"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Port_Trieste">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Port"/>
+    <cof:isLocatedIn rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Italy"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Port_NewYork">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Port"/>
+    <cof:isLocatedIn rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#USA"/>
+  </rdf:Description>
+
 </rdf:RDF>
