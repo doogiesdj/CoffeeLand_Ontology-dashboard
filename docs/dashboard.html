@@ -4956,15 +4956,25 @@
                     instanceMap: {}
                 };
 
-                // Build instanceMap from instanceDetails
+                // Build instanceMap from instanceDetails (include properties)
                 if (OD.instanceDetails) {
                     Object.entries(OD.instanceDetails).forEach(([name, detail]) => {
+                        const props = {};
+                        if (detail.properties) {
+                            Object.entries(detail.properties).forEach(([pName, pVal]) => {
+                                if (pVal.type === 'data' && pVal.value) {
+                                    props[pName] = [{ type: 'literal', value: pVal.value }];
+                                } else if (pVal.type === 'object' && pVal.values) {
+                                    props[pName] = pVal.values.map(v => ({ type: 'uri', value: v.replace(/_/g, ' ') }));
+                                }
+                            });
+                        }
                         ontologyData.instanceMap[detail.uri] = {
                             uri: detail.uri,
                             name,
                             classURIs: detail.types.map(t => BASE_NS + t),
                             description: '',
-                            properties: {}
+                            properties: props
                         };
                     });
                 }
