@@ -6,14 +6,14 @@
     "countries": 32,
     "chains": 23,
     "ports": 15,
-    "triples": 4989
+    "triples": 5183
   },
   "farm_map": [
     {
       "name": "Narino San Juan Farm",
       "id": "Farm_Narino_San_Juan_Farm",
-      "lat": 5.1,
-      "lng": -74.9,
+      "lat": 5.7,
+      "lng": -73.1,
       "country": "Colombia",
       "brands": [
         "Narino_Supremo",
@@ -25,8 +25,8 @@
     {
       "name": "West Valley Helsar Farm",
       "id": "Farm_West_Valley_Helsar_Farm",
-      "lat": 8.2,
-      "lng": -84.7,
+      "lat": 9.399999999999999,
+      "lng": -84.1,
       "country": "Costa Rica",
       "brands": [
         "West_Valley_Honey",
@@ -38,8 +38,8 @@
     {
       "name": "Sumatra Mandheling Gayo Farm",
       "id": "Farm_Sumatra_Mandheling_Gayo_Farm",
-      "lat": -6.8,
-      "lng": 107.39999999999999,
+      "lat": -7.7,
+      "lng": 105.89999999999999,
       "country": "Indonesia",
       "brands": [
         "Sumatra_Mandheling"
@@ -50,8 +50,8 @@
     {
       "name": "Sidamo Guji Farm",
       "id": "Farm_Sidamo_Guji_Farm",
-      "lat": 8.7,
-      "lng": 37.800000000000004,
+      "lat": 8.4,
+      "lng": 39.6,
       "country": "Ethiopia",
       "brands": [
         "Sidamo_Natural"
@@ -62,7 +62,7 @@
     {
       "name": "Sao Paulo Fazenda Ipe",
       "id": "Farm_Sao_Paulo_Fazenda_Ipe",
-      "lat": -15.7,
+      "lat": -13.6,
       "lng": -51.6,
       "country": "Brazil",
       "brands": [
@@ -74,8 +74,8 @@
     {
       "name": "Kilimanjaro Moshi Estate",
       "id": "Farm_Kilimanjaro_Moshi_Estate",
-      "lat": -6.7,
-      "lng": 34.3,
+      "lat": -7.300000000000001,
+      "lng": 35.199999999999996,
       "country": "Tanzania",
       "brands": [
         "Kilimanjaro_Peaberry"
@@ -86,7 +86,7 @@
     {
       "name": "Antigua Finca El Injerto",
       "id": "Farm_Antigua_Finca_El_Injerto",
-      "lat": 14.600000000000001,
+      "lat": 14.3,
       "lng": -90.8,
       "country": "Guatemala",
       "brands": [
@@ -99,7 +99,7 @@
       "name": "Copan San Marcos Farm",
       "id": "Farm_Farm_Copan_San_Marcos_Farm",
       "lat": 15.799999999999999,
-      "lng": -85.60000000000001,
+      "lng": -86.5,
       "country": "Honduras",
       "brands": [],
       "co2": 4.0,
@@ -108,8 +108,8 @@
     {
       "name": "Lam Dong Arabica Farm",
       "id": "Farm_Lam_Dong_Arabica_Farm",
-      "lat": 13.799999999999999,
-      "lng": 109.2,
+      "lat": 12.9,
+      "lng": 107.39999999999999,
       "country": "Vietnam",
       "brands": [
         "Da_Lat_Arabica"
@@ -120,12 +120,12 @@
     {
       "name": "Nyeri Gatomboya Farm",
       "id": "Farm_Nyeri_Gatomboya_Farm",
-      "lat": -2.8,
-      "lng": 37.4,
+      "lat": -1.3,
+      "lng": 37.699999999999996,
       "country": "Kenya",
       "brands": [
-        "Nyeri_Peaberry",
-        "Kenya_AA"
+        "Kenya_AA",
+        "Nyeri_Peaberry"
       ],
       "co2": 3.1,
       "esg": "mid"
@@ -145,8 +145,8 @@
     {
       "name": "Harrar Estate",
       "id": "Farm_Harrar_Estate",
-      "lat": 7.5,
-      "lng": 39.6,
+      "lat": 8.7,
+      "lng": 39.300000000000004,
       "country": "Ethiopia",
       "brands": [
         "Harrar_Longberry"
@@ -157,8 +157,8 @@
     {
       "name": "Espirito Santo Fazenda Santa Rita",
       "id": "Farm_Espirito_Santo_Fazenda_Santa_Rita",
-      "lat": -13.899999999999999,
-      "lng": -51.9,
+      "lat": -15.399999999999999,
+      "lng": -51.6,
       "country": "Brazil",
       "brands": [],
       "co2": 7.2,
@@ -167,8 +167,8 @@
     {
       "name": "Jinotega Finca Mierisch",
       "id": "Farm_Jinotega_Finca_Mierisch",
-      "lat": 12.6,
-      "lng": -84.60000000000001,
+      "lat": 11.700000000000001,
+      "lng": -85.5,
       "country": "Nicaragua",
       "brands": [
         "Matagalpa_SHG"
@@ -179,8 +179,8 @@
     {
       "name": "Antioquia La Esperanza",
       "id": "Farm_Antioquia_La_Esperanza",
-      "lat": 3.6,
-      "lng": -74.3,
+      "lat": 5.1,
+      "lng": -73.7,
       "country": "Colombia",
       "brands": [
         "Colombian_Supremo"
@@ -191,8 +191,8 @@
     {
       "name": "Huila El Paraiso Farm",
       "id": "Farm_Huila_El_Paraiso_Farm",
-      "lat": 5.4,
-      "lng": -73.1,
+      "lat": 5.7,
+      "lng": -74.3,
       "country": "Colombia",
       "brands": [
         "Huila_Reserve"
@@ -203,8 +203,8 @@
     {
       "name": "Copan San Marcos Farm",
       "id": "Farm_Copan_San_Marcos_Farm",
-      "lat": 16.4,
-      "lng": -85.60000000000001,
+      "lat": 15.799999999999999,
+      "lng": -86.2,
       "country": "Honduras",
       "brands": [
         "Honduras_SHG"
@@ -215,8 +215,8 @@
     {
       "name": "Western Province Huye Mountain",
       "id": "Farm_Western_Province_Huye_Mountain",
-      "lat": -3.5,
-      "lng": 30.2,
+      "lat": -1.7,
+      "lng": 29.299999999999997,
       "country": "Rwanda",
       "brands": [],
       "co2": 2.9,
@@ -225,8 +225,8 @@
     {
       "name": "Yirgacheffe Kochere Farm",
       "id": "Farm_Yirgacheffe_Kochere_Farm",
-      "lat": 7.8,
-      "lng": 38.400000000000006,
+      "lat": 9.0,
+      "lng": 38.7,
       "country": "Ethiopia",
       "brands": [
         "Yirgacheffe_Special"
@@ -237,8 +237,8 @@
     {
       "name": "Java Ijen Estate",
       "id": "Farm_Java_Ijen_Estate",
-      "lat": -6.5,
-      "lng": 106.8,
+      "lat": -7.7,
+      "lng": 105.89999999999999,
       "country": "Indonesia",
       "brands": [
         "Java_Estate"
@@ -249,8 +249,8 @@
     {
       "name": "Dak Lak Central Highlands Farm",
       "id": "Farm_Dak_Lak_Central_Highlands_Farm",
-      "lat": 12.9,
-      "lng": 108.3,
+      "lat": 13.2,
+      "lng": 108.6,
       "country": "Vietnam",
       "brands": [
         "Robusta_Select"
@@ -261,8 +261,8 @@
     {
       "name": "Kiambu Kagumo Estate",
       "id": "Farm_Kiambu_Kagumo_Estate",
-      "lat": -2.2,
-      "lng": 36.8,
+      "lat": -1.6,
+      "lng": 36.199999999999996,
       "country": "Kenya",
       "brands": [
         "Kenya_AA"
@@ -273,8 +273,8 @@
     {
       "name": "Huehuetenango Finca Vista Hermosa",
       "id": "Farm_Huehuetenango_Finca_Vista_Hermosa",
-      "lat": 15.200000000000001,
-      "lng": -90.5,
+      "lat": 14.9,
+      "lng": -91.10000000000001,
       "country": "Guatemala",
       "brands": [
         "Antigua_Premium",
@@ -286,8 +286,8 @@
     {
       "name": "Tarrazu La Minita Farm",
       "id": "Farm_Tarrazu_La_Minita_Farm",
-      "lat": 10.6,
-      "lng": -83.8,
+      "lat": 8.2,
+      "lng": -82.89999999999999,
       "country": "Costa Rica",
       "brands": [
         "Tarrazu_Reserve"
@@ -298,12 +298,12 @@
     {
       "name": "Minas Gerais Fazenda Sertao",
       "id": "Farm_Minas_Gerais_Fazenda_Sertao",
-      "lat": -13.899999999999999,
-      "lng": -52.199999999999996,
+      "lat": -15.1,
+      "lng": -52.8,
       "country": "Brazil",
       "brands": [
-        "Santos_Premium",
-        "Bourbon_Santos"
+        "Bourbon_Santos",
+        "Santos_Premium"
       ],
       "co2": 3.5,
       "esg": "low"
@@ -311,8 +311,8 @@
     {
       "name": "Blue Mountain Estate",
       "id": "Farm_Blue_Mountain_Estate",
-      "lat": 19.0,
-      "lng": -76.39999999999999,
+      "lat": 18.700000000000003,
+      "lng": -77.89999999999999,
       "country": "Jamaica",
       "brands": [
         "Blue_Mountain_Supreme"
@@ -323,8 +323,8 @@
     {
       "name": "Boquete Hacienda Esmeralda",
       "id": "Farm_Boquete_Hacienda_Esmeralda",
-      "lat": 8.8,
-      "lng": -81.39999999999999,
+      "lat": 9.1,
+      "lng": -80.5,
       "country": "Panama",
       "brands": [
         "Geisha_Boquete"
@@ -335,7 +335,7 @@
     {
       "name": "Chiapas Finca Irlanda",
       "id": "Farm_Chiapas_Finca_Irlanda",
-      "lat": 23.6,
+      "lat": 24.200000000000003,
       "lng": -102.6,
       "country": "Mexico",
       "brands": [
@@ -347,8 +347,8 @@
     {
       "name": "Huye Mountain Estate",
       "id": "Farm_Huye_Mountain_Estate",
-      "lat": -1.7,
-      "lng": 29.9,
+      "lat": -2.0,
+      "lng": 29.599999999999998,
       "country": "Rwanda",
       "brands": [
         "Rwandan_Bourbon"
@@ -359,7 +359,7 @@
     {
       "name": "Bugisu Sipi Falls",
       "id": "Farm_Bugisu_Sipi_Falls",
-      "lat": 1.7,
+      "lat": 0.5,
       "lng": 31.999999999999996,
       "country": "Uganda",
       "brands": [
@@ -371,8 +371,8 @@
     {
       "name": "Malabar Coast Estate",
       "id": "Farm_Malabar_Coast_Estate",
-      "lat": 21.5,
-      "lng": 78.60000000000001,
+      "lat": 20.6,
+      "lng": 78.30000000000001,
       "country": "India",
       "brands": [
         "Malabar_Monsoon"
@@ -383,8 +383,8 @@
     {
       "name": "Sanani Bani Matar",
       "id": "Farm_Sanani_Bani_Matar",
-      "lat": 15.299999999999999,
-      "lng": 47.9,
+      "lat": 16.8,
+      "lng": 47.6,
       "country": "Yemen",
       "brands": [
         "Mocha_Sanani"
@@ -395,8 +395,8 @@
     {
       "name": "Santa Ana Los Pirineos",
       "id": "Farm_Santa_Ana_Los_Pirineos",
-      "lat": 12.9,
-      "lng": -89.2,
+      "lat": 15.0,
+      "lng": -89.5,
       "country": "El Salvador",
       "brands": [
         "Pacamara_Reserve"
@@ -407,8 +407,8 @@
     {
       "name": "Highlands Sigri Estate",
       "id": "Farm_Highlands_Sigri_Estate",
-      "lat": -6.3,
-      "lng": 144.20000000000002,
+      "lat": -5.1,
+      "lng": 143.9,
       "country": "Papua New Guinea",
       "brands": [
         "PNG_Sigri"
@@ -420,7 +420,7 @@
       "name": "Barahona La Montana",
       "id": "Farm_Barahona_La_Montana",
       "lat": 17.8,
-      "lng": -71.10000000000001,
+      "lng": -69.60000000000001,
       "country": "Dominican Republic",
       "brands": [
         "Barahona_AA"
@@ -431,8 +431,8 @@
     {
       "name": "Kona Greenwell",
       "id": "Farm_Kona_Greenwell",
-      "lat": 37.1,
-      "lng": -94.8,
+      "lat": 37.4,
+      "lng": -95.7,
       "country": "USA",
       "brands": [
         "Kona_Extra_Fancy"
@@ -443,8 +443,8 @@
     {
       "name": "Cerrado Fazenda Dutra",
       "id": "Farm_Cerrado_Fazenda_Dutra",
-      "lat": -14.799999999999999,
-      "lng": -51.0,
+      "lat": -13.299999999999999,
+      "lng": -51.3,
       "country": "Brazil",
       "brands": [
         "Cerrado_Natural"
@@ -455,8 +455,8 @@
     {
       "name": "Sulawesi Toraja Estate",
       "id": "Farm_Sulawesi_Toraja_Estate",
-      "lat": -5.9,
-      "lng": 106.2,
+      "lat": -6.8,
+      "lng": 107.1,
       "country": "Indonesia",
       "brands": [
         "Sulawesi_Toraja"
@@ -467,8 +467,8 @@
     {
       "name": "Marcala Highland Estate",
       "id": "Farm_Marcala_Highland_Estate",
-      "lat": 16.4,
-      "lng": -86.2,
+      "lat": 15.799999999999999,
+      "lng": -85.9,
       "country": "Honduras",
       "brands": [
         "Marcala_Organic"
@@ -571,9 +571,9 @@
   ],
   "brands": [
     {
-      "name": "Mocha Sanani",
-      "id": "Mocha_Sanani",
-      "price": 16.3,
+      "name": "Kona Extra Fancy",
+      "id": "Kona_Extra_Fancy",
+      "price": 17.7,
       "method": "—",
       "segment": "Luxury",
       "certs": [
@@ -590,28 +590,9 @@
       "impacts": []
     },
     {
-      "name": "Geisha Boquete",
-      "id": "Geisha_Boquete",
-      "price": 14.7,
-      "method": "—",
-      "segment": "Luxury",
-      "certs": [
-        "Rainforest_Alliance"
-      ],
-      "esg": {
-        "co2": 6,
-        "fairTrade": 3,
-        "organic": 4,
-        "rainforest": 8,
-        "water": 7
-      },
-      "farms": [],
-      "impacts": []
-    },
-    {
-      "name": "Kona Extra Fancy",
-      "id": "Kona_Extra_Fancy",
-      "price": 14.2,
+      "name": "Mocha Sanani",
+      "id": "Mocha_Sanani",
+      "price": 15.2,
       "method": "—",
       "segment": "Luxury",
       "certs": [
@@ -630,7 +611,7 @@
     {
       "name": "Blue Mountain Supreme",
       "id": "Blue_Mountain_Supreme",
-      "price": 13.6,
+      "price": 15.0,
       "method": "—",
       "segment": "Luxury",
       "certs": [
@@ -647,14 +628,33 @@
       "impacts": []
     },
     {
+      "name": "Geisha Boquete",
+      "id": "Geisha_Boquete",
+      "price": 13.3,
+      "method": "—",
+      "segment": "Luxury",
+      "certs": [
+        "Rainforest_Alliance"
+      ],
+      "esg": {
+        "co2": 6,
+        "fairTrade": 3,
+        "organic": 4,
+        "rainforest": 8,
+        "water": 7
+      },
+      "farms": [],
+      "impacts": []
+    },
+    {
       "name": "Yirgacheffe Special",
       "id": "Yirgacheffe_Special",
       "price": 12.0,
       "method": "Washed",
       "segment": "Luxury",
       "certs": [
-        "Organic",
-        "Fair_Trade"
+        "Fair_Trade",
+        "Organic"
       ],
       "esg": {
         "co2": 10,
@@ -668,9 +668,9 @@
       ],
       "impacts": [
         "Metric_Shade_Grown",
-        "Metric_CO2_Low",
         "Metric_Organic_Farming",
-        "Metric_FairWage_High"
+        "Metric_FairWage_High",
+        "Metric_CO2_Low"
       ]
     },
     {
@@ -690,9 +690,28 @@
         "water": 7
       },
       "farms": [
-        "Antigua Finca El Injerto",
-        "Huehuetenango Finca Vista Hermosa"
+        "Huehuetenango Finca Vista Hermosa",
+        "Antigua Finca El Injerto"
       ],
+      "impacts": []
+    },
+    {
+      "name": "Nyeri Peaberry",
+      "id": "Nyeri_Peaberry",
+      "price": 10.8,
+      "method": "—",
+      "segment": "Specialty",
+      "certs": [
+        "Fair_Trade"
+      ],
+      "esg": {
+        "co2": 6,
+        "fairTrade": 9,
+        "organic": 4,
+        "rainforest": 4,
+        "water": 7
+      },
+      "farms": [],
       "impacts": []
     },
     {
@@ -702,8 +721,8 @@
       "method": "Washed",
       "segment": "Specialty",
       "certs": [
-        "Organic",
-        "Fair_Trade"
+        "Fair_Trade",
+        "Organic"
       ],
       "esg": {
         "co2": 6,
@@ -722,9 +741,9 @@
       ]
     },
     {
-      "name": "Sulawesi Toraja",
-      "id": "Sulawesi_Toraja",
-      "price": 10.5,
+      "name": "Huehuetenango SHB",
+      "id": "Huehuetenango_SHB",
+      "price": 10.2,
       "method": "—",
       "segment": "Premium",
       "certs": [
@@ -743,7 +762,7 @@
     {
       "name": "Kilimanjaro Peaberry",
       "id": "Kilimanjaro_Peaberry",
-      "price": 10.4,
+      "price": 10.1,
       "method": "—",
       "segment": "Premium",
       "certs": [
@@ -760,77 +779,18 @@
       "impacts": []
     },
     {
-      "name": "PNG Sigri",
-      "id": "PNG_Sigri",
-      "price": 10.4,
+      "name": "Harrar Longberry",
+      "id": "Harrar_Longberry",
+      "price": 10.1,
       "method": "—",
       "segment": "Premium",
       "certs": [
-        "UTZ"
-      ],
-      "esg": {
-        "co2": 6,
-        "fairTrade": 3,
-        "organic": 4,
-        "rainforest": 4,
-        "water": 7
-      },
-      "farms": [],
-      "impacts": []
-    },
-    {
-      "name": "Pacamara Reserve",
-      "id": "Pacamara_Reserve",
-      "price": 10.3,
-      "method": "—",
-      "segment": "Premium",
-      "certs": [
-        "Rainforest_Alliance",
         "Organic"
       ],
       "esg": {
         "co2": 6,
         "fairTrade": 3,
         "organic": 9,
-        "rainforest": 8,
-        "water": 7
-      },
-      "farms": [],
-      "impacts": []
-    },
-    {
-      "name": "Narino Supremo",
-      "id": "Narino_Supremo",
-      "price": 10.1,
-      "method": "—",
-      "segment": "Premium",
-      "certs": [
-        "Organic",
-        "Fair_Trade"
-      ],
-      "esg": {
-        "co2": 6,
-        "fairTrade": 9,
-        "organic": 9,
-        "rainforest": 4,
-        "water": 7
-      },
-      "farms": [],
-      "impacts": []
-    },
-    {
-      "name": "Nyeri Peaberry",
-      "id": "Nyeri_Peaberry",
-      "price": 10.1,
-      "method": "—",
-      "segment": "Specialty",
-      "certs": [
-        "Fair_Trade"
-      ],
-      "esg": {
-        "co2": 6,
-        "fairTrade": 9,
-        "organic": 4,
         "rainforest": 4,
         "water": 7
       },
@@ -866,8 +826,8 @@
       "method": "Washed",
       "segment": "Specialty",
       "certs": [
-        "Organic",
-        "Fair_Trade"
+        "Fair_Trade",
+        "Organic"
       ],
       "esg": {
         "co2": 10,
@@ -880,15 +840,15 @@
         "Cajamarca Villa Rica Farm"
       ],
       "impacts": [
-        "Metric_CO2_Low",
         "Metric_Organic_Farming",
-        "Metric_FairWage_High"
+        "Metric_FairWage_High",
+        "Metric_CO2_Low"
       ]
     },
     {
-      "name": "Huehuetenango SHB",
-      "id": "Huehuetenango_SHB",
-      "price": 9.6,
+      "name": "Malabar Monsoon",
+      "id": "Malabar_Monsoon",
+      "price": 9.8,
       "method": "—",
       "segment": "Premium",
       "certs": [
@@ -899,6 +859,26 @@
         "fairTrade": 3,
         "organic": 4,
         "rainforest": 8,
+        "water": 7
+      },
+      "farms": [],
+      "impacts": []
+    },
+    {
+      "name": "Rwandan Bourbon",
+      "id": "Rwandan_Bourbon",
+      "price": 9.6,
+      "method": "—",
+      "segment": "Premium",
+      "certs": [
+        "Fair_Trade",
+        "Organic"
+      ],
+      "esg": {
+        "co2": 6,
+        "fairTrade": 9,
+        "organic": 9,
+        "rainforest": 4,
         "water": 7
       },
       "farms": [],
@@ -951,28 +931,29 @@
       "impacts": []
     },
     {
-      "name": "Harrar Longberry",
-      "id": "Harrar_Longberry",
-      "price": 9.0,
+      "name": "West Valley Honey",
+      "id": "West_Valley_Honey",
+      "price": 9.2,
       "method": "—",
       "segment": "Premium",
       "certs": [
-        "Organic"
+        "Organic",
+        "Rainforest_Alliance"
       ],
       "esg": {
         "co2": 6,
         "fairTrade": 3,
         "organic": 9,
-        "rainforest": 4,
+        "rainforest": 8,
         "water": 7
       },
       "farms": [],
       "impacts": []
     },
     {
-      "name": "Rwandan Bourbon",
-      "id": "Rwandan_Bourbon",
-      "price": 8.6,
+      "name": "Narino Supremo",
+      "id": "Narino_Supremo",
+      "price": 9.1,
       "method": "—",
       "segment": "Premium",
       "certs": [
@@ -1016,8 +997,27 @@
       ]
     },
     {
-      "name": "Malabar Monsoon",
-      "id": "Malabar_Monsoon",
+      "name": "PNG Sigri",
+      "id": "PNG_Sigri",
+      "price": 8.5,
+      "method": "—",
+      "segment": "Premium",
+      "certs": [
+        "UTZ"
+      ],
+      "esg": {
+        "co2": 6,
+        "fairTrade": 3,
+        "organic": 4,
+        "rainforest": 4,
+        "water": 7
+      },
+      "farms": [],
+      "impacts": []
+    },
+    {
+      "name": "Sulawesi Toraja",
+      "id": "Sulawesi_Toraja",
       "price": 8.3,
       "method": "—",
       "segment": "Premium",
@@ -1035,8 +1035,8 @@
       "impacts": []
     },
     {
-      "name": "West Valley Honey",
-      "id": "West_Valley_Honey",
+      "name": "Pacamara Reserve",
+      "id": "Pacamara_Reserve",
       "price": 8.1,
       "method": "—",
       "segment": "Premium",
@@ -1076,18 +1076,18 @@
       "impacts": []
     },
     {
-      "name": "Barahona AA",
-      "id": "Barahona_AA",
-      "price": 8.0,
+      "name": "Da Lat Arabica",
+      "id": "Da_Lat_Arabica",
+      "price": 7.9,
       "method": "—",
       "segment": "MidRange",
       "certs": [
-        "Organic"
+        "UTZ"
       ],
       "esg": {
         "co2": 6,
         "fairTrade": 3,
-        "organic": 9,
+        "organic": 4,
         "rainforest": 4,
         "water": 7
       },
@@ -1119,45 +1119,6 @@
       ]
     },
     {
-      "name": "Bugisu AA",
-      "id": "Bugisu_AA",
-      "price": 7.7,
-      "method": "—",
-      "segment": "MidRange",
-      "certs": [
-        "UTZ"
-      ],
-      "esg": {
-        "co2": 6,
-        "fairTrade": 3,
-        "organic": 4,
-        "rainforest": 4,
-        "water": 7
-      },
-      "farms": [],
-      "impacts": []
-    },
-    {
-      "name": "Marcala Organic",
-      "id": "Marcala_Organic",
-      "price": 7.4,
-      "method": "—",
-      "segment": "MidRange",
-      "certs": [
-        "Organic",
-        "Fair_Trade"
-      ],
-      "esg": {
-        "co2": 6,
-        "fairTrade": 9,
-        "organic": 9,
-        "rainforest": 4,
-        "water": 7
-      },
-      "farms": [],
-      "impacts": []
-    },
-    {
       "name": "Honduras SHG",
       "id": "Honduras_SHG",
       "price": 7.2,
@@ -1179,36 +1140,17 @@
       "impacts": []
     },
     {
-      "name": "Cerrado Natural",
-      "id": "Cerrado_Natural",
-      "price": 7.1,
+      "name": "Matagalpa SHG",
+      "id": "Matagalpa_SHG",
+      "price": 7.2,
       "method": "—",
       "segment": "MidRange",
       "certs": [
-        "UTZ"
+        "Fair_Trade"
       ],
       "esg": {
         "co2": 6,
-        "fairTrade": 3,
-        "organic": 4,
-        "rainforest": 4,
-        "water": 7
-      },
-      "farms": [],
-      "impacts": []
-    },
-    {
-      "name": "Da Lat Arabica",
-      "id": "Da_Lat_Arabica",
-      "price": 6.9,
-      "method": "—",
-      "segment": "MidRange",
-      "certs": [
-        "UTZ"
-      ],
-      "esg": {
-        "co2": 6,
-        "fairTrade": 3,
+        "fairTrade": 9,
         "organic": 4,
         "rainforest": 4,
         "water": 7
@@ -1238,25 +1180,6 @@
       "impacts": []
     },
     {
-      "name": "Chiapas Altura",
-      "id": "Chiapas_Altura",
-      "price": 6.8,
-      "method": "—",
-      "segment": "MidRange",
-      "certs": [
-        "Organic"
-      ],
-      "esg": {
-        "co2": 6,
-        "fairTrade": 3,
-        "organic": 9,
-        "rainforest": 4,
-        "water": 7
-      },
-      "farms": [],
-      "impacts": []
-    },
-    {
       "name": "Santos Premium",
       "id": "Santos_Premium",
       "price": 6.5,
@@ -1282,18 +1205,95 @@
       ]
     },
     {
-      "name": "Matagalpa SHG",
-      "id": "Matagalpa_SHG",
+      "name": "Cerrado Natural",
+      "id": "Cerrado_Natural",
+      "price": 6.5,
+      "method": "—",
+      "segment": "MidRange",
+      "certs": [
+        "UTZ"
+      ],
+      "esg": {
+        "co2": 6,
+        "fairTrade": 3,
+        "organic": 4,
+        "rainforest": 4,
+        "water": 7
+      },
+      "farms": [],
+      "impacts": []
+    },
+    {
+      "name": "Barahona AA",
+      "id": "Barahona_AA",
+      "price": 6.4,
+      "method": "—",
+      "segment": "MidRange",
+      "certs": [
+        "Organic"
+      ],
+      "esg": {
+        "co2": 6,
+        "fairTrade": 3,
+        "organic": 9,
+        "rainforest": 4,
+        "water": 7
+      },
+      "farms": [],
+      "impacts": []
+    },
+    {
+      "name": "Bugisu AA",
+      "id": "Bugisu_AA",
       "price": 6.2,
       "method": "—",
       "segment": "MidRange",
       "certs": [
-        "Fair_Trade"
+        "UTZ"
+      ],
+      "esg": {
+        "co2": 6,
+        "fairTrade": 3,
+        "organic": 4,
+        "rainforest": 4,
+        "water": 7
+      },
+      "farms": [],
+      "impacts": []
+    },
+    {
+      "name": "Marcala Organic",
+      "id": "Marcala_Organic",
+      "price": 6.1,
+      "method": "—",
+      "segment": "MidRange",
+      "certs": [
+        "Fair_Trade",
+        "Organic"
       ],
       "esg": {
         "co2": 6,
         "fairTrade": 9,
-        "organic": 4,
+        "organic": 9,
+        "rainforest": 4,
+        "water": 7
+      },
+      "farms": [],
+      "impacts": []
+    },
+    {
+      "name": "Chiapas Altura",
+      "id": "Chiapas_Altura",
+      "price": 6.0,
+      "method": "—",
+      "segment": "MidRange",
+      "certs": [
+        "Organic"
+      ],
+      "esg": {
+        "co2": 6,
+        "fairTrade": 3,
+        "organic": 9,
         "rainforest": 4,
         "water": 7
       },
@@ -1318,15 +1318,21 @@
         "Dak Lak Central Highlands Farm"
       ],
       "impacts": [
+        "Metric_Water_Heavy",
         "Metric_FairWage_Low",
-        "Metric_CO2_High",
-        "Metric_Water_Heavy"
+        "Metric_CO2_High"
       ]
     }
   ],
   "trace": [
     {
       "menu": "Cappuccino",
+      "brand": "Sidamo_Natural",
+      "farm": "Farm_Sidamo_Guji_Farm",
+      "country": "Ethiopia"
+    },
+    {
+      "menu": "Cappuccino",
       "brand": "Colombian_Supremo",
       "farm": "Farm_Narino_San_Juan_Farm",
       "country": "Colombia"
@@ -1338,7 +1344,7 @@
       "country": "Colombia"
     },
     {
-      "menu": "Cappuccino",
+      "menu": "Caffe_Latte",
       "brand": "Sidamo_Natural",
       "farm": "Farm_Sidamo_Guji_Farm",
       "country": "Ethiopia"
@@ -1356,10 +1362,10 @@
       "country": "Colombia"
     },
     {
-      "menu": "Caffe_Latte",
-      "brand": "Sidamo_Natural",
-      "farm": "Farm_Sidamo_Guji_Farm",
-      "country": "Ethiopia"
+      "menu": "Aeropress",
+      "brand": "Huila_Reserve",
+      "farm": "Farm_Huila_El_Paraiso_Farm",
+      "country": "Colombia"
     },
     {
       "menu": "Aeropress",
@@ -1368,12 +1374,6 @@
       "country": "Ethiopia"
     },
     {
-      "menu": "Aeropress",
-      "brand": "Huila_Reserve",
-      "farm": "Farm_Huila_El_Paraiso_Farm",
-      "country": "Colombia"
-    },
-    {
       "menu": "Vanilla_Latte",
       "brand": "Colombian_Supremo",
       "farm": "Farm_Narino_San_Juan_Farm",
@@ -1399,18 +1399,6 @@
     },
     {
       "menu": "Caramel_Macchiato",
-      "brand": "Colombian_Supremo",
-      "farm": "Farm_Antioquia_La_Esperanza",
-      "country": "Colombia"
-    },
-    {
-      "menu": "Double_Espresso",
-      "brand": "Colombian_Supremo",
-      "farm": "Farm_Narino_San_Juan_Farm",
-      "country": "Colombia"
-    },
-    {
-      "menu": "Double_Espresso",
       "brand": "Colombian_Supremo",
       "farm": "Farm_Antioquia_La_Esperanza",
       "country": "Colombia"
@@ -1422,9 +1410,15 @@
       "country": "Ethiopia"
     },
     {
-      "menu": "Iced_Americano",
-      "brand": "Huila_Reserve",
-      "farm": "Farm_Huila_El_Paraiso_Farm",
+      "menu": "Double_Espresso",
+      "brand": "Colombian_Supremo",
+      "farm": "Farm_Narino_San_Juan_Farm",
+      "country": "Colombia"
+    },
+    {
+      "menu": "Double_Espresso",
+      "brand": "Colombian_Supremo",
+      "farm": "Farm_Antioquia_La_Esperanza",
       "country": "Colombia"
     },
     {
@@ -1440,7 +1434,7 @@
       "country": "Colombia"
     },
     {
-      "menu": "Flat_White",
+      "menu": "Iced_Americano",
       "brand": "Huila_Reserve",
       "farm": "Farm_Huila_El_Paraiso_Farm",
       "country": "Colombia"
@@ -1455,6 +1449,12 @@
       "menu": "Flat_White",
       "brand": "Colombian_Supremo",
       "farm": "Farm_Antioquia_La_Esperanza",
+      "country": "Colombia"
+    },
+    {
+      "menu": "Flat_White",
+      "brand": "Huila_Reserve",
+      "farm": "Farm_Huila_El_Paraiso_Farm",
       "country": "Colombia"
     },
     {
@@ -1483,6 +1483,12 @@
     },
     {
       "menu": "Espresso",
+      "brand": "Sidamo_Natural",
+      "farm": "Farm_Sidamo_Guji_Farm",
+      "country": "Ethiopia"
+    },
+    {
+      "menu": "Espresso",
       "brand": "Colombian_Supremo",
       "farm": "Farm_Narino_San_Juan_Farm",
       "country": "Colombia"
@@ -1492,12 +1498,6 @@
       "brand": "Colombian_Supremo",
       "farm": "Farm_Antioquia_La_Esperanza",
       "country": "Colombia"
-    },
-    {
-      "menu": "Espresso",
-      "brand": "Sidamo_Natural",
-      "farm": "Farm_Sidamo_Guji_Farm",
-      "country": "Ethiopia"
     },
     {
       "menu": "Nitro_Cold_Brew",
@@ -1603,15 +1603,15 @@
     },
     {
       "menu": "Cold_Brew",
-      "brand": "Sidamo_Natural",
-      "farm": "Farm_Sidamo_Guji_Farm",
-      "country": "Ethiopia"
-    },
-    {
-      "menu": "Cold_Brew",
       "brand": "Sumatra_Mandheling",
       "farm": "Farm_Sumatra_Mandheling_Gayo_Farm",
       "country": "Indonesia"
+    },
+    {
+      "menu": "Cold_Brew",
+      "brand": "Sidamo_Natural",
+      "farm": "Farm_Sidamo_Guji_Farm",
+      "country": "Ethiopia"
     },
     {
       "menu": "Cortado",
@@ -1630,13 +1630,13 @@
     {
       "farm": "Dak Lak Central Highlands Farm",
       "brand": "Robusta Select",
-      "chain": "Luckin Coffee",
+      "chain": "McCafe",
       "co2": "6.8"
     },
     {
       "farm": "Dak Lak Central Highlands Farm",
       "brand": "Robusta Select",
-      "chain": "McCafe",
+      "chain": "Luckin Coffee",
       "co2": "6.8"
     }
   ],
@@ -1644,29 +1644,29 @@
     {
       "name": "Peruvian Organic",
       "certs": [
-        "Organic",
-        "Fair_Trade"
+        "Fair_Trade",
+        "Organic"
       ]
     },
     {
       "name": "Yirgacheffe Special",
       "certs": [
-        "Organic",
-        "Fair_Trade"
+        "Fair_Trade",
+        "Organic"
       ]
     },
     {
       "name": "Kenya AA",
       "certs": [
-        "Organic",
-        "Fair_Trade"
+        "Fair_Trade",
+        "Organic"
       ]
     },
     {
       "name": "Rwandan Bourbon",
       "certs": [
-        "Organic",
-        "Fair_Trade"
+        "Fair_Trade",
+        "Organic"
       ]
     },
     {
@@ -1679,8 +1679,8 @@
     {
       "name": "Marcala Organic",
       "certs": [
-        "Organic",
-        "Fair_Trade"
+        "Fair_Trade",
+        "Organic"
       ]
     }
   ],
@@ -1842,6 +1842,66 @@
     {
       "warehouse": "Warehouse_Valencia_Industrial",
       "port": "Port_Valencia"
+    },
+    {
+      "warehouse": "Warehouse_Buenaventura",
+      "port": "Port_Buenaventura"
+    },
+    {
+      "warehouse": "Warehouse_PuertoBarrios",
+      "port": "Port_PuertoBarrios"
+    },
+    {
+      "warehouse": "Warehouse_PuertoCortes",
+      "port": "Port_PuertoCortes"
+    },
+    {
+      "warehouse": "Warehouse_PuertoLimon",
+      "port": "Port_PuertoLimon"
+    },
+    {
+      "warehouse": "Warehouse_Callao",
+      "port": "Port_Callao"
+    },
+    {
+      "warehouse": "Warehouse_Surabaya",
+      "port": "Port_Surabaya"
+    },
+    {
+      "warehouse": "Warehouse_Addis_Ababa",
+      "port": "Port_Mombasa"
+    },
+    {
+      "warehouse": "Warehouse_Mumbai",
+      "port": "Port_Mumbai"
+    },
+    {
+      "warehouse": "Warehouse_Kigali",
+      "port": "Port_Mombasa"
+    },
+    {
+      "warehouse": "Warehouse_Dar_es_Salaam",
+      "port": "Port_Mombasa"
+    },
+    {
+      "warehouse": "Warehouse_Kampala",
+      "port": "Port_Mombasa"
+    },
+    {
+      "warehouse": "Warehouse_Veracruz",
+      "port": "Port_HoChiMinh"
+    },
+    {
+      "warehouse": "Warehouse_Managua",
+      "port": "Port_PuertoCortes"
+    },
+    {
+      "warehouse": "Warehouse_Kingston",
+      "port": "Port_Santos"
+    },
+    {
+      "warehouse": "Warehouse_Sanaa",
+      "port": "Port_Mumbai"
     }
   ],
   "supply_chain": [
@@ -1859,19 +1919,19 @@
     },
     {
       "brand": "Robusta Select",
-      "chain": "Luckin Coffee"
-    },
-    {
-      "brand": "Robusta Select",
       "chain": "McCafe"
     },
     {
-      "brand": "Java Estate",
-      "chain": "Lavazza"
+      "brand": "Robusta Select",
+      "chain": "Luckin Coffee"
     },
     {
       "brand": "Java Estate",
       "chain": "Starbucks"
+    },
+    {
+      "brand": "Java Estate",
+      "chain": "Lavazza"
     },
     {
       "brand": "Antigua Premium",
@@ -1883,7 +1943,7 @@
     },
     {
       "brand": "Bourbon Santos",
-      "chain": "Caffe Nero"
+      "chain": "Lavazza"
     },
     {
       "brand": "Bourbon Santos",
@@ -1891,7 +1951,7 @@
     },
     {
       "brand": "Bourbon Santos",
-      "chain": "Lavazza"
+      "chain": "Caffe Nero"
     },
     {
       "brand": "Sidamo Natural",
@@ -1911,7 +1971,7 @@
     },
     {
       "brand": "Yirgacheffe Special",
-      "chain": "Intelligentsia Coffee"
+      "chain": "Blue Bottle"
     },
     {
       "brand": "Yirgacheffe Special",
@@ -1919,15 +1979,19 @@
     },
     {
       "brand": "Yirgacheffe Special",
-      "chain": "Blue Bottle"
+      "chain": "Intelligentsia Coffee"
+    },
+    {
+      "brand": "Santos Premium",
+      "chain": "Costa Coffee"
     },
     {
       "brand": "Santos Premium",
       "chain": "Starbucks"
     },
     {
-      "brand": "Santos Premium",
-      "chain": "Costa Coffee"
+      "brand": "Kenya AA",
+      "chain": "Intelligentsia Coffee"
     },
     {
       "brand": "Kenya AA",
@@ -1935,10 +1999,14 @@
     },
     {
       "brand": "Kenya AA",
+      "chain": "Blue Bottle"
+    },
+    {
+      "brand": "Colombian Supremo",
       "chain": "Intelligentsia Coffee"
     },
     {
-      "brand": "Kenya AA",
+      "brand": "Colombian Supremo",
       "chain": "Blue Bottle"
     },
     {
@@ -1946,12 +2014,8 @@
       "chain": "Starbucks"
     },
     {
-      "brand": "Colombian Supremo",
-      "chain": "Intelligentsia Coffee"
-    },
-    {
-      "brand": "Colombian Supremo",
-      "chain": "Blue Bottle"
+      "brand": "Sumatra Mandheling",
+      "chain": "Costa Coffee"
     },
     {
       "brand": "Sumatra Mandheling",
@@ -1962,8 +2026,8 @@
       "chain": "Peet Coffee"
     },
     {
-      "brand": "Sumatra Mandheling",
-      "chain": "Costa Coffee"
+      "brand": "Honduras SHG",
+      "chain": "Dunkin Donuts"
     },
     {
       "brand": "Honduras SHG",
@@ -1971,15 +2035,7 @@
     },
     {
       "brand": "Honduras SHG",
-      "chain": "Dunkin Donuts"
-    },
-    {
-      "brand": "Honduras SHG",
       "chain": "Tim Hortons"
-    },
-    {
-      "brand": "Huila Reserve",
-      "chain": "Intelligentsia Coffee"
     },
     {
       "brand": "Huila Reserve",
@@ -1988,6 +2044,10 @@
     {
       "brand": "Huila Reserve",
       "chain": "Peet Coffee"
+    },
+    {
+      "brand": "Huila Reserve",
+      "chain": "Intelligentsia Coffee"
     },
     {
       "brand": "Blue Mountain Supreme",
@@ -1999,7 +2059,7 @@
     },
     {
       "brand": "Geisha Boquete",
-      "chain": "Intelligentsia Coffee"
+      "chain": "Blue Bottle"
     },
     {
       "brand": "Geisha Boquete",
@@ -2007,7 +2067,7 @@
     },
     {
       "brand": "Geisha Boquete",
-      "chain": "Blue Bottle"
+      "chain": "Intelligentsia Coffee"
     },
     {
       "brand": "Chiapas Altura",
@@ -2023,27 +2083,27 @@
     },
     {
       "brand": "Rwandan Bourbon",
-      "chain": "Starbucks"
+      "chain": "Blue Bottle"
     },
     {
       "brand": "Rwandan Bourbon",
-      "chain": "Blue Bottle"
+      "chain": "Starbucks"
+    },
+    {
+      "brand": "Kilimanjaro Peaberry",
+      "chain": "Costa Coffee"
     },
     {
       "brand": "Kilimanjaro Peaberry",
       "chain": "Peet Coffee"
     },
     {
-      "brand": "Kilimanjaro Peaberry",
-      "chain": "Costa Coffee"
-    },
-    {
-      "brand": "Bugisu AA",
-      "chain": "Costa Coffee"
-    },
-    {
       "brand": "Bugisu AA",
       "chain": "Starbucks"
+    },
+    {
+      "brand": "Bugisu AA",
+      "chain": "Costa Coffee"
     },
     {
       "brand": "Malabar Monsoon",
@@ -2059,11 +2119,11 @@
     },
     {
       "brand": "Mocha Sanani",
-      "chain": "Intelligentsia Coffee"
+      "chain": "Blue Bottle"
     },
     {
       "brand": "Mocha Sanani",
-      "chain": "Blue Bottle"
+      "chain": "Intelligentsia Coffee"
     },
     {
       "brand": "Matagalpa SHG",
@@ -2099,6 +2159,10 @@
     },
     {
       "brand": "Kona Extra Fancy",
+      "chain": "Blue Bottle"
+    },
+    {
+      "brand": "Kona Extra Fancy",
       "chain": "Starbucks"
     },
     {
@@ -2106,16 +2170,12 @@
       "chain": "Peet Coffee"
     },
     {
-      "brand": "Kona Extra Fancy",
-      "chain": "Blue Bottle"
+      "brand": "Narino Supremo",
+      "chain": "Intelligentsia Coffee"
     },
     {
       "brand": "Narino Supremo",
       "chain": "Philz Coffee"
-    },
-    {
-      "brand": "Narino Supremo",
-      "chain": "Intelligentsia Coffee"
     },
     {
       "brand": "Harrar Longberry",
@@ -2127,7 +2187,7 @@
     },
     {
       "brand": "Cerrado Natural",
-      "chain": "Lavazza"
+      "chain": "Costa Coffee"
     },
     {
       "brand": "Cerrado Natural",
@@ -2135,7 +2195,7 @@
     },
     {
       "brand": "Cerrado Natural",
-      "chain": "Costa Coffee"
+      "chain": "Lavazza"
     },
     {
       "brand": "Sulawesi Toraja",
@@ -2147,11 +2207,11 @@
     },
     {
       "brand": "Nyeri Peaberry",
-      "chain": "Intelligentsia Coffee"
+      "chain": "Blue Bottle"
     },
     {
       "brand": "Nyeri Peaberry",
-      "chain": "Blue Bottle"
+      "chain": "Intelligentsia Coffee"
     },
     {
       "brand": "Huehuetenango SHB",
@@ -2163,19 +2223,19 @@
     },
     {
       "brand": "West Valley Honey",
-      "chain": "Blue Bottle"
-    },
-    {
-      "brand": "West Valley Honey",
       "chain": "Philz Coffee"
     },
     {
-      "brand": "Marcala Organic",
-      "chain": "Caribou Coffee"
+      "brand": "West Valley Honey",
+      "chain": "Blue Bottle"
     },
     {
       "brand": "Marcala Organic",
       "chain": "Tim Hortons"
+    },
+    {
+      "brand": "Marcala Organic",
+      "chain": "Caribou Coffee"
     },
     {
       "brand": "Da Lat Arabica",
@@ -2308,16 +2368,16 @@
       "co2": 3.1
     },
     {
-      "id": "brand_Nyeri_Peaberry",
-      "label": "Nyeri Peaberry",
-      "type": "brand",
-      "price": 0.0
-    },
-    {
       "id": "brand_Kenya_AA",
       "label": "Kenya AA",
       "type": "brand",
       "price": 10.5
+    },
+    {
+      "id": "brand_Nyeri_Peaberry",
+      "label": "Nyeri Peaberry",
+      "type": "brand",
+      "price": 0.0
     },
     {
       "id": "farm_Farm_Cajamarca_Villa_Rica_Farm",
@@ -2659,18 +2719,13 @@
       "type": "chain"
     },
     {
-      "id": "chain_Luckin_Coffee",
-      "label": "Luckin Coffee",
-      "type": "chain"
-    },
-    {
       "id": "chain_McCafe",
       "label": "McCafe",
       "type": "chain"
     },
     {
-      "id": "chain_Lavazza",
-      "label": "Lavazza",
+      "id": "chain_Luckin_Coffee",
+      "label": "Luckin Coffee",
       "type": "chain"
     },
     {
@@ -2679,13 +2734,18 @@
       "type": "chain"
     },
     {
-      "id": "chain_Caffe_Nero",
-      "label": "Caffe Nero",
+      "id": "chain_Lavazza",
+      "label": "Lavazza",
       "type": "chain"
     },
     {
       "id": "chain_Costa_Coffee",
       "label": "Costa Coffee",
+      "type": "chain"
+    },
+    {
+      "id": "chain_Caffe_Nero",
+      "label": "Caffe Nero",
       "type": "chain"
     },
     {
@@ -2699,13 +2759,13 @@
       "type": "chain"
     },
     {
-      "id": "chain_Intelligentsia_Coffee",
-      "label": "Intelligentsia Coffee",
+      "id": "chain_Coffee_Project_NY",
+      "label": "Coffee Project NY",
       "type": "chain"
     },
     {
-      "id": "chain_Coffee_Project_NY",
-      "label": "Coffee Project NY",
+      "id": "chain_Intelligentsia_Coffee",
+      "label": "Intelligentsia Coffee",
       "type": "chain"
     },
     {
@@ -2772,12 +2832,12 @@
     },
     {
       "source": "farm_Farm_Nyeri_Gatomboya_Farm",
-      "target": "brand_Nyeri_Peaberry",
+      "target": "brand_Kenya_AA",
       "type": "produces"
     },
     {
       "source": "farm_Farm_Nyeri_Gatomboya_Farm",
-      "target": "brand_Kenya_AA",
+      "target": "brand_Nyeri_Peaberry",
       "type": "produces"
     },
     {
@@ -2847,12 +2907,12 @@
     },
     {
       "source": "farm_Farm_Minas_Gerais_Fazenda_Sertao",
-      "target": "brand_Santos_Premium",
+      "target": "brand_Bourbon_Santos",
       "type": "produces"
     },
     {
       "source": "farm_Farm_Minas_Gerais_Fazenda_Sertao",
-      "target": "brand_Bourbon_Santos",
+      "target": "brand_Santos_Premium",
       "type": "produces"
     },
     {
@@ -2942,22 +3002,22 @@
     },
     {
       "source": "brand_Robusta_Select",
-      "target": "chain_Luckin_Coffee",
-      "type": "supplies"
-    },
-    {
-      "source": "brand_Robusta_Select",
       "target": "chain_McCafe",
       "type": "supplies"
     },
     {
-      "source": "brand_Java_Estate",
-      "target": "chain_Lavazza",
+      "source": "brand_Robusta_Select",
+      "target": "chain_Luckin_Coffee",
       "type": "supplies"
     },
     {
       "source": "brand_Java_Estate",
       "target": "chain_Starbucks",
+      "type": "supplies"
+    },
+    {
+      "source": "brand_Java_Estate",
+      "target": "chain_Lavazza",
       "type": "supplies"
     },
     {
@@ -2972,7 +3032,7 @@
     },
     {
       "source": "brand_Bourbon_Santos",
-      "target": "chain_Caffe_Nero",
+      "target": "chain_Lavazza",
       "type": "supplies"
     },
     {
@@ -2982,7 +3042,7 @@
     },
     {
       "source": "brand_Bourbon_Santos",
-      "target": "chain_Lavazza",
+      "target": "chain_Caffe_Nero",
       "type": "supplies"
     },
     {
@@ -3007,7 +3067,7 @@
     },
     {
       "source": "brand_Yirgacheffe_Special",
-      "target": "chain_Intelligentsia_Coffee",
+      "target": "chain_Blue_Bottle",
       "type": "supplies"
     },
     {
@@ -3017,7 +3077,12 @@
     },
     {
       "source": "brand_Yirgacheffe_Special",
-      "target": "chain_Blue_Bottle",
+      "target": "chain_Intelligentsia_Coffee",
+      "type": "supplies"
+    },
+    {
+      "source": "brand_Santos_Premium",
+      "target": "chain_Costa_Coffee",
       "type": "supplies"
     },
     {
@@ -3026,8 +3091,8 @@
       "type": "supplies"
     },
     {
-      "source": "brand_Santos_Premium",
-      "target": "chain_Costa_Coffee",
+      "source": "brand_Kenya_AA",
+      "target": "chain_Intelligentsia_Coffee",
       "type": "supplies"
     },
     {
@@ -3037,11 +3102,16 @@
     },
     {
       "source": "brand_Kenya_AA",
+      "target": "chain_Blue_Bottle",
+      "type": "supplies"
+    },
+    {
+      "source": "brand_Colombian_Supremo",
       "target": "chain_Intelligentsia_Coffee",
       "type": "supplies"
     },
     {
-      "source": "brand_Kenya_AA",
+      "source": "brand_Colombian_Supremo",
       "target": "chain_Blue_Bottle",
       "type": "supplies"
     },
@@ -3051,13 +3121,8 @@
       "type": "supplies"
     },
     {
-      "source": "brand_Colombian_Supremo",
-      "target": "chain_Intelligentsia_Coffee",
-      "type": "supplies"
-    },
-    {
-      "source": "brand_Colombian_Supremo",
-      "target": "chain_Blue_Bottle",
+      "source": "brand_Sumatra_Mandheling",
+      "target": "chain_Costa_Coffee",
       "type": "supplies"
     },
     {
@@ -3071,8 +3136,8 @@
       "type": "supplies"
     },
     {
-      "source": "brand_Sumatra_Mandheling",
-      "target": "chain_Costa_Coffee",
+      "source": "brand_Honduras_SHG",
+      "target": "chain_Dunkin_Donuts",
       "type": "supplies"
     },
     {
@@ -3082,17 +3147,7 @@
     },
     {
       "source": "brand_Honduras_SHG",
-      "target": "chain_Dunkin_Donuts",
-      "type": "supplies"
-    },
-    {
-      "source": "brand_Honduras_SHG",
       "target": "chain_Tim_Hortons",
-      "type": "supplies"
-    },
-    {
-      "source": "brand_Huila_Reserve",
-      "target": "chain_Intelligentsia_Coffee",
       "type": "supplies"
     },
     {
@@ -3103,6 +3158,11 @@
     {
       "source": "brand_Huila_Reserve",
       "target": "chain_Peet_Coffee",
+      "type": "supplies"
+    },
+    {
+      "source": "brand_Huila_Reserve",
+      "target": "chain_Intelligentsia_Coffee",
       "type": "supplies"
     },
     {
@@ -3117,7 +3177,7 @@
     },
     {
       "source": "brand_Geisha_Boquete",
-      "target": "chain_Intelligentsia_Coffee",
+      "target": "chain_Blue_Bottle",
       "type": "supplies"
     },
     {
@@ -3127,7 +3187,7 @@
     },
     {
       "source": "brand_Geisha_Boquete",
-      "target": "chain_Blue_Bottle",
+      "target": "chain_Intelligentsia_Coffee",
       "type": "supplies"
     },
     {
@@ -3147,12 +3207,17 @@
     },
     {
       "source": "brand_Rwandan_Bourbon",
-      "target": "chain_Starbucks",
+      "target": "chain_Blue_Bottle",
       "type": "supplies"
     },
     {
       "source": "brand_Rwandan_Bourbon",
-      "target": "chain_Blue_Bottle",
+      "target": "chain_Starbucks",
+      "type": "supplies"
+    },
+    {
+      "source": "brand_Kilimanjaro_Peaberry",
+      "target": "chain_Costa_Coffee",
       "type": "supplies"
     },
     {
@@ -3161,18 +3226,13 @@
       "type": "supplies"
     },
     {
-      "source": "brand_Kilimanjaro_Peaberry",
-      "target": "chain_Costa_Coffee",
-      "type": "supplies"
-    },
-    {
-      "source": "brand_Bugisu_AA",
-      "target": "chain_Costa_Coffee",
-      "type": "supplies"
-    },
-    {
       "source": "brand_Bugisu_AA",
       "target": "chain_Starbucks",
+      "type": "supplies"
+    },
+    {
+      "source": "brand_Bugisu_AA",
+      "target": "chain_Costa_Coffee",
       "type": "supplies"
     },
     {
@@ -3192,12 +3252,12 @@
     },
     {
       "source": "brand_Mocha_Sanani",
-      "target": "chain_Intelligentsia_Coffee",
+      "target": "chain_Blue_Bottle",
       "type": "supplies"
     },
     {
       "source": "brand_Mocha_Sanani",
-      "target": "chain_Blue_Bottle",
+      "target": "chain_Intelligentsia_Coffee",
       "type": "supplies"
     },
     {
@@ -3242,6 +3302,11 @@
     },
     {
       "source": "brand_Kona_Extra_Fancy",
+      "target": "chain_Blue_Bottle",
+      "type": "supplies"
+    },
+    {
+      "source": "brand_Kona_Extra_Fancy",
       "target": "chain_Starbucks",
       "type": "supplies"
     },
@@ -3251,18 +3316,13 @@
       "type": "supplies"
     },
     {
-      "source": "brand_Kona_Extra_Fancy",
-      "target": "chain_Blue_Bottle",
+      "source": "brand_Narino_Supremo",
+      "target": "chain_Intelligentsia_Coffee",
       "type": "supplies"
     },
     {
       "source": "brand_Narino_Supremo",
       "target": "chain_Philz_Coffee",
-      "type": "supplies"
-    },
-    {
-      "source": "brand_Narino_Supremo",
-      "target": "chain_Intelligentsia_Coffee",
       "type": "supplies"
     },
     {
@@ -3277,7 +3337,7 @@
     },
     {
       "source": "brand_Cerrado_Natural",
-      "target": "chain_Lavazza",
+      "target": "chain_Costa_Coffee",
       "type": "supplies"
     },
     {
@@ -3287,7 +3347,7 @@
     },
     {
       "source": "brand_Cerrado_Natural",
-      "target": "chain_Costa_Coffee",
+      "target": "chain_Lavazza",
       "type": "supplies"
     },
     {
@@ -3302,12 +3362,12 @@
     },
     {
       "source": "brand_Nyeri_Peaberry",
-      "target": "chain_Intelligentsia_Coffee",
+      "target": "chain_Blue_Bottle",
       "type": "supplies"
     },
     {
       "source": "brand_Nyeri_Peaberry",
-      "target": "chain_Blue_Bottle",
+      "target": "chain_Intelligentsia_Coffee",
       "type": "supplies"
     },
     {
@@ -3322,22 +3382,22 @@
     },
     {
       "source": "brand_West_Valley_Honey",
-      "target": "chain_Blue_Bottle",
-      "type": "supplies"
-    },
-    {
-      "source": "brand_West_Valley_Honey",
       "target": "chain_Philz_Coffee",
       "type": "supplies"
     },
     {
-      "source": "brand_Marcala_Organic",
-      "target": "chain_Caribou_Coffee",
+      "source": "brand_West_Valley_Honey",
+      "target": "chain_Blue_Bottle",
       "type": "supplies"
     },
     {
       "source": "brand_Marcala_Organic",
       "target": "chain_Tim_Hortons",
+      "type": "supplies"
+    },
+    {
+      "source": "brand_Marcala_Organic",
+      "target": "chain_Caribou_Coffee",
       "type": "supplies"
     },
     {
@@ -3473,6 +3533,96 @@
       "label": "Antwerp North",
       "country": "Belgium",
       "port": "Port_Antwerp"
+    },
+    {
+      "id": "Warehouse_Buenaventura",
+      "label": "Buenaventura",
+      "country": "Colombia",
+      "port": "Port_Buenaventura"
+    },
+    {
+      "id": "Warehouse_PuertoBarrios",
+      "label": "PuertoBarrios",
+      "country": "Guatemala",
+      "port": "Port_PuertoBarrios"
+    },
+    {
+      "id": "Warehouse_PuertoCortes",
+      "label": "PuertoCortes",
+      "country": "Honduras",
+      "port": "Port_PuertoCortes"
+    },
+    {
+      "id": "Warehouse_PuertoLimon",
+      "label": "PuertoLimon",
+      "country": "Costa Rica",
+      "port": "Port_PuertoLimon"
+    },
+    {
+      "id": "Warehouse_Callao",
+      "label": "Callao",
+      "country": "Peru",
+      "port": "Port_Callao"
+    },
+    {
+      "id": "Warehouse_Surabaya",
+      "label": "Surabaya",
+      "country": "Indonesia",
+      "port": "Port_Surabaya"
+    },
+    {
+      "id": "Warehouse_Addis_Ababa",
+      "label": "Addis Ababa",
+      "country": "Ethiopia",
+      "port": "Port_Mombasa"
+    },
+    {
+      "id": "Warehouse_Mumbai",
+      "label": "Mumbai",
+      "country": "India",
+      "port": "Port_Mumbai"
+    },
+    {
+      "id": "Warehouse_Kigali",
+      "label": "Kigali",
+      "country": "Rwanda",
+      "port": "Port_Mombasa"
+    },
+    {
+      "id": "Warehouse_Dar_es_Salaam",
+      "label": "Dar es Salaam",
+      "country": "Tanzania",
+      "port": "Port_Mombasa"
+    },
+    {
+      "id": "Warehouse_Kampala",
+      "label": "Kampala",
+      "country": "Uganda",
+      "port": "Port_Mombasa"
+    },
+    {
+      "id": "Warehouse_Veracruz",
+      "label": "Veracruz",
+      "country": "Mexico",
+      "port": "Port_HoChiMinh"
+    },
+    {
+      "id": "Warehouse_Managua",
+      "label": "Managua",
+      "country": "Nicaragua",
+      "port": "Port_PuertoCortes"
+    },
+    {
+      "id": "Warehouse_Kingston",
+      "label": "Kingston",
+      "country": "Jamaica",
+      "port": "Port_Santos"
+    },
+    {
+      "id": "Warehouse_Sanaa",
+      "label": "Sanaa",
+      "country": "Yemen",
+      "port": "Port_Mumbai"
     }
   ],
   "import_brokers": [
@@ -3481,8 +3631,8 @@
       "label": "Sucafina",
       "hq": "Switzerland",
       "brands": [
-        "Yirgacheffe_Special",
-        "Sidamo_Natural"
+        "Sidamo_Natural",
+        "Yirgacheffe_Special"
       ],
       "warehouses": [
         "Warehouse_Seattle_Port",
@@ -3553,8 +3703,157 @@
       "label": "Green Coffee Traders",
       "hq": "UK",
       "brands": [
+        "Kenya_AA",
+        "Colombian_Supremo"
+      ],
+      "warehouses": [
+        "Warehouse_Seattle_Port",
+        "Warehouse_Busan_Port",
+        "Warehouse_Amsterdam_West"
+      ],
+      "ports": []
+    },
+    {
+      "id": "Atlantic_Coffee",
+      "label": "Atlantic Coffee",
+      "hq": "Germany",
+      "brands": [
+        "Bourbon_Santos",
+        "Cerrado_Natural",
+        "Santos_Premium",
+        "Narino_Supremo",
+        "Huila_Reserve",
+        "Colombian_Supremo"
+      ],
+      "warehouses": [
+        "Warehouse_Seattle_Port",
+        "Warehouse_Busan_Port",
+        "Warehouse_Amsterdam_West"
+      ],
+      "ports": []
+    },
+    {
+      "id": "Westfeldt_Brothers",
+      "label": "Westfeldt Brothers",
+      "hq": "USA",
+      "brands": [
         "Colombian_Supremo",
-        "Kenya_AA"
+        "Antigua_Premium",
+        "Matagalpa_SHG",
+        "Honduras_SHG",
+        "Huehuetenango_SHB",
+        "Marcala_Organic"
+      ],
+      "warehouses": [
+        "Warehouse_Seattle_Port",
+        "Warehouse_Busan_Port",
+        "Warehouse_Amsterdam_West"
+      ],
+      "ports": []
+    },
+    {
+      "id": "Cofinet",
+      "label": "Cofinet",
+      "hq": "Switzerland",
+      "brands": [
+        "Kilimanjaro_Peaberry",
+        "Rwandan_Bourbon",
+        "Sulawesi_Toraja",
+        "Kenya_AA",
+        "Yirgacheffe_Special"
+      ],
+      "warehouses": [
+        "Warehouse_Seattle_Port",
+        "Warehouse_Busan_Port",
+        "Warehouse_Amsterdam_West"
+      ],
+      "ports": []
+    },
+    {
+      "id": "Sustainable_Harvest",
+      "label": "Sustainable Harvest",
+      "hq": "USA",
+      "brands": [
+        "Rwandan_Bourbon",
+        "Bugisu_AA",
+        "Huehuetenango_SHB",
+        "Marcala_Organic",
+        "West_Valley_Honey",
+        "Peruvian_Organic"
+      ],
+      "warehouses": [
+        "Warehouse_Seattle_Port",
+        "Warehouse_Busan_Port",
+        "Warehouse_Amsterdam_West"
+      ],
+      "ports": []
+    },
+    {
+      "id": "Ally_Coffee",
+      "label": "Ally Coffee",
+      "hq": "USA",
+      "brands": [
+        "Colombian_Supremo",
+        "Da_Lat_Arabica",
+        "Chiapas_Altura",
+        "Bourbon_Santos",
+        "Cerrado_Natural"
+      ],
+      "warehouses": [
+        "Warehouse_Seattle_Port",
+        "Warehouse_Busan_Port",
+        "Warehouse_Amsterdam_West"
+      ],
+      "ports": []
+    },
+    {
+      "id": "Caravela_Coffee",
+      "label": "Caravela Coffee",
+      "hq": "USA",
+      "brands": [
+        "Narino_Supremo",
+        "Colombian_Supremo",
+        "Antigua_Premium",
+        "Huila_Reserve",
+        "Peruvian_Organic"
+      ],
+      "warehouses": [
+        "Warehouse_Seattle_Port",
+        "Warehouse_Busan_Port",
+        "Warehouse_Amsterdam_West"
+      ],
+      "ports": []
+    },
+    {
+      "id": "Schluter_SA",
+      "label": "Schluter SA",
+      "hq": "Switzerland",
+      "brands": [
+        "Sulawesi_Toraja",
+        "Robusta_Select",
+        "Java_Estate",
+        "Malabar_Monsoon",
+        "PNG_Sigri",
+        "Sumatra_Mandheling"
+      ],
+      "warehouses": [
+        "Warehouse_Seattle_Port",
+        "Warehouse_Busan_Port",
+        "Warehouse_Amsterdam_West"
+      ],
+      "ports": []
+    },
+    {
+      "id": "Itochu_Coffee",
+      "label": "Itochu Coffee",
+      "hq": "Japan",
+      "brands": [
+        "Java_Estate",
+        "Kilimanjaro_Peaberry",
+        "Mocha_Sanani",
+        "Sumatra_Mandheling",
+        "Kona_Extra_Fancy",
+        "Blue_Mountain_Supreme"
       ],
       "warehouses": [
         "Warehouse_Seattle_Port",
@@ -3584,8 +3883,8 @@
       "label": "Mercon Coffee Group",
       "hq": "Netherlands",
       "brands": [
-        "Huila_Reserve",
-        "Colombian_Supremo"
+        "Colombian_Supremo",
+        "Huila_Reserve"
       ],
       "ports": [
         "Port_Antwerp",
@@ -3630,6 +3929,95 @@
         "Port_HoChiMinh",
         "Port_Mombasa"
       ]
+    },
+    {
+      "id": "Federacion_Nacional_Cafeteros",
+      "label": "Federacion Nacional Cafeteros",
+      "hq": "Colombia",
+      "brands": [
+        "Narino_Supremo",
+        "Colombian_Supremo",
+        "Huila_Reserve"
+      ],
+      "ports": [
+        "Port_Antwerp",
+        "Port_HoChiMinh",
+        "Port_Mombasa"
+      ]
+    },
+    {
+      "id": "Vinh_Hiep_JSC",
+      "label": "Vinh Hiep JSC",
+      "hq": "Vietnam",
+      "brands": [
+        "Robusta_Select",
+        "Da_Lat_Arabica"
+      ],
+      "ports": [
+        "Port_Antwerp",
+        "Port_HoChiMinh",
+        "Port_Mombasa"
+      ]
+    },
+    {
+      "id": "Tata_Coffee",
+      "label": "Tata Coffee",
+      "hq": "India",
+      "brands": [
+        "Robusta_Select",
+        "Malabar_Monsoon"
+      ],
+      "ports": [
+        "Port_Antwerp",
+        "Port_HoChiMinh",
+        "Port_Mombasa"
+      ]
+    },
+    {
+      "id": "Compania_Exportadora_Atlantica",
+      "label": "Compania Exportadora Atlantica",
+      "hq": "Guatemala",
+      "brands": [
+        "Antigua_Premium",
+        "Pacamara_Reserve",
+        "Huehuetenango_SHB"
+      ],
+      "ports": [
+        "Port_Antwerp",
+        "Port_HoChiMinh",
+        "Port_Mombasa"
+      ]
+    },
+    {
+      "id": "IHCAFE_Export",
+      "label": "IHCAFE Export",
+      "hq": "Honduras",
+      "brands": [
+        "Marcala_Organic",
+        "Honduras_SHG"
+      ],
+      "ports": [
+        "Port_Antwerp",
+        "Port_HoChiMinh",
+        "Port_Mombasa"
+      ]
+    },
+    {
+      "id": "Dormans_Coffee",
+      "label": "Dormans Coffee",
+      "hq": "Kenya",
+      "brands": [
+        "Kilimanjaro_Peaberry",
+        "Bugisu_AA",
+        "Rwandan_Bourbon",
+        "Kenya_AA",
+        "Nyeri_Peaberry"
+      ],
+      "ports": [
+        "Port_Antwerp",
+        "Port_HoChiMinh",
+        "Port_Mombasa"
+      ]
     }
   ],
   "logistics_providers": [
@@ -3638,8 +4026,8 @@
       "label": "Mitsubishi Corp",
       "hq": "Japan",
       "from": [
-        "Port_Santos",
-        "Port_Mombasa"
+        "Port_Mombasa",
+        "Port_Santos"
       ],
       "to": [
         "Port_Busan",
@@ -3651,9 +4039,9 @@
       "label": "Global Bean Logistics",
       "hq": "USA",
       "from": [
-        "Port_HoChiMinh",
+        "Port_Mombasa",
         "Port_Santos",
-        "Port_Mombasa"
+        "Port_HoChiMinh"
       ],
       "to": [
         "Port_Seattle",
@@ -3667,15 +4055,15 @@
       "hq": "Denmark",
       "from": [
         "Port_Mombasa",
-        "Port_HoChiMinh",
-        "Port_Santos"
+        "Port_Santos",
+        "Port_HoChiMinh"
       ],
       "to": [
-        "Port_LongBeach",
-        "Port_Hamburg",
+        "Port_Antwerp",
         "Port_Felixstowe",
         "Port_Rotterdam",
-        "Port_Antwerp"
+        "Port_LongBeach",
+        "Port_Hamburg"
       ]
     },
     {
@@ -3683,16 +4071,16 @@
       "label": "MSC",
       "hq": "Switzerland",
       "from": [
-        "Port_Mombasa",
+        "Port_Santos",
         "Port_HoChiMinh",
-        "Port_Santos"
+        "Port_Mombasa"
       ],
       "to": [
-        "Port_Singapore",
+        "Port_Rotterdam",
         "Port_Genoa",
         "Port_Valencia",
-        "Port_Rotterdam",
-        "Port_Antwerp"
+        "Port_Antwerp",
+        "Port_Singapore"
       ]
     },
     {
@@ -3701,14 +4089,14 @@
       "hq": "France",
       "from": [
         "Port_HoChiMinh",
-        "Port_Santos",
-        "Port_Mombasa"
+        "Port_Mombasa",
+        "Port_Santos"
       ],
       "to": [
-        "Port_Sydney",
-        "Port_Hamburg",
         "Port_Rotterdam",
         "Port_LongBeach",
+        "Port_Sydney",
+        "Port_Hamburg",
         "Port_Genoa"
       ]
     },
@@ -3721,13 +4109,13 @@
         "Port_Santos"
       ],
       "to": [
-        "Port_Rotterdam",
-        "Port_Antwerp",
-        "Port_LongBeach",
-        "Port_Hamburg",
         "Port_Busan",
         "Port_Tokyo",
-        "Port_NewOrleans"
+        "Port_NewOrleans",
+        "Port_Rotterdam",
+        "Port_LongBeach",
+        "Port_Hamburg",
+        "Port_Antwerp"
       ]
     },
     {
@@ -3736,14 +4124,14 @@
       "hq": "China",
       "from": [
         "Port_HoChiMinh",
-        "Port_Santos",
-        "Port_Mombasa"
+        "Port_Mombasa",
+        "Port_Santos"
       ],
       "to": [
         "Port_Busan",
         "Port_Tokyo",
-        "Port_Rotterdam",
-        "Port_Singapore"
+        "Port_Singapore",
+        "Port_Rotterdam"
       ]
     },
     {
@@ -3751,15 +4139,15 @@
       "label": "Evergreen Marine",
       "hq": "Taiwan",
       "from": [
-        "Port_HoChiMinh",
-        "Port_Santos"
+        "Port_Santos",
+        "Port_HoChiMinh"
       ],
       "to": [
-        "Port_Singapore",
-        "Port_LongBeach",
         "Port_Sydney",
         "Port_Busan",
-        "Port_Tokyo"
+        "Port_Tokyo",
+        "Port_Singapore",
+        "Port_LongBeach"
       ]
     },
     {
@@ -3768,17 +4156,17 @@
       "hq": "Germany",
       "from": [
         "Port_HoChiMinh",
-        "Port_Santos",
-        "Port_Mombasa"
+        "Port_Mombasa",
+        "Port_Santos"
       ],
       "to": [
-        "Port_Valencia",
-        "Port_NewOrleans",
-        "Port_Felixstowe",
-        "Port_Rotterdam",
-        "Port_Antwerp",
+        "Port_Hamburg",
         "Port_Genoa",
-        "Port_Hamburg"
+        "Port_Valencia",
+        "Port_Antwerp",
+        "Port_Felixstowe",
+        "Port_NewOrleans",
+        "Port_Rotterdam"
       ]
     },
     {
@@ -3786,16 +4174,16 @@
       "label": "Volcafe Logistics",
       "hq": "Switzerland",
       "from": [
-        "Port_Santos",
+        "Port_HoChiMinh",
         "Port_Mombasa",
-        "Port_HoChiMinh"
+        "Port_Santos"
       ],
       "to": [
-        "Port_Rotterdam",
         "Port_Antwerp",
+        "Port_Rotterdam",
         "Port_LongBeach",
-        "Port_Genoa",
-        "Port_Hamburg"
+        "Port_Hamburg",
+        "Port_Genoa"
       ]
     }
   ],
@@ -3849,6 +4237,21 @@
       "id": "Port_Tokyo",
       "label": "Tokyo",
       "country": "Japan"
+    },
+    {
+      "id": "Port_LeHavre",
+      "label": "LeHavre",
+      "country": "France"
+    },
+    {
+      "id": "Port_Trieste",
+      "label": "Trieste",
+      "country": "Italy"
+    },
+    {
+      "id": "Port_NewYork",
+      "label": "NewYork",
+      "country": "USA"
     }
   ],
   "producer_ports": [
@@ -3876,43 +4279,75 @@
       "id": "Port_Santos",
       "label": "Santos",
       "country": "Brazil"
+    },
+    {
+      "id": "Port_Buenaventura",
+      "label": "Buenaventura",
+      "country": "Colombia"
+    },
+    {
+      "id": "Port_Callao",
+      "label": "Callao",
+      "country": "Peru"
+    },
+    {
+      "id": "Port_PuertoBarrios",
+      "label": "PuertoBarrios",
+      "country": "Guatemala"
+    },
+    {
+      "id": "Port_PuertoCortes",
+      "label": "PuertoCortes",
+      "country": "Honduras"
+    },
+    {
+      "id": "Port_PuertoLimon",
+      "label": "PuertoLimon",
+      "country": "Costa Rica"
+    },
+    {
+      "id": "Port_Surabaya",
+      "label": "Surabaya",
+      "country": "Indonesia"
+    },
+    {
+      "id": "Port_Mumbai",
+      "label": "Mumbai",
+      "country": "India"
     }
   ],
   "farm_export_port": {
     "Colombia": "Port_Buenaventura",
     "Brazil": "Port_Santos",
-    "Ethiopia": "Port_Djibouti",
+    "Ethiopia": "Port_Mombasa",
+    "USA": "Port_LongBeach",
     "Kenya": "Port_Mombasa",
-    "Indonesia": "Port_Jakarta",
-    "Guatemala": "Port_SantoTomas",
-    "Honduras": "Port_PuertoCortez",
-    "Costa Rica": "Port_Limon",
+    "Indonesia": "Port_Surabaya",
+    "Guatemala": "Port_PuertoBarrios",
+    "Honduras": "Port_PuertoCortes",
+    "Costa Rica": "Port_PuertoLimon",
     "Peru": "Port_Callao",
     "Vietnam": "Port_HoChiMinh",
-    "Jamaica": "Port_Kingston",
-    "Panama": "Port_Colon",
-    "Mexico": "Port_Veracruz",
+    "Jamaica": "Port_Santos",
+    "Panama": "Port_Buenaventura",
+    "Mexico": "Port_HoChiMinh",
     "Rwanda": "Port_Mombasa",
-    "Tanzania": "Port_DarEsSalaam",
+    "Tanzania": "Port_Mombasa",
     "Uganda": "Port_Mombasa",
     "India": "Port_Mumbai",
-    "Yemen": "Port_Aden",
-    "Nicaragua": "Port_Corinto",
-    "El Salvador": "Port_Acajutla",
-    "Papua New Guinea": "Port_Lae",
-    "Dominican Republic": "Port_SantoDomingo"
+    "Yemen": "Port_Mumbai",
+    "Nicaragua": "Port_PuertoCortes",
+    "El Salvador": "Port_PuertoBarrios",
+    "Papua New Guinea": "Port_Surabaya",
+    "Dominican Republic": "Port_Santos"
   },
   "trace_flow_links": [
     {
       "source": "m_Cappuccino",
-      "target": "b_Colombian_Supremo"
+      "target": "b_Sidamo_Natural"
     },
     {
       "source": "m_Cappuccino",
-      "target": "b_Sidamo_Natural"
-    },
-    {
-      "source": "m_Caffe_Latte",
       "target": "b_Colombian_Supremo"
     },
     {
@@ -3920,12 +4355,16 @@
       "target": "b_Sidamo_Natural"
     },
     {
-      "source": "m_Aeropress",
-      "target": "b_Yirgacheffe_Special"
+      "source": "m_Caffe_Latte",
+      "target": "b_Colombian_Supremo"
     },
     {
       "source": "m_Aeropress",
       "target": "b_Huila_Reserve"
+    },
+    {
+      "source": "m_Aeropress",
+      "target": "b_Yirgacheffe_Special"
     },
     {
       "source": "m_Vanilla_Latte",
@@ -3941,27 +4380,27 @@
     },
     {
       "source": "m_Double_Espresso",
-      "target": "b_Colombian_Supremo"
-    },
-    {
-      "source": "m_Double_Espresso",
       "target": "b_Sidamo_Natural"
     },
     {
-      "source": "m_Iced_Americano",
-      "target": "b_Huila_Reserve"
+      "source": "m_Double_Espresso",
+      "target": "b_Colombian_Supremo"
     },
     {
       "source": "m_Iced_Americano",
       "target": "b_Colombian_Supremo"
     },
     {
-      "source": "m_Flat_White",
+      "source": "m_Iced_Americano",
       "target": "b_Huila_Reserve"
     },
     {
       "source": "m_Flat_White",
       "target": "b_Colombian_Supremo"
+    },
+    {
+      "source": "m_Flat_White",
+      "target": "b_Huila_Reserve"
     },
     {
       "source": "m_Mocha",
@@ -3977,11 +4416,11 @@
     },
     {
       "source": "m_Espresso",
-      "target": "b_Colombian_Supremo"
+      "target": "b_Sidamo_Natural"
     },
     {
       "source": "m_Espresso",
-      "target": "b_Sidamo_Natural"
+      "target": "b_Colombian_Supremo"
     },
     {
       "source": "m_Nitro_Cold_Brew",
@@ -4029,23 +4468,195 @@
     },
     {
       "source": "m_Cold_Brew",
-      "target": "b_Sidamo_Natural"
+      "target": "b_Sumatra_Mandheling"
     },
     {
       "source": "m_Cold_Brew",
-      "target": "b_Sumatra_Mandheling"
+      "target": "b_Sidamo_Natural"
     },
     {
       "source": "m_Cortado",
       "target": "b_Huila_Reserve"
     },
     {
-      "source": "b_Yirgacheffe_Special",
+      "source": "b_Kona_Extra_Fancy",
+      "target": "cw_Warehouse_Seattle_Port"
+    },
+    {
+      "source": "b_Kona_Extra_Fancy",
+      "target": "cw_Warehouse_Genoa_Harbor"
+    },
+    {
+      "source": "b_Kona_Extra_Fancy",
+      "target": "cw_Warehouse_Busan_Port"
+    },
+    {
+      "source": "b_Kona_Extra_Fancy",
+      "target": "cw_Warehouse_LongBeach_South"
+    },
+    {
+      "source": "b_Kona_Extra_Fancy",
+      "target": "cw_Warehouse_NewOrleans_CBD"
+    },
+    {
+      "source": "b_Kona_Extra_Fancy",
+      "target": "cw_Warehouse_Hamburg_Central"
+    },
+    {
+      "source": "b_Kona_Extra_Fancy",
+      "target": "cw_Warehouse_Miami_FreeZone"
+    },
+    {
+      "source": "b_Kona_Extra_Fancy",
+      "target": "cw_Warehouse_Melbourne_Docks"
+    },
+    {
+      "source": "b_Kona_Extra_Fancy",
+      "target": "cw_Warehouse_Tokyo_Bay"
+    },
+    {
+      "source": "b_Kona_Extra_Fancy",
+      "target": "cw_Warehouse_Valencia_Industrial"
+    },
+    {
+      "source": "b_Kona_Extra_Fancy",
+      "target": "cw_Warehouse_Rotterdam_West"
+    },
+    {
+      "source": "b_Kona_Extra_Fancy",
+      "target": "cw_Warehouse_Felixstowe_East"
+    },
+    {
+      "source": "b_Kona_Extra_Fancy",
+      "target": "cw_Warehouse_Barcelona_Port"
+    },
+    {
+      "source": "b_Kona_Extra_Fancy",
       "target": "cw_Warehouse_Amsterdam_West"
     },
     {
-      "source": "b_Yirgacheffe_Special",
+      "source": "b_Kona_Extra_Fancy",
+      "target": "cw_Warehouse_Sydney_South"
+    },
+    {
+      "source": "b_Mocha_Sanani",
+      "target": "cw_Warehouse_Seattle_Port"
+    },
+    {
+      "source": "b_Mocha_Sanani",
+      "target": "cw_Warehouse_Genoa_Harbor"
+    },
+    {
+      "source": "b_Mocha_Sanani",
+      "target": "cw_Warehouse_Busan_Port"
+    },
+    {
+      "source": "b_Mocha_Sanani",
+      "target": "cw_Warehouse_LongBeach_South"
+    },
+    {
+      "source": "b_Mocha_Sanani",
+      "target": "cw_Warehouse_NewOrleans_CBD"
+    },
+    {
+      "source": "b_Mocha_Sanani",
+      "target": "cw_Warehouse_Hamburg_Central"
+    },
+    {
+      "source": "b_Mocha_Sanani",
       "target": "cw_Warehouse_Miami_FreeZone"
+    },
+    {
+      "source": "b_Mocha_Sanani",
+      "target": "cw_Warehouse_Melbourne_Docks"
+    },
+    {
+      "source": "b_Mocha_Sanani",
+      "target": "cw_Warehouse_Tokyo_Bay"
+    },
+    {
+      "source": "b_Mocha_Sanani",
+      "target": "cw_Warehouse_Valencia_Industrial"
+    },
+    {
+      "source": "b_Mocha_Sanani",
+      "target": "cw_Warehouse_Rotterdam_West"
+    },
+    {
+      "source": "b_Mocha_Sanani",
+      "target": "cw_Warehouse_Felixstowe_East"
+    },
+    {
+      "source": "b_Mocha_Sanani",
+      "target": "cw_Warehouse_Barcelona_Port"
+    },
+    {
+      "source": "b_Mocha_Sanani",
+      "target": "cw_Warehouse_Amsterdam_West"
+    },
+    {
+      "source": "b_Mocha_Sanani",
+      "target": "cw_Warehouse_Sydney_South"
+    },
+    {
+      "source": "b_Blue_Mountain_Supreme",
+      "target": "cw_Warehouse_Seattle_Port"
+    },
+    {
+      "source": "b_Blue_Mountain_Supreme",
+      "target": "cw_Warehouse_Genoa_Harbor"
+    },
+    {
+      "source": "b_Blue_Mountain_Supreme",
+      "target": "cw_Warehouse_Busan_Port"
+    },
+    {
+      "source": "b_Blue_Mountain_Supreme",
+      "target": "cw_Warehouse_LongBeach_South"
+    },
+    {
+      "source": "b_Blue_Mountain_Supreme",
+      "target": "cw_Warehouse_NewOrleans_CBD"
+    },
+    {
+      "source": "b_Blue_Mountain_Supreme",
+      "target": "cw_Warehouse_Hamburg_Central"
+    },
+    {
+      "source": "b_Blue_Mountain_Supreme",
+      "target": "cw_Warehouse_Miami_FreeZone"
+    },
+    {
+      "source": "b_Blue_Mountain_Supreme",
+      "target": "cw_Warehouse_Melbourne_Docks"
+    },
+    {
+      "source": "b_Blue_Mountain_Supreme",
+      "target": "cw_Warehouse_Tokyo_Bay"
+    },
+    {
+      "source": "b_Blue_Mountain_Supreme",
+      "target": "cw_Warehouse_Valencia_Industrial"
+    },
+    {
+      "source": "b_Blue_Mountain_Supreme",
+      "target": "cw_Warehouse_Rotterdam_West"
+    },
+    {
+      "source": "b_Blue_Mountain_Supreme",
+      "target": "cw_Warehouse_Felixstowe_East"
+    },
+    {
+      "source": "b_Blue_Mountain_Supreme",
+      "target": "cw_Warehouse_Barcelona_Port"
+    },
+    {
+      "source": "b_Blue_Mountain_Supreme",
+      "target": "cw_Warehouse_Amsterdam_West"
+    },
+    {
+      "source": "b_Blue_Mountain_Supreme",
+      "target": "cw_Warehouse_Sydney_South"
     },
     {
       "source": "b_Yirgacheffe_Special",
@@ -4053,39 +4664,7 @@
     },
     {
       "source": "b_Yirgacheffe_Special",
-      "target": "cw_Warehouse_LongBeach_South"
-    },
-    {
-      "source": "b_Yirgacheffe_Special",
       "target": "cw_Warehouse_Genoa_Harbor"
-    },
-    {
-      "source": "b_Yirgacheffe_Special",
-      "target": "cw_Warehouse_Sydney_South"
-    },
-    {
-      "source": "b_Yirgacheffe_Special",
-      "target": "cw_Warehouse_Valencia_Industrial"
-    },
-    {
-      "source": "b_Yirgacheffe_Special",
-      "target": "cw_Warehouse_Tokyo_Bay"
-    },
-    {
-      "source": "b_Yirgacheffe_Special",
-      "target": "cw_Warehouse_NewOrleans_CBD"
-    },
-    {
-      "source": "b_Yirgacheffe_Special",
-      "target": "cw_Warehouse_Barcelona_Port"
-    },
-    {
-      "source": "b_Yirgacheffe_Special",
-      "target": "cw_Warehouse_Melbourne_Docks"
-    },
-    {
-      "source": "b_Yirgacheffe_Special",
-      "target": "cw_Warehouse_Rotterdam_West"
     },
     {
       "source": "b_Yirgacheffe_Special",
@@ -4093,19 +4672,111 @@
     },
     {
       "source": "b_Yirgacheffe_Special",
+      "target": "cw_Warehouse_LongBeach_South"
+    },
+    {
+      "source": "b_Yirgacheffe_Special",
+      "target": "cw_Warehouse_NewOrleans_CBD"
+    },
+    {
+      "source": "b_Yirgacheffe_Special",
       "target": "cw_Warehouse_Hamburg_Central"
+    },
+    {
+      "source": "b_Yirgacheffe_Special",
+      "target": "cw_Warehouse_Miami_FreeZone"
+    },
+    {
+      "source": "b_Yirgacheffe_Special",
+      "target": "cw_Warehouse_Melbourne_Docks"
+    },
+    {
+      "source": "b_Yirgacheffe_Special",
+      "target": "cw_Warehouse_Tokyo_Bay"
+    },
+    {
+      "source": "b_Yirgacheffe_Special",
+      "target": "cw_Warehouse_Valencia_Industrial"
+    },
+    {
+      "source": "b_Yirgacheffe_Special",
+      "target": "cw_Warehouse_Rotterdam_West"
     },
     {
       "source": "b_Yirgacheffe_Special",
       "target": "cw_Warehouse_Felixstowe_East"
     },
     {
-      "source": "b_Kenya_AA",
+      "source": "b_Yirgacheffe_Special",
+      "target": "cw_Warehouse_Barcelona_Port"
+    },
+    {
+      "source": "b_Yirgacheffe_Special",
       "target": "cw_Warehouse_Amsterdam_West"
     },
     {
-      "source": "b_Kenya_AA",
+      "source": "b_Yirgacheffe_Special",
+      "target": "cw_Warehouse_Sydney_South"
+    },
+    {
+      "source": "b_Antigua_Premium",
+      "target": "cw_Warehouse_Seattle_Port"
+    },
+    {
+      "source": "b_Antigua_Premium",
+      "target": "cw_Warehouse_Genoa_Harbor"
+    },
+    {
+      "source": "b_Antigua_Premium",
+      "target": "cw_Warehouse_Busan_Port"
+    },
+    {
+      "source": "b_Antigua_Premium",
+      "target": "cw_Warehouse_LongBeach_South"
+    },
+    {
+      "source": "b_Antigua_Premium",
+      "target": "cw_Warehouse_NewOrleans_CBD"
+    },
+    {
+      "source": "b_Antigua_Premium",
+      "target": "cw_Warehouse_Hamburg_Central"
+    },
+    {
+      "source": "b_Antigua_Premium",
       "target": "cw_Warehouse_Miami_FreeZone"
+    },
+    {
+      "source": "b_Antigua_Premium",
+      "target": "cw_Warehouse_Melbourne_Docks"
+    },
+    {
+      "source": "b_Antigua_Premium",
+      "target": "cw_Warehouse_Tokyo_Bay"
+    },
+    {
+      "source": "b_Antigua_Premium",
+      "target": "cw_Warehouse_Valencia_Industrial"
+    },
+    {
+      "source": "b_Antigua_Premium",
+      "target": "cw_Warehouse_Rotterdam_West"
+    },
+    {
+      "source": "b_Antigua_Premium",
+      "target": "cw_Warehouse_Felixstowe_East"
+    },
+    {
+      "source": "b_Antigua_Premium",
+      "target": "cw_Warehouse_Barcelona_Port"
+    },
+    {
+      "source": "b_Antigua_Premium",
+      "target": "cw_Warehouse_Amsterdam_West"
+    },
+    {
+      "source": "b_Antigua_Premium",
+      "target": "cw_Warehouse_Sydney_South"
     },
     {
       "source": "b_Kenya_AA",
@@ -4113,39 +4784,7 @@
     },
     {
       "source": "b_Kenya_AA",
-      "target": "cw_Warehouse_LongBeach_South"
-    },
-    {
-      "source": "b_Kenya_AA",
       "target": "cw_Warehouse_Genoa_Harbor"
-    },
-    {
-      "source": "b_Kenya_AA",
-      "target": "cw_Warehouse_Sydney_South"
-    },
-    {
-      "source": "b_Kenya_AA",
-      "target": "cw_Warehouse_Valencia_Industrial"
-    },
-    {
-      "source": "b_Kenya_AA",
-      "target": "cw_Warehouse_Tokyo_Bay"
-    },
-    {
-      "source": "b_Kenya_AA",
-      "target": "cw_Warehouse_NewOrleans_CBD"
-    },
-    {
-      "source": "b_Kenya_AA",
-      "target": "cw_Warehouse_Barcelona_Port"
-    },
-    {
-      "source": "b_Kenya_AA",
-      "target": "cw_Warehouse_Melbourne_Docks"
-    },
-    {
-      "source": "b_Kenya_AA",
-      "target": "cw_Warehouse_Rotterdam_West"
     },
     {
       "source": "b_Kenya_AA",
@@ -4153,19 +4792,171 @@
     },
     {
       "source": "b_Kenya_AA",
+      "target": "cw_Warehouse_LongBeach_South"
+    },
+    {
+      "source": "b_Kenya_AA",
+      "target": "cw_Warehouse_NewOrleans_CBD"
+    },
+    {
+      "source": "b_Kenya_AA",
       "target": "cw_Warehouse_Hamburg_Central"
+    },
+    {
+      "source": "b_Kenya_AA",
+      "target": "cw_Warehouse_Miami_FreeZone"
+    },
+    {
+      "source": "b_Kenya_AA",
+      "target": "cw_Warehouse_Melbourne_Docks"
+    },
+    {
+      "source": "b_Kenya_AA",
+      "target": "cw_Warehouse_Tokyo_Bay"
+    },
+    {
+      "source": "b_Kenya_AA",
+      "target": "cw_Warehouse_Valencia_Industrial"
+    },
+    {
+      "source": "b_Kenya_AA",
+      "target": "cw_Warehouse_Rotterdam_West"
     },
     {
       "source": "b_Kenya_AA",
       "target": "cw_Warehouse_Felixstowe_East"
     },
     {
-      "source": "b_Tarrazu_Reserve",
+      "source": "b_Kenya_AA",
+      "target": "cw_Warehouse_Barcelona_Port"
+    },
+    {
+      "source": "b_Kenya_AA",
       "target": "cw_Warehouse_Amsterdam_West"
     },
     {
-      "source": "b_Tarrazu_Reserve",
+      "source": "b_Kenya_AA",
+      "target": "cw_Warehouse_Sydney_South"
+    },
+    {
+      "source": "b_Huehuetenango_SHB",
+      "target": "cw_Warehouse_Seattle_Port"
+    },
+    {
+      "source": "b_Huehuetenango_SHB",
+      "target": "cw_Warehouse_Genoa_Harbor"
+    },
+    {
+      "source": "b_Huehuetenango_SHB",
+      "target": "cw_Warehouse_Busan_Port"
+    },
+    {
+      "source": "b_Huehuetenango_SHB",
+      "target": "cw_Warehouse_LongBeach_South"
+    },
+    {
+      "source": "b_Huehuetenango_SHB",
+      "target": "cw_Warehouse_NewOrleans_CBD"
+    },
+    {
+      "source": "b_Huehuetenango_SHB",
+      "target": "cw_Warehouse_Hamburg_Central"
+    },
+    {
+      "source": "b_Huehuetenango_SHB",
       "target": "cw_Warehouse_Miami_FreeZone"
+    },
+    {
+      "source": "b_Huehuetenango_SHB",
+      "target": "cw_Warehouse_Melbourne_Docks"
+    },
+    {
+      "source": "b_Huehuetenango_SHB",
+      "target": "cw_Warehouse_Tokyo_Bay"
+    },
+    {
+      "source": "b_Huehuetenango_SHB",
+      "target": "cw_Warehouse_Valencia_Industrial"
+    },
+    {
+      "source": "b_Huehuetenango_SHB",
+      "target": "cw_Warehouse_Rotterdam_West"
+    },
+    {
+      "source": "b_Huehuetenango_SHB",
+      "target": "cw_Warehouse_Felixstowe_East"
+    },
+    {
+      "source": "b_Huehuetenango_SHB",
+      "target": "cw_Warehouse_Barcelona_Port"
+    },
+    {
+      "source": "b_Huehuetenango_SHB",
+      "target": "cw_Warehouse_Amsterdam_West"
+    },
+    {
+      "source": "b_Huehuetenango_SHB",
+      "target": "cw_Warehouse_Sydney_South"
+    },
+    {
+      "source": "b_Kilimanjaro_Peaberry",
+      "target": "cw_Warehouse_Seattle_Port"
+    },
+    {
+      "source": "b_Kilimanjaro_Peaberry",
+      "target": "cw_Warehouse_Genoa_Harbor"
+    },
+    {
+      "source": "b_Kilimanjaro_Peaberry",
+      "target": "cw_Warehouse_Busan_Port"
+    },
+    {
+      "source": "b_Kilimanjaro_Peaberry",
+      "target": "cw_Warehouse_LongBeach_South"
+    },
+    {
+      "source": "b_Kilimanjaro_Peaberry",
+      "target": "cw_Warehouse_NewOrleans_CBD"
+    },
+    {
+      "source": "b_Kilimanjaro_Peaberry",
+      "target": "cw_Warehouse_Hamburg_Central"
+    },
+    {
+      "source": "b_Kilimanjaro_Peaberry",
+      "target": "cw_Warehouse_Miami_FreeZone"
+    },
+    {
+      "source": "b_Kilimanjaro_Peaberry",
+      "target": "cw_Warehouse_Melbourne_Docks"
+    },
+    {
+      "source": "b_Kilimanjaro_Peaberry",
+      "target": "cw_Warehouse_Tokyo_Bay"
+    },
+    {
+      "source": "b_Kilimanjaro_Peaberry",
+      "target": "cw_Warehouse_Valencia_Industrial"
+    },
+    {
+      "source": "b_Kilimanjaro_Peaberry",
+      "target": "cw_Warehouse_Rotterdam_West"
+    },
+    {
+      "source": "b_Kilimanjaro_Peaberry",
+      "target": "cw_Warehouse_Felixstowe_East"
+    },
+    {
+      "source": "b_Kilimanjaro_Peaberry",
+      "target": "cw_Warehouse_Barcelona_Port"
+    },
+    {
+      "source": "b_Kilimanjaro_Peaberry",
+      "target": "cw_Warehouse_Amsterdam_West"
+    },
+    {
+      "source": "b_Kilimanjaro_Peaberry",
+      "target": "cw_Warehouse_Sydney_South"
     },
     {
       "source": "b_Tarrazu_Reserve",
@@ -4173,39 +4964,7 @@
     },
     {
       "source": "b_Tarrazu_Reserve",
-      "target": "cw_Warehouse_LongBeach_South"
-    },
-    {
-      "source": "b_Tarrazu_Reserve",
       "target": "cw_Warehouse_Genoa_Harbor"
-    },
-    {
-      "source": "b_Tarrazu_Reserve",
-      "target": "cw_Warehouse_Sydney_South"
-    },
-    {
-      "source": "b_Tarrazu_Reserve",
-      "target": "cw_Warehouse_Valencia_Industrial"
-    },
-    {
-      "source": "b_Tarrazu_Reserve",
-      "target": "cw_Warehouse_Tokyo_Bay"
-    },
-    {
-      "source": "b_Tarrazu_Reserve",
-      "target": "cw_Warehouse_NewOrleans_CBD"
-    },
-    {
-      "source": "b_Tarrazu_Reserve",
-      "target": "cw_Warehouse_Barcelona_Port"
-    },
-    {
-      "source": "b_Tarrazu_Reserve",
-      "target": "cw_Warehouse_Melbourne_Docks"
-    },
-    {
-      "source": "b_Tarrazu_Reserve",
-      "target": "cw_Warehouse_Rotterdam_West"
     },
     {
       "source": "b_Tarrazu_Reserve",
@@ -4213,19 +4972,51 @@
     },
     {
       "source": "b_Tarrazu_Reserve",
+      "target": "cw_Warehouse_LongBeach_South"
+    },
+    {
+      "source": "b_Tarrazu_Reserve",
+      "target": "cw_Warehouse_NewOrleans_CBD"
+    },
+    {
+      "source": "b_Tarrazu_Reserve",
       "target": "cw_Warehouse_Hamburg_Central"
+    },
+    {
+      "source": "b_Tarrazu_Reserve",
+      "target": "cw_Warehouse_Miami_FreeZone"
+    },
+    {
+      "source": "b_Tarrazu_Reserve",
+      "target": "cw_Warehouse_Melbourne_Docks"
+    },
+    {
+      "source": "b_Tarrazu_Reserve",
+      "target": "cw_Warehouse_Tokyo_Bay"
+    },
+    {
+      "source": "b_Tarrazu_Reserve",
+      "target": "cw_Warehouse_Valencia_Industrial"
+    },
+    {
+      "source": "b_Tarrazu_Reserve",
+      "target": "cw_Warehouse_Rotterdam_West"
     },
     {
       "source": "b_Tarrazu_Reserve",
       "target": "cw_Warehouse_Felixstowe_East"
     },
     {
-      "source": "b_Peruvian_Organic",
+      "source": "b_Tarrazu_Reserve",
+      "target": "cw_Warehouse_Barcelona_Port"
+    },
+    {
+      "source": "b_Tarrazu_Reserve",
       "target": "cw_Warehouse_Amsterdam_West"
     },
     {
-      "source": "b_Peruvian_Organic",
-      "target": "cw_Warehouse_Miami_FreeZone"
+      "source": "b_Tarrazu_Reserve",
+      "target": "cw_Warehouse_Sydney_South"
     },
     {
       "source": "b_Peruvian_Organic",
@@ -4233,39 +5024,7 @@
     },
     {
       "source": "b_Peruvian_Organic",
-      "target": "cw_Warehouse_LongBeach_South"
-    },
-    {
-      "source": "b_Peruvian_Organic",
       "target": "cw_Warehouse_Genoa_Harbor"
-    },
-    {
-      "source": "b_Peruvian_Organic",
-      "target": "cw_Warehouse_Sydney_South"
-    },
-    {
-      "source": "b_Peruvian_Organic",
-      "target": "cw_Warehouse_Valencia_Industrial"
-    },
-    {
-      "source": "b_Peruvian_Organic",
-      "target": "cw_Warehouse_Tokyo_Bay"
-    },
-    {
-      "source": "b_Peruvian_Organic",
-      "target": "cw_Warehouse_NewOrleans_CBD"
-    },
-    {
-      "source": "b_Peruvian_Organic",
-      "target": "cw_Warehouse_Barcelona_Port"
-    },
-    {
-      "source": "b_Peruvian_Organic",
-      "target": "cw_Warehouse_Melbourne_Docks"
-    },
-    {
-      "source": "b_Peruvian_Organic",
-      "target": "cw_Warehouse_Rotterdam_West"
     },
     {
       "source": "b_Peruvian_Organic",
@@ -4273,19 +5032,171 @@
     },
     {
       "source": "b_Peruvian_Organic",
+      "target": "cw_Warehouse_LongBeach_South"
+    },
+    {
+      "source": "b_Peruvian_Organic",
+      "target": "cw_Warehouse_NewOrleans_CBD"
+    },
+    {
+      "source": "b_Peruvian_Organic",
       "target": "cw_Warehouse_Hamburg_Central"
+    },
+    {
+      "source": "b_Peruvian_Organic",
+      "target": "cw_Warehouse_Miami_FreeZone"
+    },
+    {
+      "source": "b_Peruvian_Organic",
+      "target": "cw_Warehouse_Melbourne_Docks"
+    },
+    {
+      "source": "b_Peruvian_Organic",
+      "target": "cw_Warehouse_Tokyo_Bay"
+    },
+    {
+      "source": "b_Peruvian_Organic",
+      "target": "cw_Warehouse_Valencia_Industrial"
+    },
+    {
+      "source": "b_Peruvian_Organic",
+      "target": "cw_Warehouse_Rotterdam_West"
     },
     {
       "source": "b_Peruvian_Organic",
       "target": "cw_Warehouse_Felixstowe_East"
     },
     {
-      "source": "b_Sidamo_Natural",
+      "source": "b_Peruvian_Organic",
+      "target": "cw_Warehouse_Barcelona_Port"
+    },
+    {
+      "source": "b_Peruvian_Organic",
       "target": "cw_Warehouse_Amsterdam_West"
     },
     {
-      "source": "b_Sidamo_Natural",
+      "source": "b_Peruvian_Organic",
+      "target": "cw_Warehouse_Sydney_South"
+    },
+    {
+      "source": "b_Malabar_Monsoon",
+      "target": "cw_Warehouse_Seattle_Port"
+    },
+    {
+      "source": "b_Malabar_Monsoon",
+      "target": "cw_Warehouse_Genoa_Harbor"
+    },
+    {
+      "source": "b_Malabar_Monsoon",
+      "target": "cw_Warehouse_Busan_Port"
+    },
+    {
+      "source": "b_Malabar_Monsoon",
+      "target": "cw_Warehouse_LongBeach_South"
+    },
+    {
+      "source": "b_Malabar_Monsoon",
+      "target": "cw_Warehouse_NewOrleans_CBD"
+    },
+    {
+      "source": "b_Malabar_Monsoon",
+      "target": "cw_Warehouse_Hamburg_Central"
+    },
+    {
+      "source": "b_Malabar_Monsoon",
       "target": "cw_Warehouse_Miami_FreeZone"
+    },
+    {
+      "source": "b_Malabar_Monsoon",
+      "target": "cw_Warehouse_Melbourne_Docks"
+    },
+    {
+      "source": "b_Malabar_Monsoon",
+      "target": "cw_Warehouse_Tokyo_Bay"
+    },
+    {
+      "source": "b_Malabar_Monsoon",
+      "target": "cw_Warehouse_Valencia_Industrial"
+    },
+    {
+      "source": "b_Malabar_Monsoon",
+      "target": "cw_Warehouse_Rotterdam_West"
+    },
+    {
+      "source": "b_Malabar_Monsoon",
+      "target": "cw_Warehouse_Felixstowe_East"
+    },
+    {
+      "source": "b_Malabar_Monsoon",
+      "target": "cw_Warehouse_Barcelona_Port"
+    },
+    {
+      "source": "b_Malabar_Monsoon",
+      "target": "cw_Warehouse_Amsterdam_West"
+    },
+    {
+      "source": "b_Malabar_Monsoon",
+      "target": "cw_Warehouse_Sydney_South"
+    },
+    {
+      "source": "b_Rwandan_Bourbon",
+      "target": "cw_Warehouse_Seattle_Port"
+    },
+    {
+      "source": "b_Rwandan_Bourbon",
+      "target": "cw_Warehouse_Genoa_Harbor"
+    },
+    {
+      "source": "b_Rwandan_Bourbon",
+      "target": "cw_Warehouse_Busan_Port"
+    },
+    {
+      "source": "b_Rwandan_Bourbon",
+      "target": "cw_Warehouse_LongBeach_South"
+    },
+    {
+      "source": "b_Rwandan_Bourbon",
+      "target": "cw_Warehouse_NewOrleans_CBD"
+    },
+    {
+      "source": "b_Rwandan_Bourbon",
+      "target": "cw_Warehouse_Hamburg_Central"
+    },
+    {
+      "source": "b_Rwandan_Bourbon",
+      "target": "cw_Warehouse_Miami_FreeZone"
+    },
+    {
+      "source": "b_Rwandan_Bourbon",
+      "target": "cw_Warehouse_Melbourne_Docks"
+    },
+    {
+      "source": "b_Rwandan_Bourbon",
+      "target": "cw_Warehouse_Tokyo_Bay"
+    },
+    {
+      "source": "b_Rwandan_Bourbon",
+      "target": "cw_Warehouse_Valencia_Industrial"
+    },
+    {
+      "source": "b_Rwandan_Bourbon",
+      "target": "cw_Warehouse_Rotterdam_West"
+    },
+    {
+      "source": "b_Rwandan_Bourbon",
+      "target": "cw_Warehouse_Felixstowe_East"
+    },
+    {
+      "source": "b_Rwandan_Bourbon",
+      "target": "cw_Warehouse_Barcelona_Port"
+    },
+    {
+      "source": "b_Rwandan_Bourbon",
+      "target": "cw_Warehouse_Amsterdam_West"
+    },
+    {
+      "source": "b_Rwandan_Bourbon",
+      "target": "cw_Warehouse_Sydney_South"
     },
     {
       "source": "b_Sidamo_Natural",
@@ -4293,39 +5204,7 @@
     },
     {
       "source": "b_Sidamo_Natural",
-      "target": "cw_Warehouse_LongBeach_South"
-    },
-    {
-      "source": "b_Sidamo_Natural",
       "target": "cw_Warehouse_Genoa_Harbor"
-    },
-    {
-      "source": "b_Sidamo_Natural",
-      "target": "cw_Warehouse_Sydney_South"
-    },
-    {
-      "source": "b_Sidamo_Natural",
-      "target": "cw_Warehouse_Valencia_Industrial"
-    },
-    {
-      "source": "b_Sidamo_Natural",
-      "target": "cw_Warehouse_Tokyo_Bay"
-    },
-    {
-      "source": "b_Sidamo_Natural",
-      "target": "cw_Warehouse_NewOrleans_CBD"
-    },
-    {
-      "source": "b_Sidamo_Natural",
-      "target": "cw_Warehouse_Barcelona_Port"
-    },
-    {
-      "source": "b_Sidamo_Natural",
-      "target": "cw_Warehouse_Melbourne_Docks"
-    },
-    {
-      "source": "b_Sidamo_Natural",
-      "target": "cw_Warehouse_Rotterdam_West"
     },
     {
       "source": "b_Sidamo_Natural",
@@ -4333,19 +5212,51 @@
     },
     {
       "source": "b_Sidamo_Natural",
+      "target": "cw_Warehouse_LongBeach_South"
+    },
+    {
+      "source": "b_Sidamo_Natural",
+      "target": "cw_Warehouse_NewOrleans_CBD"
+    },
+    {
+      "source": "b_Sidamo_Natural",
       "target": "cw_Warehouse_Hamburg_Central"
+    },
+    {
+      "source": "b_Sidamo_Natural",
+      "target": "cw_Warehouse_Miami_FreeZone"
+    },
+    {
+      "source": "b_Sidamo_Natural",
+      "target": "cw_Warehouse_Melbourne_Docks"
+    },
+    {
+      "source": "b_Sidamo_Natural",
+      "target": "cw_Warehouse_Tokyo_Bay"
+    },
+    {
+      "source": "b_Sidamo_Natural",
+      "target": "cw_Warehouse_Valencia_Industrial"
+    },
+    {
+      "source": "b_Sidamo_Natural",
+      "target": "cw_Warehouse_Rotterdam_West"
     },
     {
       "source": "b_Sidamo_Natural",
       "target": "cw_Warehouse_Felixstowe_East"
     },
     {
-      "source": "b_Huila_Reserve",
+      "source": "b_Sidamo_Natural",
+      "target": "cw_Warehouse_Barcelona_Port"
+    },
+    {
+      "source": "b_Sidamo_Natural",
       "target": "cw_Warehouse_Amsterdam_West"
     },
     {
-      "source": "b_Huila_Reserve",
-      "target": "cw_Warehouse_Miami_FreeZone"
+      "source": "b_Sidamo_Natural",
+      "target": "cw_Warehouse_Sydney_South"
     },
     {
       "source": "b_Huila_Reserve",
@@ -4353,39 +5264,7 @@
     },
     {
       "source": "b_Huila_Reserve",
-      "target": "cw_Warehouse_LongBeach_South"
-    },
-    {
-      "source": "b_Huila_Reserve",
       "target": "cw_Warehouse_Genoa_Harbor"
-    },
-    {
-      "source": "b_Huila_Reserve",
-      "target": "cw_Warehouse_Sydney_South"
-    },
-    {
-      "source": "b_Huila_Reserve",
-      "target": "cw_Warehouse_Valencia_Industrial"
-    },
-    {
-      "source": "b_Huila_Reserve",
-      "target": "cw_Warehouse_Tokyo_Bay"
-    },
-    {
-      "source": "b_Huila_Reserve",
-      "target": "cw_Warehouse_NewOrleans_CBD"
-    },
-    {
-      "source": "b_Huila_Reserve",
-      "target": "cw_Warehouse_Barcelona_Port"
-    },
-    {
-      "source": "b_Huila_Reserve",
-      "target": "cw_Warehouse_Melbourne_Docks"
-    },
-    {
-      "source": "b_Huila_Reserve",
-      "target": "cw_Warehouse_Rotterdam_West"
     },
     {
       "source": "b_Huila_Reserve",
@@ -4393,19 +5272,171 @@
     },
     {
       "source": "b_Huila_Reserve",
+      "target": "cw_Warehouse_LongBeach_South"
+    },
+    {
+      "source": "b_Huila_Reserve",
+      "target": "cw_Warehouse_NewOrleans_CBD"
+    },
+    {
+      "source": "b_Huila_Reserve",
       "target": "cw_Warehouse_Hamburg_Central"
+    },
+    {
+      "source": "b_Huila_Reserve",
+      "target": "cw_Warehouse_Miami_FreeZone"
+    },
+    {
+      "source": "b_Huila_Reserve",
+      "target": "cw_Warehouse_Melbourne_Docks"
+    },
+    {
+      "source": "b_Huila_Reserve",
+      "target": "cw_Warehouse_Tokyo_Bay"
+    },
+    {
+      "source": "b_Huila_Reserve",
+      "target": "cw_Warehouse_Valencia_Industrial"
+    },
+    {
+      "source": "b_Huila_Reserve",
+      "target": "cw_Warehouse_Rotterdam_West"
     },
     {
       "source": "b_Huila_Reserve",
       "target": "cw_Warehouse_Felixstowe_East"
     },
     {
-      "source": "b_Colombian_Supremo",
+      "source": "b_Huila_Reserve",
+      "target": "cw_Warehouse_Barcelona_Port"
+    },
+    {
+      "source": "b_Huila_Reserve",
       "target": "cw_Warehouse_Amsterdam_West"
     },
     {
-      "source": "b_Colombian_Supremo",
+      "source": "b_Huila_Reserve",
+      "target": "cw_Warehouse_Sydney_South"
+    },
+    {
+      "source": "b_West_Valley_Honey",
+      "target": "cw_Warehouse_Seattle_Port"
+    },
+    {
+      "source": "b_West_Valley_Honey",
+      "target": "cw_Warehouse_Genoa_Harbor"
+    },
+    {
+      "source": "b_West_Valley_Honey",
+      "target": "cw_Warehouse_Busan_Port"
+    },
+    {
+      "source": "b_West_Valley_Honey",
+      "target": "cw_Warehouse_LongBeach_South"
+    },
+    {
+      "source": "b_West_Valley_Honey",
+      "target": "cw_Warehouse_NewOrleans_CBD"
+    },
+    {
+      "source": "b_West_Valley_Honey",
+      "target": "cw_Warehouse_Hamburg_Central"
+    },
+    {
+      "source": "b_West_Valley_Honey",
       "target": "cw_Warehouse_Miami_FreeZone"
+    },
+    {
+      "source": "b_West_Valley_Honey",
+      "target": "cw_Warehouse_Melbourne_Docks"
+    },
+    {
+      "source": "b_West_Valley_Honey",
+      "target": "cw_Warehouse_Tokyo_Bay"
+    },
+    {
+      "source": "b_West_Valley_Honey",
+      "target": "cw_Warehouse_Valencia_Industrial"
+    },
+    {
+      "source": "b_West_Valley_Honey",
+      "target": "cw_Warehouse_Rotterdam_West"
+    },
+    {
+      "source": "b_West_Valley_Honey",
+      "target": "cw_Warehouse_Felixstowe_East"
+    },
+    {
+      "source": "b_West_Valley_Honey",
+      "target": "cw_Warehouse_Barcelona_Port"
+    },
+    {
+      "source": "b_West_Valley_Honey",
+      "target": "cw_Warehouse_Amsterdam_West"
+    },
+    {
+      "source": "b_West_Valley_Honey",
+      "target": "cw_Warehouse_Sydney_South"
+    },
+    {
+      "source": "b_Narino_Supremo",
+      "target": "cw_Warehouse_Seattle_Port"
+    },
+    {
+      "source": "b_Narino_Supremo",
+      "target": "cw_Warehouse_Genoa_Harbor"
+    },
+    {
+      "source": "b_Narino_Supremo",
+      "target": "cw_Warehouse_Busan_Port"
+    },
+    {
+      "source": "b_Narino_Supremo",
+      "target": "cw_Warehouse_LongBeach_South"
+    },
+    {
+      "source": "b_Narino_Supremo",
+      "target": "cw_Warehouse_NewOrleans_CBD"
+    },
+    {
+      "source": "b_Narino_Supremo",
+      "target": "cw_Warehouse_Hamburg_Central"
+    },
+    {
+      "source": "b_Narino_Supremo",
+      "target": "cw_Warehouse_Miami_FreeZone"
+    },
+    {
+      "source": "b_Narino_Supremo",
+      "target": "cw_Warehouse_Melbourne_Docks"
+    },
+    {
+      "source": "b_Narino_Supremo",
+      "target": "cw_Warehouse_Tokyo_Bay"
+    },
+    {
+      "source": "b_Narino_Supremo",
+      "target": "cw_Warehouse_Valencia_Industrial"
+    },
+    {
+      "source": "b_Narino_Supremo",
+      "target": "cw_Warehouse_Rotterdam_West"
+    },
+    {
+      "source": "b_Narino_Supremo",
+      "target": "cw_Warehouse_Felixstowe_East"
+    },
+    {
+      "source": "b_Narino_Supremo",
+      "target": "cw_Warehouse_Barcelona_Port"
+    },
+    {
+      "source": "b_Narino_Supremo",
+      "target": "cw_Warehouse_Amsterdam_West"
+    },
+    {
+      "source": "b_Narino_Supremo",
+      "target": "cw_Warehouse_Sydney_South"
     },
     {
       "source": "b_Colombian_Supremo",
@@ -4413,39 +5444,7 @@
     },
     {
       "source": "b_Colombian_Supremo",
-      "target": "cw_Warehouse_LongBeach_South"
-    },
-    {
-      "source": "b_Colombian_Supremo",
       "target": "cw_Warehouse_Genoa_Harbor"
-    },
-    {
-      "source": "b_Colombian_Supremo",
-      "target": "cw_Warehouse_Sydney_South"
-    },
-    {
-      "source": "b_Colombian_Supremo",
-      "target": "cw_Warehouse_Valencia_Industrial"
-    },
-    {
-      "source": "b_Colombian_Supremo",
-      "target": "cw_Warehouse_Tokyo_Bay"
-    },
-    {
-      "source": "b_Colombian_Supremo",
-      "target": "cw_Warehouse_NewOrleans_CBD"
-    },
-    {
-      "source": "b_Colombian_Supremo",
-      "target": "cw_Warehouse_Barcelona_Port"
-    },
-    {
-      "source": "b_Colombian_Supremo",
-      "target": "cw_Warehouse_Melbourne_Docks"
-    },
-    {
-      "source": "b_Colombian_Supremo",
-      "target": "cw_Warehouse_Rotterdam_West"
     },
     {
       "source": "b_Colombian_Supremo",
@@ -4453,19 +5452,171 @@
     },
     {
       "source": "b_Colombian_Supremo",
+      "target": "cw_Warehouse_LongBeach_South"
+    },
+    {
+      "source": "b_Colombian_Supremo",
+      "target": "cw_Warehouse_NewOrleans_CBD"
+    },
+    {
+      "source": "b_Colombian_Supremo",
       "target": "cw_Warehouse_Hamburg_Central"
+    },
+    {
+      "source": "b_Colombian_Supremo",
+      "target": "cw_Warehouse_Miami_FreeZone"
+    },
+    {
+      "source": "b_Colombian_Supremo",
+      "target": "cw_Warehouse_Melbourne_Docks"
+    },
+    {
+      "source": "b_Colombian_Supremo",
+      "target": "cw_Warehouse_Tokyo_Bay"
+    },
+    {
+      "source": "b_Colombian_Supremo",
+      "target": "cw_Warehouse_Valencia_Industrial"
+    },
+    {
+      "source": "b_Colombian_Supremo",
+      "target": "cw_Warehouse_Rotterdam_West"
     },
     {
       "source": "b_Colombian_Supremo",
       "target": "cw_Warehouse_Felixstowe_East"
     },
     {
-      "source": "b_Java_Estate",
+      "source": "b_Colombian_Supremo",
+      "target": "cw_Warehouse_Barcelona_Port"
+    },
+    {
+      "source": "b_Colombian_Supremo",
       "target": "cw_Warehouse_Amsterdam_West"
     },
     {
-      "source": "b_Java_Estate",
+      "source": "b_Colombian_Supremo",
+      "target": "cw_Warehouse_Sydney_South"
+    },
+    {
+      "source": "b_PNG_Sigri",
+      "target": "cw_Warehouse_Seattle_Port"
+    },
+    {
+      "source": "b_PNG_Sigri",
+      "target": "cw_Warehouse_Genoa_Harbor"
+    },
+    {
+      "source": "b_PNG_Sigri",
+      "target": "cw_Warehouse_Busan_Port"
+    },
+    {
+      "source": "b_PNG_Sigri",
+      "target": "cw_Warehouse_LongBeach_South"
+    },
+    {
+      "source": "b_PNG_Sigri",
+      "target": "cw_Warehouse_NewOrleans_CBD"
+    },
+    {
+      "source": "b_PNG_Sigri",
+      "target": "cw_Warehouse_Hamburg_Central"
+    },
+    {
+      "source": "b_PNG_Sigri",
       "target": "cw_Warehouse_Miami_FreeZone"
+    },
+    {
+      "source": "b_PNG_Sigri",
+      "target": "cw_Warehouse_Melbourne_Docks"
+    },
+    {
+      "source": "b_PNG_Sigri",
+      "target": "cw_Warehouse_Tokyo_Bay"
+    },
+    {
+      "source": "b_PNG_Sigri",
+      "target": "cw_Warehouse_Valencia_Industrial"
+    },
+    {
+      "source": "b_PNG_Sigri",
+      "target": "cw_Warehouse_Rotterdam_West"
+    },
+    {
+      "source": "b_PNG_Sigri",
+      "target": "cw_Warehouse_Felixstowe_East"
+    },
+    {
+      "source": "b_PNG_Sigri",
+      "target": "cw_Warehouse_Barcelona_Port"
+    },
+    {
+      "source": "b_PNG_Sigri",
+      "target": "cw_Warehouse_Amsterdam_West"
+    },
+    {
+      "source": "b_PNG_Sigri",
+      "target": "cw_Warehouse_Sydney_South"
+    },
+    {
+      "source": "b_Sulawesi_Toraja",
+      "target": "cw_Warehouse_Seattle_Port"
+    },
+    {
+      "source": "b_Sulawesi_Toraja",
+      "target": "cw_Warehouse_Genoa_Harbor"
+    },
+    {
+      "source": "b_Sulawesi_Toraja",
+      "target": "cw_Warehouse_Busan_Port"
+    },
+    {
+      "source": "b_Sulawesi_Toraja",
+      "target": "cw_Warehouse_LongBeach_South"
+    },
+    {
+      "source": "b_Sulawesi_Toraja",
+      "target": "cw_Warehouse_NewOrleans_CBD"
+    },
+    {
+      "source": "b_Sulawesi_Toraja",
+      "target": "cw_Warehouse_Hamburg_Central"
+    },
+    {
+      "source": "b_Sulawesi_Toraja",
+      "target": "cw_Warehouse_Miami_FreeZone"
+    },
+    {
+      "source": "b_Sulawesi_Toraja",
+      "target": "cw_Warehouse_Melbourne_Docks"
+    },
+    {
+      "source": "b_Sulawesi_Toraja",
+      "target": "cw_Warehouse_Tokyo_Bay"
+    },
+    {
+      "source": "b_Sulawesi_Toraja",
+      "target": "cw_Warehouse_Valencia_Industrial"
+    },
+    {
+      "source": "b_Sulawesi_Toraja",
+      "target": "cw_Warehouse_Rotterdam_West"
+    },
+    {
+      "source": "b_Sulawesi_Toraja",
+      "target": "cw_Warehouse_Felixstowe_East"
+    },
+    {
+      "source": "b_Sulawesi_Toraja",
+      "target": "cw_Warehouse_Barcelona_Port"
+    },
+    {
+      "source": "b_Sulawesi_Toraja",
+      "target": "cw_Warehouse_Amsterdam_West"
+    },
+    {
+      "source": "b_Sulawesi_Toraja",
+      "target": "cw_Warehouse_Sydney_South"
     },
     {
       "source": "b_Java_Estate",
@@ -4473,39 +5624,7 @@
     },
     {
       "source": "b_Java_Estate",
-      "target": "cw_Warehouse_LongBeach_South"
-    },
-    {
-      "source": "b_Java_Estate",
       "target": "cw_Warehouse_Genoa_Harbor"
-    },
-    {
-      "source": "b_Java_Estate",
-      "target": "cw_Warehouse_Sydney_South"
-    },
-    {
-      "source": "b_Java_Estate",
-      "target": "cw_Warehouse_Valencia_Industrial"
-    },
-    {
-      "source": "b_Java_Estate",
-      "target": "cw_Warehouse_Tokyo_Bay"
-    },
-    {
-      "source": "b_Java_Estate",
-      "target": "cw_Warehouse_NewOrleans_CBD"
-    },
-    {
-      "source": "b_Java_Estate",
-      "target": "cw_Warehouse_Barcelona_Port"
-    },
-    {
-      "source": "b_Java_Estate",
-      "target": "cw_Warehouse_Melbourne_Docks"
-    },
-    {
-      "source": "b_Java_Estate",
-      "target": "cw_Warehouse_Rotterdam_West"
     },
     {
       "source": "b_Java_Estate",
@@ -4513,19 +5632,111 @@
     },
     {
       "source": "b_Java_Estate",
+      "target": "cw_Warehouse_LongBeach_South"
+    },
+    {
+      "source": "b_Java_Estate",
+      "target": "cw_Warehouse_NewOrleans_CBD"
+    },
+    {
+      "source": "b_Java_Estate",
       "target": "cw_Warehouse_Hamburg_Central"
+    },
+    {
+      "source": "b_Java_Estate",
+      "target": "cw_Warehouse_Miami_FreeZone"
+    },
+    {
+      "source": "b_Java_Estate",
+      "target": "cw_Warehouse_Melbourne_Docks"
+    },
+    {
+      "source": "b_Java_Estate",
+      "target": "cw_Warehouse_Tokyo_Bay"
+    },
+    {
+      "source": "b_Java_Estate",
+      "target": "cw_Warehouse_Valencia_Industrial"
+    },
+    {
+      "source": "b_Java_Estate",
+      "target": "cw_Warehouse_Rotterdam_West"
     },
     {
       "source": "b_Java_Estate",
       "target": "cw_Warehouse_Felixstowe_East"
     },
     {
-      "source": "b_Sumatra_Mandheling",
+      "source": "b_Java_Estate",
+      "target": "cw_Warehouse_Barcelona_Port"
+    },
+    {
+      "source": "b_Java_Estate",
       "target": "cw_Warehouse_Amsterdam_West"
     },
     {
-      "source": "b_Sumatra_Mandheling",
+      "source": "b_Java_Estate",
+      "target": "cw_Warehouse_Sydney_South"
+    },
+    {
+      "source": "b_Da_Lat_Arabica",
+      "target": "cw_Warehouse_Seattle_Port"
+    },
+    {
+      "source": "b_Da_Lat_Arabica",
+      "target": "cw_Warehouse_Genoa_Harbor"
+    },
+    {
+      "source": "b_Da_Lat_Arabica",
+      "target": "cw_Warehouse_Busan_Port"
+    },
+    {
+      "source": "b_Da_Lat_Arabica",
+      "target": "cw_Warehouse_LongBeach_South"
+    },
+    {
+      "source": "b_Da_Lat_Arabica",
+      "target": "cw_Warehouse_NewOrleans_CBD"
+    },
+    {
+      "source": "b_Da_Lat_Arabica",
+      "target": "cw_Warehouse_Hamburg_Central"
+    },
+    {
+      "source": "b_Da_Lat_Arabica",
       "target": "cw_Warehouse_Miami_FreeZone"
+    },
+    {
+      "source": "b_Da_Lat_Arabica",
+      "target": "cw_Warehouse_Melbourne_Docks"
+    },
+    {
+      "source": "b_Da_Lat_Arabica",
+      "target": "cw_Warehouse_Tokyo_Bay"
+    },
+    {
+      "source": "b_Da_Lat_Arabica",
+      "target": "cw_Warehouse_Valencia_Industrial"
+    },
+    {
+      "source": "b_Da_Lat_Arabica",
+      "target": "cw_Warehouse_Rotterdam_West"
+    },
+    {
+      "source": "b_Da_Lat_Arabica",
+      "target": "cw_Warehouse_Felixstowe_East"
+    },
+    {
+      "source": "b_Da_Lat_Arabica",
+      "target": "cw_Warehouse_Barcelona_Port"
+    },
+    {
+      "source": "b_Da_Lat_Arabica",
+      "target": "cw_Warehouse_Amsterdam_West"
+    },
+    {
+      "source": "b_Da_Lat_Arabica",
+      "target": "cw_Warehouse_Sydney_South"
     },
     {
       "source": "b_Sumatra_Mandheling",
@@ -4533,39 +5744,7 @@
     },
     {
       "source": "b_Sumatra_Mandheling",
-      "target": "cw_Warehouse_LongBeach_South"
-    },
-    {
-      "source": "b_Sumatra_Mandheling",
       "target": "cw_Warehouse_Genoa_Harbor"
-    },
-    {
-      "source": "b_Sumatra_Mandheling",
-      "target": "cw_Warehouse_Sydney_South"
-    },
-    {
-      "source": "b_Sumatra_Mandheling",
-      "target": "cw_Warehouse_Valencia_Industrial"
-    },
-    {
-      "source": "b_Sumatra_Mandheling",
-      "target": "cw_Warehouse_Tokyo_Bay"
-    },
-    {
-      "source": "b_Sumatra_Mandheling",
-      "target": "cw_Warehouse_NewOrleans_CBD"
-    },
-    {
-      "source": "b_Sumatra_Mandheling",
-      "target": "cw_Warehouse_Barcelona_Port"
-    },
-    {
-      "source": "b_Sumatra_Mandheling",
-      "target": "cw_Warehouse_Melbourne_Docks"
-    },
-    {
-      "source": "b_Sumatra_Mandheling",
-      "target": "cw_Warehouse_Rotterdam_West"
     },
     {
       "source": "b_Sumatra_Mandheling",
@@ -4573,30 +5752,594 @@
     },
     {
       "source": "b_Sumatra_Mandheling",
+      "target": "cw_Warehouse_LongBeach_South"
+    },
+    {
+      "source": "b_Sumatra_Mandheling",
+      "target": "cw_Warehouse_NewOrleans_CBD"
+    },
+    {
+      "source": "b_Sumatra_Mandheling",
       "target": "cw_Warehouse_Hamburg_Central"
+    },
+    {
+      "source": "b_Sumatra_Mandheling",
+      "target": "cw_Warehouse_Miami_FreeZone"
+    },
+    {
+      "source": "b_Sumatra_Mandheling",
+      "target": "cw_Warehouse_Melbourne_Docks"
+    },
+    {
+      "source": "b_Sumatra_Mandheling",
+      "target": "cw_Warehouse_Tokyo_Bay"
+    },
+    {
+      "source": "b_Sumatra_Mandheling",
+      "target": "cw_Warehouse_Valencia_Industrial"
+    },
+    {
+      "source": "b_Sumatra_Mandheling",
+      "target": "cw_Warehouse_Rotterdam_West"
     },
     {
       "source": "b_Sumatra_Mandheling",
       "target": "cw_Warehouse_Felixstowe_East"
     },
     {
-      "source": "cw_Warehouse_Felixstowe_East",
-      "target": "ib_Sucafina"
+      "source": "b_Sumatra_Mandheling",
+      "target": "cw_Warehouse_Barcelona_Port"
     },
     {
-      "source": "cw_Warehouse_Amsterdam_West",
-      "target": "ib_Sucafina"
+      "source": "b_Sumatra_Mandheling",
+      "target": "cw_Warehouse_Amsterdam_West"
     },
     {
-      "source": "cw_Warehouse_Miami_FreeZone",
-      "target": "ib_Sucafina"
+      "source": "b_Sumatra_Mandheling",
+      "target": "cw_Warehouse_Sydney_South"
+    },
+    {
+      "source": "b_Honduras_SHG",
+      "target": "cw_Warehouse_Seattle_Port"
+    },
+    {
+      "source": "b_Honduras_SHG",
+      "target": "cw_Warehouse_Genoa_Harbor"
+    },
+    {
+      "source": "b_Honduras_SHG",
+      "target": "cw_Warehouse_Busan_Port"
+    },
+    {
+      "source": "b_Honduras_SHG",
+      "target": "cw_Warehouse_LongBeach_South"
+    },
+    {
+      "source": "b_Honduras_SHG",
+      "target": "cw_Warehouse_NewOrleans_CBD"
+    },
+    {
+      "source": "b_Honduras_SHG",
+      "target": "cw_Warehouse_Hamburg_Central"
+    },
+    {
+      "source": "b_Honduras_SHG",
+      "target": "cw_Warehouse_Miami_FreeZone"
+    },
+    {
+      "source": "b_Honduras_SHG",
+      "target": "cw_Warehouse_Melbourne_Docks"
+    },
+    {
+      "source": "b_Honduras_SHG",
+      "target": "cw_Warehouse_Tokyo_Bay"
+    },
+    {
+      "source": "b_Honduras_SHG",
+      "target": "cw_Warehouse_Valencia_Industrial"
+    },
+    {
+      "source": "b_Honduras_SHG",
+      "target": "cw_Warehouse_Rotterdam_West"
+    },
+    {
+      "source": "b_Honduras_SHG",
+      "target": "cw_Warehouse_Felixstowe_East"
+    },
+    {
+      "source": "b_Honduras_SHG",
+      "target": "cw_Warehouse_Barcelona_Port"
+    },
+    {
+      "source": "b_Honduras_SHG",
+      "target": "cw_Warehouse_Amsterdam_West"
+    },
+    {
+      "source": "b_Honduras_SHG",
+      "target": "cw_Warehouse_Sydney_South"
+    },
+    {
+      "source": "b_Matagalpa_SHG",
+      "target": "cw_Warehouse_Seattle_Port"
+    },
+    {
+      "source": "b_Matagalpa_SHG",
+      "target": "cw_Warehouse_Genoa_Harbor"
+    },
+    {
+      "source": "b_Matagalpa_SHG",
+      "target": "cw_Warehouse_Busan_Port"
+    },
+    {
+      "source": "b_Matagalpa_SHG",
+      "target": "cw_Warehouse_LongBeach_South"
+    },
+    {
+      "source": "b_Matagalpa_SHG",
+      "target": "cw_Warehouse_NewOrleans_CBD"
+    },
+    {
+      "source": "b_Matagalpa_SHG",
+      "target": "cw_Warehouse_Hamburg_Central"
+    },
+    {
+      "source": "b_Matagalpa_SHG",
+      "target": "cw_Warehouse_Miami_FreeZone"
+    },
+    {
+      "source": "b_Matagalpa_SHG",
+      "target": "cw_Warehouse_Melbourne_Docks"
+    },
+    {
+      "source": "b_Matagalpa_SHG",
+      "target": "cw_Warehouse_Tokyo_Bay"
+    },
+    {
+      "source": "b_Matagalpa_SHG",
+      "target": "cw_Warehouse_Valencia_Industrial"
+    },
+    {
+      "source": "b_Matagalpa_SHG",
+      "target": "cw_Warehouse_Rotterdam_West"
+    },
+    {
+      "source": "b_Matagalpa_SHG",
+      "target": "cw_Warehouse_Felixstowe_East"
+    },
+    {
+      "source": "b_Matagalpa_SHG",
+      "target": "cw_Warehouse_Barcelona_Port"
+    },
+    {
+      "source": "b_Matagalpa_SHG",
+      "target": "cw_Warehouse_Amsterdam_West"
+    },
+    {
+      "source": "b_Matagalpa_SHG",
+      "target": "cw_Warehouse_Sydney_South"
+    },
+    {
+      "source": "b_Bourbon_Santos",
+      "target": "cw_Warehouse_Seattle_Port"
+    },
+    {
+      "source": "b_Bourbon_Santos",
+      "target": "cw_Warehouse_Genoa_Harbor"
+    },
+    {
+      "source": "b_Bourbon_Santos",
+      "target": "cw_Warehouse_Busan_Port"
+    },
+    {
+      "source": "b_Bourbon_Santos",
+      "target": "cw_Warehouse_LongBeach_South"
+    },
+    {
+      "source": "b_Bourbon_Santos",
+      "target": "cw_Warehouse_NewOrleans_CBD"
+    },
+    {
+      "source": "b_Bourbon_Santos",
+      "target": "cw_Warehouse_Hamburg_Central"
+    },
+    {
+      "source": "b_Bourbon_Santos",
+      "target": "cw_Warehouse_Miami_FreeZone"
+    },
+    {
+      "source": "b_Bourbon_Santos",
+      "target": "cw_Warehouse_Melbourne_Docks"
+    },
+    {
+      "source": "b_Bourbon_Santos",
+      "target": "cw_Warehouse_Tokyo_Bay"
+    },
+    {
+      "source": "b_Bourbon_Santos",
+      "target": "cw_Warehouse_Valencia_Industrial"
+    },
+    {
+      "source": "b_Bourbon_Santos",
+      "target": "cw_Warehouse_Rotterdam_West"
+    },
+    {
+      "source": "b_Bourbon_Santos",
+      "target": "cw_Warehouse_Felixstowe_East"
+    },
+    {
+      "source": "b_Bourbon_Santos",
+      "target": "cw_Warehouse_Barcelona_Port"
+    },
+    {
+      "source": "b_Bourbon_Santos",
+      "target": "cw_Warehouse_Amsterdam_West"
+    },
+    {
+      "source": "b_Bourbon_Santos",
+      "target": "cw_Warehouse_Sydney_South"
+    },
+    {
+      "source": "b_Santos_Premium",
+      "target": "cw_Warehouse_Seattle_Port"
+    },
+    {
+      "source": "b_Santos_Premium",
+      "target": "cw_Warehouse_Genoa_Harbor"
+    },
+    {
+      "source": "b_Santos_Premium",
+      "target": "cw_Warehouse_Busan_Port"
+    },
+    {
+      "source": "b_Santos_Premium",
+      "target": "cw_Warehouse_LongBeach_South"
+    },
+    {
+      "source": "b_Santos_Premium",
+      "target": "cw_Warehouse_NewOrleans_CBD"
+    },
+    {
+      "source": "b_Santos_Premium",
+      "target": "cw_Warehouse_Hamburg_Central"
+    },
+    {
+      "source": "b_Santos_Premium",
+      "target": "cw_Warehouse_Miami_FreeZone"
+    },
+    {
+      "source": "b_Santos_Premium",
+      "target": "cw_Warehouse_Melbourne_Docks"
+    },
+    {
+      "source": "b_Santos_Premium",
+      "target": "cw_Warehouse_Tokyo_Bay"
+    },
+    {
+      "source": "b_Santos_Premium",
+      "target": "cw_Warehouse_Valencia_Industrial"
+    },
+    {
+      "source": "b_Santos_Premium",
+      "target": "cw_Warehouse_Rotterdam_West"
+    },
+    {
+      "source": "b_Santos_Premium",
+      "target": "cw_Warehouse_Felixstowe_East"
+    },
+    {
+      "source": "b_Santos_Premium",
+      "target": "cw_Warehouse_Barcelona_Port"
+    },
+    {
+      "source": "b_Santos_Premium",
+      "target": "cw_Warehouse_Amsterdam_West"
+    },
+    {
+      "source": "b_Santos_Premium",
+      "target": "cw_Warehouse_Sydney_South"
+    },
+    {
+      "source": "b_Cerrado_Natural",
+      "target": "cw_Warehouse_Seattle_Port"
+    },
+    {
+      "source": "b_Cerrado_Natural",
+      "target": "cw_Warehouse_Genoa_Harbor"
+    },
+    {
+      "source": "b_Cerrado_Natural",
+      "target": "cw_Warehouse_Busan_Port"
+    },
+    {
+      "source": "b_Cerrado_Natural",
+      "target": "cw_Warehouse_LongBeach_South"
+    },
+    {
+      "source": "b_Cerrado_Natural",
+      "target": "cw_Warehouse_NewOrleans_CBD"
+    },
+    {
+      "source": "b_Cerrado_Natural",
+      "target": "cw_Warehouse_Hamburg_Central"
+    },
+    {
+      "source": "b_Cerrado_Natural",
+      "target": "cw_Warehouse_Miami_FreeZone"
+    },
+    {
+      "source": "b_Cerrado_Natural",
+      "target": "cw_Warehouse_Melbourne_Docks"
+    },
+    {
+      "source": "b_Cerrado_Natural",
+      "target": "cw_Warehouse_Tokyo_Bay"
+    },
+    {
+      "source": "b_Cerrado_Natural",
+      "target": "cw_Warehouse_Valencia_Industrial"
+    },
+    {
+      "source": "b_Cerrado_Natural",
+      "target": "cw_Warehouse_Rotterdam_West"
+    },
+    {
+      "source": "b_Cerrado_Natural",
+      "target": "cw_Warehouse_Felixstowe_East"
+    },
+    {
+      "source": "b_Cerrado_Natural",
+      "target": "cw_Warehouse_Barcelona_Port"
+    },
+    {
+      "source": "b_Cerrado_Natural",
+      "target": "cw_Warehouse_Amsterdam_West"
+    },
+    {
+      "source": "b_Cerrado_Natural",
+      "target": "cw_Warehouse_Sydney_South"
+    },
+    {
+      "source": "b_Bugisu_AA",
+      "target": "cw_Warehouse_Seattle_Port"
+    },
+    {
+      "source": "b_Bugisu_AA",
+      "target": "cw_Warehouse_Genoa_Harbor"
+    },
+    {
+      "source": "b_Bugisu_AA",
+      "target": "cw_Warehouse_Busan_Port"
+    },
+    {
+      "source": "b_Bugisu_AA",
+      "target": "cw_Warehouse_LongBeach_South"
+    },
+    {
+      "source": "b_Bugisu_AA",
+      "target": "cw_Warehouse_NewOrleans_CBD"
+    },
+    {
+      "source": "b_Bugisu_AA",
+      "target": "cw_Warehouse_Hamburg_Central"
+    },
+    {
+      "source": "b_Bugisu_AA",
+      "target": "cw_Warehouse_Miami_FreeZone"
+    },
+    {
+      "source": "b_Bugisu_AA",
+      "target": "cw_Warehouse_Melbourne_Docks"
+    },
+    {
+      "source": "b_Bugisu_AA",
+      "target": "cw_Warehouse_Tokyo_Bay"
+    },
+    {
+      "source": "b_Bugisu_AA",
+      "target": "cw_Warehouse_Valencia_Industrial"
+    },
+    {
+      "source": "b_Bugisu_AA",
+      "target": "cw_Warehouse_Rotterdam_West"
+    },
+    {
+      "source": "b_Bugisu_AA",
+      "target": "cw_Warehouse_Felixstowe_East"
+    },
+    {
+      "source": "b_Bugisu_AA",
+      "target": "cw_Warehouse_Barcelona_Port"
+    },
+    {
+      "source": "b_Bugisu_AA",
+      "target": "cw_Warehouse_Amsterdam_West"
+    },
+    {
+      "source": "b_Bugisu_AA",
+      "target": "cw_Warehouse_Sydney_South"
+    },
+    {
+      "source": "b_Marcala_Organic",
+      "target": "cw_Warehouse_Seattle_Port"
+    },
+    {
+      "source": "b_Marcala_Organic",
+      "target": "cw_Warehouse_Genoa_Harbor"
+    },
+    {
+      "source": "b_Marcala_Organic",
+      "target": "cw_Warehouse_Busan_Port"
+    },
+    {
+      "source": "b_Marcala_Organic",
+      "target": "cw_Warehouse_LongBeach_South"
+    },
+    {
+      "source": "b_Marcala_Organic",
+      "target": "cw_Warehouse_NewOrleans_CBD"
+    },
+    {
+      "source": "b_Marcala_Organic",
+      "target": "cw_Warehouse_Hamburg_Central"
+    },
+    {
+      "source": "b_Marcala_Organic",
+      "target": "cw_Warehouse_Miami_FreeZone"
+    },
+    {
+      "source": "b_Marcala_Organic",
+      "target": "cw_Warehouse_Melbourne_Docks"
+    },
+    {
+      "source": "b_Marcala_Organic",
+      "target": "cw_Warehouse_Tokyo_Bay"
+    },
+    {
+      "source": "b_Marcala_Organic",
+      "target": "cw_Warehouse_Valencia_Industrial"
+    },
+    {
+      "source": "b_Marcala_Organic",
+      "target": "cw_Warehouse_Rotterdam_West"
+    },
+    {
+      "source": "b_Marcala_Organic",
+      "target": "cw_Warehouse_Felixstowe_East"
+    },
+    {
+      "source": "b_Marcala_Organic",
+      "target": "cw_Warehouse_Barcelona_Port"
+    },
+    {
+      "source": "b_Marcala_Organic",
+      "target": "cw_Warehouse_Amsterdam_West"
+    },
+    {
+      "source": "b_Marcala_Organic",
+      "target": "cw_Warehouse_Sydney_South"
+    },
+    {
+      "source": "b_Chiapas_Altura",
+      "target": "cw_Warehouse_Seattle_Port"
+    },
+    {
+      "source": "b_Chiapas_Altura",
+      "target": "cw_Warehouse_Genoa_Harbor"
+    },
+    {
+      "source": "b_Chiapas_Altura",
+      "target": "cw_Warehouse_Busan_Port"
+    },
+    {
+      "source": "b_Chiapas_Altura",
+      "target": "cw_Warehouse_LongBeach_South"
+    },
+    {
+      "source": "b_Chiapas_Altura",
+      "target": "cw_Warehouse_NewOrleans_CBD"
+    },
+    {
+      "source": "b_Chiapas_Altura",
+      "target": "cw_Warehouse_Hamburg_Central"
+    },
+    {
+      "source": "b_Chiapas_Altura",
+      "target": "cw_Warehouse_Miami_FreeZone"
+    },
+    {
+      "source": "b_Chiapas_Altura",
+      "target": "cw_Warehouse_Melbourne_Docks"
+    },
+    {
+      "source": "b_Chiapas_Altura",
+      "target": "cw_Warehouse_Tokyo_Bay"
+    },
+    {
+      "source": "b_Chiapas_Altura",
+      "target": "cw_Warehouse_Valencia_Industrial"
+    },
+    {
+      "source": "b_Chiapas_Altura",
+      "target": "cw_Warehouse_Rotterdam_West"
+    },
+    {
+      "source": "b_Chiapas_Altura",
+      "target": "cw_Warehouse_Felixstowe_East"
+    },
+    {
+      "source": "b_Chiapas_Altura",
+      "target": "cw_Warehouse_Barcelona_Port"
+    },
+    {
+      "source": "b_Chiapas_Altura",
+      "target": "cw_Warehouse_Amsterdam_West"
+    },
+    {
+      "source": "b_Chiapas_Altura",
+      "target": "cw_Warehouse_Sydney_South"
+    },
+    {
+      "source": "b_Robusta_Select",
+      "target": "cw_Warehouse_Seattle_Port"
+    },
+    {
+      "source": "b_Robusta_Select",
+      "target": "cw_Warehouse_Genoa_Harbor"
+    },
+    {
+      "source": "b_Robusta_Select",
+      "target": "cw_Warehouse_Busan_Port"
+    },
+    {
+      "source": "b_Robusta_Select",
+      "target": "cw_Warehouse_LongBeach_South"
+    },
+    {
+      "source": "b_Robusta_Select",
+      "target": "cw_Warehouse_NewOrleans_CBD"
+    },
+    {
+      "source": "b_Robusta_Select",
+      "target": "cw_Warehouse_Hamburg_Central"
+    },
+    {
+      "source": "b_Robusta_Select",
+      "target": "cw_Warehouse_Miami_FreeZone"
+    },
+    {
+      "source": "b_Robusta_Select",
+      "target": "cw_Warehouse_Melbourne_Docks"
+    },
+    {
+      "source": "b_Robusta_Select",
+      "target": "cw_Warehouse_Tokyo_Bay"
+    },
+    {
+      "source": "b_Robusta_Select",
+      "target": "cw_Warehouse_Valencia_Industrial"
+    },
+    {
+      "source": "b_Robusta_Select",
+      "target": "cw_Warehouse_Rotterdam_West"
+    },
+    {
+      "source": "b_Robusta_Select",
+      "target": "cw_Warehouse_Felixstowe_East"
+    },
+    {
+      "source": "b_Robusta_Select",
+      "target": "cw_Warehouse_Barcelona_Port"
+    },
+    {
+      "source": "b_Robusta_Select",
+      "target": "cw_Warehouse_Amsterdam_West"
+    },
+    {
+      "source": "b_Robusta_Select",
+      "target": "cw_Warehouse_Sydney_South"
     },
     {
       "source": "cw_Warehouse_Seattle_Port",
-      "target": "ib_Sucafina"
-    },
-    {
-      "source": "cw_Warehouse_LongBeach_South",
       "target": "ib_Sucafina"
     },
     {
@@ -4604,15 +6347,11 @@
       "target": "ib_Sucafina"
     },
     {
-      "source": "cw_Warehouse_Valencia_Industrial",
+      "source": "cw_Warehouse_Busan_Port",
       "target": "ib_Sucafina"
     },
     {
-      "source": "cw_Warehouse_Tokyo_Bay",
-      "target": "ib_Sucafina"
-    },
-    {
-      "source": "cw_Warehouse_Rotterdam_West",
+      "source": "cw_Warehouse_LongBeach_South",
       "target": "ib_Sucafina"
     },
     {
@@ -4620,7 +6359,11 @@
       "target": "ib_Sucafina"
     },
     {
-      "source": "cw_Warehouse_Barcelona_Port",
+      "source": "cw_Warehouse_Hamburg_Central",
+      "target": "ib_Sucafina"
+    },
+    {
+      "source": "cw_Warehouse_Miami_FreeZone",
       "target": "ib_Sucafina"
     },
     {
@@ -4628,11 +6371,27 @@
       "target": "ib_Sucafina"
     },
     {
-      "source": "cw_Warehouse_Hamburg_Central",
+      "source": "cw_Warehouse_Tokyo_Bay",
       "target": "ib_Sucafina"
     },
     {
-      "source": "cw_Warehouse_Busan_Port",
+      "source": "cw_Warehouse_Valencia_Industrial",
+      "target": "ib_Sucafina"
+    },
+    {
+      "source": "cw_Warehouse_Rotterdam_West",
+      "target": "ib_Sucafina"
+    },
+    {
+      "source": "cw_Warehouse_Felixstowe_East",
+      "target": "ib_Sucafina"
+    },
+    {
+      "source": "cw_Warehouse_Barcelona_Port",
+      "target": "ib_Sucafina"
+    },
+    {
+      "source": "cw_Warehouse_Amsterdam_West",
       "target": "ib_Sucafina"
     },
     {
@@ -4640,23 +6399,7 @@
       "target": "ib_Sucafina"
     },
     {
-      "source": "cw_Warehouse_Felixstowe_East",
-      "target": "ib_Falcon_Coffees"
-    },
-    {
-      "source": "cw_Warehouse_Amsterdam_West",
-      "target": "ib_Falcon_Coffees"
-    },
-    {
-      "source": "cw_Warehouse_Miami_FreeZone",
-      "target": "ib_Falcon_Coffees"
-    },
-    {
       "source": "cw_Warehouse_Seattle_Port",
-      "target": "ib_Falcon_Coffees"
-    },
-    {
-      "source": "cw_Warehouse_LongBeach_South",
       "target": "ib_Falcon_Coffees"
     },
     {
@@ -4664,15 +6407,11 @@
       "target": "ib_Falcon_Coffees"
     },
     {
-      "source": "cw_Warehouse_Valencia_Industrial",
+      "source": "cw_Warehouse_Busan_Port",
       "target": "ib_Falcon_Coffees"
     },
     {
-      "source": "cw_Warehouse_Tokyo_Bay",
-      "target": "ib_Falcon_Coffees"
-    },
-    {
-      "source": "cw_Warehouse_Rotterdam_West",
+      "source": "cw_Warehouse_LongBeach_South",
       "target": "ib_Falcon_Coffees"
     },
     {
@@ -4680,7 +6419,11 @@
       "target": "ib_Falcon_Coffees"
     },
     {
-      "source": "cw_Warehouse_Barcelona_Port",
+      "source": "cw_Warehouse_Hamburg_Central",
+      "target": "ib_Falcon_Coffees"
+    },
+    {
+      "source": "cw_Warehouse_Miami_FreeZone",
       "target": "ib_Falcon_Coffees"
     },
     {
@@ -4688,11 +6431,27 @@
       "target": "ib_Falcon_Coffees"
     },
     {
-      "source": "cw_Warehouse_Hamburg_Central",
+      "source": "cw_Warehouse_Tokyo_Bay",
       "target": "ib_Falcon_Coffees"
     },
     {
-      "source": "cw_Warehouse_Busan_Port",
+      "source": "cw_Warehouse_Valencia_Industrial",
+      "target": "ib_Falcon_Coffees"
+    },
+    {
+      "source": "cw_Warehouse_Rotterdam_West",
+      "target": "ib_Falcon_Coffees"
+    },
+    {
+      "source": "cw_Warehouse_Felixstowe_East",
+      "target": "ib_Falcon_Coffees"
+    },
+    {
+      "source": "cw_Warehouse_Barcelona_Port",
+      "target": "ib_Falcon_Coffees"
+    },
+    {
+      "source": "cw_Warehouse_Amsterdam_West",
       "target": "ib_Falcon_Coffees"
     },
     {
@@ -4700,23 +6459,7 @@
       "target": "ib_Falcon_Coffees"
     },
     {
-      "source": "cw_Warehouse_Felixstowe_East",
-      "target": "ib_Volcafe"
-    },
-    {
-      "source": "cw_Warehouse_Amsterdam_West",
-      "target": "ib_Volcafe"
-    },
-    {
-      "source": "cw_Warehouse_Miami_FreeZone",
-      "target": "ib_Volcafe"
-    },
-    {
       "source": "cw_Warehouse_Seattle_Port",
-      "target": "ib_Volcafe"
-    },
-    {
-      "source": "cw_Warehouse_LongBeach_South",
       "target": "ib_Volcafe"
     },
     {
@@ -4724,15 +6467,11 @@
       "target": "ib_Volcafe"
     },
     {
-      "source": "cw_Warehouse_Valencia_Industrial",
+      "source": "cw_Warehouse_Busan_Port",
       "target": "ib_Volcafe"
     },
     {
-      "source": "cw_Warehouse_Tokyo_Bay",
-      "target": "ib_Volcafe"
-    },
-    {
-      "source": "cw_Warehouse_Rotterdam_West",
+      "source": "cw_Warehouse_LongBeach_South",
       "target": "ib_Volcafe"
     },
     {
@@ -4740,7 +6479,11 @@
       "target": "ib_Volcafe"
     },
     {
-      "source": "cw_Warehouse_Barcelona_Port",
+      "source": "cw_Warehouse_Hamburg_Central",
+      "target": "ib_Volcafe"
+    },
+    {
+      "source": "cw_Warehouse_Miami_FreeZone",
       "target": "ib_Volcafe"
     },
     {
@@ -4748,11 +6491,27 @@
       "target": "ib_Volcafe"
     },
     {
-      "source": "cw_Warehouse_Hamburg_Central",
+      "source": "cw_Warehouse_Tokyo_Bay",
       "target": "ib_Volcafe"
     },
     {
-      "source": "cw_Warehouse_Busan_Port",
+      "source": "cw_Warehouse_Valencia_Industrial",
+      "target": "ib_Volcafe"
+    },
+    {
+      "source": "cw_Warehouse_Rotterdam_West",
+      "target": "ib_Volcafe"
+    },
+    {
+      "source": "cw_Warehouse_Felixstowe_East",
+      "target": "ib_Volcafe"
+    },
+    {
+      "source": "cw_Warehouse_Barcelona_Port",
+      "target": "ib_Volcafe"
+    },
+    {
+      "source": "cw_Warehouse_Amsterdam_West",
       "target": "ib_Volcafe"
     },
     {
@@ -4760,23 +6519,7 @@
       "target": "ib_Volcafe"
     },
     {
-      "source": "cw_Warehouse_Felixstowe_East",
-      "target": "ib_Neumann_Kaffee_Gruppe"
-    },
-    {
-      "source": "cw_Warehouse_Amsterdam_West",
-      "target": "ib_Neumann_Kaffee_Gruppe"
-    },
-    {
-      "source": "cw_Warehouse_Miami_FreeZone",
-      "target": "ib_Neumann_Kaffee_Gruppe"
-    },
-    {
       "source": "cw_Warehouse_Seattle_Port",
-      "target": "ib_Neumann_Kaffee_Gruppe"
-    },
-    {
-      "source": "cw_Warehouse_LongBeach_South",
       "target": "ib_Neumann_Kaffee_Gruppe"
     },
     {
@@ -4784,15 +6527,11 @@
       "target": "ib_Neumann_Kaffee_Gruppe"
     },
     {
-      "source": "cw_Warehouse_Valencia_Industrial",
+      "source": "cw_Warehouse_Busan_Port",
       "target": "ib_Neumann_Kaffee_Gruppe"
     },
     {
-      "source": "cw_Warehouse_Tokyo_Bay",
-      "target": "ib_Neumann_Kaffee_Gruppe"
-    },
-    {
-      "source": "cw_Warehouse_Rotterdam_West",
+      "source": "cw_Warehouse_LongBeach_South",
       "target": "ib_Neumann_Kaffee_Gruppe"
     },
     {
@@ -4800,7 +6539,11 @@
       "target": "ib_Neumann_Kaffee_Gruppe"
     },
     {
-      "source": "cw_Warehouse_Barcelona_Port",
+      "source": "cw_Warehouse_Hamburg_Central",
+      "target": "ib_Neumann_Kaffee_Gruppe"
+    },
+    {
+      "source": "cw_Warehouse_Miami_FreeZone",
       "target": "ib_Neumann_Kaffee_Gruppe"
     },
     {
@@ -4808,11 +6551,27 @@
       "target": "ib_Neumann_Kaffee_Gruppe"
     },
     {
-      "source": "cw_Warehouse_Hamburg_Central",
+      "source": "cw_Warehouse_Tokyo_Bay",
       "target": "ib_Neumann_Kaffee_Gruppe"
     },
     {
-      "source": "cw_Warehouse_Busan_Port",
+      "source": "cw_Warehouse_Valencia_Industrial",
+      "target": "ib_Neumann_Kaffee_Gruppe"
+    },
+    {
+      "source": "cw_Warehouse_Rotterdam_West",
+      "target": "ib_Neumann_Kaffee_Gruppe"
+    },
+    {
+      "source": "cw_Warehouse_Felixstowe_East",
+      "target": "ib_Neumann_Kaffee_Gruppe"
+    },
+    {
+      "source": "cw_Warehouse_Barcelona_Port",
+      "target": "ib_Neumann_Kaffee_Gruppe"
+    },
+    {
+      "source": "cw_Warehouse_Amsterdam_West",
       "target": "ib_Neumann_Kaffee_Gruppe"
     },
     {
@@ -4820,23 +6579,7 @@
       "target": "ib_Neumann_Kaffee_Gruppe"
     },
     {
-      "source": "cw_Warehouse_Felixstowe_East",
-      "target": "ib_Strauss_Coffee"
-    },
-    {
-      "source": "cw_Warehouse_Amsterdam_West",
-      "target": "ib_Strauss_Coffee"
-    },
-    {
-      "source": "cw_Warehouse_Miami_FreeZone",
-      "target": "ib_Strauss_Coffee"
-    },
-    {
       "source": "cw_Warehouse_Seattle_Port",
-      "target": "ib_Strauss_Coffee"
-    },
-    {
-      "source": "cw_Warehouse_LongBeach_South",
       "target": "ib_Strauss_Coffee"
     },
     {
@@ -4844,15 +6587,11 @@
       "target": "ib_Strauss_Coffee"
     },
     {
-      "source": "cw_Warehouse_Valencia_Industrial",
+      "source": "cw_Warehouse_Busan_Port",
       "target": "ib_Strauss_Coffee"
     },
     {
-      "source": "cw_Warehouse_Tokyo_Bay",
-      "target": "ib_Strauss_Coffee"
-    },
-    {
-      "source": "cw_Warehouse_Rotterdam_West",
+      "source": "cw_Warehouse_LongBeach_South",
       "target": "ib_Strauss_Coffee"
     },
     {
@@ -4860,7 +6599,11 @@
       "target": "ib_Strauss_Coffee"
     },
     {
-      "source": "cw_Warehouse_Barcelona_Port",
+      "source": "cw_Warehouse_Hamburg_Central",
+      "target": "ib_Strauss_Coffee"
+    },
+    {
+      "source": "cw_Warehouse_Miami_FreeZone",
       "target": "ib_Strauss_Coffee"
     },
     {
@@ -4868,11 +6611,27 @@
       "target": "ib_Strauss_Coffee"
     },
     {
-      "source": "cw_Warehouse_Hamburg_Central",
+      "source": "cw_Warehouse_Tokyo_Bay",
       "target": "ib_Strauss_Coffee"
     },
     {
-      "source": "cw_Warehouse_Busan_Port",
+      "source": "cw_Warehouse_Valencia_Industrial",
+      "target": "ib_Strauss_Coffee"
+    },
+    {
+      "source": "cw_Warehouse_Rotterdam_West",
+      "target": "ib_Strauss_Coffee"
+    },
+    {
+      "source": "cw_Warehouse_Felixstowe_East",
+      "target": "ib_Strauss_Coffee"
+    },
+    {
+      "source": "cw_Warehouse_Barcelona_Port",
+      "target": "ib_Strauss_Coffee"
+    },
+    {
+      "source": "cw_Warehouse_Amsterdam_West",
       "target": "ib_Strauss_Coffee"
     },
     {
@@ -4880,23 +6639,7 @@
       "target": "ib_Strauss_Coffee"
     },
     {
-      "source": "cw_Warehouse_Felixstowe_East",
-      "target": "ib_Green_Coffee_Traders"
-    },
-    {
-      "source": "cw_Warehouse_Amsterdam_West",
-      "target": "ib_Green_Coffee_Traders"
-    },
-    {
-      "source": "cw_Warehouse_Miami_FreeZone",
-      "target": "ib_Green_Coffee_Traders"
-    },
-    {
       "source": "cw_Warehouse_Seattle_Port",
-      "target": "ib_Green_Coffee_Traders"
-    },
-    {
-      "source": "cw_Warehouse_LongBeach_South",
       "target": "ib_Green_Coffee_Traders"
     },
     {
@@ -4904,15 +6647,11 @@
       "target": "ib_Green_Coffee_Traders"
     },
     {
-      "source": "cw_Warehouse_Valencia_Industrial",
+      "source": "cw_Warehouse_Busan_Port",
       "target": "ib_Green_Coffee_Traders"
     },
     {
-      "source": "cw_Warehouse_Tokyo_Bay",
-      "target": "ib_Green_Coffee_Traders"
-    },
-    {
-      "source": "cw_Warehouse_Rotterdam_West",
+      "source": "cw_Warehouse_LongBeach_South",
       "target": "ib_Green_Coffee_Traders"
     },
     {
@@ -4920,7 +6659,11 @@
       "target": "ib_Green_Coffee_Traders"
     },
     {
-      "source": "cw_Warehouse_Barcelona_Port",
+      "source": "cw_Warehouse_Hamburg_Central",
+      "target": "ib_Green_Coffee_Traders"
+    },
+    {
+      "source": "cw_Warehouse_Miami_FreeZone",
       "target": "ib_Green_Coffee_Traders"
     },
     {
@@ -4928,11 +6671,27 @@
       "target": "ib_Green_Coffee_Traders"
     },
     {
-      "source": "cw_Warehouse_Hamburg_Central",
+      "source": "cw_Warehouse_Tokyo_Bay",
       "target": "ib_Green_Coffee_Traders"
     },
     {
-      "source": "cw_Warehouse_Busan_Port",
+      "source": "cw_Warehouse_Valencia_Industrial",
+      "target": "ib_Green_Coffee_Traders"
+    },
+    {
+      "source": "cw_Warehouse_Rotterdam_West",
+      "target": "ib_Green_Coffee_Traders"
+    },
+    {
+      "source": "cw_Warehouse_Felixstowe_East",
+      "target": "ib_Green_Coffee_Traders"
+    },
+    {
+      "source": "cw_Warehouse_Barcelona_Port",
+      "target": "ib_Green_Coffee_Traders"
+    },
+    {
+      "source": "cw_Warehouse_Amsterdam_West",
       "target": "ib_Green_Coffee_Traders"
     },
     {
@@ -4940,20 +6699,504 @@
       "target": "ib_Green_Coffee_Traders"
     },
     {
-      "source": "ib_Sucafina",
-      "target": "cp_Port_Sydney"
+      "source": "cw_Warehouse_Seattle_Port",
+      "target": "ib_Atlantic_Coffee"
     },
     {
-      "source": "ib_Sucafina",
-      "target": "cp_Port_NewOrleans"
+      "source": "cw_Warehouse_Genoa_Harbor",
+      "target": "ib_Atlantic_Coffee"
     },
     {
-      "source": "ib_Sucafina",
-      "target": "cp_Port_Valencia"
+      "source": "cw_Warehouse_Busan_Port",
+      "target": "ib_Atlantic_Coffee"
+    },
+    {
+      "source": "cw_Warehouse_LongBeach_South",
+      "target": "ib_Atlantic_Coffee"
+    },
+    {
+      "source": "cw_Warehouse_NewOrleans_CBD",
+      "target": "ib_Atlantic_Coffee"
+    },
+    {
+      "source": "cw_Warehouse_Hamburg_Central",
+      "target": "ib_Atlantic_Coffee"
+    },
+    {
+      "source": "cw_Warehouse_Miami_FreeZone",
+      "target": "ib_Atlantic_Coffee"
+    },
+    {
+      "source": "cw_Warehouse_Melbourne_Docks",
+      "target": "ib_Atlantic_Coffee"
+    },
+    {
+      "source": "cw_Warehouse_Tokyo_Bay",
+      "target": "ib_Atlantic_Coffee"
+    },
+    {
+      "source": "cw_Warehouse_Valencia_Industrial",
+      "target": "ib_Atlantic_Coffee"
+    },
+    {
+      "source": "cw_Warehouse_Rotterdam_West",
+      "target": "ib_Atlantic_Coffee"
+    },
+    {
+      "source": "cw_Warehouse_Felixstowe_East",
+      "target": "ib_Atlantic_Coffee"
+    },
+    {
+      "source": "cw_Warehouse_Barcelona_Port",
+      "target": "ib_Atlantic_Coffee"
+    },
+    {
+      "source": "cw_Warehouse_Amsterdam_West",
+      "target": "ib_Atlantic_Coffee"
+    },
+    {
+      "source": "cw_Warehouse_Sydney_South",
+      "target": "ib_Atlantic_Coffee"
+    },
+    {
+      "source": "cw_Warehouse_Seattle_Port",
+      "target": "ib_Westfeldt_Brothers"
+    },
+    {
+      "source": "cw_Warehouse_Genoa_Harbor",
+      "target": "ib_Westfeldt_Brothers"
+    },
+    {
+      "source": "cw_Warehouse_Busan_Port",
+      "target": "ib_Westfeldt_Brothers"
+    },
+    {
+      "source": "cw_Warehouse_LongBeach_South",
+      "target": "ib_Westfeldt_Brothers"
+    },
+    {
+      "source": "cw_Warehouse_NewOrleans_CBD",
+      "target": "ib_Westfeldt_Brothers"
+    },
+    {
+      "source": "cw_Warehouse_Hamburg_Central",
+      "target": "ib_Westfeldt_Brothers"
+    },
+    {
+      "source": "cw_Warehouse_Miami_FreeZone",
+      "target": "ib_Westfeldt_Brothers"
+    },
+    {
+      "source": "cw_Warehouse_Melbourne_Docks",
+      "target": "ib_Westfeldt_Brothers"
+    },
+    {
+      "source": "cw_Warehouse_Tokyo_Bay",
+      "target": "ib_Westfeldt_Brothers"
+    },
+    {
+      "source": "cw_Warehouse_Valencia_Industrial",
+      "target": "ib_Westfeldt_Brothers"
+    },
+    {
+      "source": "cw_Warehouse_Rotterdam_West",
+      "target": "ib_Westfeldt_Brothers"
+    },
+    {
+      "source": "cw_Warehouse_Felixstowe_East",
+      "target": "ib_Westfeldt_Brothers"
+    },
+    {
+      "source": "cw_Warehouse_Barcelona_Port",
+      "target": "ib_Westfeldt_Brothers"
+    },
+    {
+      "source": "cw_Warehouse_Amsterdam_West",
+      "target": "ib_Westfeldt_Brothers"
+    },
+    {
+      "source": "cw_Warehouse_Sydney_South",
+      "target": "ib_Westfeldt_Brothers"
+    },
+    {
+      "source": "cw_Warehouse_Seattle_Port",
+      "target": "ib_Cofinet"
+    },
+    {
+      "source": "cw_Warehouse_Genoa_Harbor",
+      "target": "ib_Cofinet"
+    },
+    {
+      "source": "cw_Warehouse_Busan_Port",
+      "target": "ib_Cofinet"
+    },
+    {
+      "source": "cw_Warehouse_LongBeach_South",
+      "target": "ib_Cofinet"
+    },
+    {
+      "source": "cw_Warehouse_NewOrleans_CBD",
+      "target": "ib_Cofinet"
+    },
+    {
+      "source": "cw_Warehouse_Hamburg_Central",
+      "target": "ib_Cofinet"
+    },
+    {
+      "source": "cw_Warehouse_Miami_FreeZone",
+      "target": "ib_Cofinet"
+    },
+    {
+      "source": "cw_Warehouse_Melbourne_Docks",
+      "target": "ib_Cofinet"
+    },
+    {
+      "source": "cw_Warehouse_Tokyo_Bay",
+      "target": "ib_Cofinet"
+    },
+    {
+      "source": "cw_Warehouse_Valencia_Industrial",
+      "target": "ib_Cofinet"
+    },
+    {
+      "source": "cw_Warehouse_Rotterdam_West",
+      "target": "ib_Cofinet"
+    },
+    {
+      "source": "cw_Warehouse_Felixstowe_East",
+      "target": "ib_Cofinet"
+    },
+    {
+      "source": "cw_Warehouse_Barcelona_Port",
+      "target": "ib_Cofinet"
+    },
+    {
+      "source": "cw_Warehouse_Amsterdam_West",
+      "target": "ib_Cofinet"
+    },
+    {
+      "source": "cw_Warehouse_Sydney_South",
+      "target": "ib_Cofinet"
+    },
+    {
+      "source": "cw_Warehouse_Seattle_Port",
+      "target": "ib_Sustainable_Harvest"
+    },
+    {
+      "source": "cw_Warehouse_Genoa_Harbor",
+      "target": "ib_Sustainable_Harvest"
+    },
+    {
+      "source": "cw_Warehouse_Busan_Port",
+      "target": "ib_Sustainable_Harvest"
+    },
+    {
+      "source": "cw_Warehouse_LongBeach_South",
+      "target": "ib_Sustainable_Harvest"
+    },
+    {
+      "source": "cw_Warehouse_NewOrleans_CBD",
+      "target": "ib_Sustainable_Harvest"
+    },
+    {
+      "source": "cw_Warehouse_Hamburg_Central",
+      "target": "ib_Sustainable_Harvest"
+    },
+    {
+      "source": "cw_Warehouse_Miami_FreeZone",
+      "target": "ib_Sustainable_Harvest"
+    },
+    {
+      "source": "cw_Warehouse_Melbourne_Docks",
+      "target": "ib_Sustainable_Harvest"
+    },
+    {
+      "source": "cw_Warehouse_Tokyo_Bay",
+      "target": "ib_Sustainable_Harvest"
+    },
+    {
+      "source": "cw_Warehouse_Valencia_Industrial",
+      "target": "ib_Sustainable_Harvest"
+    },
+    {
+      "source": "cw_Warehouse_Rotterdam_West",
+      "target": "ib_Sustainable_Harvest"
+    },
+    {
+      "source": "cw_Warehouse_Felixstowe_East",
+      "target": "ib_Sustainable_Harvest"
+    },
+    {
+      "source": "cw_Warehouse_Barcelona_Port",
+      "target": "ib_Sustainable_Harvest"
+    },
+    {
+      "source": "cw_Warehouse_Amsterdam_West",
+      "target": "ib_Sustainable_Harvest"
+    },
+    {
+      "source": "cw_Warehouse_Sydney_South",
+      "target": "ib_Sustainable_Harvest"
+    },
+    {
+      "source": "cw_Warehouse_Seattle_Port",
+      "target": "ib_Ally_Coffee"
+    },
+    {
+      "source": "cw_Warehouse_Genoa_Harbor",
+      "target": "ib_Ally_Coffee"
+    },
+    {
+      "source": "cw_Warehouse_Busan_Port",
+      "target": "ib_Ally_Coffee"
+    },
+    {
+      "source": "cw_Warehouse_LongBeach_South",
+      "target": "ib_Ally_Coffee"
+    },
+    {
+      "source": "cw_Warehouse_NewOrleans_CBD",
+      "target": "ib_Ally_Coffee"
+    },
+    {
+      "source": "cw_Warehouse_Hamburg_Central",
+      "target": "ib_Ally_Coffee"
+    },
+    {
+      "source": "cw_Warehouse_Miami_FreeZone",
+      "target": "ib_Ally_Coffee"
+    },
+    {
+      "source": "cw_Warehouse_Melbourne_Docks",
+      "target": "ib_Ally_Coffee"
+    },
+    {
+      "source": "cw_Warehouse_Tokyo_Bay",
+      "target": "ib_Ally_Coffee"
+    },
+    {
+      "source": "cw_Warehouse_Valencia_Industrial",
+      "target": "ib_Ally_Coffee"
+    },
+    {
+      "source": "cw_Warehouse_Rotterdam_West",
+      "target": "ib_Ally_Coffee"
+    },
+    {
+      "source": "cw_Warehouse_Felixstowe_East",
+      "target": "ib_Ally_Coffee"
+    },
+    {
+      "source": "cw_Warehouse_Barcelona_Port",
+      "target": "ib_Ally_Coffee"
+    },
+    {
+      "source": "cw_Warehouse_Amsterdam_West",
+      "target": "ib_Ally_Coffee"
+    },
+    {
+      "source": "cw_Warehouse_Sydney_South",
+      "target": "ib_Ally_Coffee"
+    },
+    {
+      "source": "cw_Warehouse_Seattle_Port",
+      "target": "ib_Caravela_Coffee"
+    },
+    {
+      "source": "cw_Warehouse_Genoa_Harbor",
+      "target": "ib_Caravela_Coffee"
+    },
+    {
+      "source": "cw_Warehouse_Busan_Port",
+      "target": "ib_Caravela_Coffee"
+    },
+    {
+      "source": "cw_Warehouse_LongBeach_South",
+      "target": "ib_Caravela_Coffee"
+    },
+    {
+      "source": "cw_Warehouse_NewOrleans_CBD",
+      "target": "ib_Caravela_Coffee"
+    },
+    {
+      "source": "cw_Warehouse_Hamburg_Central",
+      "target": "ib_Caravela_Coffee"
+    },
+    {
+      "source": "cw_Warehouse_Miami_FreeZone",
+      "target": "ib_Caravela_Coffee"
+    },
+    {
+      "source": "cw_Warehouse_Melbourne_Docks",
+      "target": "ib_Caravela_Coffee"
+    },
+    {
+      "source": "cw_Warehouse_Tokyo_Bay",
+      "target": "ib_Caravela_Coffee"
+    },
+    {
+      "source": "cw_Warehouse_Valencia_Industrial",
+      "target": "ib_Caravela_Coffee"
+    },
+    {
+      "source": "cw_Warehouse_Rotterdam_West",
+      "target": "ib_Caravela_Coffee"
+    },
+    {
+      "source": "cw_Warehouse_Felixstowe_East",
+      "target": "ib_Caravela_Coffee"
+    },
+    {
+      "source": "cw_Warehouse_Barcelona_Port",
+      "target": "ib_Caravela_Coffee"
+    },
+    {
+      "source": "cw_Warehouse_Amsterdam_West",
+      "target": "ib_Caravela_Coffee"
+    },
+    {
+      "source": "cw_Warehouse_Sydney_South",
+      "target": "ib_Caravela_Coffee"
+    },
+    {
+      "source": "cw_Warehouse_Seattle_Port",
+      "target": "ib_Schluter_SA"
+    },
+    {
+      "source": "cw_Warehouse_Genoa_Harbor",
+      "target": "ib_Schluter_SA"
+    },
+    {
+      "source": "cw_Warehouse_Busan_Port",
+      "target": "ib_Schluter_SA"
+    },
+    {
+      "source": "cw_Warehouse_LongBeach_South",
+      "target": "ib_Schluter_SA"
+    },
+    {
+      "source": "cw_Warehouse_NewOrleans_CBD",
+      "target": "ib_Schluter_SA"
+    },
+    {
+      "source": "cw_Warehouse_Hamburg_Central",
+      "target": "ib_Schluter_SA"
+    },
+    {
+      "source": "cw_Warehouse_Miami_FreeZone",
+      "target": "ib_Schluter_SA"
+    },
+    {
+      "source": "cw_Warehouse_Melbourne_Docks",
+      "target": "ib_Schluter_SA"
+    },
+    {
+      "source": "cw_Warehouse_Tokyo_Bay",
+      "target": "ib_Schluter_SA"
+    },
+    {
+      "source": "cw_Warehouse_Valencia_Industrial",
+      "target": "ib_Schluter_SA"
+    },
+    {
+      "source": "cw_Warehouse_Rotterdam_West",
+      "target": "ib_Schluter_SA"
+    },
+    {
+      "source": "cw_Warehouse_Felixstowe_East",
+      "target": "ib_Schluter_SA"
+    },
+    {
+      "source": "cw_Warehouse_Barcelona_Port",
+      "target": "ib_Schluter_SA"
+    },
+    {
+      "source": "cw_Warehouse_Amsterdam_West",
+      "target": "ib_Schluter_SA"
+    },
+    {
+      "source": "cw_Warehouse_Sydney_South",
+      "target": "ib_Schluter_SA"
+    },
+    {
+      "source": "cw_Warehouse_Seattle_Port",
+      "target": "ib_Itochu_Coffee"
+    },
+    {
+      "source": "cw_Warehouse_Genoa_Harbor",
+      "target": "ib_Itochu_Coffee"
+    },
+    {
+      "source": "cw_Warehouse_Busan_Port",
+      "target": "ib_Itochu_Coffee"
+    },
+    {
+      "source": "cw_Warehouse_LongBeach_South",
+      "target": "ib_Itochu_Coffee"
+    },
+    {
+      "source": "cw_Warehouse_NewOrleans_CBD",
+      "target": "ib_Itochu_Coffee"
+    },
+    {
+      "source": "cw_Warehouse_Hamburg_Central",
+      "target": "ib_Itochu_Coffee"
+    },
+    {
+      "source": "cw_Warehouse_Miami_FreeZone",
+      "target": "ib_Itochu_Coffee"
+    },
+    {
+      "source": "cw_Warehouse_Melbourne_Docks",
+      "target": "ib_Itochu_Coffee"
+    },
+    {
+      "source": "cw_Warehouse_Tokyo_Bay",
+      "target": "ib_Itochu_Coffee"
+    },
+    {
+      "source": "cw_Warehouse_Valencia_Industrial",
+      "target": "ib_Itochu_Coffee"
+    },
+    {
+      "source": "cw_Warehouse_Rotterdam_West",
+      "target": "ib_Itochu_Coffee"
+    },
+    {
+      "source": "cw_Warehouse_Felixstowe_East",
+      "target": "ib_Itochu_Coffee"
+    },
+    {
+      "source": "cw_Warehouse_Barcelona_Port",
+      "target": "ib_Itochu_Coffee"
+    },
+    {
+      "source": "cw_Warehouse_Amsterdam_West",
+      "target": "ib_Itochu_Coffee"
+    },
+    {
+      "source": "cw_Warehouse_Sydney_South",
+      "target": "ib_Itochu_Coffee"
     },
     {
       "source": "ib_Sucafina",
       "target": "cp_Port_Rotterdam"
+    },
+    {
+      "source": "ib_Sucafina",
+      "target": "cp_Port_Tokyo"
+    },
+    {
+      "source": "ib_Sucafina",
+      "target": "cp_Port_Hamburg"
+    },
+    {
+      "source": "ib_Sucafina",
+      "target": "cp_Port_Busan"
+    },
+    {
+      "source": "ib_Sucafina",
+      "target": "cp_Port_LongBeach"
     },
     {
       "source": "ib_Sucafina",
@@ -4965,39 +7208,39 @@
     },
     {
       "source": "ib_Sucafina",
+      "target": "cp_Port_Valencia"
+    },
+    {
+      "source": "ib_Sucafina",
+      "target": "cp_Port_Sydney"
+    },
+    {
+      "source": "ib_Sucafina",
       "target": "cp_Port_Genoa"
     },
     {
       "source": "ib_Sucafina",
-      "target": "cp_Port_LongBeach"
-    },
-    {
-      "source": "ib_Sucafina",
-      "target": "cp_Port_Tokyo"
-    },
-    {
-      "source": "ib_Sucafina",
-      "target": "cp_Port_Busan"
-    },
-    {
-      "source": "ib_Sucafina",
-      "target": "cp_Port_Hamburg"
-    },
-    {
-      "source": "ib_Falcon_Coffees",
-      "target": "cp_Port_Sydney"
-    },
-    {
-      "source": "ib_Falcon_Coffees",
       "target": "cp_Port_NewOrleans"
     },
     {
       "source": "ib_Falcon_Coffees",
-      "target": "cp_Port_Valencia"
+      "target": "cp_Port_Rotterdam"
     },
     {
       "source": "ib_Falcon_Coffees",
-      "target": "cp_Port_Rotterdam"
+      "target": "cp_Port_Tokyo"
+    },
+    {
+      "source": "ib_Falcon_Coffees",
+      "target": "cp_Port_Hamburg"
+    },
+    {
+      "source": "ib_Falcon_Coffees",
+      "target": "cp_Port_Busan"
+    },
+    {
+      "source": "ib_Falcon_Coffees",
+      "target": "cp_Port_LongBeach"
     },
     {
       "source": "ib_Falcon_Coffees",
@@ -5009,39 +7252,39 @@
     },
     {
       "source": "ib_Falcon_Coffees",
+      "target": "cp_Port_Valencia"
+    },
+    {
+      "source": "ib_Falcon_Coffees",
+      "target": "cp_Port_Sydney"
+    },
+    {
+      "source": "ib_Falcon_Coffees",
       "target": "cp_Port_Genoa"
     },
     {
       "source": "ib_Falcon_Coffees",
-      "target": "cp_Port_LongBeach"
-    },
-    {
-      "source": "ib_Falcon_Coffees",
-      "target": "cp_Port_Tokyo"
-    },
-    {
-      "source": "ib_Falcon_Coffees",
-      "target": "cp_Port_Busan"
-    },
-    {
-      "source": "ib_Falcon_Coffees",
-      "target": "cp_Port_Hamburg"
-    },
-    {
-      "source": "ib_Volcafe",
-      "target": "cp_Port_Sydney"
-    },
-    {
-      "source": "ib_Volcafe",
       "target": "cp_Port_NewOrleans"
     },
     {
       "source": "ib_Volcafe",
-      "target": "cp_Port_Valencia"
+      "target": "cp_Port_Rotterdam"
     },
     {
       "source": "ib_Volcafe",
-      "target": "cp_Port_Rotterdam"
+      "target": "cp_Port_Tokyo"
+    },
+    {
+      "source": "ib_Volcafe",
+      "target": "cp_Port_Hamburg"
+    },
+    {
+      "source": "ib_Volcafe",
+      "target": "cp_Port_Busan"
+    },
+    {
+      "source": "ib_Volcafe",
+      "target": "cp_Port_LongBeach"
     },
     {
       "source": "ib_Volcafe",
@@ -5053,39 +7296,39 @@
     },
     {
       "source": "ib_Volcafe",
+      "target": "cp_Port_Valencia"
+    },
+    {
+      "source": "ib_Volcafe",
+      "target": "cp_Port_Sydney"
+    },
+    {
+      "source": "ib_Volcafe",
       "target": "cp_Port_Genoa"
     },
     {
       "source": "ib_Volcafe",
-      "target": "cp_Port_LongBeach"
-    },
-    {
-      "source": "ib_Volcafe",
-      "target": "cp_Port_Tokyo"
-    },
-    {
-      "source": "ib_Volcafe",
-      "target": "cp_Port_Busan"
-    },
-    {
-      "source": "ib_Volcafe",
-      "target": "cp_Port_Hamburg"
-    },
-    {
-      "source": "ib_Neumann_Kaffee_Gruppe",
-      "target": "cp_Port_Sydney"
-    },
-    {
-      "source": "ib_Neumann_Kaffee_Gruppe",
       "target": "cp_Port_NewOrleans"
     },
     {
       "source": "ib_Neumann_Kaffee_Gruppe",
-      "target": "cp_Port_Valencia"
+      "target": "cp_Port_Rotterdam"
     },
     {
       "source": "ib_Neumann_Kaffee_Gruppe",
-      "target": "cp_Port_Rotterdam"
+      "target": "cp_Port_Tokyo"
+    },
+    {
+      "source": "ib_Neumann_Kaffee_Gruppe",
+      "target": "cp_Port_Hamburg"
+    },
+    {
+      "source": "ib_Neumann_Kaffee_Gruppe",
+      "target": "cp_Port_Busan"
+    },
+    {
+      "source": "ib_Neumann_Kaffee_Gruppe",
+      "target": "cp_Port_LongBeach"
     },
     {
       "source": "ib_Neumann_Kaffee_Gruppe",
@@ -5097,39 +7340,39 @@
     },
     {
       "source": "ib_Neumann_Kaffee_Gruppe",
+      "target": "cp_Port_Valencia"
+    },
+    {
+      "source": "ib_Neumann_Kaffee_Gruppe",
+      "target": "cp_Port_Sydney"
+    },
+    {
+      "source": "ib_Neumann_Kaffee_Gruppe",
       "target": "cp_Port_Genoa"
     },
     {
       "source": "ib_Neumann_Kaffee_Gruppe",
-      "target": "cp_Port_LongBeach"
-    },
-    {
-      "source": "ib_Neumann_Kaffee_Gruppe",
-      "target": "cp_Port_Tokyo"
-    },
-    {
-      "source": "ib_Neumann_Kaffee_Gruppe",
-      "target": "cp_Port_Busan"
-    },
-    {
-      "source": "ib_Neumann_Kaffee_Gruppe",
-      "target": "cp_Port_Hamburg"
-    },
-    {
-      "source": "ib_Strauss_Coffee",
-      "target": "cp_Port_Sydney"
-    },
-    {
-      "source": "ib_Strauss_Coffee",
       "target": "cp_Port_NewOrleans"
     },
     {
       "source": "ib_Strauss_Coffee",
-      "target": "cp_Port_Valencia"
+      "target": "cp_Port_Rotterdam"
     },
     {
       "source": "ib_Strauss_Coffee",
-      "target": "cp_Port_Rotterdam"
+      "target": "cp_Port_Tokyo"
+    },
+    {
+      "source": "ib_Strauss_Coffee",
+      "target": "cp_Port_Hamburg"
+    },
+    {
+      "source": "ib_Strauss_Coffee",
+      "target": "cp_Port_Busan"
+    },
+    {
+      "source": "ib_Strauss_Coffee",
+      "target": "cp_Port_LongBeach"
     },
     {
       "source": "ib_Strauss_Coffee",
@@ -5141,39 +7384,39 @@
     },
     {
       "source": "ib_Strauss_Coffee",
+      "target": "cp_Port_Valencia"
+    },
+    {
+      "source": "ib_Strauss_Coffee",
+      "target": "cp_Port_Sydney"
+    },
+    {
+      "source": "ib_Strauss_Coffee",
       "target": "cp_Port_Genoa"
     },
     {
       "source": "ib_Strauss_Coffee",
-      "target": "cp_Port_LongBeach"
-    },
-    {
-      "source": "ib_Strauss_Coffee",
-      "target": "cp_Port_Tokyo"
-    },
-    {
-      "source": "ib_Strauss_Coffee",
-      "target": "cp_Port_Busan"
-    },
-    {
-      "source": "ib_Strauss_Coffee",
-      "target": "cp_Port_Hamburg"
-    },
-    {
-      "source": "ib_Green_Coffee_Traders",
-      "target": "cp_Port_Sydney"
-    },
-    {
-      "source": "ib_Green_Coffee_Traders",
       "target": "cp_Port_NewOrleans"
     },
     {
       "source": "ib_Green_Coffee_Traders",
-      "target": "cp_Port_Valencia"
+      "target": "cp_Port_Rotterdam"
     },
     {
       "source": "ib_Green_Coffee_Traders",
-      "target": "cp_Port_Rotterdam"
+      "target": "cp_Port_Tokyo"
+    },
+    {
+      "source": "ib_Green_Coffee_Traders",
+      "target": "cp_Port_Hamburg"
+    },
+    {
+      "source": "ib_Green_Coffee_Traders",
+      "target": "cp_Port_Busan"
+    },
+    {
+      "source": "ib_Green_Coffee_Traders",
+      "target": "cp_Port_LongBeach"
     },
     {
       "source": "ib_Green_Coffee_Traders",
@@ -5185,23 +7428,371 @@
     },
     {
       "source": "ib_Green_Coffee_Traders",
+      "target": "cp_Port_Valencia"
+    },
+    {
+      "source": "ib_Green_Coffee_Traders",
+      "target": "cp_Port_Sydney"
+    },
+    {
+      "source": "ib_Green_Coffee_Traders",
       "target": "cp_Port_Genoa"
     },
     {
       "source": "ib_Green_Coffee_Traders",
-      "target": "cp_Port_LongBeach"
+      "target": "cp_Port_NewOrleans"
     },
     {
-      "source": "ib_Green_Coffee_Traders",
+      "source": "ib_Atlantic_Coffee",
+      "target": "cp_Port_Rotterdam"
+    },
+    {
+      "source": "ib_Atlantic_Coffee",
       "target": "cp_Port_Tokyo"
     },
     {
-      "source": "ib_Green_Coffee_Traders",
+      "source": "ib_Atlantic_Coffee",
+      "target": "cp_Port_Hamburg"
+    },
+    {
+      "source": "ib_Atlantic_Coffee",
       "target": "cp_Port_Busan"
     },
     {
-      "source": "ib_Green_Coffee_Traders",
+      "source": "ib_Atlantic_Coffee",
+      "target": "cp_Port_LongBeach"
+    },
+    {
+      "source": "ib_Atlantic_Coffee",
+      "target": "cp_Port_Seattle"
+    },
+    {
+      "source": "ib_Atlantic_Coffee",
+      "target": "cp_Port_Felixstowe"
+    },
+    {
+      "source": "ib_Atlantic_Coffee",
+      "target": "cp_Port_Valencia"
+    },
+    {
+      "source": "ib_Atlantic_Coffee",
+      "target": "cp_Port_Sydney"
+    },
+    {
+      "source": "ib_Atlantic_Coffee",
+      "target": "cp_Port_Genoa"
+    },
+    {
+      "source": "ib_Atlantic_Coffee",
+      "target": "cp_Port_NewOrleans"
+    },
+    {
+      "source": "ib_Westfeldt_Brothers",
+      "target": "cp_Port_Rotterdam"
+    },
+    {
+      "source": "ib_Westfeldt_Brothers",
+      "target": "cp_Port_Tokyo"
+    },
+    {
+      "source": "ib_Westfeldt_Brothers",
       "target": "cp_Port_Hamburg"
+    },
+    {
+      "source": "ib_Westfeldt_Brothers",
+      "target": "cp_Port_Busan"
+    },
+    {
+      "source": "ib_Westfeldt_Brothers",
+      "target": "cp_Port_LongBeach"
+    },
+    {
+      "source": "ib_Westfeldt_Brothers",
+      "target": "cp_Port_Seattle"
+    },
+    {
+      "source": "ib_Westfeldt_Brothers",
+      "target": "cp_Port_Felixstowe"
+    },
+    {
+      "source": "ib_Westfeldt_Brothers",
+      "target": "cp_Port_Valencia"
+    },
+    {
+      "source": "ib_Westfeldt_Brothers",
+      "target": "cp_Port_Sydney"
+    },
+    {
+      "source": "ib_Westfeldt_Brothers",
+      "target": "cp_Port_Genoa"
+    },
+    {
+      "source": "ib_Westfeldt_Brothers",
+      "target": "cp_Port_NewOrleans"
+    },
+    {
+      "source": "ib_Cofinet",
+      "target": "cp_Port_Rotterdam"
+    },
+    {
+      "source": "ib_Cofinet",
+      "target": "cp_Port_Tokyo"
+    },
+    {
+      "source": "ib_Cofinet",
+      "target": "cp_Port_Hamburg"
+    },
+    {
+      "source": "ib_Cofinet",
+      "target": "cp_Port_Busan"
+    },
+    {
+      "source": "ib_Cofinet",
+      "target": "cp_Port_LongBeach"
+    },
+    {
+      "source": "ib_Cofinet",
+      "target": "cp_Port_Seattle"
+    },
+    {
+      "source": "ib_Cofinet",
+      "target": "cp_Port_Felixstowe"
+    },
+    {
+      "source": "ib_Cofinet",
+      "target": "cp_Port_Valencia"
+    },
+    {
+      "source": "ib_Cofinet",
+      "target": "cp_Port_Sydney"
+    },
+    {
+      "source": "ib_Cofinet",
+      "target": "cp_Port_Genoa"
+    },
+    {
+      "source": "ib_Cofinet",
+      "target": "cp_Port_NewOrleans"
+    },
+    {
+      "source": "ib_Sustainable_Harvest",
+      "target": "cp_Port_Rotterdam"
+    },
+    {
+      "source": "ib_Sustainable_Harvest",
+      "target": "cp_Port_Tokyo"
+    },
+    {
+      "source": "ib_Sustainable_Harvest",
+      "target": "cp_Port_Hamburg"
+    },
+    {
+      "source": "ib_Sustainable_Harvest",
+      "target": "cp_Port_Busan"
+    },
+    {
+      "source": "ib_Sustainable_Harvest",
+      "target": "cp_Port_LongBeach"
+    },
+    {
+      "source": "ib_Sustainable_Harvest",
+      "target": "cp_Port_Seattle"
+    },
+    {
+      "source": "ib_Sustainable_Harvest",
+      "target": "cp_Port_Felixstowe"
+    },
+    {
+      "source": "ib_Sustainable_Harvest",
+      "target": "cp_Port_Valencia"
+    },
+    {
+      "source": "ib_Sustainable_Harvest",
+      "target": "cp_Port_Sydney"
+    },
+    {
+      "source": "ib_Sustainable_Harvest",
+      "target": "cp_Port_Genoa"
+    },
+    {
+      "source": "ib_Sustainable_Harvest",
+      "target": "cp_Port_NewOrleans"
+    },
+    {
+      "source": "ib_Ally_Coffee",
+      "target": "cp_Port_Rotterdam"
+    },
+    {
+      "source": "ib_Ally_Coffee",
+      "target": "cp_Port_Tokyo"
+    },
+    {
+      "source": "ib_Ally_Coffee",
+      "target": "cp_Port_Hamburg"
+    },
+    {
+      "source": "ib_Ally_Coffee",
+      "target": "cp_Port_Busan"
+    },
+    {
+      "source": "ib_Ally_Coffee",
+      "target": "cp_Port_LongBeach"
+    },
+    {
+      "source": "ib_Ally_Coffee",
+      "target": "cp_Port_Seattle"
+    },
+    {
+      "source": "ib_Ally_Coffee",
+      "target": "cp_Port_Felixstowe"
+    },
+    {
+      "source": "ib_Ally_Coffee",
+      "target": "cp_Port_Valencia"
+    },
+    {
+      "source": "ib_Ally_Coffee",
+      "target": "cp_Port_Sydney"
+    },
+    {
+      "source": "ib_Ally_Coffee",
+      "target": "cp_Port_Genoa"
+    },
+    {
+      "source": "ib_Ally_Coffee",
+      "target": "cp_Port_NewOrleans"
+    },
+    {
+      "source": "ib_Caravela_Coffee",
+      "target": "cp_Port_Rotterdam"
+    },
+    {
+      "source": "ib_Caravela_Coffee",
+      "target": "cp_Port_Tokyo"
+    },
+    {
+      "source": "ib_Caravela_Coffee",
+      "target": "cp_Port_Hamburg"
+    },
+    {
+      "source": "ib_Caravela_Coffee",
+      "target": "cp_Port_Busan"
+    },
+    {
+      "source": "ib_Caravela_Coffee",
+      "target": "cp_Port_LongBeach"
+    },
+    {
+      "source": "ib_Caravela_Coffee",
+      "target": "cp_Port_Seattle"
+    },
+    {
+      "source": "ib_Caravela_Coffee",
+      "target": "cp_Port_Felixstowe"
+    },
+    {
+      "source": "ib_Caravela_Coffee",
+      "target": "cp_Port_Valencia"
+    },
+    {
+      "source": "ib_Caravela_Coffee",
+      "target": "cp_Port_Sydney"
+    },
+    {
+      "source": "ib_Caravela_Coffee",
+      "target": "cp_Port_Genoa"
+    },
+    {
+      "source": "ib_Caravela_Coffee",
+      "target": "cp_Port_NewOrleans"
+    },
+    {
+      "source": "ib_Schluter_SA",
+      "target": "cp_Port_Rotterdam"
+    },
+    {
+      "source": "ib_Schluter_SA",
+      "target": "cp_Port_Tokyo"
+    },
+    {
+      "source": "ib_Schluter_SA",
+      "target": "cp_Port_Hamburg"
+    },
+    {
+      "source": "ib_Schluter_SA",
+      "target": "cp_Port_Busan"
+    },
+    {
+      "source": "ib_Schluter_SA",
+      "target": "cp_Port_LongBeach"
+    },
+    {
+      "source": "ib_Schluter_SA",
+      "target": "cp_Port_Seattle"
+    },
+    {
+      "source": "ib_Schluter_SA",
+      "target": "cp_Port_Felixstowe"
+    },
+    {
+      "source": "ib_Schluter_SA",
+      "target": "cp_Port_Valencia"
+    },
+    {
+      "source": "ib_Schluter_SA",
+      "target": "cp_Port_Sydney"
+    },
+    {
+      "source": "ib_Schluter_SA",
+      "target": "cp_Port_Genoa"
+    },
+    {
+      "source": "ib_Schluter_SA",
+      "target": "cp_Port_NewOrleans"
+    },
+    {
+      "source": "ib_Itochu_Coffee",
+      "target": "cp_Port_Rotterdam"
+    },
+    {
+      "source": "ib_Itochu_Coffee",
+      "target": "cp_Port_Tokyo"
+    },
+    {
+      "source": "ib_Itochu_Coffee",
+      "target": "cp_Port_Hamburg"
+    },
+    {
+      "source": "ib_Itochu_Coffee",
+      "target": "cp_Port_Busan"
+    },
+    {
+      "source": "ib_Itochu_Coffee",
+      "target": "cp_Port_LongBeach"
+    },
+    {
+      "source": "ib_Itochu_Coffee",
+      "target": "cp_Port_Seattle"
+    },
+    {
+      "source": "ib_Itochu_Coffee",
+      "target": "cp_Port_Felixstowe"
+    },
+    {
+      "source": "ib_Itochu_Coffee",
+      "target": "cp_Port_Valencia"
+    },
+    {
+      "source": "ib_Itochu_Coffee",
+      "target": "cp_Port_Sydney"
+    },
+    {
+      "source": "ib_Itochu_Coffee",
+      "target": "cp_Port_Genoa"
+    },
+    {
+      "source": "ib_Itochu_Coffee",
+      "target": "cp_Port_NewOrleans"
     },
     {
       "source": "cp_Port_Busan",
@@ -5224,11 +7815,7 @@
       "target": "lp_Global_Bean_Logistics"
     },
     {
-      "source": "cp_Port_LongBeach",
-      "target": "lp_Maersk"
-    },
-    {
-      "source": "cp_Port_Hamburg",
+      "source": "cp_Port_Antwerp",
       "target": "lp_Maersk"
     },
     {
@@ -5240,11 +7827,15 @@
       "target": "lp_Maersk"
     },
     {
-      "source": "cp_Port_Antwerp",
+      "source": "cp_Port_LongBeach",
       "target": "lp_Maersk"
     },
     {
-      "source": "cp_Port_Singapore",
+      "source": "cp_Port_Hamburg",
+      "target": "lp_Maersk"
+    },
+    {
+      "source": "cp_Port_Rotterdam",
       "target": "lp_MSC"
     },
     {
@@ -5256,12 +7847,20 @@
       "target": "lp_MSC"
     },
     {
-      "source": "cp_Port_Rotterdam",
+      "source": "cp_Port_Antwerp",
       "target": "lp_MSC"
     },
     {
-      "source": "cp_Port_Antwerp",
+      "source": "cp_Port_Singapore",
       "target": "lp_MSC"
+    },
+    {
+      "source": "cp_Port_Rotterdam",
+      "target": "lp_CMA_CGM"
+    },
+    {
+      "source": "cp_Port_LongBeach",
+      "target": "lp_CMA_CGM"
     },
     {
       "source": "cp_Port_Sydney",
@@ -5272,32 +7871,8 @@
       "target": "lp_CMA_CGM"
     },
     {
-      "source": "cp_Port_Rotterdam",
-      "target": "lp_CMA_CGM"
-    },
-    {
-      "source": "cp_Port_LongBeach",
-      "target": "lp_CMA_CGM"
-    },
-    {
       "source": "cp_Port_Genoa",
       "target": "lp_CMA_CGM"
-    },
-    {
-      "source": "cp_Port_Rotterdam",
-      "target": "lp_Hamburg_Sud"
-    },
-    {
-      "source": "cp_Port_Antwerp",
-      "target": "lp_Hamburg_Sud"
-    },
-    {
-      "source": "cp_Port_LongBeach",
-      "target": "lp_Hamburg_Sud"
-    },
-    {
-      "source": "cp_Port_Hamburg",
-      "target": "lp_Hamburg_Sud"
     },
     {
       "source": "cp_Port_Busan",
@@ -5312,6 +7887,22 @@
       "target": "lp_Hamburg_Sud"
     },
     {
+      "source": "cp_Port_Rotterdam",
+      "target": "lp_Hamburg_Sud"
+    },
+    {
+      "source": "cp_Port_LongBeach",
+      "target": "lp_Hamburg_Sud"
+    },
+    {
+      "source": "cp_Port_Hamburg",
+      "target": "lp_Hamburg_Sud"
+    },
+    {
+      "source": "cp_Port_Antwerp",
+      "target": "lp_Hamburg_Sud"
+    },
+    {
       "source": "cp_Port_Busan",
       "target": "lp_COSCO_Shipping"
     },
@@ -5320,20 +7911,12 @@
       "target": "lp_COSCO_Shipping"
     },
     {
+      "source": "cp_Port_Singapore",
+      "target": "lp_COSCO_Shipping"
+    },
+    {
       "source": "cp_Port_Rotterdam",
       "target": "lp_COSCO_Shipping"
-    },
-    {
-      "source": "cp_Port_Singapore",
-      "target": "lp_COSCO_Shipping"
-    },
-    {
-      "source": "cp_Port_Singapore",
-      "target": "lp_Evergreen_Marine"
-    },
-    {
-      "source": "cp_Port_LongBeach",
-      "target": "lp_Evergreen_Marine"
     },
     {
       "source": "cp_Port_Sydney",
@@ -5348,11 +7931,27 @@
       "target": "lp_Evergreen_Marine"
     },
     {
+      "source": "cp_Port_Singapore",
+      "target": "lp_Evergreen_Marine"
+    },
+    {
+      "source": "cp_Port_LongBeach",
+      "target": "lp_Evergreen_Marine"
+    },
+    {
+      "source": "cp_Port_Hamburg",
+      "target": "lp_Hapag_Lloyd"
+    },
+    {
+      "source": "cp_Port_Genoa",
+      "target": "lp_Hapag_Lloyd"
+    },
+    {
       "source": "cp_Port_Valencia",
       "target": "lp_Hapag_Lloyd"
     },
     {
-      "source": "cp_Port_NewOrleans",
+      "source": "cp_Port_Antwerp",
       "target": "lp_Hapag_Lloyd"
     },
     {
@@ -5360,27 +7959,19 @@
       "target": "lp_Hapag_Lloyd"
     },
     {
+      "source": "cp_Port_NewOrleans",
+      "target": "lp_Hapag_Lloyd"
+    },
+    {
       "source": "cp_Port_Rotterdam",
       "target": "lp_Hapag_Lloyd"
     },
     {
       "source": "cp_Port_Antwerp",
-      "target": "lp_Hapag_Lloyd"
-    },
-    {
-      "source": "cp_Port_Genoa",
-      "target": "lp_Hapag_Lloyd"
-    },
-    {
-      "source": "cp_Port_Hamburg",
-      "target": "lp_Hapag_Lloyd"
-    },
-    {
-      "source": "cp_Port_Rotterdam",
       "target": "lp_Volcafe_Logistics"
     },
     {
-      "source": "cp_Port_Antwerp",
+      "source": "cp_Port_Rotterdam",
       "target": "lp_Volcafe_Logistics"
     },
     {
@@ -5388,27 +7979,19 @@
       "target": "lp_Volcafe_Logistics"
     },
     {
-      "source": "cp_Port_Genoa",
-      "target": "lp_Volcafe_Logistics"
-    },
-    {
       "source": "cp_Port_Hamburg",
       "target": "lp_Volcafe_Logistics"
     },
     {
-      "source": "lp_Mitsubishi_Corp",
-      "target": "pp_Port_Santos"
+      "source": "cp_Port_Genoa",
+      "target": "lp_Volcafe_Logistics"
     },
     {
       "source": "lp_Mitsubishi_Corp",
       "target": "pp_Port_Mombasa"
     },
     {
-      "source": "lp_Global_Bean_Logistics",
-      "target": "pp_Port_HoChiMinh"
-    },
-    {
-      "source": "lp_Global_Bean_Logistics",
+      "source": "lp_Mitsubishi_Corp",
       "target": "pp_Port_Santos"
     },
     {
@@ -5416,20 +7999,28 @@
       "target": "pp_Port_Mombasa"
     },
     {
-      "source": "lp_Maersk",
-      "target": "pp_Port_Mombasa"
+      "source": "lp_Global_Bean_Logistics",
+      "target": "pp_Port_Santos"
+    },
+    {
+      "source": "lp_Global_Bean_Logistics",
+      "target": "pp_Port_HoChiMinh"
     },
     {
       "source": "lp_Maersk",
-      "target": "pp_Port_HoChiMinh"
+      "target": "pp_Port_Mombasa"
     },
     {
       "source": "lp_Maersk",
       "target": "pp_Port_Santos"
     },
     {
+      "source": "lp_Maersk",
+      "target": "pp_Port_HoChiMinh"
+    },
+    {
       "source": "lp_MSC",
-      "target": "pp_Port_Mombasa"
+      "target": "pp_Port_Santos"
     },
     {
       "source": "lp_MSC",
@@ -5437,7 +8028,7 @@
     },
     {
       "source": "lp_MSC",
-      "target": "pp_Port_Santos"
+      "target": "pp_Port_Mombasa"
     },
     {
       "source": "lp_CMA_CGM",
@@ -5445,11 +8036,11 @@
     },
     {
       "source": "lp_CMA_CGM",
-      "target": "pp_Port_Santos"
+      "target": "pp_Port_Mombasa"
     },
     {
       "source": "lp_CMA_CGM",
-      "target": "pp_Port_Mombasa"
+      "target": "pp_Port_Santos"
     },
     {
       "source": "lp_Hamburg_Sud",
@@ -5465,30 +8056,38 @@
     },
     {
       "source": "lp_COSCO_Shipping",
-      "target": "pp_Port_Santos"
+      "target": "pp_Port_Mombasa"
     },
     {
       "source": "lp_COSCO_Shipping",
-      "target": "pp_Port_Mombasa"
-    },
-    {
-      "source": "lp_Evergreen_Marine",
-      "target": "pp_Port_HoChiMinh"
+      "target": "pp_Port_Santos"
     },
     {
       "source": "lp_Evergreen_Marine",
       "target": "pp_Port_Santos"
     },
     {
+      "source": "lp_Evergreen_Marine",
+      "target": "pp_Port_HoChiMinh"
+    },
+    {
       "source": "lp_Hapag_Lloyd",
       "target": "pp_Port_HoChiMinh"
+    },
+    {
+      "source": "lp_Hapag_Lloyd",
+      "target": "pp_Port_Mombasa"
     },
     {
       "source": "lp_Hapag_Lloyd",
       "target": "pp_Port_Santos"
     },
     {
-      "source": "lp_Hapag_Lloyd",
+      "source": "lp_Volcafe_Logistics",
+      "target": "pp_Port_HoChiMinh"
+    },
+    {
+      "source": "lp_Volcafe_Logistics",
       "target": "pp_Port_Mombasa"
     },
     {
@@ -5496,14 +8095,6 @@
       "target": "pp_Port_Santos"
     },
     {
-      "source": "lp_Volcafe_Logistics",
-      "target": "pp_Port_Mombasa"
-    },
-    {
-      "source": "lp_Volcafe_Logistics",
-      "target": "pp_Port_HoChiMinh"
-    },
-    {
       "source": "pp_Port_Antwerp",
       "target": "eb_Louis_Dreyfus_Company"
     },
@@ -5564,16 +8155,88 @@
       "target": "eb_ECOM_Agroindustrial"
     },
     {
+      "source": "pp_Port_Antwerp",
+      "target": "eb_Federacion_Nacional_Cafeteros"
+    },
+    {
+      "source": "pp_Port_HoChiMinh",
+      "target": "eb_Federacion_Nacional_Cafeteros"
+    },
+    {
+      "source": "pp_Port_Mombasa",
+      "target": "eb_Federacion_Nacional_Cafeteros"
+    },
+    {
+      "source": "pp_Port_Antwerp",
+      "target": "eb_Vinh_Hiep_JSC"
+    },
+    {
+      "source": "pp_Port_HoChiMinh",
+      "target": "eb_Vinh_Hiep_JSC"
+    },
+    {
+      "source": "pp_Port_Mombasa",
+      "target": "eb_Vinh_Hiep_JSC"
+    },
+    {
+      "source": "pp_Port_Antwerp",
+      "target": "eb_Tata_Coffee"
+    },
+    {
+      "source": "pp_Port_HoChiMinh",
+      "target": "eb_Tata_Coffee"
+    },
+    {
+      "source": "pp_Port_Mombasa",
+      "target": "eb_Tata_Coffee"
+    },
+    {
+      "source": "pp_Port_Antwerp",
+      "target": "eb_Compania_Exportadora_Atlantica"
+    },
+    {
+      "source": "pp_Port_HoChiMinh",
+      "target": "eb_Compania_Exportadora_Atlantica"
+    },
+    {
+      "source": "pp_Port_Mombasa",
+      "target": "eb_Compania_Exportadora_Atlantica"
+    },
+    {
+      "source": "pp_Port_Antwerp",
+      "target": "eb_IHCAFE_Export"
+    },
+    {
+      "source": "pp_Port_HoChiMinh",
+      "target": "eb_IHCAFE_Export"
+    },
+    {
+      "source": "pp_Port_Mombasa",
+      "target": "eb_IHCAFE_Export"
+    },
+    {
+      "source": "pp_Port_Antwerp",
+      "target": "eb_Dormans_Coffee"
+    },
+    {
+      "source": "pp_Port_HoChiMinh",
+      "target": "eb_Dormans_Coffee"
+    },
+    {
+      "source": "pp_Port_Mombasa",
+      "target": "eb_Dormans_Coffee"
+    },
+    {
       "source": "eb_Louis_Dreyfus_Company",
       "target": "pw_Warehouse_Antwerp_North"
     },
     {
       "source": "eb_Louis_Dreyfus_Company",
-      "target": "pw_Warehouse_HoChiMinh_District7"
+      "target": "pw_Warehouse_Veracruz"
     },
     {
       "source": "eb_Louis_Dreyfus_Company",
-      "target": "pw_Warehouse_Mombasa_Central"
+      "target": "pw_Warehouse_Kampala"
     },
     {
       "source": "eb_Mercon_Coffee_Group",
@@ -5581,11 +8244,11 @@
     },
     {
       "source": "eb_Mercon_Coffee_Group",
-      "target": "pw_Warehouse_HoChiMinh_District7"
+      "target": "pw_Warehouse_Veracruz"
     },
     {
       "source": "eb_Mercon_Coffee_Group",
-      "target": "pw_Warehouse_Mombasa_Central"
+      "target": "pw_Warehouse_Kampala"
     },
     {
       "source": "eb_Agro_Trade_Inc",
@@ -5593,11 +8256,11 @@
     },
     {
       "source": "eb_Agro_Trade_Inc",
-      "target": "pw_Warehouse_HoChiMinh_District7"
+      "target": "pw_Warehouse_Veracruz"
     },
     {
       "source": "eb_Agro_Trade_Inc",
-      "target": "pw_Warehouse_Mombasa_Central"
+      "target": "pw_Warehouse_Kampala"
     },
     {
       "source": "eb_Olam_International",
@@ -5605,11 +8268,11 @@
     },
     {
       "source": "eb_Olam_International",
-      "target": "pw_Warehouse_HoChiMinh_District7"
+      "target": "pw_Warehouse_Veracruz"
     },
     {
       "source": "eb_Olam_International",
-      "target": "pw_Warehouse_Mombasa_Central"
+      "target": "pw_Warehouse_Kampala"
     },
     {
       "source": "eb_ECOM_Agroindustrial",
@@ -5617,55 +8280,235 @@
     },
     {
       "source": "eb_ECOM_Agroindustrial",
-      "target": "pw_Warehouse_HoChiMinh_District7"
+      "target": "pw_Warehouse_Veracruz"
     },
     {
       "source": "eb_ECOM_Agroindustrial",
-      "target": "pw_Warehouse_Mombasa_Central"
+      "target": "pw_Warehouse_Kampala"
     },
     {
-      "source": "pw_Warehouse_Santos_A",
+      "source": "eb_Federacion_Nacional_Cafeteros",
+      "target": "pw_Warehouse_Antwerp_North"
+    },
+    {
+      "source": "eb_Federacion_Nacional_Cafeteros",
+      "target": "pw_Warehouse_Veracruz"
+    },
+    {
+      "source": "eb_Federacion_Nacional_Cafeteros",
+      "target": "pw_Warehouse_Kampala"
+    },
+    {
+      "source": "eb_Vinh_Hiep_JSC",
+      "target": "pw_Warehouse_Antwerp_North"
+    },
+    {
+      "source": "eb_Vinh_Hiep_JSC",
+      "target": "pw_Warehouse_Veracruz"
+    },
+    {
+      "source": "eb_Vinh_Hiep_JSC",
+      "target": "pw_Warehouse_Kampala"
+    },
+    {
+      "source": "eb_Tata_Coffee",
+      "target": "pw_Warehouse_Antwerp_North"
+    },
+    {
+      "source": "eb_Tata_Coffee",
+      "target": "pw_Warehouse_Veracruz"
+    },
+    {
+      "source": "eb_Tata_Coffee",
+      "target": "pw_Warehouse_Kampala"
+    },
+    {
+      "source": "eb_Compania_Exportadora_Atlantica",
+      "target": "pw_Warehouse_Antwerp_North"
+    },
+    {
+      "source": "eb_Compania_Exportadora_Atlantica",
+      "target": "pw_Warehouse_Veracruz"
+    },
+    {
+      "source": "eb_Compania_Exportadora_Atlantica",
+      "target": "pw_Warehouse_Kampala"
+    },
+    {
+      "source": "eb_IHCAFE_Export",
+      "target": "pw_Warehouse_Antwerp_North"
+    },
+    {
+      "source": "eb_IHCAFE_Export",
+      "target": "pw_Warehouse_Veracruz"
+    },
+    {
+      "source": "eb_IHCAFE_Export",
+      "target": "pw_Warehouse_Kampala"
+    },
+    {
+      "source": "eb_Dormans_Coffee",
+      "target": "pw_Warehouse_Antwerp_North"
+    },
+    {
+      "source": "eb_Dormans_Coffee",
+      "target": "pw_Warehouse_Veracruz"
+    },
+    {
+      "source": "eb_Dormans_Coffee",
+      "target": "pw_Warehouse_Kampala"
+    },
+    {
+      "source": "pw_Warehouse_Buenaventura",
+      "target": "f_Farm_Narino_San_Juan_Farm"
+    },
+    {
+      "source": "pw_Warehouse_PuertoLimon",
+      "target": "f_Farm_West_Valley_Helsar_Farm"
+    },
+    {
+      "source": "pw_Warehouse_Surabaya",
+      "target": "f_Farm_Sumatra_Mandheling_Gayo_Farm"
+    },
+    {
+      "source": "pw_Warehouse_Kampala",
+      "target": "f_Farm_Sidamo_Guji_Farm"
+    },
+    {
+      "source": "pw_Warehouse_Kingston",
       "target": "f_Farm_Sao_Paulo_Fazenda_Ipe"
     },
     {
-      "source": "pw_Warehouse_HoChiMinh_District7",
+      "source": "pw_Warehouse_Kampala",
+      "target": "f_Farm_Kilimanjaro_Moshi_Estate"
+    },
+    {
+      "source": "pw_Warehouse_PuertoBarrios",
+      "target": "f_Farm_Antigua_Finca_El_Injerto"
+    },
+    {
+      "source": "pw_Warehouse_Managua",
+      "target": "f_Farm_Farm_Copan_San_Marcos_Farm"
+    },
+    {
+      "source": "pw_Warehouse_Veracruz",
       "target": "f_Farm_Lam_Dong_Arabica_Farm"
     },
     {
-      "source": "pw_Warehouse_Mombasa_Central",
+      "source": "pw_Warehouse_Kampala",
       "target": "f_Farm_Nyeri_Gatomboya_Farm"
     },
     {
-      "source": "pw_Warehouse_Santos_A",
+      "source": "pw_Warehouse_Callao",
+      "target": "f_Farm_Cajamarca_Villa_Rica_Farm"
+    },
+    {
+      "source": "pw_Warehouse_Kampala",
+      "target": "f_Farm_Harrar_Estate"
+    },
+    {
+      "source": "pw_Warehouse_Kingston",
       "target": "f_Farm_Espirito_Santo_Fazenda_Santa_Rita"
     },
     {
-      "source": "pw_Warehouse_Mombasa_Central",
+      "source": "pw_Warehouse_Managua",
+      "target": "f_Farm_Jinotega_Finca_Mierisch"
+    },
+    {
+      "source": "pw_Warehouse_Buenaventura",
+      "target": "f_Farm_Antioquia_La_Esperanza"
+    },
+    {
+      "source": "pw_Warehouse_Buenaventura",
+      "target": "f_Farm_Huila_El_Paraiso_Farm"
+    },
+    {
+      "source": "pw_Warehouse_Managua",
+      "target": "f_Farm_Copan_San_Marcos_Farm"
+    },
+    {
+      "source": "pw_Warehouse_Kampala",
       "target": "f_Farm_Western_Province_Huye_Mountain"
     },
     {
-      "source": "pw_Warehouse_HoChiMinh_District7",
+      "source": "pw_Warehouse_Kampala",
+      "target": "f_Farm_Yirgacheffe_Kochere_Farm"
+    },
+    {
+      "source": "pw_Warehouse_Surabaya",
+      "target": "f_Farm_Java_Ijen_Estate"
+    },
+    {
+      "source": "pw_Warehouse_Veracruz",
       "target": "f_Farm_Dak_Lak_Central_Highlands_Farm"
     },
     {
-      "source": "pw_Warehouse_Mombasa_Central",
+      "source": "pw_Warehouse_Kampala",
       "target": "f_Farm_Kiambu_Kagumo_Estate"
     },
     {
-      "source": "pw_Warehouse_Santos_A",
+      "source": "pw_Warehouse_PuertoBarrios",
+      "target": "f_Farm_Huehuetenango_Finca_Vista_Hermosa"
+    },
+    {
+      "source": "pw_Warehouse_PuertoLimon",
+      "target": "f_Farm_Tarrazu_La_Minita_Farm"
+    },
+    {
+      "source": "pw_Warehouse_Kingston",
       "target": "f_Farm_Minas_Gerais_Fazenda_Sertao"
     },
     {
-      "source": "pw_Warehouse_Mombasa_Central",
+      "source": "pw_Warehouse_Kingston",
+      "target": "f_Farm_Blue_Mountain_Estate"
+    },
+    {
+      "source": "pw_Warehouse_Buenaventura",
+      "target": "f_Farm_Boquete_Hacienda_Esmeralda"
+    },
+    {
+      "source": "pw_Warehouse_Veracruz",
+      "target": "f_Farm_Chiapas_Finca_Irlanda"
+    },
+    {
+      "source": "pw_Warehouse_Kampala",
       "target": "f_Farm_Huye_Mountain_Estate"
     },
     {
-      "source": "pw_Warehouse_Mombasa_Central",
+      "source": "pw_Warehouse_Kampala",
       "target": "f_Farm_Bugisu_Sipi_Falls"
     },
     {
-      "source": "pw_Warehouse_Santos_A",
+      "source": "pw_Warehouse_Sanaa",
+      "target": "f_Farm_Malabar_Coast_Estate"
+    },
+    {
+      "source": "pw_Warehouse_Sanaa",
+      "target": "f_Farm_Sanani_Bani_Matar"
+    },
+    {
+      "source": "pw_Warehouse_PuertoBarrios",
+      "target": "f_Farm_Santa_Ana_Los_Pirineos"
+    },
+    {
+      "source": "pw_Warehouse_Surabaya",
+      "target": "f_Farm_Highlands_Sigri_Estate"
+    },
+    {
+      "source": "pw_Warehouse_Kingston",
+      "target": "f_Farm_Barahona_La_Montana"
+    },
+    {
+      "source": "pw_Warehouse_Kingston",
       "target": "f_Farm_Cerrado_Fazenda_Dutra"
+    },
+    {
+      "source": "pw_Warehouse_Surabaya",
+      "target": "f_Farm_Sulawesi_Toraja_Estate"
+    },
+    {
+      "source": "pw_Warehouse_Managua",
+      "target": "f_Farm_Marcala_Highland_Estate"
     },
     {
       "source": "f_Farm_Narino_San_Juan_Farm",
