@@ -12,7 +12,7 @@ from rdflib import Graph, Namespace, RDF, RDFS, OWL, URIRef
 
 # ── 경로 설정 ──────────────────────────────────────────────
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-RDF_FILE = os.path.join(BASE_DIR, 'data', 'coffeeland_final_v3.rdf')
+RDF_FILE = os.path.join(BASE_DIR, 'data', 'coffeeland_final_v4.rdf')
 TTL_FILE = os.path.join(BASE_DIR, 'data', 'coffeeland_data_enrichment.ttl')
 OUT_DIR  = os.path.join(BASE_DIR, 'docs')
 os.makedirs(OUT_DIR, exist_ok=True)
