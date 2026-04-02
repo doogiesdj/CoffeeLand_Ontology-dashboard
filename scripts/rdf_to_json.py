@@ -358,7 +358,7 @@ for name, inst in instances.items():
             flow_links.append({'source':bid,'target':cid,'type':'supplies'})
 
 # 공급망 흐름도에 필요한 엔티티 목록 (coffeeland-web renderTraceFlow용)
-consumer_countries = {'USA','South_Korea','Japan','UK','Australia','Canada','China','Italy','Germany','France','Spain','Netherlands'}
+consumer_countries = {'USA','South_Korea','Japan','UK','Australia','Canada','China','Italy','Germany','France','Spain','Netherlands','Belgium','Singapore','Denmark','Taiwan','Switzerland'}
 
 # 창고: country, port(adjacentTo) 포함
 consumer_warehouses = []
