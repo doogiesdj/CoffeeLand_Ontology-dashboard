@@ -20,6 +20,7 @@
     <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Country"/>
     <untitled-ontology-2:produces rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Colombian_Supremo"/>
     <untitled-ontology-2:produces rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Huila_Reserve"/>
+    <untitled-ontology-2:produces rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Narino_Supremo"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Port">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
@@ -43,6 +44,7 @@
     <cof:memberOf rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Cooperative_Narino"/>
     <cof:usesProcessingMethod rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Washed"/>
       <cof:producedFor rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Colombian_Supremo"/>
+      <cof:producedFor rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Narino_Supremo"/>
       <cof:memberOfCoop rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Narino_Exporters"/>
       <cof:hasImpact rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Metric_CO2_Low"/>
     <cof:hasImpact rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Metric_FairWage_High"/>
@@ -68,6 +70,7 @@
     <cof:memberOf rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Individual_Farmer"/>
     <cof:usesProcessingMethod rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Honey"/>
       <cof:producedFor rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Tarrazu_Reserve"/>
+      <cof:producedFor rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#West_Valley_Honey"/>
       <cof:memberOfCoop rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Tarrazu_Cooperative"/>
       <cof:processedAt rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Mill_Tarrazu_Wet"/>
   </rdf:Description>
@@ -447,6 +450,7 @@
     <cof:usesProcessingMethod rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Washed"/>
       <cof:memberOfCoop rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Kilimanjaro_AMCOS"/>
       <cof:processedAt rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Mill_Tanzania_CWS"/>
+      <cof:producedFor rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Kilimanjaro_Peaberry"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#hasMilkTypeDefault">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
@@ -533,6 +537,7 @@
     <cof:usesProcessingMethod rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Washed"/>
       <cof:memberOfCoop rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Vietnam_Highland_Coop"/>
       <cof:processedAt rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Mill_Vietnam_Dry"/>
+      <cof:producedFor rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Da_Lat_Arabica"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Iced_Americano">
     <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#BeverageMenu"/>
@@ -588,6 +593,7 @@
     <cof:memberOf rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Cooperative_Nyeri"/>
     <cof:usesProcessingMethod rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Washed"/>
       <cof:producedFor rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Kenya_AA"/>
+      <cof:producedFor rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Nyeri_Peaberry"/>
       <cof:memberOfCoop rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Nyeri_Cooperative"/>
       <cof:producesGrade rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#QG_AA"/>
       <cof:hasHarvest rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Harvest_Nyeri_2023"/>
@@ -773,6 +779,7 @@
     <cof:usesProcessingMethod rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Natural"/>
       <cof:memberOfCoop rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Yirgacheffe_CWS"/>
       <cof:processedAt rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Mill_Yirgacheffe_CWS"/>
+      <cof:producedFor rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Harrar_Longberry"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#suppliedBy">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
@@ -871,6 +878,7 @@
     <cof:isLocatedIn rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Nicaragua"/>
     <cof:memberOf rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Individual_Farmer"/>
     <cof:usesProcessingMethod rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Washed_Honey"/>
+      <cof:producedFor rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Matagalpa_SHG"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Warehouse_Amsterdam_West">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
@@ -902,6 +910,7 @@
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
     <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Country"/>
     <untitled-ontology-2:produces rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Honduras_SHG"/>
+    <untitled-ontology-2:produces rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Marcala_Organic"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#usesConsumable">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
@@ -913,6 +922,7 @@
     <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Country"/>
     <untitled-ontology-2:produces rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Bourbon_Santos"/>
     <untitled-ontology-2:produces rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Santos_Premium"/>
+    <untitled-ontology-2:produces rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Cerrado_Natural"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#supplies">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
@@ -2132,6 +2142,7 @@
     <untitled-ontology-2:consumes rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Kenya_AA"/>
     <untitled-ontology-2:consumes rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Santos_Premium"/>
     <untitled-ontology-2:consumes rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Sumatra_Mandheling"/>
+    <untitled-ontology-2:produces rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Kona_Extra_Fancy"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Costa_Coffee">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
@@ -2260,6 +2271,7 @@
     <cof:memberOf rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Cooperative_Huehue"/>
     <cof:usesProcessingMethod rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Washed"/>
       <cof:producedFor rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Antigua_Premium"/>
+      <cof:producedFor rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Huehuetenango_SHB"/>
       <cof:memberOfCoop rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Antigua_Growers"/>
       <cof:hasImpact rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Metric_CO2_Low"/>
     <cof:hasImpact rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Metric_FairWage_High"/>
@@ -2516,6 +2528,7 @@
     <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Country"/>
     <untitled-ontology-2:produces rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Java_Estate"/>
     <untitled-ontology-2:produces rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Sumatra_Mandheling"/>
+    <untitled-ontology-2:produces rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Sulawesi_Toraja"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#London,Toronto">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
@@ -2608,6 +2621,7 @@
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
     <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Country"/>
     <untitled-ontology-2:produces rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Antigua_Premium"/>
+    <untitled-ontology-2:produces rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Huehuetenango_SHB"/>
   </rdf:Description>
   <!-- ═══ EquipmentSupplier Individuals (12) ═══ -->
   <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#ES_LaMarzocco"><rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/><rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#EquipmentSupplier"/><untitled-ontology-2:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">La Marzocco</untitled-ontology-2:hasName><untitled-ontology-2:isHeadquarteredIn rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Italy"/><untitled-ontology-2:hasCity rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Florence</untitled-ontology-2:hasCity><untitled-ontology-2:hasFoundedYear rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1927</untitled-ontology-2:hasFoundedYear><untitled-ontology-2:hasSpecialty rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EspressoMachine</untitled-ontology-2:hasSpecialty><untitled-ontology-2:supplies rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#EM_LaMarzocco_Linea"/></rdf:Description>
@@ -3020,6 +3034,7 @@
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
     <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Country"/>
     <untitled-ontology-2:produces rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Kenya_AA"/>
+    <untitled-ontology-2:produces rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Nyeri_Peaberry"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Farm_Farm_Sao_Paulo_Fazenda_Ipe">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
@@ -3212,11 +3227,13 @@
     <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Country"/>
     <untitled-ontology-2:produces rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Sidamo_Natural"/>
     <untitled-ontology-2:produces rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Yirgacheffe_Special"/>
+    <untitled-ontology-2:produces rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Harrar_Longberry"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Vietnam">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
     <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Country"/>
     <untitled-ontology-2:produces rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Robusta_Select"/>
+    <untitled-ontology-2:produces rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Da_Lat_Arabica"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#StraussCoffee">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
@@ -3487,6 +3504,7 @@
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
     <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Country"/>
     <untitled-ontology-2:produces rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Tarrazu_Reserve"/>
+    <untitled-ontology-2:produces rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#West_Valley_Honey"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Farm_Farm_Cajamarca_Villa_Rica_Farm">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
@@ -5130,6 +5148,930 @@
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
     <untitled-ontology-2:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Kraft Tote Bag</untitled-ontology-2:hasName>
     <untitled-ontology-2:hasMaterial rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Kraft Paper</untitled-ontology-2:hasMaterial>
+  </rdf:Description>
+
+  <!-- ═══ NEW CoffeeBrand Individuals (22) ═══ -->
+
+  <!-- 1. Blue_Mountain_Supreme (Jamaica) -->
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Blue_Mountain_Supreme">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#CoffeeBrand"/>
+    <untitled-ontology-2:usesVariety rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Blue_Mountain"/>
+    <cof:usesByChain rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Blue_Bottle"/>
+    <cof:usesByChain rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Intelligentsia_Coffee"/>
+    <cof:brandHasCertification rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Fair_Trade"/>
+    <cof:hasPriceSegment rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#PP_Luxury"/>
+    <cof:hasQualityGrade rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#QG_Specialty"/>
+    <cof:fromHarvest rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Harvest_BlueMountain_2023"/>
+  </rdf:Description>
+
+  <!-- 2. Geisha_Boquete (Panama) -->
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Geisha_Boquete">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#CoffeeBrand"/>
+    <untitled-ontology-2:usesVariety rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Geisha"/>
+    <cof:usesByChain rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Blue_Bottle"/>
+    <cof:usesByChain rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Intelligentsia_Coffee"/>
+    <cof:usesByChain rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Coffee_Project_NY"/>
+    <cof:brandHasCertification rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Rainforest_Alliance"/>
+    <cof:hasPriceSegment rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#PP_Luxury"/>
+    <cof:hasQualityGrade rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#QG_Specialty"/>
+    <cof:fromHarvest rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Harvest_Boquete_2023"/>
+  </rdf:Description>
+
+  <!-- 3. Chiapas_Altura (Mexico) -->
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Chiapas_Altura">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#CoffeeBrand"/>
+    <untitled-ontology-2:usesVariety rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Typica"/>
+    <cof:usesByChain rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Starbucks"/>
+    <cof:usesByChain rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Tim_Hortons"/>
+    <cof:usesByChain rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Dunkin_Donuts"/>
+    <cof:brandHasCertification rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Organic"/>
+    <cof:hasPriceSegment rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#PP_MidRange"/>
+    <cof:hasQualityGrade rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#QG_SHG"/>
+    <cof:fromHarvest rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Harvest_Chiapas_2023"/>
+  </rdf:Description>
+
+  <!-- 4. Rwandan_Bourbon (Rwanda) -->
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Rwandan_Bourbon">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#CoffeeBrand"/>
+    <untitled-ontology-2:usesVariety rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Bourbon"/>
+    <cof:usesByChain rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Blue_Bottle"/>
+    <cof:usesByChain rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Starbucks"/>
+    <cof:brandHasCertification rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Fair_Trade"/>
+    <cof:brandHasCertification rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Organic"/>
+    <cof:hasPriceSegment rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#PP_Premium"/>
+    <cof:hasQualityGrade rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#QG_Specialty"/>
+    <cof:fromHarvest rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Harvest_Huye_2023"/>
+  </rdf:Description>
+
+  <!-- 5. Kilimanjaro_Peaberry (Tanzania) -->
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Kilimanjaro_Peaberry">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#CoffeeBrand"/>
+    <untitled-ontology-2:usesVariety rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#SL28"/>
+    <cof:usesByChain rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Peet_Coffee"/>
+    <cof:usesByChain rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Costa_Coffee"/>
+    <cof:brandHasCertification rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Rainforest_Alliance"/>
+    <cof:hasPriceSegment rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#PP_Premium"/>
+    <cof:hasQualityGrade rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#QG_AA"/>
+    <cof:fromHarvest rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Harvest_Kilimanjaro_2023"/>
+  </rdf:Description>
+
+  <!-- 6. Bugisu_AA (Uganda) -->
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Bugisu_AA">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#CoffeeBrand"/>
+    <untitled-ontology-2:usesVariety rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#SL28"/>
+    <cof:usesByChain rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Starbucks"/>
+    <cof:usesByChain rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Costa_Coffee"/>
+    <cof:brandHasCertification rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#UTZ"/>
+    <cof:hasPriceSegment rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#PP_MidRange"/>
+    <cof:hasQualityGrade rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#QG_AA"/>
+    <cof:fromHarvest rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Harvest_Bugisu_2023"/>
+  </rdf:Description>
+
+  <!-- 7. Malabar_Monsoon (India) -->
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Malabar_Monsoon">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#CoffeeBrand"/>
+    <untitled-ontology-2:usesVariety rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Robusta"/>
+    <cof:usesByChain rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Lavazza"/>
+    <cof:usesByChain rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Costa_Coffee"/>
+    <cof:usesByChain rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Caffe_Nero"/>
+    <cof:brandHasCertification rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Rainforest_Alliance"/>
+    <cof:hasPriceSegment rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#PP_Premium"/>
+    <cof:hasQualityGrade rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#QG_Premium"/>
+    <cof:fromHarvest rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Harvest_Malabar_2023"/>
+  </rdf:Description>
+
+  <!-- 8. Mocha_Sanani (Yemen) -->
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Mocha_Sanani">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#CoffeeBrand"/>
+    <untitled-ontology-2:usesVariety rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Typica"/>
+    <cof:usesByChain rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Blue_Bottle"/>
+    <cof:usesByChain rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Intelligentsia_Coffee"/>
+    <cof:brandHasCertification rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Organic"/>
+    <cof:hasPriceSegment rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#PP_Luxury"/>
+    <cof:hasQualityGrade rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#QG_Specialty"/>
+    <cof:fromHarvest rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Harvest_Sanani_2023"/>
+  </rdf:Description>
+
+  <!-- 9. Matagalpa_SHG (Nicaragua) -->
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Matagalpa_SHG">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#CoffeeBrand"/>
+    <untitled-ontology-2:usesVariety rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Caturra"/>
+    <cof:usesByChain rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Starbucks"/>
+    <cof:usesByChain rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Caribou_Coffee"/>
+    <cof:brandHasCertification rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Fair_Trade"/>
+    <cof:hasPriceSegment rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#PP_MidRange"/>
+    <cof:hasQualityGrade rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#QG_SHG"/>
+    <cof:fromHarvest rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Harvest_Matagalpa_2023"/>
+  </rdf:Description>
+
+  <!-- 10. Pacamara_Reserve (El_Salvador) -->
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Pacamara_Reserve">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#CoffeeBrand"/>
+    <untitled-ontology-2:usesVariety rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Bourbon"/>
+    <cof:usesByChain rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Intelligentsia_Coffee"/>
+    <cof:usesByChain rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Philz_Coffee"/>
+    <cof:brandHasCertification rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Rainforest_Alliance"/>
+    <cof:brandHasCertification rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Organic"/>
+    <cof:hasPriceSegment rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#PP_Premium"/>
+    <cof:hasQualityGrade rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#QG_Specialty"/>
+    <cof:fromHarvest rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Harvest_SantaAna_2023"/>
+  </rdf:Description>
+
+  <!-- 11. PNG_Sigri (Papua_New_Guinea) -->
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#PNG_Sigri">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#CoffeeBrand"/>
+    <untitled-ontology-2:usesVariety rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Typica"/>
+    <cof:usesByChain rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Starbucks"/>
+    <cof:usesByChain rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#The_Coffee_Bean_And_Tea_Leaf"/>
+    <cof:brandHasCertification rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#UTZ"/>
+    <cof:hasPriceSegment rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#PP_Premium"/>
+    <cof:hasQualityGrade rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#QG_Premium"/>
+    <cof:fromHarvest rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Harvest_Sigri_2023"/>
+  </rdf:Description>
+
+  <!-- 12. Barahona_AA (Dominican_Republic) -->
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Barahona_AA">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#CoffeeBrand"/>
+    <untitled-ontology-2:usesVariety rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Typica"/>
+    <cof:usesByChain rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Dunkin_Donuts"/>
+    <cof:usesByChain rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#McCafe"/>
+    <cof:brandHasCertification rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Organic"/>
+    <cof:hasPriceSegment rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#PP_MidRange"/>
+    <cof:hasQualityGrade rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#QG_AA"/>
+    <cof:fromHarvest rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Harvest_Barahona_2023"/>
+  </rdf:Description>
+
+  <!-- 13. Kona_Extra_Fancy (USA) -->
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Kona_Extra_Fancy">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#CoffeeBrand"/>
+    <untitled-ontology-2:usesVariety rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Kona"/>
+    <cof:usesByChain rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Starbucks"/>
+    <cof:usesByChain rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Peet_Coffee"/>
+    <cof:usesByChain rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Blue_Bottle"/>
+    <cof:brandHasCertification rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Organic"/>
+    <cof:hasPriceSegment rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#PP_Luxury"/>
+    <cof:hasQualityGrade rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#QG_Specialty"/>
+    <cof:fromHarvest rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Harvest_Kona_2023"/>
+  </rdf:Description>
+
+  <!-- 14. Narino_Supremo (Colombia) -->
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Narino_Supremo">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#CoffeeBrand"/>
+    <untitled-ontology-2:usesVariety rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Caturra"/>
+    <cof:usesByChain rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Intelligentsia_Coffee"/>
+    <cof:usesByChain rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Philz_Coffee"/>
+    <cof:brandHasCertification rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Fair_Trade"/>
+    <cof:brandHasCertification rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Organic"/>
+    <cof:hasPriceSegment rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#PP_Premium"/>
+    <cof:hasQualityGrade rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#QG_SHG"/>
+    <cof:fromHarvest rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Harvest_Narino_2024"/>
+  </rdf:Description>
+
+  <!-- 15. Harrar_Longberry (Ethiopia) -->
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Harrar_Longberry">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#CoffeeBrand"/>
+    <untitled-ontology-2:usesVariety rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Typica"/>
+    <cof:usesByChain rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Blue_Bottle"/>
+    <cof:usesByChain rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Coffee_Project_NY"/>
+    <cof:brandHasCertification rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Organic"/>
+    <cof:hasPriceSegment rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#PP_Premium"/>
+    <cof:hasQualityGrade rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#QG_Premium"/>
+    <cof:fromHarvest rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Harvest_Harrar_2023"/>
+  </rdf:Description>
+
+  <!-- 16. Cerrado_Natural (Brazil) -->
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Cerrado_Natural">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#CoffeeBrand"/>
+    <untitled-ontology-2:usesVariety rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Mundo_Novo"/>
+    <cof:usesByChain rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Lavazza"/>
+    <cof:usesByChain rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Costa_Coffee"/>
+    <cof:usesByChain rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Starbucks"/>
+    <cof:brandHasCertification rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#UTZ"/>
+    <cof:hasPriceSegment rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#PP_MidRange"/>
+    <cof:hasQualityGrade rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#QG_Premium"/>
+    <cof:fromHarvest rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Harvest_Cerrado_2023"/>
+  </rdf:Description>
+
+  <!-- 17. Sulawesi_Toraja (Indonesia) -->
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Sulawesi_Toraja">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#CoffeeBrand"/>
+    <untitled-ontology-2:usesVariety rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Typica"/>
+    <cof:usesByChain rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Starbucks"/>
+    <cof:usesByChain rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Peet_Coffee"/>
+    <cof:brandHasCertification rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Rainforest_Alliance"/>
+    <cof:hasPriceSegment rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#PP_Premium"/>
+    <cof:hasQualityGrade rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#QG_Premium"/>
+    <cof:fromHarvest rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Harvest_Sulawesi_2023"/>
+  </rdf:Description>
+
+  <!-- 18. Nyeri_Peaberry (Kenya) -->
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Nyeri_Peaberry">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#CoffeeBrand"/>
+    <untitled-ontology-2:usesVariety rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#SL28"/>
+    <cof:usesByChain rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Blue_Bottle"/>
+    <cof:usesByChain rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Intelligentsia_Coffee"/>
+    <cof:brandHasCertification rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Fair_Trade"/>
+    <cof:hasPriceSegment rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#PP_Specialty"/>
+    <cof:hasQualityGrade rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#QG_Specialty"/>
+    <cof:fromHarvest rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Harvest_Nyeri_2024"/>
+  </rdf:Description>
+
+  <!-- 19. Huehuetenango_SHB (Guatemala) -->
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Huehuetenango_SHB">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#CoffeeBrand"/>
+    <untitled-ontology-2:usesVariety rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Bourbon"/>
+    <cof:usesByChain rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Starbucks"/>
+    <cof:usesByChain rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Intelligentsia_Coffee"/>
+    <cof:brandHasCertification rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Rainforest_Alliance"/>
+    <cof:hasPriceSegment rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#PP_Premium"/>
+    <cof:hasQualityGrade rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#QG_SHG"/>
+    <cof:fromHarvest rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Harvest_Huehuetenango_2023"/>
+  </rdf:Description>
+
+  <!-- 20. West_Valley_Honey (Costa_Rica) -->
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#West_Valley_Honey">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#CoffeeBrand"/>
+    <untitled-ontology-2:usesVariety rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Caturra"/>
+    <cof:usesByChain rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Blue_Bottle"/>
+    <cof:usesByChain rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Philz_Coffee"/>
+    <cof:brandHasCertification rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Rainforest_Alliance"/>
+    <cof:brandHasCertification rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Organic"/>
+    <cof:hasPriceSegment rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#PP_Premium"/>
+    <cof:hasQualityGrade rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#QG_Specialty"/>
+    <cof:fromHarvest rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Harvest_WestValley_2023"/>
+  </rdf:Description>
+
+  <!-- 21. Marcala_Organic (Honduras) -->
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Marcala_Organic">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#CoffeeBrand"/>
+    <untitled-ontology-2:usesVariety rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Catimor"/>
+    <cof:usesByChain rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Caribou_Coffee"/>
+    <cof:usesByChain rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Tim_Hortons"/>
+    <cof:brandHasCertification rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Fair_Trade"/>
+    <cof:brandHasCertification rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Organic"/>
+    <cof:hasPriceSegment rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#PP_MidRange"/>
+    <cof:hasQualityGrade rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#QG_SHG"/>
+    <cof:fromHarvest rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Harvest_Marcala_2023"/>
+  </rdf:Description>
+
+  <!-- 22. Da_Lat_Arabica (Vietnam) -->
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Da_Lat_Arabica">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#CoffeeBrand"/>
+    <untitled-ontology-2:usesVariety rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Catimor"/>
+    <cof:usesByChain rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Luckin_Coffee"/>
+    <cof:usesByChain rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#The_Coffee_Bean_And_Tea_Leaf"/>
+    <cof:brandHasCertification rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#UTZ"/>
+    <cof:hasPriceSegment rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#PP_MidRange"/>
+    <cof:hasQualityGrade rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#QG_Premium"/>
+    <cof:fromHarvest rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Harvest_DaLat_2023"/>
+  </rdf:Description>
+
+  <!-- ═══ NEW Country Individuals (12) ═══ -->
+
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Jamaica">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Country"/>
+    <untitled-ontology-2:produces rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Blue_Mountain_Supreme"/>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Panama">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Country"/>
+    <untitled-ontology-2:produces rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Geisha_Boquete"/>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Mexico">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Country"/>
+    <untitled-ontology-2:produces rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Chiapas_Altura"/>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Rwanda">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Country"/>
+    <untitled-ontology-2:produces rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Rwandan_Bourbon"/>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Tanzania">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Country"/>
+    <untitled-ontology-2:produces rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Kilimanjaro_Peaberry"/>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Uganda">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Country"/>
+    <untitled-ontology-2:produces rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Bugisu_AA"/>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#India">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Country"/>
+    <untitled-ontology-2:produces rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Malabar_Monsoon"/>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Yemen">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Country"/>
+    <untitled-ontology-2:produces rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Mocha_Sanani"/>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Nicaragua">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Country"/>
+    <untitled-ontology-2:produces rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Matagalpa_SHG"/>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#El_Salvador">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Country"/>
+    <untitled-ontology-2:produces rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Pacamara_Reserve"/>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Papua_New_Guinea">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Country"/>
+    <untitled-ontology-2:produces rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#PNG_Sigri"/>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Dominican_Republic">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Country"/>
+    <untitled-ontology-2:produces rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Barahona_AA"/>
+  </rdf:Description>
+
+  <!-- ═══ NEW Farm Individuals ═══ -->
+
+  <!-- Farm for Blue_Mountain_Supreme -->
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Farm_Blue_Mountain_Estate">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Farm"/>
+    <untitled-ontology-2:establishedYear rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">1952</untitled-ontology-2:establishedYear>
+    <untitled-ontology-2:hasAltitudeRange rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1500-2000</untitled-ontology-2:hasAltitudeRange>
+    <untitled-ontology-2:hasProcessingMethod rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Washed"/>
+    <hasFarmSize>Small</hasFarmSize>
+    <cof:isLocatedIn rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Jamaica"/>
+    <cof:producedFor rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Blue_Mountain_Supreme"/>
+    <cof:hasHarvest rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Harvest_BlueMountain_2023"/>
+    <cof:processedAt rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Mill_Jamaica_CWS"/>
+  </rdf:Description>
+
+  <!-- Farm for Geisha_Boquete -->
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Farm_Boquete_Hacienda_Esmeralda">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Farm"/>
+    <untitled-ontology-2:establishedYear rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">1996</untitled-ontology-2:establishedYear>
+    <untitled-ontology-2:hasAltitudeRange rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1600-1900</untitled-ontology-2:hasAltitudeRange>
+    <untitled-ontology-2:hasProcessingMethod rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Washed"/>
+    <hasFarmSize>Medium</hasFarmSize>
+    <cof:isLocatedIn rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Panama"/>
+    <cof:producedFor rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Geisha_Boquete"/>
+    <cof:hasHarvest rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Harvest_Boquete_2023"/>
+    <cof:processedAt rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Mill_Boquete_Wet"/>
+  </rdf:Description>
+
+  <!-- Farm for Chiapas_Altura -->
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Farm_Chiapas_Finca_Irlanda">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Farm"/>
+    <untitled-ontology-2:establishedYear rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">1970</untitled-ontology-2:establishedYear>
+    <untitled-ontology-2:hasAltitudeRange rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1200-1600</untitled-ontology-2:hasAltitudeRange>
+    <untitled-ontology-2:hasProcessingMethod rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Washed"/>
+    <hasFarmSize>Medium</hasFarmSize>
+    <cof:isLocatedIn rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Mexico"/>
+    <cof:producedFor rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Chiapas_Altura"/>
+    <cof:hasHarvest rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Harvest_Chiapas_2023"/>
+    <cof:processedAt rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Mill_Chiapas_Wet"/>
+  </rdf:Description>
+
+  <!-- Farm for Rwandan_Bourbon -->
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Farm_Huye_Mountain_Estate">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Farm"/>
+    <untitled-ontology-2:establishedYear rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">2005</untitled-ontology-2:establishedYear>
+    <untitled-ontology-2:hasAltitudeRange rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1700-2100</untitled-ontology-2:hasAltitudeRange>
+    <untitled-ontology-2:hasProcessingMethod rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Washed"/>
+    <hasFarmSize>Small</hasFarmSize>
+    <cof:isLocatedIn rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Rwanda"/>
+    <cof:producedFor rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Rwandan_Bourbon"/>
+    <cof:hasHarvest rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Harvest_Huye_2023"/>
+    <cof:processedAt rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Mill_Rwanda_CWS"/>
+  </rdf:Description>
+
+  <!-- Farm for Bugisu_AA -->
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Farm_Bugisu_Sipi_Falls">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Farm"/>
+    <untitled-ontology-2:establishedYear rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">1998</untitled-ontology-2:establishedYear>
+    <untitled-ontology-2:hasAltitudeRange rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1500-1900</untitled-ontology-2:hasAltitudeRange>
+    <untitled-ontology-2:hasProcessingMethod rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Washed"/>
+    <hasFarmSize>Small</hasFarmSize>
+    <cof:isLocatedIn rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Uganda"/>
+    <cof:producedFor rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Bugisu_AA"/>
+    <cof:hasHarvest rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Harvest_Bugisu_2023"/>
+    <cof:processedAt rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Mill_Uganda_CWS"/>
+  </rdf:Description>
+
+  <!-- Farm for Malabar_Monsoon -->
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Farm_Malabar_Coast_Estate">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Farm"/>
+    <untitled-ontology-2:establishedYear rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">1945</untitled-ontology-2:establishedYear>
+    <untitled-ontology-2:hasAltitudeRange rdf:datatype="http://www.w3.org/2001/XMLSchema#string">800-1200</untitled-ontology-2:hasAltitudeRange>
+    <untitled-ontology-2:hasProcessingMethod rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Natural"/>
+    <hasFarmSize>Large</hasFarmSize>
+    <cof:isLocatedIn rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#India"/>
+    <cof:producedFor rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Malabar_Monsoon"/>
+    <cof:hasHarvest rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Harvest_Malabar_2023"/>
+    <cof:processedAt rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Mill_Malabar_Dry"/>
+  </rdf:Description>
+
+  <!-- Farm for Mocha_Sanani -->
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Farm_Sanani_Bani_Matar">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Farm"/>
+    <untitled-ontology-2:establishedYear rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">1890</untitled-ontology-2:establishedYear>
+    <untitled-ontology-2:hasAltitudeRange rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1800-2400</untitled-ontology-2:hasAltitudeRange>
+    <untitled-ontology-2:hasProcessingMethod rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Natural"/>
+    <hasFarmSize>Small</hasFarmSize>
+    <cof:isLocatedIn rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Yemen"/>
+    <cof:producedFor rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Mocha_Sanani"/>
+    <cof:hasHarvest rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Harvest_Sanani_2023"/>
+    <cof:processedAt rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Mill_Yemen_Dry"/>
+  </rdf:Description>
+
+  <!-- Farm for Pacamara_Reserve -->
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Farm_Santa_Ana_Los_Pirineos">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Farm"/>
+    <untitled-ontology-2:establishedYear rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">1985</untitled-ontology-2:establishedYear>
+    <untitled-ontology-2:hasAltitudeRange rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1400-1700</untitled-ontology-2:hasAltitudeRange>
+    <untitled-ontology-2:hasProcessingMethod rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Honey"/>
+    <hasFarmSize>Medium</hasFarmSize>
+    <cof:isLocatedIn rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#El_Salvador"/>
+    <cof:producedFor rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Pacamara_Reserve"/>
+    <cof:hasHarvest rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Harvest_SantaAna_2023"/>
+    <cof:processedAt rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Mill_ElSalvador_Wet"/>
+  </rdf:Description>
+
+  <!-- Farm for PNG_Sigri -->
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Farm_Highlands_Sigri_Estate">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Farm"/>
+    <untitled-ontology-2:establishedYear rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">1960</untitled-ontology-2:establishedYear>
+    <untitled-ontology-2:hasAltitudeRange rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1500-1800</untitled-ontology-2:hasAltitudeRange>
+    <untitled-ontology-2:hasProcessingMethod rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Washed"/>
+    <hasFarmSize>Large</hasFarmSize>
+    <cof:isLocatedIn rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Papua_New_Guinea"/>
+    <cof:producedFor rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#PNG_Sigri"/>
+    <cof:hasHarvest rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Harvest_Sigri_2023"/>
+    <cof:processedAt rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Mill_PNG_Wet"/>
+  </rdf:Description>
+
+  <!-- Farm for Barahona_AA -->
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Farm_Barahona_La_Montana">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Farm"/>
+    <untitled-ontology-2:establishedYear rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">1975</untitled-ontology-2:establishedYear>
+    <untitled-ontology-2:hasAltitudeRange rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1000-1400</untitled-ontology-2:hasAltitudeRange>
+    <untitled-ontology-2:hasProcessingMethod rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Washed"/>
+    <hasFarmSize>Medium</hasFarmSize>
+    <cof:isLocatedIn rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Dominican_Republic"/>
+    <cof:producedFor rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Barahona_AA"/>
+    <cof:hasHarvest rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Harvest_Barahona_2023"/>
+    <cof:processedAt rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Mill_Barahona_Wet"/>
+  </rdf:Description>
+
+  <!-- Farm for Kona_Extra_Fancy -->
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Farm_Kona_Greenwell">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Farm"/>
+    <untitled-ontology-2:establishedYear rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">1850</untitled-ontology-2:establishedYear>
+    <untitled-ontology-2:hasAltitudeRange rdf:datatype="http://www.w3.org/2001/XMLSchema#string">300-750</untitled-ontology-2:hasAltitudeRange>
+    <untitled-ontology-2:hasProcessingMethod rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Washed"/>
+    <hasFarmSize>Medium</hasFarmSize>
+    <cof:isLocatedIn rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#USA"/>
+    <cof:producedFor rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Kona_Extra_Fancy"/>
+    <cof:hasHarvest rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Harvest_Kona_2023"/>
+    <cof:processedAt rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Mill_Kona_Wet"/>
+  </rdf:Description>
+
+  <!-- Farm for Cerrado_Natural -->
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Farm_Cerrado_Fazenda_Dutra">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Farm"/>
+    <untitled-ontology-2:establishedYear rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">1978</untitled-ontology-2:establishedYear>
+    <untitled-ontology-2:hasAltitudeRange rdf:datatype="http://www.w3.org/2001/XMLSchema#string">900-1100</untitled-ontology-2:hasAltitudeRange>
+    <untitled-ontology-2:hasProcessingMethod rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Natural"/>
+    <hasFarmSize>Large</hasFarmSize>
+    <cof:isLocatedIn rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Brazil"/>
+    <cof:producedFor rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Cerrado_Natural"/>
+    <cof:hasHarvest rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Harvest_Cerrado_2023"/>
+    <cof:processedAt rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Mill_Cerrado_Dry"/>
+  </rdf:Description>
+
+  <!-- Farm for Sulawesi_Toraja -->
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Farm_Sulawesi_Toraja_Estate">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Farm"/>
+    <untitled-ontology-2:establishedYear rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">1965</untitled-ontology-2:establishedYear>
+    <untitled-ontology-2:hasAltitudeRange rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1200-1800</untitled-ontology-2:hasAltitudeRange>
+    <untitled-ontology-2:hasProcessingMethod rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Washed"/>
+    <hasFarmSize>Medium</hasFarmSize>
+    <cof:isLocatedIn rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Indonesia"/>
+    <cof:producedFor rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Sulawesi_Toraja"/>
+    <cof:hasHarvest rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Harvest_Sulawesi_2023"/>
+    <cof:processedAt rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Mill_Sulawesi_Wet"/>
+  </rdf:Description>
+
+  <!-- Farm for Marcala_Organic -->
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Farm_Marcala_Highland_Estate">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Farm"/>
+    <untitled-ontology-2:establishedYear rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">1990</untitled-ontology-2:establishedYear>
+    <untitled-ontology-2:hasAltitudeRange rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1300-1700</untitled-ontology-2:hasAltitudeRange>
+    <untitled-ontology-2:hasProcessingMethod rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Washed"/>
+    <hasFarmSize>Small</hasFarmSize>
+    <cof:isLocatedIn rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Honduras"/>
+    <cof:producedFor rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Marcala_Organic"/>
+    <cof:hasHarvest rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Harvest_Marcala_2023"/>
+    <cof:processedAt rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Mill_Marcala_Wet"/>
+  </rdf:Description>
+
+  <!-- ═══ NEW Harvest Individuals (22) ═══ -->
+
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Harvest_BlueMountain_2023">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Harvest"/>
+    <rdfs:label xml:lang="ko">Blue Mountain Estate 2023 Harvest</rdfs:label>
+    <cof:harvestedFrom rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Farm_Blue_Mountain_Estate"/>
+    <cof:harvestYear rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">2023</cof:harvestYear>
+    <cof:harvestSeason rdf:datatype="http://www.w3.org/2001/XMLSchema#string">November-February</cof:harvestSeason>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Harvest_Boquete_2023">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Harvest"/>
+    <rdfs:label xml:lang="ko">Boquete Hacienda Esmeralda 2023 Harvest</rdfs:label>
+    <cof:harvestedFrom rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Farm_Boquete_Hacienda_Esmeralda"/>
+    <cof:harvestYear rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">2023</cof:harvestYear>
+    <cof:harvestSeason rdf:datatype="http://www.w3.org/2001/XMLSchema#string">December-March</cof:harvestSeason>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Harvest_Chiapas_2023">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Harvest"/>
+    <rdfs:label xml:lang="ko">Chiapas Finca Irlanda 2023 Harvest</rdfs:label>
+    <cof:harvestedFrom rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Farm_Chiapas_Finca_Irlanda"/>
+    <cof:harvestYear rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">2023</cof:harvestYear>
+    <cof:harvestSeason rdf:datatype="http://www.w3.org/2001/XMLSchema#string">October-February</cof:harvestSeason>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Harvest_Huye_2023">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Harvest"/>
+    <rdfs:label xml:lang="ko">Huye Mountain Estate 2023 Harvest</rdfs:label>
+    <cof:harvestedFrom rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Farm_Huye_Mountain_Estate"/>
+    <cof:harvestYear rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">2023</cof:harvestYear>
+    <cof:harvestSeason rdf:datatype="http://www.w3.org/2001/XMLSchema#string">March-July</cof:harvestSeason>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Harvest_Kilimanjaro_2023">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Harvest"/>
+    <rdfs:label xml:lang="ko">Kilimanjaro Moshi Estate 2023 Harvest</rdfs:label>
+    <cof:harvestedFrom rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Farm_Kilimanjaro_Moshi_Estate"/>
+    <cof:harvestYear rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">2023</cof:harvestYear>
+    <cof:harvestSeason rdf:datatype="http://www.w3.org/2001/XMLSchema#string">June-October</cof:harvestSeason>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Harvest_Bugisu_2023">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Harvest"/>
+    <rdfs:label xml:lang="ko">Bugisu Sipi Falls 2023 Harvest</rdfs:label>
+    <cof:harvestedFrom rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Farm_Bugisu_Sipi_Falls"/>
+    <cof:harvestYear rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">2023</cof:harvestYear>
+    <cof:harvestSeason rdf:datatype="http://www.w3.org/2001/XMLSchema#string">September-December</cof:harvestSeason>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Harvest_Malabar_2023">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Harvest"/>
+    <rdfs:label xml:lang="ko">Malabar Coast Estate 2023 Harvest</rdfs:label>
+    <cof:harvestedFrom rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Farm_Malabar_Coast_Estate"/>
+    <cof:harvestYear rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">2023</cof:harvestYear>
+    <cof:harvestSeason rdf:datatype="http://www.w3.org/2001/XMLSchema#string">November-February</cof:harvestSeason>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Harvest_Sanani_2023">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Harvest"/>
+    <rdfs:label xml:lang="ko">Sanani Bani Matar 2023 Harvest</rdfs:label>
+    <cof:harvestedFrom rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Farm_Sanani_Bani_Matar"/>
+    <cof:harvestYear rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">2023</cof:harvestYear>
+    <cof:harvestSeason rdf:datatype="http://www.w3.org/2001/XMLSchema#string">October-December</cof:harvestSeason>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Harvest_Matagalpa_2023">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Harvest"/>
+    <rdfs:label xml:lang="ko">Jinotega Finca Mierisch 2023 Harvest</rdfs:label>
+    <cof:harvestedFrom rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Farm_Jinotega_Finca_Mierisch"/>
+    <cof:harvestYear rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">2023</cof:harvestYear>
+    <cof:harvestSeason rdf:datatype="http://www.w3.org/2001/XMLSchema#string">November-March</cof:harvestSeason>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Harvest_SantaAna_2023">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Harvest"/>
+    <rdfs:label xml:lang="ko">Santa Ana Los Pirineos 2023 Harvest</rdfs:label>
+    <cof:harvestedFrom rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Farm_Santa_Ana_Los_Pirineos"/>
+    <cof:harvestYear rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">2023</cof:harvestYear>
+    <cof:harvestSeason rdf:datatype="http://www.w3.org/2001/XMLSchema#string">November-February</cof:harvestSeason>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Harvest_Sigri_2023">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Harvest"/>
+    <rdfs:label xml:lang="ko">Highlands Sigri Estate 2023 Harvest</rdfs:label>
+    <cof:harvestedFrom rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Farm_Highlands_Sigri_Estate"/>
+    <cof:harvestYear rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">2023</cof:harvestYear>
+    <cof:harvestSeason rdf:datatype="http://www.w3.org/2001/XMLSchema#string">April-August</cof:harvestSeason>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Harvest_Barahona_2023">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Harvest"/>
+    <rdfs:label xml:lang="ko">Barahona La Montana 2023 Harvest</rdfs:label>
+    <cof:harvestedFrom rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Farm_Barahona_La_Montana"/>
+    <cof:harvestYear rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">2023</cof:harvestYear>
+    <cof:harvestSeason rdf:datatype="http://www.w3.org/2001/XMLSchema#string">September-January</cof:harvestSeason>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Harvest_Kona_2023">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Harvest"/>
+    <rdfs:label xml:lang="ko">Kona Greenwell 2023 Harvest</rdfs:label>
+    <cof:harvestedFrom rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Farm_Kona_Greenwell"/>
+    <cof:harvestYear rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">2023</cof:harvestYear>
+    <cof:harvestSeason rdf:datatype="http://www.w3.org/2001/XMLSchema#string">August-January</cof:harvestSeason>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Harvest_Narino_2024">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Harvest"/>
+    <rdfs:label xml:lang="ko">Narino San Juan Farm 2024 Harvest</rdfs:label>
+    <cof:harvestedFrom rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Farm_Narino_San_Juan_Farm"/>
+    <cof:harvestYear rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">2024</cof:harvestYear>
+    <cof:harvestSeason rdf:datatype="http://www.w3.org/2001/XMLSchema#string">March-May</cof:harvestSeason>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Harvest_Harrar_2023">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Harvest"/>
+    <rdfs:label xml:lang="ko">Harrar Estate 2023 Harvest</rdfs:label>
+    <cof:harvestedFrom rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Farm_Harrar_Estate"/>
+    <cof:harvestYear rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">2023</cof:harvestYear>
+    <cof:harvestSeason rdf:datatype="http://www.w3.org/2001/XMLSchema#string">October-January</cof:harvestSeason>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Harvest_Cerrado_2023">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Harvest"/>
+    <rdfs:label xml:lang="ko">Cerrado Fazenda Dutra 2023 Harvest</rdfs:label>
+    <cof:harvestedFrom rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Farm_Cerrado_Fazenda_Dutra"/>
+    <cof:harvestYear rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">2023</cof:harvestYear>
+    <cof:harvestSeason rdf:datatype="http://www.w3.org/2001/XMLSchema#string">May-September</cof:harvestSeason>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Harvest_Sulawesi_2023">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Harvest"/>
+    <rdfs:label xml:lang="ko">Sulawesi Toraja Estate 2023 Harvest</rdfs:label>
+    <cof:harvestedFrom rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Farm_Sulawesi_Toraja_Estate"/>
+    <cof:harvestYear rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">2023</cof:harvestYear>
+    <cof:harvestSeason rdf:datatype="http://www.w3.org/2001/XMLSchema#string">May-October</cof:harvestSeason>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Harvest_Nyeri_2024">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Harvest"/>
+    <rdfs:label xml:lang="ko">Nyeri Gatomboya Farm 2024 Harvest</rdfs:label>
+    <cof:harvestedFrom rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Farm_Nyeri_Gatomboya_Farm"/>
+    <cof:harvestYear rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">2024</cof:harvestYear>
+    <cof:harvestSeason rdf:datatype="http://www.w3.org/2001/XMLSchema#string">October-December</cof:harvestSeason>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Harvest_Huehuetenango_2023">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Harvest"/>
+    <rdfs:label xml:lang="ko">Huehuetenango Finca Vista Hermosa 2023 Harvest</rdfs:label>
+    <cof:harvestedFrom rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Farm_Huehuetenango_Finca_Vista_Hermosa"/>
+    <cof:harvestYear rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">2023</cof:harvestYear>
+    <cof:harvestSeason rdf:datatype="http://www.w3.org/2001/XMLSchema#string">January-April</cof:harvestSeason>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Harvest_WestValley_2023">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Harvest"/>
+    <rdfs:label xml:lang="ko">West Valley Helsar Farm 2023 Harvest</rdfs:label>
+    <cof:harvestedFrom rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Farm_West_Valley_Helsar_Farm"/>
+    <cof:harvestYear rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">2023</cof:harvestYear>
+    <cof:harvestSeason rdf:datatype="http://www.w3.org/2001/XMLSchema#string">November-March</cof:harvestSeason>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Harvest_Marcala_2023">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Harvest"/>
+    <rdfs:label xml:lang="ko">Marcala Highland Estate 2023 Harvest</rdfs:label>
+    <cof:harvestedFrom rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Farm_Marcala_Highland_Estate"/>
+    <cof:harvestYear rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">2023</cof:harvestYear>
+    <cof:harvestSeason rdf:datatype="http://www.w3.org/2001/XMLSchema#string">November-March</cof:harvestSeason>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Harvest_DaLat_2023">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Harvest"/>
+    <rdfs:label xml:lang="ko">Lam Dong Arabica Farm 2023 Harvest</rdfs:label>
+    <cof:harvestedFrom rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Farm_Lam_Dong_Arabica_Farm"/>
+    <cof:harvestYear rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">2023</cof:harvestYear>
+    <cof:harvestSeason rdf:datatype="http://www.w3.org/2001/XMLSchema#string">October-January</cof:harvestSeason>
+  </rdf:Description>
+
+  <!-- ═══ NEW ProcessingMill Individuals ═══ -->
+
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Mill_Jamaica_CWS">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#ProcessingMill"/>
+    <rdfs:label xml:lang="ko">Jamaica CWS Processing Mill</rdfs:label>
+    <cof:isLocatedIn rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Jamaica"/>
+    <cof:processesFor rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Farm_Blue_Mountain_Estate"/>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Mill_Boquete_Wet">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#ProcessingMill"/>
+    <rdfs:label xml:lang="ko">Boquete Wet Processing Mill</rdfs:label>
+    <cof:isLocatedIn rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Panama"/>
+    <cof:processesFor rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Farm_Boquete_Hacienda_Esmeralda"/>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Mill_Chiapas_Wet">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#ProcessingMill"/>
+    <rdfs:label xml:lang="ko">Chiapas Wet Processing Mill</rdfs:label>
+    <cof:isLocatedIn rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Mexico"/>
+    <cof:processesFor rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Farm_Chiapas_Finca_Irlanda"/>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Mill_Rwanda_CWS">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#ProcessingMill"/>
+    <rdfs:label xml:lang="ko">Rwanda CWS Processing Mill</rdfs:label>
+    <cof:isLocatedIn rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Rwanda"/>
+    <cof:processesFor rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Farm_Huye_Mountain_Estate"/>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Mill_Uganda_CWS">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#ProcessingMill"/>
+    <rdfs:label xml:lang="ko">Uganda CWS Processing Mill</rdfs:label>
+    <cof:isLocatedIn rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Uganda"/>
+    <cof:processesFor rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Farm_Bugisu_Sipi_Falls"/>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Mill_Malabar_Dry">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#ProcessingMill"/>
+    <rdfs:label xml:lang="ko">Malabar Dry Processing Mill</rdfs:label>
+    <cof:isLocatedIn rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#India"/>
+    <cof:processesFor rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Farm_Malabar_Coast_Estate"/>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Mill_Yemen_Dry">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#ProcessingMill"/>
+    <rdfs:label xml:lang="ko">Yemen Dry Processing Mill</rdfs:label>
+    <cof:isLocatedIn rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Yemen"/>
+    <cof:processesFor rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Farm_Sanani_Bani_Matar"/>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Mill_Nicaragua_Wet">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#ProcessingMill"/>
+    <rdfs:label xml:lang="ko">Nicaragua Wet Processing Mill</rdfs:label>
+    <cof:isLocatedIn rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Nicaragua"/>
+    <cof:processesFor rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Farm_Jinotega_Finca_Mierisch"/>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Mill_ElSalvador_Wet">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#ProcessingMill"/>
+    <rdfs:label xml:lang="ko">El Salvador Wet Processing Mill</rdfs:label>
+    <cof:isLocatedIn rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#El_Salvador"/>
+    <cof:processesFor rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Farm_Santa_Ana_Los_Pirineos"/>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Mill_PNG_Wet">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#ProcessingMill"/>
+    <rdfs:label xml:lang="ko">Papua New Guinea Wet Processing Mill</rdfs:label>
+    <cof:isLocatedIn rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Papua_New_Guinea"/>
+    <cof:processesFor rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Farm_Highlands_Sigri_Estate"/>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Mill_Barahona_Wet">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#ProcessingMill"/>
+    <rdfs:label xml:lang="ko">Barahona Wet Processing Mill</rdfs:label>
+    <cof:isLocatedIn rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Dominican_Republic"/>
+    <cof:processesFor rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Farm_Barahona_La_Montana"/>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Mill_Kona_Wet">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#ProcessingMill"/>
+    <rdfs:label xml:lang="ko">Kona Wet Processing Mill</rdfs:label>
+    <cof:isLocatedIn rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#USA"/>
+    <cof:processesFor rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Farm_Kona_Greenwell"/>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Mill_Cerrado_Dry">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#ProcessingMill"/>
+    <rdfs:label xml:lang="ko">Cerrado Dry Processing Mill</rdfs:label>
+    <cof:isLocatedIn rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Brazil"/>
+    <cof:processesFor rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Farm_Cerrado_Fazenda_Dutra"/>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Mill_Sulawesi_Wet">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#ProcessingMill"/>
+    <rdfs:label xml:lang="ko">Sulawesi Wet Processing Mill</rdfs:label>
+    <cof:isLocatedIn rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Indonesia"/>
+    <cof:processesFor rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Farm_Sulawesi_Toraja_Estate"/>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Mill_WestValley_Honey">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#ProcessingMill"/>
+    <rdfs:label xml:lang="ko">West Valley Honey Processing Mill</rdfs:label>
+    <cof:isLocatedIn rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Costa_Rica"/>
+    <cof:processesFor rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Farm_West_Valley_Helsar_Farm"/>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Mill_Marcala_Wet">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#ProcessingMill"/>
+    <rdfs:label xml:lang="ko">Marcala Wet Processing Mill</rdfs:label>
+    <cof:isLocatedIn rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Honduras"/>
+    <cof:processesFor rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Farm_Marcala_Highland_Estate"/>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Mill_DaLat_Wet">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#ProcessingMill"/>
+    <rdfs:label xml:lang="ko">Da Lat Wet Processing Mill</rdfs:label>
+    <cof:isLocatedIn rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Vietnam"/>
+    <cof:processesFor rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Farm_Lam_Dong_Arabica_Farm"/>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Mill_Harrar_Dry">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#ProcessingMill"/>
+    <rdfs:label xml:lang="ko">Harrar Dry Processing Mill</rdfs:label>
+    <cof:isLocatedIn rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Ethiopia"/>
+    <cof:processesFor rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Farm_Harrar_Estate"/>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Mill_Huehuetenango_Wet">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#ProcessingMill"/>
+    <rdfs:label xml:lang="ko">Huehuetenango Wet Processing Mill</rdfs:label>
+    <cof:isLocatedIn rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Guatemala"/>
+    <cof:processesFor rdf:resource="http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#Farm_Huehuetenango_Finca_Vista_Hermosa"/>
   </rdf:Description>
 
 </rdf:RDF>
