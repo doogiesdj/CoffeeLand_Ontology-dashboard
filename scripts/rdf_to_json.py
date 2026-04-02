@@ -434,6 +434,18 @@ pp_ids = [p['id'] for p in producer_ports]
 for eb in export_brokers:
     eb['ports'] = pp_ids[:3]  # 생산국 항구들과 연결
 
+# 국가별 수출 항구 매핑 (renderTraceFlow의 farm_export_port)
+farm_export_port = {
+    'Colombia':'Port_Buenaventura','Brazil':'Port_Santos','Ethiopia':'Port_Djibouti',
+    'Kenya':'Port_Mombasa','Indonesia':'Port_Jakarta','Guatemala':'Port_SantoTomas',
+    'Honduras':'Port_PuertoCortez','Costa Rica':'Port_Limon','Peru':'Port_Callao',
+    'Vietnam':'Port_HoChiMinh','Jamaica':'Port_Kingston','Panama':'Port_Colon',
+    'Mexico':'Port_Veracruz','Rwanda':'Port_Mombasa','Tanzania':'Port_DarEsSalaam',
+    'Uganda':'Port_Mombasa','India':'Port_Mumbai','Yemen':'Port_Aden',
+    'Nicaragua':'Port_Corinto','El Salvador':'Port_Acajutla',
+    'Papua New Guinea':'Port_Lae','Dominican Republic':'Port_SantoDomingo',
+}
+
 supply_json = {
     'stats': {
         'menus': len([n for n,i in instances.items() if 'BeverageMenu' in i['types']]),
@@ -456,6 +468,7 @@ supply_json = {
     'logistics_providers': logistics_providers,
     'consumer_ports': consumer_ports,
     'producer_ports': producer_ports,
+    'farm_export_port': farm_export_port,
 }
 
 with open(os.path.join(OUT_DIR, 'coffeeland_data.json'), 'w', encoding='utf-8') as f:
