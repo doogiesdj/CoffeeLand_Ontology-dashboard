@@ -348,6 +348,45 @@ for name, inst in instances.items():
                 node_ids.add(cid)
             flow_links.append({'source':bid,'target':cid,'type':'supplies'})
 
+# 공급망 흐름도에 필요한 엔티티 목록 (coffeeland-web renderTraceFlow용)
+consumer_warehouses = [{'id':n,'label':n.replace('Warehouse_','').replace('_',' ')}
+                       for n,i in instances.items() if 'Warehouse' in i['types']
+                       and any(c in ['USA','South_Korea','Japan','UK','Australia','Canada','China','Italy']
+                               for c in i['obj'].get('isLocatedIn',[]))]
+producer_warehouses = [{'id':n,'label':n.replace('Warehouse_','').replace('_',' ')}
+                       for n,i in instances.items() if 'Warehouse' in i['types']
+                       and any(c in ['Colombia','Brazil','Ethiopia','Kenya','Indonesia','Guatemala',
+                                     'Honduras','Costa_Rica','Peru','Vietnam','Jamaica','Panama',
+                                     'Mexico','Rwanda','Tanzania','Uganda','India','Yemen',
+                                     'Nicaragua','El_Salvador','Papua_New_Guinea','Dominican_Republic']
+                               for c in i['obj'].get('isLocatedIn',[]))]
+# 분류 안 된 창고는 producer 쪽에 포함
+all_wh_ids = set(w['id'] for w in consumer_warehouses + producer_warehouses)
+for n,i in instances.items():
+    if 'Warehouse' in i['types'] and n not in all_wh_ids:
+        producer_warehouses.append({'id':n,'label':n.replace('Warehouse_','').replace('_',' ')})
+
+import_brokers = [{'id':n,'label':n.replace('_',' ')}
+                  for n,i in instances.items() if 'ImportBroker' in i['types']]
+export_brokers = [{'id':n,'label':n.replace('_',' ')}
+                  for n,i in instances.items() if 'ExportBroker' in i['types']]
+logistics_providers = [{'id':n,'label':n.replace('_',' ')}
+                       for n,i in instances.items() if 'LogisticsProvider' in i['types']]
+
+# 소비국/생산국 항구 분류
+consumer_countries = {'USA','South_Korea','Japan','UK','Australia','Canada','China','Italy','Germany','France'}
+consumer_ports = [{'id':n,'label':n.replace('Port_','').replace('_',' ')}
+                  for n,i in instances.items() if 'Port' in i['types']
+                  and any(c in consumer_countries for c in i['obj'].get('isLocatedIn',[]))]
+producer_ports = [{'id':n,'label':n.replace('Port_','').replace('_',' ')}
+                  for n,i in instances.items() if 'Port' in i['types']
+                  and not any(c in consumer_countries for c in i['obj'].get('isLocatedIn',[]))]
+# 분류 안 된 항구
+all_port_ids = set(p['id'] for p in consumer_ports + producer_ports)
+for n,i in instances.items():
+    if 'Port' in i['types'] and n not in all_port_ids:
+        producer_ports.append({'id':n,'label':n.replace('Port_','').replace('_',' ')})
+
 supply_json = {
     'stats': {
         'menus': len([n for n,i in instances.items() if 'BeverageMenu' in i['types']]),
@@ -363,6 +402,13 @@ supply_json = {
     'esg_high': esg_high, 'esg_good': esg_good,
     'supply_coop': supply_coop, 'supply_port': supply_port, 'supply_chain': supply_chain,
     'flow_nodes': flow_nodes, 'flow_links': flow_links,
+    'consumer_warehouses': consumer_warehouses,
+    'producer_warehouses': producer_warehouses,
+    'import_brokers': import_brokers,
+    'export_brokers': export_brokers,
+    'logistics_providers': logistics_providers,
+    'consumer_ports': consumer_ports,
+    'producer_ports': producer_ports,
 }
 
 with open(os.path.join(OUT_DIR, 'coffeeland_data.json'), 'w', encoding='utf-8') as f:
