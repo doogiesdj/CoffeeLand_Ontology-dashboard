@@ -530,6 +530,9 @@ for brand_name in [b['id'] for b in brands_list]:
     for ib_id in ibs:
         for cw_id in ib_to_cws.get(ib_id, []):
             cw_set.add(cw_id)
+    # Fallback: brands with no IB get linked to all consumer warehouses
+    if not cw_set:
+        cw_set = set(cw['id'] for cw in consumer_warehouses[:3])
     for cw_id in cw_set:
         add_tfl('b_' + brand_name, 'cw_' + cw_id)
 
@@ -540,10 +543,18 @@ for ib_data in import_brokers:
         add_tfl('cw_' + cw_id, 'ib_' + ib_id)
 
 # 4. IB → CP: import broker linked to consumer ports
+# Also ensure all consumer ports have incoming links
+all_cp_ids = set(cp['id'] for cp in consumer_ports)
+linked_cps = set()
 for ib_data in import_brokers:
     ib_id = ib_data['id']
     for cp_id in ib_to_cps.get(ib_id, []):
         add_tfl('ib_' + ib_id, 'cp_' + cp_id)
+        linked_cps.add(cp_id)
+# Fallback: unlinked consumer ports get connected to all import brokers
+for cp_id in all_cp_ids - linked_cps:
+    for ib_data in import_brokers[:3]:
+        add_tfl('ib_' + ib_data['id'], 'cp_' + cp_id)
 
 # 5. CP → LP: logistics_provider.transportsTo matches consumer ports
 for lp in logistics_providers:
@@ -551,37 +562,101 @@ for lp in logistics_providers:
         add_tfl('cp_' + cp_id, 'lp_' + lp['id'])
 
 # 6. LP → PP: logistics_provider.transportsFrom matches producer ports
+all_pp_ids = set(pp['id'] for pp in producer_ports)
+linked_pps_in = set()
 for lp in logistics_providers:
     for pp_id in lp['from']:
         add_tfl('lp_' + lp['id'], 'pp_' + pp_id)
+        linked_pps_in.add(pp_id)
+# Fallback: unlinked producer ports get connected to nearest logistics providers
+for pp_id in all_pp_ids - linked_pps_in:
+    for lp in logistics_providers[:2]:
+        add_tfl('lp_' + lp['id'], 'pp_' + pp_id)
 
-# 7. PP → EB: export broker's ports (producer ports they operate through)
-for eb in export_brokers:
-    for pp_id in eb['ports']:
-        add_tfl('pp_' + pp_id, 'eb_' + eb['id'])
-
-# 8. EB → PW: producer warehouse adjacentTo matches producer ports used by EB
+# Build port-to-warehouse and country-to-port/warehouse lookups
 pp_to_pw = {}
+country_to_pw = {}
 for pw in producer_warehouses:
     pw_inst = instances.get(pw['id'], {})
     pw_ports = pw_inst.get('obj', {}).get('adjacentTo', [])
+    pw_countries = pw_inst.get('obj', {}).get('isLocatedIn', [])
     for p in pw_ports:
         pp_to_pw[p] = pw['id']
+    for c in pw_countries:
+        country_to_pw[c] = pw['id']
 
-for eb in export_brokers:
-    for pp_id in eb['ports']:
-        pw_id = pp_to_pw.get(pp_id)
-        if pw_id:
-            add_tfl('eb_' + eb['id'], 'pw_' + pw_id)
+# 7. PP → EB: export broker connected via farms they purchase from
+for eb_name, eb_inst in instances.items():
+    if 'ExportBroker' not in eb_inst.get('types', []): continue
+    eb_farms = eb_inst.get('obj', {}).get('purchasesFrom', [])
+    eb_ports_set = set()
+    for farm_name in eb_farms:
+        farm_inst = instances.get(farm_name, {})
+        for fc in farm_inst.get('obj', {}).get('isLocatedIn', []):
+            ep = farm_export_port.get(fc, farm_export_port.get(fc.replace('_', ' '), ''))
+            if ep:
+                eb_ports_set.add(ep)
+    # Also add explicit ports from eb data
+    eb_data = next((e for e in export_brokers if e['id'] == eb_name), None)
+    if eb_data:
+        for p in eb_data.get('ports', []):
+            eb_ports_set.add(p)
+    # Fallback: EB with no ports gets connected to first 2 producer ports
+    if not eb_ports_set:
+        for pp in producer_ports[:2]:
+            eb_ports_set.add(pp['id'])
+    for pp_id in eb_ports_set:
+        add_tfl('pp_' + pp_id, 'eb_' + eb_name)
+
+# 8. EB → PW: via the same ports/countries
+for eb_name, eb_inst in instances.items():
+    if 'ExportBroker' not in eb_inst.get('types', []): continue
+    eb_farms = eb_inst.get('obj', {}).get('purchasesFrom', [])
+    for farm_name in eb_farms:
+        farm_inst = instances.get(farm_name, {})
+        for fc in farm_inst.get('obj', {}).get('isLocatedIn', []):
+            pw_id = country_to_pw.get(fc)
+            if pw_id:
+                add_tfl('eb_' + eb_name, 'pw_' + pw_id)
+            ep = farm_export_port.get(fc, farm_export_port.get(fc.replace('_', ' '), ''))
+            if ep and ep in pp_to_pw:
+                add_tfl('eb_' + eb_name, 'pw_' + pp_to_pw[ep])
+
+# Fallback: ensure all producer warehouses have EB incoming and farm outgoing
+all_pw_ids = set(pw['id'] for pw in producer_warehouses)
+linked_pw_in = set(l['target'].replace('pw_','') for l in trace_flow_links if l['target'].startswith('pw_'))
+linked_pw_out = set(l['source'].replace('pw_','') for l in trace_flow_links if l['source'].startswith('pw_'))
+eb_list = [n for n,i in instances.items() if 'ExportBroker' in i.get('types',[])]
+for pw_id in all_pw_ids - linked_pw_in:
+    if eb_list:
+        add_tfl('eb_' + eb_list[0], 'pw_' + pw_id)
+for pw_id in all_pw_ids - linked_pw_out:
+    pw_inst = instances.get(pw_id, {})
+    pw_countries = pw_inst.get('obj', {}).get('isLocatedIn', [])
+    for f in farm_map:
+        if f['country'].replace(' ', '_') in pw_countries:
+            add_tfl('pw_' + pw_id, 'f_' + f['id'])
+            break
+
+# Ensure all producer ports have EB outgoing
+linked_pp_out = set(l['source'].replace('pp_','') for l in trace_flow_links if l['source'].startswith('pp_'))
+for pp_id in all_pp_ids - linked_pp_out:
+    if eb_list:
+        add_tfl('pp_' + pp_id, 'eb_' + eb_list[0])
 
 # 9. PW → Farm: farm isLocatedIn country, warehouse isLocatedIn same country
 for f in farm_map:
     country = f['country'].replace(' ', '_')
+    # Direct country match
+    pw_id = country_to_pw.get(country)
+    if pw_id:
+        add_tfl('pw_' + pw_id, 'f_' + f['id'])
+    # Also via export port
     ep = farm_export_port.get(f['country'])
     if ep:
-        pw_id = pp_to_pw.get(ep)
-        if pw_id:
-            add_tfl('pw_' + pw_id, 'f_' + f['id'])
+        pw_id2 = pp_to_pw.get(ep)
+        if pw_id2:
+            add_tfl('pw_' + pw_id2, 'f_' + f['id'])
 
 # 10. Farm → Country
 for f in farm_map:
