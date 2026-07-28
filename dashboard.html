@@ -5283,7 +5283,11 @@
                         }
                     },
                     {
-                        selector: 'node:not([nodeType="property"])',
+                        // NOTE: Cytoscape.js has no CSS-style :not() selector; this
+                        // used to be 'node:not([nodeType="property"])', which Cytoscape
+                        // treats as invalid and matches EVERY node, silently overriding
+                        // the diamond style above so property nodes rendered as circles.
+                        selector: 'node[nodeType="class"]',
                         style: {
                             'background-color': 'data(color)',
                             'label': 'data(label)',
