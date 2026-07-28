@@ -1476,6 +1476,20 @@
                             <div style="width: 30px; height: 2px; background: #10b981; border-top: 2px dashed;"></div>
                             <span style="font-size: 12px; color: var(--text-secondary);">Range</span>
                         </div>
+                        <div style="height: 1px; background: var(--border); margin: 5px 0;"></div>
+                        <div style="font-size: 11px; font-weight: 600; color: var(--text-primary); margin-bottom: 2px;">Shape = Hierarchy Level</div>
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <div style="width: 26px; height: 26px; background: #94a3b8; clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%); border: 2px solid white;"></div>
+                            <span style="font-size: 12px; color: var(--text-secondary);">Main Class</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <div style="width: 22px; height: 22px; background: #94a3b8; border-radius: 50%; border: 2px solid white;"></div>
+                            <span style="font-size: 12px; color: var(--text-secondary);">Subclass</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 10px; padding: 2px 0;">
+                            <div style="width: 0; height: 0; border-left: 11px solid transparent; border-right: 11px solid transparent; border-bottom: 19px solid #94a3b8;"></div>
+                            <span style="font-size: 12px; color: var(--text-secondary);">Sub-subclass</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1915,11 +1929,15 @@
     <input type="file" id="fileInput" accept=".rdf,.owl,.ttl" style="display: none;">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.26.0/cytoscape.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/webcola@3.4.0/WebCola/cola.min.js"></script>
+    <script>window.webcola = window.cola;</script>
+    <script src="https://cdn.jsdelivr.net/npm/cytoscape-cola@2.5.1/cytoscape-cola.js"></script>
     <script>
         // Global State
         let ontologyData = null;
         let hierarchyData = [];
         let cy = null;
+        let colaLayout = null;
 
         const colorMap = {
             Location: '#ef4444',
@@ -5098,17 +5116,25 @@
             
             const elements = [];
             
-            function addNodes(nodes, parentId = null) {
+            function addNodes(nodes, parentId = null, depth = 0, rootColor = null) {
                 nodes.forEach(node => {
+                    // Root's own color cascades down to every descendant so the whole
+                    // subtree reads as one category (previously only the 8 roots got
+                    // real colors and everything below them fell back to gray).
+                    const color = depth === 0 ? getNodeColor(node.label) : (rootColor || getNodeColor(node.label));
+                    const levelClass = depth === 0 ? 'level-root' : depth === 1 ? 'level-sub' : 'level-subsub';
+
                     elements.push({
                         data: {
                             id: node.uri,
                             label: node.label,
-                            color: getNodeColor(node.label),
-                            nodeType: 'class'
+                            color: color,
+                            nodeType: 'class',
+                            level: depth,
+                            levelClass: levelClass
                         }
                     });
-                    
+
                     if (parentId) {
                         elements.push({
                             data: {
@@ -5119,13 +5145,13 @@
                             }
                         });
                     }
-                    
+
                     if (node.children && node.children.length > 0) {
-                        addNodes(node.children, node.uri);
+                        addNodes(node.children, node.uri, depth + 1, color);
                     }
                 });
             }
-            
+
             addNodes(hierarchyData);
             
             // Create a Set of all existing node IDs for quick lookup
@@ -5255,6 +5281,36 @@
                             'border-color': '#fff'
                         }
                     },
+                    // Hierarchy level = shape, on top of the category color above:
+                    // main class (root) = hexagon, subclass = circle, sub-subclass = triangle
+                    {
+                        selector: 'node[levelClass="level-root"]',
+                        style: {
+                            'shape': 'round-hexagon',
+                            'width': 92,
+                            'height': 92,
+                            'border-width': 5,
+                            'font-size': 14,
+                            'font-weight': 'bold'
+                        }
+                    },
+                    {
+                        selector: 'node[levelClass="level-sub"]',
+                        style: {
+                            'shape': 'ellipse',
+                            'width': 68,
+                            'height': 68
+                        }
+                    },
+                    {
+                        selector: 'node[levelClass="level-subsub"]',
+                        style: {
+                            'shape': 'round-triangle',
+                            'width': 54,
+                            'height': 54,
+                            'font-size': 10
+                        }
+                    },
                     {
                         selector: 'edge[edgeType="hierarchy"]',
                         style: {
@@ -5303,31 +5359,28 @@
                         }
                     }
                 ],
+                // Fast, non-animated placement just to seed starting positions;
+                // the live cola.js physics layout (below) takes over from here.
                 layout: {
                     name: 'cose',
                     directed: true,
                     padding: 50,
-                    animate: true,
-                    animationDuration: 1000,
+                    animate: false,
                     idealEdgeLength: 150,
                     nodeOverlap: 20,
-                    refresh: 20,
-                    randomize: false,
+                    randomize: true,
                     componentSpacing: 100,
                     nodeRepulsion: 400000,
                     edgeElasticity: 100,
                     nestingFactor: 5,
                     gravity: 80,
-                    numIter: 1000,
-                    initialTemp: 200,
-                    coolingFactor: 0.95,
-                    minTemp: 1.0
+                    numIter: 1000
                 }
             });
-            
+
             console.log(`✅ Graph created successfully!`);
             console.log(`📊 Nodes: ${cy.nodes().length}, Edges: ${cy.edges().length}`);
-            
+
             // Node interaction - highlight connected nodes
             cy.on('tap', 'node', (evt) => {
                 const node = evt.target;
@@ -5375,6 +5428,45 @@
                 console.log('✅ Layout completed, fitting view');
                 cy.fit();
             });
+
+            // Spring the graph back into balance whenever a node is dragged and
+            // released, so the whole thing keeps feeling alive/interactive
+            // instead of freezing in place after the first layout.
+            cy.on('dragfree', 'node', () => {
+                runColaLayout({ fit: false, randomize: false });
+            });
+
+            // Kick off the live physics layout (this is what makes the graph
+            // move/settle dynamically instead of just snapping into place).
+            runColaLayout({ fit: true, randomize: false });
+        }
+
+        // Runs (or re-runs) the cola.js force-directed physics layout.
+        // fit: whether to zoom/pan the viewport to the result when it settles.
+        // randomize: whether to scatter nodes before simulating (used by the Reset button).
+        function runColaLayout(opts = {}) {
+            if (!cy) return;
+            const { fit = false, randomize = false } = opts;
+
+            if (colaLayout) {
+                try { colaLayout.stop(); } catch (e) { /* already stopped */ }
+            }
+
+            colaLayout = cy.layout({
+                name: 'cola',
+                animate: true,
+                refresh: 1,
+                maxSimulationTime: 15000,
+                fit: fit,
+                padding: 50,
+                randomize: randomize,
+                avoidOverlap: true,
+                nodeSpacing: 15,
+                edgeLength: 150,
+                convergenceThreshold: 0.0008,
+                nodeDimensionsIncludeLabels: true
+            });
+            colaLayout.run();
         }
 
         // Event Handlers
@@ -5391,13 +5483,17 @@
                     }
                     
                     showView(view + 'View');
-                    
+
                     if (view === 'graph') {
                         console.log('📊 Preparing graph view...');
                         setTimeout(() => {
                             console.log('📊 Initializing graph after delay...');
                             initGraph();
                         }, 300);
+                    } else if (colaLayout) {
+                        // Leaving Graph View: stop the physics simulation so it
+                        // doesn't keep burning CPU/battery in the background.
+                        try { colaLayout.stop(); } catch (e) { /* already stopped */ }
                     }
                 });
             });
@@ -5570,26 +5666,7 @@
 
         document.getElementById('resetGraphBtn').onclick = () => {
             if (cy) {
-                cy.layout({
-                    name: 'cose',
-                    directed: true,
-                    padding: 50,
-                    animate: true,
-                    animationDuration: 1000,
-                    idealEdgeLength: 150,
-                    nodeOverlap: 20,
-                    refresh: 20,
-                    randomize: true,
-                    componentSpacing: 100,
-                    nodeRepulsion: 400000,
-                    edgeElasticity: 100,
-                    nestingFactor: 5,
-                    gravity: 80,
-                    numIter: 1000,
-                    initialTemp: 200,
-                    coolingFactor: 0.95,
-                    minTemp: 1.0
-                }).run();
+                runColaLayout({ fit: true, randomize: true });
                 console.log('✅ Graph layout reset');
             }
         };
