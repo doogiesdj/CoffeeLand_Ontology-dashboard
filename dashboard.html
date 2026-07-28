@@ -1956,6 +1956,38 @@
         let cy = null;
         let colaLayout = null;
 
+        // On-screen error banner: mobile browsers give us no easy way to see the
+        // console, so surface any uncaught error directly on the page instead of
+        // failing silently (e.g. a blank Graph View with no clue why).
+        function showErrorBanner(message) {
+            console.error('🚨', message);
+            let banner = document.getElementById('errorBanner');
+            if (!banner) {
+                banner = document.createElement('div');
+                banner.id = 'errorBanner';
+                banner.style.cssText = 'position:fixed;top:0;left:0;right:0;z-index:99999;' +
+                    'background:#7f1d1d;color:#fff;font:12px/1.4 monospace;padding:10px 40px 10px 12px;' +
+                    'max-height:40vh;overflow:auto;white-space:pre-wrap;box-shadow:0 2px 8px rgba(0,0,0,.5);';
+                const closeBtn = document.createElement('button');
+                closeBtn.textContent = '✕';
+                closeBtn.style.cssText = 'position:absolute;top:6px;right:8px;background:none;border:none;color:#fff;font-size:16px;cursor:pointer;';
+                closeBtn.onclick = () => banner.remove();
+                banner.appendChild(closeBtn);
+                const text = document.createElement('div');
+                text.id = 'errorBannerText';
+                banner.appendChild(text);
+                document.body.appendChild(banner);
+            }
+            const text = document.getElementById('errorBannerText');
+            text.textContent += (text.textContent ? '\n\n' : '') + message;
+        }
+        window.addEventListener('error', (e) => {
+            showErrorBanner(`JS Error: ${e.message}\n${e.filename}:${e.lineno}:${e.colno}`);
+        });
+        window.addEventListener('unhandledrejection', (e) => {
+            showErrorBanner(`Unhandled promise rejection: ${e.reason && e.reason.message ? e.reason.message : e.reason}`);
+        });
+
         const colorMap = {
             Location: '#ef4444',
             Organization: '#3b82f6',
@@ -5084,25 +5116,31 @@
             container.style.height = '600px';
             console.log('✅ Container styled');
             
-            // Use double requestAnimationFrame to ensure layout is complete
-            requestAnimationFrame(() => {
-                requestAnimationFrame(() => {
-                    const rect = container.getBoundingClientRect();
-                    console.log(`📐 Container dimensions after RAF: ${rect.width}x${rect.height}`);
-                    
-                    if (rect.width === 0 || rect.height === 0) {
-                        console.error('❌ Container STILL has zero dimensions!');
-                        console.error('   Container display:', window.getComputedStyle(container).display);
-                        console.error('   Container visibility:', window.getComputedStyle(container).visibility);
-                        console.error('   Parent display:', window.getComputedStyle(container.parentElement).display);
-                        alert('❌ Graph container error! The container has zero size.');
-                        return;
-                    }
-                    
-                    console.log('✅ Container has valid dimensions, creating graph...');
+            // Poll for a non-zero container size instead of a fixed double-rAF wait.
+            // On some mobile browsers two animation frames isn't always enough time
+            // for the view-switch reflow to settle, which was leaving the graph
+            // silently blank (container measured 0x0 right when cytoscape init ran).
+            let attempts = 0;
+            const maxAttempts = 40; // ~2s at 50ms per attempt
+            const waitForSize = () => {
+                const rect = container.getBoundingClientRect();
+                if (rect.width > 0 && rect.height > 0) {
+                    console.log(`✅ Container has valid dimensions (${rect.width}x${rect.height}) after ${attempts} attempts, creating graph...`);
                     createGraph();
-                });
-            });
+                    return;
+                }
+                attempts++;
+                if (attempts >= maxAttempts) {
+                    console.error('❌ Container STILL has zero dimensions after waiting!');
+                    console.error('   Container display:', window.getComputedStyle(container).display);
+                    console.error('   Container visibility:', window.getComputedStyle(container).visibility);
+                    console.error('   Parent display:', window.getComputedStyle(container.parentElement).display);
+                    showErrorBanner('Graph container never got a real size (still 0×0 after 2s) — the graph can\'t render. Try rotating the screen or reloading.');
+                    return;
+                }
+                setTimeout(() => requestAnimationFrame(waitForSize), 50);
+            };
+            requestAnimationFrame(waitForSize);
         }
         
         // Separate function to create the graph
@@ -5123,14 +5161,19 @@
             
             if (typeof cytoscape === 'undefined') {
                 console.error('❌ Cytoscape library not loaded!');
-                alert('❌ Cytoscape library failed to load!');
+                showErrorBanner('Cytoscape library failed to load (CDN blocked or unreachable?). The graph can\'t render without it.');
                 return;
             }
-            
+
             console.log('✅ Cytoscape library is available');
             console.log('📊 ontologyData:', ontologyData);
             console.log('📊 hierarchyData:', hierarchyData);
-            
+
+            // Everything below can throw (bad data shape, a layout extension that
+            // failed to register, etc.) — without this try/catch any such error was
+            // uncaught and silent, leaving a blank Graph View with no clue why.
+            try {
+
             const elements = [];
             
             function addNodes(nodes, parentId = null, depth = 0, rootColor = null) {
@@ -5460,6 +5503,11 @@
             // Kick off the live physics layout (this is what makes the graph
             // move/settle dynamically instead of just snapping into place).
             runColaLayout({ fit: true, randomize: false });
+
+            } catch (err) {
+                console.error('❌ createGraph() failed:', err);
+                showErrorBanner('Graph failed to render: ' + (err && err.message ? err.message : err));
+            }
         }
 
         // Runs (or re-runs) the cola.js force-directed physics layout.
@@ -5473,7 +5521,14 @@
                 try { colaLayout.stop(); } catch (e) { /* already stopped */ }
             }
 
-            colaLayout = cy.layout({
+            // If the cola.js/cytoscape-cola CDN scripts failed to load or register
+            // (blocked network, content blocker, etc.), cy.layout({name:'cola'})
+            // would throw and leave the graph completely blank with nothing drawn.
+            // Detect that up front and fall back to the built-in 'cose' layout so
+            // there's always at least a static graph on screen.
+            const colaAvailable = typeof cytoscape('layout', 'cola') === 'function';
+
+            const layoutOptions = colaAvailable ? {
                 name: 'cola',
                 animate: true,
                 refresh: 1,
@@ -5486,9 +5541,42 @@
                 edgeLength: 150,
                 convergenceThreshold: 0.0008,
                 nodeDimensionsIncludeLabels: true
-            });
-            colaLayout.run();
+            } : {
+                name: 'cose',
+                animate: true,
+                animationDuration: 600,
+                fit: fit,
+                padding: 50,
+                randomize: randomize,
+                nodeRepulsion: 400000,
+                idealEdgeLength: 150,
+                gravity: 80,
+                numIter: 1000
+            };
+
+            if (!colaAvailable) {
+                console.warn('⚠️ cola layout not registered — falling back to cose (static layout, no live physics)');
+                showErrorBanner('Live physics layout (cola.js) failed to load — showing a static layout instead. Node drag/dynamic movement is disabled, but the graph itself should still be visible.');
+            }
+
+            try {
+                colaLayout = cy.layout(layoutOptions);
+                colaLayout.run();
+            } catch (err) {
+                console.error('❌ Layout failed:', err);
+                showErrorBanner('Graph layout failed: ' + (err && err.message ? err.message : err));
+            }
         }
+
+        // Keep the graph correctly sized across orientation changes / resizes —
+        // cytoscape caches the container size at creation time and won't notice
+        // a later change (e.g. rotating a phone) unless told to re-measure.
+        window.addEventListener('resize', () => {
+            if (cy) {
+                cy.resize();
+                cy.fit();
+            }
+        });
 
         // Event Handlers
         function setupEventHandlers() {
