@@ -32,8 +32,12 @@ jobs:
       - name: Generate JSON from RDF
         run: python scripts/rdf_to_json.py
 
-      - name: Sync dashboard.html to docs/
-        run: cp dashboard.html docs/dashboard.html
+      - name: Sync dashboard.html and PWA assets to docs/
+        run: |
+          cp dashboard.html docs/dashboard.html
+          cp manifest.json docs/manifest.json
+          cp sw.js docs/sw.js
+          cp -r icons docs/icons
 
       - name: Commit and push
         run: |

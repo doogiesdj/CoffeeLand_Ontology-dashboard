@@ -40,7 +40,10 @@ jobs:
           python scripts/rdf_to_json.py
           cp data/coffeeland_final_v2.rdf docs/coffeeland-new.rdf
           cp dashboard.html docs/dashboard.html
-          echo "JSON 생성 + RDF/HTML 복사 완료"
+          cp manifest.json docs/manifest.json
+          cp sw.js docs/sw.js
+          cp -r icons docs/icons
+          echo "JSON 생성 + RDF/HTML/PWA 자산 복사 완료"
           ls -la docs/
 
       # 5. 변환된 파일을 docs/ 폴더에 커밋
