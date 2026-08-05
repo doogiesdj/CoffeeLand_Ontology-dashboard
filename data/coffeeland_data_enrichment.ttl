@@ -632,3 +632,293 @@ cof:Metric_Water_Footprint_Per_Cup a owl:NamedIndividual, cof:SustainabilityMetr
 cof:Metric_Shade_Canopy_Coverage a owl:NamedIndividual, cof:SustainabilityMetric ;
     rdfs:label "그늘 캐노피 피복률"@ko ; rdfs:label "Shade Canopy Coverage Metric"@en ;
     rdfs:comment "커피 재배지 위 나무 캐노피 피복 비율. 통상 40% 이상이 '그늘재배(Shade-Grown)'/Bird Friendly류 인증의 기준 문턱값으로 사용됨."@ko .
+
+
+# ================================================================
+# 9. BeverageMenu 세계 각국 특색 커피 보강 (2026-08 리서치 기반)
+#    기존 40개가 대부분 이탈리아/미국식 에스프레소 베이스 메뉴에 편중되어
+#    있어, 국가별로 실제 전통·역사를 가진 특색 커피 26종을 조사해 추가함.
+# ================================================================
+
+cof:hasOriginCountry a owl:DatatypeProperty ; rdfs:domain cof:BeverageMenu ; rdfs:range xsd:string ;
+    rdfs:label "원산지 국가/문화권"@ko ; rdfs:label "Origin Country/Culture"@en .
+
+# --- 베트남 ---
+
+cof:Ca_Phe_Sua_Da a owl:NamedIndividual, cof:BeverageMenu ;
+    cof:hasBeverageName "Cà Phê Sữa Đá (Vietnamese Iced Coffee)"^^xsd:string ;
+    cof:hasCategory "World_Traditional"^^xsd:string ; cof:hasTemperature "Cold"^^xsd:string ;
+    cof:hasCalories "150"^^xsd:integer ; cof:hasCaffeineContent "100"^^xsd:integer ;
+    cof:hasRating "4.6"^^xsd:float ; cof:hasPriceSmall "4.0"^^xsd:float ;
+    cof:hasOriginCountry "Vietnam"^^xsd:string ;
+    cof:hasDescription "진한 로부스타를 알루미늄 필터(phin)로 느리게 추출해 연유 위에 내리는 베트남 대표 아이스커피."^^xsd:string ;
+    cof:usesCoffeeBrand cof:Robusta_Select ; cof:usesCoffeeBrand cof:Da_Lat_Arabica .
+
+cof:Ca_Phe_Trung a owl:NamedIndividual, cof:BeverageMenu ;
+    cof:hasBeverageName "Cà Phê Trứng (Vietnamese Egg Coffee)"^^xsd:string ;
+    cof:hasCategory "Signature"^^xsd:string ; cof:hasTemperature "Hot"^^xsd:string ;
+    cof:hasCalories "280"^^xsd:integer ; cof:hasCaffeineContent "90"^^xsd:integer ;
+    cof:hasRating "4.4"^^xsd:float ; cof:hasPriceSmall "5.5"^^xsd:float ;
+    cof:hasOriginCountry "Vietnam"^^xsd:string ;
+    cof:hasDescription "1946년 하노이 Café Giảng에서 우유 부족 시기에 계란 노른자와 연유를 휘핑해 커피 위에 올린 데서 유래한 커스터드 커피."^^xsd:string ;
+    cof:usesCoffeeBrand cof:Robusta_Select ; cof:usesCoffeeBrand cof:Da_Lat_Arabica .
+
+# --- 그리스 ---
+
+cof:Greek_Frappe a owl:NamedIndividual, cof:BeverageMenu ;
+    cof:hasBeverageName "Greek Frappé"^^xsd:string ;
+    cof:hasCategory "Cold_Blended"^^xsd:string ; cof:hasTemperature "Cold"^^xsd:string ;
+    cof:hasCalories "90"^^xsd:integer ; cof:hasCaffeineContent "65"^^xsd:integer ;
+    cof:hasRating "4.2"^^xsd:float ; cof:hasPriceSmall "3.8"^^xsd:float ;
+    cof:hasOriginCountry "Greece"^^xsd:string ;
+    cof:hasDescription "1957년 테살로니키 박람회에서 네스카페 직원 Dimitrios Vakondios가 우연히 인스턴트커피를 셰이커에 흔들며 발명. 1979년경 그리스의 국민 커피로 자리잡음."^^xsd:string ;
+    cof:usesCoffeeBrand cof:Sidamo_Natural ; cof:usesCoffeeBrand cof:Yirgacheffe_Special .
+
+# --- 이탈리아 ---
+
+cof:Marocchino a owl:NamedIndividual, cof:BeverageMenu ;
+    cof:hasBeverageName "Marocchino"^^xsd:string ;
+    cof:hasCategory "Signature"^^xsd:string ; cof:hasTemperature "Hot"^^xsd:string ;
+    cof:hasCalories "120"^^xsd:integer ; cof:hasCaffeineContent "63"^^xsd:integer ;
+    cof:hasRating "4.5"^^xsd:float ; cof:hasPriceSmall "4.2"^^xsd:float ;
+    cof:hasOriginCountry "Italy"^^xsd:string ;
+    cof:hasDescription "토리노(피에몬테) 지역 특산. 작은 유리잔에 코코아파우더, 에스프레소, 우유거품을 층층이 담은 미니 음료."^^xsd:string ;
+    cof:usesCoffeeBrand cof:Bourbon_Santos ; cof:usesCoffeeBrand cof:Santos_Premium .
+
+cof:Caffe_Corretto a owl:NamedIndividual, cof:BeverageMenu ;
+    cof:hasBeverageName "Caffè Corretto"^^xsd:string ;
+    cof:hasCategory "Signature"^^xsd:string ; cof:hasTemperature "Hot"^^xsd:string ;
+    cof:hasCalories "110"^^xsd:integer ; cof:hasCaffeineContent "63"^^xsd:integer ;
+    cof:hasRating "4.1"^^xsd:float ; cof:hasPriceSmall "5.0"^^xsd:float ;
+    cof:hasOriginCountry "Italy"^^xsd:string ;
+    cof:hasDescription "그라파나 삼부카를 한 방울 더해 '교정(corretto)'한 에스프레소. 이탈리아 바(bar)에서 즐기는 애프터디너 커피."^^xsd:string ;
+    cof:usesCoffeeBrand cof:Cerrado_Natural ; cof:usesCoffeeBrand cof:Bourbon_Santos .
+
+# --- 포르투갈 ---
+
+cof:Galao a owl:NamedIndividual, cof:BeverageMenu ;
+    cof:hasBeverageName "Galão"^^xsd:string ;
+    cof:hasCategory "Signature"^^xsd:string ; cof:hasTemperature "Hot"^^xsd:string ;
+    cof:hasCalories "140"^^xsd:integer ; cof:hasCaffeineContent "77"^^xsd:integer ;
+    cof:hasRating "4.3"^^xsd:float ; cof:hasPriceSmall "4.0"^^xsd:float ;
+    cof:hasOriginCountry "Portugal"^^xsd:string ;
+    cof:hasDescription "리스본식 카페라떼. 긴 유리잔에 에스프레소와 스팀우유를 약 1:3 비율로 담아냄."^^xsd:string ;
+    cof:usesCoffeeBrand cof:Cerrado_Natural ; cof:usesCoffeeBrand cof:Bourbon_Santos .
+
+# --- 멕시코 ---
+
+cof:Cafe_de_Olla a owl:NamedIndividual, cof:BeverageMenu ;
+    cof:hasBeverageName "Café de Olla"^^xsd:string ;
+    cof:hasCategory "World_Traditional"^^xsd:string ; cof:hasTemperature "Hot"^^xsd:string ;
+    cof:hasCalories "90"^^xsd:integer ; cof:hasCaffeineContent "80"^^xsd:integer ;
+    cof:hasRating "4.5"^^xsd:float ; cof:hasPriceSmall "4.0"^^xsd:float ;
+    cof:hasOriginCountry "Mexico"^^xsd:string ;
+    cof:hasDescription "점토 항아리(olla de barro)에 계피·정향·스타아니스와 흑설탕(피론시요)을 넣고 끓이는 멕시코 전통 커피. 멕시코 혁명기 여군(soldaderas)들이 끓여내던 데서 유래."^^xsd:string ;
+    cof:usesCoffeeBrand cof:Chiapas_Altura .
+
+# --- 쿠바 ---
+
+cof:Cafe_Cubano a owl:NamedIndividual, cof:BeverageMenu ;
+    cof:hasBeverageName "Café Cubano"^^xsd:string ;
+    cof:hasCategory "Signature"^^xsd:string ; cof:hasTemperature "Hot"^^xsd:string ;
+    cof:hasCalories "130"^^xsd:integer ; cof:hasCaffeineContent "95"^^xsd:integer ;
+    cof:hasRating "4.6"^^xsd:float ; cof:hasPriceSmall "3.8"^^xsd:float ;
+    cof:hasOriginCountry "Cuba"^^xsd:string ;
+    cof:hasDescription "추출 직후 원당(demerara)을 강하게 휘저어 'espuma' 크림 거품을 만든 쿠바식 에스프레소."^^xsd:string ;
+    cof:usesCoffeeBrand cof:Barahona_AA ; cof:usesCoffeeBrand cof:Blue_Mountain_Supreme .
+
+# --- 에티오피아 ---
+
+cof:Ethiopian_Buna a owl:NamedIndividual, cof:BeverageMenu ;
+    cof:hasBeverageName "Ethiopian Buna (Jebena Coffee Ceremony)"^^xsd:string ;
+    cof:hasCategory "World_Traditional"^^xsd:string ; cof:hasTemperature "Hot"^^xsd:string ;
+    cof:hasCalories "5"^^xsd:integer ; cof:hasCaffeineContent "95"^^xsd:integer ;
+    cof:hasRating "4.8"^^xsd:float ; cof:hasPriceSmall "6.0"^^xsd:float ;
+    cof:hasOriginCountry "Ethiopia"^^xsd:string ;
+    cof:hasDescription "생두를 씻어 숯불에 직접 로스팅한 뒤 옹기(제베나)에 끓여 아볼·토나·바라카 세 차례에 걸쳐 나눠 마시는 에티오피아 커피 의식. 2025년 유네스코 인류무형문화유산 등재를 신청함."^^xsd:string ;
+    cof:usesCoffeeBrand cof:Harrar_Longberry ; cof:usesCoffeeBrand cof:Sidamo_Natural ; cof:usesCoffeeBrand cof:Yirgacheffe_Special .
+
+# --- 모로코 ---
+
+cof:Moroccan_Spiced_Coffee a owl:NamedIndividual, cof:BeverageMenu ;
+    cof:hasBeverageName "Moroccan Spiced Coffee"^^xsd:string ;
+    cof:hasCategory "World_Traditional"^^xsd:string ; cof:hasTemperature "Hot"^^xsd:string ;
+    cof:hasCalories "60"^^xsd:integer ; cof:hasCaffeineContent "70"^^xsd:integer ;
+    cof:hasRating "4.2"^^xsd:float ; cof:hasPriceSmall "4.5"^^xsd:float ;
+    cof:hasOriginCountry "Morocco"^^xsd:string ;
+    cof:hasDescription "카다멈·계피·후추·참깨 등 향신료를 커피에 섞어 끓이는 모로코식 스파이스 커피."^^xsd:string ;
+    cof:usesCoffeeBrand cof:Sidamo_Natural ; cof:usesCoffeeBrand cof:Malabar_Monsoon .
+
+# --- 예멘 ---
+
+cof:Yemeni_Qahwa a owl:NamedIndividual, cof:BeverageMenu ;
+    cof:hasBeverageName "Yemeni Qahwa"^^xsd:string ;
+    cof:hasCategory "World_Traditional"^^xsd:string ; cof:hasTemperature "Hot"^^xsd:string ;
+    cof:hasCalories "40"^^xsd:integer ; cof:hasCaffeineContent "60"^^xsd:integer ;
+    cof:hasRating "4.4"^^xsd:float ; cof:hasPriceSmall "5.0"^^xsd:float ;
+    cof:hasOriginCountry "Yemen"^^xsd:string ;
+    cof:hasDescription "카다멈을 넣어 설탕 없이 끓여 달라(dallah) 주전자로 손잡이 없는 작은 잔에 따라내는 아라비아 전통 커피."^^xsd:string ;
+    cof:usesCoffeeBrand cof:Mocha_Sanani .
+
+# --- 인도 ---
+
+cof:Filter_Kaapi a owl:NamedIndividual, cof:BeverageMenu ;
+    cof:hasBeverageName "South Indian Filter Kaapi"^^xsd:string ;
+    cof:hasCategory "World_Traditional"^^xsd:string ; cof:hasTemperature "Hot"^^xsd:string ;
+    cof:hasCalories "110"^^xsd:integer ; cof:hasCaffeineContent "70"^^xsd:integer ;
+    cof:hasRating "4.7"^^xsd:float ; cof:hasPriceSmall "3.5"^^xsd:float ;
+    cof:hasOriginCountry "India"^^xsd:string ;
+    cof:hasDescription "치커리를 섞기도 하는 남인도식 드립 데콕션을 우유·설탕과 섞어 텀블러와 다바라 그릇 사이로 부어 거품을 내는 커피."^^xsd:string ;
+    cof:usesCoffeeBrand cof:Malabar_Monsoon .
+
+# --- 인도네시아 ---
+
+cof:Kopi_Tubruk a owl:NamedIndividual, cof:BeverageMenu ;
+    cof:hasBeverageName "Kopi Tubruk"^^xsd:string ;
+    cof:hasCategory "World_Traditional"^^xsd:string ; cof:hasTemperature "Hot"^^xsd:string ;
+    cof:hasCalories "70"^^xsd:integer ; cof:hasCaffeineContent "85"^^xsd:integer ;
+    cof:hasRating "4.3"^^xsd:float ; cof:hasPriceSmall "3.0"^^xsd:float ;
+    cof:hasOriginCountry "Indonesia"^^xsd:string ;
+    cof:hasDescription "자바식 보일드 커피. 굵게 간 원두를 설탕과 함께 그대로 끓여 앙금이 잔 바닥에 가라앉게 두고 마심."^^xsd:string ;
+    cof:usesCoffeeBrand cof:Java_Estate ; cof:usesCoffeeBrand cof:Sumatra_Mandheling .
+
+cof:Kopi_Joss a owl:NamedIndividual, cof:BeverageMenu ;
+    cof:hasBeverageName "Kopi Joss"^^xsd:string ;
+    cof:hasCategory "Signature"^^xsd:string ; cof:hasTemperature "Hot"^^xsd:string ;
+    cof:hasCalories "60"^^xsd:integer ; cof:hasCaffeineContent "90"^^xsd:integer ;
+    cof:hasRating "4.4"^^xsd:float ; cof:hasPriceSmall "3.5"^^xsd:float ;
+    cof:hasOriginCountry "Indonesia"^^xsd:string ;
+    cof:hasDescription "족자카르타 명물. 진한 로부스타 커피에 뜨겁게 달군 숯덩이를 그대로 넣어 '지글' 소리를 내는 길거리(앙크링안) 커피. 1960-70년대 Angkringan Lek Man에서 유래."^^xsd:string ;
+    cof:usesCoffeeBrand cof:Sumatra_Mandheling ; cof:usesCoffeeBrand cof:Java_Estate .
+
+# --- 스웨덴 ---
+
+cof:Swedish_Kokkaffe a owl:NamedIndividual, cof:BeverageMenu ;
+    cof:hasBeverageName "Swedish Kokkaffe (Boiled Coffee)"^^xsd:string ;
+    cof:hasCategory "World_Traditional"^^xsd:string ; cof:hasTemperature "Hot"^^xsd:string ;
+    cof:hasCalories "5"^^xsd:integer ; cof:hasCaffeineContent "95"^^xsd:integer ;
+    cof:hasRating "4.1"^^xsd:float ; cof:hasPriceSmall "4.0"^^xsd:float ;
+    cof:hasOriginCountry "Sweden"^^xsd:string ;
+    cof:hasDescription "필터 없이 냄비에 커피를 직접 끓여내는 북유럽 전통 방식. 스웨덴 '피카(fika)' 휴식 문화의 중심."^^xsd:string ;
+    cof:usesCoffeeBrand cof:Kenya_AA ; cof:usesCoffeeBrand cof:Sulawesi_Toraja .
+
+# --- 이스라엘 ---
+
+cof:Cafe_Hafuch a owl:NamedIndividual, cof:BeverageMenu ;
+    cof:hasBeverageName "Café Hafuch"^^xsd:string ;
+    cof:hasCategory "Signature"^^xsd:string ; cof:hasTemperature "Hot"^^xsd:string ;
+    cof:hasCalories "130"^^xsd:integer ; cof:hasCaffeineContent "65"^^xsd:integer ;
+    cof:hasRating "4.2"^^xsd:float ; cof:hasPriceSmall "4.3"^^xsd:float ;
+    cof:hasOriginCountry "Israel"^^xsd:string ;
+    cof:hasDescription "'뒤집힌(hafuch)'이라는 이름처럼 스팀우유를 먼저 담고 에스프레소를 나중에 부어 만드는 이스라엘식 카푸치노."^^xsd:string ;
+    cof:usesCoffeeBrand cof:Yirgacheffe_Special ; cof:usesCoffeeBrand cof:Harrar_Longberry .
+
+# --- 홍콩 ---
+
+cof:Yuenyeung a owl:NamedIndividual, cof:BeverageMenu ;
+    cof:hasBeverageName "Yuenyeung (鴛鴦)"^^xsd:string ;
+    cof:hasCategory "Signature"^^xsd:string ; cof:hasTemperature "Hot"^^xsd:string ;
+    cof:hasCalories "150"^^xsd:integer ; cof:hasCaffeineContent "80"^^xsd:integer ;
+    cof:hasRating "4.5"^^xsd:float ; cof:hasPriceSmall "4.5"^^xsd:float ;
+    cof:hasOriginCountry "Hong Kong"^^xsd:string ;
+    cof:hasDescription "커피와 홍콩식 밀크티를 약 3:7로 섞은 차찬탱(cha chaan teng) 명물. 1952년 Lan Fong Yuen에서 유래했다고 전해지며 홍콩 무형문화유산 목록에 등재됨."^^xsd:string ;
+    cof:usesCoffeeBrand cof:Java_Estate ; cof:usesCoffeeBrand cof:Sumatra_Mandheling .
+
+# --- 말레이시아/싱가포르 ---
+
+cof:Kopitiam_Kopi a owl:NamedIndividual, cof:BeverageMenu ;
+    cof:hasBeverageName "Kopitiam Kopi (Nanyang Coffee)"^^xsd:string ;
+    cof:hasCategory "World_Traditional"^^xsd:string ; cof:hasTemperature "Hot"^^xsd:string ;
+    cof:hasCalories "120"^^xsd:integer ; cof:hasCaffeineContent "90"^^xsd:integer ;
+    cof:hasRating "4.4"^^xsd:float ; cof:hasPriceSmall "3.2"^^xsd:float ;
+    cof:hasOriginCountry "Malaysia/Singapore"^^xsd:string ;
+    cof:hasDescription "로부스타·리베리카 생두를 마가린과 캐러멜 설탕에 웍 로스팅한 뒤 헝겊 '삭(sock)' 필터로 추출, 연유를 더한 난양(Nanyang) 커피."^^xsd:string ;
+    cof:usesCoffeeBrand cof:Robusta_Select ; cof:usesCoffeeBrand cof:Bugisu_AA .
+
+# --- 필리핀 ---
+
+cof:Kapeng_Barako a owl:NamedIndividual, cof:BeverageMenu ;
+    cof:hasBeverageName "Kapeng Barako"^^xsd:string ;
+    cof:hasCategory "Signature"^^xsd:string ; cof:hasTemperature "Hot"^^xsd:string ;
+    cof:hasCalories "15"^^xsd:integer ; cof:hasCaffeineContent "110"^^xsd:integer ;
+    cof:hasRating "4.3"^^xsd:float ; cof:hasPriceSmall "4.0"^^xsd:float ;
+    cof:hasOriginCountry "Philippines"^^xsd:string ;
+    cof:hasDescription "바탕가스·카비테 지역의 리베리카(Liberica) 품종으로 만든 필리핀 커피. 스페인 식민시대에 전래되었으며 아니스향을 닮은 강렬한 향이 특징. 세계 커피 거래량의 약 2%를 차지하는 희귀 품종."^^xsd:string ;
+    cof:usesCoffeeBrand cof:Robusta_Select ; cof:usesCoffeeBrand cof:PNG_Sigri .
+
+# --- 태국 ---
+
+cof:Thai_Iced_Coffee a owl:NamedIndividual, cof:BeverageMenu ;
+    cof:hasBeverageName "Thai Iced Coffee (Oliang)"^^xsd:string ;
+    cof:hasCategory "Cold_Blended"^^xsd:string ; cof:hasTemperature "Cold"^^xsd:string ;
+    cof:hasCalories "200"^^xsd:integer ; cof:hasCaffeineContent "85"^^xsd:integer ;
+    cof:hasRating "4.2"^^xsd:float ; cof:hasPriceSmall "4.0"^^xsd:float ;
+    cof:hasOriginCountry "Thailand"^^xsd:string ;
+    cof:hasDescription "볶은 옥수수·참깨를 섞어 내린 커피를 연유와 설탕으로 진하게 단맛을 낸 태국식 아이스커피."^^xsd:string ;
+    cof:usesCoffeeBrand cof:Robusta_Select ; cof:usesCoffeeBrand cof:Sumatra_Mandheling .
+
+# --- 브라질 ---
+
+cof:Brazilian_Cafezinho a owl:NamedIndividual, cof:BeverageMenu ;
+    cof:hasBeverageName "Cafézinho"^^xsd:string ;
+    cof:hasCategory "World_Traditional"^^xsd:string ; cof:hasTemperature "Hot"^^xsd:string ;
+    cof:hasCalories "40"^^xsd:integer ; cof:hasCaffeineContent "60"^^xsd:integer ;
+    cof:hasRating "4.3"^^xsd:float ; cof:hasPriceSmall "2.5"^^xsd:float ;
+    cof:hasOriginCountry "Brazil"^^xsd:string ;
+    cof:hasDescription "작은 잔에 진하고 달게 내는 브라질식 블랙커피. 손님을 맞이할 때 내오는 환대 의례로 일상 어디서나 접할 수 있음."^^xsd:string ;
+    cof:usesCoffeeBrand cof:Bourbon_Santos ; cof:usesCoffeeBrand cof:Cerrado_Natural ; cof:usesCoffeeBrand cof:Santos_Premium .
+
+# --- 콜롬비아 ---
+
+cof:Colombian_Tinto a owl:NamedIndividual, cof:BeverageMenu ;
+    cof:hasBeverageName "Tinto"^^xsd:string ;
+    cof:hasCategory "World_Traditional"^^xsd:string ; cof:hasTemperature "Hot"^^xsd:string ;
+    cof:hasCalories "30"^^xsd:integer ; cof:hasCaffeineContent "55"^^xsd:integer ;
+    cof:hasRating "4.2"^^xsd:float ; cof:hasPriceSmall "2.0"^^xsd:float ;
+    cof:hasOriginCountry "Colombia"^^xsd:string ;
+    cof:hasDescription "길거리 보온병 행상('틴테로')이 파는 작고 달콤한 블랙커피. 콜롬비아 어디서나 볼 수 있는 국민 음료."^^xsd:string ;
+    cof:usesCoffeeBrand cof:Colombian_Supremo ; cof:usesCoffeeBrand cof:Huila_Reserve ; cof:usesCoffeeBrand cof:Narino_Supremo .
+
+# --- 오스트리아 ---
+
+cof:Wiener_Melange a owl:NamedIndividual, cof:BeverageMenu ;
+    cof:hasBeverageName "Wiener Melange"^^xsd:string ;
+    cof:hasCategory "Signature"^^xsd:string ; cof:hasTemperature "Hot"^^xsd:string ;
+    cof:hasCalories "90"^^xsd:integer ; cof:hasCaffeineContent "63"^^xsd:integer ;
+    cof:hasRating "4.6"^^xsd:float ; cof:hasPriceSmall "4.8"^^xsd:float ;
+    cof:hasOriginCountry "Austria"^^xsd:string ;
+    cof:hasDescription "모카 강도 커피에 뜨거운 우유를 더하고 부드러운 우유거품을 올린 빈 커피하우스의 대표 메뉴. 2011년 유네스코 무형문화유산으로 등재된 '빈 커피하우스 문화'의 상징."^^xsd:string ;
+    cof:usesCoffeeBrand cof:Malabar_Monsoon ; cof:usesCoffeeBrand cof:Mocha_Sanani .
+
+# --- 독일 ---
+
+cof:Pharisaer a owl:NamedIndividual, cof:BeverageMenu ;
+    cof:hasBeverageName "Pharisäer"^^xsd:string ;
+    cof:hasCategory "Signature"^^xsd:string ; cof:hasTemperature "Hot"^^xsd:string ;
+    cof:hasCalories "220"^^xsd:integer ; cof:hasCaffeineContent "63"^^xsd:integer ;
+    cof:hasRating "4.4"^^xsd:float ; cof:hasPriceSmall "6.0"^^xsd:float ;
+    cof:hasOriginCountry "Germany"^^xsd:string ;
+    cof:hasDescription "북프리슬란트(Nordfriesland) 지방 명물. 럼주를 넣은 진한 커피 위에 휘핑크림을 듬뿍 얹어 술 냄새를 감춘 데서 이름이 유래(세례식에서 목사를 속이려다 들켜 '바리새인들'이라 불린 일화)."^^xsd:string ;
+    cof:usesCoffeeBrand cof:Rwandan_Bourbon ; cof:usesCoffeeBrand cof:Kilimanjaro_Peaberry .
+
+# --- 호주/뉴질랜드 ---
+
+cof:Long_Black a owl:NamedIndividual, cof:BeverageMenu ;
+    cof:hasBeverageName "Long Black"^^xsd:string ;
+    cof:hasCategory "Espresso"^^xsd:string ; cof:hasTemperature "Hot"^^xsd:string ;
+    cof:hasCalories "5"^^xsd:integer ; cof:hasCaffeineContent "130"^^xsd:integer ;
+    cof:hasRating "4.5"^^xsd:float ; cof:hasPriceSmall "3.8"^^xsd:float ;
+    cof:hasOriginCountry "Australia/New Zealand"^^xsd:string ;
+    cof:hasDescription "뜨거운 물을 먼저 담고 그 위에 에스프레소를 부어 크레마를 살리는 호주·뉴질랜드식 커피. 물을 먼저 붓는 아메리카노와 추출 순서가 반대."^^xsd:string ;
+    cof:usesCoffeeBrand cof:Kona_Extra_Fancy ; cof:usesCoffeeBrand cof:PNG_Sigri .
+
+# --- 프랑스 ---
+
+cof:Cafe_Noisette a owl:NamedIndividual, cof:BeverageMenu ;
+    cof:hasBeverageName "Café Noisette"^^xsd:string ;
+    cof:hasCategory "Espresso"^^xsd:string ; cof:hasTemperature "Hot"^^xsd:string ;
+    cof:hasCalories "25"^^xsd:integer ; cof:hasCaffeineContent "63"^^xsd:integer ;
+    cof:hasRating "4.3"^^xsd:float ; cof:hasPriceSmall "3.5"^^xsd:float ;
+    cof:hasOriginCountry "France"^^xsd:string ;
+    cof:hasDescription "에스프레소에 우유를 한 방울만 더해 헤이즐넛(noisette) 빛깔을 낸 프랑스식 커피."^^xsd:string ;
+    cof:usesCoffeeBrand cof:Santos_Premium ; cof:usesCoffeeBrand cof:Bourbon_Santos .
