@@ -186,16 +186,16 @@
         /* Stats Grid */
         .stats-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 190px));
+            gap: 1rem;
             margin-bottom: 2rem;
         }
 
         .stat-card {
             background: var(--bg-card);
             border: 1px solid var(--border);
-            border-radius: 0.75rem;
-            padding: 1.5rem;
+            border-radius: 0.625rem;
+            padding: 1rem;
             transition: all 0.2s;
         }
 
@@ -208,19 +208,19 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 1rem;
+            margin-bottom: 0.5rem;
         }
 
         .stat-title {
-            font-size: 0.875rem;
+            font-size: 0.75rem;
             color: var(--text-secondary);
             font-weight: 500;
         }
 
         .stat-badge {
-            padding: 0.25rem 0.5rem;
+            padding: 0.15rem 0.4rem;
             border-radius: 0.375rem;
-            font-size: 0.75rem;
+            font-size: 0.6875rem;
             font-weight: 600;
         }
 
@@ -235,13 +235,13 @@
         }
 
         .stat-value {
-            font-size: 2rem;
+            font-size: 1.5rem;
             font-weight: 700;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.25rem;
         }
 
         .stat-label {
-            font-size: 0.75rem;
+            font-size: 0.6875rem;
             color: var(--text-secondary);
         }
 
@@ -1443,25 +1443,42 @@
                 <div style="position: absolute; bottom: 20px; left: 20px; background: var(--bg-elevated); padding: 15px; border-radius: 8px; border: 1px solid var(--border);">
                     <div style="font-weight: 600; margin-bottom: 10px; color: var(--text-primary);">Legend</div>
                     <div style="display: flex; flex-direction: column; gap: 8px;">
+                        <div style="font-size: 11px; font-weight: 600; color: var(--text-primary); margin-bottom: 2px;">Main Class (Category Color)</div>
                         <div style="display: flex; align-items: center; gap: 10px;">
-                            <div style="width: 30px; height: 30px; background: #ef4444; border-radius: 50%; border: 2px solid white;"></div>
+                            <div style="width: 24px; height: 24px; background: #ef4444; clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%); border: 2px solid white;"></div>
                             <span style="font-size: 12px; color: var(--text-secondary);">Location</span>
                         </div>
                         <div style="display: flex; align-items: center; gap: 10px;">
-                            <div style="width: 30px; height: 30px; background: #3b82f6; border-radius: 50%; border: 2px solid white;"></div>
+                            <div style="width: 24px; height: 24px; background: #3b82f6; clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%); border: 2px solid white;"></div>
                             <span style="font-size: 12px; color: var(--text-secondary);">Organization</span>
                         </div>
                         <div style="display: flex; align-items: center; gap: 10px;">
-                            <div style="width: 30px; height: 30px; background: #22c55e; border-radius: 50%; border: 2px solid white;"></div>
-                            <span style="font-size: 12px; color: var(--text-secondary);">Market</span>
+                            <div style="width: 24px; height: 24px; background: #22c55e; clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%); border: 2px solid white;"></div>
+                            <span style="font-size: 12px; color: var(--text-secondary);">Market & Economics</span>
                         </div>
                         <div style="display: flex; align-items: center; gap: 10px;">
-                            <div style="width: 30px; height: 30px; background: #8b4513; border-radius: 50%; border: 2px solid white;"></div>
+                            <div style="width: 24px; height: 24px; background: #8b4513; clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%); border: 2px solid white;"></div>
                             <span style="font-size: 12px; color: var(--text-secondary);">Product</span>
                         </div>
                         <div style="display: flex; align-items: center; gap: 10px;">
-                            <div style="width: 30px; height: 30px; background: #f59e0b; border-radius: 50%; border: 2px solid white;"></div>
-                            <span style="font-size: 12px; color: var(--text-secondary);">Quality / Property</span>
+                            <div style="width: 24px; height: 24px; background: #f59e0b; clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%); border: 2px solid white;"></div>
+                            <span style="font-size: 12px; color: var(--text-secondary);">Quality & Processing</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <div style="width: 24px; height: 24px; background: #a855f7; clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%); border: 2px solid white;"></div>
+                            <span style="font-size: 12px; color: var(--text-secondary);">Shop Operation</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <div style="width: 24px; height: 24px; background: #10b981; clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%); border: 2px solid white;"></div>
+                            <span style="font-size: 12px; color: var(--text-secondary);">Agri Event</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <div style="width: 24px; height: 24px; background: #06b6d4; clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%); border: 2px solid white;"></div>
+                            <span style="font-size: 12px; color: var(--text-secondary);">Sustainability</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <div style="width: 24px; height: 24px; background: #f59e0b; transform: rotate(45deg); border: 2px solid white;"></div>
+                            <span style="font-size: 12px; color: var(--text-secondary);">Property (diamond)</span>
                         </div>
                         <div style="height: 1px; background: var(--border); margin: 5px 0;"></div>
                         <div style="display: flex; align-items: center; gap: 10px;">
@@ -1475,6 +1492,20 @@
                         <div style="display: flex; align-items: center; gap: 10px;">
                             <div style="width: 30px; height: 2px; background: #10b981; border-top: 2px dashed;"></div>
                             <span style="font-size: 12px; color: var(--text-secondary);">Range</span>
+                        </div>
+                        <div style="height: 1px; background: var(--border); margin: 5px 0;"></div>
+                        <div style="font-size: 11px; font-weight: 600; color: var(--text-primary); margin-bottom: 2px;">Shape = Hierarchy Level</div>
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <div style="width: 26px; height: 26px; background: #94a3b8; clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%); border: 2px solid white;"></div>
+                            <span style="font-size: 12px; color: var(--text-secondary);">Main Class</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <div style="width: 22px; height: 22px; background: #94a3b8; border-radius: 50%; border: 2px solid white;"></div>
+                            <span style="font-size: 12px; color: var(--text-secondary);">Subclass</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 10px; padding: 2px 0;">
+                            <div style="width: 0; height: 0; border-left: 11px solid transparent; border-right: 11px solid transparent; border-bottom: 19px solid #94a3b8;"></div>
+                            <span style="font-size: 12px; color: var(--text-secondary);">Sub-subclass</span>
                         </div>
                     </div>
                 </div>
@@ -1915,11 +1946,47 @@
     <input type="file" id="fileInput" accept=".rdf,.owl,.ttl" style="display: none;">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.26.0/cytoscape.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/webcola@3.4.0/WebCola/cola.min.js"></script>
+    <script>window.webcola = window.cola;</script>
+    <script src="https://cdn.jsdelivr.net/npm/cytoscape-cola@2.5.1/cytoscape-cola.js"></script>
     <script>
         // Global State
         let ontologyData = null;
         let hierarchyData = [];
         let cy = null;
+        let colaLayout = null;
+
+        // On-screen error banner: mobile browsers give us no easy way to see the
+        // console, so surface any uncaught error directly on the page instead of
+        // failing silently (e.g. a blank Graph View with no clue why).
+        function showErrorBanner(message) {
+            console.error('🚨', message);
+            let banner = document.getElementById('errorBanner');
+            if (!banner) {
+                banner = document.createElement('div');
+                banner.id = 'errorBanner';
+                banner.style.cssText = 'position:fixed;top:0;left:0;right:0;z-index:99999;' +
+                    'background:#7f1d1d;color:#fff;font:12px/1.4 monospace;padding:10px 40px 10px 12px;' +
+                    'max-height:40vh;overflow:auto;white-space:pre-wrap;box-shadow:0 2px 8px rgba(0,0,0,.5);';
+                const closeBtn = document.createElement('button');
+                closeBtn.textContent = '✕';
+                closeBtn.style.cssText = 'position:absolute;top:6px;right:8px;background:none;border:none;color:#fff;font-size:16px;cursor:pointer;';
+                closeBtn.onclick = () => banner.remove();
+                banner.appendChild(closeBtn);
+                const text = document.createElement('div');
+                text.id = 'errorBannerText';
+                banner.appendChild(text);
+                document.body.appendChild(banner);
+            }
+            const text = document.getElementById('errorBannerText');
+            text.textContent += (text.textContent ? '\n\n' : '') + message;
+        }
+        window.addEventListener('error', (e) => {
+            showErrorBanner(`JS Error: ${e.message}\n${e.filename}:${e.lineno}:${e.colno}`);
+        });
+        window.addEventListener('unhandledrejection', (e) => {
+            showErrorBanner(`Unhandled promise rejection: ${e.reason && e.reason.message ? e.reason.message : e.reason}`);
+        });
 
         const colorMap = {
             Location: '#ef4444',
@@ -3270,6 +3337,11 @@
           'Peru':        'pe', 'China':       'cn', 'Japan':       'jp',
           'Italy':       'it', 'USA':         'us', 'Canada':      'ca',
           'Australia':   'au', 'South_Korea': 'kr', 'UK':          'gb',
+          'Dominican_Republic': 'do', 'Jamaica': 'jm', 'Panama': 'pa', 'Mexico': 'mx', 'Papua_New_Guinea': 'pg',
+          'Rwanda': 'rw', 'Uganda': 'ug', 'Tanzania': 'tz', 'Nicaragua': 'ni', 'India': 'in',
+          'Yemen': 'ye', 'El_Salvador': 'sv', 'Algeria': 'dz', 'Turkey': 'tr', 'Saudi_Arabia': 'sa',
+          'Austria': 'at', 'Czech_Republic': 'cz', 'Denmark': 'dk', 'Finland': 'fi', 'Greece': 'gr',
+          'Norway': 'no', 'Poland': 'pl', 'Russia': 'ru', 'Sweden': 'se', 'Taiwan': 'tw',
         };
 
         // ============================================================
@@ -3544,6 +3616,405 @@
             history:'1652년 런던 최초 커피하우스 개업. 17–18세기 커피하우스가 Lloyd\'s 보험·런던 증권거래소 발상지. 18세기 차(Tea) 문화로 전환. 2000년대 에스프레소 재도입. 2010년대 스페셜티 폭발',
             drinkingCulture:'런던 테이크어웨이 컵 문화. 오피스 카푸치노 문화. 독립 카페 씬 강세. 전통 영국식 카페(Greasy Spoon Caff) vs. 현대 스페셜티 공존',
             brands:['Monmouth Coffee','Square Mile Coffee','Workshop Coffee','Nude Espresso','Taylor Street Baristas']
+          },
+          // -- research-added data (25 countries) --
+          'Dominican_Republic': {
+            type: 'producer',
+            continent: '북아메리카 (카리브해)',
+            capital: '산토도밍고',
+            role: '생산국 (Arabica 중심, 소규모 산악 생산)',
+            prodRank: '세계 30위권대',
+            annualProd: '약 39–41만 포대 (60kg 기준)',
+            exportInfo: '소량 고급 원두 중심 수출, 미국·유럽 스페셜티 시장',
+            harvest: '8–3월 (지역별 상이)',
+            cafeCulture: '산토도밍고 스페셜티 씬 초기 성장 단계, FESTICAFE 등 커피 축제로 자국 원두 홍보 활발',
+            desc: '시바오·바라오나 등 산악지대에서 재배되는 고지대 아라비카로 유명한 카리브해의 대표 생산국입니다. 부드러운 산미와 균형 잡힌 바디감이 특징이며, 역사적으로 미국 시장에 프리미엄 원두로 꾸준히 수출되어 왔습니다.',
+            regions: ['시바오(Cibao)', '바라오나(Barahona)', '아수아(Azua)', '오코아(Ocoa)', '훈칼리토(Juncalito)'],
+            varietals: ['Typica', 'Caturra', 'Bourbon'],
+            processing: ['완전 수세(Washed)'],
+            flavor: ['부드러운 산미', '밀크초콜릿', '견과류', '균형잡힌 바디'],
+            certif: ['Rainforest Alliance', 'Fairtrade'],
+            brands: ['Barahona Coffee Growers', 'Induban', 'La Meseta Coffee']
+          },
+          'Jamaica': {
+            type: 'producer',
+            continent: '북아메리카 (카리브해)',
+            capital: '킹스턴',
+            role: '생산국 (Blue Mountain 세계 최고가 니치)',
+            prodRank: '세계 생산량 순위는 낮으나(약 45위권) 가격·명성 세계 최상위',
+            annualProd: '약 400–1,000톤 (약 7,000–17,000포대, 60kg 기준)',
+            exportInfo: '전통적으로 일본 상사와의 장기 계약 물량이 큰 비중 차지, 나머지 미국·유럽 고급 시장',
+            harvest: '8–3월 (메인 9–2월)',
+            cafeCulture: '블루마운틴 동부 6,000헥타르 남짓 좁은 지역의 극소량 고급 생산 체계. 자메이카 커피산업위원회(CIB)가 엄격한 원산지 인증 관리',
+            desc: '해발 900–1,500m 블루마운틴 산맥 동부의 좁은 지역에서만 재배되는 극희소 원두로, 세계에서 가장 비싼 커피 중 하나로 꼽힙니다. 완만한 산미와 부드러운 단맛, 균형 잡힌 바디가 특징이며, 자메이카 커피산업위원회의 엄격한 원산지·품질 인증을 통과한 원두만 \'Jamaica Blue Mountain\'을 표기할 수 있습니다.',
+            regions: ['블루마운틴(Blue Mountains)', '하이 마운틴(High Mountain — 저지대 등급)'],
+            varietals: ['Typica (Jamaica Blue Mountain 품종)'],
+            processing: ['완전 수세(Washed)'],
+            flavor: ['부드러운 산미', '은은한 단맛', '균형잡힌 바디', '견과류'],
+            certif: ['Jamaica Coffee Industry Board 원산지 인증'],
+            brands: ['Jamaica Blue Mountain Coffee', 'Wallenford Estate', 'Old Tavern Estate']
+          },
+          'Panama': {
+            type: 'producer',
+            continent: '북아메리카 (중앙아메리카)',
+            capital: '파나마시티',
+            role: '생산국 (Geisha/Gesha 세계 최고가 품종)',
+            prodRank: '생산량은 적으나(세계 30위권) 품질·경매가 세계 1위 수준',
+            annualProd: '약 11–12만 포대 (60kg 기준)',
+            exportInfo: '대부분 Best of Panama 등 스페셜티 경매를 통해 미국·일본·대만·한국 등 고가 시장으로 수출',
+            harvest: '11–3월',
+            cafeCulture: '보케테·볼칸 지역이 게이샤 품종 세계 최고가 경매의 중심. Hacienda La Esmeralda가 파운드당 800달러 이상 낙찰가 기록',
+            desc: '보케테(Boquete)의 바루 화산 인근 고지대는 게이샤(Geisha/Gesha) 품종의 성지로, 세계 커피 경매 역사상 최고가를 여러 차례 갱신해 왔습니다. 재스민과 베르가못 향, 밝고 투명한 산미가 특징이며 매년 열리는 Best of Panama 경매는 전 세계 스페셜티 업계의 이목을 집중시킵니다.',
+            regions: ['보케테(Boquete)', '볼칸(Volcán)', '레나시미엔토(Renacimiento)'],
+            varietals: ['Geisha(Gesha)', 'Typica', 'Caturra', 'Catuai', 'Bourbon'],
+            processing: ['워시드(Washed)', '내추럴(Natural)', '허니(Honey)'],
+            flavor: ['재스민', '베르가못', '복숭아', '밝은 산미'],
+            certif: ['Rainforest Alliance', 'COE (Best of Panama)'],
+            brands: ['Hacienda La Esmeralda', 'Elida Estate', 'Carmen Estate']
+          },
+          'Mexico': {
+            type: 'producer',
+            continent: '북아메리카',
+            capital: '멕시코시티',
+            role: '생산국 (Arabica 약 85%, 대규모 소농 기반)',
+            prodRank: '세계 10위권',
+            annualProd: '약 390만 포대 (60kg 기준, 2025/26 전망)',
+            exportInfo: '약 270만 포대 수출(2024/25), 미국이 최대 수출 대상국',
+            harvest: '11–3월 (지역별 상이)',
+            cafeCulture: '치아파스 원주민 협동조합의 유기농·공정무역 운동 활발, 오악사카·베라크루스 스페셜티 씬 성장 중',
+            desc: '치아파스·베라크루스·오악사카 등 남부 고지대의 수십만 소규모 농가가 생산을 담당하며, 세계 최대 유기농 커피 생산국 중 하나로 꼽힙니다. 원주민 협동조합 중심의 공정무역 운동이 활발하고, 최근 국내 스페셜티 소비도 빠르게 늘고 있습니다.',
+            regions: ['치아파스(Chiapas)', '베라크루스(Veracruz)', '오악사카(Oaxaca)', '푸에블라(Puebla)'],
+            varietals: ['Typica', 'Bourbon', 'Caturra', 'Mundo Novo'],
+            processing: ['완전 수세(Washed)'],
+            flavor: ['너티', '밀크초콜릿', '순한 산미', '균형잡힌 바디'],
+            certif: ['Fairtrade', 'Organic', 'Rainforest Alliance'],
+            brands: ['Finca Irlanda', 'CESMACH Cooperative', 'AMSA (Agroindustrias Unidas de México)']
+          },
+          'Papua_New_Guinea': {
+            type: 'producer',
+            continent: '오세아니아',
+            capital: '포트모르즈비',
+            role: '생산국 (Arabica, 화산성 고산지대)',
+            prodRank: '세계 20위권',
+            annualProd: '약 75만 포대 (60kg 기준, 2024/25 전망)',
+            exportInfo: '대부분 호주·일본·미국으로 수출, 소규모 부족 공동체 협동조합 중심',
+            harvest: '5–9월 (메인)',
+            cafeCulture: '시그리 에스테이트(Sigri Estate) 등 고지대 대농장과 부족 공동체 소농 협동조합이 공존',
+            desc: '뉴기니 고지대(Highlands)의 화산성 토양과 1,500–2,000m 고도에서 재배되는 아라비카는 과일향과 꽃향이 어우러진 독특한 풍미로 평가받습니다. 부족 공동체 단위의 소규모 농가와 시그리 에스테이트 같은 대규모 농장이 공존하며, 접근이 어려운 지형 탓에 물류 인프라가 산업의 큰 과제로 남아있습니다.',
+            regions: ['웨스턴 하이랜즈(Western Highlands)', '이스턴 하이랜즈(Eastern Highlands)', '심부(Simbu)', '와기 밸리(Wahgi Valley)'],
+            varietals: ['Typica', 'Bourbon', 'Arusha'],
+            processing: ['완전 수세(Washed)'],
+            flavor: ['과일향', '꽃향', '초콜릿', '밝은 산미'],
+            certif: ['Fairtrade', 'Organic', 'Rainforest Alliance'],
+            brands: ['Sigri Estate', 'PNG Coffee Industry Corporation', 'Kongo Coffee']
+          },
+          'Rwanda': {
+            type: 'producer',
+            continent: '아프리카',
+            capital: '키갈리',
+            role: '생산국 (Arabica 특화, 고급 스페셜티)',
+            prodRank: '세계 27위 (아프리카 고급 원두로 명성)',
+            annualProd: '약 250,000 포대 (60kg 기준)',
+            exportInfo: '연 20,000톤 수출, EU·미국·일본의 스페셜티 시장 집중. 고가 경매 시장(Cup of Excellence) 참여',
+            harvest: '9–12월 (메인), 5–7월 (세컨더리)',
+            cafeCulture: '포스트-제노사이드 산업 재건의 상징. 고도 1,500–2,000m 소규모 농가 중심 생산. 스페셜티 씬 성장 중',
+            desc: '르완다의 화산성 토양과 대사 높이의 고지대는 정교한 산미와 복합적인 베리 풍미를 가진 고급 아라비카 원두를 만들어낸다. 1990년대 내전 이후 국제 지원과 공정무역 운동으로 산업을 재건했으며, 현재는 아프리카에서 가장 높은 품질 평가를 받는 원두 중 하나로 인정받고 있다.',
+            regions: ['Huye Mountains (우에 산맥)', 'Nyungwe (은웅웨)', 'Kibuye (키부예)'],
+            varietals: ['Red Bourbon (95%)', 'Typica'],
+            processing: ['완전 수세(Washed)'],
+            flavor: ['베리 류', '시트러스(오렌지·레몬)', '꽃향(Floral)', '클린한 산미'],
+            certif: ['Cup of Excellence', 'Fair Trade', 'Rainforest Alliance', '스페셜티 그레이드'],
+            brands: ['Inzira Cooperative', 'COCOCA', 'Kopakama Cooperative']
+          },
+          'Uganda': {
+            type: 'producer',
+            continent: '아프리카',
+            capital: '캄팔라',
+            role: '생산국 (Robusta 85%, Arabica 15% 혼합 생산)',
+            prodRank: '세계 2위 로부스타 수출국, 연 6.85만 포대 규모',
+            annualProd: '약 685만 포대 (60kg 기준) — 로부스타 중심, 최근 8.4만 포대까지 증가',
+            exportInfo: '연 7.6–8.4만 포대 수출, 전 세계 주요 로부스타 공급국. 인스턴트 커피·에스프레소용 블렌딩 콩의 주요 수입처',
+            harvest: '9–12월 (메인), 3–6월 (세컨더리)',
+            cafeCulture: '부기수 지역의 산지 직거래 커피 운동 활성화. 스페셜티 아라비카의 소규모 생산지로 부상 중. 지역 로스터리 씬 성장',
+            desc: '우간다는 로부스타와 아라비카의 두 세계를 대표하는 독특한 커피 국가다. Elgon 산 서부 고지대의 Bugisu 지역은 과일향과 꽃향이 가득한 아라비카를 생산하며, 중부 저지대는 강렬하고 흙향이 풍부한 로부스타를 다량 생산한다. 세계 인스턴트 커피와 에스프레소 블렌딩의 척추를 이루는 나라다.',
+            regions: ['Bugisu (부기수 — Arabica 명산)', 'Sipi Falls 일대', 'Toro (토로 — Robusta)', 'Buganda 중부 (로부스타 중심)'],
+            varietals: ['Typica', 'SL14', 'SL28 (Arabica)', 'Nganda', 'Erecta (Robusta)'],
+            processing: ['완전 수세(Washed) — Arabica', '건조(Unwashed/Natural) — Robusta'],
+            flavor: ['흙향, 풀내(Robusta)', '베리, 과일향(Bugisu Arabica)', '견과류', '강한 바디감'],
+            certif: ['Fair Trade', 'Rainforest Alliance', 'UTZ', '스페셜티 그레이드'],
+            brands: ['Bugisu Cooperative', 'Kibale Coffee Estate', 'Uganda Coffee Federation']
+          },
+          'Tanzania': {
+            type: 'producer',
+            continent: '아프리카',
+            capital: '다르에살람',
+            role: '생산국 (Arabica 특화, Peaberry 유명)',
+            prodRank: '세계 19위 (아프리카 4위)',
+            annualProd: '약 90–110만 포대 (60kg 기준)',
+            exportInfo: '연 900,000–1,100,000 포대 수출, EU·미국·일본·한국이 주요 시장. Peaberry 프리미엄 판매',
+            harvest: '9–12월 (메인 수확)',
+            cafeCulture: '킬리만자로 Peaberry는 스페셜티 원두의 고급 품종으로 국제 평가 높음. 아루샤 스페셜티 씬 성장 중',
+            desc: '탄자니아는 아프리카에서 가장 높은 고도(1,200–2,000m)의 화산성 고지대 커피 재배지를 자랑한다. 특히 킬리만자로 산 고도에서 생산되는 Peaberry(한 체리에서 나오는 단일 원두)는 세계적으로 인정받은 프리미엄 등급으로, 응축된 산미와 와인 같은 복합도를 특징으로 한다. 45만 명의 소규모 농가가 생산량의 90%를 담당한다.',
+            regions: ['Kilimanjaro (킬리만자로 — Peaberry 명산)', 'Arusha (아루샤)', 'Mbeya (음베야)', 'Ruvuma (루부마)'],
+            varietals: ['Bourbon', 'Typica', 'Peaberry (자연 변종)'],
+            processing: ['완전 수세(Washed)'],
+            flavor: ['밝은 산미', '와인 노트', '초콜릿', '응축된 풍미(Peaberry)'],
+            certif: ['Cup of Excellence', '스페셜티 그레이드', 'Fair Trade', 'Rainforest Alliance'],
+            brands: ['Kilimanjaro Cooperative', 'Tanzanian Coffee Board', 'Arusha Estate']
+          },
+          'Nicaragua': {
+            type: 'producer',
+            continent: '중미',
+            capital: '마나과',
+            role: '생산국 (Arabica 98%, 스페셜티 강국)',
+            prodRank: '세계 12위',
+            annualProd: '약 256만 포대 (60kg 기준, 2024/25)',
+            exportInfo: '약 250–266만 포대 수출, EU·미국·일본·한국이 주요 시장. 유기농·공정무역 인증 높음',
+            harvest: '10–2월 (메인 수확)',
+            cafeCulture: '마타갈파·히노테가의 고급 원두 생산지로 명성 확립. 스페셜티 로스터리와 직거래 운동 활성화 중. 중미의 고품질 원두 대표국',
+            desc: '니카라과는 중미의 높은 고지대(1,200–1,800m)와 풍부한 화산성 토양에서 균형잡힌 고급 아라비카를 생산한다. 특히 마타갈파 지역은 니카라과의 최고 품질 콩 산지로, 히노테가는 밝은 과일향과 꽃향으로 유명하다. 소규모 농가와 공정무역 운동의 선두주자로, 지속가능한 커피 생산의 모델국이다.',
+            regions: ['Jinotega (히노테가 — 밝은 산미)', 'Matagalpa (마타갈파 — 최고 품질)', 'Nueva Segovia (누에바 세고비아)'],
+            varietals: ['Bourbon', 'Typica', 'Catuai'],
+            processing: ['완전 수세(Washed)', '허니(Honey) — 스페셜티'],
+            flavor: ['카라멜', '초콜릿', '견과류', '밝은 과일향(Jinotega)', '균형잡힌 산미'],
+            certif: ['Fair Trade', 'Rainforest Alliance', 'Organic', 'Cup of Excellence'],
+            brands: ['Finca San Cayetano', 'Sáenz Coffee Cooperative', 'Nicaragua Coffee Exporters']
+          },
+          'India': {
+            type: 'producer',
+            continent: '아시아',
+            capital: '뉴델리',
+            role: '생산국 (Arabica·Robusta 혼합, 몬순 가공 특화)',
+            prodRank: '세계 7위 (약 360만 톤 생산)',
+            annualProd: '약 600만 포대 (60kg 기준) — Arabica·Robusta 혼합',
+            exportInfo: '연 360만 톤 수출, 70%를 128개국에 수출. 몬순 말라바르는 GI 보호 고급 브랜드',
+            harvest: '10–2월 (메인 수확)',
+            cafeCulture: '몬순 말라바르는 역사적 무역로의 산물로, 해상 운송 시대 의도된 숙성 공정이 현대까지 계승됨. 코르그·닐기리의 고지대 스페셜티 씬 성장',
+            desc: '인도의 커피는 해양 몬순 기후라는 독특한 지리적 조건에서 비롯된다. 카르나타카의 Chikkamagaluru와 Coorg는 고도 1,000–1,600m의 서가트 산맥에서 풍부하고 육중한 원두를 생산하고, 케랄라의 Wayanad는 천연 숲 캐노피 아래 유기농 아라비카를 재배한다. 몬순 처리는 6–9월 계절풍에 의도적으로 콩을 노출시켜 흙향과 낮은 산미의 독특한 프로필을 만들어낸다.',
+            regions: ['Karnataka — Chikkamagaluru (치kkamaguLu, 70% 생산)', 'Kodagu/Coorg (코르그)', 'Hassan (하산)', 'Kerala — Wayanad (와야나드)', 'Tamil Nadu — Nilgiri (닐기리)'],
+            varietals: ['Arabica — Kent, S.74, P.884, Typica', 'Robusta — Chandragiri'],
+            processing: ['완전 수세(Washed)', '몬순 처리(Monsooned Malabar AA — 6–9월 계절풍 노출)'],
+            flavor: ['흙향, 향신료향', '낮은 산미(산성도 약함)', '무거운 바디', '독특한 몬순 캐릭터'],
+            certif: ['Fair Trade', 'Rainforest Alliance', 'GI-태깅 (몬순 말라바르 AA)', '유기농 인증'],
+            brands: ['Monsooned Malabar AA (몬순 말라바르)', 'Wayanad Cooperative', 'Coorg Coffee Board']
+          },
+          'Yemen': {
+            type: 'producer',
+            continent: '아시아',
+            capital: '사나아',
+            role: '생산국 (모카 코피 발상지)',
+            prodRank: '세계 30위권대 (역사적 중요성)',
+            annualProd: '약 10–15만 포대 (60kg 기준)',
+            exportInfo: '약 5–8만 포대 수출, 주로 홍콩·UAE·일본으로 스페셜티 경로 판매. 전쟁 영향으로 산업 기반 약화',
+            harvest: '9–2월 (메인)',
+            cafeCulture: '모카 항구를 통한 세계 최초 커피 무역 발상지. 예멘 전쟁 이후 산업 재건 진행 중',
+            desc: '예멘의 바니 마타르·사나아 지역 계단식 고지대 테라스 농업은 세계 커피 무역의 기원입니다. 모카 항구(Mocha Port)는 16–18세기 오스만 제국 교역의 중심이었으며, 독특한 헤이룸 품종 재배 전통이 남아있습니다. 극히 낮은 생산량에도 불구하고 높은 가격대의 스페셜티 시장에서 명성이 높습니다.',
+            regions: ['바니 마타르(Bani Matar)', '사나아 지역(Sana\'a Region)'],
+            varietals: ['예멘 모카(Yemen Mocha)', '토피나(Topia)'],
+            processing: ['자연 건조(Natural)'],
+            flavor: ['초콜릿', '매실', '와인'],
+            certif: [],
+            brands: []
+          },
+          'El_Salvador': {
+            type: 'producer',
+            continent: '중앙아메리카',
+            capital: '산살바도르',
+            role: '생산국 (부르봉 품종 발상지)',
+            prodRank: '세계 15위권대',
+            annualProd: '약 150–180만 포대 (60kg 기준)',
+            exportInfo: '약 140–160만 포대 수출, 주로 미국·독일·일본이 주요 수출 대상',
+            harvest: '11–3월 (메인)',
+            cafeCulture: '산타 아나·아파네카-일라마테펙 화산 지역이 세계 최고 고도 커피 재배 지역 중 하나. 부르봉 품종의 선조 발생지로 명성',
+            desc: '엘살바도르의 아파네카-일라마테펙(Apaneca-Ilamatepec) 화산 지역은 중앙아메리카 최고의 커피 재배 고도(최대 2,000m)를 자랑합니다. 부르봉 품종의 역사적 발원지이며, 최근 스페셜티 분급(microlot) 재배 및 COE(Cup of Excellence) 참가로 국제 시장에서 평가가 상승하고 있습니다.',
+            regions: ['산타 아나(Santa Ana)', '아파네카-일라마테펙(Apaneca-Ilamatepec)', '아우칠론(Ahuachapán)'],
+            varietals: ['부르봉(Bourbon)', '팩마라(Pacamara)', '카투라(Caturra)'],
+            processing: ['완전 수세(Washed)'],
+            flavor: ['시트러스', '꿀', '다크 초콜릿'],
+            certif: ['COE (Cup of Excellence)', 'Rainforest Alliance'],
+            brands: ['Café Siekahara']
+          },
+          'Algeria': {
+            type: 'consumer',
+            continent: '아프리카',
+            capital: '알제',
+            importVol: '약 30–50만 포대',
+            perCapita: '약 0.4–0.6kg/인·년',
+            desc: '알제리는 북아프리카 전통 찻문화 국가에서 현대 커피 문화로 점진적으로 전환하고 있습니다. 프랑스 식민지배 유산으로 20세기 중반 까페 문화가 성장했으며, 오늘날 알제·오란 도시의 젊은 세대에서 스페셜티 커피 관심이 증가하고 있습니다.',
+            mainOrigins: ['브라질', '우간다', '에티오피아'],
+            coffeeStyle: ['아라비카 블렌드', '터키식 커피', '에스프레소'],
+            specialtyScene: '알제 시내 독립 로스터리 및 모던 카페 신 형성 초기 단계. 전통 까페 문화 유지',
+            history: '프랑스 식민지배(1830–1962)를 통해 유럽식 까페 문화 유입. 독립 후 찻문화와의 혼합 발생',
+            drinkingCulture: '오후 커피 및 차 문화 병행. 가족/친구 모임 중심의 커피 소비. 전통 터키식 커피 유지',
+            brands: ['Kahwa Algeria']
+          },
+          'Turkey': {
+            type: 'consumer',
+            continent: '아시아',
+            capital: '앙카라',
+            importVol: '약 200–250만 포대',
+            perCapita: '약 2.4kg/인·년',
+            desc: '터키는 전통 터키 커피(Türk Kahvesi) 문화의 심장으로, 2013년 UNESCO 무형문화유산으로 등재된 역사 깊은 커피 음용 문화를 자랑합니다. 오스만 제국 시대 이스탄불 커피하우스(Kahvehane) 전통은 현대까지 이어져 있으며, 이스탄불·앙카라의 전통 카페와 현대 스페셜티 씬이 공존하고 있습니다.',
+            mainOrigins: ['에티오피아', '브라질', '콜롬비아'],
+            coffeeStyle: ['터키 커피(Türk Kahvesi)', '에스프레소', '터키식 코드(생강/카다몬 첨가)'],
+            specialtyScene: '이스탄불 갈라타·베이오을루 지역의 현대 스페셜티 로스터리 성장. 전통 터키 커피 문화의 유지',
+            history: '1555년경 오스만 이스탄불에 커피 전래. 16–18세기 커피하우스가 문학·음악·토론의 중심(Ottoman Court 중심). UNESCO 무형문화유산(2013)',
+            drinkingCulture: '터키 커피(수작업 진사(cezve) 조리, 설탕과 카다몬 첨가)가 사회 및 접대 문화의 중심. 점술 관습(Tasseography) 병행',
+            brands: ['Kurukahveci Mehmet Efendi', 'Konyalı Mehmet Usta']
+          },
+          'Saudi_Arabia': {
+            type: 'consumer',
+            continent: '아시아',
+            capital: '리야드',
+            importVol: '약 120–150만 포대',
+            perCapita: '약 1.8–2.2kg/인·년',
+            desc: '사우디아라비아는 전통 아랍 커피(Qahwa) 문화의 발상지로, 카다몬·장미수·사프란 첨가 스타일의 고급 커피 문화를 자랑합니다. 베두인 접대 전통과 이슬람 문화의 핵심이며, 최근 리야드·제다 도시에서 현대 스페셜티 커피 씬이 급속 성장하고 있습니다.',
+            mainOrigins: ['에티오피아', '인도', '베트남'],
+            coffeeStyle: ['아랍 커피(카다몬·장미수)', '에스프레소', '핸드드립'],
+            specialtyScene: '리야드·제다의 고급 까페·호텔 스페셜티 씬 성장 중. 젊은 세대 중심의 세계 커피 트렌드 수용',
+            history: '15–16세기 예멘의 모카 무역과 함께 아라비아 반도로 커피 전파. 무함마드 시대 이후 이슬람 종교·사회 의식의 중심',
+            drinkingCulture: '베두인 접대 전통(손님 환영 시 아랍 커피 제공). 가족/사업 모임의 필수 음료. 카다몬·장미수·사프란 첨가 스타일',
+            brands: ['Gahwa Coffee Company', 'Arabica Riyadh']
+          },
+          'Austria': {
+            type: 'consumer',
+            continent: '유럽',
+            capital: '빈',
+            importVol: '약 200–250만 포대',
+            perCapita: '약 5.5kg/인·년',
+            desc: '오스트리아는 빈 커피하우스 문화(Wiener Kaffeehauskultur)로 2011년 UNESCO 무형문화유산에 등재된 세계적인 커피 전통국입니다. 1683년 오스만 군대가 남기고 간 원두 자루에서 시작됐다는 전설과 함께, 신문을 읽으며 몇 시간이고 머무는 \'거실 같은 카페\' 문화가 지금도 이어지고 있습니다.',
+            mainOrigins: ['브라질', '콜롬비아', '에티오피아', '베트남'],
+            coffeeStyle: ['비너 멜랑주(Wiener Melange)', '아인슈페너(Einspänner)', '클라이너 브라우너(Kleiner Brauner)', '페어렝게르터(Verlängerter)'],
+            specialtyScene: '빈 시내 Ministry Coffee·Balthasar Coffee 등 모던 스페셜티 로스터리 성장. 역사적인 Café Central·Café Sacher와 공존',
+            history: '1683년 제2차 빈 공방전 이후 오스만군이 남긴 원두 자루에서 커피하우스가 시작됐다는 설화 존재(콜쉬츠키 전설). 18–19세기 합스부르크 제국 시절 지식인·예술가의 사교 공간으로 번성. 2011년 빈 커피하우스 문화 UNESCO 무형문화유산 등재',
+            drinkingCulture: '커피 한 잔으로 몇 시간이고 앉아 신문을 읽는 \'연장된 거실\' 문화. 웨이터가 물 한 잔을 함께 내오는 전통. 은쟁반 서빙 관습 유지',
+            brands: ['Café Central', 'Café Sacher', 'Julius Meinl', 'Balthasar Coffee', 'Ministry Coffee']
+          },
+          'Czech_Republic': {
+            type: 'consumer',
+            continent: '유럽',
+            capital: '프라하',
+            importVol: '약 100–130만 포대',
+            perCapita: '약 2.3kg/인·년',
+            desc: '체코는 프라하의 문학적 카페 전통(Café Slavia, Café Louvre 등 카프카 시대 카페)에서 출발해, 공산 시절의 침체를 겪은 뒤 1989년 이후 서구식 카페 문화가 빠르게 부활한 나라입니다. 2000년대 후반부터 프라하·브르노를 중심으로 서드웨이브 스페셜티 씬이 활발히 성장하고 있습니다.',
+            mainOrigins: ['브라질', '베트남', '에티오피아', '콜롬비아'],
+            coffeeStyle: ['투레츠카 카바(Turecká káva — 터키식)', '에스프레소', '카푸치노'],
+            specialtyScene: '프라하 Doubleshot·Můj šálek kávy(마이 컵 오브 커피) 등 서드웨이브 로스터리가 유럽 스페셜티 씬에서 주목받는 중',
+            history: '19세기 말 Café Slavia·Café Louvre 등 문학·예술가들의 사교 공간으로 명성(프란츠 카프카가 즐겨 찾던 카페 포함). 공산 정권 시절 카페 문화 침체. 1989년 벨벳 혁명 이후 서구식 카페 재도입, 2000년대 스페셜티 붐',
+            drinkingCulture: '젊은 세대 중심 서드웨이브 카페 문화 확산. 가정에서는 여전히 터키식으로 원두를 잔에 바로 우려 마시는 전통 존재',
+            brands: ['Doubleshot', 'Můj šálek kávy', 'Café Slavia', 'Café Louvre']
+          },
+          'Denmark': {
+            type: 'consumer',
+            continent: '유럽 (북유럽)',
+            capital: '코펜하겐',
+            importVol: '약 150–180만 포대',
+            perCapita: '약 5.3kg/인·년',
+            desc: '덴마크는 \'카페파우제(kaffepause)\'라 불리는 커피 브레이크가 일상과 직장 문화의 핵심인 나라로, 코펜하겐은 라이트 로스트 필터 커피를 앞세운 북유럽 스페셜티 운동의 진원지 중 하나입니다. Coffee Collective·La Cabra 등은 세계 스페셜티 업계에 큰 영향을 끼쳤습니다.',
+            mainOrigins: ['에티오피아', '케냐', '콜롬비아', '브라질'],
+            coffeeStyle: ['필터 커피(라이트 로스트)', '카페파우제 커피', '에스프레소'],
+            specialtyScene: '코펜하겐 Coffee Collective·La Cabra·Prolog Coffee Bar — 라이트 로스트 북유럽 스타일을 세계에 전파한 선구 로스터리들',
+            history: '18세기 커피 전래 이후 차와 함께 대중 음료로 정착. 2000년대 팀 벤델보(노르웨이) 영향을 받은 로스터들이 코펜하겐에서 라이트 로스트 스페셜티 운동을 본격화하며 \'북유럽 스타일\'을 세계에 알림',
+            drinkingCulture: '카페파우제(커피 브레이크)가 직장·가정의 필수 사교 의례. \'휘게(hygge)\' 문화와 결합된 아늑한 커피 시간 중시',
+            brands: ['Coffee Collective', 'La Cabra', 'Prolog Coffee Bar']
+          },
+          'Finland': {
+            type: 'consumer',
+            continent: '유럽 (북유럽)',
+            capital: '헬싱키',
+            importVol: '약 100–120만 포대',
+            perCapita: '약 9.6kg/인·년 (세계 1위)',
+            desc: '핀란드는 세계에서 1인당 커피 소비량이 가장 많은 나라로, \'카휘타우코(kahvitauko, 커피 브레이크)\'는 일부 단체협약에 명시될 만큼 노동 문화에 깊이 뿌리내려 있습니다. 라이트 로스트 필터 커피를 하루에도 여러 잔 마시는 것이 일상입니다.',
+            mainOrigins: ['브라질', '콜롬비아', '베트남'],
+            coffeeStyle: ['필터 커피(라이트 로스트)', '카피오스토(Kaffeost — 라플란드식 치즈 커피)'],
+            specialtyScene: '헬싱키 Kaffa Roastery·Andante Coffee Roasters 등 스페셜티 로스터리 성장 중, 전통 라이트 로스트 시장과 공존',
+            history: '18세기 커피 전래 이후 급속히 확산. 노동조합 협약에 커피 브레이크(kahvitauko)가 권리로 명시된 사례가 있을 만큼 제도화. 1876년 설립된 Paulig가 대표 로스터리로 성장',
+            drinkingCulture: '하루 여러 차례의 커피 브레이크가 업무 리듬의 일부. 가정·사무실 모두 라이트 로스트 필터 커피가 기본',
+            brands: ['Paulig', 'Kaffa Roastery', 'Andante Coffee Roasters']
+          },
+          'Greece': {
+            type: 'consumer',
+            continent: '유럽',
+            capital: '아테네',
+            importVol: '약 60–80만 포대',
+            perCapita: '약 2.4kg/인·년',
+            desc: '그리스는 1957년 테살로니키 국제박람회에서 우연히 탄생한 냉커피 \'프라페(Frappé)\'로 유명한 나라입니다. 오스만 시대부터 이어진 전통 그릭 커피(브리키 추출)와 현대의 프레도 에스프레소가 공존하며, 야외 테라스에서 오래 머무는 카페 문화가 사회생활의 중심입니다.',
+            mainOrigins: ['브라질', '베트남', '에티오피아'],
+            coffeeStyle: ['프라페(Frappé)', '그릭 커피(Ellinikos Kafes — 브리키 추출)', '프레도 에스프레소(Freddo Espresso)', '프레도 카푸치노(Freddo Cappuccino)'],
+            specialtyScene: '아테네 Taf Coffee·Tailor Made Coffee Roasters 등 스페셜티 로스터리 성장 중',
+            history: '1957년 테살로니키 국제무역박람회에서 Dimitris Vakondios가 인스턴트 커피를 흔들다 우연히 프라페 발명. 전통 그릭 커피는 오스만 제국 시대 브리키(체즈베) 추출법을 계승',
+            drinkingCulture: '야외 카페 테라스에서 몇 시간이고 대화하며 머무는 \'파레아(parea)\' 사교 문화. 여름철엔 프라페·프레도 등 냉커피가 압도적',
+            brands: ['Taf Coffee', 'Tailor Made Coffee Roasters', 'Mokka']
+          },
+          'Norway': {
+            type: 'consumer',
+            continent: '유럽 (북유럽)',
+            capital: '오슬로',
+            importVol: '약 90–110만 포대',
+            perCapita: '약 7.2kg/인·년 (세계 2위권)',
+            desc: '노르웨이는 세계 스페셜티 커피의 흐름을 바꾼 나라로 꼽힙니다. 오슬로의 팀 벤델보(Tim Wendelboe)는 월드 바리스타 챔피언 출신으로, 라이트 로스트·필터 커피 중심의 \'북유럽 스타일\'을 세계에 전파한 선구자입니다.',
+            mainOrigins: ['에티오피아', '케냐', '콜롬비아', '과테말라'],
+            coffeeStyle: ['필터 커피(라이트 로스트)', '에스프레소'],
+            specialtyScene: '오슬로 Tim Wendelboe·Fuglen·Supreme Roastworks — 세계 스페셜티 업계에 큰 영향을 끼친 로스터리 밀집',
+            history: '18세기 덴마크와의 동군연합 시절 무역로를 통해 커피 전래. 어업·선원 문화와 결합된 커피 브레이크 전통. 2000년대 팀 벤델보가 라이트 로스트 혁명을 주도하며 오슬로를 세계 스페셜티 허브로 격상',
+            drinkingCulture: '필터 커피가 일상 음료로 정착, 거의 모든 사교·업무 모임에 커피가 함께함. 하루 여러 차례 커피 브레이크 문화',
+            brands: ['Tim Wendelboe', 'Fuglen', 'Supreme Roastworks']
+          },
+          'Poland': {
+            type: 'consumer',
+            continent: '유럽',
+            capital: '바르샤바',
+            importVol: '약 250–300만 포대',
+            perCapita: '약 3.1kg/인·년',
+            desc: '폴란드는 분할통치 시대 바르샤바의 카페 전통에서 출발해, 공산 시절 침체를 겪은 뒤 EU 가입(2004년) 이후 도시 카페 문화가 폭발적으로 성장한 나라입니다. 바르샤바·크라쿠프를 중심으로 젊은 세대의 서드웨이브 스페셜티 씬이 빠르게 확산되고 있습니다.',
+            mainOrigins: ['브라질', '베트남', '콜롬비아'],
+            coffeeStyle: ['에스프레소', '카푸치노', '카바 포 투레츠쿠(Kawa po turecku — 폴란드식 터키 커피)'],
+            specialtyScene: '바르샤바 Coffee Way·Wixapol, 크라쿠프 스페셜티 로스터리가 2010년대 이후 빠르게 성장',
+            history: '18세기 분할통치 시대 바르샤바에 커피하우스 전통 형성. 공산 정권 시절 카페 문화 침체. 1989년 체제 전환과 2004년 EU 가입 이후 서구식·스페셜티 카페 문화 폭발적 확산',
+            drinkingCulture: '도시 젊은 세대 중심 서드웨이브 카페 급성장. 가정에서는 원두 가루를 잔에 직접 우려내는 전통식 \'카바 포 투레츠쿠\'도 여전히 흔함',
+            brands: ['Coffee Way', 'Wixapol', 'Relacja Coffee']
+          },
+          'Russia': {
+            type: 'consumer',
+            continent: '유럽·아시아 (유라시아)',
+            capital: '모스크바',
+            importVol: '약 400–450만 포대',
+            perCapita: '약 1.2kg/인·년',
+            desc: '러시아는 전통적으로 차(사모바르 문화)가 지배적인 나라이지만, 모스크바·상트페테르부르크를 중심으로 도시 커피 시장이 크게 성장했습니다. 2022년 이후 서방 제재로 원두 조달 경로가 재편되며 공급망에 변화가 생겼습니다.',
+            mainOrigins: ['베트남', '브라질', '인도'],
+            coffeeStyle: ['에스프레소', '카푸치노', '라떼'],
+            specialtyScene: '모스크바·상트페테르부르크 Surf Coffee·Skuratov Coffee 등 인디 로스터리가 수입 제약 속에서도 성장 중',
+            history: '표트르 대제가 18세기 초 서구화 상징으로 커피를 도입했으나 수세기 동안 차(사모바르 문화)에 밀려 비주류 음료로 머묾. 소비에트 붕괴 이후 1990–2000년대 서구식 카페 붐이 대도시 중심으로 확산',
+            drinkingCulture: '일상 음료는 여전히 차가 우세하나, 대도시 직장인 사이에서 테이크아웃 커피 문화 정착. 2022년 이후 서구 브랜드 철수와 물류 재편으로 대체 수입 경로 확대',
+            brands: ['Surf Coffee', 'Skuratov Coffee', 'Coffee Bean']
+          },
+          'Sweden': {
+            type: 'consumer',
+            continent: '유럽 (북유럽)',
+            capital: '스톡홀름',
+            importVol: '약 130–150만 포대',
+            perCapita: '약 6.5kg/인·년',
+            desc: '스웨덴은 커피와 페이스트리를 곁들여 잠시 쉬어가는 \'피카(fika)\' 문화로 유명한 나라입니다. 18세기 여러 차례 왕실 칙령으로 커피가 금지됐던 역사를 딛고, 오늘날은 라이트 로스트 스페셜티의 세계적 허브 중 하나로 자리잡았습니다.',
+            mainOrigins: ['에티오피아', '케냐', '브라질', '콜롬비아'],
+            coffeeStyle: ['필터 커피(라이트 로스트)', '피카 커피', '에스프레소'],
+            specialtyScene: '스톡홀름 Drop Coffee Roasters·Johan & Nyström·Koppi — 북유럽 라이트 로스트 스타일을 세계에 알린 대표 로스터리',
+            history: '17–18세기 커피 전래 이후 구스타프 3세 등 왕실이 여러 차례 커피 금지령을 내린 역사 존재. 20세기 들어 \'피카\'가 직장·가정의 핵심 사교 의례로 제도화',
+            drinkingCulture: '피카(커피+페이스트리 브레이크)가 거의 의무적인 일상 사교 의례로 자리잡음. 라이트 로스트 필터 커피 선호',
+            brands: ['Drop Coffee Roasters', 'Johan & Nyström', 'Koppi']
+          },
+          'Taiwan': {
+            type: 'consumer',
+            continent: '아시아',
+            capital: '타이베이',
+            importVol: '약 150–180만 포대',
+            perCapita: '약 2.0kg/인·년',
+            desc: '대만은 전통 차 문화와 현대 카페 붐이 공존하는 시장으로, 알리산(阿里山) 등지에서 소량의 자체 생산도 이뤄지지만 대부분은 수입에 의존합니다. 타이베이는 인구 대비 독립 카페 밀도가 세계적으로 손꼽힐 만큼 사이펀·핸드드립 문화가 발달했습니다.',
+            mainOrigins: ['브라질', '베트남', '과테말라', '콜롬비아', '에티오피아'],
+            coffeeStyle: ['에스프레소', '아이스 라떼', '사이펀·핸드드립 커피'],
+            specialtyScene: '타이베이 Simple Kaffa(월드 바리스타 챔피언 우쯔친 매장)·Fika Fika Café — 국제적으로 인정받는 스페셜티 카페',
+            history: '일제강점기(1895–1945) 알리산 지역에서 초기 커피 재배 시도. 전후 차 문화가 지배적이었으나 2000–2010년대 독립 카페·사이펀 커피 붐이 폭발적으로 확산',
+            drinkingCulture: '높은 밀도의 독립 카페들이 학습·작업 공간(third place)으로 기능. 사이펀·핸드드립 등 수작업 추출 문화 강세',
+            brands: ['Simple Kaffa', 'Fika Fika Café', 'Cama Café']
           },
         };
 
@@ -5049,25 +5520,31 @@
             container.style.height = '600px';
             console.log('✅ Container styled');
             
-            // Use double requestAnimationFrame to ensure layout is complete
-            requestAnimationFrame(() => {
-                requestAnimationFrame(() => {
-                    const rect = container.getBoundingClientRect();
-                    console.log(`📐 Container dimensions after RAF: ${rect.width}x${rect.height}`);
-                    
-                    if (rect.width === 0 || rect.height === 0) {
-                        console.error('❌ Container STILL has zero dimensions!');
-                        console.error('   Container display:', window.getComputedStyle(container).display);
-                        console.error('   Container visibility:', window.getComputedStyle(container).visibility);
-                        console.error('   Parent display:', window.getComputedStyle(container.parentElement).display);
-                        alert('❌ Graph container error! The container has zero size.');
-                        return;
-                    }
-                    
-                    console.log('✅ Container has valid dimensions, creating graph...');
+            // Poll for a non-zero container size instead of a fixed double-rAF wait.
+            // On some mobile browsers two animation frames isn't always enough time
+            // for the view-switch reflow to settle, which was leaving the graph
+            // silently blank (container measured 0x0 right when cytoscape init ran).
+            let attempts = 0;
+            const maxAttempts = 40; // ~2s at 50ms per attempt
+            const waitForSize = () => {
+                const rect = container.getBoundingClientRect();
+                if (rect.width > 0 && rect.height > 0) {
+                    console.log(`✅ Container has valid dimensions (${rect.width}x${rect.height}) after ${attempts} attempts, creating graph...`);
                     createGraph();
-                });
-            });
+                    return;
+                }
+                attempts++;
+                if (attempts >= maxAttempts) {
+                    console.error('❌ Container STILL has zero dimensions after waiting!');
+                    console.error('   Container display:', window.getComputedStyle(container).display);
+                    console.error('   Container visibility:', window.getComputedStyle(container).visibility);
+                    console.error('   Parent display:', window.getComputedStyle(container.parentElement).display);
+                    showErrorBanner('Graph container never got a real size (still 0×0 after 2s) — the graph can\'t render. Try rotating the screen or reloading.');
+                    return;
+                }
+                setTimeout(() => requestAnimationFrame(waitForSize), 50);
+            };
+            requestAnimationFrame(waitForSize);
         }
         
         // Separate function to create the graph
@@ -5088,27 +5565,40 @@
             
             if (typeof cytoscape === 'undefined') {
                 console.error('❌ Cytoscape library not loaded!');
-                alert('❌ Cytoscape library failed to load!');
+                showErrorBanner('Cytoscape library failed to load (CDN blocked or unreachable?). The graph can\'t render without it.');
                 return;
             }
-            
+
             console.log('✅ Cytoscape library is available');
             console.log('📊 ontologyData:', ontologyData);
             console.log('📊 hierarchyData:', hierarchyData);
-            
+
+            // Everything below can throw (bad data shape, a layout extension that
+            // failed to register, etc.) — without this try/catch any such error was
+            // uncaught and silent, leaving a blank Graph View with no clue why.
+            try {
+
             const elements = [];
             
-            function addNodes(nodes, parentId = null) {
+            function addNodes(nodes, parentId = null, depth = 0, rootColor = null) {
                 nodes.forEach(node => {
+                    // Root's own color cascades down to every descendant so the whole
+                    // subtree reads as one category (previously only the 8 roots got
+                    // real colors and everything below them fell back to gray).
+                    const color = depth === 0 ? getNodeColor(node.label) : (rootColor || getNodeColor(node.label));
+                    const levelClass = depth === 0 ? 'level-root' : depth === 1 ? 'level-sub' : 'level-subsub';
+
                     elements.push({
                         data: {
                             id: node.uri,
                             label: node.label,
-                            color: getNodeColor(node.label),
-                            nodeType: 'class'
+                            color: color,
+                            nodeType: 'class',
+                            level: depth,
+                            levelClass: levelClass
                         }
                     });
-                    
+
                     if (parentId) {
                         elements.push({
                             data: {
@@ -5119,13 +5609,13 @@
                             }
                         });
                     }
-                    
+
                     if (node.children && node.children.length > 0) {
-                        addNodes(node.children, node.uri);
+                        addNodes(node.children, node.uri, depth + 1, color);
                     }
                 });
             }
-            
+
             addNodes(hierarchyData);
             
             // Create a Set of all existing node IDs for quick lookup
@@ -5240,7 +5730,11 @@
                         }
                     },
                     {
-                        selector: 'node:not([nodeType="property"])',
+                        // NOTE: Cytoscape.js has no CSS-style :not() selector; this
+                        // used to be 'node:not([nodeType="property"])', which Cytoscape
+                        // treats as invalid and matches EVERY node, silently overriding
+                        // the diamond style above so property nodes rendered as circles.
+                        selector: 'node[nodeType="class"]',
                         style: {
                             'background-color': 'data(color)',
                             'label': 'data(label)',
@@ -5253,6 +5747,36 @@
                             'text-outline-color': '#0a0e1a',
                             'border-width': 3,
                             'border-color': '#fff'
+                        }
+                    },
+                    // Hierarchy level = shape, on top of the category color above:
+                    // main class (root) = hexagon, subclass = circle, sub-subclass = triangle
+                    {
+                        selector: 'node[levelClass="level-root"]',
+                        style: {
+                            'shape': 'round-hexagon',
+                            'width': 92,
+                            'height': 92,
+                            'border-width': 5,
+                            'font-size': 14,
+                            'font-weight': 'bold'
+                        }
+                    },
+                    {
+                        selector: 'node[levelClass="level-sub"]',
+                        style: {
+                            'shape': 'ellipse',
+                            'width': 68,
+                            'height': 68
+                        }
+                    },
+                    {
+                        selector: 'node[levelClass="level-subsub"]',
+                        style: {
+                            'shape': 'round-triangle',
+                            'width': 54,
+                            'height': 54,
+                            'font-size': 10
                         }
                     },
                     {
@@ -5303,31 +5827,28 @@
                         }
                     }
                 ],
+                // Fast, non-animated placement just to seed starting positions;
+                // the live cola.js physics layout (below) takes over from here.
                 layout: {
                     name: 'cose',
                     directed: true,
                     padding: 50,
-                    animate: true,
-                    animationDuration: 1000,
+                    animate: false,
                     idealEdgeLength: 150,
                     nodeOverlap: 20,
-                    refresh: 20,
-                    randomize: false,
+                    randomize: true,
                     componentSpacing: 100,
                     nodeRepulsion: 400000,
                     edgeElasticity: 100,
                     nestingFactor: 5,
                     gravity: 80,
-                    numIter: 1000,
-                    initialTemp: 200,
-                    coolingFactor: 0.95,
-                    minTemp: 1.0
+                    numIter: 1000
                 }
             });
-            
+
             console.log(`✅ Graph created successfully!`);
             console.log(`📊 Nodes: ${cy.nodes().length}, Edges: ${cy.edges().length}`);
-            
+
             // Node interaction - highlight connected nodes
             cy.on('tap', 'node', (evt) => {
                 const node = evt.target;
@@ -5375,7 +5896,91 @@
                 console.log('✅ Layout completed, fitting view');
                 cy.fit();
             });
+
+            // Spring the graph back into balance whenever a node is dragged and
+            // released, so the whole thing keeps feeling alive/interactive
+            // instead of freezing in place after the first layout.
+            cy.on('dragfree', 'node', () => {
+                runColaLayout({ fit: false, randomize: false });
+            });
+
+            // Kick off the live physics layout (this is what makes the graph
+            // move/settle dynamically instead of just snapping into place).
+            runColaLayout({ fit: true, randomize: false });
+
+            } catch (err) {
+                console.error('❌ createGraph() failed:', err);
+                showErrorBanner('Graph failed to render: ' + (err && err.message ? err.message : err));
+            }
         }
+
+        // Runs (or re-runs) the cola.js force-directed physics layout.
+        // fit: whether to zoom/pan the viewport to the result when it settles.
+        // randomize: whether to scatter nodes before simulating (used by the Reset button).
+        function runColaLayout(opts = {}) {
+            if (!cy) return;
+            const { fit = false, randomize = false } = opts;
+
+            if (colaLayout) {
+                try { colaLayout.stop(); } catch (e) { /* already stopped */ }
+            }
+
+            // If the cola.js/cytoscape-cola CDN scripts failed to load or register
+            // (blocked network, content blocker, etc.), cy.layout({name:'cola'})
+            // would throw and leave the graph completely blank with nothing drawn.
+            // Detect that up front and fall back to the built-in 'cose' layout so
+            // there's always at least a static graph on screen.
+            const colaAvailable = typeof cytoscape('layout', 'cola') === 'function';
+
+            const layoutOptions = colaAvailable ? {
+                name: 'cola',
+                animate: true,
+                refresh: 1,
+                maxSimulationTime: 15000,
+                fit: fit,
+                padding: 50,
+                randomize: randomize,
+                avoidOverlap: true,
+                nodeSpacing: 15,
+                edgeLength: 150,
+                convergenceThreshold: 0.0008,
+                nodeDimensionsIncludeLabels: true
+            } : {
+                name: 'cose',
+                animate: true,
+                animationDuration: 600,
+                fit: fit,
+                padding: 50,
+                randomize: randomize,
+                nodeRepulsion: 400000,
+                idealEdgeLength: 150,
+                gravity: 80,
+                numIter: 1000
+            };
+
+            if (!colaAvailable) {
+                console.warn('⚠️ cola layout not registered — falling back to cose (static layout, no live physics)');
+                showErrorBanner('Live physics layout (cola.js) failed to load — showing a static layout instead. Node drag/dynamic movement is disabled, but the graph itself should still be visible.');
+            }
+
+            try {
+                colaLayout = cy.layout(layoutOptions);
+                colaLayout.run();
+            } catch (err) {
+                console.error('❌ Layout failed:', err);
+                showErrorBanner('Graph layout failed: ' + (err && err.message ? err.message : err));
+            }
+        }
+
+        // Keep the graph correctly sized across orientation changes / resizes —
+        // cytoscape caches the container size at creation time and won't notice
+        // a later change (e.g. rotating a phone) unless told to re-measure.
+        window.addEventListener('resize', () => {
+            if (cy) {
+                cy.resize();
+                cy.fit();
+            }
+        });
 
         // Event Handlers
         function setupEventHandlers() {
@@ -5391,13 +5996,17 @@
                     }
                     
                     showView(view + 'View');
-                    
+
                     if (view === 'graph') {
                         console.log('📊 Preparing graph view...');
                         setTimeout(() => {
                             console.log('📊 Initializing graph after delay...');
                             initGraph();
                         }, 300);
+                    } else if (colaLayout) {
+                        // Leaving Graph View: stop the physics simulation so it
+                        // doesn't keep burning CPU/battery in the background.
+                        try { colaLayout.stop(); } catch (e) { /* already stopped */ }
                     }
                 });
             });
@@ -5570,26 +6179,7 @@
 
         document.getElementById('resetGraphBtn').onclick = () => {
             if (cy) {
-                cy.layout({
-                    name: 'cose',
-                    directed: true,
-                    padding: 50,
-                    animate: true,
-                    animationDuration: 1000,
-                    idealEdgeLength: 150,
-                    nodeOverlap: 20,
-                    refresh: 20,
-                    randomize: true,
-                    componentSpacing: 100,
-                    nodeRepulsion: 400000,
-                    edgeElasticity: 100,
-                    nestingFactor: 5,
-                    gravity: 80,
-                    numIter: 1000,
-                    initialTemp: 200,
-                    coolingFactor: 0.95,
-                    minTemp: 1.0
-                }).run();
+                runColaLayout({ fit: true, randomize: true });
                 console.log('✅ Graph layout reset');
             }
         };
