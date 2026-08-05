@@ -260,3 +260,375 @@ cof:Farm_Harrar_Estate                cof:hasCO2PerKg  "4.1"^^xsd:decimal .
 cof:Farm_Jinotega_Finca_Mierisch      cof:hasCO2PerKg  "3.5"^^xsd:decimal .
 cof:Farm_Kilimanjaro_Moshi_Estate     cof:hasCO2PerKg  "3.3"^^xsd:decimal .
 cof:Farm_Lam_Dong_Arabica_Farm        cof:hasCO2PerKg  "5.1"^^xsd:decimal .
+
+
+# ================================================================
+# 8. Class Hierarchy 심화 보강 (2026-08 리서치 기반)
+#    QualityAndProcessing / AgriEvent / MarketAndEconomics / Sustainability
+#    4개 최상위 클래스가 하위클래스 1~3개, 인스턴스 4~10개 수준으로 빈약하여
+#    실제 커피 산업 표준·역사적 사건·최신 규제를 조사해 보강함.
+# ================================================================
+
+# ----------------------------------------------------------------
+# 8-1. 신규 데이터/오브젝트 프로퍼티 선언
+# ----------------------------------------------------------------
+
+cof:hasCuppingScoreMin a owl:DatatypeProperty ; rdfs:domain cof:QualityGrade ; rdfs:range xsd:decimal ;
+    rdfs:label "최소 커핑 점수"@ko ; rdfs:label "Minimum Cupping Score"@en .
+cof:hasCuppingScoreMax a owl:DatatypeProperty ; rdfs:domain cof:QualityGrade ; rdfs:range xsd:decimal ;
+    rdfs:label "최대 커핑 점수"@ko ; rdfs:label "Maximum Cupping Score"@en .
+cof:hasDefectCount a owl:DatatypeProperty ; rdfs:domain cof:QualityGrade ; rdfs:range xsd:string ;
+    rdfs:label "결점두 개수 (300g 기준)"@ko ; rdfs:label "Defect Count (per 300g)"@en .
+cof:hasScreenSize a owl:DatatypeProperty ; rdfs:domain cof:QualityGrade ; rdfs:range xsd:string ;
+    rdfs:label "스크린 사이즈(생두 크기)"@ko ; rdfs:label "Screen Size"@en .
+cof:hasMinAltitudeM a owl:DatatypeProperty ; rdfs:domain cof:QualityGrade ; rdfs:range xsd:integer ;
+    rdfs:label "최저 재배 고도(m)"@ko ; rdfs:label "Minimum Growing Altitude (m)"@en .
+cof:hasFermentationHours a owl:DatatypeProperty ; rdfs:domain cof:ProcessingMethod ; rdfs:range xsd:string ;
+    rdfs:label "발효 시간"@ko ; rdfs:label "Fermentation Duration"@en .
+cof:hasVerificationBody a owl:DatatypeProperty ; rdfs:domain cof:Certification ; rdfs:range xsd:string ;
+    rdfs:label "인증 관리기관"@ko ; rdfs:label "Verifying Body"@en .
+cof:hasTemperatureRangeC a owl:DatatypeProperty ; rdfs:domain cof:RoastLevel ; rdfs:range xsd:string ;
+    rdfs:label "로스팅 온도 범위(°C)"@ko ; rdfs:label "Roast Temperature Range (°C)"@en .
+cof:hasAgtronRange a owl:DatatypeProperty ; rdfs:domain cof:RoastLevel ; rdfs:range xsd:string ;
+    rdfs:label "아그트론 색상 값"@ko ; rdfs:label "Agtron Color Range"@en .
+cof:hasEconomicImpactUSD a owl:DatatypeProperty ; rdfs:domain cof:AgriEvent ; rdfs:range xsd:string ;
+    rdfs:label "경제적 피해 규모(USD)"@ko ; rdfs:label "Economic Impact (USD)"@en .
+cof:hasAffectedRegion a owl:DatatypeProperty ; rdfs:domain cof:AgriEvent ; rdfs:range xsd:string ;
+    rdfs:label "피해 지역"@ko ; rdfs:label "Affected Region"@en .
+cof:hasCausalAgent a owl:DatatypeProperty ; rdfs:domain cof:PlantDiseaseOutbreak ; rdfs:range xsd:string ;
+    rdfs:label "병해충 원인체"@ko ; rdfs:label "Causal Agent"@en .
+cof:hasOrganizer a owl:DatatypeProperty ; rdfs:domain cof:CuppingCompetition ; rdfs:range xsd:string ;
+    rdfs:label "주관 기관"@ko ; rdfs:label "Organizing Body"@en .
+cof:hasPeakPrice a owl:DatatypeProperty ; rdfs:domain cof:MarketEvent ; rdfs:range xsd:string ;
+    rdfs:label "최고가"@ko ; rdfs:label "Peak Price"@en .
+cof:hasTradedCommodity a owl:DatatypeProperty ; rdfs:domain cof:CommodityExchange ; rdfs:range xsd:string ;
+    rdfs:label "거래 상품"@ko ; rdfs:label "Traded Commodity"@en .
+cof:tradedOn a owl:ObjectProperty ; rdfs:domain cof:Price ; rdfs:range cof:CommodityExchange ;
+    rdfs:label "거래소"@ko ; rdfs:label "traded on"@en .
+cof:hasComplianceDeadline a owl:DatatypeProperty ; rdfs:domain cof:SustainabilityFramework ; rdfs:range xsd:string ;
+    rdfs:label "규제 준수 시한"@ko ; rdfs:label "Compliance Deadline"@en .
+cof:hasWaterFootprintLiters a owl:DatatypeProperty ; rdfs:domain cof:SustainabilityMetric ; rdfs:range xsd:string ;
+    rdfs:label "물 발자국(리터)"@ko ; rdfs:label "Water Footprint (Liters)"@en .
+cof:hasLivingIncomeGapPercent a owl:DatatypeProperty ; rdfs:domain cof:SustainabilityMetric ; rdfs:range xsd:string ;
+    rdfs:label "생활임금 격차(%)"@ko ; rdfs:label "Living Income Gap (%)"@en .
+
+
+# ----------------------------------------------------------------
+# 8-2. QualityAndProcessing 보강
+# ----------------------------------------------------------------
+
+# --- ProcessingMethod +6 (스페셜티 커피 최신 가공법) ---
+
+cof:Anaerobic_Fermentation a owl:NamedIndividual, cof:ProcessingMethod ;
+    rdfs:label "혐기성 발효"@ko ; rdfs:label "Anaerobic Fermentation"@en ;
+    rdfs:comment "밀폐 탱크에서 산소를 차단한 채 발효. 코스타리카 Luis Eduardo Campos가 초기 실험, 2015년 Saša Šestić가 월드바리스타챔피언십에서 사용해 세계적으로 확산."@ko ;
+    cof:hasFermentationHours "24-100 hours"^^xsd:string ;
+    cof:hasDescription "클린하고 트로피컬한 향부터 강한 와이니 캐릭터까지 폭넓은 풍미 스펙트럼을 만드는 발효 가공법."@en .
+
+cof:Carbonic_Maceration a owl:NamedIndividual, cof:ProcessingMethod ;
+    rdfs:label "탄산 침용"@ko ; rdfs:label "Carbonic Maceration"@en ;
+    rdfs:comment "와인 양조 기법에서 착안. 밀폐 탱크에 이산화탄소를 채우고 체리 전체를 담가 내부에서부터 발효시킴."@ko ;
+    cof:hasFermentationHours "15-100 hours"^^xsd:string ;
+    cof:hasDescription "화사한 플로럴·과일향과 유산균 계열의 부드러운 산미가 특징."@en .
+
+cof:Black_Honey_Process a owl:NamedIndividual, cof:ProcessingMethod ;
+    rdfs:label "블랙허니 가공"@ko ; rdfs:label "Black Honey Process"@en ;
+    rdfs:comment "허니 프로세스 중 과육(뮤실리지)을 가장 많이 남기고 가장 길게 건조. 단맛과 바디감이 가장 진함."@ko .
+
+cof:Yellow_Honey_Process a owl:NamedIndividual, cof:ProcessingMethod ;
+    rdfs:label "옐로우허니 가공"@ko ; rdfs:label "Yellow Honey Process"@en ;
+    rdfs:comment "허니 프로세스 중 과육을 가장 적게 남기고 짧게 건조. 워시드에 가장 가까운 깔끔한 산미."@ko .
+
+cof:Extended_Fermentation a owl:NamedIndividual, cof:ProcessingMethod ;
+    rdfs:label "장기 발효"@ko ; rdfs:label "Extended Fermentation"@en ;
+    cof:hasFermentationHours "48-72+ hours"^^xsd:string ;
+    rdfs:comment "일반 워시드 발효(12-36시간)보다 길게 진행해 복합미를 높이되, 과발효 결점 위험이 큼."@ko .
+
+cof:Monsooned_Process a owl:NamedIndividual, cof:ProcessingMethod ;
+    rdfs:label "몬순 가공"@ko ; rdfs:label "Monsooned Process"@en ;
+    rdfs:comment "인도 특유의 가공법. 건조된 생두를 12-16주간 몬순 습윤풍에 노출시켜 팽창·숙성시킴. 몬순 말라바르(Monsooned Malabar)의 원류."@ko ;
+    cof:hasDescription "낮은 산미와 묵직한 바디, 스파이시한 향이 특징."@en .
+
+# --- Certification +6 (Fair_Trade/Organic/Rainforest_Alliance/UTZ 기존 4종에 추가) ---
+
+cof:USDA_Organic a owl:NamedIndividual, cof:Certification ;
+    rdfs:label "미국 유기농 인증"@ko ; rdfs:label "USDA Organic"@en ;
+    cof:hasVerificationBody "USDA National Organic Program (NOP)"^^xsd:string ;
+    cof:hasYearEstablished "2002"^^xsd:gYear ;
+    rdfs:comment "합성 농약·비료 무사용을 요구하는 미국 연방 유기농 인증. 일반 'Organic' 라벨과 달리 법적 구속력을 가진 국가 표준."@ko .
+
+cof:Bird_Friendly a owl:NamedIndividual, cof:Certification ;
+    rdfs:label "버드 프렌들리 인증"@ko ; rdfs:label "Bird Friendly Certification"@en ;
+    cof:hasVerificationBody "Smithsonian Migratory Bird Center"^^xsd:string ;
+    cof:hasYearEstablished "1997"^^xsd:gYear ;
+    rdfs:comment "철새 서식지 보호를 위해 다층 그늘 재배(canopy cover, 나무 종 다양성)를 요구하는 가장 엄격한 그늘재배 유기농 인증."@ko .
+
+cof:CAFE_Practices a owl:NamedIndividual, cof:Certification ;
+    rdfs:label "카페 프랙티스"@ko ; rdfs:label "C.A.F.E. Practices"@en ;
+    cof:hasVerificationBody "SCS Global Services (Starbucks·Conservation International 공동개발)"^^xsd:string ;
+    cof:hasYearEstablished "2004"^^xsd:gYear ;
+    rdfs:comment "스타벅스가 코노베이션 인터내셔널과 공동 개발한 자체 책임조달 검증 프로그램."@ko .
+
+cof:Global_Coffee_Platform_Baseline a owl:NamedIndividual, cof:Certification ;
+    rdfs:label "글로벌커피플랫폼 베이스라인"@ko ; rdfs:label "Global Coffee Platform Baseline Common Code"@en ;
+    cof:hasVerificationBody "Global Coffee Platform (구 4C Association)"^^xsd:string ;
+    rdfs:comment "지속가능 커피의 최소 기준선(entry-level) 규범. 거래량 기준으로는 세계 최대 규모 인증(약 774,000톤, 2018년 기준 Rainforest Alliance 1,038,000톤에 이어 2위)."@ko .
+
+cof:Demeter_Biodynamic a owl:NamedIndividual, cof:Certification ;
+    rdfs:label "데메터 바이오다이나믹 인증"@ko ; rdfs:label "Demeter Biodynamic Certification"@en ;
+    cof:hasVerificationBody "Demeter International"^^xsd:string ;
+    rdfs:comment "루돌프 슈타이너의 바이오다이나믹 농법에 기반. 유기농보다 엄격하게 농장 전체를 하나의 생태계로 관리하고 달력(월령) 주기를 따름."@ko .
+
+cof:Q_Arabica_Certified a owl:NamedIndividual, cof:Certification ;
+    rdfs:label "Q 아라비카 인증"@ko ; rdfs:label "Q Arabica Certified"@en ;
+    cof:hasVerificationBody "Coffee Quality Institute (CQI)"^^xsd:string ;
+    cof:hasYearEstablished "2004"^^xsd:gYear ;
+    rdfs:comment "공인 Q그레이더가 SCA 기준 80점 이상으로 커핑 평가한 로트에 부여하는 품질 인증."@ko .
+
+cof:Rainforest_Alliance
+    rdfs:comment "2018년 UTZ와 합병해 2020년 통합 '레인포레스트 얼라이언스 2020 인증기준'을 발표(2021년 7월부터 적용)."@ko .
+
+# --- QualityGrade +7 (국가별 실제 등급 체계) ---
+
+cof:QG_Ethiopia_G1 a owl:NamedIndividual, cof:QualityGrade ;
+    rdfs:label "에티오피아 그레이드 1"@ko ; rdfs:label "Ethiopia Grade 1"@en ;
+    cof:hasDefectCount "0-3 (per 300g)"^^xsd:string ; cof:hasCuppingScoreMin "85"^^xsd:decimal ;
+    rdfs:comment "에티오피아 커피 품질관리원(ECX) 등급 체계 중 최상급. 주로 워시드 예가체프·시다모 로트."@ko .
+
+cof:QG_Kenya_AB a owl:NamedIndividual, cof:QualityGrade ;
+    rdfs:label "케냐 AB"@ko ; rdfs:label "Kenya AB"@en ;
+    cof:hasScreenSize "15-16"^^xsd:string ;
+    rdfs:comment "케냐 수출 물량의 절반 이상을 차지하는 가장 흔한 등급. AA보다 크기는 작지만 품질 차이는 크지 않음."@ko .
+
+cof:QG_Kenya_PB a owl:NamedIndividual, cof:QualityGrade ;
+    rdfs:label "케냐 피베리"@ko ; rdfs:label "Kenya Peaberry (PB)"@en ;
+    cof:hasScreenSize "10-13"^^xsd:string ;
+    rdfs:comment "체리 안에 콩이 하나만 자란 돌연변이 생두(피베리). 향미가 응축돼 있다고 평가되며 별도 등급으로 분리 유통."@ko .
+
+cof:QG_Brazil_NY2 a owl:NamedIndividual, cof:QualityGrade ;
+    rdfs:label "브라질 NY2"@ko ; rdfs:label "Brazil NY2/3"@en ;
+    cof:hasDefectCount "≈4 defects (per 300g, NY 분류법)"^^xsd:string ;
+    rdfs:comment "뉴욕 그린커피협회(GCA) 결점두 분류법을 브라질 산토스 등급에 적용한 등급. 대부분 내추럴·펄프드내추럴, 저지대 재배."@ko .
+
+cof:QG_Guatemala_SHB a owl:NamedIndividual, cof:QualityGrade ;
+    rdfs:label "과테말라 SHB"@ko ; rdfs:label "Guatemala Strictly Hard Bean (SHB)"@en ;
+    cof:hasMinAltitudeM "1370"^^xsd:integer ;
+    rdfs:comment "해발 1,370m(4,500ft) 이상에서 재배한 최고 등급. 고도가 높을수록 밀도가 높고 산미가 밝음."@ko .
+
+cof:QG_Indonesia_G1 a owl:NamedIndividual, cof:QualityGrade ;
+    rdfs:label "인도네시아 그레이드 1"@ko ; rdfs:label "Indonesia Grade 1"@en ;
+    cof:hasDefectCount "≤11 (per 300g)"^^xsd:string ;
+    rdfs:comment "인도네시아 수마트라·자바 등지에서 주로 습식 탈곡(Giling Basah)으로 가공된 최상급 로트."@ko .
+
+cof:QG_CostaRica_SHB a owl:NamedIndividual, cof:QualityGrade ;
+    rdfs:label "코스타리카 SHB"@ko ; rdfs:label "Costa Rica Strictly Hard Bean (SHB)"@en ;
+    cof:hasMinAltitudeM "1200"^^xsd:integer ;
+    rdfs:comment "해발 1,200m 이상 고지대 생산 등급. 타라주·웨스트밸리 등 주요 산지의 최고 등급 분류."@ko .
+
+cof:QG_Specialty cof:hasCuppingScoreMin "80"^^xsd:decimal ; cof:hasCuppingScoreMax "100"^^xsd:decimal .
+cof:QG_Commercial cof:hasCuppingScoreMax "79.99"^^xsd:decimal .
+
+# --- RoastLevel (신규 서브클래스, +5) ---
+
+cof:RoastLevel a owl:Class ; rdfs:subClassOf cof:QualityAndProcessing ;
+    rdfs:label "로스트 레벨"@ko ; rdfs:label "Roast Level"@en ;
+    rdfs:comment "생두를 볶는 정도에 따른 분류 체계. 온도·색상(아그트론 값)으로 구분."@ko .
+
+cof:Light_Roast a owl:NamedIndividual, cof:RoastLevel ;
+    rdfs:label "라이트 로스트"@ko ; rdfs:label "Light Roast"@en ;
+    cof:hasAgtronRange "63-70"^^xsd:string ; cof:hasTemperatureRangeC "180-205"^^xsd:string ;
+    rdfs:comment "1차 크랙 직후 배출. 산지 고유의 산미와 향미가 가장 뚜렷하게 남음. 필터/핸드드립에 주로 사용."@ko .
+
+cof:Medium_Roast a owl:NamedIndividual, cof:RoastLevel ;
+    rdfs:label "미디엄 로스트"@ko ; rdfs:label "Medium Roast (City/City+)"@en ;
+    cof:hasAgtronRange "48-54"^^xsd:string ; cof:hasTemperatureRangeC "205-215"^^xsd:string ;
+    rdfs:comment "산미와 바디감의 균형을 목표로 한 가장 대중적인 로스팅 포인트."@ko .
+
+cof:Medium_Dark_Roast a owl:NamedIndividual, cof:RoastLevel ;
+    rdfs:label "미디엄다크 로스트"@ko ; rdfs:label "Medium-Dark Roast (Full City/Full City+)"@en ;
+    cof:hasAgtronRange "35-40"^^xsd:string ; cof:hasTemperatureRangeC "220-225"^^xsd:string ;
+    rdfs:comment "2차 크랙 초입에서 배출. 표면에 오일이 살짝 비치기 시작하며 단맛과 바디감이 강조됨."@ko .
+
+cof:Dark_Roast a owl:NamedIndividual, cof:RoastLevel ;
+    rdfs:label "다크 로스트"@ko ; rdfs:label "Dark Roast (French/Italian)"@en ;
+    cof:hasAgtronRange "25-30"^^xsd:string ; cof:hasTemperatureRangeC "230-240"^^xsd:string ;
+    rdfs:comment "표면에 오일이 뚜렷하고 로스팅 자체의 스모키·카라멜 풍미가 산지 특성을 압도함."@ko .
+
+cof:Espresso_Roast a owl:NamedIndividual, cof:RoastLevel ;
+    rdfs:label "에스프레소 로스트"@ko ; rdfs:label "Espresso Roast"@en ;
+    cof:hasAgtronRange "30-40"^^xsd:string ;
+    rdfs:comment "에스프레소 추출에 최적화된 로스팅. 용해도를 높이고 산미를 낮춰 크레마와 바디감을 강화."@ko .
+
+
+# ----------------------------------------------------------------
+# 8-3. AgriEvent 보강 (신규 서브클래스 3종, +10 인스턴스)
+# ----------------------------------------------------------------
+
+cof:WeatherEvent a owl:Class ; rdfs:subClassOf cof:AgriEvent ;
+    rdfs:label "기상 이변 이벤트"@ko ; rdfs:label "Weather Event"@en .
+cof:PlantDiseaseOutbreak a owl:Class ; rdfs:subClassOf cof:AgriEvent ;
+    rdfs:label "병충해 발생 이벤트"@ko ; rdfs:label "Plant Disease/Pest Outbreak"@en .
+cof:CuppingCompetition a owl:Class ; rdfs:subClassOf cof:AgriEvent ;
+    rdfs:label "커핑 대회"@ko ; rdfs:label "Cupping Competition"@en .
+
+cof:Brazil_Frost_2021 a owl:NamedIndividual, cof:WeatherEvent ;
+    rdfs:label "2021 브라질 냉해"@ko ; rdfs:label "Brazil Frost 2021"@en ;
+    cof:hasAffectedRegion "Minas Gerais, Paraná, São Paulo"^^xsd:string ;
+    rdfs:comment "2021년 7월 발생한 심각한 냉해로 미나스제라이스 등 주요 산지 나무가 손상됨. 아라비카 선물 가격이 파운드당 2달러를 넘어서는 다년간 가격 상승 랠리의 기폭제가 됨."@ko .
+
+cof:Brazil_Drought_2014 a owl:NamedIndividual, cof:WeatherEvent ;
+    rdfs:label "2014 브라질 가뭄"@ko ; rdfs:label "Brazil Drought 2014"@en ;
+    cof:hasAffectedRegion "Minas Gerais, São Paulo"^^xsd:string ;
+    rdfs:comment "수십 년 만의 심각한 가뭄으로 아라비카 생산량이 크게 줄어 2014년 가격 급등을 유발."@ko .
+
+cof:Vietnam_Drought_2024 a owl:NamedIndividual, cof:WeatherEvent ;
+    rdfs:label "2024 베트남 가뭄"@ko ; rdfs:label "Vietnam Drought 2024"@en ;
+    cof:hasAffectedRegion "Dak Lak, Lam Dong (Central Highlands)"^^xsd:string ;
+    rdfs:comment "중부고원 지역 가뭄으로 로부스타 생산량이 감소, 2024년 5월 로부스타 선물이 45년 만의 최고가를 기록하는 데 핵심 원인이 됨."@ko .
+
+cof:Colombia_Excess_Rain_2010_2011 a owl:NamedIndividual, cof:WeatherEvent ;
+    rdfs:label "2010-2011 콜롬비아 과잉강우"@ko ; rdfs:label "Colombia Excess Rainfall 2010-2011"@en ;
+    cof:hasAffectedRegion "Huila, Nariño, Antioquia"^^xsd:string ;
+    rdfs:comment "라니냐로 인한 이례적 폭우로 콜롬비아 생산량이 약 30% 감소, 회복까지 수년이 소요됨."@ko .
+
+cof:Central_America_Coffee_Rust_2012 a owl:NamedIndividual, cof:PlantDiseaseOutbreak ;
+    rdfs:label "중미 커피녹병 대유행 (라 로야)"@ko ; rdfs:label "Central America Coffee Leaf Rust Epidemic (La Roya)"@en ;
+    cof:hasCausalAgent "Hemileia vastatrix (균류)"^^xsd:string ;
+    cof:hasAffectedRegion "Guatemala, Honduras, Costa Rica, Nicaragua, El Salvador"^^xsd:string ;
+    cof:hasEconomicImpactUSD "약 5-6억 달러, 약 37만4천-40만 개 일자리 손실 (ICO 보고서, 2012/13-2013/14 시즌)"^^xsd:string ;
+    rdfs:comment "2012-2013년 중미 전역을 강타한 사상 최악의 커피녹병 유행. 기후변화로 인한 기상 이변이 주요 원인 중 하나로 지목됨."@ko .
+
+cof:Coffee_Berry_Borer_Global a owl:NamedIndividual, cof:PlantDiseaseOutbreak ;
+    rdfs:label "커피베리보러 (브로카)"@ko ; rdfs:label "Coffee Berry Borer (Broca)"@en ;
+    cof:hasCausalAgent "Hypothenemus hampei (딱정벌레)"^^xsd:string ;
+    rdfs:comment "중앙아프리카 원산의 해충으로 현재 거의 모든 커피 생산국에 퍼져 있으며, 유충이 체리 내부를 파고들어 전 세계적으로 경제적 피해가 가장 큰 커피 해충으로 꼽힘."@ko .
+
+cof:Coffee_Berry_Disease_EastAfrica a owl:NamedIndividual, cof:PlantDiseaseOutbreak ;
+    rdfs:label "커피베리병 (동아프리카)"@ko ; rdfs:label "Coffee Berry Disease (East Africa)"@en ;
+    cof:hasCausalAgent "Colletotrichum kahawae (균류)"^^xsd:string ;
+    cof:hasAffectedRegion "Kenya, Ethiopia and other East African highlands"^^xsd:string ;
+    rdfs:comment "아프리카 고지대 아라비카에 특화된 병해로, 방제하지 않을 경우 심한 유행 시 수확량의 50-80%까지 파괴 가능."@ko .
+
+cof:Cup_of_Excellence a owl:NamedIndividual, cof:CuppingCompetition ;
+    rdfs:label "컵 오브 엑설런스"@ko ; rdfs:label "Cup of Excellence (COE)"@en ;
+    cof:hasOrganizer "Alliance for Coffee Excellence (ACE)"^^xsd:string ; cof:hasYearEstablished "1999"^^xsd:gYear ;
+    rdfs:comment "국가별 커핑 대회와 온라인 경매를 결합한 모델을 최초로 도입, 마이크로랏 추적성과 가격 투명성 확산에 기여."@ko .
+
+cof:Best_of_Panama a owl:NamedIndividual, cof:CuppingCompetition ;
+    rdfs:label "베스트 오브 파나마"@ko ; rdfs:label "Best of Panama (BOP)"@en ;
+    cof:hasYearEstablished "1996"^^xsd:gYear ;
+    rdfs:comment "2004년 아시엔다 라 에스메랄다(Hacienda La Esmeralda)의 게이샤 품종 우승 로트가 전 세계 게이샤 붐을 촉발시킨 것으로 유명."@ko .
+
+cof:World_Barista_Championship a owl:NamedIndividual, cof:CuppingCompetition ;
+    rdfs:label "월드 바리스타 챔피언십"@ko ; rdfs:label "World Barista Championship (WBC)"@en ;
+    cof:hasOrganizer "World Coffee Events (SCA 산하)"^^xsd:string ; cof:hasYearEstablished "2000"^^xsd:gYear ;
+    rdfs:comment "2015년 Saša Šestić가 혐기성 발효 원두로 우승하며 신규 가공법이 전 세계에 알려지는 계기가 됨."@ko .
+
+
+# ----------------------------------------------------------------
+# 8-4. MarketAndEconomics 보강 (신규 서브클래스 2종, +8 인스턴스)
+# ----------------------------------------------------------------
+
+cof:MarketEvent a owl:Class ; rdfs:subClassOf cof:MarketAndEconomics ;
+    rdfs:label "시장 변동 이벤트"@ko ; rdfs:label "Market Event"@en .
+cof:CommodityExchange a owl:Class ; rdfs:subClassOf cof:MarketAndEconomics ;
+    rdfs:label "원자재 거래소"@ko ; rdfs:label "Commodity Exchange"@en .
+
+cof:Brazilian_Black_Frost_1975 a owl:NamedIndividual, cof:MarketEvent ;
+    rdfs:label "1975 브라질 블랙프로스트"@ko ; rdfs:label "Brazilian Black Frost 1975"@en ;
+    cof:hasYearEstablished "1975"^^xsd:gYear ;
+    rdfs:comment "1975년 7월 냉해로 브라질 커피나무의 약 70%가 파괴되어 1977년까지 이어진 사상 최고 수준의 가격 급등을 촉발. 2024년 가격 급등 당시에도 '1977년 이후 최고가'로 비교되는 역사적 기준점."@ko .
+
+cof:Coffee_Crisis_1999_2004 a owl:NamedIndividual, cof:MarketEvent ;
+    rdfs:label "1999-2004 커피 위기"@ko ; rdfs:label "Coffee Crisis 1999-2004"@en ;
+    rdfs:comment "베트남 로부스타 생산 급증과 브라질의 지속적 고생산으로 C가격이 생산원가 이하(파운드당 약 45-60센트)로 폭락, 수백만 소농이 빈곤에 처함."@ko .
+
+cof:ICA_Quota_System_Collapse_1989 a owl:NamedIndividual, cof:MarketEvent ;
+    rdfs:label "1989 국제커피협정 쿼터제 붕괴"@ko ; rdfs:label "International Coffee Agreement Quota System Collapse 1989"@en ;
+    cof:hasYearEstablished "1989"^^xsd:gYear ;
+    rdfs:comment "1989년 7월 국제커피협정(ICA)의 수출쿼터제가 붕괴되며 수십 년간 이어진 관리가격 체제가 종료, 자유시장 변동성 시대가 시작되고 1990년대 가격 급변동과 1999-2004 위기의 배경이 됨."@ko .
+
+cof:Coffee_Price_Boom_2024 a owl:NamedIndividual, cof:MarketEvent ;
+    rdfs:label "2024 커피가격 급등"@ko ; rdfs:label "Coffee Price Boom 2024"@en ;
+    cof:hasPeakPrice "2024년 약 70% 상승, 2025년 2월 파운드당 4.41달러로 1977년 이후 최고치 경신"^^xsd:string ;
+    rdfs:comment "브라질 기상이변과 세계 재고 부족이 겹치며 아라비카 C가격이 급등한 사건."@ko .
+
+cof:Robusta_Price_Surge_2024 a owl:NamedIndividual, cof:MarketEvent ;
+    rdfs:label "2024 로부스타 가격 급등"@ko ; rdfs:label "Robusta Price Surge 2024"@en ;
+    cof:hasPeakPrice "2024년 5월 6일 45년 만의 최고가 기록"^^xsd:string ;
+    rdfs:comment "베트남 중부고원 가뭄과 저렴한 블렌드 수요 증가가 겹치며 로부스타 선물이 급등."@ko .
+
+cof:ICE_Futures_US a owl:NamedIndividual, cof:CommodityExchange ;
+    rdfs:label "ICE 퓨처스 US"@ko ; rdfs:label "ICE Futures US"@en ;
+    cof:hasCity "New York"^^xsd:string ; cof:hasTradedCommodity "Arabica 'C' Contract"^^xsd:string ;
+    rdfs:comment "구 NYBOT/CSCE를 인수한 뉴욕 소재 거래소. 아라비카 'C' 선물계약의 본거지."@ko .
+
+cof:ICE_Futures_Europe a owl:NamedIndividual, cof:CommodityExchange ;
+    rdfs:label "ICE 퓨처스 유럽"@ko ; rdfs:label "ICE Futures Europe"@en ;
+    cof:hasCity "London"^^xsd:string ; cof:hasTradedCommodity "Robusta Coffee Contract"^^xsd:string ;
+    rdfs:comment "런던 소재 거래소로 로부스타 커피 선물계약을 취급."@ko .
+
+cof:B3_Brazil a owl:NamedIndividual, cof:CommodityExchange ;
+    rdfs:label "B3 브라질 거래소"@ko ; rdfs:label "B3 (Brasil, Bolsa, Balcão)"@en ;
+    cof:hasCity "São Paulo"^^xsd:string ; cof:hasTradedCommodity "Arabica Coffee Futures"^^xsd:string ;
+    rdfs:comment "구 BM&F 보베스파. 브라질 국내·수출 아라비카 가격의 기준이 되는 상파울루 거래소."@ko .
+
+cof:ICE_Arabica_C_Contract cof:tradedOn cof:ICE_Futures_US .
+cof:ICE_Robusta_London_Contract cof:tradedOn cof:ICE_Futures_Europe .
+cof:Brazil_Santos_4_Differential cof:tradedOn cof:B3_Brazil .
+
+
+# ----------------------------------------------------------------
+# 8-5. Sustainability 보강 (신규 서브클래스 1종, +10 인스턴스)
+# ----------------------------------------------------------------
+
+cof:SustainabilityFramework a owl:Class ; rdfs:subClassOf cof:Sustainability ;
+    rdfs:label "지속가능성 프레임워크"@ko ; rdfs:label "Sustainability Framework"@en ;
+    rdfs:comment "인증(Certification)과 달리 개별 로트가 아닌 산업·기업·규제 차원의 지속가능성 프로그램·규정을 나타냄."@ko .
+
+cof:EUDR a owl:NamedIndividual, cof:SustainabilityFramework ;
+    rdfs:label "EU 산림파괴방지규정"@ko ; rdfs:label "EU Deforestation Regulation (EUDR)"@en ;
+    cof:hasComplianceDeadline "대규모 사업자 2026-12-30, 소상공인 2027-06-30 (기존 2024-12-30 → 2025-12-30에서 재연기)"^^xsd:string ;
+    rdfs:comment "EU 역내 유통·수출되는 커피 등 7개 품목에 대해 산림파괴 비연계성 증빙(지리위치 기반 실사)을 의무화하는 규정(EU 2023/1115)."@ko .
+
+cof:Rainforest_Alliance_2020_Standard a owl:NamedIndividual, cof:SustainabilityFramework ;
+    rdfs:label "레인포레스트 얼라이언스 2020 인증기준"@ko ; rdfs:label "Rainforest Alliance 2020 Certification Standard"@en ;
+    cof:hasYearEstablished "2020"^^xsd:gYear ;
+    rdfs:comment "2018년 UTZ-레인포레스트 얼라이언스 합병 이후 두 기준을 통합해 2020년 6월 발표, 2021년 7월부터 적용된 단일 표준."@ko .
+
+cof:Fairtrade_Trader_Standard a owl:NamedIndividual, cof:SustainabilityFramework ;
+    rdfs:label "페어트레이드 트레이더 기준"@ko ; rdfs:label "Fairtrade Trader Standard"@en ;
+    rdfs:comment "페어트레이드 최저가격·소셜프리미엄 제도를 실제로 취급하는 수입/무역업체에 적용되는 이행 기준."@ko .
+
+cof:Nescafe_Plan a owl:NamedIndividual, cof:SustainabilityFramework ;
+    rdfs:label "네스카페 플랜"@ko ; rdfs:label "Nescafé Plan"@en ;
+    cof:hasYearEstablished "2010"^^xsd:gYear ;
+    rdfs:comment "네슬레의 글로벌 커피 소싱 지속가능성 프로그램. 농가 지원, 책임조달, 배출량 저감 목표를 포함."@ko .
+
+cof:World_Coffee_Research a owl:NamedIndividual, cof:SustainabilityFramework ;
+    rdfs:label "월드커피리서치"@ko ; rdfs:label "World Coffee Research (WCR)"@en ;
+    cof:hasYearEstablished "2012"^^xsd:gYear ;
+    rdfs:comment "커피 업계가 공동 출자하는 비영리 연구기관. 기후 회복력이 높은 F1 하이브리드 품종 개발 등 농학 연구를 수행."@ko .
+
+cof:Global_Coffee_Platform a owl:NamedIndividual, cof:SustainabilityFramework ;
+    rdfs:label "글로벌커피플랫폼"@ko ; rdfs:label "Global Coffee Platform (GCP)"@en ;
+    cof:hasYearEstablished "2016"^^xsd:gYear ;
+    rdfs:comment "4C Association이 전환하여 출범한 다자간 협력 플랫폼. 업계 전반의 지속가능성 공조를 조율하며 Baseline Common Code([[cof:Global_Coffee_Platform_Baseline]])를 관리."@ko .
+
+cof:Metric_Living_Income_Gap a owl:NamedIndividual, cof:SustainabilityMetric ;
+    rdfs:label "생활임금 격차 지표"@ko ; rdfs:label "Living Income Gap Metric"@en ;
+    cof:hasLivingIncomeGapPercent "소규모 농가 기준 약 40-60% (Fairtrade/GCP 조사 사례)"^^xsd:string ;
+    rdfs:comment "농가의 실제 소득과 '생활임금' 산정 기준액 사이의 격차를 측정하는 지표. 최근 페어트레이드·GCP가 핵심 KPI로 요구."@ko .
+
+cof:Metric_Deforestation_Risk a owl:NamedIndividual, cof:SustainabilityMetric ;
+    rdfs:label "산림파괴 위험 지표"@ko ; rdfs:label "Deforestation Risk Metric"@en ;
+    rdfs:comment "농장/지역의 산림파괴 연계 조달 위험도를 표시. EUDR 실사 의무 대응의 핵심 지표."@ko .
+
+cof:Metric_Water_Footprint_Per_Cup a owl:NamedIndividual, cof:SustainabilityMetric ;
+    rdfs:label "1잔당 물 발자국"@ko ; rdfs:label "Water Footprint Per Cup"@en ;
+    cof:hasWaterFootprintLiters "약 140 liters per 125ml cup (Hoekstra & Chapagain 연구)"^^xsd:string ;
+    rdfs:comment "재배·가공·습식 정제 단계를 포함해 커피 한 잔에 내재된 물 사용량을 나타내는 지표."@ko .
+
+cof:Metric_Shade_Canopy_Coverage a owl:NamedIndividual, cof:SustainabilityMetric ;
+    rdfs:label "그늘 캐노피 피복률"@ko ; rdfs:label "Shade Canopy Coverage Metric"@en ;
+    rdfs:comment "커피 재배지 위 나무 캐노피 피복 비율. 통상 40% 이상이 '그늘재배(Shade-Grown)'/Bird Friendly류 인증의 기준 문턱값으로 사용됨."@ko .
