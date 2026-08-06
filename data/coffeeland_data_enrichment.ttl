@@ -1082,3 +1082,495 @@ cof:POS_KIS a owl:NamedIndividual, cof:PosSystem ;
     cof:hasFeatures "POS 단말기 임대/판매, 오프라인 결제망, 가맹점 관리"^^xsd:string ;
     cof:hasOriginCountry "대한민국"^^xsd:string ;
     cof:hasDescription "국내 밴 시장 점유율 약 10.6%의 결제 인프라 기업."^^xsd:string .
+
+
+# ================================================================
+# 11. CertificationBody 보강 (4개 → 9개)
+#    8-2에서 추가된 Certification 6종(USDA_Organic/Bird_Friendly/
+#    CAFE_Practices/Global_Coffee_Platform_Baseline/Demeter_Biodynamic/
+#    Q_Arabica_Certified) 중 실제 발급기관(issuesCertification) 연결이
+#    누락된 5종에 대해 CertificationBody 인스턴스를 조사해 추가함.
+#    (주의: cof:USDA_Organic 은 기존 RDF에 CertificationBody로도 존재하는
+#     레거시 네이밍 중복이 있어, 신규 Body는 별도 CB_ 접두어로 분리함)
+# ================================================================
+
+cof:hasParentOrganization a owl:DatatypeProperty ; rdfs:domain cof:CertificationBody ; rdfs:range xsd:string ;
+    rdfs:label "상위/모기관"@ko ; rdfs:label "Parent Organization"@en .
+
+cof:CB_SmithsonianMBC a owl:NamedIndividual, cof:CertificationBody ;
+    rdfs:label "스미소니언 철새센터"@ko ; rdfs:label "Smithsonian Migratory Bird Center"@en ;
+    cof:hasCity "Washington, D.C."^^xsd:string ; cof:hasFoundedYear "1991"^^xsd:integer ;
+    cof:issuesCertification cof:Bird_Friendly ;
+    rdfs:comment "스미소니언 국립동물원 산하 철새 보전 연구기관. 1997년 Bird Friendly 인증을 만들어 다층 그늘재배·수종 다양성을 요구하는 가장 엄격한 그늘재배 기준을 관리한다."@ko .
+
+cof:CB_SCSGlobalServices a owl:NamedIndividual, cof:CertificationBody ;
+    rdfs:label "SCS 글로벌 서비스"@ko ; rdfs:label "SCS Global Services"@en ;
+    cof:hasCity "Emeryville, California"^^xsd:string ; cof:hasFoundedYear "1984"^^xsd:integer ;
+    cof:issuesCertification cof:CAFE_Practices ;
+    rdfs:comment "미국 캘리포니아 소재 제3자 검증기관. 2004년 스타벅스·컨서베이션 인터내셔널과 공동으로 C.A.F.E. Practices 기준을 개발해 검증을 수행해왔다."@ko .
+
+cof:CB_CQI a owl:NamedIndividual, cof:CertificationBody ;
+    rdfs:label "커피품질연구소"@ko ; rdfs:label "Coffee Quality Institute (CQI)"@en ;
+    cof:hasCity "Santa Ana, California"^^xsd:string ; cof:hasFoundedYear "1996"^^xsd:integer ;
+    cof:issuesCertification cof:Q_Arabica_Certified ;
+    rdfs:comment "SCA(스페셜티커피협회)에서 분리된 비영리 기관으로 전 세계 Q그레이더를 양성·인증하며, Q Arabica/Q Robusta 품질 인증 체계를 운영한다."@ko .
+
+cof:CB_DemeterInternational a owl:NamedIndividual, cof:CertificationBody ;
+    rdfs:label "데메터 인터내셔널"@ko ; rdfs:label "Demeter International"@en ;
+    cof:hasCity "Darmstadt, Germany"^^xsd:string ; cof:hasFoundedYear "1928"^^xsd:integer ;
+    cof:issuesCertification cof:Demeter_Biodynamic ;
+    rdfs:comment "루돌프 슈타이너의 인지학적 농법을 계승해 1928년 설립된 세계 최초의 생태농업 인증기구. 50여 개국에 지부를 두고 바이오다이나믹 인증을 관리한다."@ko .
+
+cof:CB_GCPSecretariat a owl:NamedIndividual, cof:CertificationBody ;
+    rdfs:label "글로벌커피플랫폼 사무국"@ko ; rdfs:label "Global Coffee Platform Secretariat"@en ;
+    cof:hasCity "Bonn, Germany"^^xsd:string ; cof:hasFoundedYear "2016"^^xsd:integer ;
+    cof:hasParentOrganization "4C Association 전환 출범"^^xsd:string ;
+    cof:issuesCertification cof:Global_Coffee_Platform_Baseline ;
+    rdfs:comment "본(Bonn)에 사무국을 둔 다자간 지속가능성 플랫폼. Baseline Common Code는 거래량 기준 세계 최대 규모급 지속가능 커피 인증 중 하나다."@ko .
+
+
+# ================================================================
+# 12. Equipment 보강 — EspressoMachine/Grinder/RoasterMachine/
+#     IceMaker/WaterFilter (2026-08 리서치 기반, 실존 브랜드/모델)
+#     각 신규 장비에는 매칭되는 EquipmentSupplier(공급사)도 함께 추가.
+# ================================================================
+
+cof:hasPriceUSD a owl:DatatypeProperty ; rdfs:domain cof:Equipment ; rdfs:range xsd:string ;
+    rdfs:label "가격대(USD)"@ko ; rdfs:label "Price Range (USD)"@en .
+cof:hasYearIntroduced a owl:DatatypeProperty ; rdfs:domain cof:Equipment ; rdfs:range xsd:gYear ;
+    rdfs:label "출시 연도"@ko ; rdfs:label "Year Introduced"@en .
+cof:hasCapacitySpec a owl:DatatypeProperty ; rdfs:domain cof:Equipment ; rdfs:range xsd:string ;
+    rdfs:label "용량/처리량 사양"@ko ; rdfs:label "Capacity Specification"@en .
+
+# --- EspressoMachine +5 ---
+
+cof:EM_Faema_E71 a owl:NamedIndividual, cof:EspressoMachine ;
+    rdfs:label "파에마 E71"@ko ; rdfs:label "Faema E71"@en ;
+    cof:hasModel "Faema E71"^^xsd:string ; cof:hasManufacturer "Faema"^^xsd:string ;
+    cof:hasCountry "Italy"^^xsd:string ; cof:hasPowerWatt "3000"^^xsd:integer ;
+    cof:hasPriceUSD "$9,000-12,000"^^xsd:string ; cof:hasYearIntroduced "2015"^^xsd:gYear ;
+    rdfs:comment "1961년 최초의 수평보일러 자동 그룹헤드 머신 'Faema E61'을 발명한 밀라노 브랜드의 현행 플래그십. E61은 이후 반세기 넘게 업계 표준 그룹헤드 설계의 원형이 되었다."@ko .
+
+cof:EM_Rancilio_Classe9 a owl:NamedIndividual, cof:EspressoMachine ;
+    rdfs:label "란칠리오 클라세 9"@ko ; rdfs:label "Rancilio Classe 9"@en ;
+    cof:hasModel "Rancilio Classe 9 USB"^^xsd:string ; cof:hasManufacturer "Rancilio"^^xsd:string ;
+    cof:hasCountry "Italy"^^xsd:string ; cof:hasPowerWatt "5200"^^xsd:integer ;
+    cof:hasPriceUSD "$15,000-20,000"^^xsd:string ; cof:hasYearIntroduced "2018"^^xsd:gYear ;
+    rdfs:comment "1927년 설립된 밀라노 인근 빌라스탄자 소재 브랜드. USB 포트를 통한 샷 데이터 로깅과 그룹별 개별 온도제어(PID)를 지원하는 상업용 3~4그룹 머신."@ko .
+
+cof:EM_VictoriaArduino_EagleOne a owl:NamedIndividual, cof:EspressoMachine ;
+    rdfs:label "빅토리아 아르두이노 이글원"@ko ; rdfs:label "Victoria Arduino Eagle One"@en ;
+    cof:hasModel "Eagle One Volumetric"^^xsd:string ; cof:hasManufacturer "Victoria Arduino"^^xsd:string ;
+    cof:hasCountry "Italy"^^xsd:string ; cof:hasPowerWatt "4500"^^xsd:integer ;
+    cof:hasPriceUSD "$16,000-22,000"^^xsd:string ; cof:hasYearIntroduced "2016"^^xsd:gYear ;
+    rdfs:comment "1905년 토리노에서 설립, 현재 Gruppo Cimbali 소속. 자체 개발한 T3 온도안정화 시스템으로 추출 온도 편차를 ±0.5°C 이내로 유지하는 것이 특징."@ko .
+
+cof:EM_Slayer_SteamEP a owl:NamedIndividual, cof:EspressoMachine ;
+    rdfs:label "슬레이어 스팀 EP"@ko ; rdfs:label "Slayer Steam EP"@en ;
+    cof:hasModel "Slayer Steam EP"^^xsd:string ; cof:hasManufacturer "Slayer Espresso"^^xsd:string ;
+    cof:hasCountry "USA"^^xsd:string ; cof:hasPowerWatt "4000"^^xsd:integer ;
+    cof:hasPriceUSD "$18,000-24,000"^^xsd:string ; cof:hasYearIntroduced "2009"^^xsd:gYear ;
+    rdfs:comment "시애틀 기반 브랜드로 레버형 유량 제어를 통한 '프리 푸어(pre-pour)' 압력 프로파일링을 최초로 상용화, 서드웨이브 스페셜티 카페들 사이에서 대표적 프리미엄 머신으로 자리잡음."@ko .
+
+cof:EM_Sanremo_CafeRacer a owl:NamedIndividual, cof:EspressoMachine ;
+    rdfs:label "산레모 카페 레이서"@ko ; rdfs:label "Sanremo Café Racer"@en ;
+    cof:hasModel "Café Racer"^^xsd:string ; cof:hasManufacturer "Sanremo Coffee Machines"^^xsd:string ;
+    cof:hasCountry "Italy"^^xsd:string ; cof:hasPowerWatt "3500"^^xsd:integer ;
+    cof:hasPriceUSD "$10,000-14,000"^^xsd:string ; cof:hasYearIntroduced "2017"^^xsd:gYear ;
+    rdfs:comment "레트로 모터사이클 디자인 언어를 접목한 외관으로 유명한 밀라노 인근 브랜드. 그룹별 독립 PID 온도제어를 갖춘 3그룹 상업용 머신."@ko .
+
+# --- Grinder +4 ---
+
+cof:GR_Mahlkonig_Peak a owl:NamedIndividual, cof:Grinder ;
+    rdfs:label "말콩 피크"@ko ; rdfs:label "Mahlkönig Peak"@en ;
+    cof:hasModel "Peak"^^xsd:string ; cof:hasManufacturer "Mahlkönig"^^xsd:string ;
+    cof:hasCountry "Germany"^^xsd:string ; cof:hasPriceUSD "$3,500-4,200"^^xsd:string ;
+    cof:hasYearIntroduced "2019"^^xsd:gYear ;
+    rdfs:comment "1924년 함부르크에서 창업한 브랜드의 고회전(83mm) 플랫버 그라인더. 단시간 대량 추출이 필요한 고회전 매장용으로 설계됨."@ko .
+
+cof:GR_Ditting_KR804 a owl:NamedIndividual, cof:Grinder ;
+    rdfs:label "디팅 KR804"@ko ; rdfs:label "Ditting KR804"@en ;
+    cof:hasModel "KR804"^^xsd:string ; cof:hasManufacturer "Ditting"^^xsd:string ;
+    cof:hasCountry "Switzerland"^^xsd:string ; cof:hasPriceUSD "$2,800-3,400"^^xsd:string ;
+    rdfs:comment "1948년 설립된 스위스 바헨뷜라흐 소재 정밀기계 브랜드. 64mm 원추형(conical) 버를 사용해 대용량 드립·필터 추출용으로 널리 쓰임."@ko .
+
+cof:GR_Fiorenzato_F64 a owl:NamedIndividual, cof:Grinder ;
+    rdfs:label "피오렌자토 F64"@ko ; rdfs:label "Fiorenzato F64 Evo"@en ;
+    cof:hasModel "F64 Evo"^^xsd:string ; cof:hasManufacturer "Fiorenzato"^^xsd:string ;
+    cof:hasCountry "Italy"^^xsd:string ; cof:hasPriceUSD "$1,800-2,300"^^xsd:string ;
+    rdfs:comment "1968년 파도바에서 설립. 64mm 플랫버와 자석식 도징 커플러를 갖춘 스페셜티 에스프레소용 그라인더로 다수의 바리스타 챔피언십에서 사용됨."@ko .
+
+cof:GR_Comandante_C40 a owl:NamedIndividual, cof:Grinder ;
+    rdfs:label "코만단테 C40"@ko ; rdfs:label "Comandante C40 MK4"@en ;
+    cof:hasModel "C40 MK4 Nitro Blade"^^xsd:string ; cof:hasManufacturer "Comandante"^^xsd:string ;
+    cof:hasCountry "Germany"^^xsd:string ; cof:hasPriceUSD "$220-280"^^xsd:string ;
+    cof:hasYearIntroduced "2013"^^xsd:gYear ;
+    rdfs:comment "수동 핸드 그라인더 카테고리의 사실상 표준. 필터·핸드드립을 중시하는 가정용/트래블 시장에서 압도적 인지도를 가짐."@ko .
+
+# --- RoasterMachine +3 ---
+
+cof:RM_Diedrich_IR12 a owl:NamedIndividual, cof:RoasterMachine ;
+    rdfs:label "디드리히 IR-12"@ko ; rdfs:label "Diedrich IR-12"@en ;
+    cof:hasModel "IR-12"^^xsd:string ; cof:hasManufacturer "Diedrich Manufacturing"^^xsd:string ;
+    cof:hasCountry "USA"^^xsd:string ; cof:hasCapacitySpec "약 5.4kg/batch"^^xsd:string ;
+    rdfs:comment "아이다호 보이시 소재 브랜드로, 대류열 위주의 일반 드럼 로스터와 달리 적외선(IR) 복사열 비중을 높여 균일한 열전달을 구현한 것이 특징."@ko .
+
+cof:RM_SanFranciscan_SF25 a owl:NamedIndividual, cof:RoasterMachine ;
+    rdfs:label "샌프란시스칸 SF-25"@ko ; rdfs:label "San Franciscan SF-25"@en ;
+    cof:hasModel "SF-25"^^xsd:string ; cof:hasManufacturer "San Franciscan Roaster Corp"^^xsd:string ;
+    cof:hasCountry "USA"^^xsd:string ; cof:hasCapacitySpec "약 11.3kg/batch"^^xsd:string ;
+    rdfs:comment "1970년대부터 이어져 온 캘리포니아 산리앤드로 소재 제조사. 소형 정밀 로스터리에서 널리 쓰이는 중용량 드럼 로스터."@ko .
+
+cof:RM_CoffeeTech_Primo a owl:NamedIndividual, cof:RoasterMachine ;
+    rdfs:label "커피테크 프리모"@ko ; rdfs:label "Coffee-Tech Primo R Series"@en ;
+    cof:hasModel "Primo R15"^^xsd:string ; cof:hasManufacturer "Coffee-Tech Engineering"^^xsd:string ;
+    cof:hasCountry "Israel"^^xsd:string ; cof:hasCapacitySpec "약 15kg/batch"^^xsd:string ;
+    rdfs:comment "이스라엘 기반 엔지니어링사가 개발한 열풍(hot-air) 로스터 라인. 낮은 배기가스 배출과 빠른 배치 전환 속도를 앞세운다."@ko .
+
+# --- IceMaker +2 ---
+
+cof:IM_Manitowoc_IndigoNXT a owl:NamedIndividual, cof:IceMaker ;
+    rdfs:label "마니토와 인디고 NXT"@ko ; rdfs:label "Manitowoc Indigo NXT"@en ;
+    cof:hasModel "Indigo NXT IYT0500"^^xsd:string ; cof:hasManufacturer "Manitowoc Ice"^^xsd:string ;
+    cof:hasCountry "USA"^^xsd:string ; cof:hasCapacitySpec "약 227kg/day"^^xsd:string ;
+    rdfs:comment "위스콘신 소재 상업용 제빙기 브랜드. 필터 상태·성능을 알려주는 LED 알림 시스템(OnGuard)을 탑재한 것이 특징."@ko .
+
+cof:IM_IceOMatic_ICE0500 a owl:NamedIndividual, cof:IceMaker ;
+    rdfs:label "아이스오매틱 ICE0500"@ko ; rdfs:label "Ice-O-Matic ICE0500"@en ;
+    cof:hasModel "ICE0500"^^xsd:string ; cof:hasManufacturer "Ice-O-Matic"^^xsd:string ;
+    cof:hasCountry "USA"^^xsd:string ; cof:hasCapacitySpec "약 231kg/day"^^xsd:string ;
+    rdfs:comment "텍사스 덴턴 소재 브랜드로 소형 매장에 적합한 자체완결형(self-contained) 큐브형 제빙기 라인으로 잘 알려져 있음."@ko .
+
+# --- WaterFilter +2 ---
+
+cof:WF_BWT_BestmaxPremium a owl:NamedIndividual, cof:WaterFilter ;
+    rdfs:label "BWT 베스트맥스 프리미엄"@ko ; rdfs:label "BWT Bestmax Premium"@en ;
+    cof:hasModel "Bestmax Premium L"^^xsd:string ; cof:hasManufacturer "BWT"^^xsd:string ;
+    cof:hasCountry "Austria"^^xsd:string ; cof:hasCapacitySpec "약 15,000L"^^xsd:string ;
+    rdfs:comment "오스트리아 몬제 소재 수처리 전문기업. 카트리지 교체 없이 레진만 재충전하는 방식으로 스케일(석회질)을 관리해 에스프레소 머신 보일러 수명을 늘리는 것으로 유명."@ko .
+
+cof:WF_3M_Cyclone a owl:NamedIndividual, cof:WaterFilter ;
+    rdfs:label "3M 워터필트레이션 사이클론"@ko ; rdfs:label "3M Water Filtration Cyclone"@en ;
+    cof:hasModel "Cyclone CFS8112-S"^^xsd:string ; cof:hasManufacturer "3M"^^xsd:string ;
+    cof:hasCountry "USA"^^xsd:string ; cof:hasCapacitySpec "약 34,000L"^^xsd:string ;
+    rdfs:comment "미네소타 세인트폴 소재 3M의 상업용 정수 라인. 스케일 억제제(scale inhibition) 기술로 고경도 수돗물 지역의 보일러 스케일 문제에 대응함."@ko .
+
+# --- Equipment (direct instance) 보강: Machine_B ---
+
+cof:Machine_B
+    cof:hasModel "Generic Commercial Espresso Machine"^^xsd:string ;
+    cof:hasManufacturer "Unbranded/OEM"^^xsd:string ;
+    rdfs:comment "특정 브랜드가 지정되지 않은 일반형 상업용 장비 플레이스홀더 레코드."@ko .
+
+# --- EquipmentSupplier +11 (신규 장비 브랜드와 매칭) ---
+
+cof:ES_Faema a owl:NamedIndividual, cof:EquipmentSupplier ;
+    cof:hasName "Faema"^^xsd:string ; cof:isHeadquarteredIn cof:Italy ;
+    cof:hasCity "Milan"^^xsd:string ; cof:hasFoundedYear "1945"^^xsd:integer ;
+    cof:hasSpecialty "EspressoMachine"^^xsd:string ; cof:supplies cof:EM_Faema_E71 .
+
+cof:ES_Rancilio a owl:NamedIndividual, cof:EquipmentSupplier ;
+    cof:hasName "Rancilio"^^xsd:string ; cof:isHeadquarteredIn cof:Italy ;
+    cof:hasCity "Villastanza"^^xsd:string ; cof:hasFoundedYear "1927"^^xsd:integer ;
+    cof:hasSpecialty "EspressoMachine"^^xsd:string ; cof:supplies cof:EM_Rancilio_Classe9 .
+
+cof:ES_VictoriaArduino a owl:NamedIndividual, cof:EquipmentSupplier ;
+    cof:hasName "Victoria Arduino"^^xsd:string ; cof:isHeadquarteredIn cof:Italy ;
+    cof:hasCity "Turin"^^xsd:string ; cof:hasFoundedYear "1905"^^xsd:integer ;
+    cof:hasSpecialty "EspressoMachine"^^xsd:string ; cof:supplies cof:EM_VictoriaArduino_EagleOne .
+
+cof:ES_Slayer a owl:NamedIndividual, cof:EquipmentSupplier ;
+    cof:hasName "Slayer Espresso"^^xsd:string ; cof:isHeadquarteredIn cof:USA ;
+    cof:hasCity "Seattle"^^xsd:string ; cof:hasFoundedYear "2006"^^xsd:integer ;
+    cof:hasSpecialty "EspressoMachine"^^xsd:string ; cof:supplies cof:EM_Slayer_SteamEP .
+
+cof:ES_Sanremo a owl:NamedIndividual, cof:EquipmentSupplier ;
+    cof:hasName "Sanremo Coffee Machines"^^xsd:string ; cof:isHeadquarteredIn cof:Italy ;
+    cof:hasCity "Gradisca d'Isonzo"^^xsd:string ; cof:hasFoundedYear "1980"^^xsd:integer ;
+    cof:hasSpecialty "EspressoMachine"^^xsd:string ; cof:supplies cof:EM_Sanremo_CafeRacer .
+
+cof:ES_Ditting a owl:NamedIndividual, cof:EquipmentSupplier ;
+    cof:hasName "Ditting"^^xsd:string ; cof:hasCountry "Switzerland"^^xsd:string ;
+    cof:hasCity "Bachenbülach"^^xsd:string ; cof:hasFoundedYear "1948"^^xsd:integer ;
+    cof:hasSpecialty "Grinder"^^xsd:string ; cof:supplies cof:GR_Ditting_KR804 .
+
+cof:ES_Fiorenzato a owl:NamedIndividual, cof:EquipmentSupplier ;
+    cof:hasName "Fiorenzato"^^xsd:string ; cof:isHeadquarteredIn cof:Italy ;
+    cof:hasCity "Padua"^^xsd:string ; cof:hasFoundedYear "1968"^^xsd:integer ;
+    cof:hasSpecialty "Grinder"^^xsd:string ; cof:supplies cof:GR_Fiorenzato_F64 .
+
+cof:ES_Comandante a owl:NamedIndividual, cof:EquipmentSupplier ;
+    cof:hasName "Comandante"^^xsd:string ; cof:hasCountry "Germany"^^xsd:string ;
+    cof:hasFoundedYear "2013"^^xsd:integer ;
+    cof:hasSpecialty "Grinder"^^xsd:string ; cof:supplies cof:GR_Comandante_C40 .
+
+cof:ES_Diedrich a owl:NamedIndividual, cof:EquipmentSupplier ;
+    cof:hasName "Diedrich Manufacturing"^^xsd:string ; cof:isHeadquarteredIn cof:USA ;
+    cof:hasCity "Ponderay, Idaho"^^xsd:string ;
+    cof:hasSpecialty "RoasterMachine"^^xsd:string ; cof:supplies cof:RM_Diedrich_IR12 .
+
+cof:ES_Manitowoc a owl:NamedIndividual, cof:EquipmentSupplier ;
+    cof:hasName "Manitowoc Ice"^^xsd:string ; cof:isHeadquarteredIn cof:USA ;
+    cof:hasCity "Manitowoc, Wisconsin"^^xsd:string ; cof:hasFoundedYear "1854"^^xsd:integer ;
+    cof:hasSpecialty "IceMaker"^^xsd:string ; cof:supplies cof:IM_Manitowoc_IndigoNXT .
+
+cof:ES_BWT a owl:NamedIndividual, cof:EquipmentSupplier ;
+    cof:hasName "BWT"^^xsd:string ; cof:isHeadquarteredIn cof:Austria ;
+    cof:hasCity "Mondsee"^^xsd:string ; cof:hasFoundedYear "1990"^^xsd:integer ;
+    cof:hasSpecialty "WaterFilter"^^xsd:string ; cof:supplies cof:WF_BWT_BestmaxPremium .
+
+cof:ES_Mahlkonig
+    cof:supplies cof:GR_Mahlkonig_Peak .
+
+
+# ================================================================
+# 13. Consumable / Ingredient 보강 — 매장 소모품·부재료 카테고리가
+#     클래스당 2~5개 수준으로 빈약해 실사용 규격·소재 기준으로 보강.
+# ================================================================
+
+cof:hasSustainabilityNote a owl:DatatypeProperty ; rdfs:domain cof:Consumable ; rdfs:range xsd:string ;
+    rdfs:label "친환경 특성"@ko ; rdfs:label "Sustainability Note"@en .
+cof:hasCapacityValue a owl:DatatypeProperty ; rdfs:domain cof:Consumable ; rdfs:range xsd:string ;
+    rdfs:label "용량/규격"@ko ; rdfs:label "Capacity/Size"@en .
+cof:hasCaloriesPerServing a owl:DatatypeProperty ; rdfs:domain cof:Ingredient ; rdfs:range xsd:integer ;
+    rdfs:label "1회 제공량당 칼로리"@ko ; rdfs:label "Calories per Serving"@en .
+
+# --- Napkin +2 ---
+
+cof:Con_DispenserNapkin a owl:NamedIndividual, cof:Napkin ;
+    rdfs:label "디스펜서 냅킨"@ko ; rdfs:label "Dispenser Napkin (1-ply)"@en ;
+    cof:hasName "Dispenser Napkin (1-ply)"^^xsd:string ; cof:hasMaterial "Recycled Pulp"^^xsd:string ;
+    cof:hasCapacityValue "13x13cm"^^xsd:string ;
+    rdfs:comment "카운터 디스펜서용 저평량 1겹 냅킨. 재생펄프 비중이 높아 매장 소모품 중 상대적으로 친환경적인 품목."@ko .
+
+cof:Con_BeverageNapkin a owl:NamedIndividual, cof:Napkin ;
+    rdfs:label "음료 냅킨"@ko ; rdfs:label "Beverage Napkin"@en ;
+    cof:hasName "Beverage Napkin"^^xsd:string ; cof:hasMaterial "Virgin Pulp"^^xsd:string ;
+    cof:hasCapacityValue "10x10cm"^^xsd:string ;
+    rdfs:comment "테이크아웃 컵 아래 깔거나 손잡이에 감아 제공하는 소형 냅킨."@ko .
+
+# --- Straw +2 ---
+
+cof:Con_GlassStraw a owl:NamedIndividual, cof:Straw ;
+    rdfs:label "유리 스트로"@ko ; rdfs:label "Reusable Glass Straw"@en ;
+    cof:hasName "Reusable Glass Straw"^^xsd:string ; cof:hasMaterial "Borosilicate Glass"^^xsd:string ;
+    cof:hasSustainabilityNote "반영구 재사용 가능, 매장 내 취식(dine-in) 전용"^^xsd:string ;
+    rdfs:comment "일회용 플라스틱 빨대 규제(EU 단일플라스틱지침 2021 등) 확산 이후 매장 내 취식 고객을 위한 재사용 대안으로 채택이 늘고 있음."@ko .
+
+cof:Con_StainlessSteelStraw a owl:NamedIndividual, cof:Straw ;
+    rdfs:label "스테인리스 스트로"@ko ; rdfs:label "Reusable Stainless Steel Straw"@en ;
+    cof:hasName "Reusable Stainless Steel Straw"^^xsd:string ; cof:hasMaterial "18/8 Stainless Steel"^^xsd:string ;
+    cof:hasSustainabilityNote "세척 후 반복 사용, 매장 판매용 굿즈로도 활용"^^xsd:string ;
+    rdfs:comment "내구성이 높아 매장 자체 소모품보다는 고객 판매용 리유저블 굿즈로 취급되는 경우가 많음."@ko .
+
+# --- TakeoutLid +2 ---
+
+cof:Con_ColdLid_StrawSlot a owl:NamedIndividual, cof:TakeoutLid ;
+    rdfs:label "스트로우홀 콜드 리드"@ko ; rdfs:label "Cold Lid with Straw Slot"@en ;
+    cof:hasName "Cold Lid with Straw Slot"^^xsd:string ; cof:hasMaterial "rPET Plastic"^^xsd:string ;
+    rdfs:comment "돔형이 아닌 평면형 리드에 십자형 스트로 삽입구를 낸 형태. 최근 종이 스트로 확산에 맞춰 슬롯 폭을 넓힌 버전이 표준화되는 추세."@ko .
+
+cof:Con_HotLid_Vented a owl:NamedIndividual, cof:TakeoutLid ;
+    rdfs:label "통기구 핫 리드"@ko ; rdfs:label "Vented Hot Lid"@en ;
+    cof:hasName "Vented Hot Lid"^^xsd:string ; cof:hasMaterial "PP Plastic"^^xsd:string ;
+    rdfs:comment "증기 배출용 소형 통기구가 있어 뜨거운 음료의 응결·넘침을 줄이는 배달 전용 핫 리드."@ko .
+
+# --- PaperCup +3 ---
+
+cof:Con_KidsCup_4oz a owl:NamedIndividual, cof:PaperCup ;
+    rdfs:label "키즈컵 4oz"@ko ; rdfs:label "Kids Sample Cup 4oz"@en ;
+    cof:hasName "Kids Sample Cup 4oz"^^xsd:string ; cof:hasMaterial "Single-wall Paper"^^xsd:string ;
+    cof:hasCapacityValue "4oz (118ml)"^^xsd:string ;
+    rdfs:comment "시음용·유아용 음료(핫초코 소량 등)에 사용되는 최소 용량 컵."@ko .
+
+cof:Con_DoubleWallCup_12oz a owl:NamedIndividual, cof:PaperCup ;
+    rdfs:label "더블월 컵 12oz"@ko ; rdfs:label "Double-wall Hot Cup 12oz"@en ;
+    cof:hasName "Double-wall Hot Cup 12oz"^^xsd:string ; cof:hasMaterial "Double-wall Paper"^^xsd:string ;
+    cof:hasCapacityValue "12oz (355ml)"^^xsd:string ;
+    rdfs:comment "이중벽 구조로 슬리브 없이도 단열이 되어 슬리브 소모량을 줄일 수 있는 사양."@ko .
+
+cof:Con_RippleCup_16oz a owl:NamedIndividual, cof:PaperCup ;
+    rdfs:label "리플컵 16oz"@ko ; rdfs:label "Ripple Wall Cup 16oz"@en ;
+    cof:hasName "Ripple Wall Cup 16oz"^^xsd:string ; cof:hasMaterial "Corrugated Ripple Paper"^^xsd:string ;
+    cof:hasCapacityValue "16oz (473ml)"^^xsd:string ;
+    rdfs:comment "물결무늬 이중 골판구조로 별도 슬리브 없이 단열되는 친환경 지향 컵 사양."@ko .
+
+# --- Carrier +2 ---
+
+cof:Con_6CupCarrier a owl:NamedIndividual, cof:Carrier ;
+    rdfs:label "6컵 캐리어"@ko ; rdfs:label "6-Cup Carrier"@en ;
+    cof:hasName "6-Cup Carrier"^^xsd:string ; cof:hasMaterial "Recycled Corrugated Board"^^xsd:string ;
+    rdfs:comment "단체 주문·오피스 배달용 대용량 캐리어. 재생 골판지 비중을 높인 사양이 표준화되는 추세."@ko .
+
+cof:Con_DeliveryBoxCarrier a owl:NamedIndividual, cof:Carrier ;
+    rdfs:label "배달 박스 캐리어"@ko ; rdfs:label "Delivery Box Carrier"@en ;
+    cof:hasName "Delivery Box Carrier"^^xsd:string ; cof:hasMaterial "Corrugated Board with Insulation Liner"^^xsd:string ;
+    rdfs:comment "배달앱 주문 증가에 따라 도입된 형태로, 컵이 흔들리지 않도록 개별 칸막이와 단열재를 덧댄 박스형 캐리어."@ko .
+
+# --- Sauce +2 ---
+
+cof:Ing_MatchaSauce a owl:NamedIndividual, cof:Sauce ;
+    rdfs:label "말차 소스"@ko ; rdfs:label "Matcha Sauce"@en ;
+    cof:hasName "Matcha Sauce"^^xsd:string ; cof:hasBrand "Monin"^^xsd:string ;
+    cof:hasCaloriesPerServing "45"^^xsd:integer ;
+    rdfs:comment "말차 라떼·프라페 베이스로 쓰이는 가당 페이스트형 소스."@ko .
+
+cof:Ing_StrawberrySauce a owl:NamedIndividual, cof:Sauce ;
+    rdfs:label "스트로베리 소스"@ko ; rdfs:label "Strawberry Sauce"@en ;
+    cof:hasName "Strawberry Sauce"^^xsd:string ; cof:hasBrand "DaVinci Gourmet"^^xsd:string ;
+    cof:hasCaloriesPerServing "60"^^xsd:integer ;
+    rdfs:comment "과육 함유 소스로 딸기라떼·에이드류 및 토핑용으로 사용."@ko .
+
+# --- Syrup +3 ---
+
+cof:Ing_SimpleSyrup a owl:NamedIndividual, cof:Syrup ;
+    rdfs:label "심플 시럽"@ko ; rdfs:label "Classic Simple Syrup"@en ;
+    cof:hasName "Classic Simple Syrup"^^xsd:string ; cof:hasBrand "Monin"^^xsd:string ;
+    cof:hasCaloriesPerServing "40"^^xsd:integer ;
+    rdfs:comment "설탕과 물을 1:1로 끓여 만든 기본 가당 시럽. 아이스 음료 당도 조절에 가장 널리 쓰임."@ko .
+
+cof:Ing_LavenderSyrup a owl:NamedIndividual, cof:Syrup ;
+    rdfs:label "라벤더 시럽"@ko ; rdfs:label "Lavender Syrup"@en ;
+    cof:hasName "Lavender Syrup"^^xsd:string ; cof:hasBrand "Torani"^^xsd:string ;
+    cof:hasCaloriesPerServing "50"^^xsd:integer ;
+    rdfs:comment "라벤더 라떼 등 최근 유행하는 플로럴 계열 시그니처 메뉴에 활용되는 향미 시럽."@ko .
+
+cof:Ing_MapleSyrup a owl:NamedIndividual, cof:Syrup ;
+    rdfs:label "메이플 시럽"@ko ; rdfs:label "Maple Syrup"@en ;
+    cof:hasName "Maple Syrup"^^xsd:string ; cof:hasBrand "Monin"^^xsd:string ;
+    cof:hasCaloriesPerServing "52"^^xsd:integer ;
+    rdfs:comment "가을 시즌 메뉴 및 브런치 음료(메이플 라떼 등)에 사용되는 천연 유래 시럽."@ko .
+
+# --- Milk +2 ---
+
+cof:Ing_OatMilkBarista a owl:NamedIndividual, cof:Milk ;
+    rdfs:label "오트밀크 바리스타 에디션"@ko ; rdfs:label "Oat Milk (Barista Edition)"@en ;
+    cof:hasName "Oat Milk (Barista Edition)"^^xsd:string ; cof:hasBrand "Oatly"^^xsd:string ;
+    cof:hasCaloriesPerServing "120"^^xsd:integer ;
+    rdfs:comment "일반 오트밀크보다 지방 함량을 높여 스티밍 시 마이크로폼 형성력을 강화한 카페 전용 라인."@ko .
+
+cof:Ing_MacadamiaMilk a owl:NamedIndividual, cof:Milk ;
+    rdfs:label "마카다미아 밀크"@ko ; rdfs:label "Macadamia Milk"@en ;
+    cof:hasName "Macadamia Milk"^^xsd:string ; cof:hasBrand "Milkadamia"^^xsd:string ;
+    cof:hasCaloriesPerServing "100"^^xsd:integer ;
+    rdfs:comment "견과류 대체유 중 가장 최근 확산 중인 종류로, 자연스러운 단맛과 크리미한 질감이 특징."@ko .
+
+# --- TeaBase +3 ---
+
+cof:Ing_GreenTea a owl:NamedIndividual, cof:TeaBase ;
+    rdfs:label "녹차"@ko ; rdfs:label "Green Tea"@en ;
+    cof:hasName "Green Tea"^^xsd:string ; cof:hasBrand "Twinings"^^xsd:string ;
+    cof:hasCaloriesPerServing "2"^^xsd:integer ;
+    rdfs:comment "논카페인 저칼로리 음료 수요에 대응하는 기본 티 베이스 중 하나."@ko .
+
+cof:Ing_PeppermintTea a owl:NamedIndividual, cof:TeaBase ;
+    rdfs:label "페퍼민트 티"@ko ; rdfs:label "Peppermint Tea"@en ;
+    cof:hasName "Peppermint Tea"^^xsd:string ; cof:hasBrand "Twinings"^^xsd:string ;
+    cof:hasCaloriesPerServing "0"^^xsd:integer ;
+    rdfs:comment "무카페인 허브티 라인. 저녁 시간대 논카페인 옵션으로 메뉴에 포함되는 경우가 많음."@ko .
+
+cof:Ing_JasmineTea a owl:NamedIndividual, cof:TeaBase ;
+    rdfs:label "자스민차"@ko ; rdfs:label "Jasmine Tea"@en ;
+    cof:hasName "Jasmine Tea"^^xsd:string ; cof:hasBrand "Ippodo"^^xsd:string ;
+    cof:hasCaloriesPerServing "2"^^xsd:integer ;
+    rdfs:comment "동아시아권 매장에서 인기 있는 향긋한 화차(花茶) 베이스."@ko .
+
+
+# ================================================================
+# 14. AgriEvent / MarketAndEconomics 추가 보강
+#     (WeatherEvent/PlantDiseaseOutbreak/CuppingCompetition/
+#      CommodityExchange/TradeAgreement 각 클래스 실제 사례 추가)
+# ================================================================
+
+# --- WeatherEvent +2 ---
+
+cof:Brazil_Frost_1994 a owl:NamedIndividual, cof:WeatherEvent ;
+    rdfs:label "1994 브라질 냉해"@ko ; rdfs:label "Brazil Frost 1994"@en ;
+    cof:hasAffectedRegion "Paraná, São Paulo"^^xsd:string ;
+    rdfs:comment "1994년 6-7월 두 차례 연속 냉해가 발생해 파라나·상파울루 커피나무가 심각하게 손상됨. 1975년 블랙프로스트 이후 최악의 냉해 중 하나로 꼽히며 이듬해 가격 급등을 촉발."@ko .
+
+cof:CentralAmerica_HurricaneMitch_1998 a owl:NamedIndividual, cof:WeatherEvent ;
+    rdfs:label "1998 허리케인 미치"@ko ; rdfs:label "Hurricane Mitch 1998"@en ;
+    cof:hasAffectedRegion "Honduras, Nicaragua"^^xsd:string ;
+    rdfs:comment "1998년 10월 발생한 20세기 대서양 최악의 허리케인 중 하나. 온두라스 커피 생산의 약 3분의 1이 손실되고 토양 유실로 다년간 회복이 지연됨."@ko .
+
+# --- PlantDiseaseOutbreak +2 ---
+
+cof:Xylella_Fastidiosa_Coffee a owl:NamedIndividual, cof:PlantDiseaseOutbreak ;
+    rdfs:label "자일렐라 파스티디오사 (커피)"@ko ; rdfs:label "Xylella Fastidiosa in Coffee"@en ;
+    cof:hasCausalAgent "Xylella fastidiosa (세균)"^^xsd:string ;
+    cof:hasAffectedRegion "EU 수입 검역 사례 (코스타리카·온두라스산 원두, 2018년 이후)"^^xsd:string ;
+    rdfs:comment "이탈리아 올리브나무 고사로 유명해진 병원균이 커피나무에서도 숙주로 확인되며 2018년부터 EU가 커피 수입 검역을 강화. 아직 대규모 유행은 아니나 잠재적 리스크로 관리됨."@ko .
+
+cof:Coffee_Wilt_Disease_Uganda a owl:NamedIndividual, cof:PlantDiseaseOutbreak ;
+    rdfs:label "커피위조병 (우간다)"@ko ; rdfs:label "Coffee Wilt Disease (Uganda)"@en ;
+    cof:hasCausalAgent "Fusarium xylarioides (균류)"^^xsd:string ;
+    cof:hasAffectedRegion "Uganda, DR Congo, Tanzania"^^xsd:string ;
+    cof:hasEconomicImpactUSD "1990년대-2000년대 우간다 로부스타 생산목 수백만 그루 손실"^^xsd:string ;
+    rdfs:comment "관다발을 막아 나무를 고사시키는 병해로 1990년대부터 확산, 우간다 로부스타 주산지에 특히 큰 타격을 줌. 저항성 품종 보급으로 2010년대 이후 점차 통제됨."@ko .
+
+# --- CuppingCompetition +2 ---
+
+cof:Golden_Cup_Award_Kenya a owl:NamedIndividual, cof:CuppingCompetition ;
+    rdfs:label "골든컵 어워드 (케냐)"@ko ; rdfs:label "Golden Cup Award (Kenya)"@en ;
+    cof:hasOrganizer "Kenya Coffee Traders Association"^^xsd:string ;
+    rdfs:comment "케냐 커피거래자협회가 나이로비 커피거래소 우수 로트를 대상으로 매년 선정하는 품질 시상."@ko .
+
+cof:Taste_of_Harvest a owl:NamedIndividual, cof:CuppingCompetition ;
+    rdfs:label "테이스트 오브 하베스트"@ko ; rdfs:label "Taste of Harvest"@en ;
+    cof:hasOrganizer "TechnoServe"^^xsd:string ;
+    rdfs:comment "르완다·부룬디 등 동아프리카 소농 대상으로 TechnoServe가 운영하는 컵 오브 엑설런스 방식의 지역 커핑 대회. 수상 로트는 온라인 경매로 프리미엄 가격에 거래됨."@ko .
+
+# --- CommodityExchange +2 ---
+
+cof:Nairobi_Coffee_Exchange a owl:NamedIndividual, cof:CommodityExchange ;
+    rdfs:label "나이로비 커피거래소"@ko ; rdfs:label "Nairobi Coffee Exchange (NCE)"@en ;
+    cof:hasCity "Nairobi"^^xsd:string ; cof:hasTradedCommodity "Kenya Arabica (weekly auction lots)"^^xsd:string ;
+    rdfs:comment "1930년대부터 이어진 케냐 커피 경매 시스템. 매주 화요일 경매를 통해 등급별(AA/AB/PB 등) 물량이 거래되며 케냐 생두 가격의 기준점 역할을 함."@ko .
+
+cof:BuonMaThuot_Coffee_Exchange a owl:NamedIndividual, cof:CommodityExchange ;
+    rdfs:label "부온마투옷 커피거래소"@ko ; rdfs:label "Buon Ma Thuot Coffee Exchange (BCEC)"@en ;
+    cof:hasCity "Buon Ma Thuot"^^xsd:string ; cof:hasTradedCommodity "Robusta Coffee"^^xsd:string ;
+    rdfs:comment "2008년 베트남 중부고원 다크락성에 설립된 로부스타 현물·선물 거래소로, 세계 최대 로부스타 생산국의 국내 가격 형성에 관여."@ko .
+
+cof:ICE_Robusta_London_Contract cof:tradedOn cof:BuonMaThuot_Coffee_Exchange .
+
+# --- TradeAgreement +2 ---
+
+cof:RCEP a owl:NamedIndividual, cof:TradeAgreement ;
+    rdfs:label "역내포괄적경제동반자협정"@ko ; rdfs:label "Regional Comprehensive Economic Partnership (RCEP)"@en ;
+    cof:hasYearEstablished "2022"^^xsd:gYear ;
+    rdfs:comment "2022년 1월 발효된 세계 최대 규모 자유무역협정. 베트남·인도네시아 등 로부스타 주요 생산국과 한국·일본·중국 등 주요 소비국을 아우르는 15개국 블록으로 커피 역내 관세를 단계적으로 철폐."@ko .
+
+cof:US_Peru_TPA a owl:NamedIndividual, cof:TradeAgreement ;
+    rdfs:label "미국-페루 무역촉진협정"@ko ; rdfs:label "US-Peru Trade Promotion Agreement"@en ;
+    cof:hasYearEstablished "2009"^^xsd:gYear ;
+    rdfs:comment "2009년 발효. 페루산 커피의 무관세 미국 수출을 보장해 페루가 유기농 스페셜티 커피 수출국으로 성장하는 기반이 됨."@ko .
+
+# --- Price +2 ---
+
+cof:Vietnam_Robusta_FOB_Differential a owl:NamedIndividual, cof:Price ;
+    rdfs:label "베트남 로부스타 FOB 차등가"@ko ; rdfs:label "Vietnam Robusta FOB Differential"@en ;
+    rdfs:comment "호치민항 FOB 기준 베트남 로부스타의 ICE 로부스타 선물 대비 프리미엄/디스카운트 차등가격."@ko ;
+    cof:tradedOn cof:BuonMaThuot_Coffee_Exchange .
+
+cof:Ethiopia_Washed_G1_Differential a owl:NamedIndividual, cof:Price ;
+    rdfs:label "에티오피아 워시드 G1 차등가"@ko ; rdfs:label "Ethiopia Washed Grade 1 Differential"@en ;
+    rdfs:comment "예가체프·시다모 워시드 G1 로트에 적용되는 ICE 아라비카 C 선물 대비 프리미엄 차등가격."@ko .
+
+
+# ================================================================
+# 15. Partners 보강 — MaintenanceService +2
+# ================================================================
+
+cof:MS_AsiaPacificCoffeeCare a owl:NamedIndividual, cof:MaintenanceService ;
+    cof:hasName "Asia Pacific Coffee Care"^^xsd:string ; cof:isHeadquarteredIn cof:South_Korea ;
+    cof:hasCity "Seoul"^^xsd:string ;
+    cof:hasSpecialty "Espresso Machine & Grinder Preventive Maintenance"^^xsd:string ;
+    rdfs:comment "서울 소재 장비 유지보수 업체로 아시아태평양 프랜차이즈 매장망의 정기 점검·보일러 스케일 관리를 담당."@ko .
+
+cof:MS_LatAmEspressoService a owl:NamedIndividual, cof:MaintenanceService ;
+    cof:hasName "LatAm Espresso Service"^^xsd:string ; cof:isHeadquarteredIn cof:Colombia ;
+    cof:hasCity "Bogotá"^^xsd:string ;
+    cof:hasSpecialty "Espresso Machine Repair & Water Filtration Setup"^^xsd:string ;
+    rdfs:comment "보고타 기반 서비스사로 중남미 카페 체인 대상 머신 수리와 현지 경수(硬水) 대응 정수 시스템 설치를 전문으로 함."@ko .
