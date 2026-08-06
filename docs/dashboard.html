@@ -2453,7 +2453,8 @@
                         else if (className.toLowerCase().includes('chain')) icon = 'fa-store';
                         else if (className.toLowerCase().includes('variety')) icon = 'fa-seedling';
                         else if (className.toLowerCase().includes('beverage') || className.toLowerCase().includes('menu')) icon = 'fa-mug-hot';
-                        
+                        else if (className.toLowerCase().includes('recipe')) icon = 'fa-mortar-pestle';
+
                         // Check if this is a beverage menu item and we have an image for it
                         const isBeverage = className.toLowerCase().includes('beverage') || className.toLowerCase().includes('menu');
                         const beverageKey = instance.name.replace(/\s+/g, '_');
@@ -2580,6 +2581,7 @@
             else if (className.toLowerCase().includes('city')) icon = 'fa-city';
             else if (className.toLowerCase().includes('coffee')) icon = 'fa-coffee';
             else if (className.toLowerCase().includes('beverage') || className.toLowerCase().includes('menu')) icon = 'fa-mug-hot';
+            else if (className.toLowerCase().includes('recipe')) icon = 'fa-mortar-pestle';
             else if (className.toLowerCase() === 'harvest') icon = 'fa-leaf';
 
             // For Harvest, show region name (strip _YYYY) in title

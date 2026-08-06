@@ -1574,3 +1574,360 @@ cof:MS_LatAmEspressoService a owl:NamedIndividual, cof:MaintenanceService ;
     cof:hasCity "Bogotá"^^xsd:string ;
     cof:hasSpecialty "Espresso Machine Repair & Water Filtration Setup"^^xsd:string ;
     rdfs:comment "보고타 기반 서비스사로 중남미 카페 체인 대상 머신 수리와 현지 경수(硬水) 대응 정수 시스템 설치를 전문으로 함."@ko .
+
+
+# ================================================================
+# 16. Recipe 보강 — 기존에 RDF 인스턴스가 0개라 대시보드가 하드코딩된
+#     데모 카드 5개만 보여주고 클릭 상세보기도 지원하지 않던 문제를
+#     해결. 실제 바리스타 레시피 32종을 조사해 인스턴스로 추가하고,
+#     각 레시피를 대응하는 BeverageMenu 인스턴스와 연결함.
+#     (RDF 인스턴스가 생기면 대시보드의 기존 범용 카드/모달 렌더러가
+#      자동으로 클릭 상세보기를 지원하므로 dashboard.html 수정은 불필요)
+# ================================================================
+
+cof:hasServings a owl:DatatypeProperty ; rdfs:domain cof:Recipe ; rdfs:range xsd:integer ;
+    rdfs:label "제공 인분"@ko ; rdfs:label "Servings"@en .
+cof:hasDifficulty a owl:DatatypeProperty ; rdfs:domain cof:Recipe ; rdfs:range xsd:string ;
+    rdfs:label "난이도"@ko ; rdfs:label "Difficulty"@en .
+cof:hasInstructions a owl:DatatypeProperty ; rdfs:domain cof:Recipe ; rdfs:range xsd:string ;
+    rdfs:label "제조 방법"@ko ; rdfs:label "Instructions"@en .
+cof:hasOriginNote a owl:DatatypeProperty ; rdfs:domain cof:Recipe ; rdfs:range xsd:string ;
+    rdfs:label "유래/배경"@ko ; rdfs:label "Origin Note"@en .
+cof:usesIngredient a owl:ObjectProperty ; rdfs:domain cof:Recipe ; rdfs:range cof:Ingredient ;
+    rdfs:label "사용 재료"@ko ; rdfs:label "uses ingredient"@en .
+cof:requiresEquipment a owl:ObjectProperty ; rdfs:domain cof:Recipe ; rdfs:range cof:Equipment ;
+    rdfs:label "필요 장비"@ko ; rdfs:label "requires equipment"@en .
+cof:pairsWithMenu a owl:ObjectProperty ; rdfs:domain cof:Recipe ; rdfs:range cof:BeverageMenu ;
+    rdfs:label "연관 메뉴"@ko ; rdfs:label "pairs with menu"@en .
+
+# --- Espresso-based (12) ---
+
+cof:Recipe_ClassicEspresso a owl:NamedIndividual, cof:Recipe ;
+    rdfs:label "클래식 에스프레소 레시피"@ko ; rdfs:label "Classic Espresso"@en ;
+    cof:hasCategory "Espresso-based"^^xsd:string ; cof:hasPrepTime "2"^^xsd:integer ;
+    cof:hasServings "1"^^xsd:integer ; cof:hasDifficulty "Beginner"^^xsd:string ;
+    cof:hasInstructions "1) 원두 18g을 곱게 분쇄한다 2) 포터필터에 담아 평탄화(레벨링) 후 15-18kg 압력으로 탬핑한다 3) 92-94°C, 9bar 압력으로 25-30초간 추출해 더블샷 36ml를 뽑는다 4) 크레마가 균일한 황금빛인지 확인하고 즉시 서빙한다."^^xsd:string ;
+    cof:usesIngredient cof:Ing_EspressoShot ;
+    cof:requiresEquipment cof:EM_LaMarzocco_Linea ; cof:requiresEquipment cof:GR_Mazzer_Major ;
+    cof:pairsWithMenu cof:Espresso .
+
+cof:Recipe_Doppio a owl:NamedIndividual, cof:Recipe ;
+    rdfs:label "도피오 레시피"@ko ; rdfs:label "Doppio (Double Espresso)"@en ;
+    cof:hasCategory "Espresso-based"^^xsd:string ; cof:hasPrepTime "2"^^xsd:integer ;
+    cof:hasServings "1"^^xsd:integer ; cof:hasDifficulty "Beginner"^^xsd:string ;
+    cof:hasInstructions "1) 원두 18-20g을 분쇄해 더블 바스켓에 담는다 2) 탬핑 후 25-30초간 추출하여 60-70ml를 뽑는다 3) 데워진 데미타세 잔에 바로 서빙한다."^^xsd:string ;
+    cof:usesIngredient cof:Ing_EspressoShot ;
+    cof:requiresEquipment cof:EM_LaMarzocco_Linea ;
+    cof:pairsWithMenu cof:Doppio .
+
+cof:Recipe_Ristretto a owl:NamedIndividual, cof:Recipe ;
+    rdfs:label "리스트레토 레시피"@ko ; rdfs:label "Ristretto"@en ;
+    cof:hasCategory "Espresso-based"^^xsd:string ; cof:hasPrepTime "2"^^xsd:integer ;
+    cof:hasServings "1"^^xsd:integer ; cof:hasDifficulty "Intermediate"^^xsd:string ;
+    cof:hasInstructions "1) 일반 에스프레소와 동일한 원두량(18g)을 사용하되 추출량을 15-20ml로 제한한다 2) 같은 시간(25-30초) 동안 더 적은 물을 통과시켜 농축된 단맛과 낮은 쓴맛을 얻는다 3) 뜨거운 데미타세 잔에 서빙한다."^^xsd:string ;
+    cof:usesIngredient cof:Ing_EspressoShot ;
+    cof:requiresEquipment cof:EM_Synesso_MVP ;
+    cof:pairsWithMenu cof:Ristretto .
+
+cof:Recipe_Lungo a owl:NamedIndividual, cof:Recipe ;
+    rdfs:label "룽고 레시피"@ko ; rdfs:label "Lungo"@en ;
+    cof:hasCategory "Espresso-based"^^xsd:string ; cof:hasPrepTime "3"^^xsd:integer ;
+    cof:hasServings "1"^^xsd:integer ; cof:hasDifficulty "Intermediate"^^xsd:string ;
+    cof:hasInstructions "1) 원두 18g을 분쇄한다 2) 물 통과량을 늘려 50-60ml까지 40초 이상 길게 추출한다 3) 과다추출로 인한 쓴맛이 나지 않도록 시간을 주시하며 서빙한다."^^xsd:string ;
+    cof:usesIngredient cof:Ing_EspressoShot ;
+    cof:requiresEquipment cof:EM_Nuova_Simonelli ;
+    cof:pairsWithMenu cof:Lungo .
+
+cof:Recipe_Americano a owl:NamedIndividual, cof:Recipe ;
+    rdfs:label "아메리카노 레시피"@ko ; rdfs:label "Americano"@en ;
+    cof:hasCategory "Espresso-based"^^xsd:string ; cof:hasPrepTime "3"^^xsd:integer ;
+    cof:hasServings "1"^^xsd:integer ; cof:hasDifficulty "Beginner"^^xsd:string ;
+    cof:hasInstructions "1) 더블 에스프레소(60ml)를 추출한다 2) 뜨거운 물 120-150ml를 준비한다 3) 잔에 뜨거운 물을 먼저 붓고 에스프레소를 위에 부어 크레마를 보존한다."^^xsd:string ;
+    cof:usesIngredient cof:Ing_EspressoShot ; cof:usesIngredient cof:Ing_Water ;
+    cof:requiresEquipment cof:EM_DeLonghi_Pro ;
+    cof:pairsWithMenu cof:Americano .
+
+cof:Recipe_Cappuccino a owl:NamedIndividual, cof:Recipe ;
+    rdfs:label "카푸치노 레시피"@ko ; rdfs:label "Cappuccino"@en ;
+    cof:hasCategory "Milk-based"^^xsd:string ; cof:hasPrepTime "4"^^xsd:integer ;
+    cof:hasServings "1"^^xsd:integer ; cof:hasDifficulty "Intermediate"^^xsd:string ;
+    cof:hasInstructions "1) 싱글 또는 더블 에스프레소를 추출한다 2) 우유 120ml를 60-65°C까지 스티밍하며 촘촘한 마이크로폼을 만든다(에스프레소:스팀밀크:폼 = 1:1:1 비율) 3) 잔을 살짝 돌려가며 폼을 올려 부드러운 텍스처를 완성한다."^^xsd:string ;
+    cof:usesIngredient cof:Ing_EspressoShot ; cof:usesIngredient cof:Ing_SteamedMilk ; cof:usesIngredient cof:Ing_MilkFoam ;
+    cof:requiresEquipment cof:EM_LaMarzocco_Linea ;
+    cof:pairsWithMenu cof:Cappuccino .
+
+cof:Recipe_FlatWhite a owl:NamedIndividual, cof:Recipe ;
+    rdfs:label "플랫 화이트 레시피"@ko ; rdfs:label "Flat White"@en ;
+    cof:hasCategory "Milk-based"^^xsd:string ; cof:hasPrepTime "4"^^xsd:integer ;
+    cof:hasServings "1"^^xsd:integer ; cof:hasDifficulty "Advanced"^^xsd:string ;
+    cof:hasInstructions "1) 리스트레토 더블샷(약 40ml)을 추출한다 2) 우유를 폼을 최소화(5mm 이하)해 벨벳처럼 매끄럽게 스티밍한다 3) 작은 잔(160-180ml)에 부어 에스프레소 대비 우유 비율을 낮게 유지한다."^^xsd:string ;
+    cof:usesIngredient cof:Ing_EspressoShot ; cof:usesIngredient cof:Ing_SteamedMilk ;
+    cof:requiresEquipment cof:EM_VictoriaArduino_EagleOne ;
+    cof:pairsWithMenu cof:Flat_White .
+
+cof:Recipe_CaffeLatte a owl:NamedIndividual, cof:Recipe ;
+    rdfs:label "카페 라떼 레시피"@ko ; rdfs:label "Caffè Latte"@en ;
+    cof:hasCategory "Milk-based"^^xsd:string ; cof:hasPrepTime "4"^^xsd:integer ;
+    cof:hasServings "1"^^xsd:integer ; cof:hasDifficulty "Beginner"^^xsd:string ;
+    cof:hasInstructions "1) 싱글 에스프레소를 추출한다 2) 우유 200-240ml를 얇은 폼(1cm 이내)으로 스티밍한다 3) 우유를 부으며 라떼아트를 그리거나 간단히 붓는다."^^xsd:string ;
+    cof:usesIngredient cof:Ing_EspressoShot ; cof:usesIngredient cof:Ing_SteamedMilk ;
+    cof:requiresEquipment cof:EM_Rancilio_Classe9 ;
+    cof:pairsWithMenu cof:Caffe_Latte .
+
+cof:Recipe_Macchiato a owl:NamedIndividual, cof:Recipe ;
+    rdfs:label "마키아토 레시피"@ko ; rdfs:label "Macchiato"@en ;
+    cof:hasCategory "Espresso-based"^^xsd:string ; cof:hasPrepTime "3"^^xsd:integer ;
+    cof:hasServings "1"^^xsd:integer ; cof:hasDifficulty "Beginner"^^xsd:string ;
+    cof:hasInstructions "1) 싱글 에스프레소를 추출한다 2) 우유 거품(폼)만 소량(1-2 티스푼) 떠서 얹는다 3) '얼룩진(macchiato)'이라는 이름처럼 폼 자국만 남기고 서빙한다."^^xsd:string ;
+    cof:usesIngredient cof:Ing_EspressoShot ; cof:usesIngredient cof:Ing_MilkFoam ;
+    cof:pairsWithMenu cof:Macchiato .
+
+cof:Recipe_CaramelMacchiato a owl:NamedIndividual, cof:Recipe ;
+    rdfs:label "카라멜 마키아토 레시피"@ko ; rdfs:label "Caramel Macchiato"@en ;
+    cof:hasCategory "Espresso-based"^^xsd:string ; cof:hasPrepTime "5"^^xsd:integer ;
+    cof:hasServings "1"^^xsd:integer ; cof:hasDifficulty "Intermediate"^^xsd:string ;
+    cof:hasInstructions "1) 잔 바닥에 바닐라 시럽을 넣는다 2) 스티밍한 우유(160ml)를 붓는다 3) 에스프레소 더블샷을 우유 위에 부어 층을 만든다 4) 캐러멜 드리즐로 격자무늬를 그려 마무리한다."^^xsd:string ;
+    cof:usesIngredient cof:Ing_EspressoShot ; cof:usesIngredient cof:Ing_SteamedMilk ;
+    cof:usesIngredient cof:Ing_VanillaSyrup_M ; cof:usesIngredient cof:Ing_CaramelDrizzle ;
+    cof:pairsWithMenu cof:Caramel_Macchiato .
+
+cof:Recipe_Cortado a owl:NamedIndividual, cof:Recipe ;
+    rdfs:label "코르타도 레시피"@ko ; rdfs:label "Cortado"@en ;
+    cof:hasCategory "Milk-based"^^xsd:string ; cof:hasPrepTime "3"^^xsd:integer ;
+    cof:hasServings "1"^^xsd:integer ; cof:hasDifficulty "Intermediate"^^xsd:string ;
+    cof:hasInstructions "1) 에스프레소 더블샷을 추출한다 2) 동량(1:1)의 데운 우유를 폼 없이 붓는다 3) 스페인어로 '자르다(cortar)'라는 이름처럼 우유가 에스프레소의 산미를 살짝 눌러주는 균형을 낸다."^^xsd:string ;
+    cof:usesIngredient cof:Ing_EspressoShot ; cof:usesIngredient cof:Ing_SteamedMilk ;
+    cof:pairsWithMenu cof:Cortado .
+
+cof:Recipe_Mocha a owl:NamedIndividual, cof:Recipe ;
+    rdfs:label "카페 모카 레시피"@ko ; rdfs:label "Caffè Mocha"@en ;
+    cof:hasCategory "Milk-based"^^xsd:string ; cof:hasPrepTime "5"^^xsd:integer ;
+    cof:hasServings "1"^^xsd:integer ; cof:hasDifficulty "Beginner"^^xsd:string ;
+    cof:hasInstructions "1) 초콜릿 소스 20ml를 잔에 넣는다 2) 에스프레소 싱글샷을 부어 잘 저어 녹인다 3) 스티밍한 우유 180ml를 채운다 4) 휘핑크림과 초콜릿 드리즐로 마무리한다."^^xsd:string ;
+    cof:usesIngredient cof:Ing_EspressoShot ; cof:usesIngredient cof:Ing_SteamedMilk ; cof:usesIngredient cof:Ing_ChocolateSauce_GH ;
+    cof:pairsWithMenu cof:Mocha .
+
+cof:Recipe_Affogato a owl:NamedIndividual, cof:Recipe ;
+    rdfs:label "아포가토 레시피"@ko ; rdfs:label "Affogato"@en ;
+    cof:hasCategory "Signature"^^xsd:string ; cof:hasPrepTime "3"^^xsd:integer ;
+    cof:hasServings "1"^^xsd:integer ; cof:hasDifficulty "Beginner"^^xsd:string ;
+    cof:hasInstructions "1) 바닐라 젤라또/아이스크림 1-2스쿱을 유리잔에 담는다 2) 뜨거운 에스프레소 싱글샷을 갓 추출해 바로 위에 붓는다(이탈리아어로 '익사시키다') 3) 크레마가 녹아드는 동안 즉시 서빙한다."^^xsd:string ;
+    cof:usesIngredient cof:Ing_EspressoShot ; cof:usesIngredient cof:Ing_IceCream ;
+    cof:pairsWithMenu cof:Affogato .
+
+# --- Cold Brew / Iced (5) ---
+
+cof:Recipe_ColdBrewConcentrate a owl:NamedIndividual, cof:Recipe ;
+    rdfs:label "콜드브루 원액 레시피"@ko ; rdfs:label "Cold Brew Concentrate"@en ;
+    cof:hasCategory "Cold_Brew"^^xsd:string ; cof:hasPrepTime "720"^^xsd:integer ;
+    cof:hasServings "6"^^xsd:integer ; cof:hasDifficulty "Beginner"^^xsd:string ;
+    cof:hasInstructions "1) 굵게 분쇄한 원두와 찬물을 1:8 비율로 용기에 담는다 2) 냉장 상태로 12-18시간 우린다 3) 종이 필터나 헹궈낸 융 필터로 거른다 4) 원액은 물이나 우유로 1:1 희석해 마신다."^^xsd:string ;
+    cof:usesIngredient cof:Ing_ColdBrewConcentrate ; cof:usesIngredient cof:Ing_Water ;
+    cof:pairsWithMenu cof:Cold_Brew .
+
+cof:Recipe_NitroColdBrew a owl:NamedIndividual, cof:Recipe ;
+    rdfs:label "니트로 콜드브루 레시피"@ko ; rdfs:label "Nitro Cold Brew"@en ;
+    cof:hasCategory "Cold_Brew"^^xsd:string ; cof:hasPrepTime "5"^^xsd:integer ;
+    cof:hasServings "1"^^xsd:integer ; cof:hasDifficulty "Advanced"^^xsd:string ;
+    cof:hasInstructions "1) 콜드브루 원액을 물로 희석해 케그(케그레이터)에 채운다 2) 질소가스를 저압(약 30psi)으로 주입한다 3) 스타우트 맥주처럼 좁은 노즐로 서빙해 크리미한 카스케이드 거품층을 만든다. 별도의 설탕·크림 없이도 단맛이 느껴지는 것이 특징."^^xsd:string ;
+    cof:usesIngredient cof:Ing_ColdBrewConcentrate ; cof:usesIngredient cof:Ing_NitrogenGas ;
+    cof:pairsWithMenu cof:Nitro_Cold_Brew .
+
+cof:Recipe_IcedAmericano a owl:NamedIndividual, cof:Recipe ;
+    rdfs:label "아이스 아메리카노 레시피"@ko ; rdfs:label "Iced Americano"@en ;
+    cof:hasCategory "Espresso-based"^^xsd:string ; cof:hasPrepTime "3"^^xsd:integer ;
+    cof:hasServings "1"^^xsd:integer ; cof:hasDifficulty "Beginner"^^xsd:string ;
+    cof:hasInstructions "1) 얼음을 가득 채운 잔을 준비한다 2) 찬물 150ml를 붓는다 3) 더블 에스프레소를 얼음 위에 바로 부어 급속 냉각시켜 크레마와 향을 보존한다."^^xsd:string ;
+    cof:usesIngredient cof:Ing_EspressoShot ; cof:usesIngredient cof:Ing_Ice ;
+    cof:pairsWithMenu cof:Iced_Americano .
+
+cof:Recipe_Shakerato a owl:NamedIndividual, cof:Recipe ;
+    rdfs:label "셰이커라토 레시피"@ko ; rdfs:label "Shakerato"@en ;
+    cof:hasCategory "Cold_Blended"^^xsd:string ; cof:hasPrepTime "3"^^xsd:integer ;
+    cof:hasServings "1"^^xsd:integer ; cof:hasDifficulty "Intermediate"^^xsd:string ;
+    cof:hasInstructions "1) 뜨거운 에스프레소 더블샷과 설탕(또는 심플시럽)을 칵테일 셰이커에 넣는다 2) 얼음을 채우고 10-15초간 강하게 셰이킹한다 3) 고운 크레마 거품층이 생기도록 칵테일 잔에 걸러 따른다."^^xsd:string ;
+    cof:usesIngredient cof:Ing_EspressoShot ; cof:usesIngredient cof:Ing_SimpleSyrup ; cof:usesIngredient cof:Ing_Ice ;
+    cof:pairsWithMenu cof:Shakerato .
+
+cof:Recipe_Frappuccino a owl:NamedIndividual, cof:Recipe ;
+    rdfs:label "프라푸치노 레시피"@ko ; rdfs:label "Frappuccino-style Blended Coffee"@en ;
+    cof:hasCategory "Cold_Blended"^^xsd:string ; cof:hasPrepTime "4"^^xsd:integer ;
+    cof:hasServings "1"^^xsd:integer ; cof:hasDifficulty "Beginner"^^xsd:string ;
+    cof:hasInstructions "1) 에스프레소 또는 진한 커피, 우유, 얼음, 시럽을 블렌더에 넣는다 2) 부드러운 슬러시 질감이 될 때까지 30-45초간 블렌딩한다 3) 휘핑크림을 올려 서빙한다."^^xsd:string ;
+    cof:usesIngredient cof:Ing_EspressoShot ; cof:usesIngredient cof:Ing_WholeMilk ; cof:usesIngredient cof:Ing_Ice ; cof:usesIngredient cof:Ing_VanillaSyrup ;
+    cof:pairsWithMenu cof:Frappuccino .
+
+# --- Manual Brew (5) ---
+
+cof:Recipe_PourOverV60 a owl:NamedIndividual, cof:Recipe ;
+    rdfs:label "푸어오버(V60) 레시피"@ko ; rdfs:label "Pour Over (V60 Method)"@en ;
+    cof:hasCategory "Manual_Brew"^^xsd:string ; cof:hasPrepTime "4"^^xsd:integer ;
+    cof:hasServings "1"^^xsd:integer ; cof:hasDifficulty "Advanced"^^xsd:string ;
+    cof:hasInstructions "1) 원두 20g을 중간 굵기로 분쇄해 페이퍼 필터에 담고 뜨거운 물로 필터를 헹군다 2) 92°C 물 40ml로 30초간 뜸을 들인다(블루밍) 3) 나머지 물을 원을 그리며 3-4회 나누어 부어 총 320ml, 총 추출시간 2분30초-3분을 맞춘다."^^xsd:string ;
+    cof:usesIngredient cof:Ing_FilterCoffee ; cof:usesIngredient cof:Ing_Water ;
+    cof:pairsWithMenu cof:Pour_Over .
+
+cof:Recipe_FrenchPress a owl:NamedIndividual, cof:Recipe ;
+    rdfs:label "프렌치프레스 레시피"@ko ; rdfs:label "French Press"@en ;
+    cof:hasCategory "Manual_Brew"^^xsd:string ; cof:hasPrepTime "5"^^xsd:integer ;
+    cof:hasServings "2"^^xsd:integer ; cof:hasDifficulty "Beginner"^^xsd:string ;
+    cof:hasInstructions "1) 굵게 분쇄한 원두 30g을 프레스 용기에 담는다 2) 95-96°C 물 500ml를 붓고 가볍게 저어준다 3) 4분간 우린 후 플런저를 천천히 눌러 내린다 4) 즉시 다른 용기로 옮겨 과다추출을 막는다."^^xsd:string ;
+    cof:usesIngredient cof:Ing_FilterCoffee ; cof:usesIngredient cof:Ing_Water ;
+    cof:pairsWithMenu cof:French_Press .
+
+cof:Recipe_Aeropress a owl:NamedIndividual, cof:Recipe ;
+    rdfs:label "에어로프레스 레시피"@ko ; rdfs:label "Aeropress"@en ;
+    cof:hasCategory "Manual_Brew"^^xsd:string ; cof:hasPrepTime "3"^^xsd:integer ;
+    cof:hasServings "1"^^xsd:integer ; cof:hasDifficulty "Intermediate"^^xsd:string ;
+    cof:hasInstructions "1) 원두 17g을 곱게 분쇄해 챔버에 담는다 2) 85-90°C 물 250ml를 붓고 패들로 10초간 저은 뒤 1분30초간 우린다 3) 페이퍼 필터를 끼운 캡을 닫고 30초간 천천히 압착 추출한다."^^xsd:string ;
+    cof:usesIngredient cof:Ing_FilterCoffee ; cof:usesIngredient cof:Ing_Water ;
+    cof:pairsWithMenu cof:Aeropress .
+
+cof:Recipe_MokaPot a owl:NamedIndividual, cof:Recipe ;
+    rdfs:label "모카포트 레시피"@ko ; rdfs:label "Moka Pot"@en ;
+    cof:hasCategory "Manual_Brew"^^xsd:string ; cof:hasPrepTime "6"^^xsd:integer ;
+    cof:hasServings "2"^^xsd:integer ; cof:hasDifficulty "Intermediate"^^xsd:string ;
+    cof:hasInstructions "1) 하단 챔버에 물을 밸브 아래까지 채운다 2) 바스켓에 중간-고운 분쇄 원두를 눌러 담지 않고 평평하게 채운다 3) 약불에 올려 5-6분간 가열, '쉬익' 소리가 나면 불을 끄고 잔에 따른다."^^xsd:string ;
+    cof:usesIngredient cof:Ing_FilterCoffee ; cof:usesIngredient cof:Ing_Water ;
+    cof:pairsWithMenu cof:Moka_Pot .
+
+cof:Recipe_TurkishCoffee a owl:NamedIndividual, cof:Recipe ;
+    rdfs:label "튀르키예식 커피 레시피"@ko ; rdfs:label "Turkish Coffee"@en ;
+    cof:hasCategory "World_Traditional"^^xsd:string ; cof:hasPrepTime "8"^^xsd:integer ;
+    cof:hasServings "1"^^xsd:integer ; cof:hasDifficulty "Advanced"^^xsd:string ;
+    cof:hasInstructions "1) 밀가루처럼 아주 곱게 분쇄한 원두 7g과 찬물 80ml, 설탕(선택)을 체즈베(작은 구리 포트)에 넣는다 2) 약불에서 저어가며 서서히 가열해 거품이 올라오기 시작하면 불에서 내려 거품을 잔에 나눠 담는다 3) 이 과정을 2-3회 반복(끓이지 않고 거품만 올림) 4) 커피가루가 가라앉도록 1-2분 두었다가 마신다."^^xsd:string ;
+    cof:usesIngredient cof:Ing_FilterCoffee ; cof:usesIngredient cof:Ing_Water ;
+    cof:hasOriginNote "2013년 유네스코 인류무형문화유산으로 등재. 15-16세기 오스만 제국 궁정에서 시작되어 카페(콜센터의 어원이 된 '카페하네') 문화 확산의 뿌리가 됨."^^xsd:string ;
+    cof:pairsWithMenu cof:Turkish_Coffee .
+
+# --- World Traditional (8) ---
+
+cof:Recipe_VietnameseIcedCoffee a owl:NamedIndividual, cof:Recipe ;
+    rdfs:label "베트남식 아이스커피 레시피"@ko ; rdfs:label "Cà Phê Sữa Đá"@en ;
+    cof:hasCategory "World_Traditional"^^xsd:string ; cof:hasPrepTime "6"^^xsd:integer ;
+    cof:hasServings "1"^^xsd:integer ; cof:hasDifficulty "Beginner"^^xsd:string ;
+    cof:hasInstructions "1) 잔 위에 알루미늄 필터(phin)를 얹고 굵게 분쇄한 로부스타 원두 15g을 담는다 2) 잔 바닥에 연유 2-3큰술을 미리 넣는다 3) 뜨거운 물을 소량 부어 뜸을 들인 뒤 나머지 물을 채우고 5분간 방울방울 떨어지도록 기다린다 4) 커피와 연유를 잘 섞고 얼음 위에 붓는다."^^xsd:string ;
+    cof:usesIngredient cof:Ing_FilterCoffee ; cof:usesIngredient cof:Ing_Ice ;
+    cof:hasOriginNote "프랑스 식민지 시기 우유 공급이 부족해 연유를 대체재로 쓰던 데서 유래. 진한 로부스타와 달콤한 연유의 조합이 베트남 대표 커피 문화로 자리잡음."^^xsd:string ;
+    cof:pairsWithMenu cof:Ca_Phe_Sua_Da .
+
+cof:Recipe_VietnameseEggCoffee a owl:NamedIndividual, cof:Recipe ;
+    rdfs:label "베트남식 에그커피 레시피"@ko ; rdfs:label "Cà Phê Trứng"@en ;
+    cof:hasCategory "Signature"^^xsd:string ; cof:hasPrepTime "10"^^xsd:integer ;
+    cof:hasServings "1"^^xsd:integer ; cof:hasDifficulty "Advanced"^^xsd:string ;
+    cof:hasInstructions "1) 계란 노른자, 연유, 설탕을 볼에 넣고 색이 연해지고 부피가 2배가 될 때까지 5분 이상 휘핑한다 2) phin으로 진한 커피를 소량 내려 잔 바닥에 담는다 3) 휘핑한 노른자 크림을 커피 위에 조심스럽게 얹는다 4) 잔을 뜨거운 물이 담긴 그릇에 중탕으로 올려 따뜻하게 유지하며 서빙한다."^^xsd:string ;
+    cof:usesIngredient cof:Ing_FilterCoffee ;
+    cof:hasOriginNote "1946년 하노이 Café Giảng에서 우유 부족 시기에 계란 노른자로 대체한 데서 유래한 하노이 대표 시그니처 커피."^^xsd:string ;
+    cof:pairsWithMenu cof:Ca_Phe_Trung .
+
+cof:Recipe_CubanCoffee a owl:NamedIndividual, cof:Recipe ;
+    rdfs:label "쿠바식 커피 레시피"@ko ; rdfs:label "Café Cubano"@en ;
+    cof:hasCategory "World_Traditional"^^xsd:string ; cof:hasPrepTime "4"^^xsd:integer ;
+    cof:hasServings "1"^^xsd:integer ; cof:hasDifficulty "Advanced"^^xsd:string ;
+    cof:hasInstructions "1) 다크 로스트 원두로 에스프레소를 추출하되, 첫 몇 방울(에스푸마)이 떨어질 때 설탕을 미리 넣은 컵에 받는다 2) 설탕과 초기 추출액을 빠르게 저어(에스푸마 만들기) 연한 갈색 크림 거품을 만든다 3) 나머지 에스프레소를 부어 완성한다."^^xsd:string ;
+    cof:usesIngredient cof:Ing_EspressoShot ;
+    cof:hasOriginNote "20세기 초 쿠바에서 이탈리아식 에스프레소 머신이 보급되며 설탕을 넣어 마시던 현지 습관이 결합해 탄생. 마이애미 리틀아바나 문화의 상징."^^xsd:string ;
+    cof:pairsWithMenu cof:Cafe_Cubano .
+
+cof:Recipe_IrishCoffee a owl:NamedIndividual, cof:Recipe ;
+    rdfs:label "아이리시 커피 레시피"@ko ; rdfs:label "Irish Coffee"@en ;
+    cof:hasCategory "Signature"^^xsd:string ; cof:hasPrepTime "5"^^xsd:integer ;
+    cof:hasServings "1"^^xsd:integer ; cof:hasDifficulty "Intermediate"^^xsd:string ;
+    cof:hasInstructions "1) 스템글라스를 뜨거운 물로 예열한다 2) 뜨거운 필터커피 120ml와 갈색설탕 1-2티스푼을 넣어 녹인다 3) 아이리시 위스키 30ml를 더한다 4) 살짝 휘핑한 생크림을 스푼 뒷면을 이용해 커피 위에 층으로 띄운다(섞이지 않도록)."^^xsd:string ;
+    cof:usesIngredient cof:Ing_FilterCoffee ;
+    cof:hasOriginNote "1943년 아일랜드 섀넌 공항의 셰프 Joe Sheridan이 추운 날씨에 도착한 승객들을 위해 고안. 이후 1952년 샌프란시스코 Buena Vista Cafe를 통해 미국에 전파됨."^^xsd:string ;
+    cof:pairsWithMenu cof:Irish_Coffee .
+
+cof:Recipe_ViennaCoffee a owl:NamedIndividual, cof:Recipe ;
+    rdfs:label "비엔나 커피 레시피"@ko ; rdfs:label "Vienna Coffee (Einspänner)"@en ;
+    cof:hasCategory "Signature"^^xsd:string ; cof:hasPrepTime "4"^^xsd:integer ;
+    cof:hasServings "1"^^xsd:integer ; cof:hasDifficulty "Beginner"^^xsd:string ;
+    cof:hasInstructions "1) 뜨거운 진한 커피(더블 에스프레소 또는 진한 드립) 150ml를 유리잔에 담는다 2) 설탕을 기호에 맞게 넣는다 3) 저어지지 않은 상태로 휘핑크림을 소복하게 올려 서빙한다(크림과 커피를 섞지 않고 마시는 것이 전통)."^^xsd:string ;
+    cof:usesIngredient cof:Ing_EspressoShot ;
+    cof:hasOriginNote "'아인슈페너'는 독일어로 말 한 마리가 끄는 마차를 뜻하며, 마부가 고삐를 놓지 않고도 흘리지 않게 마실 수 있도록 크림을 얹은 데서 유래했다는 설이 있음."^^xsd:string ;
+    cof:pairsWithMenu cof:Vienna_Coffee .
+
+cof:Recipe_GreekFrappe a owl:NamedIndividual, cof:Recipe ;
+    rdfs:label "그리스식 프라페 레시피"@ko ; rdfs:label "Greek Frappé"@en ;
+    cof:hasCategory "Cold_Blended"^^xsd:string ; cof:hasPrepTime "4"^^xsd:integer ;
+    cof:hasServings "1"^^xsd:integer ; cof:hasDifficulty "Beginner"^^xsd:string ;
+    cof:hasInstructions "1) 인스턴트 커피 2티스푼, 설탕(기호), 찬물 소량을 셰이커나 믹서에 넣는다 2) 두꺼운 황금빛 거품(아프로스)이 생길 때까지 1-2분간 강하게 흔들거나 젓는다 3) 얼음을 채운 잔에 붓고 찬물을 채운다 4) 기호에 따라 우유를 소량 더한다."^^xsd:string ;
+    cof:usesIngredient cof:Ing_Ice ; cof:usesIngredient cof:Ing_Water ;
+    cof:hasOriginNote "1957년 테살로니키 국제박람회에서 네스카페 직원 Dimitrios Vakondios가 온수 대신 냉수와 셰이커를 우연히 사용하며 발명. 1979년경 그리스 국민 커피로 정착."^^xsd:string ;
+    cof:pairsWithMenu cof:Greek_Frappe .
+
+cof:Recipe_EthiopianBuna a owl:NamedIndividual, cof:Recipe ;
+    rdfs:label "에티오피아 커피 세리모니 레시피"@ko ; rdfs:label "Ethiopian Buna (Coffee Ceremony)"@en ;
+    cof:hasCategory "World_Traditional"^^xsd:string ; cof:hasPrepTime "45"^^xsd:integer ;
+    cof:hasServings "4"^^xsd:integer ; cof:hasDifficulty "Expert"^^xsd:string ;
+    cof:hasInstructions "1) 생두를 팬(mitad)에 볶으며 손님들이 향을 맡도록 연기를 부채질해 전달한다 2) 절구(mukecha)로 볶은 원두를 곱게 빻는다 3) 흙으로 만든 목이 긴 주전자(제베나, jebena)에 물과 곱게 간 원두를 넣고 끓인다 4) 거품이 세 번(1차 아볼, 2차 후레투, 3차 베레카) 올라올 때까지 반복해 끓여내며 작은 잔(시니, sini)에 나눠 따른다."^^xsd:string ;
+    cof:hasOriginNote "커피 원산지 에티오피아의 사회적 의례. 최소 1시간이 걸리는 3순배 의식으로, 이웃과 공동체를 초대해 함께 나누는 것이 핵심이며 2024년 유네스코 무형문화유산 등재가 추진됨."^^xsd:string ;
+    cof:pairsWithMenu cof:Ethiopian_Buna .
+
+cof:Recipe_MoroccanSpicedCoffee a owl:NamedIndividual, cof:Recipe ;
+    rdfs:label "모로코식 향신료 커피 레시피"@ko ; rdfs:label "Moroccan Spiced Coffee (Qahwa)"@en ;
+    cof:hasCategory "World_Traditional"^^xsd:string ; cof:hasPrepTime "10"^^xsd:integer ;
+    cof:hasServings "2"^^xsd:integer ; cof:hasDifficulty "Intermediate"^^xsd:string ;
+    cof:hasInstructions "1) 곱게 간 원두에 시나몬, 생강, 정향, 통후추, 참깨, 넛맥을 배합한 향신료 가루(일부는 카다몬도 추가)를 섞는다 2) 물과 함께 냄비에 넣고 약불로 서서히 끓인다 3) 5분 정도 우린 뒤 고운 체에 걸러 작은 잔에 따른다."^^xsd:string ;
+    cof:usesIngredient cof:Ing_FilterCoffee ; cof:usesIngredient cof:Ing_Water ;
+    cof:hasOriginNote "모로코의 전통 향신료 커피로 '카흐와 베카라'라고도 불리며, 손님 접대와 겨울철 몸을 데우는 용도로 즐겨 마심."^^xsd:string ;
+    cof:pairsWithMenu cof:Moroccan_Spiced_Coffee .
+
+# --- Specialty (7) ---
+
+cof:Recipe_MatchaLatte a owl:NamedIndividual, cof:Recipe ;
+    rdfs:label "말차 라떼 레시피"@ko ; rdfs:label "Matcha Latte"@en ;
+    cof:hasCategory "Specialty"^^xsd:string ; cof:hasPrepTime "5"^^xsd:integer ;
+    cof:hasServings "1"^^xsd:integer ; cof:hasDifficulty "Beginner"^^xsd:string ;
+    cof:hasInstructions "1) 말차가루 2g을 체에 걸러 뭉침을 없앤다 2) 70-80°C 물 30ml를 붓고 대나무 거품기(차센)로 W자로 저어 거품을 낸다 3) 스티밍한 우유(오트밀크 등)를 부어 완성한다."^^xsd:string ;
+    cof:usesIngredient cof:Ing_MatchaPowder ; cof:usesIngredient cof:Ing_OatMilkBarista ;
+    cof:pairsWithMenu cof:Matcha_Latte .
+
+cof:Recipe_ChaiLatte a owl:NamedIndividual, cof:Recipe ;
+    rdfs:label "차이 라떼 레시피"@ko ; rdfs:label "Chai Latte"@en ;
+    cof:hasCategory "Specialty"^^xsd:string ; cof:hasPrepTime "5"^^xsd:integer ;
+    cof:hasServings "1"^^xsd:integer ; cof:hasDifficulty "Beginner"^^xsd:string ;
+    cof:hasInstructions "1) 차이 농축액(홍차+시나몬·카다몬·생강·정향 등 향신료 우린 것) 60ml를 잔에 담는다 2) 스티밍한 우유 180ml를 부어 섞는다 3) 계핏가루를 살짝 뿌려 마무리한다."^^xsd:string ;
+    cof:usesIngredient cof:Ing_ChaiConcentrate ; cof:usesIngredient cof:Ing_SteamedMilk ;
+    cof:pairsWithMenu cof:Chai_Latte .
+
+cof:Recipe_DalgonaCoffee a owl:NamedIndividual, cof:Recipe ;
+    rdfs:label "달고나 커피 레시피"@ko ; rdfs:label "Dalgona Coffee"@en ;
+    cof:hasCategory "Signature"^^xsd:string ; cof:hasPrepTime "8"^^xsd:integer ;
+    cof:hasServings "1"^^xsd:integer ; cof:hasDifficulty "Intermediate"^^xsd:string ;
+    cof:hasInstructions "1) 인스턴트커피, 설탕, 뜨거운 물을 1:1:1 비율로 볼에 담는다 2) 거품기나 핸드믹서로 색이 연한 갈색이 되고 뻑뻑한 거품이 될 때까지 5-10분간 휘핑한다 3) 얼음과 찬 우유를 채운 잔 위에 휘핑한 커피폼을 소복하게 얹는다 4) 마시기 전 잘 저어 섞는다."^^xsd:string ;
+    cof:usesIngredient cof:Ing_WholeMilk ; cof:usesIngredient cof:Ing_Ice ;
+    cof:hasOriginNote "한국 전통 설탕 뽑기 과자 '달고나'의 색과 질감을 닮았다 하여 이름 붙여짐. 2020년 코로나19 봉쇄 기간 틱톡·유튜브를 통해 전 세계적으로 유행."^^xsd:string ;
+    cof:pairsWithMenu cof:Dalgona_Coffee .
+
+cof:Recipe_HotChocolate a owl:NamedIndividual, cof:Recipe ;
+    rdfs:label "핫초콜릿 레시피"@ko ; rdfs:label "Hot Chocolate"@en ;
+    cof:hasCategory "Specialty"^^xsd:string ; cof:hasPrepTime "4"^^xsd:integer ;
+    cof:hasServings "1"^^xsd:integer ; cof:hasDifficulty "Beginner"^^xsd:string ;
+    cof:hasInstructions "1) 초콜릿 소스 또는 다진 다크초콜릿 40g을 잔에 담는다 2) 뜨겁게 스티밍한 우유 200ml를 부어가며 완전히 녹을 때까지 저어준다 3) 휘핑크림과 초콜릿 셰이빙으로 마무리한다."^^xsd:string ;
+    cof:usesIngredient cof:Ing_ChocolateSauce_GH ; cof:usesIngredient cof:Ing_SteamedMilk ;
+    cof:pairsWithMenu cof:Hot_Chocolate .
+
+cof:Recipe_HoneyLatte a owl:NamedIndividual, cof:Recipe ;
+    rdfs:label "허니 라떼 레시피"@ko ; rdfs:label "Honey Latte"@en ;
+    cof:hasCategory "Signature"^^xsd:string ; cof:hasPrepTime "4"^^xsd:integer ;
+    cof:hasServings "1"^^xsd:integer ; cof:hasDifficulty "Beginner"^^xsd:string ;
+    cof:hasInstructions "1) 잔에 꿀 시럽 15-20ml를 넣는다 2) 에스프레소 싱글샷을 부어 꿀과 잘 섞는다 3) 스티밍한 우유 180ml를 부어 완성한다."^^xsd:string ;
+    cof:usesIngredient cof:Ing_EspressoShot ; cof:usesIngredient cof:Ing_HoneySyrup ; cof:usesIngredient cof:Ing_SteamedMilk ;
+    cof:pairsWithMenu cof:Honey_Latte .
+
+cof:Recipe_VanillaLatte a owl:NamedIndividual, cof:Recipe ;
+    rdfs:label "바닐라 라떼 레시피"@ko ; rdfs:label "Vanilla Latte"@en ;
+    cof:hasCategory "Signature"^^xsd:string ; cof:hasPrepTime "4"^^xsd:integer ;
+    cof:hasServings "1"^^xsd:integer ; cof:hasDifficulty "Beginner"^^xsd:string ;
+    cof:hasInstructions "1) 잔에 바닐라 시럽 15-20ml를 넣는다 2) 에스프레소 싱글샷을 부어 섞는다 3) 스티밍한 우유 200ml를 부어 완성한다."^^xsd:string ;
+    cof:usesIngredient cof:Ing_EspressoShot ; cof:usesIngredient cof:Ing_VanillaSyrup_M ; cof:usesIngredient cof:Ing_SteamedMilk ;
+    cof:pairsWithMenu cof:Vanilla_Latte .
+
+cof:Recipe_EspressoConPanna a owl:NamedIndividual, cof:Recipe ;
+    rdfs:label "에스프레소 콘 파나 레시피"@ko ; rdfs:label "Espresso Con Panna"@en ;
+    cof:hasCategory "Espresso-based"^^xsd:string ; cof:hasPrepTime "3"^^xsd:integer ;
+    cof:hasServings "1"^^xsd:integer ; cof:hasDifficulty "Beginner"^^xsd:string ;
+    cof:hasInstructions "1) 싱글 또는 더블 에스프레소를 데미타세 잔에 추출한다 2) 휘핑크림을 한 스푼 소복하게 얹는다(이탈리아어로 '크림을 곁들인') 3) 크림이 녹아들기 전에 바로 서빙한다."^^xsd:string ;
+    cof:usesIngredient cof:Ing_EspressoShot ;
+    cof:pairsWithMenu cof:Espresso_Con_Panna .
