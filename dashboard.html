@@ -2487,8 +2487,8 @@
                             
                             // Extract POS System specific properties
                             const provider = instance.properties['hasProvider'] ? instance.properties['hasProvider'][0].value : 'Unknown Provider';
-                            const monthlyFee = instance.properties['hasMonthlyFee'] ? `$${instance.properties['hasMonthlyFee'][0].value}/mo` : 'N/A';
-                            const transactionFee = instance.properties['hasTransactionFee'] ? `${instance.properties['hasTransactionFee'][0].value}%` : 'N/A';
+                            const monthlyFee = instance.properties['hasMonthlyFee'] ? instance.properties['hasMonthlyFee'][0].value : 'N/A';
+                            const transactionFee = instance.properties['hasTransactionFee'] ? instance.properties['hasTransactionFee'][0].value : 'N/A';
                             const features = instance.properties['hasFeatures'] ? instance.properties['hasFeatures'][0].value.split(',').slice(0, 3).join(', ') : 'No features listed';
                             
                             instanceCard.innerHTML = `
