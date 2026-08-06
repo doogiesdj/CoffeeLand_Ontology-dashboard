@@ -922,3 +922,163 @@ cof:Cafe_Noisette a owl:NamedIndividual, cof:BeverageMenu ;
     cof:hasOriginCountry "France"^^xsd:string ;
     cof:hasDescription "에스프레소에 우유를 한 방울만 더해 헤이즐넛(noisette) 빛깔을 낸 프랑스식 커피."^^xsd:string ;
     cof:usesCoffeeBrand cof:Santos_Premium ; cof:usesCoffeeBrand cof:Bourbon_Santos .
+
+
+# ================================================================
+# 10. PosSystem 글로벌 + 국내 POS 서비스 보강 (2026-08 리서치 기반)
+#    기존 0개 인스턴스(대시보드에는 데모 4개만 임시 표시)였던 것을
+#    전 세계 주요 POS 12개 + 한국 국내 POS/VAN 8개, 총 20개로 보강.
+# ================================================================
+
+cof:hasProvider a owl:DatatypeProperty ; rdfs:domain cof:PosSystem ; rdfs:range xsd:string ;
+    rdfs:label "제공 업체"@ko ; rdfs:label "Provider"@en .
+cof:hasMonthlyFee a owl:DatatypeProperty ; rdfs:domain cof:PosSystem ; rdfs:range xsd:string ;
+    rdfs:label "월 이용료"@ko ; rdfs:label "Monthly Fee"@en .
+cof:hasTransactionFee a owl:DatatypeProperty ; rdfs:domain cof:PosSystem ; rdfs:range xsd:string ;
+    rdfs:label "거래 수수료"@ko ; rdfs:label "Transaction Fee"@en .
+cof:hasFeatures a owl:DatatypeProperty ; rdfs:domain cof:PosSystem ; rdfs:range xsd:string ;
+    rdfs:label "주요 기능"@ko ; rdfs:label "Key Features"@en .
+
+# --- 글로벌 POS (12) ---
+
+cof:POS_Square a owl:NamedIndividual, cof:PosSystem ;
+    rdfs:label "Square for Restaurants"@en ;
+    cof:hasProvider "Square Inc."^^xsd:string ; cof:hasMonthlyFee "$60"^^xsd:string ; cof:hasTransactionFee "2.6%+10¢"^^xsd:string ;
+    cof:hasFeatures "Inventory Management, Staff Scheduling, Customer Analytics, Built-in Loyalty Program"^^xsd:string ;
+    cof:hasOriginCountry "USA"^^xsd:string ;
+    cof:hasDescription "소규모 카페·레스토랑에 널리 쓰이는 올인원 POS. 약정 없이 투명한 건당 수수료제."^^xsd:string .
+
+cof:POS_Toast a owl:NamedIndividual, cof:PosSystem ;
+    rdfs:label "Toast POS"@en ;
+    cof:hasProvider "Toast Inc."^^xsd:string ; cof:hasMonthlyFee "$69"^^xsd:string ; cof:hasTransactionFee "2.49%+15¢"^^xsd:string ;
+    cof:hasFeatures "Online Ordering, Table Management, Kitchen Display System, Payroll Integration"^^xsd:string ;
+    cof:hasOriginCountry "USA"^^xsd:string ;
+    cof:hasDescription "안드로이드 기반 레스토랑 특화 POS. 메뉴·모디파이어 관리가 강력해 푸드 메뉴가 있는 카페에 적합."^^xsd:string .
+
+cof:POS_Clover a owl:NamedIndividual, cof:PosSystem ;
+    rdfs:label "Clover"@en ;
+    cof:hasProvider "Clover Network (Fiserv)"^^xsd:string ; cof:hasMonthlyFee "Varies by processor"^^xsd:string ; cof:hasTransactionFee "Varies by processor"^^xsd:string ;
+    cof:hasFeatures "Custom App Market, Flexible Hardware, Employee Management, Multi-Processor Support"^^xsd:string ;
+    cof:hasOriginCountry "USA"^^xsd:string ;
+    cof:hasDescription "자체 하드웨어와 앱마켓 확장이 특징. 가격은 Clover가 아닌 재판매 프로세서가 결정."^^xsd:string .
+
+cof:POS_Lightspeed a owl:NamedIndividual, cof:PosSystem ;
+    rdfs:label "Lightspeed Restaurant"@en ;
+    cof:hasProvider "Lightspeed Commerce"^^xsd:string ; cof:hasMonthlyFee "$69–$399"^^xsd:string ; cof:hasTransactionFee "Custom (integrated payments)"^^xsd:string ;
+    cof:hasFeatures "Advanced Inventory, Menu Engineering, Multi-location Reporting, CRM"^^xsd:string ;
+    cof:hasOriginCountry "Canada"^^xsd:string ;
+    cof:hasDescription "단일 매장부터 다점포 리테일+F&B 체인까지 확장 가능한 강력한 재고관리형 POS."^^xsd:string .
+
+cof:POS_TouchBistro a owl:NamedIndividual, cof:PosSystem ;
+    rdfs:label "TouchBistro"@en ;
+    cof:hasProvider "TouchBistro Inc."^^xsd:string ; cof:hasMonthlyFee "$69"^^xsd:string ; cof:hasTransactionFee "Custom (integrated payments)"^^xsd:string ;
+    cof:hasFeatures "Table Management, Menu Management, Staff Scheduling, Offline Mode"^^xsd:string ;
+    cof:hasOriginCountry "Canada"^^xsd:string ;
+    cof:hasDescription "iPad 기반 레스토랑 POS. 오프라인 모드로 인터넷 장애 중에도 운영 가능."^^xsd:string .
+
+cof:POS_Shopify a owl:NamedIndividual, cof:PosSystem ;
+    rdfs:label "Shopify POS"@en ;
+    cof:hasProvider "Shopify Inc."^^xsd:string ; cof:hasMonthlyFee "$29–$299"^^xsd:string ; cof:hasTransactionFee "2.4%–2.6%+10¢"^^xsd:string ;
+    cof:hasFeatures "Omnichannel Retail, Inventory Sync, E-commerce Integration, Multi-location Support"^^xsd:string ;
+    cof:hasOriginCountry "Canada"^^xsd:string ;
+    cof:hasDescription "Shopify 이커머스 플랫폼을 오프라인 매장까지 확장, 온오프라인 재고를 통합 관리."^^xsd:string .
+
+cof:POS_PayPalZettle a owl:NamedIndividual, cof:PosSystem ;
+    rdfs:label "PayPal Zettle"@en ;
+    cof:hasProvider "PayPal Holdings"^^xsd:string ; cof:hasMonthlyFee "Free"^^xsd:string ; cof:hasTransactionFee "2.29%+9¢"^^xsd:string ;
+    cof:hasFeatures "Mobile Card Reader, Invoicing, Inventory Tracking, No Contract"^^xsd:string ;
+    cof:hasOriginCountry "Sweden/USA"^^xsd:string ;
+    cof:hasDescription "구 iZettle. 월 이용료 없이 건당 수수료만 부과하는 모바일 POS."^^xsd:string .
+
+cof:POS_SumUp a owl:NamedIndividual, cof:PosSystem ;
+    rdfs:label "SumUp"@en ;
+    cof:hasProvider "SumUp Inc."^^xsd:string ; cof:hasMonthlyFee "Free"^^xsd:string ; cof:hasTransactionFee "2.6%+10¢"^^xsd:string ;
+    cof:hasFeatures "Mobile Card Reader, Online Store, Invoicing, Low-cost Hardware"^^xsd:string ;
+    cof:hasOriginCountry "UK/Germany"^^xsd:string ;
+    cof:hasDescription "월 이용료 없는 저가형 카드리더기. 소규모 독립 카페·마켓 노점에서 인기."^^xsd:string .
+
+cof:POS_Revel a owl:NamedIndividual, cof:PosSystem ;
+    rdfs:label "Revel Systems"@en ;
+    cof:hasProvider "Revel Systems"^^xsd:string ; cof:hasMonthlyFee "$99+"^^xsd:string ; cof:hasTransactionFee "Custom (integrated payments)"^^xsd:string ;
+    cof:hasFeatures "iPad POS, Kitchen Display, Loyalty Program, Franchise Management"^^xsd:string ;
+    cof:hasOriginCountry "USA"^^xsd:string ;
+    cof:hasDescription "다점포·프랜차이즈 운영에 특화된 엔터프라이즈급 iPad POS."^^xsd:string .
+
+cof:POS_Loyverse a owl:NamedIndividual, cof:PosSystem ;
+    rdfs:label "Loyverse POS"@en ;
+    cof:hasProvider "Loyverse LLC"^^xsd:string ; cof:hasMonthlyFee "Free (core POS)"^^xsd:string ; cof:hasTransactionFee "Depends on payment processor"^^xsd:string ;
+    cof:hasFeatures "Real-time Inventory, Employee Management, Loyalty Program, Free Base Plan"^^xsd:string ;
+    cof:hasOriginCountry "Latvia/UK"^^xsd:string ;
+    cof:hasDescription "핵심 POS 기능은 무료이고 직원관리·고급 재고 등은 유료 애드온. 신흥시장 소규모 카페에서 인기."^^xsd:string .
+
+cof:POS_Poster a owl:NamedIndividual, cof:PosSystem ;
+    rdfs:label "Poster POS"@en ;
+    cof:hasProvider "Poster POS"^^xsd:string ; cof:hasMonthlyFee "$26+"^^xsd:string ; cof:hasTransactionFee "Depends on payment processor"^^xsd:string ;
+    cof:hasFeatures "Unlimited Employees, Recipe/Ingredient Costing, Sales Analytics, Offline Mode"^^xsd:string ;
+    cof:hasOriginCountry "Cyprus/Ukraine"^^xsd:string ;
+    cof:hasDescription "레시피·재료 원가 추적 기능을 내장한 레스토랑 특화 POS."^^xsd:string .
+
+cof:POS_Korona a owl:NamedIndividual, cof:PosSystem ;
+    rdfs:label "KORONA POS"@en ;
+    cof:hasProvider "COMBASE USA"^^xsd:string ; cof:hasMonthlyFee "Subscription-based"^^xsd:string ; cof:hasTransactionFee "No per-transaction fee"^^xsd:string ;
+    cof:hasFeatures "Multi-location Inventory, Franchise Support, Custom Reporting, Contract-Free"^^xsd:string ;
+    cof:hasOriginCountry "USA/Germany"^^xsd:string ;
+    cof:hasDescription "건당 수수료 없이 구독료만 부과하는 방식. 다점포 리테일·커피 체인에 적합."^^xsd:string .
+
+# --- 국내(한국) POS/VAN (8) ---
+
+cof:POS_PayHere a owl:NamedIndividual, cof:PosSystem ;
+    rdfs:label "페이히어 (PayHere)"@ko ; rdfs:label "PayHere"@en ;
+    cof:hasProvider "페이히어(주)"^^xsd:string ; cof:hasMonthlyFee "무료 단말기 제공"^^xsd:string ; cof:hasTransactionFee "결제 건당 카드사 수수료"^^xsd:string ;
+    cof:hasFeatures "선불/후불 결제, 테이블오더, 웨이팅 관리, 카드 가맹점 가입 지원"^^xsd:string ;
+    cof:hasOriginCountry "대한민국"^^xsd:string ;
+    cof:hasDescription "카페·식당 특화 국내 POS. 카드단말기를 무료로 제공하고 가맹점 등록을 대행해준다."^^xsd:string .
+
+cof:POS_TOrder a owl:NamedIndividual, cof:PosSystem ;
+    rdfs:label "티오더 (T Order)"@ko ; rdfs:label "T Order"@en ;
+    cof:hasProvider "㈜티오더"^^xsd:string ; cof:hasMonthlyFee "₩24,000/대 (3년 약정 기준)"^^xsd:string ; cof:hasTransactionFee "고정 이용료제 (PG 수수료 별도 부과 없음)"^^xsd:string ;
+    cof:hasFeatures "테이블오더, 30개 이상 포스사 자동 연동, 매장관리, AI 추천(티오더GPT)"^^xsd:string ;
+    cof:hasOriginCountry "대한민국"^^xsd:string ;
+    cof:hasDescription "국내 테이블오더 시장 점유율 1위. 정액 이용료 방식으로 과금하며 업계에서 가장 폭넓은 포스사 연동을 지원한다."^^xsd:string .
+
+cof:POS_DodoPoint a owl:NamedIndividual, cof:PosSystem ;
+    rdfs:label "도도포인트 (DodoPoint)"@ko ; rdfs:label "DodoPoint"@en ;
+    cof:hasProvider "스포카(Spoca)"^^xsd:string ; cof:hasMonthlyFee "₩10,000~50,000 (메시지 발송 요금제별)"^^xsd:string ; cof:hasTransactionFee "N/A (CRM/메시징 서비스)"^^xsd:string ;
+    cof:hasFeatures "고객 CRM, 적립/쿠폰 관리, 카페 특화 마케팅, POS 연동"^^xsd:string ;
+    cof:hasOriginCountry "대한민국"^^xsd:string ;
+    cof:hasDescription "카페 재방문 고객 관리에 특화된 국내 대표 CRM 겸 포스 연동 서비스."^^xsd:string .
+
+cof:POS_POSBANK a owl:NamedIndividual, cof:PosSystem ;
+    rdfs:label "포스뱅크 (POSBANK)"@ko ; rdfs:label "POSBANK"@en ;
+    cof:hasProvider "㈜포스뱅크"^^xsd:string ; cof:hasMonthlyFee "하드웨어 1회 구매형"^^xsd:string ; cof:hasTransactionFee "N/A (단말기 제조사)"^^xsd:string ;
+    cof:hasFeatures "POS 단말기 제조, 키오스크, 이디야·빽다방·투썸플레이스 공급, 맥도날드 해외 공급"^^xsd:string ;
+    cof:hasOriginCountry "대한민국"^^xsd:string ;
+    cof:hasDescription "국내 POS·키오스크 시장 점유율 54%로 1위인 하드웨어 제조사. 해외에서는 맥도날드 공식 POS 공급사로도 등록되어 있다."^^xsd:string .
+
+cof:POS_KICC a owl:NamedIndividual, cof:PosSystem ;
+    rdfs:label "한국정보통신 (KICC)"@ko ; rdfs:label "KICC"@en ;
+    cof:hasProvider "한국정보통신㈜"^^xsd:string ; cof:hasMonthlyFee "VAN 수수료 기반"^^xsd:string ; cof:hasTransactionFee "건당 정액 VAN 수수료"^^xsd:string ;
+    cof:hasFeatures "VAN/PG 통합 결제대행, 신용카드 조회 서비스, 오프라인 가맹점 결제망"^^xsd:string ;
+    cof:hasOriginCountry "대한민국"^^xsd:string ;
+    cof:hasDescription "국내 대표 VAN사 중 하나로 오프라인 카드결제망을 운영하며 PG 사업도 병행한다."^^xsd:string .
+
+cof:POS_NICE a owl:NamedIndividual, cof:PosSystem ;
+    rdfs:label "나이스정보통신 (NICE)"@ko ; rdfs:label "NICE Information Communications"@en ;
+    cof:hasProvider "나이스정보통신㈜"^^xsd:string ; cof:hasMonthlyFee "VAN 수수료 기반"^^xsd:string ; cof:hasTransactionFee "건당 정액 VAN 수수료"^^xsd:string ;
+    cof:hasFeatures "소액결제 특화, 편의점·프랜차이즈 가맹점망, 국내 밴 시장 점유율 1위(16.1%)"^^xsd:string ;
+    cof:hasOriginCountry "대한민국"^^xsd:string ;
+    cof:hasDescription "국내 밴(VAN) 시장 점유율 1위 기업으로, 편의점 등 소액결제 가맹점 비중이 높다."^^xsd:string .
+
+cof:POS_Smartro a owl:NamedIndividual, cof:PosSystem ;
+    rdfs:label "스마트로 (Smartro)"@ko ; rdfs:label "Smartro"@en ;
+    cof:hasProvider "㈜스마트로"^^xsd:string ; cof:hasMonthlyFee "VAN 수수료 기반"^^xsd:string ; cof:hasTransactionFee "건당 정액 VAN 수수료"^^xsd:string ;
+    cof:hasFeatures "카드결제 VAN, 가맹점 모집, POS 단말기 유지보수"^^xsd:string ;
+    cof:hasOriginCountry "대한민국"^^xsd:string ;
+    cof:hasDescription "국내 밴 시장 점유율 약 11.6%를 차지하는 결제 대행사."^^xsd:string .
+
+cof:POS_KIS a owl:NamedIndividual, cof:PosSystem ;
+    rdfs:label "KIS정보통신"@ko ; rdfs:label "KIS Information Communications"@en ;
+    cof:hasProvider "KIS정보통신㈜"^^xsd:string ; cof:hasMonthlyFee "VAN 수수료 기반"^^xsd:string ; cof:hasTransactionFee "건당 정액 VAN 수수료"^^xsd:string ;
+    cof:hasFeatures "POS 단말기 임대/판매, 오프라인 결제망, 가맹점 관리"^^xsd:string ;
+    cof:hasOriginCountry "대한민국"^^xsd:string ;
+    cof:hasDescription "국내 밴 시장 점유율 약 10.6%의 결제 인프라 기업."^^xsd:string .
