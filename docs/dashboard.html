@@ -2246,7 +2246,59 @@
                     { name:'Barista Basics',         level:'Beginner',  modules:'5', duration:'2 Weeks', topics:['Espresso Fundamentals','Milk Steaming','Coffee Origins','Equipment Care','POS Usage'] },
                     { name:'Advanced Espresso',      level:'Advanced',  modules:'8', duration:'4 Weeks', topics:['Espresso Calibration','Grind Profile','Latte Art','Cupping','Flavor Profiling','Competition Prep'] },
                     { name:'Customer Service',       level:'Beginner',  modules:'3', duration:'1 Week',  topics:['Communication Skills','Complaint Handling','Upselling Techniques'] },
-                    { name:'Food Safety & Hygiene',  level:'Mandatory', modules:'6', duration:'3 Weeks', topics:['HACCP Principles','Allergen Awareness','Temperature Control','Cleaning Procedures','Personal Hygiene','Certification'] }
+                    { name:'Food Safety & Hygiene',  level:'Mandatory', modules:'6', duration:'3 Weeks', topics:['HACCP Principles','Allergen Awareness','Temperature Control','Cleaning Procedures','Personal Hygiene','Certification'] },
+
+                    // ── 대한민국 국내 운영 프로그램 (Korea Domestic Programs) ──
+                    { name:'바리스타 2급 (KCA Barista Level 2)', region:'KR',
+                      provider:'(사)한국커피협회 (KCA)', level:'Beginner', modules:'5', duration:'필기 + 실기 검정',
+                      topics:['커피학 개론','에스프레소 추출','우유 스티밍','위생·매장 관리','서비스 기술'],
+                      note:'국내 최다 응시 민간자격 · 검정료 99,000원(필기 33,000 / 실기 66,000)',
+                      url:'https://www.kca-coffee.org/cms/FrCon/index.do?MENU_ID=610' },
+                    { name:'바리스타 1급 (KCA Barista Level 1)', region:'KR',
+                      provider:'(사)한국커피협회 (KCA)', level:'Advanced', modules:'6', duration:'인증기관 교육 24시간 이상',
+                      topics:['커피학 개론','로스팅·향미 평가','추출 이론','에스프레소·카푸치노 시연','서비스 기술','영어 커피 용어'],
+                      note:'2급 취득자 응시 · 필기 50문항/50분(영어 약 10%), 실기 준비·시연 15분',
+                      url:'https://www.kca-coffee.org/cms/FrCon/index.do?MENU_ID=620' },
+                    { name:'커피지도사 1·2급 (Coffee Instructor)', region:'KR',
+                      provider:'(사)한국커피협회 (KCA)', level:'Instructor', modules:'6', duration:'전 과정 72시간',
+                      topics:['홈카페마스터 18h','커피지도사 2급 27h','커피지도사 1급 27h','추출 설계','메뉴 조리 지도','고객 서비스 지도'],
+                      note:'커피 교육자 양성 과정 · 하위 단계부터 순차 수강',
+                      url:'https://www.kca-coffee.org/cms/FrCon/index.do?MENU_ID=660' },
+                    { name:'로스트마스터 (Roast Master)', region:'KR',
+                      provider:'(사)한국커피협회 (KCA)', level:'Intermediate', modules:'6', duration:'이론 + 실습 과정',
+                      topics:['생두 분류','로스팅 이론','로스트 프로파일','결점두 식별','향미 평가','로스터리 카페 운영'],
+                      note:'홈 로스터·소규모 로스터리 창업자 대상 로스팅 표준 인증',
+                      url:'https://www.kca-coffee.org/cms/FrCon/index.do?MENU_ID=670' },
+                    { name:'홈카페마스터 (Home Cafe Master)', region:'KR',
+                      provider:'(사)한국커피협회 (KCA)', level:'Beginner', modules:'4', duration:'18시간',
+                      topics:['커피학 개론','추출 기구 활용','핸드드립','향미 평가'],
+                      note:'일반 소비자 대상 입문 과정 · 이수 시 커피지도사 1급 응시 자격 부여',
+                      url:'https://www.kca-coffee.org/cms/FrCon/index.do?MENU_ID=2060' },
+                    { name:'SCA 커피 스킬즈 프로그램 (CSP)', region:'KR',
+                      provider:'SCA 한국챕터 · 공인 트레이너(AST)', level:'Foundation~Professional', modules:'6', duration:'모듈별 1~5일',
+                      topics:['Introduction to Coffee','Barista Skills','Brewing','Green Coffee','Roasting','Sensory Skills'],
+                      note:'국제 표준 교육 · 6개 모듈 × 3단계(입문/중급/고급), 누적 100점 시 디플로마',
+                      url:'https://korea.sca.coffee/education/csp' },
+                    { name:'Q 그레이더 (Q Arabica Grader)', region:'KR',
+                      provider:'국내 Q 인증 교육기관 (6개소)', level:'Professional', modules:'6', duration:'6일 집중 + 22개 시험',
+                      topics:['커핑 프로토콜','트라이앵귤레이션','아로마 식별','유기산 판별','결점두 그레이딩','로스트 레벨 식별'],
+                      note:'2025.10.1부터 CQI에서 SCA로 이관, CVA 기반으로 운영',
+                      url:'https://korea.sca.coffee/q-grader' },
+                    { name:'국민내일배움카드 바리스타 양성과정', region:'KR',
+                      provider:'고용노동부 지정 훈련기관 (HRD-Net)', level:'Beginner', modules:'6', duration:'약 31일 (출석 80% 이상)',
+                      topics:['커피 기초 이론','에스프레소 추출','우유 스티밍','머신 사용·위생 관리','카페 실무','자격 검정 대비'],
+                      note:'국비 지원 직업훈련 · 실업자/재직자/자영업자 모두 신청 가능, 훈련비 최대 지원',
+                      url:'https://www.hrd.go.kr' },
+                    { name:'스타벅스 커피 마스터 (Coffee Master)', region:'KR',
+                      provider:'스타벅스 코리아 (사내 인증)', level:'In-house', modules:'5', duration:'6개월 이상',
+                      topics:['커피 지식','추출 실습','커핑·테이스팅','사이버 교육','고객 경험'],
+                      note:'국내 누적 약 17,000명 배출 · 취득 시 블랙 앞치마 착용, 커피 엑설런스 센터 심화 코칭 연계',
+                      url:'https://www.shinsegaegroupnewsroom.com/starbucks-coffee-expert-training-center/' },
+                    { name:'커피머신 엔지니어 1·2급', region:'KR',
+                      provider:'한국커피연구원 (KCRO)', level:'Technical', modules:'5', duration:'2급 → 1급 단계 과정',
+                      topics:['머신 구조·부품','정비·트러블슈팅','수질·정수 관리','추출 압력·온도 세팅','안전 관리'],
+                      note:'국내 특화 과정 · 바리스타/로스팅/핸드드립/라떼아트/커피향미 과정도 1·2급 운영',
+                      url:'https://kcro.kr/certificate/engineer_2' }
                 ],
                 Consumable: [
                     { name:'Paper Cup',    category:'Packaging', sizes:'8oz / 12oz / 16oz',    material:'Recycled Fiber',  monthlyUsage:'~2,000 pcs', eco:'Compostable' },
@@ -2305,19 +2357,25 @@
                     <div class="info-card-footer"><span>Difficulty: ${demo.difficulty}</span><i class="fas fa-arrow-right" style="color:#8b5cf6"></i></div>`;
             } else if (className === 'TrainingProgram') {
                 card.classList.add('training-card');
+                const isKR = demo.region === 'KR';
+                // Korean domestic programs use a distinct (red) accent so they stand out from the generic ones
+                const accent = isKR ? '#dc2626' : '#3b82f6';
+                const accentGrad = isKR ? 'linear-gradient(135deg,#ef4444,#b91c1c)' : 'linear-gradient(135deg,#3b82f6,#1d4ed8)';
                 const tags = demo.topics.map(t => `<span class="info-card-tag">${t}</span>`).join('');
                 card.innerHTML = `
                     <div class="info-card-header">
-                        <div class="info-card-icon" style="background:linear-gradient(135deg,#3b82f6,#1d4ed8)"><i class="fas fa-graduation-cap"></i></div>
-                        <div class="info-card-badge" style="background:rgba(59,130,246,.1);color:#3b82f6;border:1px solid #3b82f6">${demo.level}</div>
+                        <div class="info-card-icon" style="background:${accentGrad}"><i class="fas fa-graduation-cap"></i></div>
+                        <div class="info-card-badge" style="background:rgba(${isKR?'220,38,38':'59,130,246'},.1);color:${accent};border:1px solid ${accent}">${demo.level}</div>
                     </div>
                     <div class="info-card-name">${demo.name}</div>
-                    <div class="info-card-meta" style="background:rgba(59,130,246,.05)">
-                        <div class="info-meta-item"><span class="info-meta-label">Modules</span><span class="info-meta-value" style="color:#3b82f6">${demo.modules}</span></div>
-                        <div class="info-meta-item"><span class="info-meta-label">Duration</span><span class="info-meta-value" style="color:#3b82f6">${demo.duration}</span></div>
+                    ${demo.provider ? `<div class="info-card-provider" style="display:flex;align-items:center;gap:.35rem;margin:.35rem 0 .1rem;font-size:.78rem;color:var(--text-secondary)"><i class="fas fa-building" style="color:${accent}"></i>${demo.provider}</div>` : ''}
+                    <div class="info-card-meta" style="background:rgba(${isKR?'220,38,38':'59,130,246'},.05)">
+                        <div class="info-meta-item"><span class="info-meta-label">Modules</span><span class="info-meta-value" style="color:${accent}">${demo.modules}</span></div>
+                        <div class="info-meta-item"><span class="info-meta-label">Duration</span><span class="info-meta-value" style="color:${accent};font-size:0.75rem">${demo.duration}</span></div>
                     </div>
                     <div class="info-card-tags">${tags}</div>
-                    <div class="info-card-footer"><span>Training Program</span><i class="fas fa-arrow-right" style="color:#3b82f6"></i></div>`;
+                    ${demo.note ? `<div class="info-card-note" style="margin-top:.5rem;font-size:.72rem;line-height:1.45;color:var(--text-secondary)"><i class="fas fa-circle-info" style="color:${accent};margin-right:.3rem"></i>${demo.note}</div>` : ''}
+                    <div class="info-card-footer"><span>${isKR ? 'KR · 국내 프로그램' : 'Training Program'}</span><i class="fas fa-arrow-right" style="color:${accent}"></i></div>`;
             } else if (className === 'Consumable') {
                 card.classList.add('consumable-card');
                 card.innerHTML = `
@@ -2366,6 +2424,12 @@
                         <span class="info-card-tag"><i class="fas fa-certificate"></i> ${demo.cert}</span>
                     </div>
                     <div class="info-card-footer"><span>Maintenance Service</span><i class="fas fa-arrow-right" style="color:#ef4444"></i></div>`;
+            }
+            // Demo entries carrying a source URL open it in a new tab
+            if (demo.url) {
+                card.style.cursor = 'pointer';
+                card.title = '공식 안내 페이지 열기';
+                card.addEventListener('click', () => window.open(demo.url, '_blank', 'noopener'));
             }
             return card;
         }
