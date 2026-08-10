@@ -6528,6 +6528,66 @@
         // ============================================================
         // BEVERAGE IMAGES (Unsplash CDN — no auth required)
         // ============================================================
+        // ============================================================
+        // KOREAN-MADE EQUIPMENT — instances not present in the RDF ontology.
+        // Merged into ontologyData.instanceMap at load time (see applyExtraInstances),
+        // so they behave exactly like RDF individuals: cards, photos, detail modal.
+        // Property vocabulary matches the ontology (hasCountry / hasManufacturer /
+        // hasModel / hasCapacitySpec / hasYearIntroduced).
+        // ============================================================
+        window.EXTRA_INSTANCES = [
+            { name:'EM_ElRocio_ManusV2', type:'EspressoMachine',
+              description:'㈜후로웰이 론칭한 국산 에스프레소 머신 브랜드 엘로치오(El Rocio)의 반자동 머신. 유체 제어·펌프·솔레노이드 밸브 기술을 기반으로 국내에서 직접 설계·생산하며, 압력 프로파일링을 채용한 국산 가정용 머신으로 이름을 알렸다. 가정용 1그룹부터 상업용 3그룹까지 라인업을 갖췄다.',
+              props:{ hasCountry:'South Korea', hasManufacturer:'엘로치오 (El Rocio / ㈜후로웰)', hasModel:'El Rocio Manus V2', hasCapacitySpec:'가정용 1그룹 ~ 상업용 3그룹 라인업' } },
+            { name:'EM_MrCoffee_BrewBoy', type:'EspressoMachine',
+              description:'33년간 커피 사업을 이어온 ㈜미스터커피가 개발·생산한 국내 최초의 국산 상업용 전자동 커피 머신. 원두 투입부터 추출까지 자동화해 사무실·프랜차이즈 매장 환경을 겨냥한다.',
+              props:{ hasCountry:'South Korea', hasManufacturer:'㈜미스터커피', hasModel:'Brew Boy (브루보이)', hasCapacitySpec:'상업용 전자동 (Bean-to-cup)' } },
+            { name:'BR_CoffeeChaps_BrewvieII', type:'Equipment',
+              description:'LCD·카메라 모듈 제조사 비섹전자가 론칭한 커피챕스(COFFEE CHAPS)의 자동 브루잉 머신. 3분할 빔히터로 구간별 온도를 세밀하게 제어해 다양한 추출 레시피를 재현하며, 사이폰 방식의 브루비 사이폰 모델도 함께 운영한다.',
+              props:{ hasCountry:'South Korea', hasManufacturer:'커피챕스 (COFFEE CHAPS / 비섹전자)', hasModel:'Brewvie II', hasCapacitySpec:'자동 브루잉(푸어오버·사이폰) 머신' } },
+            { name:'GR_CoffeeChaps_Airmill', type:'Grinder',
+              description:'커피챕스가 개발한 그라인더. 분쇄 시 발생하는 미분(fines)을 공기로 걸러내는 Air-Sifting System이 핵심으로, 킥스타터 펀딩을 통해 공개됐다.',
+              props:{ hasCountry:'South Korea', hasManufacturer:'커피챕스 (COFFEE CHAPS)', hasModel:'Airmill', hasCapacitySpec:'Air-Sifting System (미분 제거)' } },
+            { name:'RM_Stronghold_S7ProX', type:'RoasterMachine',
+              description:'스트롱홀드테크놀로지의 스마트 전기 로스터. 로스팅 프로파일을 저장해 두면 버튼 조작만으로 언제 어디서나 같은 맛을 재현할 수 있는 것이 핵심 컨셉이다.',
+              props:{ hasCountry:'South Korea', hasManufacturer:'스트롱홀드테크놀로지 (Stronghold Technology)', hasModel:'S7 PRO X', hasCapacitySpec:'투입 150g~850g / 시간당 약 3.4kg' } },
+            { name:'RM_Stronghold_S9X', type:'RoasterMachine',
+              description:'스트롱홀드의 상위 모델. 최대 8kg까지 투입할 수 있어 카페 자체 로스팅을 넘어 납품 물량까지 소화하도록 설계됐다.',
+              props:{ hasCountry:'South Korea', hasManufacturer:'스트롱홀드테크놀로지 (Stronghold Technology)', hasModel:'S9X', hasCapacitySpec:'최대 투입 8kg' } },
+            { name:'RM_Proaster_THCR06', type:'RoasterMachine',
+              description:'1989년 자동볶음기 "도리깨" 개발로 출발한 ㈜태환자동화산업이 1999년 국산 커피 로스터를 개발하며 만든 프로스터(PROASTER) 시리즈. 200g급 소형부터 30kg 이상 대형까지 라인업을 갖췄다.',
+              props:{ hasCountry:'South Korea', hasManufacturer:'㈜태환자동화산업 (PROASTER)', hasModel:'PROASTER THCR-06', hasCapacitySpec:'배치 약 10kg (시리즈 200g~30kg+)', hasYearIntroduced:'1999' } },
+            { name:'IM_Icetro_ICI060', type:'IceMaker',
+              description:'인천에 본사를 둔 아이스트로(ICETRO)의 카페·식당용 큐빅 제빙기. 공냉식과 수냉식을 함께 운영하며 필터 내장형 모델도 제공한다.',
+              props:{ hasCountry:'South Korea', hasManufacturer:'아이스트로 (ICETRO)', hasModel:'ICI-060 / ICI-060(W)', hasCapacitySpec:'일일 제빙량 약 50kg (공냉식/수냉식)' } },
+            { name:'IM_Daeyoung_Lassele', type:'IceMaker',
+              description:'1981년 대영공업㈜으로 설립돼 2002년 대영이앤비로 사명을 바꾼 국내 업소용 냉동·냉장 기기 대표 기업. 라셀르(Lassele) 브랜드로 카페·식당용 제빙기와 냉장 설비를 공급한다.',
+              props:{ hasCountry:'South Korea', hasManufacturer:'대영이앤비 (Lassele)', hasModel:'Lassele 업소용 제빙기', hasCapacitySpec:'업소용 냉동·냉장 및 제빙 설비', hasYearIntroduced:'1981' } },
+            { name:'WF_Chungho_EspreCafe', type:'WaterFilter',
+              description:'청호나이스가 커피머신과 얼음정수기를 결합해 내놓은 카페용 정수 솔루션. 업소용 정수는 에스프레소 머신의 스케일 고장을 막고 추출 향미를 유지하는 핵심 설비다.',
+              props:{ hasCountry:'South Korea', hasManufacturer:'청호나이스 (Chungho Nais)', hasModel:'에스프레카페 (EspreCafe)', hasCapacitySpec:'커피머신 결합형 얼음정수기' } }
+        ];
+
+        // Merge EXTRA_INSTANCES into a parsed ontology so they render like RDF individuals
+        function applyExtraInstances(ont) {
+            if (!ont || !ont.instanceMap || !window.EXTRA_INSTANCES) return;
+            const BASE = 'http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#';
+            window.EXTRA_INSTANCES.forEach(x => {
+                const uri = BASE + x.name;
+                if (ont.instanceMap[uri]) return;
+                const properties = {};
+                Object.entries(x.props || {}).forEach(([k, v]) => {
+                    properties[k] = [{ type: 'literal', value: v }];
+                });
+                ont.instanceMap[uri] = {
+                    uri, name: x.name,
+                    classURIs: [BASE + x.type],
+                    description: x.description || '',
+                    properties
+                };
+            });
+        }
+
         // Equipment photos — Wikimedia Commons (freely licensed), keyed by instance name.
         // Brand-specific where a free photo of that maker exists; otherwise a representative
         // photo of the same equipment category.
@@ -6567,7 +6627,18 @@
             'WF_Brita_Purity':             'https://commons.wikimedia.org/wiki/Special:FilePath/Brita_Filter.png?width=600',
             'WF_Everpure_4C':              'https://commons.wikimedia.org/wiki/Special:FilePath/Haushalts-Wasserfilter.jpg?width=600',
             'WF_BWT_BestmaxPremium':       'https://commons.wikimedia.org/wiki/Special:FilePath/Under-sink_Water_Filter_System.jpg?width=600',
-            'WF_3M_Cyclone':               'https://commons.wikimedia.org/wiki/Special:FilePath/WATER_PURIFIER.jpg?width=600'
+            'WF_3M_Cyclone':               'https://commons.wikimedia.org/wiki/Special:FilePath/WATER_PURIFIER.jpg?width=600',
+            // ── 국내 제조사 장비 (대표 사진 — 해당 모델의 공식 제품컷 아님) ──
+            'EM_ElRocio_ManusV2':          'https://commons.wikimedia.org/wiki/Special:FilePath/A_black_espresso_machine_sits_on_a_wooden_table%2C_with_a_clear_glass_cup_filled_with_freshly_brewed_coffee.jpg?width=600',
+            'EM_MrCoffee_BrewBoy':         'https://commons.wikimedia.org/wiki/Special:FilePath/Macchina_per_il_caff%C3%A8_2.jpg?width=600',
+            'BR_CoffeeChaps_BrewvieII':    'https://commons.wikimedia.org/wiki/Special:FilePath/Vacuum_coffee_maker_with_coffee_in_Brno%2C_Brno-City_District.jpg?width=600',
+            'GR_CoffeeChaps_Airmill':      'https://commons.wikimedia.org/wiki/Special:FilePath/Coffee_grinder_positioned_in_a_cafe_with_freshly_roasted_beans_ready_for_brewing.jpg?width=600',
+            'RM_Stronghold_S7ProX':        'https://commons.wikimedia.org/wiki/Special:FilePath/20110124_Kaffeer%C3%B6stmaschine_001.jpg?width=600',
+            'RM_Stronghold_S9X':           'https://commons.wikimedia.org/wiki/Special:FilePath/Beans_Dropping_from_a_Coffee_Roaster.JPG?width=600',
+            'RM_Proaster_THCR06':          'https://commons.wikimedia.org/wiki/Special:FilePath/20110216_Kaffeer%C3%B6stmaschine_004.jpg?width=600',
+            'IM_Icetro_ICI060':            'https://commons.wikimedia.org/wiki/Special:FilePath/Isbitmaskin.jpg?width=600',
+            'IM_Daeyoung_Lassele':         'https://commons.wikimedia.org/wiki/Special:FilePath/%D0%9B%D1%91%D0%B4_%D0%B2_%D0%BB%D1%8C%D0%B4%D0%BE%D0%B3%D0%B5%D0%BD%D0%B5%D1%80%D0%B0%D1%82%D0%BE%D1%80%D0%B5.jpg?width=600',
+            'WF_Chungho_EspreCafe':        'https://commons.wikimedia.org/wiki/Special:FilePath/Home_water_filters%2C_water_purifiers%2C_and_bottled_water_in_India.jpg?width=600'
         };
 
         window.BEVERAGE_IMAGES = {
@@ -6795,6 +6866,7 @@
             let tripleCount = 0;
             doc.querySelectorAll('*').forEach(() => tripleCount++);
             result.count = Math.floor(tripleCount * 0.3);
+            applyExtraInstances(result);
             return result;
         }
 
@@ -6883,6 +6955,9 @@
                         };
                     });
                 }
+
+                // Korean-made equipment that is not in the RDF ontology yet
+                applyExtraInstances(ontologyData);
 
                 console.log(`✅ ontologyData ready: ${ontologyData.classes.length} classes, ${ontologyData.objectProperties.length} obj props`);
                 console.log(`✅ hierarchyData: ${hierarchyData.length} root classes`);
