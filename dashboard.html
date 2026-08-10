@@ -2687,7 +2687,11 @@
                         const isBeverage = className.toLowerCase().includes('beverage') || className.toLowerCase().includes('menu');
                         const beverageKey = instance.name.replace(/\s+/g, '_');
                         const hasImage = isBeverage && window.BEVERAGE_IMAGES && window.BEVERAGE_IMAGES[beverageKey];
-                        
+
+                        // Equipment photo (same underscore key convention as beverages)
+                        const equipImage = !isBeverage && window.EQUIPMENT_IMAGES ? window.EQUIPMENT_IMAGES[beverageKey] : null;
+                        const cardImageUrl = hasImage ? window.BEVERAGE_IMAGES[beverageKey] : equipImage;
+
                         // Check if this is a POS System
                         const isPosSystem = className.toLowerCase().includes('possystem') || className.toLowerCase().includes('pos');
 
@@ -2708,8 +2712,10 @@
                         
                         if (hasImage) {
                             instanceCard.classList.add('beverage-card');
+                        } else if (equipImage) {
+                            instanceCard.classList.add('beverage-card', 'equipment-card');
                         }
-                        
+
                         if (isPosSystem) {
                             instanceCard.classList.add('pos-card');
                             icon = 'fa-cash-register';
@@ -2754,8 +2760,8 @@
                             : instance.name;
 
                         instanceCard.innerHTML = `
-                                ${hasImage ? `<div class="bev-img-wrap"><img src="${window.BEVERAGE_IMAGES[beverageKey]}" alt="${instance.name}" class="beverage-card-image" onerror="this.parentElement.style.display='none'; this.closest('.instance-card').querySelector('.instance-card-icon').style.display='flex';"></div>` : ''}
-                                <div class="instance-card-icon" ${hasImage ? 'style="display:none;"' : ''}>
+                                ${cardImageUrl ? `<div class="bev-img-wrap"><img src="${cardImageUrl}" alt="${instance.name}" class="beverage-card-image" loading="lazy" onerror="this.parentElement.style.display='none'; this.closest('.instance-card').querySelector('.instance-card-icon').style.display='flex';"></div>` : ''}
+                                <div class="instance-card-icon" ${cardImageUrl ? 'style="display:none;"' : ''}>
                                     ${iconHtml}
                                 </div>
                                 <div class="instance-card-name">${cardDisplayName}</div>
@@ -3277,6 +3283,11 @@
                     return s.charAt(0).toUpperCase() + s.slice(1);
                 }
                 let html = '';
+                // Equipment hero photo (Wikimedia Commons)
+                const _equipImgUrl = window.EQUIPMENT_IMAGES && window.EQUIPMENT_IMAGES[instance.name.replace(/\s+/g, '_')];
+                if (_equipImgUrl) {
+                    html += `<img src="${_equipImgUrl}" alt="${instance.name}" class="bev-modal-hero" onerror="this.style.display='none'">`;
+                }
                 if (instance.description) {
                     html += `<div class="modal-description">`;
                     html += `<i class="fas fa-info-circle" style="color: var(--accent); margin-right: 0.5rem;"></i>`;
@@ -6517,6 +6528,48 @@
         // ============================================================
         // BEVERAGE IMAGES (Unsplash CDN — no auth required)
         // ============================================================
+        // Equipment photos — Wikimedia Commons (freely licensed), keyed by instance name.
+        // Brand-specific where a free photo of that maker exists; otherwise a representative
+        // photo of the same equipment category.
+        window.EQUIPMENT_IMAGES = {
+            // Espresso machines
+            'EM_LaMarzocco_Linea':         'https://commons.wikimedia.org/wiki/Special:FilePath/La_Marzocco_GB5.jpg?width=600',
+            'EM_Synesso_MVP':              'https://commons.wikimedia.org/wiki/Special:FilePath/Purple_Synesso_espresso_machine_at_BUSI%2C_London_(50483151712).jpg?width=600',
+            'EM_DeLonghi_Pro':             'https://commons.wikimedia.org/wiki/Special:FilePath/Automatic_espresso_machine_02.JPG?width=600',
+            'EM_Nuova_Simonelli':          'https://commons.wikimedia.org/wiki/Special:FilePath/EspressoMachine_20200223_151208.jpg?width=600',
+            'EM_Faema_E71':                'https://commons.wikimedia.org/wiki/Special:FilePath/HORECA14_Faema_E98_RE.jpg?width=600',
+            'EM_Rancilio_Classe9':         'https://commons.wikimedia.org/wiki/Special:FilePath/Rancilio_Espresso_Machine_Made_in_Italy.JPG?width=600',
+            'EM_VictoriaArduino_EagleOne': 'https://commons.wikimedia.org/wiki/Special:FilePath/Victoria_Arduino_-_Athena_Leva.jpg?width=600',
+            'EM_Slayer_SteamEP':           'https://commons.wikimedia.org/wiki/Special:FilePath/Sleek_Slayer_espresso_machine_at_Over_Under_Coffee%2C_Soho%2C_London_(38082708505).jpg?width=600',
+            'EM_Sanremo_CafeRacer':        'https://commons.wikimedia.org/wiki/Special:FilePath/Coffee_preparation_in_a_modern_cafe_with_steaming_equipment_and_skilled_barista_at_work_during_the_morning_rush_hour.jpg?width=600',
+            'Machine_B':                   'https://commons.wikimedia.org/wiki/Special:FilePath/Barista_prepares_espresso_at_coffee_shop.jpg?width=600',
+            // Grinders
+            'GR_Mazzer_Major':             'https://commons.wikimedia.org/wiki/Special:FilePath/202406091240_IMG_1038.jpg?width=600',
+            'GR_Baratza_Forte':            'https://commons.wikimedia.org/wiki/Special:FilePath/Baratza_Encore_burr_coffee_grinder_and_coffee_beans.jpg?width=600',
+            'GR_Mahlkonig_EK43':           'https://commons.wikimedia.org/wiki/Special:FilePath/Kleine_Backstube_Alte_Kaffee-Maschine.jpg?width=600',
+            'GR_Mahlkonig_Peak':           'https://commons.wikimedia.org/wiki/Special:FilePath/Electric_coffee_grinder_20240225_100426.jpg?width=600',
+            'GR_Ditting_KR804':            'https://commons.wikimedia.org/wiki/Special:FilePath/Coffee_grinder_2.jpg?width=600',
+            'GR_Fiorenzato_F64':           'https://commons.wikimedia.org/wiki/Special:FilePath/Tripo2.jpg?width=600',
+            'GR_Comandante_C40':           'https://commons.wikimedia.org/wiki/Special:FilePath/Manual_coffee_grinder_brazil.jpg?width=600',
+            // Roaster machines
+            'RM_Probat_P25':               'https://commons.wikimedia.org/wiki/Special:FilePath/Probat_(Heart_Coffee_Roasters).jpg?width=600',
+            'RM_Loring_S35':               'https://commons.wikimedia.org/wiki/Special:FilePath/Loring_Smart_Roast.jpg?width=600',
+            'RM_Giesen_W15':               'https://commons.wikimedia.org/wiki/Special:FilePath/Last_Stand_Coffee_Roaster_(Eugene%2C_Oregon).jpg?width=600',
+            'RM_Diedrich_IR12':            'https://commons.wikimedia.org/wiki/Special:FilePath/Diedrich_IR_Series_Coffee_Roaster.jpg?width=600',
+            'RM_SanFranciscan_SF25':       'https://commons.wikimedia.org/wiki/Special:FilePath/San_Franciscan_Roaster.jpg?width=600',
+            'RM_CoffeeTech_Primo':         'https://commons.wikimedia.org/wiki/Special:FilePath/2013_Coffee_roasting_Vits_Munchen.jpg?width=600',
+            // Ice makers
+            'IM_Hoshizaki_KM':             'https://commons.wikimedia.org/wiki/Special:FilePath/Hoshizaki_1.jpg?width=600',
+            'IM_Scotsman_NDE':             'https://commons.wikimedia.org/wiki/Special:FilePath/Icemaker.jpg?width=600',
+            'IM_Manitowoc_IndigoNXT':      'https://commons.wikimedia.org/wiki/Special:FilePath/Manitowoc_Q210_ice_machine.JPG?width=600',
+            'IM_IceOMatic_ICE0500':        'https://commons.wikimedia.org/wiki/Special:FilePath/Ice_Maker_(5880685531).jpg?width=600',
+            // Water filters
+            'WF_Brita_Purity':             'https://commons.wikimedia.org/wiki/Special:FilePath/Brita_Filter.png?width=600',
+            'WF_Everpure_4C':              'https://commons.wikimedia.org/wiki/Special:FilePath/Haushalts-Wasserfilter.jpg?width=600',
+            'WF_BWT_BestmaxPremium':       'https://commons.wikimedia.org/wiki/Special:FilePath/Under-sink_Water_Filter_System.jpg?width=600',
+            'WF_3M_Cyclone':               'https://commons.wikimedia.org/wiki/Special:FilePath/WATER_PURIFIER.jpg?width=600'
+        };
+
         window.BEVERAGE_IMAGES = {
             'Espresso':          'https://images.unsplash.com/photo-1510707577719-ae7c14805e3a?w=400&q=80&fit=crop',
             'Double_Espresso':   'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=400&q=80&fit=crop',
