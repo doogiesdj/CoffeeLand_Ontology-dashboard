@@ -6591,7 +6591,33 @@
               props:{ hasName:'쟈뎅 (Jardin Coffee)', hasSpecialty:'Coffee Beans / Liquid Coffee', hasCountry:'South Korea', hasFoundedYear:'1984', hasCapacitySpec:'2022년 제3공장 — 국내 최대 단일 커피공장' } },
             { name:'IV_DongsuhFoods', type:'IngredientVendor',
               description:'1980년 커피 브랜드 맥심을 도입해 국내 인스턴트 커피의 대명사가 된 기업. 2000년대에도 인스턴트 커피 시장 점유율 75~80%를 유지했고, 2011년 원두커피 믹스 카누를 출시했다. 인천 부평공장과 경남 창원공장에서 생산한다.',
-              props:{ hasName:'동서식품 (Dongsuh Foods)', hasSpecialty:'Instant Coffee / Coffee Mix', hasCountry:'South Korea', hasCity:'Incheon', hasFoundedYear:'1980', hasCapacitySpec:'인천 부평·경남 창원 생산라인' } }
+              props:{ hasName:'동서식품 (Dongsuh Foods)', hasSpecialty:'Instant Coffee / Coffee Mix', hasCountry:'South Korea', hasCity:'Incheon', hasFoundedYear:'1980', hasCapacitySpec:'인천 부평·경남 창원 생산라인' } },
+
+            // ── 국내 장비 공급사 (Korean Equipment Suppliers) ──
+            { name:'ES_Flowell', type:'EquipmentSupplier',
+              description:'2003년 유체제어 사업으로 출발해 하드웨어·펌웨어 설계와 시스템 설계 용역으로 업력을 쌓은 기업. 자사 특허 유체제어 기술을 접목해 커피머신을 개발하고 2013년 국산 커피머신 브랜드 "엘로치오"를 론칭했으며, 미국·중국·유럽으로 수출한다.',
+              props:{ hasName:'㈜후로웰 (Flowell / El Rocio)', hasSpecialty:'EspressoMachine', hasCountry:'South Korea', hasFoundedYear:'2003', supplies:['EM_ElRocio_ManusV2'] } },
+            { name:'ES_MrCoffee', type:'EquipmentSupplier',
+              description:'33년간 다양한 커피 사업을 이어오며 커피 기술 전문 기업으로 성장했고, 국내 최초의 국산 상업용 전자동 커피 머신 "브루보이"를 개발·생산했다.',
+              props:{ hasName:'㈜미스터커피 (Mr. Coffee)', hasSpecialty:'EspressoMachine (Bean-to-cup)', hasCountry:'South Korea', supplies:['EM_MrCoffee_BrewBoy'] } },
+            { name:'ES_CoffeeChaps', type:'EquipmentSupplier',
+              description:'LCD·카메라 모듈 생산 기업 비섹전자가 론칭한 커피 장비 브랜드. 빔히터 기반의 자동 브루잉 머신 브루비와 사이폰 모델, 그리고 미분 제거용 Air-Sifting System을 적용한 그라인더 에어밀을 개발·생산한다.',
+              props:{ hasName:'커피챕스 (COFFEE CHAPS / 비섹전자)', hasSpecialty:'Brewer / Grinder', hasCountry:'South Korea', supplies:['BR_CoffeeChaps_BrewvieII', 'GR_CoffeeChaps_Airmill'] } },
+            { name:'ES_Stronghold', type:'EquipmentSupplier',
+              description:'세계 최초로 매장용 스마트 커피 로스터를 선보인 기업. S SERIES(S7·S9)를 연구개발·제조·판매하며, S7은 2015년부터 월드커피로스팅챔피언십 공식 로스터로 3년 연속 채택됐다. 독일 뉘른베르크 국제 발명 전시회와 미국 피츠버그 국제발명전시회에서 금상을 받았다.',
+              props:{ hasName:'㈜스트롱홀드테크놀로지 (Stronghold Technology)', hasSpecialty:'RoasterMachine', hasCountry:'South Korea', hasCity:'Seoul (금천구)', hasFoundedYear:'2010', supplies:['RM_Stronghold_S7ProX', 'RM_Stronghold_S9X'] } },
+            { name:'ES_Taehwan', type:'EquipmentSupplier',
+              description:'1989년 자동볶음기 "도리깨" 개발을 시작으로 기초식품 가공설비부터 커피 산업 분야까지 솔루션을 제공해 온 기업. 창업 초기에는 깨를 볶는 기계를 만들었고, 1999년 국산 커피 로스터를 개발해 프로스터(PROASTER) 브랜드로 200g급부터 30kg 이상까지 라인업을 갖췄다.',
+              props:{ hasName:'㈜태환자동화산업 (PROASTER)', hasSpecialty:'RoasterMachine', hasCountry:'South Korea', hasFoundedYear:'1989', supplies:['RM_Proaster_THCR06'] } },
+            { name:'ES_Icetro', type:'EquipmentSupplier',
+              description:'인천에 본사를 둔 국내 제빙기 전문 기업. 카페·식당용 큐빅 제빙기부터 가루·눈꽃 제빙기까지 폭넓은 라인업을 운영하며, 공냉식·수냉식과 필터 내장형 모델을 함께 공급한다.',
+              props:{ hasName:'아이스트로 (ICETRO)', hasSpecialty:'IceMaker', hasCountry:'South Korea', hasCity:'Incheon', supplies:['IM_Icetro_ICI060'] } },
+            { name:'ES_Daeyoung', type:'EquipmentSupplier',
+              description:'1981년 대영공업㈜ 설립 이래 국내 업소용 냉동·냉장고 산업을 이끌어 온 기업. 2002년 사명을 대영이앤비로 변경했고, 라셀르(Lassele) 브랜드로 카페·식당용 제빙기와 냉장 설비를 공급한다.',
+              props:{ hasName:'대영이앤비 (Daeyoung E&B / Lassele)', hasSpecialty:'IceMaker / Refrigeration', hasCountry:'South Korea', hasFoundedYear:'1981', supplies:['IM_Daeyoung_Lassele'] } },
+            { name:'ES_Chungho', type:'EquipmentSupplier',
+              description:'1993년 청호인터내셔날 설립, 1994년 법인 출범 이후 정수기·공기청정기·비데·연수기 등 환경 건강 가전을 제조·판매해 온 기업. 커피머신과 얼음정수기를 결합한 카페용 정수 솔루션도 공급한다.',
+              props:{ hasName:'청호나이스 (Chungho Nais)', hasSpecialty:'WaterFilter / Water Treatment', hasCountry:'South Korea', hasCity:'Seoul (서초구)', hasFoundedYear:'1993', supplies:['WF_Chungho_EspreCafe'] } }
         ];
 
         // Merge EXTRA_INSTANCES into a parsed ontology so they render like RDF individuals
@@ -6603,7 +6629,11 @@
                 if (ont.instanceMap[uri]) return;
                 const properties = {};
                 Object.entries(x.props || {}).forEach(([k, v]) => {
-                    properties[k] = [{ type: 'literal', value: v }];
+                    // Array → object property (links to other individuals), string → data property.
+                    // Underscores are stripped from object values to match the JSON loader.
+                    properties[k] = Array.isArray(v)
+                        ? v.map(o => ({ type: 'uri', value: String(o).replace(/_/g, ' ') }))
+                        : [{ type: 'literal', value: v }];
                 });
                 ont.instanceMap[uri] = {
                     uri, name: x.name,
@@ -6691,9 +6721,48 @@
             'IV_DongsuhFoods': 'https://commons.wikimedia.org/wiki/Special:FilePath/Korean_coffee_mix_Maxim.jpg?width=600'
         };
 
+        // Equipment suppliers reuse the photo of the equipment they make,
+        // so the picture on a supplier card is literally their product.
+        window.SUPPLIER_PHOTO_ALIAS = {
+            // 해외 공급사
+            'ES_LaMarzocco':      'EM_LaMarzocco_Linea',
+            'ES_Synesso':         'EM_Synesso_MVP',
+            'ES_DeLonghi':        'EM_DeLonghi_Pro',
+            'ES_NuovaSimonelli':  'EM_Nuova_Simonelli',
+            'ES_Faema':           'EM_Faema_E71',
+            'ES_Rancilio':        'EM_Rancilio_Classe9',
+            'ES_VictoriaArduino': 'EM_VictoriaArduino_EagleOne',
+            'ES_Slayer':          'EM_Slayer_SteamEP',
+            'ES_Sanremo':         'EM_Sanremo_CafeRacer',
+            'ES_Mazzer':          'GR_Mazzer_Major',
+            'ES_Baratza':         'GR_Baratza_Forte',
+            'ES_Mahlkonig':       'GR_Mahlkonig_EK43',
+            'ES_Ditting':         'GR_Ditting_KR804',
+            'ES_Fiorenzato':      'GR_Fiorenzato_F64',
+            'ES_Comandante':      'GR_Comandante_C40',
+            'ES_Probat':          'RM_Probat_P25',
+            'ES_Loring':          'RM_Loring_S35',
+            'ES_Giesen':          'RM_Giesen_W15',
+            'ES_Diedrich':        'RM_Diedrich_IR12',
+            'ES_Hoshizaki':       'IM_Hoshizaki_KM',
+            'ES_Manitowoc':       'IM_Manitowoc_IndigoNXT',
+            'ES_Brita':           'WF_Brita_Purity',
+            'ES_BWT':             'WF_BWT_BestmaxPremium',
+            // 국내 공급사
+            'ES_Flowell':         'EM_ElRocio_ManusV2',
+            'ES_MrCoffee':        'EM_MrCoffee_BrewBoy',
+            'ES_CoffeeChaps':     'GR_CoffeeChaps_Airmill',
+            'ES_Stronghold':      'RM_Stronghold_S7ProX',
+            'ES_Taehwan':         'RM_Proaster_THCR06',
+            'ES_Icetro':          'IM_Icetro_ICI060',
+            'ES_Daeyoung':        'IM_Daeyoung_Lassele',
+            'ES_Chungho':         'WF_Chungho_EspreCafe'
+        };
+
         // Photo for an instance, whichever catalog it lives in
         function instancePhoto(name) {
-            const key = String(name || '').replace(/\s+/g, '_');
+            const raw = String(name || '').replace(/\s+/g, '_');
+            const key = (window.SUPPLIER_PHOTO_ALIAS && window.SUPPLIER_PHOTO_ALIAS[raw]) || raw;
             return (window.EQUIPMENT_IMAGES && window.EQUIPMENT_IMAGES[key])
                 || (window.VENDOR_IMAGES && window.VENDOR_IMAGES[key])
                 || null;
