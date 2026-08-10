@@ -2243,10 +2243,163 @@
                     { name:'Caramel Macchiato',    category:'Espresso-based', prepTime:'5 min',  servings:'1', ingredients:['Vanilla Syrup','160ml Steamed Milk','Double Espresso','Caramel'], difficulty:'Intermediate' }
                 ],
                 TrainingProgram: [
-                    { name:'Barista Basics',         level:'Beginner',  modules:'5', duration:'2 Weeks', topics:['Espresso Fundamentals','Milk Steaming','Coffee Origins','Equipment Care','POS Usage'] },
-                    { name:'Advanced Espresso',      level:'Advanced',  modules:'8', duration:'4 Weeks', topics:['Espresso Calibration','Grind Profile','Latte Art','Cupping','Flavor Profiling','Competition Prep'] },
-                    { name:'Customer Service',       level:'Beginner',  modules:'3', duration:'1 Week',  topics:['Communication Skills','Complaint Handling','Upselling Techniques'] },
-                    { name:'Food Safety & Hygiene',  level:'Mandatory', modules:'6', duration:'3 Weeks', topics:['HACCP Principles','Allergen Awareness','Temperature Control','Cleaning Procedures','Personal Hygiene','Certification'] }
+                    // ── 매장 자체 운영 사내 교육 (In-house) ──
+                    { name:'Barista Basics',         level:'Beginner',  modules:'5', duration:'2 Weeks', topics:['Espresso Fundamentals','Milk Steaming','Coffee Origins','Equipment Care','POS Usage'],
+                      summary:'신규 입사 바리스타가 매장 실무에 투입되기 전 이수하는 사내 기본 과정. 에스프레소 추출과 우유 스티밍 등 핵심 기술을 2주에 걸쳐 익힌다.',
+                      facts:[['성격','매장 자체 운영 사내 교육'],['대상','신규 입사 바리스타'],['이수 기준','5개 모듈 전체 이수 + 실기 확인'],['후속 과정','Advanced Espresso']] },
+                    { name:'Advanced Espresso',      level:'Advanced',  modules:'8', duration:'4 Weeks', topics:['Espresso Calibration','Grind Profile','Latte Art','Cupping','Flavor Profiling','Competition Prep'],
+                      summary:'추출 변수를 스스로 설계·보정할 수 있는 숙련 바리스타 양성 과정. 커핑과 향미 프로파일링을 포함하며 대회 준비 과정까지 다룬다.',
+                      facts:[['성격','매장 자체 운영 사내 심화 교육'],['선수 과정','Barista Basics 이수'],['핵심 역량','그라인드 프로파일 설계, 추출 캘리브레이션'],['확장','바리스타 대회 출전 준비']] },
+                    { name:'Customer Service',       level:'Beginner',  modules:'3', duration:'1 Week',  topics:['Communication Skills','Complaint Handling','Upselling Techniques'],
+                      summary:'응대 화법과 컴플레인 처리, 업셀링을 다루는 단기 서비스 과정. 전 직군이 공통으로 이수한다.',
+                      facts:[['성격','매장 자체 운영 사내 교육'],['대상','홀·바 전 직군'],['기간','1주 (3개 모듈)']] },
+                    { name:'Food Safety & Hygiene',  level:'Mandatory', modules:'6', duration:'3 Weeks', topics:['HACCP Principles','Allergen Awareness','Temperature Control','Cleaning Procedures','Personal Hygiene','Certification'],
+                      summary:'HACCP 원칙과 알레르겐 관리, 온도·세척 관리를 다루는 필수 위생 과정. 이수 시 사내 인증이 부여된다.',
+                      facts:[['성격','전 직원 필수(Mandatory) 과정'],['핵심','HACCP 7원칙, 알레르겐 표시, 온도 관리'],['이수','6개 모듈 완료 시 인증 발급']] },
+
+                    // ── 대한민국 국내 운영 프로그램 (Korea Domestic Programs) ──
+                    { name:'바리스타 2급 (KCA Barista Level 2)', region:'KR',
+                      provider:'(사)한국커피협회 (KCA)', level:'Beginner', modules:'5', duration:'필기 + 실기 검정',
+                      topics:['커피학 개론','에스프레소 추출','우유 스티밍','위생·매장 관리','서비스 기술'],
+                      note:'국내 최다 응시 민간자격 · 검정료 99,000원(필기 33,000 / 실기 66,000)',
+                      summary:'국내에서 가장 널리 통용되는 바리스타 입문 민간자격. 협회 인증 교육기관에서 과정을 이수한 뒤 필기와 실기 검정을 각각 치른다. 상위 자격인 바리스타 1급의 응시 전제 조건이기도 하다.',
+                      facts:[['운영','(사)한국커피협회 (KCA)'],['검정료','필기 33,000원 + 실기 66,000원 = 99,000원'],['합격 기준','필기·실기 각 60점 이상'],['다음 단계','바리스타 1급 응시 자격 획득'],['교육','협회 인증 교육기관·평생교육원에서 수강']],
+                      url:'https://www.kca-coffee.org/cms/FrCon/index.do?MENU_ID=610' },
+                    { name:'바리스타 1급 (KCA Barista Level 1)', region:'KR',
+                      provider:'(사)한국커피협회 (KCA)', level:'Advanced', modules:'6', duration:'인증기관 교육 24시간 이상',
+                      topics:['커피학 개론','로스팅·향미 평가','추출 이론','에스프레소·카푸치노 시연','서비스 기술','영어 커피 용어'],
+                      note:'2급 취득자 응시 · 필기 50문항/50분(영어 약 10%), 실기 준비·시연 15분',
+                      summary:'바리스타 2급 취득자가 도전하는 상위 자격. 로스팅과 향미 평가까지 출제 범위가 넓어지고, 실기는 평가자 2명이 기술적·감각적 항목을 함께 채점한다.',
+                      facts:[['응시 자격','협회 바리스타 2급 취득자 (또는 인증 평생교육원 24시간 이상 이수)'],['필기','50문항 객관식 / 50분, 영어 커피 문제 약 10% 포함'],['실기','준비·에스프레소·카푸치노·서비스 기술 평가, 준비 및 시연 15분'],['채점','평가자 2인이 응시자 1인을 평가'],['합격 기준','필기·실기 각 60점 이상, 필기 합격 후 2년 내 실기 응시']],
+                      url:'https://www.kca-coffee.org/cms/FrCon/index.do?MENU_ID=620' },
+                    { name:'커피지도사 1·2급 (Coffee Instructor)', region:'KR',
+                      provider:'(사)한국커피협회 (KCA)', level:'Instructor', modules:'6', duration:'전 과정 72시간',
+                      topics:['홈카페마스터 18h','커피지도사 2급 27h','커피지도사 1급 27h','추출 설계','메뉴 조리 지도','고객 서비스 지도'],
+                      note:'커피 교육자 양성 과정 · 하위 단계부터 순차 수강',
+                      summary:'커피를 "가르치는 사람"을 양성하는 과정평가형 자격. 홈카페마스터부터 커피지도사 1급까지 총 72시간을 단계적으로 이수하며, 추출 설계와 메뉴 조리·고객 서비스를 지도하는 역량을 평가한다.',
+                      facts:[['총 교육시간','72시간 (홈카페마스터 18h + 2급 27h + 1급 27h)'],['수강 방식','하위 단계부터 순차 수강'],['2급 평가','필기 100점 만점 60점 이상 — 커피 품종, 추출기구 활용, 추출설계'],['1급 평가','필기·실기 — 추출설계·메뉴조리·고객서비스 지도'],['성격','과정평가형 (교육 이수 + 테스트 통과)']],
+                      url:'https://www.kca-coffee.org/cms/FrCon/index.do?MENU_ID=660' },
+                    { name:'로스트마스터 (Roast Master)', region:'KR',
+                      provider:'(사)한국커피협회 (KCA)', level:'Intermediate', modules:'6', duration:'이론 + 실습 과정',
+                      topics:['생두 분류','로스팅 이론','로스트 프로파일','결점두 식별','향미 평가','로스터리 카페 운영'],
+                      note:'홈 로스터·소규모 로스터리 창업자 대상 로스팅 표준 인증',
+                      summary:'로스팅 기술의 표준을 제시하고 커피 가공 기술의 이해도를 검증하는 심사평가형 자격. 늘어나는 홈 로스터와 소규모 로스터리 카페 창업자를 주요 대상으로 한다.',
+                      facts:[['운영','(사)한국커피협회 (KCA)'],['목적','로스팅 이론·기술의 표준 제시와 이해도 증진'],['대상','홈 로스터, 로스터리 카페 창업 예정 바리스타'],['성격','심사평가형 자격']],
+                      url:'https://www.kca-coffee.org/cms/FrCon/index.do?MENU_ID=670' },
+                    { name:'홈카페마스터 (Home Cafe Master)', region:'KR',
+                      provider:'(사)한국커피협회 (KCA)', level:'Beginner', modules:'4', duration:'18시간',
+                      topics:['커피학 개론','추출 기구 활용','핸드드립','향미 평가'],
+                      note:'일반 소비자 대상 입문 과정 · 이수 시 커피지도사 1급 응시 자격 부여',
+                      summary:'가정이나 사무실에서 수준 높은 커피를 다룰 수 있게 하는 입문 과정. 원두커피를 즐기는 일반인에게 올바른 커피 기술을 알리는 것이 목적이며, 이수자는 커피지도사 1급에 도전할 자격을 얻는다.',
+                      facts:[['교육시간','18시간'],['평가','필기 + 실기 — 커피학개론, 추출, 향미평가'],['대상','일반 소비자, 홈카페 이용자'],['연계','이수 시 커피지도사 1급 응시 자격 부여']],
+                      url:'https://www.kca-coffee.org/cms/FrCon/index.do?MENU_ID=2060' },
+                    { name:'SCA 커피 스킬즈 프로그램 (CSP) — 한국', region:'KR',
+                      provider:'SCA 한국챕터 · 공인 트레이너(AST)', level:'Foundation~Professional', modules:'6', duration:'모듈별 1~5일',
+                      topics:['Introduction to Coffee','Barista Skills','Brewing','Green Coffee','Roasting','Sensory Skills'],
+                      note:'국제 표준 교육의 국내 운영 · 6개 모듈 × 3단계(입문/중급/고급)',
+                      summary:'국제 스페셜티커피협회(SCA)의 표준 교육을 한국챕터와 국내 공인 트레이너(AST)가 운영한다. 2017년 SCA 통합·개칭 이후 매년 프로그램 내용과 체계가 개선되어 왔다.',
+                      facts:[['운영','SCA 한국챕터 · 국내 AST 보유 교육기관'],['구성','Introduction to Coffee + 전문 모듈 5개'],['레벨','Foundation / Intermediate / Professional 3단계'],['Barista Skills 내용','그라인더 세팅, 에스프레소 추출, 카푸치노 밀크 프로싱, 라떼아트, 위생·안전, 고객 서비스, 기초 경영'],['강사','SCA 공인 트레이너(AST)만 강의 가능']],
+                      url:'https://korea.sca.coffee/education/csp' },
+                    { name:'Q 그레이더 (Q Arabica Grader) — 한국', region:'KR',
+                      provider:'국내 Q 인증 교육기관 (6개소)', level:'Professional', modules:'6', duration:'6일 집중 + 22개 시험',
+                      topics:['커핑 프로토콜','트라이앵귤레이션','아로마 식별','유기산 판별','결점두 그레이딩','로스트 레벨 식별'],
+                      note:'2025.10.1부터 CQI에서 SCA로 이관, CVA 기반으로 운영',
+                      summary:'커피의 품질을 국제 기준으로 평가하는 감별 전문가 자격. 일주일간의 집중 교육 뒤 22개의 서로 다른 시험을 모두 통과해야 인정되며, 국내에서 취득 가능한 인증기관은 6개소다.',
+                      facts:[['국내 취득처','국내 Q 인증 교육기관 6개소'],['시험','22개 개별 시험 전부 합격 필요'],['교육 일정','통상 6일간 오전 8:30~오후 5시 집중 과정'],['제도 변경','2025년 10월 1일부터 SCA가 CVA 기반으로 운영, CQI는 운영에서 철수'],['관련 자격','SCA Sensory Skills Professional']],
+                      url:'https://korea.sca.coffee/q-grader' },
+                    { name:'국민내일배움카드 바리스타 양성과정', region:'KR',
+                      provider:'고용노동부 지정 훈련기관 (HRD-Net)', level:'Beginner', modules:'6', duration:'약 31일 (출석 80% 이상)',
+                      topics:['커피 기초 이론','에스프레소 추출','우유 스티밍','머신 사용·위생 관리','카페 실무','자격 검정 대비'],
+                      note:'국비 지원 직업훈련 · 실업자/재직자/자영업자 모두 신청 가능, 훈련비 최대 지원',
+                      summary:'고용노동부의 국민내일배움카드로 훈련비를 지원받아 수강하는 국비 직업훈련. 커피를 처음 접하는 교육생도 참여할 수 있도록 기초 이론부터 실습 중심으로 구성되며, 통상 20일 정도면 바리스타 자격 검정에 도전할 수 있는 수준에 이른다.',
+                      facts:[['지원 제도','국민내일배움카드 — 실업자·재직자·자영업자 모두 신청 가능'],['훈련비','최대 70% 수준 지원, 교재 제공 과정 다수'],['훈련 기간','약 31일 과정이 일반적'],['이수 요건','출석 80% 미만 시 미이수 처리 및 향후 훈련 신청 시 페널티'],['커리큘럼','에스프레소 추출, 우유 스티밍, 카푸치노 제조, 머신 사용법, 위생관리 등 카페 실무 중심'],['신청','HRD-Net (고용노동부 직업훈련포털)']],
+                      url:'https://www.hrd.go.kr' },
+                    { name:'스타벅스 커피 마스터 (Coffee Master)', region:'KR',
+                      provider:'스타벅스 코리아 (사내 인증)', level:'In-house', modules:'5', duration:'6개월 이상',
+                      topics:['커피 지식','추출 실습','커핑·테이스팅','사이버 교육','고객 경험'],
+                      note:'국내 누적 약 17,000명 배출 · 취득 시 블랙 앞치마 착용, 커피 엑설런스 센터 심화 코칭 연계',
+                      summary:'스타벅스가 운영하는 사내 자격이자 커피 지식 교육 프로그램. 최소 6개월이 넘는 교육과 시험을 거쳐야 하며, 취득한 파트너만 녹색이 아닌 검은색 앞치마를 착용한다.',
+                      facts:[['운영','스타벅스 코리아 사내 인증 제도'],['기간','최소 6개월 이상 — 커피 지식·추출 실습·사이버 교육·시험'],['배출 규모','국내 누적 약 17,000여 명'],['상징','취득 시 블랙 앞치마 착용'],['심화 과정','커피 엑설런스 센터의 커피 코치·서비스 코치 현장 맞춤 코칭']],
+                      url:'https://www.shinsegaegroupnewsroom.com/starbucks-coffee-expert-training-center/' },
+                    { name:'커피머신 엔지니어 1·2급', region:'KR',
+                      provider:'한국커피연구원 (KCRO)', level:'Technical', modules:'5', duration:'2급 → 1급 단계 과정',
+                      topics:['머신 구조·부품','정비·트러블슈팅','수질·정수 관리','추출 압력·온도 세팅','안전 관리'],
+                      note:'국내 특화 과정 · 바리스타/로스팅/핸드드립/라떼아트/커피향미 과정도 1·2급 운영',
+                      summary:'커피머신 엔지니어링 공학을 기반으로 머신의 기능 관리 전반을 다루는 국내 특화 자격. 추출 기술뿐 아니라 장비의 정비·진단 역량을 갖춘 바리스타를 양성한다.',
+                      facts:[['운영','한국커피연구원 (KCRO)'],['등급','2급 → 1급 단계 취득'],['함께 운영하는 자격','바리스타, 로스팅, 핸드드립, 라떼아트, 커피향미전문가 (각 1·2급), 바리스타 트레이너'],['특징','머신 기능 관리와 원두 로스팅 원리를 함께 다룸'],['부가 사업','자격검정, 머신 개발·연구, 취업/창업 정보 지원']],
+                      url:'https://kcro.kr/certificate/engineer_2' },
+
+                    // ── 해외 국제 자격·교육 프로그램 (International Programs) ──
+                    { name:'SCA 커피 스킬즈 프로그램 (Global CSP)', region:'INTL',
+                      provider:'Specialty Coffee Association (SCA)', level:'Foundation~Professional', modules:'6', duration:'모듈별 1~5일',
+                      topics:['Introduction to Coffee','Barista Skills','Brewing','Green Coffee','Roasting','Sensory Skills'],
+                      note:'2024년 1월부터 SCA Skills Diplomas가 기존 100점 Coffee Diploma System을 대체',
+                      summary:'전 세계에서 통용되는 스페셜티 커피 표준 교육 체계. 1일짜리 Introduction to Coffee와 5개 전문 모듈로 구성되며, 각 전문 모듈은 Foundation·Intermediate·Professional 3단계로 나뉜다.',
+                      facts:[['운영','Specialty Coffee Association (SCA)'],['구성','Introduction to Coffee(1일) + 전문 모듈 5개'],['레벨','Foundation / Intermediate / Professional'],['이수 체계','모듈·레벨마다 포인트 획득, 100점 달성 시 Coffee Skills Diploma'],['제도 변경','2024년 1월부터 역할 기반 SCA Skills Diplomas로 전환'],['수강처','전 세계 AST 보유 인증 교육기관']],
+                      url:'https://education.sca.coffee/' },
+                    { name:'SCA 스킬즈 디플로마 (Skills Diploma)', region:'INTL',
+                      provider:'Specialty Coffee Association (SCA)', level:'Diploma', modules:'4', duration:'인증서 누적 취득',
+                      topics:['역할 기반 학습 경로','모듈 인증서 누적','전문 분야 심화','국제 통용 디플로마'],
+                      note:'기존 100점 Coffee Diploma System을 대체한 새 상위 인증',
+                      summary:'CSP 모듈 인증서를 모아 취득하는 상위 디플로마. 관심 분야와 직무에 맞춰 모듈을 선택해 쌓아가는 방식이며, 2024년 1월 기존 100점 체계를 대체했다.',
+                      facts:[['운영','SCA Education'],['취득 방식','CSP 모듈 인증서 누적'],['특징','직무·역할 기반(role-based) 학습 경로 제공'],['제도 변경','2024년 1월 100점 Coffee Diploma System 대체'],['신청','SCA Education 디플로마 신청 페이지']],
+                      url:'https://education.sca.coffee/sca-skills-diploma' },
+                    { name:'공인 SCA 트레이너 (AST)', region:'INTL',
+                      provider:'Specialty Coffee Association (SCA)', level:'Trainer', modules:'5', duration:'3년 라이선스',
+                      topics:['경력·자격 심사','프로그램 지식 평가','온라인 과정 + 라이브 세션','라이선스 계약','지속적 전문성 개발(CPD)'],
+                      note:'SCA 교육을 강의할 수 있는 유일한 공인 자격',
+                      summary:'SCA 인증 교육을 직접 강의할 수 있는 트레이너 라이선스. 가르치려는 모듈의 상위 인증서를 보유해야 하며, 심사·지식평가·온라인 과정을 거쳐 3년 단위 라이선스 계약을 맺는다.',
+                      facts:[['CSP 응시 요건','가르치려는 모듈의 Intermediate + Professional 인증서 보유'],['인증서 유효 조건','CSP Professional 인증서는 2017년 1월 1일 이후 취득분만 인정'],['CTechP 트레이너','외부 고객 대상 커피 장비 정비·수리 경력 3년 이상'],['절차','서류 심사 → 지식 평가 → 온라인 과정·라이브 세션 → 라이선스 계약'],['라이선스','3년 계약, 기간 중 CPD 활동 의무']],
+                      url:'https://education.sca.coffee/become-a-trainer' },
+                    { name:'Q 그레이더 (Evolved / CVA 기반)', region:'INTL',
+                      provider:'SCA (2025.10.1 CQI에서 이관)', level:'Professional', modules:'6', duration:'집중 과정 + 시험',
+                      topics:['CVA 평가 체계','커핑 프로토콜','후각·미각 판별','유기산 식별','트라이앵귤레이션','생두·원두 그레이딩'],
+                      note:'전 세계 약 10,000명의 Q 그레이더에 영향을 준 제도 개편',
+                      summary:'커피 품질을 국제 기준으로 감별하는 대표 자격. 2025년 10월 1일부터 SCA가 운영을 맡아 2023년 도입된 Coffee Value Assessment(CVA)를 기반으로 개편되었고, 2004년 레거시 커핑 폼은 더 이상 사용되지 않는다.',
+                      facts:[['운영 주체','2025년 10월 1일부터 SCA (CQI는 Q 프로그램 운영에서 철수)'],['평가 기준','2023년 도입된 CVA가 2004년 레거시 커핑 폼을 대체'],['영향 규모','전 세계 인증 Q 그레이더 약 10,000명'],['패스트트랙','기존·만료 Arabica/Robusta Q 그레이더, Q 강사 등은 2025년 12월 31일까지 CVA for Cuppers 이수 시 전환'],['배경','2025년 4월 SCA·CQI 파트너십 발표']],
+                      url:'https://education.sca.coffee/' },
+                    { name:'Q 로부스타 그레이더 (R Grader)', region:'INTL',
+                      provider:'Coffee Quality Institute (CQI)', level:'Professional', modules:'9', duration:'5~6일 + 22개 시험',
+                      topics:['커핑 프로토콜','후각·미각 감각','생두·원두 그레이딩','유기산 식별','트라이앵귤레이션','로스트 레벨 식별','가공 방식 평가'],
+                      note:'자격 유효기간 3년 · 공인 캘리브레이션 이수 시 갱신',
+                      summary:'아라비카가 아닌 로부스타(파인 로부스타) 품질을 감별하는 국제 자격. 9개 모듈 20여 개 시험으로 구성된 5일 일정에서 총 22개 개별 테스트를 모두 통과해야 한다.',
+                      facts:[['운영','Coffee Quality Institute (CQI)'],['시험 구성','9개 모듈 / 20여 개 시험, 총 22개 개별 테스트 합격 필요'],['평가 항목','커핑 프로토콜, 후·미각, 생두·원두 그레이딩, 유기산 식별, 트라이앵귤레이션, 로스트 레벨, 가공 평가'],['선수 조건','없음 (커핑 경험 권장) · 최소 등록 연령 16세'],['재응시','불합격 과목은 18개월 이내 재응시 가능'],['유효 기간','3년, 공인 캘리브레이션 이수 시 갱신']],
+                      url:'https://www.coffeeinstitute.org/page/q-grader-exams-and-calibrations' },
+                    { name:'CQI Q 프로세싱 (Level 1~3)', region:'INTL',
+                      provider:'Coffee Quality Institute (CQI)', level:'Generalist~Expert', modules:'3', duration:'Level 1: 2일 / Level 2: 현장 과정',
+                      topics:['가공 표준 용어','비교 커핑','주요 가공 방식','후처리 품질관리 시스템','플레이버 프로파일 설계'],
+                      note:'생산·가공 단계 전문가를 위한 3단계 국제 자격',
+                      summary:'수확 후 가공(post-harvest processing) 역량을 3단계로 인증하는 과정. Level 1 Generalist, Level 2 Professional, Level 3 Expert 순으로 올라가며 생산자·프로세서·품질관리자를 주 대상으로 한다.',
+                      facts:[['Level 1 (Generalist)','2일간 강의 + 실습, 비교 커핑 포함 / 시험 75% 이상 합격 시 라이선스'],['Level 2 (Professional)','현장 기반 과정 — 주요 가공 방식 심화, 후처리 품질관리 시스템 실습, 이론·실기 시험 모두 합격 필요'],['Level 3 (Expert)','최상위 등급 인증'],['목표','가공을 통해 서로 다른 향미 프로파일을 구현하는 역량'],['대상','생산자, 가공 담당자, 품질관리자']],
+                      url:'https://www.coffeeinstitute.org/' },
+                    { name:'커피 밸류 어세스먼트 (CVA for Cuppers)', region:'INTL',
+                      provider:'Specialty Coffee Association (SCA)', level:'Professional', modules:'4', duration:'단기 집중 과정',
+                      topics:['CVA 프레임워크','기술적(Technical) 평가','기술서술적(Descriptive) 평가','정서적(Affective) 평가','외재적 가치 평가'],
+                      note:'2023년 도입 · 2025년 10월부터 Q 그레이더 평가 기준으로 채택',
+                      summary:'향미뿐 아니라 커피를 특별하게 만드는 여러 속성까지 평가 범위를 넓힌 SCA의 새 평가 체계. 2004년부터 쓰이던 레거시 커핑 폼을 대체했으며, 개편된 Q 그레이더 프로그램의 기준이 된다.',
+                      facts:[['도입','2023년 SCA 발표'],['대체 대상','2004년 SCA 레거시 커핑 폼'],['적용','2025년 10월부터 Q 그레이더 프로그램 평가 기준'],['활용','기존 Q 그레이더의 라이선스 전환(패스트트랙) 경로'],['평가 축','기술적 / 기술서술적 / 정서적 / 외재적 평가']],
+                      url:'https://education.sca.coffee/cva-for-cuppers-course' },
+                    { name:'Barista Hustle 온라인 인증 과정', region:'INTL',
+                      provider:'Barista Hustle (호주)', level:'Online', modules:'4', duration:'과정별 최대 약 30시간',
+                      topics:['Advanced Coffee Making','The Water Course','The Espresso Machine','Advanced Espresso','추출·균질성 이론','감각 훈련'],
+                      note:'100% 온라인 · 최종 평가 85% 이상 시 인증서 발급',
+                      summary:'현직 바리스타와 홈 바리스타 모두를 대상으로 한 온라인 심화 교육. 추출과 균질성(evenness)에 대한 이해를 심화하고 감각 인지를 훈련하며, 각 과정은 이해도 테스트와 최종 평가를 통과해야 인증된다.',
+                      facts:[['Advanced Coffee Making','77개 레슨 + 26개 심층 영상 / 텍스트·영상·평가·가정 실험 포함 최대 약 30시간'],['수료 기준','각 레슨 이해도 테스트 통과 + 최종 평가 85점 이상'],['The Water Course','7개 챕터, 12개 강의 영상, 도표·용어집 다수 — 스케일·부식 진단과 물 설계'],['형식','100% 온라인 (PC·모바일), 평생 접근'],['인증','Barista Hustle Accredited Certificate 발급']],
+                      url:'https://www.baristahustle.com/' },
+                    { name:'에스프레소 이탈리아노 스페셜리스트', region:'INTL',
+                      provider:'IIAC · Istituto Espresso Italiano (이탈리아)', level:'Specialist', modules:'5', duration:'2일 + 시험',
+                      topics:['이탈리안 에스프레소 역사','블렌드와 물','그라인딩·추출','카푸치노','관능 패널 테스트'],
+                      note:'인증 이탈리안 에스프레소(Certified Italian Espresso) 추출 라이선스',
+                      summary:'이탈리아식 에스프레소의 정통 추출 기준을 인증하는 과정. 2일간의 교육과 시험을 통과하면 Espresso Italiano Specialist 라이선스를 받으며, 바(bar) 현장에서 인증 이탈리안 에스프레소를 제공할 수 있다.',
+                      facts:[['운영','IIAC (1993년 설립 비영리 협회) · INEI 교수진'],['기간','2일 과정 + 시험'],['내용','이탈리안 에스프레소와 카푸치노의 역사·기술·문화, 블렌드·물·그라인딩·추출, 관능 패널 실습'],['연계','1998년부터 Istituto Espresso Italiano(IEI) 파트너 — 인증 이탈리안 에스프레소 관능 프로파일 정의에 참여'],['대상','바(bar) 등 접객업소 종사자']],
+                      url:'https://www.assaggiatoricaffe.org/' },
+                    { name:'J.C.Q.A. 커피 인스트럭터 검정 (일본)', region:'INTL',
+                      provider:'전일본커피검정위원회 (J.C.Q.A.)', level:'3급~감정사', modules:'4', duration:'급수별 검정',
+                      topics:['커피 기초 지식','테이스팅 기법','품질 감별','제조·판매 실무'],
+                      note:'3급 → 2급 → 1급 → 커피 감정사(鑑定士) 단계 구성',
+                      summary:'일본의 대표적인 커피 자격 체계. 커피 판매·제조 종사자를 대상으로 기초 지식과 테이스팅 기법을 단계적으로 검정하며, 최상위에는 커피 감정사(鑑定士) 과정이 있다.',
+                      facts:[['운영','전일본커피검정위원회 (J.C.Q.A.) — 전일본커피상공조합연합회 산하'],['체계','3급 → 2급 → 1급 → 커피 감정사(鑑定士)'],['2급','커피의 기초 지식과 테이스팅 기법 — 커피 판매 종사자 대상'],['1급','고도의 전문 지식과 테이스팅 기술 평가'],['응시 조건','1급은 2급 합격이 전제 조건']],
+                      url:'https://kentei.jcqa.org/' }
                 ],
                 Consumable: [
                     { name:'Paper Cup',    category:'Packaging', sizes:'8oz / 12oz / 16oz',    material:'Recycled Fiber',  monthlyUsage:'~2,000 pcs', eco:'Compostable' },
@@ -2305,19 +2458,25 @@
                     <div class="info-card-footer"><span>Difficulty: ${demo.difficulty}</span><i class="fas fa-arrow-right" style="color:#8b5cf6"></i></div>`;
             } else if (className === 'TrainingProgram') {
                 card.classList.add('training-card');
+                const th = trainingTheme(demo);
                 const tags = demo.topics.map(t => `<span class="info-card-tag">${t}</span>`).join('');
                 card.innerHTML = `
                     <div class="info-card-header">
-                        <div class="info-card-icon" style="background:linear-gradient(135deg,#3b82f6,#1d4ed8)"><i class="fas fa-graduation-cap"></i></div>
-                        <div class="info-card-badge" style="background:rgba(59,130,246,.1);color:#3b82f6;border:1px solid #3b82f6">${demo.level}</div>
+                        <div class="info-card-icon" style="background:${th.grad}"><i class="fas fa-graduation-cap"></i></div>
+                        <div class="info-card-badge" style="background:rgba(${th.rgb},.1);color:${th.accent};border:1px solid ${th.accent}">${demo.level}</div>
                     </div>
                     <div class="info-card-name">${demo.name}</div>
-                    <div class="info-card-meta" style="background:rgba(59,130,246,.05)">
-                        <div class="info-meta-item"><span class="info-meta-label">Modules</span><span class="info-meta-value" style="color:#3b82f6">${demo.modules}</span></div>
-                        <div class="info-meta-item"><span class="info-meta-label">Duration</span><span class="info-meta-value" style="color:#3b82f6">${demo.duration}</span></div>
+                    ${demo.provider ? `<div class="info-card-provider" style="display:flex;align-items:center;gap:.35rem;margin:.35rem 0 .1rem;font-size:.78rem;color:var(--text-secondary)"><i class="fas fa-building" style="color:${th.accent}"></i>${demo.provider}</div>` : ''}
+                    <div class="info-card-meta" style="background:rgba(${th.rgb},.05)">
+                        <div class="info-meta-item"><span class="info-meta-label">Modules</span><span class="info-meta-value" style="color:${th.accent}">${demo.modules}</span></div>
+                        <div class="info-meta-item"><span class="info-meta-label">Duration</span><span class="info-meta-value" style="color:${th.accent};font-size:0.75rem">${demo.duration}</span></div>
                     </div>
                     <div class="info-card-tags">${tags}</div>
-                    <div class="info-card-footer"><span>Training Program</span><i class="fas fa-arrow-right" style="color:#3b82f6"></i></div>`;
+                    ${demo.note ? `<div class="info-card-note" style="margin-top:.5rem;font-size:.72rem;line-height:1.45;color:var(--text-secondary)"><i class="fas fa-circle-info" style="color:${th.accent};margin-right:.3rem"></i>${demo.note}</div>` : ''}
+                    <div class="info-card-footer"><span>${th.label}</span><i class="fas fa-arrow-right" style="color:${th.accent}"></i></div>`;
+                card.style.cursor = 'pointer';
+                card.title = '클릭하면 상세 정보를 볼 수 있습니다';
+                card.addEventListener('click', () => showTrainingProgramModal(demo));
             } else if (className === 'Consumable') {
                 card.classList.add('consumable-card');
                 card.innerHTML = `
@@ -2368,6 +2527,75 @@
                     <div class="info-card-footer"><span>Maintenance Service</span><i class="fas fa-arrow-right" style="color:#ef4444"></i></div>`;
             }
             return card;
+        }
+
+        // Accent + footer label per training-program origin: 국내(KR) / 해외(INTL) / 사내(기본)
+        function trainingTheme(demo) {
+            if (demo.region === 'KR')   return { accent:'#dc2626', rgb:'220,38,38',  grad:'linear-gradient(135deg,#ef4444,#b91c1c)', label:'KR · 국내 프로그램',   tag:'국내' };
+            if (demo.region === 'INTL') return { accent:'#14b8a6', rgb:'20,184,166', grad:'linear-gradient(135deg,#2dd4bf,#0f766e)', label:'INTL · 해외 프로그램', tag:'해외' };
+            return                             { accent:'#3b82f6', rgb:'59,130,246', grad:'linear-gradient(135deg,#3b82f6,#1d4ed8)', label:'Training Program',    tag:'사내' };
+        }
+
+        // Detail modal for a training program card
+        function showTrainingProgramModal(demo) {
+            const th = trainingTheme(demo);
+            const modal = document.getElementById('instanceModal');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalBody = document.getElementById('modalBody');
+
+            modalTitle.innerHTML = `<i class="fas fa-graduation-cap"></i> ${demo.name}`;
+
+            const chip = (text, solid) => `<span style="display:inline-block;padding:.25rem .6rem;border-radius:1rem;font-size:.72rem;font-weight:600;
+                background:${solid ? th.accent : `rgba(${th.rgb},.12)`};color:${solid ? '#fff' : th.accent};border:1px solid ${th.accent}">${text}</span>`;
+
+            const facts = (demo.facts || []).map(([k, v]) => `
+                <div class="property-value" style="align-items:flex-start;gap:.75rem">
+                    <span style="flex:0 0 8.5rem;color:${th.accent};font-weight:600;font-size:.8rem">${k}</span>
+                    <span style="flex:1;line-height:1.55">${v}</span>
+                </div>`).join('');
+
+            modalBody.innerHTML = `
+                <div style="display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:1rem">
+                    ${chip(th.tag, true)}${chip(demo.level)}${demo.provider ? chip(demo.provider) : ''}
+                </div>
+
+                ${demo.summary ? `<div class="modal-description" style="border-left-color:${th.accent};background:rgba(${th.rgb},.08);line-height:1.7">${demo.summary}</div>` : ''}
+
+                <div class="property-grid" style="margin-top:1rem">
+                    <div class="property-card" style="border-left-color:${th.accent}">
+                        <div class="property-name" style="color:${th.accent}">과정 개요</div>
+                        <div class="property-value"><i class="fas fa-layer-group" style="color:${th.accent}"></i><strong>모듈</strong> ${demo.modules}</div>
+                        <div class="property-value"><i class="fas fa-clock" style="color:${th.accent}"></i><strong>기간</strong> ${demo.duration}</div>
+                        ${demo.provider ? `<div class="property-value"><i class="fas fa-building" style="color:${th.accent}"></i><strong>운영기관</strong> ${demo.provider}</div>` : ''}
+                    </div>
+
+                    <div class="property-card" style="border-left-color:${th.accent}">
+                        <div class="property-name" style="color:${th.accent}">커리큘럼 / 평가 항목</div>
+                        <div class="info-card-tags" style="margin-top:.25rem">
+                            ${demo.topics.map(t => `<span class="info-card-tag">${t}</span>`).join('')}
+                        </div>
+                    </div>
+
+                    ${facts ? `
+                    <div class="property-card" style="border-left-color:${th.accent}">
+                        <div class="property-name" style="color:${th.accent}">상세 정보</div>
+                        ${facts}
+                    </div>` : ''}
+
+                    ${demo.note ? `
+                    <div class="property-card" style="border-left-color:${th.accent}">
+                        <div class="property-name" style="color:${th.accent}">참고</div>
+                        <div style="line-height:1.6;font-size:.875rem">${demo.note}</div>
+                    </div>` : ''}
+                </div>
+
+                ${demo.url ? `
+                <a href="${demo.url}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:.5rem;margin-top:1.25rem;
+                    padding:.7rem 1.1rem;border-radius:.5rem;background:${th.accent};color:#fff;font-weight:600;font-size:.875rem;text-decoration:none">
+                    <i class="fas fa-arrow-up-right-from-square"></i> 공식 안내 페이지 열기
+                </a>` : ''}`;
+
+            modal.classList.add('active');
         }
 
         // Show instances of a class
@@ -2453,7 +2681,8 @@
                         else if (className.toLowerCase().includes('chain')) icon = 'fa-store';
                         else if (className.toLowerCase().includes('variety')) icon = 'fa-seedling';
                         else if (className.toLowerCase().includes('beverage') || className.toLowerCase().includes('menu')) icon = 'fa-mug-hot';
-                        
+                        else if (className.toLowerCase().includes('recipe')) icon = 'fa-mortar-pestle';
+
                         // Check if this is a beverage menu item and we have an image for it
                         const isBeverage = className.toLowerCase().includes('beverage') || className.toLowerCase().includes('menu');
                         const beverageKey = instance.name.replace(/\s+/g, '_');
@@ -2580,6 +2809,7 @@
             else if (className.toLowerCase().includes('city')) icon = 'fa-city';
             else if (className.toLowerCase().includes('coffee')) icon = 'fa-coffee';
             else if (className.toLowerCase().includes('beverage') || className.toLowerCase().includes('menu')) icon = 'fa-mug-hot';
+            else if (className.toLowerCase().includes('recipe')) icon = 'fa-mortar-pestle';
             else if (className.toLowerCase() === 'harvest') icon = 'fa-leaf';
 
             // For Harvest, show region name (strip _YYYY) in title
