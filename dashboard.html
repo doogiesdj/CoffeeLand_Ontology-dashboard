@@ -2688,8 +2688,8 @@
                         const beverageKey = instance.name.replace(/\s+/g, '_');
                         const hasImage = isBeverage && window.BEVERAGE_IMAGES && window.BEVERAGE_IMAGES[beverageKey];
 
-                        // Equipment photo (same underscore key convention as beverages)
-                        const equipImage = !isBeverage && window.EQUIPMENT_IMAGES ? window.EQUIPMENT_IMAGES[beverageKey] : null;
+                        // Equipment / vendor photo (same underscore key convention as beverages)
+                        const equipImage = !isBeverage ? instancePhoto(instance.name) : null;
                         const cardImageUrl = hasImage ? window.BEVERAGE_IMAGES[beverageKey] : equipImage;
 
                         // Check if this is a POS System
@@ -3283,8 +3283,8 @@
                     return s.charAt(0).toUpperCase() + s.slice(1);
                 }
                 let html = '';
-                // Equipment hero photo (Wikimedia Commons)
-                const _equipImgUrl = window.EQUIPMENT_IMAGES && window.EQUIPMENT_IMAGES[instance.name.replace(/\s+/g, '_')];
+                // Equipment / vendor hero photo (Wikimedia Commons)
+                const _equipImgUrl = instancePhoto(instance.name);
                 if (_equipImgUrl) {
                     html += `<img src="${_equipImgUrl}" alt="${instance.name}" class="bev-modal-hero" onerror="this.style.display='none'">`;
                 }
@@ -6565,7 +6565,33 @@
               props:{ hasCountry:'South Korea', hasManufacturer:'대영이앤비 (Lassele)', hasModel:'Lassele 업소용 제빙기', hasCapacitySpec:'업소용 냉동·냉장 및 제빙 설비', hasYearIntroduced:'1981' } },
             { name:'WF_Chungho_EspreCafe', type:'WaterFilter',
               description:'청호나이스가 커피머신과 얼음정수기를 결합해 내놓은 카페용 정수 솔루션. 업소용 정수는 에스프레소 머신의 스케일 고장을 막고 추출 향미를 유지하는 핵심 설비다.',
-              props:{ hasCountry:'South Korea', hasManufacturer:'청호나이스 (Chungho Nais)', hasModel:'에스프레카페 (EspreCafe)', hasCapacitySpec:'커피머신 결합형 얼음정수기' } }
+              props:{ hasCountry:'South Korea', hasManufacturer:'청호나이스 (Chungho Nais)', hasModel:'에스프레카페 (EspreCafe)', hasCapacitySpec:'커피머신 결합형 얼음정수기' } },
+
+            // ── 국내 원재료 공급사 (Korean Ingredient Vendors) ──
+            { name:'IV_SeoulMilk', type:'IngredientVendor',
+              description:'국내 B2B 카페용 우유 시장의 선두 주자. 카페라떼·카푸치노 등 우유가 들어가는 커피에 특화해 거품 형성과 부드러운 맛을 강화한 "서울우유 바리스타즈 밀크"를 국내 최초의 바리스타 전용 우유로 출시했다. 스타벅스 코리아·이디야커피·빽다방 등에 카페 전용 우유를 납품한다.',
+              props:{ hasName:'서울우유협동조합 (Seoul Milk)', hasSpecialty:'Dairy / Barista Milk', hasCountry:'South Korea', hasCity:'Seoul', hasCapacitySpec:'카페용 우유 매출 최근 4년간 연 약 10% 성장' } },
+            { name:'IV_MaeilDairies', type:'IngredientVendor',
+              description:'유제품과 함께 식물성 음료 "어메이징 오트"를 공급하는 국내 대표 유업체. 핀란드산 오트를 원물로 수입해 국내에서 가공하며, 커피와의 조화를 위해 바디감을 강화한 어메이징 오트 바리스타는 전국 약 7,600개 카페에 납품됐다. 귀리음료 시장 3년 연속 점유율 1위.',
+              props:{ hasName:'매일유업 (Maeil Dairies)', hasSpecialty:'Dairy / Oat Drink', hasCountry:'South Korea', hasCity:'Seoul', hasCapacitySpec:'어메이징 오트 바리스타 — 전국 약 7,600개 카페 납품' } },
+            { name:'IV_HyungkukFNB', type:'IngredientVendor',
+              description:'생과일 주스와 음료 베이스 ODM으로 출발한 음료 전문 제조사. 카페 프랜차이즈 시장 확대에 맞춰 스타벅스·이디야·메가커피 등 대형 프랜차이즈와 협력하며 성장했고, 업소용 음료 원액·시럽·농축액을 공급한다.',
+              props:{ hasName:'흥국에프엔비 (Hyungkuk F&B)', hasSpecialty:'Beverage Base / Syrup / Concentrate', hasCountry:'South Korea', hasFoundedYear:'2008', hasCapacitySpec:'2015년 코스닥 상장 · 음료 ODM 전문' } },
+            { name:'IV_SeoulFNB', type:'IngredientVendor',
+              description:'유제품과 음료·커피 제품을 생산·가공·판매하는 유제품 전문 가공업체. 건강기능식품을 포함한 다양한 음료 카테고리를 다룬다.',
+              props:{ hasName:'서울에프엔비 (Seoul F&B)', hasSpecialty:'Dairy Processing / Beverage', hasCountry:'South Korea', hasFoundedYear:'2007' } },
+            { name:'IV_Osulloc', type:'IngredientVendor',
+              description:'아모레퍼시픽그룹의 프리미엄 차(茶) 브랜드. 1979년 제주 서귀포 도순동의 황무지를 개간하며 시작해 2007년부터 직영 차밭에서 100% 유기농 녹차를 생산한다. 프리미엄 라인 세작·우전·일로향은 2015 북미차챔피언십에서 1~3위를 석권했고, 2019년 독립법인으로 출범했다.',
+              props:{ hasName:'오설록 (OSULLOC)', hasSpecialty:'Green Tea / Tea Leaves', hasCountry:'South Korea', hasCity:'Jeju', hasFoundedYear:'1979', hasCapacitySpec:'제주 직영 차밭 100% 유기농 재배' } },
+            { name:'IV_Vegemil', type:'IngredientVendor',
+              description:'우리나라 두유 역사의 첫 장을 연 기업. 대표 브랜드 베지밀은 브랜드파워 두유 부문에서 카테고리 신설(2003년) 이후 22년 연속 1위를 지켰으며, 카페용 대체유(두유) 공급처로도 활용된다.',
+              props:{ hasName:'정식품 (베지밀 / Vegemil)', hasSpecialty:'Soy Milk / Plant-based', hasCountry:'South Korea', hasCapacitySpec:'브랜드파워 두유 부문 22년 연속 1위' } },
+            { name:'IV_JardinCoffee', type:'IngredientVendor',
+              description:'1984년 설립된 국내 커피업계의 선구자. 1988년 국내 최초로 커피 전문점 체인을 열었고, 2022년 제3공장 완공으로 국내 최대 단일 커피공장 규모를 갖췄다. 이 생산능력을 바탕으로 카페 체인에 원두를 공급하는 B2B 사업을 운영하며, 남양유업 프렌치카페 원두 공급사이기도 하다.',
+              props:{ hasName:'쟈뎅 (Jardin Coffee)', hasSpecialty:'Coffee Beans / Liquid Coffee', hasCountry:'South Korea', hasFoundedYear:'1984', hasCapacitySpec:'2022년 제3공장 — 국내 최대 단일 커피공장' } },
+            { name:'IV_DongsuhFoods', type:'IngredientVendor',
+              description:'1980년 커피 브랜드 맥심을 도입해 국내 인스턴트 커피의 대명사가 된 기업. 2000년대에도 인스턴트 커피 시장 점유율 75~80%를 유지했고, 2011년 원두커피 믹스 카누를 출시했다. 인천 부평공장과 경남 창원공장에서 생산한다.',
+              props:{ hasName:'동서식품 (Dongsuh Foods)', hasSpecialty:'Instant Coffee / Coffee Mix', hasCountry:'South Korea', hasCity:'Incheon', hasFoundedYear:'1980', hasCapacitySpec:'인천 부평·경남 창원 생산라인' } }
         ];
 
         // Merge EXTRA_INSTANCES into a parsed ontology so they render like RDF individuals
@@ -6640,6 +6666,38 @@
             'IM_Daeyoung_Lassele':         'https://commons.wikimedia.org/wiki/Special:FilePath/%D0%9B%D1%91%D0%B4_%D0%B2_%D0%BB%D1%8C%D0%B4%D0%BE%D0%B3%D0%B5%D0%BD%D0%B5%D1%80%D0%B0%D1%82%D0%BE%D1%80%D0%B5.jpg?width=600',
             'WF_Chungho_EspreCafe':        'https://commons.wikimedia.org/wiki/Special:FilePath/Home_water_filters%2C_water_purifiers%2C_and_bottled_water_in_India.jpg?width=600'
         };
+
+        // Ingredient vendor photos — Wikimedia Commons (freely licensed).
+        // Brand-specific where a free photo exists (Oatly / Monin / Twinings / Osulloc / Maxim);
+        // otherwise a representative photo of what the vendor supplies.
+        window.VENDOR_IMAGES = {
+            // 해외 공급사
+            'IV_Oatly':        'https://commons.wikimedia.org/wiki/Special:FilePath/Oatly_Barista_Edition_1.jpg?width=600',
+            'IV_Ghirardelli':  'https://commons.wikimedia.org/wiki/Special:FilePath/Chocolate_syrup_topping_on_ice_cream.JPG?width=600',
+            'IV_Monin':        'https://commons.wikimedia.org/wiki/Special:FilePath/Various_Monin_syrups.jpg?width=600',
+            'IV_Twinings':     'https://commons.wikimedia.org/wiki/Special:FilePath/Tea_canisters_in_the_Twinings_Strand_Heritage_Shop%2C_London%2C_UK_-_20120129.jpg?width=600',
+            'IV_Torani':       'https://commons.wikimedia.org/wiki/Special:FilePath/DZ6_0558_A_trio_of_glass_shakers_and_a_small_jar_of_sauce_sit_on_a_wooden_tray_on_a_restaurant_table_softly_lit_against_a_blurred_cozy_bar_background.jpg?width=600',
+            'IV_OregonChai':   'https://commons.wikimedia.org/wiki/Special:FilePath/Masala_Chai.JPG?width=600',
+            'IV_Ippodo':       'https://commons.wikimedia.org/wiki/Special:FilePath/Matcha_Green_Tea_Powder_(9409937063).jpg?width=600',
+            'IV_DaVinci':      'https://commons.wikimedia.org/wiki/Special:FilePath/Maple_Syrup_Bottles_and_Logs_-_Norfolk_Country%2C_Ontario.jpg?width=600',
+            // 국내 공급사
+            'IV_SeoulMilk':    'https://commons.wikimedia.org/wiki/Special:FilePath/Latte_at_Doppio_Ristretto_Chiang_Mai_02.jpg?width=600',
+            'IV_MaeilDairies': 'https://commons.wikimedia.org/wiki/Special:FilePath/Oat_milk_glass_and_bottles.jpg?width=600',
+            'IV_HyungkukFNB':  'https://commons.wikimedia.org/wiki/Special:FilePath/Old_bottling_line_area.jpg?width=600',
+            'IV_SeoulFNB':     'https://commons.wikimedia.org/wiki/Special:FilePath/Westland_Milk_Products_dairy_processing_plant.jpg?width=600',
+            'IV_Osulloc':      'https://commons.wikimedia.org/wiki/Special:FilePath/Osulloc_Tea_Museum_%26_Fields%2C_Jeju.jpg?width=600',
+            'IV_Vegemil':      'https://commons.wikimedia.org/wiki/Special:FilePath/Hot_Coffee_meets_Soy_Milk(1).jpg?width=600',
+            'IV_JardinCoffee': 'https://commons.wikimedia.org/wiki/Special:FilePath/Roasted_coffee_beans_(Unsplash).jpg?width=600',
+            'IV_DongsuhFoods': 'https://commons.wikimedia.org/wiki/Special:FilePath/Korean_coffee_mix_Maxim.jpg?width=600'
+        };
+
+        // Photo for an instance, whichever catalog it lives in
+        function instancePhoto(name) {
+            const key = String(name || '').replace(/\s+/g, '_');
+            return (window.EQUIPMENT_IMAGES && window.EQUIPMENT_IMAGES[key])
+                || (window.VENDOR_IMAGES && window.VENDOR_IMAGES[key])
+                || null;
+        }
 
         window.BEVERAGE_IMAGES = {
             'Espresso':          'https://images.unsplash.com/photo-1510707577719-ae7c14805e3a?w=400&q=80&fit=crop',
