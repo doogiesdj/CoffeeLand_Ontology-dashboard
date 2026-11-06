@@ -154,6 +154,11 @@ for name, inst in instances.items():
         'types': inst['types'],
         'properties': {}
     }
+    # rdfs:label (한국어 우선) — 향미 노트·추출 방식 등 화면 표시용
+    labels = {getattr(l, 'language', None): str(l) for l in g.objects(URIRef(NS + name), RDFS.label)}
+    label = labels.get('ko') or labels.get('en') or next(iter(labels.values()), None)
+    if label:
+        detail['label'] = label
     # 데이터 속성
     for k, v in inst['data'].items():
         if k not in ['type']:

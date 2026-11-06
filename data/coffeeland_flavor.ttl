@@ -1,0 +1,371 @@
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+@prefix cof:  <http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#> .
+
+# ================================================================
+# 커피랜드 온톨로지 — 2단계: 향미(Flavor)
+# 자동 생성 파일 — 직접 고치지 말고 scripts/build_flavor_ttl.py 를 수정한 뒤
+#   python scripts/build_flavor_ttl.py
+# 로 다시 만드세요. (tests/test_flavor.py 가 최신 상태인지 검사합니다)
+#
+# 출처: dashboard.html 의 COUNTRY_DATA / HARVEST_DATA flavor 항목,
+#       ProcessingMethod · RoastLevel · QualityGrade 의 rdfs:comment
+# 분류 기준: SCA/WCR 커피 테이스터 향미 휠의 최상위 범주
+# ================================================================
+
+cof:FlavorNote a owl:Class ;
+    rdfs:subClassOf cof:QualityAndProcessing ;
+    rdfs:label "향미 노트"@ko , "Flavor Note"@en ;
+    rdfs:comment "커피에서 느껴지는 개별 향미. SCA/WCR 향미 휠의 최상위 범주(hasFlavorCategory)로 분류한다."@ko .
+
+cof:hasFlavorNote a owl:ObjectProperty ;
+    rdfs:range cof:FlavorNote ;
+    rdfs:label "향미 노트"@ko ;
+    rdfs:comment "산지 국가·수확 지역·가공 방식·로스팅 단계·품질 등급이 가진 향미 노트."@ko .
+
+cof:hasFlavorCategory a owl:DatatypeProperty ;
+    rdfs:domain cof:FlavorNote ;
+    rdfs:range xsd:string ;
+    rdfs:comment "향미 휠 최상위 범주: Floral | Fruity | SourFermented | GreenVegetative | Roasted | Spices | NuttyCocoa | Sweet | Other"@ko .
+
+cof:hasAcidityLevel a owl:DatatypeProperty ;
+    rdfs:range xsd:string ;
+    rdfs:comment "산미 강도: Low | Medium | High (원문 표현에서 분류)"@ko .
+
+cof:hasBodyLevel a owl:DatatypeProperty ;
+    rdfs:range xsd:string ;
+    rdfs:comment "바디감: Light | Medium | Full (원문 표현에서 분류)"@ko .
+
+
+# ── 향미 노트 ──
+cof:FN_Floral a owl:NamedIndividual , cof:FlavorNote ;
+    rdfs:label "꽃향"@ko , "Floral"@en ;
+    cof:hasFlavorCategory "Floral"^^xsd:string .
+cof:FN_Jasmine a owl:NamedIndividual , cof:FlavorNote ;
+    rdfs:label "재스민"@ko , "Jasmine"@en ;
+    cof:hasFlavorCategory "Floral"^^xsd:string .
+cof:FN_Rose a owl:NamedIndividual , cof:FlavorNote ;
+    rdfs:label "장미"@ko , "Rose"@en ;
+    cof:hasFlavorCategory "Floral"^^xsd:string .
+cof:FN_Fruity a owl:NamedIndividual , cof:FlavorNote ;
+    rdfs:label "과일향"@ko , "Fruity"@en ;
+    cof:hasFlavorCategory "Fruity"^^xsd:string .
+cof:FN_Berry a owl:NamedIndividual , cof:FlavorNote ;
+    rdfs:label "베리"@ko , "Berry"@en ;
+    cof:hasFlavorCategory "Fruity"^^xsd:string .
+cof:FN_Blueberry a owl:NamedIndividual , cof:FlavorNote ;
+    rdfs:label "블루베리"@ko , "Blueberry"@en ;
+    cof:hasFlavorCategory "Fruity"^^xsd:string .
+cof:FN_Blackcurrant a owl:NamedIndividual , cof:FlavorNote ;
+    rdfs:label "블랙커런트"@ko , "Blackcurrant"@en ;
+    cof:hasFlavorCategory "Fruity"^^xsd:string .
+cof:FN_RedBerry a owl:NamedIndividual , cof:FlavorNote ;
+    rdfs:label "레드베리"@ko , "Red Berry"@en ;
+    cof:hasFlavorCategory "Fruity"^^xsd:string .
+cof:FN_DriedFruit a owl:NamedIndividual , cof:FlavorNote ;
+    rdfs:label "건과일"@ko , "Dried Fruit"@en ;
+    cof:hasFlavorCategory "Fruity"^^xsd:string .
+cof:FN_Citrus a owl:NamedIndividual , cof:FlavorNote ;
+    rdfs:label "시트러스"@ko , "Citrus"@en ;
+    cof:hasFlavorCategory "Fruity"^^xsd:string .
+cof:FN_Orange a owl:NamedIndividual , cof:FlavorNote ;
+    rdfs:label "오렌지"@ko , "Orange"@en ;
+    cof:hasFlavorCategory "Fruity"^^xsd:string .
+cof:FN_Lemon a owl:NamedIndividual , cof:FlavorNote ;
+    rdfs:label "레몬"@ko , "Lemon"@en ;
+    cof:hasFlavorCategory "Fruity"^^xsd:string .
+cof:FN_Grapefruit a owl:NamedIndividual , cof:FlavorNote ;
+    rdfs:label "자몽"@ko , "Grapefruit"@en ;
+    cof:hasFlavorCategory "Fruity"^^xsd:string .
+cof:FN_Bergamot a owl:NamedIndividual , cof:FlavorNote ;
+    rdfs:label "베르가못"@ko , "Bergamot"@en ;
+    cof:hasFlavorCategory "Fruity"^^xsd:string .
+cof:FN_Peach a owl:NamedIndividual , cof:FlavorNote ;
+    rdfs:label "복숭아"@ko , "Peach"@en ;
+    cof:hasFlavorCategory "Fruity"^^xsd:string .
+cof:FN_StoneFruit a owl:NamedIndividual , cof:FlavorNote ;
+    rdfs:label "핵과류"@ko , "Stone Fruit"@en ;
+    cof:hasFlavorCategory "Fruity"^^xsd:string .
+cof:FN_Apple a owl:NamedIndividual , cof:FlavorNote ;
+    rdfs:label "사과"@ko , "Apple"@en ;
+    cof:hasFlavorCategory "Fruity"^^xsd:string .
+cof:FN_GreenApple a owl:NamedIndividual , cof:FlavorNote ;
+    rdfs:label "청사과"@ko , "Green Apple"@en ;
+    cof:hasFlavorCategory "Fruity"^^xsd:string .
+cof:FN_Grape a owl:NamedIndividual , cof:FlavorNote ;
+    rdfs:label "적포도"@ko , "Red Grape"@en ;
+    cof:hasFlavorCategory "Fruity"^^xsd:string .
+cof:FN_Plum a owl:NamedIndividual , cof:FlavorNote ;
+    rdfs:label "자두·매실"@ko , "Plum"@en ;
+    cof:hasFlavorCategory "Fruity"^^xsd:string .
+cof:FN_TropicalFruit a owl:NamedIndividual , cof:FlavorNote ;
+    rdfs:label "열대과일"@ko , "Tropical Fruit"@en ;
+    cof:hasFlavorCategory "Fruity"^^xsd:string .
+cof:FN_RoseHip a owl:NamedIndividual , cof:FlavorNote ;
+    rdfs:label "로즈힙"@ko , "Rose Hip"@en ;
+    cof:hasFlavorCategory "Fruity"^^xsd:string .
+cof:FN_Tomato a owl:NamedIndividual , cof:FlavorNote ;
+    rdfs:label "토마토"@ko , "Tomato"@en ;
+    cof:hasFlavorCategory "Fruity"^^xsd:string .
+cof:FN_Winey a owl:NamedIndividual , cof:FlavorNote ;
+    rdfs:label "와인"@ko , "Winey"@en ;
+    cof:hasFlavorCategory "SourFermented"^^xsd:string .
+cof:FN_Herbal a owl:NamedIndividual , cof:FlavorNote ;
+    rdfs:label "허브"@ko , "Herbal"@en ;
+    cof:hasFlavorCategory "GreenVegetative"^^xsd:string .
+cof:FN_Grassy a owl:NamedIndividual , cof:FlavorNote ;
+    rdfs:label "풀내"@ko , "Grassy"@en ;
+    cof:hasFlavorCategory "GreenVegetative"^^xsd:string .
+cof:FN_Tobacco a owl:NamedIndividual , cof:FlavorNote ;
+    rdfs:label "담배"@ko , "Tobacco"@en ;
+    cof:hasFlavorCategory "Roasted"^^xsd:string .
+cof:FN_Smoky a owl:NamedIndividual , cof:FlavorNote ;
+    rdfs:label "스모키"@ko , "Smoky"@en ;
+    cof:hasFlavorCategory "Roasted"^^xsd:string .
+cof:FN_Spice a owl:NamedIndividual , cof:FlavorNote ;
+    rdfs:label "향신료"@ko , "Spice"@en ;
+    cof:hasFlavorCategory "Spices"^^xsd:string .
+cof:FN_Chocolate a owl:NamedIndividual , cof:FlavorNote ;
+    rdfs:label "초콜릿"@ko , "Chocolate"@en ;
+    cof:hasFlavorCategory "NuttyCocoa"^^xsd:string .
+cof:FN_DarkChocolate a owl:NamedIndividual , cof:FlavorNote ;
+    rdfs:label "다크초콜릿"@ko , "Dark Chocolate"@en ;
+    cof:hasFlavorCategory "NuttyCocoa"^^xsd:string .
+cof:FN_MilkChocolate a owl:NamedIndividual , cof:FlavorNote ;
+    rdfs:label "밀크초콜릿"@ko , "Milk Chocolate"@en ;
+    cof:hasFlavorCategory "NuttyCocoa"^^xsd:string .
+cof:FN_Nutty a owl:NamedIndividual , cof:FlavorNote ;
+    rdfs:label "견과류"@ko , "Nutty"@en ;
+    cof:hasFlavorCategory "NuttyCocoa"^^xsd:string .
+cof:FN_Hazelnut a owl:NamedIndividual , cof:FlavorNote ;
+    rdfs:label "헤이즐넛"@ko , "Hazelnut"@en ;
+    cof:hasFlavorCategory "NuttyCocoa"^^xsd:string .
+cof:FN_Caramel a owl:NamedIndividual , cof:FlavorNote ;
+    rdfs:label "캐러멜"@ko , "Caramel"@en ;
+    cof:hasFlavorCategory "Sweet"^^xsd:string .
+cof:FN_BrownSugar a owl:NamedIndividual , cof:FlavorNote ;
+    rdfs:label "흑설탕"@ko , "Brown Sugar"@en ;
+    cof:hasFlavorCategory "Sweet"^^xsd:string .
+cof:FN_Honey a owl:NamedIndividual , cof:FlavorNote ;
+    rdfs:label "꿀"@ko , "Honey"@en ;
+    cof:hasFlavorCategory "Sweet"^^xsd:string .
+cof:FN_Sweet a owl:NamedIndividual , cof:FlavorNote ;
+    rdfs:label "단맛"@ko , "Sweet"@en ;
+    cof:hasFlavorCategory "Sweet"^^xsd:string .
+cof:FN_Earthy a owl:NamedIndividual , cof:FlavorNote ;
+    rdfs:label "흙내"@ko , "Earthy"@en ;
+    cof:hasFlavorCategory "Other"^^xsd:string .
+cof:FN_Woody a owl:NamedIndividual , cof:FlavorNote ;
+    rdfs:label "나무"@ko , "Woody"@en ;
+    cof:hasFlavorCategory "Other"^^xsd:string .
+
+# ── 향미 프로필 (출처별) ──
+# COUNTRY_DATA.Brazil.flavor
+cof:Brazil cof:hasFlavorNote cof:FN_DarkChocolate , cof:FN_Hazelnut , cof:FN_Caramel , cof:FN_DriedFruit ;
+    cof:hasAcidityLevel "Low"^^xsd:string ;
+    cof:hasBodyLevel "Full"^^xsd:string .
+# COUNTRY_DATA.China.flavor
+cof:China cof:hasFlavorNote cof:FN_MilkChocolate , cof:FN_Nutty , cof:FN_Herbal ;
+    cof:hasAcidityLevel "Low"^^xsd:string .
+# COUNTRY_DATA.Colombia.flavor
+cof:Colombia cof:hasFlavorNote cof:FN_Caramel , cof:FN_MilkChocolate , cof:FN_Orange , cof:FN_Lemon , cof:FN_Grape , cof:FN_Nutty .
+# COUNTRY_DATA.Costa_Rica.flavor
+cof:Costa_Rica cof:hasFlavorNote cof:FN_Honey , cof:FN_Sweet , cof:FN_TropicalFruit , cof:FN_MilkChocolate , cof:FN_GreenApple , cof:FN_Caramel .
+# COUNTRY_DATA.Dominican_Republic.flavor
+cof:Dominican_Republic cof:hasFlavorNote cof:FN_MilkChocolate , cof:FN_Nutty ;
+    cof:hasAcidityLevel "Low"^^xsd:string ;
+    cof:hasBodyLevel "Medium"^^xsd:string .
+# COUNTRY_DATA.El_Salvador.flavor
+cof:El_Salvador cof:hasFlavorNote cof:FN_Citrus , cof:FN_Honey , cof:FN_DarkChocolate .
+# COUNTRY_DATA.Ethiopia.flavor
+cof:Ethiopia cof:hasFlavorNote cof:FN_Blueberry , cof:FN_Jasmine , cof:FN_Rose , cof:FN_Winey , cof:FN_Peach , cof:FN_TropicalFruit .
+# COUNTRY_DATA.Guatemala.flavor
+cof:Guatemala cof:hasFlavorNote cof:FN_DarkChocolate , cof:FN_Spice , cof:FN_Nutty , cof:FN_Orange , cof:FN_BrownSugar .
+# COUNTRY_DATA.Honduras.flavor
+cof:Honduras cof:hasFlavorNote cof:FN_Caramel , cof:FN_Peach , cof:FN_Citrus , cof:FN_MilkChocolate .
+# COUNTRY_DATA.India.flavor
+cof:India cof:hasFlavorNote cof:FN_Earthy , cof:FN_Spice ;
+    cof:hasAcidityLevel "Low"^^xsd:string ;
+    cof:hasBodyLevel "Full"^^xsd:string .
+# COUNTRY_DATA.Indonesia.flavor
+cof:Indonesia cof:hasFlavorNote cof:FN_Earthy , cof:FN_Herbal , cof:FN_DarkChocolate , cof:FN_TropicalFruit ;
+    cof:hasAcidityLevel "Low"^^xsd:string ;
+    cof:hasBodyLevel "Full"^^xsd:string .
+# COUNTRY_DATA.Jamaica.flavor
+cof:Jamaica cof:hasFlavorNote cof:FN_Sweet , cof:FN_Nutty ;
+    cof:hasAcidityLevel "Low"^^xsd:string ;
+    cof:hasBodyLevel "Medium"^^xsd:string .
+# COUNTRY_DATA.Kenya.flavor
+cof:Kenya cof:hasFlavorNote cof:FN_Blackcurrant , cof:FN_Grapefruit , cof:FN_Tomato , cof:FN_RedBerry ;
+    cof:hasAcidityLevel "High"^^xsd:string .
+# COUNTRY_DATA.Mexico.flavor
+cof:Mexico cof:hasFlavorNote cof:FN_Nutty , cof:FN_MilkChocolate ;
+    cof:hasAcidityLevel "Low"^^xsd:string ;
+    cof:hasBodyLevel "Medium"^^xsd:string .
+# COUNTRY_DATA.Nicaragua.flavor
+cof:Nicaragua cof:hasFlavorNote cof:FN_Caramel , cof:FN_Chocolate , cof:FN_Nutty , cof:FN_Fruity ;
+    cof:hasAcidityLevel "Medium"^^xsd:string .
+# COUNTRY_DATA.Panama.flavor
+cof:Panama cof:hasFlavorNote cof:FN_Jasmine , cof:FN_Bergamot , cof:FN_Peach ;
+    cof:hasAcidityLevel "High"^^xsd:string .
+# COUNTRY_DATA.Papua_New_Guinea.flavor
+cof:Papua_New_Guinea cof:hasFlavorNote cof:FN_Fruity , cof:FN_Floral , cof:FN_Chocolate ;
+    cof:hasAcidityLevel "High"^^xsd:string .
+# COUNTRY_DATA.Peru.flavor
+cof:Peru cof:hasFlavorNote cof:FN_MilkChocolate , cof:FN_Nutty , cof:FN_Caramel , cof:FN_Herbal ;
+    cof:hasAcidityLevel "Low"^^xsd:string .
+# COUNTRY_DATA.Rwanda.flavor
+cof:Rwanda cof:hasFlavorNote cof:FN_Berry , cof:FN_Citrus , cof:FN_Orange , cof:FN_Lemon , cof:FN_Floral .
+# COUNTRY_DATA.Tanzania.flavor
+cof:Tanzania cof:hasFlavorNote cof:FN_Winey , cof:FN_Chocolate ;
+    cof:hasAcidityLevel "High"^^xsd:string .
+# COUNTRY_DATA.Uganda.flavor
+cof:Uganda cof:hasFlavorNote cof:FN_Earthy , cof:FN_Grassy , cof:FN_Berry , cof:FN_Fruity , cof:FN_Nutty ;
+    cof:hasBodyLevel "Full"^^xsd:string .
+# COUNTRY_DATA.Vietnam.flavor
+cof:Vietnam cof:hasFlavorNote cof:FN_Earthy , cof:FN_DarkChocolate ;
+    cof:hasAcidityLevel "Low"^^xsd:string ;
+    cof:hasBodyLevel "Full"^^xsd:string .
+# COUNTRY_DATA.Yemen.flavor
+cof:Yemen cof:hasFlavorNote cof:FN_Chocolate , cof:FN_Plum , cof:FN_Winey .
+# HARVEST_DATA.Harvest_Antigua.flavor
+cof:Harvest_Antigua_2023 cof:hasFlavorNote cof:FN_Caramel , cof:FN_DarkChocolate , cof:FN_BrownSugar ;
+    cof:hasAcidityLevel "Medium"^^xsd:string ;
+    cof:hasBodyLevel "Full"^^xsd:string .
+# HARVEST_DATA.Harvest_Barahona.flavor
+cof:Harvest_Barahona_2023 cof:hasFlavorNote cof:FN_MilkChocolate , cof:FN_Nutty ;
+    cof:hasAcidityLevel "Low"^^xsd:string ;
+    cof:hasBodyLevel "Medium"^^xsd:string .
+# HARVEST_DATA.Harvest_BlueMountain.flavor
+cof:Harvest_BlueMountain_2023 cof:hasFlavorNote cof:FN_Sweet , cof:FN_Nutty ;
+    cof:hasAcidityLevel "Low"^^xsd:string .
+# HARVEST_DATA.Harvest_Boquete.flavor
+cof:Harvest_Boquete_2023 cof:hasFlavorNote cof:FN_Jasmine , cof:FN_Bergamot , cof:FN_Peach ;
+    cof:hasAcidityLevel "High"^^xsd:string .
+# HARVEST_DATA.Harvest_Bugisu.flavor
+cof:Harvest_Bugisu_2023 cof:hasFlavorNote cof:FN_Berry , cof:FN_Floral , cof:FN_Citrus ;
+    cof:hasAcidityLevel "High"^^xsd:string .
+# HARVEST_DATA.Harvest_Cajamarca.flavor
+cof:Harvest_Cajamarca_2023 cof:hasFlavorNote cof:FN_Sweet , cof:FN_Nutty , cof:FN_Caramel , cof:FN_Citrus .
+# HARVEST_DATA.Harvest_Cerrado.flavor
+cof:Harvest_Cerrado_2023 cof:hasFlavorNote cof:FN_DarkChocolate , cof:FN_Hazelnut ;
+    cof:hasAcidityLevel "Low"^^xsd:string ;
+    cof:hasBodyLevel "Full"^^xsd:string .
+# HARVEST_DATA.Harvest_Chiapas.flavor
+cof:Harvest_Chiapas_2023 cof:hasFlavorNote cof:FN_Nutty , cof:FN_MilkChocolate ;
+    cof:hasAcidityLevel "Low"^^xsd:string ;
+    cof:hasBodyLevel "Medium"^^xsd:string .
+# HARVEST_DATA.Harvest_Copan.flavor
+cof:Harvest_Copan_2023 cof:hasFlavorNote cof:FN_Chocolate , cof:FN_Caramel , cof:FN_BrownSugar , cof:FN_Citrus .
+# HARVEST_DATA.Harvest_DaLat.flavor
+cof:Harvest_DaLat_2023 cof:hasFlavorNote cof:FN_Floral , cof:FN_Fruity ;
+    cof:hasAcidityLevel "Low"^^xsd:string ;
+    cof:hasBodyLevel "Medium"^^xsd:string .
+# HARVEST_DATA.Harvest_DakLak.flavor
+cof:Harvest_DakLak_2023 cof:hasFlavorNote cof:FN_Earthy , cof:FN_DarkChocolate , cof:FN_Tobacco ;
+    cof:hasAcidityLevel "Low"^^xsd:string ;
+    cof:hasBodyLevel "Full"^^xsd:string .
+# HARVEST_DATA.Harvest_Harrar.flavor
+cof:Harvest_Harrar_2023 cof:hasFlavorNote cof:FN_Blueberry , cof:FN_Winey , cof:FN_DriedFruit .
+# HARVEST_DATA.Harvest_Huehuetenango.flavor
+cof:Harvest_Huehuetenango_2023 cof:hasFlavorNote cof:FN_DarkChocolate , cof:FN_Spice , cof:FN_Citrus , cof:FN_Floral .
+# HARVEST_DATA.Harvest_Huila.flavor
+cof:Harvest_Huila_2023 cof:hasFlavorNote cof:FN_Caramel , cof:FN_DarkChocolate , cof:FN_Apple ;
+    cof:hasAcidityLevel "Medium"^^xsd:string ;
+    cof:hasBodyLevel "Full"^^xsd:string .
+# HARVEST_DATA.Harvest_Huye.flavor
+cof:Harvest_Huye_2023 cof:hasFlavorNote cof:FN_RedBerry , cof:FN_Citrus , cof:FN_Floral ;
+    cof:hasAcidityLevel "High"^^xsd:string .
+# HARVEST_DATA.Harvest_Java.flavor
+cof:Harvest_Java_2023 cof:hasFlavorNote cof:FN_DarkChocolate , cof:FN_Herbal , cof:FN_Earthy ;
+    cof:hasBodyLevel "Medium"^^xsd:string .
+# HARVEST_DATA.Harvest_Kiambu.flavor
+cof:Harvest_Kiambu_2023 cof:hasFlavorNote cof:FN_Blackcurrant , cof:FN_Tomato , cof:FN_Citrus , cof:FN_Berry , cof:FN_Winey .
+# HARVEST_DATA.Harvest_Kilimanjaro.flavor
+cof:Harvest_Kilimanjaro_2023 cof:hasFlavorNote cof:FN_Winey , cof:FN_Blackcurrant , cof:FN_Chocolate ;
+    cof:hasAcidityLevel "High"^^xsd:string .
+# HARVEST_DATA.Harvest_Kona.flavor
+cof:Harvest_Kona_2023 cof:hasFlavorNote cof:FN_Nutty , cof:FN_Caramel ;
+    cof:hasAcidityLevel "Low"^^xsd:string .
+# HARVEST_DATA.Harvest_Malabar.flavor
+cof:Harvest_Malabar_2023 cof:hasFlavorNote cof:FN_Earthy , cof:FN_Spice ;
+    cof:hasAcidityLevel "Low"^^xsd:string ;
+    cof:hasBodyLevel "Full"^^xsd:string .
+# HARVEST_DATA.Harvest_Marcala.flavor
+cof:Harvest_Marcala_2023 cof:hasFlavorNote cof:FN_Caramel , cof:FN_Chocolate , cof:FN_Nutty , cof:FN_Citrus ;
+    cof:hasAcidityLevel "High"^^xsd:string .
+# HARVEST_DATA.Harvest_Matagalpa.flavor
+cof:Harvest_Matagalpa_2023 cof:hasFlavorNote cof:FN_Caramel , cof:FN_Chocolate , cof:FN_Nutty ;
+    cof:hasAcidityLevel "Medium"^^xsd:string .
+# HARVEST_DATA.Harvest_MinasGerais.flavor
+cof:Harvest_MinasGerais_2023 cof:hasFlavorNote cof:FN_Chocolate , cof:FN_Caramel , cof:FN_Hazelnut ;
+    cof:hasAcidityLevel "Low"^^xsd:string .
+# HARVEST_DATA.Harvest_Narino.flavor
+cof:Harvest_Narino_2023 cof:hasFlavorNote cof:FN_Floral , cof:FN_Citrus , cof:FN_Jasmine ;
+    cof:hasAcidityLevel "High"^^xsd:string .
+# HARVEST_DATA.Harvest_Narino.flavor
+cof:Harvest_Narino_2024 cof:hasFlavorNote cof:FN_Floral , cof:FN_Citrus , cof:FN_Jasmine ;
+    cof:hasAcidityLevel "High"^^xsd:string .
+# HARVEST_DATA.Harvest_Nyeri.flavor
+cof:Harvest_Nyeri_2023 cof:hasFlavorNote cof:FN_Blackcurrant , cof:FN_Grapefruit , cof:FN_RoseHip ;
+    cof:hasAcidityLevel "High"^^xsd:string .
+# HARVEST_DATA.Harvest_Nyeri.flavor
+cof:Harvest_Nyeri_2024 cof:hasFlavorNote cof:FN_Blackcurrant , cof:FN_Grapefruit , cof:FN_RoseHip ;
+    cof:hasAcidityLevel "High"^^xsd:string .
+# HARVEST_DATA.Harvest_Sanani.flavor
+cof:Harvest_Sanani_2023 cof:hasFlavorNote cof:FN_Chocolate , cof:FN_Plum , cof:FN_Winey , cof:FN_Spice .
+# HARVEST_DATA.Harvest_SantaAna.flavor
+cof:Harvest_SantaAna_2023 cof:hasFlavorNote cof:FN_Citrus , cof:FN_Honey , cof:FN_DarkChocolate ;
+    cof:hasAcidityLevel "High"^^xsd:string .
+# HARVEST_DATA.Harvest_Sidamo.flavor
+cof:Harvest_Sidamo_2023 cof:hasFlavorNote cof:FN_Blueberry , cof:FN_Winey , cof:FN_DarkChocolate ;
+    cof:hasBodyLevel "Full"^^xsd:string .
+# HARVEST_DATA.Harvest_Sigri.flavor
+cof:Harvest_Sigri_2023 cof:hasFlavorNote cof:FN_Fruity , cof:FN_Floral , cof:FN_Chocolate ;
+    cof:hasAcidityLevel "High"^^xsd:string .
+# HARVEST_DATA.Harvest_Sulawesi.flavor
+cof:Harvest_Sulawesi_2023 cof:hasFlavorNote cof:FN_Herbal , cof:FN_DarkChocolate ;
+    cof:hasAcidityLevel "Low"^^xsd:string ;
+    cof:hasBodyLevel "Full"^^xsd:string .
+# HARVEST_DATA.Harvest_Sumatra.flavor
+cof:Harvest_Sumatra_2023 cof:hasFlavorNote cof:FN_Earthy , cof:FN_Woody , cof:FN_DarkChocolate , cof:FN_Tobacco ;
+    cof:hasAcidityLevel "Low"^^xsd:string ;
+    cof:hasBodyLevel "Full"^^xsd:string .
+# HARVEST_DATA.Harvest_Tarrazu.flavor
+cof:Harvest_Tarrazu_2023 cof:hasFlavorNote cof:FN_Citrus , cof:FN_Apple , cof:FN_StoneFruit .
+# HARVEST_DATA.Harvest_WestValley.flavor
+cof:Harvest_WestValley_2023 cof:hasFlavorNote cof:FN_Peach , cof:FN_TropicalFruit , cof:FN_BrownSugar .
+# HARVEST_DATA.Harvest_Yirgacheffe.flavor
+cof:Harvest_Yirgacheffe_2023 cof:hasFlavorNote cof:FN_Jasmine , cof:FN_Bergamot , cof:FN_Lemon , cof:FN_Peach , cof:FN_Floral ;
+    cof:hasBodyLevel "Light"^^xsd:string .
+# rdfs:comment of Black_Honey_Process
+cof:Black_Honey_Process cof:hasFlavorNote cof:FN_Sweet ;
+    cof:hasBodyLevel "Full"^^xsd:string .
+# rdfs:comment of Dark_Roast
+cof:Dark_Roast cof:hasFlavorNote cof:FN_Smoky , cof:FN_Caramel .
+# rdfs:comment of Espresso_Roast
+cof:Espresso_Roast cof:hasAcidityLevel "Low"^^xsd:string ;
+    cof:hasBodyLevel "Full"^^xsd:string .
+# rdfs:comment of Honey_Process
+cof:Honey_Process cof:hasFlavorNote cof:FN_Sweet ;
+    cof:hasAcidityLevel "Medium"^^xsd:string .
+# rdfs:comment of Light_Roast
+cof:Light_Roast cof:hasAcidityLevel "High"^^xsd:string .
+# rdfs:comment of Medium_Dark_Roast
+cof:Medium_Dark_Roast cof:hasFlavorNote cof:FN_Sweet ;
+    cof:hasBodyLevel "Full"^^xsd:string .
+# rdfs:comment of Medium_Roast
+cof:Medium_Roast cof:hasAcidityLevel "Medium"^^xsd:string ;
+    cof:hasBodyLevel "Medium"^^xsd:string .
+# rdfs:comment of Natural_Process
+cof:Natural_Process cof:hasFlavorNote cof:FN_Fruity ;
+    cof:hasBodyLevel "Full"^^xsd:string .
+# rdfs:comment of QG_Guatemala_SHB
+cof:QG_Guatemala_SHB cof:hasAcidityLevel "High"^^xsd:string .
+# rdfs:comment of Washed_Process
+cof:Washed_Process cof:hasAcidityLevel "High"^^xsd:string .
+# rdfs:comment of WetHulled_Process
+cof:WetHulled_Process cof:hasAcidityLevel "Low"^^xsd:string ;
+    cof:hasBodyLevel "Full"^^xsd:string .
