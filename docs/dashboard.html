@@ -426,6 +426,117 @@
         .brew-item dt { font-size: 0.72rem; color: var(--text-secondary); margin-bottom: 0.2rem; }
         .brew-item dt i { width: 14px; color: #a78bfa; }
         .brew-item dd { margin: 0; font-size: 1.05rem; font-weight: 700; color: var(--text-primary); font-variant-numeric: tabular-nums; }
+        /* Flavor chips (shared by modal panel + explorer) */
+        .flavor-chip-row { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+        .flavor-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.3rem 0.7rem;
+            border-radius: 999px;
+            border: 1px solid color-mix(in srgb, var(--chip-color) 45%, transparent);
+            background: color-mix(in srgb, var(--chip-color) 12%, transparent);
+            color: var(--text-primary);
+            font: inherit;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: background-color 150ms ease, border-color 150ms ease, transform 150ms ease;
+        }
+        .flavor-chip:hover { background: color-mix(in srgb, var(--chip-color) 24%, transparent); transform: translateY(-1px); }
+        .flavor-chip:focus-visible { outline: 2px solid var(--chip-color); outline-offset: 2px; }
+        .flavor-chip[aria-pressed="true"] {
+            background: var(--chip-color);
+            border-color: var(--chip-color);
+            color: #111827;
+            font-weight: 700;
+        }
+        .flavor-chip-dot {
+            width: 8px; height: 8px; border-radius: 50%;
+            background: var(--chip-color); flex-shrink: 0; display: inline-block;
+        }
+        .flavor-chip[aria-pressed="true"] .flavor-chip-dot { background: #111827; }
+        .flavor-chip-count {
+            font-size: 0.7rem; font-variant-numeric: tabular-nums;
+            padding: 0 0.35rem; border-radius: 999px;
+            background: rgba(0, 0, 0, 0.25);
+        }
+
+        /* Flavor panel in detail modals */
+        .flavor-panel {
+            margin: 0 0 1.25rem;
+            padding: 1rem 1.1rem;
+            border: 1px solid rgba(232, 121, 249, 0.3);
+            border-left: 4px solid #e879f9;
+            border-radius: 10px;
+            background: linear-gradient(135deg, rgba(232, 121, 249, 0.07), rgba(248, 113, 113, 0.03));
+        }
+        .flavor-panel-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 0.4rem; margin-bottom: 0.75rem; }
+        .flavor-panel-head h3 { margin: 0; font-size: 1rem; font-weight: 700; color: var(--text-primary); }
+        .flavor-panel-head h3 i { color: #e879f9; margin-right: 0.35rem; }
+        .flavor-panel-hint { font-size: 0.7rem; color: var(--text-secondary); }
+        .level-row { display: flex; flex-wrap: wrap; gap: 1.25rem; margin-top: 0.85rem; }
+        .level-meter { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.8rem; color: var(--text-secondary); }
+        .level-meter-title { font-weight: 600; color: var(--text-primary); }
+        .level-bars { display: inline-flex; gap: 3px; }
+        .level-bar { width: 18px; height: 6px; border-radius: 3px; background: rgba(148, 163, 184, 0.25); }
+        .level-bar.is-on { background: #e879f9; }
+        .level-meter-value { font-weight: 600; color: var(--text-primary); }
+
+        /* Flavor Explorer view */
+        .flavor-subtitle { margin: 0.35rem 0 0; color: var(--text-secondary); font-size: 0.9rem; }
+        .flavor-layout {
+            display: grid;
+            grid-template-columns: minmax(0, 1.5fr) minmax(min(280px, 100%), 1fr);
+            gap: 1.25rem;
+            align-items: start;
+        }
+        @media (max-width: 960px) { .flavor-layout { grid-template-columns: 1fr; } }
+        .flavor-wheel { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(260px, 100%), 1fr)); gap: 0.9rem; min-width: 0; }
+        .flavor-cat {
+            padding: 0.9rem 1rem 1rem;
+            border-radius: 12px;
+            background: var(--bg-elevated);
+            border: 1px solid var(--border);
+            border-top: 3px solid var(--chip-color);
+        }
+        .flavor-cat-title { display: flex; align-items: center; gap: 0.45rem; margin: 0 0 0.7rem; font-size: 0.95rem; color: var(--text-primary); }
+        .flavor-cat-en { margin-left: auto; font-size: 0.68rem; font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; color: var(--text-secondary); }
+        .flavor-results {
+            position: sticky;
+            top: 1rem;
+            max-height: calc(100vh - 2rem);
+            overflow-y: auto;
+            padding: 1.1rem 1.2rem;
+            border-radius: 12px;
+            background: var(--bg-elevated);
+            border: 1px solid var(--border);
+        }
+        .flavor-results-empty { margin: 2rem 0; text-align: center; color: var(--text-secondary); }
+        .flavor-results-head { display: flex; align-items: center; gap: 0.55rem; }
+        .flavor-results-head .flavor-chip-dot { width: 12px; height: 12px; }
+        .flavor-results-head h2 { margin: 0; font-size: 1.5rem; color: var(--text-primary); }
+        .flavor-results-cat { margin-left: auto; font-size: 0.75rem; color: var(--chip-color); font-weight: 600; }
+        .flavor-results-count { margin: 0.3rem 0 0.9rem; font-size: 0.85rem; color: var(--text-secondary); }
+        .flavor-group-title {
+            display: flex; justify-content: space-between;
+            margin: 1rem 0 0.4rem; font-size: 0.75rem; font-weight: 700;
+            letter-spacing: 0.04em; color: var(--text-secondary);
+        }
+        .flavor-result-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.3rem; }
+        .flavor-result {
+            display: flex; align-items: center; gap: 0.4rem; width: 100%;
+            padding: 0.55rem 0.7rem; border-radius: 8px;
+            border: 1px solid transparent; background: rgba(255, 255, 255, 0.03);
+            color: var(--text-primary); font: inherit; font-size: 0.85rem; text-align: left; cursor: pointer;
+            transition: background-color 150ms ease, border-color 150ms ease;
+        }
+        .flavor-result:hover { background: rgba(255, 255, 255, 0.07); border-color: var(--border); }
+        .flavor-result:focus-visible { outline: 2px solid #e879f9; outline-offset: 1px; }
+        .flavor-result-name { flex: 1; font-weight: 600; }
+        .flavor-result-tag { font-size: 0.68rem; padding: 0.1rem 0.4rem; border-radius: 999px; background: rgba(148, 163, 184, 0.15); color: var(--text-secondary); white-space: nowrap; }
+        .flavor-result i { font-size: 0.7rem; color: var(--text-secondary); }
+        .flavor-source-note { margin-top: 1.25rem; font-size: 0.72rem; color: var(--text-secondary); }
+
         .brew-panel-empty { margin: 0; font-size: 0.85rem; color: var(--text-secondary); }
         .brew-panel-note { margin: 0.7rem 0 0; font-size: 0.7rem; color: var(--text-secondary); }
 
@@ -1331,6 +1442,10 @@
                 <i class="fas fa-chart-bar"></i>
                 <span>Statistics</span>
             </div>
+            <div class="nav-item" data-view="flavor">
+                <i class="fas fa-wine-glass-alt"></i>
+                <span>Flavor Explorer</span>
+            </div>
         </nav>
 
         <div class="nav-divider"></div>
@@ -1666,6 +1781,23 @@
         </div>
 
         <!-- Statistics View -->
+        <!-- Flavor Explorer View -->
+        <div class="view" id="flavorView" style="display: none;">
+            <div class="dashboard-header">
+                <div>
+                    <h1 class="dashboard-title">Flavor Explorer</h1>
+                    <p class="flavor-subtitle">향미 노트를 고르면 그 맛이 나는 산지·수확 지역·가공 방식·로스팅 단계를 보여줘요.</p>
+                </div>
+            </div>
+            <div class="flavor-layout">
+                <section class="flavor-wheel" id="flavorWheel" aria-label="향미 노트 (SCA/WCR 향미 휠 범주별)"></section>
+                <aside class="flavor-results" id="flavorResults" aria-live="polite">
+                    <p class="flavor-results-empty"><i class="fas fa-hand-pointer"></i> 왼쪽에서 향미 노트를 선택하세요.</p>
+                </aside>
+            </div>
+            <p class="flavor-source-note">출처: 국가·수확 지역 데이터의 향미 항목, 가공 방식·로스팅 단계 설명. 범주는 SCA/WCR 커피 테이스터 향미 휠의 최상위 분류를 따릅니다.</p>
+        </div>
+
         <div class="view" id="statisticsView" style="display: none;">
             <div class="dashboard-header">
                 <h1 class="dashboard-title">Ontology Statistics</h1>
@@ -3072,6 +3204,186 @@
             return html;
         }
 
+        // ── Flavor layer (data: data/coffeeland_flavor.ttl) ─────────────────
+        // Categories = SCA/WCR Coffee Taster's Flavor Wheel top level.
+        const FLAVOR_CATEGORIES = [
+            ['Floral',          '꽃',            '#e879f9'],
+            ['Fruity',          '과일',          '#f87171'],
+            ['SourFermented',   '신맛·발효',     '#facc15'],
+            ['GreenVegetative', '풀·채소',       '#4ade80'],
+            ['Roasted',         '로스팅',        '#a8a29e'],
+            ['Spices',          '향신료',        '#fb923c'],
+            ['NuttyCocoa',      '견과·코코아',   '#c08457'],
+            ['Sweet',           '단맛',          '#fbbf24'],
+            ['Other',           '기타(흙·나무)', '#94a3b8'],
+        ];
+        const FLAVOR_SUBJECT_TYPES = {
+            Country: '산지 국가', Harvest: '수확 지역', ProcessingMethod: '가공 방식',
+            RoastLevel: '로스팅 단계', QualityGrade: '품질 등급'
+        };
+        const ACIDITY_LABELS = { Low: '낮음', Medium: '중간', High: '높음' };
+        const BODY_LABELS = { Light: '가벼움', Medium: '중간', Full: '묵직함' };
+        const LEVEL_STEPS = { Low: 1, Light: 1, Medium: 2, High: 3, Full: 3 };
+        const FLAVOR_PROP_NAMES = new Set(['hasFlavorNote', 'hasAcidityLevel', 'hasBodyLevel']);
+
+        let flavorIndexCache = null;
+
+        const toLocalId = value => value.replace(/\s+/g, '_');
+
+        // Builds { notes: {id → {id,label,category}}, subjectsByNote: {id → [inst]} } once per data load.
+        function getFlavorIndex() {
+            if (flavorIndexCache && flavorIndexCache.source === ontologyData) return flavorIndexCache;
+            const notes = {};
+            const subjectsByNote = {};
+            const insts = Object.values(ontologyData.instanceMap);
+            insts.filter(i => i.classURIs.includes(BASE_NS + 'FlavorNote')).forEach(i => {
+                notes[i.name] = { id: i.name, label: i.label || i.name.replace(/^FN_/, ''),
+                                  category: firstPropValue(i.properties, 'hasFlavorCategory') || 'Other' };
+                subjectsByNote[i.name] = [];
+            });
+            insts.forEach(i => {
+                (i.properties.hasFlavorNote || []).forEach(v => {
+                    const id = toLocalId(v.value);
+                    if (subjectsByNote[id]) subjectsByNote[id].push(i);
+                });
+            });
+            flavorIndexCache = { source: ontologyData, notes, subjectsByNote };
+            return flavorIndexCache;
+        }
+
+        function flavorSubjectType(inst) {
+            const local = inst.classURIs.map(u => u.split('#').pop());
+            return local.find(c => FLAVOR_SUBJECT_TYPES[c]) || null;
+        }
+
+        function flavorSubjectName(inst) {
+            const m = inst.name.match(/^Harvest_(.+)_(\d{4})$/);
+            if (m) return `${m[1].replace(/([a-z])([A-Z])/g, '$1 $2')} (${m[2]})`;
+            return inst.label || inst.name.replace(/_/g, ' ');
+        }
+
+        function categoryMeta(category) {
+            const row = FLAVOR_CATEGORIES.find(([id]) => id === category) || FLAVOR_CATEGORIES[FLAVOR_CATEGORIES.length - 1];
+            return { id: row[0], label: row[1], color: row[2] };
+        }
+
+        function flavorChipHtml(note, { selected = false, count = null } = {}) {
+            const meta = categoryMeta(note.category);
+            const countHtml = count === null ? '' : `<span class="flavor-chip-count">${count}</span>`;
+            return `<button type="button" class="flavor-chip" data-flavor-note="${escapeHtml(note.id)}"
+                        aria-pressed="${selected}" style="--chip-color:${meta.color}"
+                        title="${escapeHtml(meta.label)} · 이 향미가 나는 곳 보기">
+                        <span class="flavor-chip-dot" aria-hidden="true"></span>${escapeHtml(note.label)}${countHtml}</button>`;
+        }
+
+        function levelMeterHtml(title, level, labels) {
+            if (!level) return '';
+            const steps = LEVEL_STEPS[level] || 0;
+            const bars = [1, 2, 3].map(n => `<span class="level-bar${n <= steps ? ' is-on' : ''}"></span>`).join('');
+            return `<div class="level-meter" role="img" aria-label="${escapeHtml(title)} ${escapeHtml(labels[level] || level)}">
+                        <span class="level-meter-title">${escapeHtml(title)}</span>
+                        <span class="level-bars">${bars}</span>
+                        <span class="level-meter-value">${escapeHtml(labels[level] || level)}</span></div>`;
+        }
+
+        function renderFlavorPanel(inst) {
+            const idx = getFlavorIndex();
+            // RDF keeps no order — sort by flavor-wheel category, then label, so chips read consistently.
+            const catOrder = id => FLAVOR_CATEGORIES.findIndex(([c]) => c === idx.notes[id].category);
+            const noteIds = (inst.properties.hasFlavorNote || []).map(v => toLocalId(v.value)).filter(id => idx.notes[id])
+                .sort((a, b) => catOrder(a) - catOrder(b) || idx.notes[a].label.localeCompare(idx.notes[b].label, 'ko'));
+            const acidity = firstPropValue(inst.properties, 'hasAcidityLevel');
+            const body = firstPropValue(inst.properties, 'hasBodyLevel');
+            if (!noteIds.length && !acidity && !body) return '';
+            const chips = noteIds.map(id => flavorChipHtml(idx.notes[id])).join('');
+            return `<section class="flavor-panel" aria-label="향미 프로필">
+                <div class="flavor-panel-head"><h3><i class="fas fa-wine-glass-alt"></i> 향미 프로필</h3>
+                    <span class="flavor-panel-hint">노트를 누르면 같은 향미가 나는 곳을 보여줘요</span></div>
+                ${chips ? `<div class="flavor-chip-row">${chips}</div>` : ''}
+                ${acidity || body ? `<div class="level-row">${levelMeterHtml('산미', acidity, ACIDITY_LABELS)}${levelMeterHtml('바디', body, BODY_LABELS)}</div>` : ''}
+            </section>`;
+        }
+
+        function renderFlavorExplorer(selectedNoteId = null) {
+            const wheel = document.getElementById('flavorWheel');
+            if (!wheel || !ontologyData) return;
+            const idx = getFlavorIndex();
+            wheel.innerHTML = FLAVOR_CATEGORIES.map(([catId]) => {
+                const meta = categoryMeta(catId);
+                const notes = Object.values(idx.notes).filter(n => n.category === catId);
+                if (!notes.length) return '';
+                const chips = notes
+                    .map(n => ({ n, count: idx.subjectsByNote[n.id].length }))
+                    .sort((a, b) => b.count - a.count)
+                    .map(({ n, count }) => flavorChipHtml(n, { selected: n.id === selectedNoteId, count }))
+                    .join('');
+                return `<div class="flavor-cat" style="--chip-color:${meta.color}">
+                            <h3 class="flavor-cat-title"><span class="flavor-chip-dot"></span>${escapeHtml(meta.label)}
+                                <span class="flavor-cat-en">${escapeHtml(meta.id)}</span></h3>
+                            <div class="flavor-chip-row">${chips}</div></div>`;
+            }).join('');
+            if (selectedNoteId) showFlavorResults(selectedNoteId);
+        }
+
+        function showFlavorResults(noteId) {
+            const box = document.getElementById('flavorResults');
+            const idx = getFlavorIndex();
+            const note = idx.notes[noteId];
+            if (!box || !note) return;
+            document.querySelectorAll('#flavorWheel .flavor-chip').forEach(el =>
+                el.setAttribute('aria-pressed', String(el.dataset.flavorNote === noteId)));
+            const meta = categoryMeta(note.category);
+            const groups = {};
+            idx.subjectsByNote[noteId].forEach(inst => {
+                const type = flavorSubjectType(inst);
+                if (type) (groups[type] = groups[type] || []).push(inst);
+            });
+            const total = idx.subjectsByNote[noteId].length;
+            let html = `<div class="flavor-results-head" style="--chip-color:${meta.color}">
+                            <span class="flavor-chip-dot"></span><h2>${escapeHtml(note.label)}</h2>
+                            <span class="flavor-results-cat">${escapeHtml(meta.label)}</span></div>
+                        <p class="flavor-results-count">${total}곳에서 이 향미가 나요</p>`;
+            Object.keys(FLAVOR_SUBJECT_TYPES).filter(t => groups[t]).forEach(type => {
+                const items = groups[type]
+                    .sort((a, b) => flavorSubjectName(a).localeCompare(flavorSubjectName(b)))
+                    .map(inst => {
+                        const ac = firstPropValue(inst.properties, 'hasAcidityLevel');
+                        const bd = firstPropValue(inst.properties, 'hasBodyLevel');
+                        const tags = [ac && `산미 ${ACIDITY_LABELS[ac]}`, bd && `바디 ${BODY_LABELS[bd]}`].filter(Boolean)
+                            .map(t => `<span class="flavor-result-tag">${escapeHtml(t)}</span>`).join('');
+                        return `<li><button type="button" class="flavor-result" data-flavor-subject="${escapeHtml(inst.uri)}" data-flavor-type="${type}">
+                                    <span class="flavor-result-name">${escapeHtml(flavorSubjectName(inst))}</span>${tags}
+                                    <i class="fas fa-chevron-right" aria-hidden="true"></i></button></li>`;
+                    }).join('');
+                html += `<h3 class="flavor-group-title">${escapeHtml(FLAVOR_SUBJECT_TYPES[type])} <span>${groups[type].length}</span></h3>
+                         <ul class="flavor-result-list">${items}</ul>`;
+            });
+            box.innerHTML = html;
+        }
+
+        function openFlavorExplorer(noteId) {
+            document.getElementById('instanceModal')?.classList.remove('active');
+            showView('flavorView');
+            renderFlavorExplorer(noteId);
+            document.getElementById('flavorResults')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        function setupFlavorExplorer() {
+            document.addEventListener('click', (evt) => {
+                const chip = evt.target.closest('[data-flavor-note]');
+                if (chip) {
+                    if (chip.closest('#flavorWheel')) showFlavorResults(chip.dataset.flavorNote);
+                    else openFlavorExplorer(chip.dataset.flavorNote);
+                    return;
+                }
+                const subject = evt.target.closest('[data-flavor-subject]');
+                if (subject && ontologyData) {
+                    const inst = ontologyData.instanceMap[subject.dataset.flavorSubject];
+                    if (inst) showInstanceDetailModal(inst, subject.dataset.flavorType);
+                }
+            });
+        }
+
         function showInstanceDetailModal(instance, className) {
             console.log('📝 Showing modal for:', instance.name);
 
@@ -3570,7 +3882,8 @@
                 const isRecipeInst = className.toLowerCase() === 'recipe';
                 if (isRecipeInst) html += renderBrewParamsPanel(instance.properties);
                 const genericProps = Object.entries(instance.properties)
-                    .filter(([propName]) => !(isRecipeInst && BREW_PROP_NAMES.has(propName)));
+                    .filter(([propName]) => !(isRecipeInst && BREW_PROP_NAMES.has(propName)))
+                    .filter(([propName]) => !FLAVOR_PROP_NAMES.has(propName));
                 if (genericProps.length > 0) {
                     html += '<div class="property-grid">';
                     genericProps.forEach(([propName, values]) => {
@@ -3590,6 +3903,16 @@
                     html += '<p style="text-align:center;color:var(--text-secondary);padding:2rem;">No additional properties available.</p>';
                 }
                 modalBody.innerHTML = html;
+            }
+
+            // Flavor profile card for any instance that has flavor data
+            // (country / harvest / processing / roast / grade) — placed after
+            // the hero banner or photo when there is one.
+            const flavorHtml = ontologyData ? renderFlavorPanel(instance) : '';
+            if (flavorHtml) {
+                const anchor = modalBody.querySelector(':scope > .harvest-hero, :scope > .bev-modal-hero');
+                if (anchor) anchor.insertAdjacentHTML('afterend', flavorHtml);
+                else modalBody.insertAdjacentHTML('afterbegin', flavorHtml);
             }
 
             modal.classList.add('active');
@@ -7506,6 +7829,7 @@
                         ontologyData.instanceMap[detail.uri] = {
                             uri: detail.uri,
                             name,
+                            label: detail.label || null,
                             classURIs: detail.types.map(t => BASE_NS + t),
                             description: '',
                             properties: props
@@ -8198,6 +8522,7 @@
         function setupEventHandlers() {
             setupGraphLegend();
             setupGraphFullscreen();
+            setupFlavorExplorer();
 
             // Navigation items (Dashboard, Graph, Categories, Statistics)
             document.querySelectorAll('.nav-item[data-view]').forEach(item => {
@@ -8211,6 +8536,10 @@
                     }
                     
                     showView(view + 'View');
+
+                    if (view === 'flavor') {
+                        renderFlavorExplorer();
+                    }
 
                     if (view === 'graph') {
                         console.log('📊 Preparing graph view...');
