@@ -8675,15 +8675,33 @@
                     btn.focus();
                 }
             });
-            // Leaving the mobile breakpoint resets the drawer state
-            MOBILE_NAV_QUERY.addEventListener('change', () => setMobileNavOpen(false));
+            // Leaving the mobile breakpoint resets the drawer state.
+            // Safari < 14 only has the legacy addListener API on MediaQueryList.
+            const onBreakpointChange = () => setMobileNavOpen(false);
+            if (typeof MOBILE_NAV_QUERY.addEventListener === 'function') {
+                MOBILE_NAV_QUERY.addEventListener('change', onBreakpointChange);
+            } else if (typeof MOBILE_NAV_QUERY.addListener === 'function') {
+                MOBILE_NAV_QUERY.addListener(onBreakpointChange);
+            }
+        }
+
+        // Runs one feature's setup in isolation: if it throws (e.g. an API the
+        // browser lacks), the remaining buttons and menus still get wired up,
+        // and the failure is shown instead of the page silently going dead.
+        function safeSetup(name, fn) {
+            try {
+                fn();
+            } catch (err) {
+                console.error(`❌ ${name} setup failed:`, err);
+                showErrorBanner(`${name} 기능을 불러오지 못했어요 (${err && err.message ? err.message : err}). 나머지 기능은 정상 동작합니다.`);
+            }
         }
 
         function setupEventHandlers() {
-            setupMobileNav();
-            setupGraphLegend();
-            setupGraphFullscreen();
-            setupFlavorExplorer();
+            safeSetup('Mobile menu', setupMobileNav);
+            safeSetup('Graph legend', setupGraphLegend);
+            safeSetup('Graph fullscreen', setupGraphFullscreen);
+            safeSetup('Flavor Explorer', setupFlavorExplorer);
 
             // Navigation items (Dashboard, Graph, Categories, Statistics)
             document.querySelectorAll('.nav-item[data-view]').forEach(item => {
