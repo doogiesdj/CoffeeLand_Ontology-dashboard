@@ -135,6 +135,76 @@
             min-height: 100vh;
         }
 
+        /* ── Mobile shell: sidebar becomes an off-canvas drawer ── */
+        .mobile-topbar, .sidebar-backdrop { display: none; }
+
+        @media (max-width: 768px) {
+            .mobile-topbar {
+                display: flex;
+                align-items: center;
+                gap: 0.75rem;
+                position: sticky;
+                top: 0;
+                z-index: 900;
+                height: 56px;
+                padding: 0 0.75rem;
+                background: var(--bg-card);
+                border-bottom: 1px solid var(--border);
+            }
+            .mobile-menu-btn {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                width: 44px;
+                height: 44px;
+                border: 1px solid var(--border);
+                border-radius: 10px;
+                background: transparent;
+                color: var(--text-primary);
+                font-size: 1.1rem;
+                cursor: pointer;
+            }
+            .mobile-menu-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+            .mobile-topbar-title { font-weight: 700; font-size: 1.1rem; color: var(--accent); }
+
+            .sidebar {
+                width: min(300px, 85vw);
+                transform: translateX(-100%);
+                transition: transform 250ms cubic-bezier(0.16, 1, 0.3, 1);
+                box-shadow: none;
+                visibility: hidden;
+            }
+            body.nav-open .sidebar {
+                transform: translateX(0);
+                visibility: visible;
+                box-shadow: 12px 0 40px rgba(0, 0, 0, 0.5);
+            }
+            .sidebar-backdrop {
+                display: block;
+                position: fixed;
+                inset: 0;
+                z-index: 999;
+                background: rgba(0, 0, 0, 0.55);
+                opacity: 0;
+                pointer-events: none;
+                transition: opacity 250ms ease;
+            }
+            body.nav-open .sidebar-backdrop { opacity: 1; pointer-events: auto; }
+            body.nav-open { overflow: hidden; }
+
+            .main-content {
+                margin-left: 0;
+                padding: 1rem;
+                min-width: 0;
+            }
+        }
+        /* Per-component mobile overrides live at the END of this stylesheet
+           (see "Mobile component overrides") so they win over base rules. */
+
+        @media (prefers-reduced-motion: reduce) {
+            .sidebar, .sidebar-backdrop { transition: none; }
+        }
+
         /* Header */
         .dashboard-header {
             display: flex;
@@ -490,7 +560,6 @@
             gap: 1.25rem;
             align-items: start;
         }
-        @media (max-width: 960px) { .flavor-layout { grid-template-columns: 1fr; } }
         .flavor-wheel { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(260px, 100%), 1fr)); gap: 0.9rem; min-width: 0; }
         .flavor-cat {
             padding: 0.9rem 1rem 1rem;
@@ -1383,6 +1452,39 @@
         .map-entity-popup-meta { color: #475569; font-size: 0.75rem; margin-top: 0.15rem; }
         .map-entity-popup-btn { margin-top: 0.5rem; padding: 0.28rem 0.7rem; background: #4f46e5; border: none; border-radius: 4px; color: #fff; cursor: pointer; font-size: 0.75rem; width: 100%; font-weight: 600; }
         .map-entity-popup-btn:hover { background: #4338ca; }
+
+        /* ── Flavor Explorer: stacked layout (≤ 960px) — after base rules so it wins ── */
+        @media (max-width: 960px) {
+            .flavor-layout { grid-template-columns: 1fr; }
+            .flavor-results { position: static; max-height: none; scroll-margin-top: 72px; }
+        }
+
+        /* ── Mobile component overrides (≤ 768px) — keep at the end so they win ── */
+        @media (max-width: 768px) {
+            .dashboard-header { flex-wrap: wrap; gap: 0.75rem; margin-bottom: 1.25rem; }
+            .dashboard-title { font-size: 1.4rem; }
+            .header-actions { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+
+            /* Dashboard home: stack the 2fr/1fr grid and let children shrink */
+            .content-grid { grid-template-columns: minmax(0, 1fr); }
+            .content-grid > * { min-width: 0; }
+            .quick-actions { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.6rem; }
+            .quick-action { padding: 1rem 0.6rem; min-width: 0; overflow-wrap: anywhere; }
+            .category-item, .category-info, .status-item, .status-name { min-width: 0; }
+            .category-info { overflow-wrap: anywhere; }
+            .stats-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+            /* Detail modal: use the full screen width */
+            .modal-container { width: calc(100vw - 1rem); max-width: none; max-height: calc(100dvh - 1rem); border-radius: 0.75rem; }
+            .modal-header { padding: 0.9rem 1rem; }
+            .modal-title { font-size: 1.05rem; min-width: 0; overflow-wrap: anywhere; }
+            .modal-body { padding: 1rem; max-height: calc(100dvh - 1rem - 64px); }
+            .brew-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+            /* Graph: shorter canvas, legend collapses to a scrollable strip */
+            #cy { height: 60vh; }
+            .graph-legend { max-height: 40%; padding: 10px; }
+        }
     </style>
     <!-- Leaflet map -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
@@ -1414,8 +1516,18 @@
         </div>
     </div>
 
+    <!-- Mobile top bar (shown ≤ 768px; opens the sidebar as a drawer) -->
+    <header class="mobile-topbar">
+        <button type="button" class="mobile-menu-btn" id="mobileMenuBtn"
+                aria-label="메뉴 열기" aria-controls="appSidebar" aria-expanded="false">
+            <i class="fas fa-bars" aria-hidden="true"></i>
+        </button>
+        <div class="mobile-topbar-title"><i class="fas fa-coffee" aria-hidden="true"></i> CoffeeLand</div>
+    </header>
+    <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+
     <!-- Sidebar -->
-    <aside class="sidebar">
+    <aside class="sidebar" id="appSidebar">
         <div class="sidebar-header">
             <div class="logo-text">
                 <i class="fas fa-coffee"></i>
@@ -3372,8 +3484,17 @@
             document.addEventListener('click', (evt) => {
                 const chip = evt.target.closest('[data-flavor-note]');
                 if (chip) {
-                    if (chip.closest('#flavorWheel')) showFlavorResults(chip.dataset.flavorNote);
-                    else openFlavorExplorer(chip.dataset.flavorNote);
+                    if (chip.closest('#flavorWheel')) {
+                        showFlavorResults(chip.dataset.flavorNote);
+                        // Stacked layout (≤ 960px): results sit below the wheel — bring them into view
+                        if (window.matchMedia('(max-width: 960px)').matches) {
+                            const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+                            document.getElementById('flavorResults')
+                                ?.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+                        }
+                    } else {
+                        openFlavorExplorer(chip.dataset.flavorNote);
+                    }
                     return;
                 }
                 const subject = evt.target.closest('[data-flavor-subject]');
@@ -8519,7 +8640,47 @@
         });
 
         // Event Handlers
+        // ── Mobile navigation drawer (≤ 768px) ───────────────────────────
+        const MOBILE_NAV_QUERY = window.matchMedia('(max-width: 768px)');
+
+        function setMobileNavOpen(open) {
+            const btn = document.getElementById('mobileMenuBtn');
+            const sidebar = document.getElementById('appSidebar');
+            if (!btn || !sidebar) return;
+            const isOpen = open && MOBILE_NAV_QUERY.matches;
+            document.body.classList.toggle('nav-open', isOpen);
+            btn.setAttribute('aria-expanded', String(isOpen));
+            btn.setAttribute('aria-label', isOpen ? '메뉴 닫기' : '메뉴 열기');
+            btn.querySelector('i').className = isOpen ? 'fas fa-times' : 'fas fa-bars';
+            if (isOpen) {
+                sidebar.querySelector('.nav-item.active, .nav-item')?.setAttribute('tabindex', '-1');
+                sidebar.querySelector('.nav-item.active, .nav-item')?.focus({ preventScroll: true });
+            }
+        }
+
+        function setupMobileNav() {
+            const btn = document.getElementById('mobileMenuBtn');
+            const sidebar = document.getElementById('appSidebar');
+            const backdrop = document.getElementById('sidebarBackdrop');
+            if (!btn || !sidebar || !backdrop) return;
+            btn.addEventListener('click', () => setMobileNavOpen(!document.body.classList.contains('nav-open')));
+            backdrop.addEventListener('click', () => setMobileNavOpen(false));
+            // Choosing a destination closes the drawer
+            sidebar.addEventListener('click', (evt) => {
+                if (evt.target.closest('.nav-item')) setMobileNavOpen(false);
+            });
+            document.addEventListener('keydown', (evt) => {
+                if (evt.key === 'Escape' && document.body.classList.contains('nav-open')) {
+                    setMobileNavOpen(false);
+                    btn.focus();
+                }
+            });
+            // Leaving the mobile breakpoint resets the drawer state
+            MOBILE_NAV_QUERY.addEventListener('change', () => setMobileNavOpen(false));
+        }
+
         function setupEventHandlers() {
+            setupMobileNav();
             setupGraphLegend();
             setupGraphFullscreen();
             setupFlavorExplorer();
