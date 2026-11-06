@@ -1955,6 +1955,10 @@
         let hierarchyData = [];
         let cy = null;
         let colaLayout = null;
+        // While true, the viewport keeps re-fitting to the settling layout.
+        // Turned off the moment the user zooms/pans/clicks so their view sticks.
+        let autoFitActive = false;
+        const GRAPH_FIT_PADDING = 50;
 
         // On-screen error banner: mobile browsers give us no easy way to see the
         // console, so surface any uncaught error directly on the page instead of
@@ -7663,10 +7667,11 @@
                 });
             });
             
-            // Fit the graph after layout completes
-            cy.on('layoutstop', () => {
-                console.log('✅ Layout completed, fitting view');
-                cy.fit();
+            // Any direct user interaction with the canvas (wheel zoom, click,
+            // touch/pinch) hands viewport control to the user: stop auto-fitting
+            // so the initial layout animation no longer snaps the zoom back.
+            ['wheel', 'mousedown', 'touchstart', 'pointerdown'].forEach(type => {
+                container.addEventListener(type, () => { autoFitActive = false; }, { passive: true });
             });
 
             // Spring the graph back into balance whenever a node is dragged and
@@ -7704,13 +7709,16 @@
             // there's always at least a static graph on screen.
             const colaAvailable = typeof cytoscape('layout', 'cola') === 'function';
 
+            // The layout itself never fits the viewport (cola's own fit would
+            // re-fit on every tick and override the user's zoom). Fitting is
+            // handled by startAutoFit(), which yields as soon as the user acts.
             const layoutOptions = colaAvailable ? {
                 name: 'cola',
                 animate: true,
                 refresh: 1,
                 maxSimulationTime: 15000,
-                fit: fit,
-                padding: 50,
+                fit: false,
+                padding: GRAPH_FIT_PADDING,
                 randomize: randomize,
                 avoidOverlap: true,
                 nodeSpacing: 15,
@@ -7721,8 +7729,8 @@
                 name: 'cose',
                 animate: true,
                 animationDuration: 600,
-                fit: fit,
-                padding: 50,
+                fit: false,
+                padding: GRAPH_FIT_PADDING,
                 randomize: randomize,
                 nodeRepulsion: 400000,
                 idealEdgeLength: 150,
@@ -7737,11 +7745,34 @@
 
             try {
                 colaLayout = cy.layout(layoutOptions);
+                if (fit) {
+                    startAutoFit(colaLayout);
+                } else {
+                    autoFitActive = false;
+                }
                 colaLayout.run();
             } catch (err) {
                 console.error('❌ Layout failed:', err);
                 showErrorBanner('Graph layout failed: ' + (err && err.message ? err.message : err));
             }
+        }
+
+        // Keeps the viewport fitted to the graph while `layout` animates, until
+        // the layout stops or the user interacts with the canvas.
+        function startAutoFit(layout) {
+            autoFitActive = true;
+            const step = () => {
+                if (!autoFitActive || !cy || layout !== colaLayout) return;
+                cy.fit(undefined, GRAPH_FIT_PADDING);
+                requestAnimationFrame(step);
+            };
+            layout.one('layoutstop', () => {
+                if (autoFitActive && cy && layout === colaLayout) {
+                    cy.fit(undefined, GRAPH_FIT_PADDING);
+                }
+                autoFitActive = false;
+            });
+            requestAnimationFrame(step);
         }
 
         // Keep the graph correctly sized across orientation changes / resizes —
