@@ -4,60 +4,74 @@ on:
   push:
     branches: [main]
     paths:
-      - 'data/coffeeland_final_v2.rdf'        # RDF 파일 변경 시 자동 실행
-      - 'data/coffeeland_data_enrichment.ttl'  # TTL 파일 변경 시 자동 실행
-      - 'scripts/**'                           # 스크립트 변경 시 자동 실행
-      - 'dashboard.html'                       # 대시보드 HTML 변경 시 자동 실행
-  workflow_dispatch:                           # 수동 실행도 가능
+      - 'data/*.rdf'                 # RDF 파일 변경 시 자동 실행
+      - 'data/*.ttl'                 # TTL 파일 변경 시 자동 실행
+      - 'scripts/**'                 # 스크립트 변경 시 자동 실행
+      - 'dashboard.html'             # 대시보드 HTML 변경 시 자동 실행
+      - 'manifest.json'
+      - 'sw.js'
+      - 'icons/**'
+      - '.github/workflows/deploy.yml'
+  workflow_dispatch:                 # 수동 실행도 가능
+
+# 연속 push 시 배포가 겹쳐 서로 충돌하지 않도록 한 번에 하나만 실행
+concurrency:
+  group: coffeeland-deploy
+  cancel-in-progress: false
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-      pages: write
-      id-token: write
 
     steps:
       # 1. 저장소 체크아웃
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       # 2. Python 설치
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v6
         with:
           python-version: '3.11'
 
       # 3. 필요한 패키지 설치
       - name: Install dependencies
-        run: |
-          pip install rdflib
+        run: pip install rdflib
 
-      # 4. RDF → JSON 변환 실행
-      - name: Generate JSON from RDF and copy RDF to docs
+      # 4. RDF → JSON 변환 + 정적 자산 복사
+      - name: Generate JSON from RDF and copy assets to docs
         run: |
           python scripts/rdf_to_json.py
-          cp data/coffeeland_final_v2.rdf docs/coffeeland-new.rdf
+          cp data/coffeeland_final_v4.rdf docs/coffeeland-new.rdf
           cp dashboard.html docs/dashboard.html
           cp manifest.json docs/manifest.json
           cp sw.js docs/sw.js
-          cp -r icons docs/icons
-          echo "JSON 생성 + RDF/HTML/PWA 자산 복사 완료"
+          cp -r icons docs/
           ls -la docs/
 
-      # 5. 변환된 파일을 docs/ 폴더에 커밋
+      # 5. 생성된 파일을 main 의 docs/ 에 커밋 (원격이 앞서 있으면 rebase 후 push)
       - name: Commit generated files
         run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
           git add docs/
-          git diff --staged --quiet || git commit -m "auto: Update JSON data from RDF [skip ci]"
-          git push
+          if git diff --cached --quiet; then
+            echo "변경 없음 - 커밋 생략"
+            exit 0
+          fi
+          git commit -m "auto: Update JSON data from RDF [skip ci]"
+          for attempt in 1 2 3; do
+            git pull --rebase origin main && git push origin HEAD:main && exit 0
+            echo "push 재시도 ($attempt)"
+            sleep 5
+          done
+          exit 1
 
-      # 6. GitHub Pages 배포
+      # 6. GitHub Pages 배포 (gh-pages 브랜치)
       - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
+        uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./docs
