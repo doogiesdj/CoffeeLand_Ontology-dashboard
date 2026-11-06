@@ -294,6 +294,86 @@
             border: 1px solid var(--border);
         }
 
+        /* Graph card + fullscreen */
+        .graph-card { position: relative; }
+        .graph-card.is-fullscreen {
+            padding: 0;
+            border-radius: 0;
+            background: var(--bg-dark);
+        }
+        .graph-card.is-pseudo-fullscreen {
+            position: fixed;
+            inset: 0;
+            z-index: 10000;
+            margin: 0;
+        }
+        .graph-card.is-fullscreen #cy {
+            height: 100vh;
+            height: 100dvh;
+            border: none;
+            border-radius: 0;
+        }
+        .graph-fs-exit {
+            display: none;
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            z-index: 3;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.45);
+        }
+        .graph-card.is-fullscreen .graph-fs-exit { display: inline-flex; }
+
+        /* Graph legend (clickable — highlights matching elements) */
+        .graph-legend {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            z-index: 2;
+            max-height: calc(100% - 40px);
+            overflow-y: auto;
+            background: var(--bg-elevated);
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+        }
+        .graph-legend-title {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+        .graph-legend-hint { font-size: 10px; font-weight: 400; color: var(--text-secondary); }
+        .graph-legend-list { display: flex; flex-direction: column; gap: 2px; }
+        .graph-legend-heading { font-size: 11px; font-weight: 600; color: var(--text-primary); margin: 2px 0; }
+        .graph-legend-divider { height: 1px; background: var(--border); margin: 5px 0; }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 4px 6px;
+            background: transparent;
+            border: 1px solid transparent;
+            border-radius: 6px;
+            font: inherit;
+            font-size: 12px;
+            color: var(--text-secondary);
+            text-align: left;
+            cursor: pointer;
+            transition: background-color 150ms ease, border-color 150ms ease, color 150ms ease;
+        }
+        .legend-item:hover { background: rgba(255, 255, 255, 0.06); color: var(--text-primary); }
+        .legend-item:active { background: rgba(255, 255, 255, 0.1); }
+        .legend-item:focus-visible { outline: 2px solid #FFD700; outline-offset: 1px; }
+        .legend-item[aria-pressed="true"] {
+            background: rgba(255, 215, 0, 0.12);
+            border-color: #FFD700;
+            color: var(--text-primary);
+        }
+        .legend-swatch { flex-shrink: 0; box-sizing: border-box; }
+
         /* Category List */
         .category-list {
             display: flex;
@@ -1436,79 +1516,87 @@
                         <i class="fas fa-redo"></i>
                         Reset
                     </button>
+                    <button class="btn" id="fullscreenGraphBtn" aria-pressed="false" title="Fullscreen (F)">
+                        <i class="fas fa-expand"></i>
+                        <span>Fullscreen</span>
+                    </button>
                 </div>
             </div>
-            <div class="card" style="position: relative;">
+            <div class="card graph-card" id="graphCard">
                 <div id="cy"></div>
-                <div style="position: absolute; bottom: 20px; left: 20px; background: var(--bg-elevated); padding: 15px; border-radius: 8px; border: 1px solid var(--border);">
-                    <div style="font-weight: 600; margin-bottom: 10px; color: var(--text-primary);">Legend</div>
-                    <div style="display: flex; flex-direction: column; gap: 8px;">
-                        <div style="font-size: 11px; font-weight: 600; color: var(--text-primary); margin-bottom: 2px;">Main Class (Category Color)</div>
-                        <div style="display: flex; align-items: center; gap: 10px;">
-                            <div style="width: 24px; height: 24px; background: #ef4444; clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%); border: 2px solid white;"></div>
-                            <span style="font-size: 12px; color: var(--text-secondary);">Location</span>
-                        </div>
-                        <div style="display: flex; align-items: center; gap: 10px;">
-                            <div style="width: 24px; height: 24px; background: #3b82f6; clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%); border: 2px solid white;"></div>
-                            <span style="font-size: 12px; color: var(--text-secondary);">Organization</span>
-                        </div>
-                        <div style="display: flex; align-items: center; gap: 10px;">
-                            <div style="width: 24px; height: 24px; background: #22c55e; clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%); border: 2px solid white;"></div>
-                            <span style="font-size: 12px; color: var(--text-secondary);">Market & Economics</span>
-                        </div>
-                        <div style="display: flex; align-items: center; gap: 10px;">
-                            <div style="width: 24px; height: 24px; background: #8b4513; clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%); border: 2px solid white;"></div>
-                            <span style="font-size: 12px; color: var(--text-secondary);">Product</span>
-                        </div>
-                        <div style="display: flex; align-items: center; gap: 10px;">
-                            <div style="width: 24px; height: 24px; background: #f59e0b; clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%); border: 2px solid white;"></div>
-                            <span style="font-size: 12px; color: var(--text-secondary);">Quality & Processing</span>
-                        </div>
-                        <div style="display: flex; align-items: center; gap: 10px;">
-                            <div style="width: 24px; height: 24px; background: #a855f7; clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%); border: 2px solid white;"></div>
-                            <span style="font-size: 12px; color: var(--text-secondary);">Shop Operation</span>
-                        </div>
-                        <div style="display: flex; align-items: center; gap: 10px;">
-                            <div style="width: 24px; height: 24px; background: #10b981; clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%); border: 2px solid white;"></div>
-                            <span style="font-size: 12px; color: var(--text-secondary);">Agri Event</span>
-                        </div>
-                        <div style="display: flex; align-items: center; gap: 10px;">
-                            <div style="width: 24px; height: 24px; background: #06b6d4; clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%); border: 2px solid white;"></div>
-                            <span style="font-size: 12px; color: var(--text-secondary);">Sustainability</span>
-                        </div>
-                        <div style="display: flex; align-items: center; gap: 10px;">
-                            <div style="width: 24px; height: 24px; background: #f59e0b; transform: rotate(45deg); border: 2px solid white;"></div>
-                            <span style="font-size: 12px; color: var(--text-secondary);">Property (diamond)</span>
-                        </div>
-                        <div style="height: 1px; background: var(--border); margin: 5px 0;"></div>
-                        <div style="display: flex; align-items: center; gap: 10px;">
-                            <div style="width: 30px; height: 2px; background: #94a3b8;"></div>
-                            <span style="font-size: 12px; color: var(--text-secondary);">Hierarchy</span>
-                        </div>
-                        <div style="display: flex; align-items: center; gap: 10px;">
-                            <div style="width: 30px; height: 2px; background: #3b82f6;"></div>
-                            <span style="font-size: 12px; color: var(--text-secondary);">Domain</span>
-                        </div>
-                        <div style="display: flex; align-items: center; gap: 10px;">
-                            <div style="width: 30px; height: 2px; background: #10b981; border-top: 2px dashed;"></div>
-                            <span style="font-size: 12px; color: var(--text-secondary);">Range</span>
-                        </div>
-                        <div style="height: 1px; background: var(--border); margin: 5px 0;"></div>
-                        <div style="font-size: 11px; font-weight: 600; color: var(--text-primary); margin-bottom: 2px;">Shape = Hierarchy Level</div>
-                        <div style="display: flex; align-items: center; gap: 10px;">
-                            <div style="width: 26px; height: 26px; background: #94a3b8; clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%); border: 2px solid white;"></div>
-                            <span style="font-size: 12px; color: var(--text-secondary);">Main Class</span>
-                        </div>
-                        <div style="display: flex; align-items: center; gap: 10px;">
-                            <div style="width: 22px; height: 22px; background: #94a3b8; border-radius: 50%; border: 2px solid white;"></div>
-                            <span style="font-size: 12px; color: var(--text-secondary);">Subclass</span>
-                        </div>
-                        <div style="display: flex; align-items: center; gap: 10px; padding: 2px 0;">
-                            <div style="width: 0; height: 0; border-left: 11px solid transparent; border-right: 11px solid transparent; border-bottom: 19px solid #94a3b8;"></div>
-                            <span style="font-size: 12px; color: var(--text-secondary);">Sub-subclass</span>
-                        </div>
+                <div class="graph-legend" id="graphLegend" role="group" aria-label="Graph legend — click an item to highlight it">
+                    <div class="graph-legend-title">Legend <span class="graph-legend-hint">클릭하면 강조</span></div>
+                    <div class="graph-legend-list">
+                        <div class="graph-legend-heading">Main Class (Category Color)</div>
+                        <button type="button" class="legend-item" data-legend-selector='node[rootLabel="Location"]' aria-pressed="false">
+                            <span class="legend-swatch" style="width: 24px; height: 24px; background: #ef4444; clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%); border: 2px solid white;"></span>
+                            <span>Location</span>
+                        </button>
+                        <button type="button" class="legend-item" data-legend-selector='node[rootLabel="Organization"]' aria-pressed="false">
+                            <span class="legend-swatch" style="width: 24px; height: 24px; background: #3b82f6; clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%); border: 2px solid white;"></span>
+                            <span>Organization</span>
+                        </button>
+                        <button type="button" class="legend-item" data-legend-selector='node[rootLabel="MarketAndEconomics"]' aria-pressed="false">
+                            <span class="legend-swatch" style="width: 24px; height: 24px; background: #22c55e; clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%); border: 2px solid white;"></span>
+                            <span>Market &amp; Economics</span>
+                        </button>
+                        <button type="button" class="legend-item" data-legend-selector='node[rootLabel="Product"]' aria-pressed="false">
+                            <span class="legend-swatch" style="width: 24px; height: 24px; background: #8b4513; clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%); border: 2px solid white;"></span>
+                            <span>Product</span>
+                        </button>
+                        <button type="button" class="legend-item" data-legend-selector='node[rootLabel="QualityAndProcessing"]' aria-pressed="false">
+                            <span class="legend-swatch" style="width: 24px; height: 24px; background: #f59e0b; clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%); border: 2px solid white;"></span>
+                            <span>Quality &amp; Processing</span>
+                        </button>
+                        <button type="button" class="legend-item" data-legend-selector='node[rootLabel="ShopOperation"]' aria-pressed="false">
+                            <span class="legend-swatch" style="width: 24px; height: 24px; background: #a855f7; clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%); border: 2px solid white;"></span>
+                            <span>Shop Operation</span>
+                        </button>
+                        <button type="button" class="legend-item" data-legend-selector='node[rootLabel="AgriEvent"]' aria-pressed="false">
+                            <span class="legend-swatch" style="width: 24px; height: 24px; background: #10b981; clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%); border: 2px solid white;"></span>
+                            <span>Agri Event</span>
+                        </button>
+                        <button type="button" class="legend-item" data-legend-selector='node[rootLabel="Sustainability"]' aria-pressed="false">
+                            <span class="legend-swatch" style="width: 24px; height: 24px; background: #06b6d4; clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%); border: 2px solid white;"></span>
+                            <span>Sustainability</span>
+                        </button>
+                        <button type="button" class="legend-item" data-legend-selector='node[nodeType="property"]' aria-pressed="false">
+                            <span class="legend-swatch" style="width: 18px; height: 18px; margin: 3px; background: #f59e0b; transform: rotate(45deg); border: 2px solid white;"></span>
+                            <span>Property (diamond)</span>
+                        </button>
+                        <div class="graph-legend-divider"></div>
+                        <button type="button" class="legend-item" data-legend-selector='edge[edgeType="hierarchy"]' aria-pressed="false">
+                            <span class="legend-swatch" style="width: 30px; height: 2px; background: #94a3b8;"></span>
+                            <span>Hierarchy</span>
+                        </button>
+                        <button type="button" class="legend-item" data-legend-selector='edge[edgeType="domain"]' aria-pressed="false">
+                            <span class="legend-swatch" style="width: 30px; height: 2px; background: #3b82f6;"></span>
+                            <span>Domain</span>
+                        </button>
+                        <button type="button" class="legend-item" data-legend-selector='edge[edgeType="range"]' aria-pressed="false">
+                            <span class="legend-swatch" style="width: 30px; height: 0; border-top: 2px dashed #10b981;"></span>
+                            <span>Range</span>
+                        </button>
+                        <div class="graph-legend-divider"></div>
+                        <div class="graph-legend-heading">Shape = Hierarchy Level</div>
+                        <button type="button" class="legend-item" data-legend-selector='node[levelClass="level-root"]' aria-pressed="false">
+                            <span class="legend-swatch" style="width: 26px; height: 26px; background: #94a3b8; clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%); border: 2px solid white;"></span>
+                            <span>Main Class</span>
+                        </button>
+                        <button type="button" class="legend-item" data-legend-selector='node[levelClass="level-sub"]' aria-pressed="false">
+                            <span class="legend-swatch" style="width: 22px; height: 22px; margin: 0 2px; background: #94a3b8; border-radius: 50%; border: 2px solid white;"></span>
+                            <span>Subclass</span>
+                        </button>
+                        <button type="button" class="legend-item" data-legend-selector='node[levelClass="level-subsub"]' aria-pressed="false">
+                            <span class="legend-swatch" style="width: 0; height: 0; margin: 0 2px; border-left: 11px solid transparent; border-right: 11px solid transparent; border-bottom: 19px solid #94a3b8;"></span>
+                            <span>Sub-subclass</span>
+                        </button>
                     </div>
                 </div>
+                <button type="button" class="btn graph-fs-exit" id="exitFullscreenGraphBtn" aria-label="Exit fullscreen">
+                    <i class="fas fa-compress"></i>
+                    Exit Fullscreen
+                </button>
             </div>
         </div>
 
@@ -7290,10 +7378,10 @@
                 graphView.style.display = 'block';
             }
             
-            // Force container to be visible and properly sized
+            // Force container to be visible. Size comes from the #cy stylesheet
+            // rule (600px, or full viewport in fullscreen) — don't set it inline,
+            // or the fullscreen CSS can't override it.
             container.style.display = 'block';
-            container.style.width = '100%';
-            container.style.height = '600px';
             console.log('✅ Container styled');
             
             // Poll for a non-zero container size instead of a fixed double-rAF wait.
@@ -7356,8 +7444,10 @@
 
             const elements = [];
             
-            function addNodes(nodes, parentId = null, depth = 0, rootColor = null) {
+            function addNodes(nodes, parentId = null, depth = 0, rootColor = null, rootLabel = null) {
                 nodes.forEach(node => {
+                    // Top-level category this node belongs to (used by the legend).
+                    const nodeRootLabel = depth === 0 ? node.label : rootLabel;
                     // Root's own color cascades down to every descendant so the whole
                     // subtree reads as one category (previously only the 8 roots got
                     // real colors and everything below them fell back to gray).
@@ -7371,7 +7461,8 @@
                             color: color,
                             nodeType: 'class',
                             level: depth,
-                            levelClass: levelClass
+                            levelClass: levelClass,
+                            rootLabel: nodeRootLabel
                         }
                     });
 
@@ -7387,7 +7478,7 @@
                     }
 
                     if (node.children && node.children.length > 0) {
-                        addNodes(node.children, node.uri, depth + 1, color);
+                        addNodes(node.children, node.uri, depth + 1, color, nodeRootLabel);
                     }
                 });
             }
@@ -7628,6 +7719,7 @@
             // Node interaction - highlight connected nodes
             cy.on('tap', 'node', (evt) => {
                 const node = evt.target;
+                setActiveLegendItem(null);
                 cy.elements().removeClass('highlighted').style({
                     'opacity': 0.3
                 });
@@ -7649,9 +7741,7 @@
             // Click on background to reset
             cy.on('tap', (evt) => {
                 if (evt.target === cy) {
-                    cy.elements().removeClass('highlighted').style({
-                        'opacity': 1
-                    });
+                    clearGraphHighlight();
                 }
             });
             
@@ -7757,6 +7847,140 @@
             }
         }
 
+        // ── Legend → graph highlighting ──────────────────────────────────
+        const LEGEND_DIM_OPACITY = 0.12;
+        let activeLegendItem = null;
+
+        function setActiveLegendItem(item) {
+            activeLegendItem = item;
+            document.querySelectorAll('#graphLegend .legend-item').forEach(el => {
+                el.setAttribute('aria-pressed', String(el === item));
+            });
+        }
+
+        function clearGraphHighlight() {
+            setActiveLegendItem(null);
+            if (!cy) return;
+            cy.elements().removeClass('highlighted').style('opacity', 1);
+        }
+
+        // Dims everything except elements matching `selector`. For edge
+        // selectors the edges' endpoint nodes stay visible too, so the
+        // highlighted lines still read as connections.
+        function highlightGraphSelection(selector) {
+            let matched;
+            try {
+                matched = cy.elements(selector);
+            } catch (err) {
+                console.error('❌ Invalid legend selector:', selector, err);
+                return 0;
+            }
+            const focus = matched.union(matched.edges().connectedNodes());
+            cy.batch(() => {
+                cy.elements().removeClass('highlighted').style('opacity', LEGEND_DIM_OPACITY);
+                focus.style('opacity', 1).addClass('highlighted');
+            });
+            return matched.length;
+        }
+
+        function setupGraphLegend() {
+            const legend = document.getElementById('graphLegend');
+            if (!legend) return;
+            legend.addEventListener('click', (evt) => {
+                const item = evt.target.closest('.legend-item');
+                if (!item || !cy) return;
+                if (item === activeLegendItem) {
+                    clearGraphHighlight();
+                    return;
+                }
+                highlightGraphSelection(item.dataset.legendSelector);
+                setActiveLegendItem(item);
+            });
+        }
+
+        // ── Graph fullscreen ─────────────────────────────────────────────
+        // Uses the Fullscreen API when available; otherwise (e.g. iPhone
+        // Safari) falls back to a fixed full-viewport overlay.
+        function getGraphCard() {
+            return document.getElementById('graphCard');
+        }
+
+        function isGraphFullscreen() {
+            const card = getGraphCard();
+            return !!card && (document.fullscreenElement === card || card.classList.contains('is-pseudo-fullscreen'));
+        }
+
+        function syncGraphFullscreenUi() {
+            const card = getGraphCard();
+            const btn = document.getElementById('fullscreenGraphBtn');
+            if (!card || !btn) return;
+            const on = isGraphFullscreen();
+            card.classList.toggle('is-fullscreen', on);
+            document.body.style.overflow = card.classList.contains('is-pseudo-fullscreen') ? 'hidden' : '';
+            btn.setAttribute('aria-pressed', String(on));
+            btn.querySelector('i').className = on ? 'fas fa-compress' : 'fas fa-expand';
+            btn.querySelector('span').textContent = on ? 'Exit Fullscreen' : 'Fullscreen';
+            if (cy) {
+                autoFitActive = false;
+                // Let the new size apply before cytoscape re-measures.
+                requestAnimationFrame(() => {
+                    cy.resize();
+                    cy.fit(undefined, GRAPH_FIT_PADDING);
+                });
+            }
+        }
+
+        async function enterGraphFullscreen() {
+            const card = getGraphCard();
+            if (!card) return;
+            if (card.requestFullscreen) {
+                try {
+                    await card.requestFullscreen();
+                    return; // fullscreenchange → syncGraphFullscreenUi
+                } catch (err) {
+                    console.warn('⚠️ Fullscreen API refused, using overlay fallback:', err);
+                }
+            }
+            card.classList.add('is-pseudo-fullscreen');
+            syncGraphFullscreenUi();
+        }
+
+        async function exitGraphFullscreen() {
+            const card = getGraphCard();
+            if (!card) return;
+            if (document.fullscreenElement === card) {
+                try {
+                    await document.exitFullscreen();
+                } catch (err) {
+                    console.warn('⚠️ exitFullscreen failed:', err);
+                }
+                return; // fullscreenchange → syncGraphFullscreenUi
+            }
+            card.classList.remove('is-pseudo-fullscreen');
+            syncGraphFullscreenUi();
+        }
+
+        function toggleGraphFullscreen() {
+            return isGraphFullscreen() ? exitGraphFullscreen() : enterGraphFullscreen();
+        }
+
+        function setupGraphFullscreen() {
+            document.getElementById('fullscreenGraphBtn')?.addEventListener('click', toggleGraphFullscreen);
+            document.getElementById('exitFullscreenGraphBtn')?.addEventListener('click', exitGraphFullscreen);
+            document.addEventListener('fullscreenchange', syncGraphFullscreenUi);
+            document.addEventListener('keydown', (evt) => {
+                const graphView = document.getElementById('graphView');
+                const graphVisible = graphView && graphView.style.display !== 'none';
+                const typing = evt.target.closest?.('input, textarea, select, [contenteditable="true"]');
+                if (evt.key === 'Escape' && getGraphCard()?.classList.contains('is-pseudo-fullscreen')) {
+                    exitGraphFullscreen();
+                } else if ((evt.key === 'f' || evt.key === 'F') && graphVisible && !typing
+                           && !evt.ctrlKey && !evt.metaKey && !evt.altKey) {
+                    toggleGraphFullscreen();
+                }
+            });
+        }
+
         // Keeps the viewport fitted to the graph while `layout` animates, until
         // the layout stops or the user interacts with the canvas.
         function startAutoFit(layout) {
@@ -7787,6 +8011,9 @@
 
         // Event Handlers
         function setupEventHandlers() {
+            setupGraphLegend();
+            setupGraphFullscreen();
+
             // Navigation items (Dashboard, Graph, Categories, Statistics)
             document.querySelectorAll('.nav-item[data-view]').forEach(item => {
                 item.addEventListener('click', function() {
