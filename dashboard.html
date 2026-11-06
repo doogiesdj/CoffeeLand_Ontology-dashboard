@@ -2688,8 +2688,8 @@
                         const beverageKey = instance.name.replace(/\s+/g, '_');
                         const hasImage = isBeverage && window.BEVERAGE_IMAGES && window.BEVERAGE_IMAGES[beverageKey];
 
-                        // Equipment photo (same underscore key convention as beverages)
-                        const equipImage = !isBeverage && window.EQUIPMENT_IMAGES ? window.EQUIPMENT_IMAGES[beverageKey] : null;
+                        // Equipment / vendor photo (same underscore key convention as beverages)
+                        const equipImage = !isBeverage ? instancePhoto(instance.name) : null;
                         const cardImageUrl = hasImage ? window.BEVERAGE_IMAGES[beverageKey] : equipImage;
 
                         // Check if this is a POS System
@@ -3283,8 +3283,8 @@
                     return s.charAt(0).toUpperCase() + s.slice(1);
                 }
                 let html = '';
-                // Equipment hero photo (Wikimedia Commons)
-                const _equipImgUrl = window.EQUIPMENT_IMAGES && window.EQUIPMENT_IMAGES[instance.name.replace(/\s+/g, '_')];
+                // Equipment / vendor hero photo (Wikimedia Commons)
+                const _equipImgUrl = instancePhoto(instance.name);
                 if (_equipImgUrl) {
                     html += `<img src="${_equipImgUrl}" alt="${instance.name}" class="bev-modal-hero" onerror="this.style.display='none'">`;
                 }
@@ -6528,6 +6528,180 @@
         // ============================================================
         // BEVERAGE IMAGES (Unsplash CDN — no auth required)
         // ============================================================
+        // ============================================================
+        // KOREAN-MADE EQUIPMENT — instances not present in the RDF ontology.
+        // Merged into ontologyData.instanceMap at load time (see applyExtraInstances),
+        // so they behave exactly like RDF individuals: cards, photos, detail modal.
+        // Property vocabulary matches the ontology (hasCountry / hasManufacturer /
+        // hasModel / hasCapacitySpec / hasYearIntroduced).
+        // ============================================================
+        window.EXTRA_INSTANCES = [
+            { name:'EM_ElRocio_ManusV2', type:'EspressoMachine',
+              description:'㈜후로웰이 론칭한 국산 에스프레소 머신 브랜드 엘로치오(El Rocio)의 반자동 머신. 유체 제어·펌프·솔레노이드 밸브 기술을 기반으로 국내에서 직접 설계·생산하며, 압력 프로파일링을 채용한 국산 가정용 머신으로 이름을 알렸다. 가정용 1그룹부터 상업용 3그룹까지 라인업을 갖췄다.',
+              props:{ hasCountry:'South Korea', hasManufacturer:'엘로치오 (El Rocio / ㈜후로웰)', hasModel:'El Rocio Manus V2', hasCapacitySpec:'가정용 1그룹 ~ 상업용 3그룹 라인업' } },
+            { name:'EM_MrCoffee_BrewBoy', type:'EspressoMachine',
+              description:'33년간 커피 사업을 이어온 ㈜미스터커피가 개발·생산한 국내 최초의 국산 상업용 전자동 커피 머신. 원두 투입부터 추출까지 자동화해 사무실·프랜차이즈 매장 환경을 겨냥한다.',
+              props:{ hasCountry:'South Korea', hasManufacturer:'㈜미스터커피', hasModel:'Brew Boy (브루보이)', hasCapacitySpec:'상업용 전자동 (Bean-to-cup)' } },
+            { name:'BR_CoffeeChaps_BrewvieII', type:'Equipment',
+              description:'LCD·카메라 모듈 제조사 비섹전자가 론칭한 커피챕스(COFFEE CHAPS)의 자동 브루잉 머신. 3분할 빔히터로 구간별 온도를 세밀하게 제어해 다양한 추출 레시피를 재현하며, 사이폰 방식의 브루비 사이폰 모델도 함께 운영한다.',
+              props:{ hasCountry:'South Korea', hasManufacturer:'커피챕스 (COFFEE CHAPS / 비섹전자)', hasModel:'Brewvie II', hasCapacitySpec:'자동 브루잉(푸어오버·사이폰) 머신' } },
+            { name:'GR_CoffeeChaps_Airmill', type:'Grinder',
+              description:'커피챕스가 개발한 그라인더. 분쇄 시 발생하는 미분(fines)을 공기로 걸러내는 Air-Sifting System이 핵심으로, 킥스타터 펀딩을 통해 공개됐다.',
+              props:{ hasCountry:'South Korea', hasManufacturer:'커피챕스 (COFFEE CHAPS)', hasModel:'Airmill', hasCapacitySpec:'Air-Sifting System (미분 제거)' } },
+            { name:'RM_Stronghold_S7ProX', type:'RoasterMachine',
+              description:'스트롱홀드테크놀로지의 스마트 전기 로스터. 로스팅 프로파일을 저장해 두면 버튼 조작만으로 언제 어디서나 같은 맛을 재현할 수 있는 것이 핵심 컨셉이다.',
+              props:{ hasCountry:'South Korea', hasManufacturer:'스트롱홀드테크놀로지 (Stronghold Technology)', hasModel:'S7 PRO X', hasCapacitySpec:'투입 150g~850g / 시간당 약 3.4kg' } },
+            { name:'RM_Stronghold_S9X', type:'RoasterMachine',
+              description:'스트롱홀드의 상위 모델. 최대 8kg까지 투입할 수 있어 카페 자체 로스팅을 넘어 납품 물량까지 소화하도록 설계됐다.',
+              props:{ hasCountry:'South Korea', hasManufacturer:'스트롱홀드테크놀로지 (Stronghold Technology)', hasModel:'S9X', hasCapacitySpec:'최대 투입 8kg' } },
+            { name:'RM_Proaster_THCR06', type:'RoasterMachine',
+              description:'1989년 자동볶음기 "도리깨" 개발로 출발한 ㈜태환자동화산업이 1999년 국산 커피 로스터를 개발하며 만든 프로스터(PROASTER) 시리즈. 200g급 소형부터 30kg 이상 대형까지 라인업을 갖췄다.',
+              props:{ hasCountry:'South Korea', hasManufacturer:'㈜태환자동화산업 (PROASTER)', hasModel:'PROASTER THCR-06', hasCapacitySpec:'배치 약 10kg (시리즈 200g~30kg+)', hasYearIntroduced:'1999' } },
+            { name:'IM_Icetro_ICI060', type:'IceMaker',
+              description:'인천에 본사를 둔 아이스트로(ICETRO)의 카페·식당용 큐빅 제빙기. 공냉식과 수냉식을 함께 운영하며 필터 내장형 모델도 제공한다.',
+              props:{ hasCountry:'South Korea', hasManufacturer:'아이스트로 (ICETRO)', hasModel:'ICI-060 / ICI-060(W)', hasCapacitySpec:'일일 제빙량 약 50kg (공냉식/수냉식)' } },
+            { name:'IM_Daeyoung_Lassele', type:'IceMaker',
+              description:'1981년 대영공업㈜으로 설립돼 2002년 대영이앤비로 사명을 바꾼 국내 업소용 냉동·냉장 기기 대표 기업. 라셀르(Lassele) 브랜드로 카페·식당용 제빙기와 냉장 설비를 공급한다.',
+              props:{ hasCountry:'South Korea', hasManufacturer:'대영이앤비 (Lassele)', hasModel:'Lassele 업소용 제빙기', hasCapacitySpec:'업소용 냉동·냉장 및 제빙 설비', hasYearIntroduced:'1981' } },
+            { name:'WF_Chungho_EspreCafe', type:'WaterFilter',
+              description:'청호나이스가 커피머신과 얼음정수기를 결합해 내놓은 카페용 정수 솔루션. 업소용 정수는 에스프레소 머신의 스케일 고장을 막고 추출 향미를 유지하는 핵심 설비다.',
+              props:{ hasCountry:'South Korea', hasManufacturer:'청호나이스 (Chungho Nais)', hasModel:'에스프레카페 (EspreCafe)', hasCapacitySpec:'커피머신 결합형 얼음정수기' } },
+
+            // ── 국내 원재료 공급사 (Korean Ingredient Vendors) ──
+            { name:'IV_SeoulMilk', type:'IngredientVendor',
+              description:'국내 B2B 카페용 우유 시장의 선두 주자. 카페라떼·카푸치노 등 우유가 들어가는 커피에 특화해 거품 형성과 부드러운 맛을 강화한 "서울우유 바리스타즈 밀크"를 국내 최초의 바리스타 전용 우유로 출시했다. 스타벅스 코리아·이디야커피·빽다방 등에 카페 전용 우유를 납품한다.',
+              props:{ hasName:'서울우유협동조합 (Seoul Milk)', hasSpecialty:'Dairy / Barista Milk', hasCountry:'South Korea', hasCity:'Seoul', hasCapacitySpec:'카페용 우유 매출 최근 4년간 연 약 10% 성장' } },
+            { name:'IV_MaeilDairies', type:'IngredientVendor',
+              description:'유제품과 함께 식물성 음료 "어메이징 오트"를 공급하는 국내 대표 유업체. 핀란드산 오트를 원물로 수입해 국내에서 가공하며, 커피와의 조화를 위해 바디감을 강화한 어메이징 오트 바리스타는 전국 약 7,600개 카페에 납품됐다. 귀리음료 시장 3년 연속 점유율 1위.',
+              props:{ hasName:'매일유업 (Maeil Dairies)', hasSpecialty:'Dairy / Oat Drink', hasCountry:'South Korea', hasCity:'Seoul', hasCapacitySpec:'어메이징 오트 바리스타 — 전국 약 7,600개 카페 납품' } },
+            { name:'IV_HyungkukFNB', type:'IngredientVendor',
+              description:'생과일 주스와 음료 베이스 ODM으로 출발한 음료 전문 제조사. 카페 프랜차이즈 시장 확대에 맞춰 스타벅스·이디야·메가커피 등 대형 프랜차이즈와 협력하며 성장했고, 업소용 음료 원액·시럽·농축액을 공급한다.',
+              props:{ hasName:'흥국에프엔비 (Hyungkuk F&B)', hasSpecialty:'Beverage Base / Syrup / Concentrate', hasCountry:'South Korea', hasFoundedYear:'2008', hasCapacitySpec:'2015년 코스닥 상장 · 음료 ODM 전문' } },
+            { name:'IV_SeoulFNB', type:'IngredientVendor',
+              description:'유제품과 음료·커피 제품을 생산·가공·판매하는 유제품 전문 가공업체. 건강기능식품을 포함한 다양한 음료 카테고리를 다룬다.',
+              props:{ hasName:'서울에프엔비 (Seoul F&B)', hasSpecialty:'Dairy Processing / Beverage', hasCountry:'South Korea', hasFoundedYear:'2007' } },
+            { name:'IV_Osulloc', type:'IngredientVendor',
+              description:'아모레퍼시픽그룹의 프리미엄 차(茶) 브랜드. 1979년 제주 서귀포 도순동의 황무지를 개간하며 시작해 2007년부터 직영 차밭에서 100% 유기농 녹차를 생산한다. 프리미엄 라인 세작·우전·일로향은 2015 북미차챔피언십에서 1~3위를 석권했고, 2019년 독립법인으로 출범했다.',
+              props:{ hasName:'오설록 (OSULLOC)', hasSpecialty:'Green Tea / Tea Leaves', hasCountry:'South Korea', hasCity:'Jeju', hasFoundedYear:'1979', hasCapacitySpec:'제주 직영 차밭 100% 유기농 재배' } },
+            { name:'IV_Vegemil', type:'IngredientVendor',
+              description:'우리나라 두유 역사의 첫 장을 연 기업. 대표 브랜드 베지밀은 브랜드파워 두유 부문에서 카테고리 신설(2003년) 이후 22년 연속 1위를 지켰으며, 카페용 대체유(두유) 공급처로도 활용된다.',
+              props:{ hasName:'정식품 (베지밀 / Vegemil)', hasSpecialty:'Soy Milk / Plant-based', hasCountry:'South Korea', hasCapacitySpec:'브랜드파워 두유 부문 22년 연속 1위' } },
+            { name:'IV_JardinCoffee', type:'IngredientVendor',
+              description:'1984년 설립된 국내 커피업계의 선구자. 1988년 국내 최초로 커피 전문점 체인을 열었고, 2022년 제3공장 완공으로 국내 최대 단일 커피공장 규모를 갖췄다. 이 생산능력을 바탕으로 카페 체인에 원두를 공급하는 B2B 사업을 운영하며, 남양유업 프렌치카페 원두 공급사이기도 하다.',
+              props:{ hasName:'쟈뎅 (Jardin Coffee)', hasSpecialty:'Coffee Beans / Liquid Coffee', hasCountry:'South Korea', hasFoundedYear:'1984', hasCapacitySpec:'2022년 제3공장 — 국내 최대 단일 커피공장' } },
+            { name:'IV_DongsuhFoods', type:'IngredientVendor',
+              description:'1980년 커피 브랜드 맥심을 도입해 국내 인스턴트 커피의 대명사가 된 기업. 2000년대에도 인스턴트 커피 시장 점유율 75~80%를 유지했고, 2011년 원두커피 믹스 카누를 출시했다. 인천 부평공장과 경남 창원공장에서 생산한다.',
+              props:{ hasName:'동서식품 (Dongsuh Foods)', hasSpecialty:'Instant Coffee / Coffee Mix', hasCountry:'South Korea', hasCity:'Incheon', hasFoundedYear:'1980', hasCapacitySpec:'인천 부평·경남 창원 생산라인' } },
+
+            // ── 국내 장비 공급사 (Korean Equipment Suppliers) ──
+            { name:'ES_Flowell', type:'EquipmentSupplier',
+              description:'2003년 유체제어 사업으로 출발해 하드웨어·펌웨어 설계와 시스템 설계 용역으로 업력을 쌓은 기업. 자사 특허 유체제어 기술을 접목해 커피머신을 개발하고 2013년 국산 커피머신 브랜드 "엘로치오"를 론칭했으며, 미국·중국·유럽으로 수출한다.',
+              props:{ hasName:'㈜후로웰 (Flowell / El Rocio)', hasSpecialty:'EspressoMachine', hasCountry:'South Korea', hasFoundedYear:'2003', supplies:['EM_ElRocio_ManusV2'] } },
+            { name:'ES_MrCoffee', type:'EquipmentSupplier',
+              description:'33년간 다양한 커피 사업을 이어오며 커피 기술 전문 기업으로 성장했고, 국내 최초의 국산 상업용 전자동 커피 머신 "브루보이"를 개발·생산했다.',
+              props:{ hasName:'㈜미스터커피 (Mr. Coffee)', hasSpecialty:'EspressoMachine (Bean-to-cup)', hasCountry:'South Korea', supplies:['EM_MrCoffee_BrewBoy'] } },
+            { name:'ES_CoffeeChaps', type:'EquipmentSupplier',
+              description:'LCD·카메라 모듈 생산 기업 비섹전자가 론칭한 커피 장비 브랜드. 빔히터 기반의 자동 브루잉 머신 브루비와 사이폰 모델, 그리고 미분 제거용 Air-Sifting System을 적용한 그라인더 에어밀을 개발·생산한다.',
+              props:{ hasName:'커피챕스 (COFFEE CHAPS / 비섹전자)', hasSpecialty:'Brewer / Grinder', hasCountry:'South Korea', supplies:['BR_CoffeeChaps_BrewvieII', 'GR_CoffeeChaps_Airmill'] } },
+            { name:'ES_Stronghold', type:'EquipmentSupplier',
+              description:'세계 최초로 매장용 스마트 커피 로스터를 선보인 기업. S SERIES(S7·S9)를 연구개발·제조·판매하며, S7은 2015년부터 월드커피로스팅챔피언십 공식 로스터로 3년 연속 채택됐다. 독일 뉘른베르크 국제 발명 전시회와 미국 피츠버그 국제발명전시회에서 금상을 받았다.',
+              props:{ hasName:'㈜스트롱홀드테크놀로지 (Stronghold Technology)', hasSpecialty:'RoasterMachine', hasCountry:'South Korea', hasCity:'Seoul (금천구)', hasFoundedYear:'2010', supplies:['RM_Stronghold_S7ProX', 'RM_Stronghold_S9X'] } },
+            { name:'ES_Taehwan', type:'EquipmentSupplier',
+              description:'1989년 자동볶음기 "도리깨" 개발을 시작으로 기초식품 가공설비부터 커피 산업 분야까지 솔루션을 제공해 온 기업. 창업 초기에는 깨를 볶는 기계를 만들었고, 1999년 국산 커피 로스터를 개발해 프로스터(PROASTER) 브랜드로 200g급부터 30kg 이상까지 라인업을 갖췄다.',
+              props:{ hasName:'㈜태환자동화산업 (PROASTER)', hasSpecialty:'RoasterMachine', hasCountry:'South Korea', hasFoundedYear:'1989', supplies:['RM_Proaster_THCR06'] } },
+            { name:'ES_Icetro', type:'EquipmentSupplier',
+              description:'인천에 본사를 둔 국내 제빙기 전문 기업. 카페·식당용 큐빅 제빙기부터 가루·눈꽃 제빙기까지 폭넓은 라인업을 운영하며, 공냉식·수냉식과 필터 내장형 모델을 함께 공급한다.',
+              props:{ hasName:'아이스트로 (ICETRO)', hasSpecialty:'IceMaker', hasCountry:'South Korea', hasCity:'Incheon', supplies:['IM_Icetro_ICI060'] } },
+            { name:'ES_Daeyoung', type:'EquipmentSupplier',
+              description:'1981년 대영공업㈜ 설립 이래 국내 업소용 냉동·냉장고 산업을 이끌어 온 기업. 2002년 사명을 대영이앤비로 변경했고, 라셀르(Lassele) 브랜드로 카페·식당용 제빙기와 냉장 설비를 공급한다.',
+              props:{ hasName:'대영이앤비 (Daeyoung E&B / Lassele)', hasSpecialty:'IceMaker / Refrigeration', hasCountry:'South Korea', hasFoundedYear:'1981', supplies:['IM_Daeyoung_Lassele'] } },
+            { name:'ES_Chungho', type:'EquipmentSupplier',
+              description:'1993년 청호인터내셔날 설립, 1994년 법인 출범 이후 정수기·공기청정기·비데·연수기 등 환경 건강 가전을 제조·판매해 온 기업. 커피머신과 얼음정수기를 결합한 카페용 정수 솔루션도 공급한다.',
+              props:{ hasName:'청호나이스 (Chungho Nais)', hasSpecialty:'WaterFilter / Water Treatment', hasCountry:'South Korea', hasCity:'Seoul (서초구)', hasFoundedYear:'1993', supplies:['WF_Chungho_EspreCafe'] } },
+
+            // ── 국내 카페 원재료 (Korean Ingredients) ──
+            { name:'Ing_BaristaMilk_SeoulMilk', type:'Milk',
+              description:'카페라떼·카푸치노 등 우유가 들어가는 커피에 맞춰 거품 형성과 부드러운 맛을 강화한 바리스타 전용 우유. 국내 최초의 바리스타 전용 우유 제품으로 출시됐다.',
+              props:{ hasName:'서울우유 바리스타즈 밀크', hasBrand:'서울우유협동조합', hasCountry:'South Korea' } },
+            { name:'Ing_AmazingOatBarista', type:'Milk',
+              description:'핀란드산 오트를 원물로 수입해 국내에서 가공한 식물성 음료로, 커피와의 조화를 위해 바디감을 강화한 바리스타용 제품. 전국 약 7,600개 카페에 납품됐다.',
+              props:{ hasName:'어메이징 오트 바리스타', hasBrand:'매일유업', hasCountry:'South Korea' } },
+            { name:'Ing_JejuGreenTea', type:'TeaBase',
+              description:'제주 서귀포 직영 차밭에서 재배한 녹차 잎. 국내 카페의 녹차 라떼·티 메뉴 베이스로 쓰이며, 프리미엄 라인은 국제 차 품평회에서 상위권에 오른 바 있다.',
+              props:{ hasName:'제주 녹차 (Jeju Green Tea)', hasBrand:'오설록', hasCountry:'South Korea' } },
+            { name:'Ing_YujaCheong', type:'Syrup',
+              description:'유자를 설탕이나 꿀에 절여 만든 청. 뜨거운 물에 타면 유자차가 되고, 국내 카페에서는 유자 에이드·유자 라떼 등 시그니처 음료의 베이스로 쓰인다.',
+              props:{ hasName:'유자청 (Yuja Cheong)', hasBrand:'국내 청 제조사', hasCountry:'South Korea' } },
+            { name:'Ing_OmijaCheong', type:'Syrup',
+              description:'다섯 가지 맛이 난다는 오미자를 절여 만든 청. 붉은 빛과 새콤한 맛 덕분에 국내 카페의 에이드·티 메뉴에 자주 쓰인다.',
+              props:{ hasName:'오미자청 (Omija Cheong)', hasBrand:'국내 청 제조사', hasCountry:'South Korea' } },
+            { name:'Ing_MisugaruPowder', type:'Ingredient',
+              description:'여러 곡물을 볶아 곱게 빻은 전통 곡물 가루. 우유나 두유에 타 마시는 미숫가루 라떼로 국내 카페에서 사계절 메뉴로 자리 잡았다.',
+              props:{ hasName:'미숫가루 (Misugaru)', hasBrand:'국내 곡물 가공사', hasCountry:'South Korea' } },
+            { name:'Ing_BlackSesamePowder', type:'Ingredient',
+              description:'볶은 검은깨를 곱게 갈아 만든 파우더. 고소한 맛의 흑임자 라떼는 이른바 "할메니얼" 트렌드와 함께 국내 카페의 대표 시그니처 메뉴가 됐다.',
+              props:{ hasName:'흑임자 파우더 (Black Sesame)', hasBrand:'국내 분말 가공사', hasCountry:'South Korea' } },
+            { name:'Ing_InjeolmiPowder', type:'Ingredient',
+              description:'인절미에 쓰이는 볶은 콩가루. 에스프레소에 두유와 인절미 크림을 더한 인절미 크림 라떼처럼, 고소한 한국식 라떼 메뉴의 핵심 재료다.',
+              props:{ hasName:'인절미 콩가루 (Injeolmi Powder)', hasBrand:'국내 분말 가공사', hasCountry:'South Korea' } },
+            { name:'Ing_RedBeanPaste', type:'Ingredient',
+              description:'팥을 삶아 으깨 단맛을 더한 앙금. 단팥 라떼와 팥빙수, 디저트 토핑 등 국내 카페 메뉴 전반에 쓰인다.',
+              props:{ hasName:'단팥 앙금 (Red Bean Paste)', hasBrand:'국내 앙금 제조사', hasCountry:'South Korea' } },
+            { name:'Ing_SsukPowder', type:'Ingredient',
+              description:'쑥을 건조해 갈아 만든 파우더. 쑥 라떼는 흑임자·인절미와 함께 전통 재료를 활용한 국내 카페 메뉴 트렌드를 대표한다.',
+              props:{ hasName:'쑥 파우더 (Ssuk / Mugwort)', hasBrand:'국내 분말 가공사', hasCountry:'South Korea' } },
+
+            // ── 국내 카페 소모품 (Korean Consumables) ──
+            { name:'Con_ReusableCup', type:'Consumable',
+              description:'단단한 PP 소재의 다회용 컵. 다회용컵 보증금제에서는 음료 구매 시 보증금 1,000원을 함께 결제하고, 무인회수기에 컵을 반납하면 보증금을 돌려받는다.',
+              props:{ hasName:'다회용컵 (Reusable Cup)', hasMaterial:'PP (폴리프로필렌)', hasSustainabilityNote:'보증금 1,000원 · 무인회수기 반납형', hasCountry:'South Korea' } },
+            { name:'Con_CupSleeve', type:'Consumable',
+              description:'뜨거운 음료 컵에 끼워 손을 보호하는 종이 홀더. 국내 카페에서는 매장 브랜딩 인쇄면으로도 활용된다.',
+              props:{ hasName:'컵 슬리브 / 컵홀더', hasMaterial:'골판지 (Corrugated Kraft)', hasSustainabilityNote:'재활용 종이 사용', hasCountry:'South Korea' } },
+            { name:'Con_RiceStraw', type:'Straw',
+              description:'쌀·밀 등 식물성 원료로 만든 생분해 빨대. PLA와 달리 온전히 식물성 소재로만 만들어 사용 후 먹을 수도 있지만, 개당 70원 수준의 단가와 내구성 문제로 아직 본격 대중화에는 이르지 못했다.',
+              props:{ hasName:'쌀 빨대 (Rice Straw)', hasMaterial:'쌀·밀 등 식물성 원료', hasSustainabilityNote:'완전 생분해 · 식용 가능', hasCountry:'South Korea' } },
+            { name:'Con_PLAColdCup', type:'Consumable',
+              description:'옥수수 전분 등에서 얻은 PLA로 만든 생분해성 콜드컵. 일반 플라스틱컵을 대체하지만, 별도 산업 퇴비화 시설이 필요해 실제 처리 여건이 관건이다.',
+              props:{ hasName:'PLA 생분해 콜드컵', hasMaterial:'PLA (Polylactic Acid)', hasSustainabilityNote:'산업 퇴비화 조건에서 생분해', hasCountry:'South Korea' } },
+            { name:'Con_ValveBag', type:'Consumable',
+              description:'로스팅 직후 원두에서 나오는 이산화탄소를 배출하면서 외부 공기 유입은 막는 아로마 밸브가 달린 원두 포장백. 국내 로스터리 카페의 원두 판매 표준 포장이다.',
+              props:{ hasName:'원두 밸브 포장백', hasMaterial:'크라프트지 / 알루미늄 라미네이트', hasSustainabilityNote:'원웨이 아로마 밸브 부착', hasCountry:'South Korea' } },
+            { name:'Con_ReceiptPaper', type:'Consumable',
+              description:'POS와 주문 프린터에 쓰이는 감열지 영수증 롤. 매장 운영에서 소모 속도가 빠른 필수 소모품이다.',
+              props:{ hasName:'감열지 영수증 롤', hasMaterial:'감열지 (Thermal Paper)', hasCapacityValue:'80mm 폭 / 50~80m 롤', hasCountry:'South Korea' } },
+            { name:'Con_IcePack', type:'Consumable',
+              description:'원두·케이크 등 배달·포장 시 보냉을 위해 동봉하는 아이스팩. 최근에는 고흡수성 수지 대신 물을 채운 친환경 아이스팩 사용이 늘고 있다.',
+              props:{ hasName:'아이스팩 (Ice Pack)', hasMaterial:'물 충전형 / 부직포·PE 필름', hasSustainabilityNote:'물 충전형은 분리 배출 후 재활용 용이', hasCountry:'South Korea' } },
+            { name:'Con_SanitaryGloves', type:'Consumable',
+              description:'베이커리 진열과 식품 취급 시 사용하는 일회용 위생장갑. 위생 관리 항목의 기본 소모품이다.',
+              props:{ hasName:'일회용 위생장갑', hasMaterial:'PE / 니트릴', hasCountry:'South Korea' } }
+        ];
+
+        // Merge EXTRA_INSTANCES into a parsed ontology so they render like RDF individuals
+        function applyExtraInstances(ont) {
+            if (!ont || !ont.instanceMap || !window.EXTRA_INSTANCES) return;
+            const BASE = 'http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#';
+            window.EXTRA_INSTANCES.forEach(x => {
+                const uri = BASE + x.name;
+                if (ont.instanceMap[uri]) return;
+                const properties = {};
+                Object.entries(x.props || {}).forEach(([k, v]) => {
+                    // Array → object property (links to other individuals), string → data property.
+                    // Underscores are stripped from object values to match the JSON loader.
+                    properties[k] = Array.isArray(v)
+                        ? v.map(o => ({ type: 'uri', value: String(o).replace(/_/g, ' ') }))
+                        : [{ type: 'literal', value: v }];
+                });
+                ont.instanceMap[uri] = {
+                    uri, name: x.name,
+                    classURIs: [BASE + x.type],
+                    description: x.description || '',
+                    properties
+                };
+            });
+        }
+
         // Equipment photos — Wikimedia Commons (freely licensed), keyed by instance name.
         // Brand-specific where a free photo of that maker exists; otherwise a representative
         // photo of the same equipment category.
@@ -6567,8 +6741,185 @@
             'WF_Brita_Purity':             'https://commons.wikimedia.org/wiki/Special:FilePath/Brita_Filter.png?width=600',
             'WF_Everpure_4C':              'https://commons.wikimedia.org/wiki/Special:FilePath/Haushalts-Wasserfilter.jpg?width=600',
             'WF_BWT_BestmaxPremium':       'https://commons.wikimedia.org/wiki/Special:FilePath/Under-sink_Water_Filter_System.jpg?width=600',
-            'WF_3M_Cyclone':               'https://commons.wikimedia.org/wiki/Special:FilePath/WATER_PURIFIER.jpg?width=600'
+            'WF_3M_Cyclone':               'https://commons.wikimedia.org/wiki/Special:FilePath/WATER_PURIFIER.jpg?width=600',
+            // ── 국내 제조사 장비 (대표 사진 — 해당 모델의 공식 제품컷 아님) ──
+            'EM_ElRocio_ManusV2':          'https://commons.wikimedia.org/wiki/Special:FilePath/A_black_espresso_machine_sits_on_a_wooden_table%2C_with_a_clear_glass_cup_filled_with_freshly_brewed_coffee.jpg?width=600',
+            'EM_MrCoffee_BrewBoy':         'https://commons.wikimedia.org/wiki/Special:FilePath/Macchina_per_il_caff%C3%A8_2.jpg?width=600',
+            'BR_CoffeeChaps_BrewvieII':    'https://commons.wikimedia.org/wiki/Special:FilePath/Vacuum_coffee_maker_with_coffee_in_Brno%2C_Brno-City_District.jpg?width=600',
+            'GR_CoffeeChaps_Airmill':      'https://commons.wikimedia.org/wiki/Special:FilePath/Coffee_grinder_positioned_in_a_cafe_with_freshly_roasted_beans_ready_for_brewing.jpg?width=600',
+            'RM_Stronghold_S7ProX':        'https://commons.wikimedia.org/wiki/Special:FilePath/20110124_Kaffeer%C3%B6stmaschine_001.jpg?width=600',
+            'RM_Stronghold_S9X':           'https://commons.wikimedia.org/wiki/Special:FilePath/Beans_Dropping_from_a_Coffee_Roaster.JPG?width=600',
+            'RM_Proaster_THCR06':          'https://commons.wikimedia.org/wiki/Special:FilePath/20110216_Kaffeer%C3%B6stmaschine_004.jpg?width=600',
+            'IM_Icetro_ICI060':            'https://commons.wikimedia.org/wiki/Special:FilePath/Isbitmaskin.jpg?width=600',
+            'IM_Daeyoung_Lassele':         'https://commons.wikimedia.org/wiki/Special:FilePath/%D0%9B%D1%91%D0%B4_%D0%B2_%D0%BB%D1%8C%D0%B4%D0%BE%D0%B3%D0%B5%D0%BD%D0%B5%D1%80%D0%B0%D1%82%D0%BE%D1%80%D0%B5.jpg?width=600',
+            'WF_Chungho_EspreCafe':        'https://commons.wikimedia.org/wiki/Special:FilePath/Home_water_filters%2C_water_purifiers%2C_and_bottled_water_in_India.jpg?width=600'
         };
+
+        // Ingredient vendor photos — Wikimedia Commons (freely licensed).
+        // Brand-specific where a free photo exists (Oatly / Monin / Twinings / Osulloc / Maxim);
+        // otherwise a representative photo of what the vendor supplies.
+        window.VENDOR_IMAGES = {
+            // 해외 공급사
+            'IV_Oatly':        'https://commons.wikimedia.org/wiki/Special:FilePath/Oatly_Barista_Edition_1.jpg?width=600',
+            'IV_Ghirardelli':  'https://commons.wikimedia.org/wiki/Special:FilePath/Chocolate_syrup_topping_on_ice_cream.JPG?width=600',
+            'IV_Monin':        'https://commons.wikimedia.org/wiki/Special:FilePath/Various_Monin_syrups.jpg?width=600',
+            'IV_Twinings':     'https://commons.wikimedia.org/wiki/Special:FilePath/Tea_canisters_in_the_Twinings_Strand_Heritage_Shop%2C_London%2C_UK_-_20120129.jpg?width=600',
+            'IV_Torani':       'https://commons.wikimedia.org/wiki/Special:FilePath/DZ6_0558_A_trio_of_glass_shakers_and_a_small_jar_of_sauce_sit_on_a_wooden_tray_on_a_restaurant_table_softly_lit_against_a_blurred_cozy_bar_background.jpg?width=600',
+            'IV_OregonChai':   'https://commons.wikimedia.org/wiki/Special:FilePath/Masala_Chai.JPG?width=600',
+            'IV_Ippodo':       'https://commons.wikimedia.org/wiki/Special:FilePath/Matcha_Green_Tea_Powder_(9409937063).jpg?width=600',
+            'IV_DaVinci':      'https://commons.wikimedia.org/wiki/Special:FilePath/Maple_Syrup_Bottles_and_Logs_-_Norfolk_Country%2C_Ontario.jpg?width=600',
+            // 국내 공급사
+            'IV_SeoulMilk':    'https://commons.wikimedia.org/wiki/Special:FilePath/Latte_at_Doppio_Ristretto_Chiang_Mai_02.jpg?width=600',
+            'IV_MaeilDairies': 'https://commons.wikimedia.org/wiki/Special:FilePath/Oat_milk_glass_and_bottles.jpg?width=600',
+            'IV_HyungkukFNB':  'https://commons.wikimedia.org/wiki/Special:FilePath/Old_bottling_line_area.jpg?width=600',
+            'IV_SeoulFNB':     'https://commons.wikimedia.org/wiki/Special:FilePath/Westland_Milk_Products_dairy_processing_plant.jpg?width=600',
+            'IV_Osulloc':      'https://commons.wikimedia.org/wiki/Special:FilePath/Osulloc_Tea_Museum_%26_Fields%2C_Jeju.jpg?width=600',
+            'IV_Vegemil':      'https://commons.wikimedia.org/wiki/Special:FilePath/Hot_Coffee_meets_Soy_Milk(1).jpg?width=600',
+            'IV_JardinCoffee': 'https://commons.wikimedia.org/wiki/Special:FilePath/Roasted_coffee_beans_(Unsplash).jpg?width=600',
+            'IV_DongsuhFoods': 'https://commons.wikimedia.org/wiki/Special:FilePath/Korean_coffee_mix_Maxim.jpg?width=600'
+        };
+
+        // Ingredient / Consumable photos — Wikimedia Commons (freely licensed).
+        // Representative photos of the item itself; a few items in the same family
+        // (cup sizes, lid types) intentionally share one photo.
+        window.ITEM_IMAGES = {
+            'Con_2CupCarrier':           'https://commons.wikimedia.org/wiki/Special:FilePath/Disposable_paper_coffee_cups-_7th_Street%2C_Coffee_Bug%2C_Queensland.jpg?width=600',
+            'Con_4CupCarrier':           'https://commons.wikimedia.org/wiki/Special:FilePath/Paper_coffee_cups_and_sugar_cubes_in_cafeteria.jpg?width=600',
+            'Con_6CupCarrier':           'https://commons.wikimedia.org/wiki/Special:FilePath/Disposable_paper_coffee_cups-_7th_Street%2C_Coffee_Bug%2C_Queensland.jpg?width=600',
+            'Con_BeverageNapkin':        'https://commons.wikimedia.org/wiki/Special:FilePath/Serviette%2C_table_napkin.jpg?width=600',
+            'Con_BioplasticStraw':       'https://commons.wikimedia.org/wiki/Special:FilePath/Colored_drinking_straws_(4273103337).jpg?width=600',
+            'Con_CocktailNapkin':        'https://commons.wikimedia.org/wiki/Special:FilePath/Cocktail_napkin_at_Tadich_Grill.jpeg?width=600',
+            'Con_ColdCup_16oz':          'https://commons.wikimedia.org/wiki/Special:FilePath/Fruit_salad_and_an_iced_latte%2C_Starbucks_Coffee%2C_Singapore_-_20111225.jpg?width=600',
+            'Con_ColdCup_24oz':          'https://commons.wikimedia.org/wiki/Special:FilePath/Pistachios_gelato_Milkshakes_-_domed_plastic_cup.jpg?width=600',
+            'Con_ColdLid_Flat':          'https://commons.wikimedia.org/wiki/Special:FilePath/Coffee_cup_lid.jpg?width=600',
+            'Con_ColdLid_StrawSlot':     'https://commons.wikimedia.org/wiki/Special:FilePath/Pistachios_gelato_Milkshakes_-_domed_plastic_cup.jpg?width=600',
+            'Con_CupSleeve':             'https://commons.wikimedia.org/wiki/Special:FilePath/Hot_Stopper_in_the_lid_of_a_paper_coffee_cup_with_a_cardboard_sleeve.jpeg?width=600',
+            'Con_DeliveryBoxCarrier':    'https://commons.wikimedia.org/wiki/Special:FilePath/Pizza_box_at_a_fan_convention.jpg?width=600',
+            'Con_DispenserNapkin':       'https://commons.wikimedia.org/wiki/Special:FilePath/Napkin_holder_2.JPG?width=600',
+            'Con_DoubleWallCup_12oz':    'https://commons.wikimedia.org/wiki/Special:FilePath/Coffee-cup-sleeve.jpg?width=600',
+            'Con_GlassStraw':            'https://commons.wikimedia.org/wiki/Special:FilePath/Eight_drinking_straws_(4273846588).jpg?width=600',
+            'Con_HotLid_Dome':           'https://commons.wikimedia.org/wiki/Special:FilePath/Coffee_cup_lid.jpg?width=600',
+            'Con_HotLid_Sipthrough':     'https://commons.wikimedia.org/wiki/Special:FilePath/Coffee_cup_lid.jpg?width=600',
+            'Con_HotLid_Vented':         'https://commons.wikimedia.org/wiki/Special:FilePath/Coffee_cup_lid.jpg?width=600',
+            'Con_IcePack':               'https://commons.wikimedia.org/wiki/Special:FilePath/Cold_Hot_Pack.jpg?width=600',
+            'Con_KidsCup_4oz':           'https://commons.wikimedia.org/wiki/Special:FilePath/Hot_Stopper_in_the_lid_of_a_paper_coffee_cup_with_a_cardboard_sleeve.jpeg?width=600',
+            'Con_LargeCup_16oz':         'https://commons.wikimedia.org/wiki/Special:FilePath/Paper_coffee_cups_and_sugar_cubes_in_cafeteria.jpg?width=600',
+            'Con_LunchNapkin':           'https://commons.wikimedia.org/wiki/Special:FilePath/Serviette%2C_table_napkin.jpg?width=600',
+            'Con_MediumCup_12oz':        'https://commons.wikimedia.org/wiki/Special:FilePath/Disposable_paper_coffee_cups-_7th_Street%2C_Coffee_Bug%2C_Queensland.jpg?width=600',
+            'Con_PaperStraw':            'https://commons.wikimedia.org/wiki/Special:FilePath/Drinking_straws_made_of_paper-02ASD.jpg?width=600',
+            'Con_PLAColdCup':            'https://commons.wikimedia.org/wiki/Special:FilePath/Biodegradable_coffee_cup_in_compost_heap.jpg?width=600',
+            'Con_ReceiptPaper':          'https://commons.wikimedia.org/wiki/Special:FilePath/ReceiptSwiss.jpg?width=600',
+            'Con_ReedStraw':             'https://commons.wikimedia.org/wiki/Special:FilePath/Eight_drinking_straws_(4273846588).jpg?width=600',
+            'Con_ReusableCup':           'https://commons.wikimedia.org/wiki/Special:FilePath/Coffee_mug.jpg?width=600',
+            'Con_RiceStraw':             'https://commons.wikimedia.org/wiki/Special:FilePath/Drinking_straws_made_of_paper-02ASD.jpg?width=600',
+            'Con_RippleCup_16oz':        'https://commons.wikimedia.org/wiki/Special:FilePath/Coffee-cup-sleeve.jpg?width=600',
+            'Con_SanitaryGloves':        'https://commons.wikimedia.org/wiki/Special:FilePath/Disposable_gloves_01.JPG?width=600',
+            'Con_SmallCup_8oz':          'https://commons.wikimedia.org/wiki/Special:FilePath/Hot_Stopper_in_the_lid_of_a_paper_coffee_cup_with_a_cardboard_sleeve.jpeg?width=600',
+            'Con_StainlessSteelStraw':   'https://commons.wikimedia.org/wiki/Special:FilePath/Stainless_steel_drinking_straw_and_spoon-01ASD.jpg?width=600',
+            'Con_ToteCarrier':           'https://commons.wikimedia.org/wiki/Special:FilePath/A_Takeaway_Bag_being_Delivered_through_a_Car_Window.jpg?width=600',
+            'Con_ValveBag':              'https://commons.wikimedia.org/wiki/Special:FilePath/Roasted_coffee_packages_from_Bolivia.jpg?width=600',
+            'Ing_AlmondMilk':            'https://commons.wikimedia.org/wiki/Special:FilePath/Alpro_almond_milk.jpg?width=600',
+            'Ing_AmazingOatBarista':     'https://commons.wikimedia.org/wiki/Special:FilePath/Oat_milk_glass_and_bottles.jpg?width=600',
+            'Ing_BaristaMilk_SeoulMilk': 'https://commons.wikimedia.org/wiki/Special:FilePath/Latte_at_Doppio_Ristretto_Chiang_Mai_02.jpg?width=600',
+            'Ing_BlackSesamePowder':     'https://commons.wikimedia.org/wiki/Special:FilePath/Sesame-Seeds.jpg?width=600',
+            'Ing_Brownie':               'https://commons.wikimedia.org/wiki/Special:FilePath/Whiskey_Chocolate_Cake_brownie_slices.jpg?width=600',
+            'Ing_CaramelDrizzle':        'https://commons.wikimedia.org/wiki/Special:FilePath/Caramel-2.jpg?width=600',
+            'Ing_CaramelSyrup':          'https://commons.wikimedia.org/wiki/Special:FilePath/Caramel-2.jpg?width=600',
+            'Ing_CaramelSyrup_M':        'https://commons.wikimedia.org/wiki/Special:FilePath/Caramel-2.jpg?width=600',
+            'Ing_ChaiConcentrate':       'https://commons.wikimedia.org/wiki/Special:FilePath/Masala_Chai.JPG?width=600',
+            'Ing_ChocolateSauce_GH':     'https://commons.wikimedia.org/wiki/Special:FilePath/Chocolate_sauce_and_vanilla_icrecream.jpg?width=600',
+            'Ing_ChocolateSyrup':        'https://commons.wikimedia.org/wiki/Special:FilePath/Chocolate_syrup_topping_on_ice_cream.JPG?width=600',
+            'Ing_CoconutMilk':           'https://commons.wikimedia.org/wiki/Special:FilePath/Coconut_milk_from_can01.JPG?width=600',
+            'Ing_ColdBrewConcentrate':   'https://commons.wikimedia.org/wiki/Special:FilePath/Preparation_of_cold_brew_coffee_02.jpg?width=600',
+            'Ing_Croissant':             'https://commons.wikimedia.org/wiki/Special:FilePath/Croissant_rising.jpg?width=600',
+            'Ing_EarlGrey':              'https://commons.wikimedia.org/wiki/Special:FilePath/Earl_Grey_FBOP-Wilson_Ceylon_Teas.jpg?width=600',
+            'Ing_EspressoShot':          'https://commons.wikimedia.org/wiki/Special:FilePath/Espresso_-_Evan_Swigart.jpg?width=600',
+            'Ing_FilterCoffee':          'https://commons.wikimedia.org/wiki/Special:FilePath/Drip_Coffee_Bangkok.jpg?width=600',
+            'Ing_GreenTea':              'https://commons.wikimedia.org/wiki/Special:FilePath/Cup_of_green_tea_and_tea_pot_on_table.jpg?width=600',
+            'Ing_HazelnutSyrup':         'https://commons.wikimedia.org/wiki/Special:FilePath/Hazelnuts.jpg?width=600',
+            'Ing_HibiscusTea':           'https://commons.wikimedia.org/wiki/Special:FilePath/Chai_torsh_-_Hibiscus_tea.png?width=600',
+            'Ing_HoneySyrup':            'https://commons.wikimedia.org/wiki/Special:FilePath/Honey_jar_(411317929).jpg?width=600',
+            'Ing_Ice':                   'https://commons.wikimedia.org/wiki/Special:FilePath/Ice_cubes_openphoto.jpg?width=600',
+            'Ing_IceCream':              'https://commons.wikimedia.org/wiki/Special:FilePath/Ice_Cream_Dessert.JPG?width=600',
+            'Ing_InjeolmiPowder':        'https://commons.wikimedia.org/wiki/Special:FilePath/Korean_rice_cake-Injeolmi-01.jpg?width=600',
+            'Ing_JasmineTea':            'https://commons.wikimedia.org/wiki/Special:FilePath/Jasmine_Tea_blossomed.jpg?width=600',
+            'Ing_JejuGreenTea':          'https://commons.wikimedia.org/wiki/Special:FilePath/Osulloc_Tea_Museum_%26_Fields%2C_Jeju.jpg?width=600',
+            'Ing_LavenderSyrup':         'https://commons.wikimedia.org/wiki/Special:FilePath/Single_lavender_flower02.jpg?width=600',
+            'Ing_MacadamiaMilk':         'https://commons.wikimedia.org/wiki/Special:FilePath/Macadamia_nuts_on_tree.JPG?width=600',
+            'Ing_MapleSyrup':            'https://commons.wikimedia.org/wiki/Special:FilePath/Maple_syrup_rainbow_(7290805884).jpg?width=600',
+            'Ing_MatchaPowder':          'https://commons.wikimedia.org/wiki/Special:FilePath/Matcha-Kari.jpg?width=600',
+            'Ing_MatchaSauce':           'https://commons.wikimedia.org/wiki/Special:FilePath/Matcha_(6328677556).jpg?width=600',
+            'Ing_MilkFoam':              'https://commons.wikimedia.org/wiki/Special:FilePath/Cappuccino_latte_art_2006-04-14.jpg?width=600',
+            'Ing_MisugaruPowder':        'https://commons.wikimedia.org/wiki/Special:FilePath/Misutgaru.jpg?width=600',
+            'Ing_Muffin':                'https://commons.wikimedia.org/wiki/Special:FilePath/Muffin_NIH.jpg?width=600',
+            'Ing_NitrogenGas':           'https://commons.wikimedia.org/wiki/Special:FilePath/Nitro_cold_brew_taps.jpg?width=600',
+            'Ing_OatMilk':               'https://commons.wikimedia.org/wiki/Special:FilePath/Oatly_Salty_Caramel_Hazelnut.jpg?width=600',
+            'Ing_OatMilkBarista':        'https://commons.wikimedia.org/wiki/Special:FilePath/Oat_Milk_Latte.jpg?width=600',
+            'Ing_OmijaCheong':           'https://commons.wikimedia.org/wiki/Special:FilePath/Schisandra_chinensis_a.JPG?width=600',
+            'Ing_PeppermintTea':         'https://commons.wikimedia.org/wiki/Special:FilePath/Peppermint-tea_hg.jpg?width=600',
+            'Ing_PumpkinSpice':          'https://commons.wikimedia.org/wiki/Special:FilePath/Pumpkin_Spice_Latte_Sign.JPG?width=600',
+            'Ing_RedBeanPaste':          'https://commons.wikimedia.org/wiki/Special:FilePath/Red_bean_paste_anko.JPG?width=600',
+            'Ing_Scone':                 'https://commons.wikimedia.org/wiki/Special:FilePath/Scone_Jam_Cream_Tea.jpg?width=600',
+            'Ing_SimpleSyrup':           'https://commons.wikimedia.org/wiki/Special:FilePath/HK_Sheung_Wan_Wing_Lok_Street_tea_time_brown_sugar_glass_jar_Aug-2012.JPG?width=600',
+            'Ing_SoyMilk':               'https://commons.wikimedia.org/wiki/Special:FilePath/Soymilk_can_and_glass_2.jpg?width=600',
+            'Ing_SsukPowder':            'https://commons.wikimedia.org/wiki/Special:FilePath/Korean_mugwort_1.jpg?width=600',
+            'Ing_SteamedMilk':           'https://commons.wikimedia.org/wiki/Special:FilePath/Steamed_milk.jpg?width=600',
+            'Ing_StrawberrySauce':       'https://commons.wikimedia.org/wiki/Special:FilePath/Panna_Cotta_with_strawberry_sauce.jpg?width=600',
+            'Ing_VanillaSyrup':          'https://commons.wikimedia.org/wiki/Special:FilePath/Vanilla_extract.JPG?width=600',
+            'Ing_VanillaSyrup_M':        'https://commons.wikimedia.org/wiki/Special:FilePath/Vanilla_6beans.JPG?width=600',
+            'Ing_Water':                 'https://commons.wikimedia.org/wiki/Special:FilePath/Glass-of-water.jpg?width=600',
+            'Ing_WhiteMocha':            'https://commons.wikimedia.org/wiki/Special:FilePath/White_Chocolate_Store.jpg?width=600',
+            'Ing_WholeMilk':             'https://commons.wikimedia.org/wiki/Special:FilePath/Bowl_milk_glass.jpg?width=600',
+            'Ing_YujaCheong':            'https://commons.wikimedia.org/wiki/Special:FilePath/Korean_tea-Yujacha-01.jpg?width=600'
+        };
+
+        // Equipment suppliers reuse the photo of the equipment they make,
+        // so the picture on a supplier card is literally their product.
+        window.SUPPLIER_PHOTO_ALIAS = {
+            // 해외 공급사
+            'ES_LaMarzocco':      'EM_LaMarzocco_Linea',
+            'ES_Synesso':         'EM_Synesso_MVP',
+            'ES_DeLonghi':        'EM_DeLonghi_Pro',
+            'ES_NuovaSimonelli':  'EM_Nuova_Simonelli',
+            'ES_Faema':           'EM_Faema_E71',
+            'ES_Rancilio':        'EM_Rancilio_Classe9',
+            'ES_VictoriaArduino': 'EM_VictoriaArduino_EagleOne',
+            'ES_Slayer':          'EM_Slayer_SteamEP',
+            'ES_Sanremo':         'EM_Sanremo_CafeRacer',
+            'ES_Mazzer':          'GR_Mazzer_Major',
+            'ES_Baratza':         'GR_Baratza_Forte',
+            'ES_Mahlkonig':       'GR_Mahlkonig_EK43',
+            'ES_Ditting':         'GR_Ditting_KR804',
+            'ES_Fiorenzato':      'GR_Fiorenzato_F64',
+            'ES_Comandante':      'GR_Comandante_C40',
+            'ES_Probat':          'RM_Probat_P25',
+            'ES_Loring':          'RM_Loring_S35',
+            'ES_Giesen':          'RM_Giesen_W15',
+            'ES_Diedrich':        'RM_Diedrich_IR12',
+            'ES_Hoshizaki':       'IM_Hoshizaki_KM',
+            'ES_Manitowoc':       'IM_Manitowoc_IndigoNXT',
+            'ES_Brita':           'WF_Brita_Purity',
+            'ES_BWT':             'WF_BWT_BestmaxPremium',
+            // 국내 공급사
+            'ES_Flowell':         'EM_ElRocio_ManusV2',
+            'ES_MrCoffee':        'EM_MrCoffee_BrewBoy',
+            'ES_CoffeeChaps':     'GR_CoffeeChaps_Airmill',
+            'ES_Stronghold':      'RM_Stronghold_S7ProX',
+            'ES_Taehwan':         'RM_Proaster_THCR06',
+            'ES_Icetro':          'IM_Icetro_ICI060',
+            'ES_Daeyoung':        'IM_Daeyoung_Lassele',
+            'ES_Chungho':         'WF_Chungho_EspreCafe'
+        };
+
+        // Photo for an instance, whichever catalog it lives in
+        function instancePhoto(name) {
+            const raw = String(name || '').replace(/\s+/g, '_');
+            const key = (window.SUPPLIER_PHOTO_ALIAS && window.SUPPLIER_PHOTO_ALIAS[raw]) || raw;
+            return (window.EQUIPMENT_IMAGES && window.EQUIPMENT_IMAGES[key])
+                || (window.VENDOR_IMAGES && window.VENDOR_IMAGES[key])
+                || (window.ITEM_IMAGES && window.ITEM_IMAGES[key])
+                || null;
+        }
 
         window.BEVERAGE_IMAGES = {
             'Espresso':          'https://images.unsplash.com/photo-1510707577719-ae7c14805e3a?w=400&q=80&fit=crop',
@@ -6795,6 +7146,7 @@
             let tripleCount = 0;
             doc.querySelectorAll('*').forEach(() => tripleCount++);
             result.count = Math.floor(tripleCount * 0.3);
+            applyExtraInstances(result);
             return result;
         }
 
@@ -6883,6 +7235,9 @@
                         };
                     });
                 }
+
+                // Korean-made equipment that is not in the RDF ontology yet
+                applyExtraInstances(ontologyData);
 
                 console.log(`✅ ontologyData ready: ${ontologyData.classes.length} classes, ${ontologyData.objectProperties.length} obj props`);
                 console.log(`✅ hierarchyData: ${hierarchyData.length} root classes`);
