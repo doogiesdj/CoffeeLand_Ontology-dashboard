@@ -7,6 +7,7 @@ on:
       - 'data/*.rdf'                 # RDF 파일 변경 시 자동 실행
       - 'data/*.ttl'                 # TTL 파일 변경 시 자동 실행
       - 'scripts/**'                 # 스크립트 변경 시 자동 실행
+      - 'tests/**'
       - 'dashboard.html'             # 대시보드 HTML 변경 시 자동 실행
       - 'manifest.json'
       - 'sw.js'
@@ -38,7 +39,11 @@ jobs:
 
       # 3. 필요한 패키지 설치
       - name: Install dependencies
-        run: pip install rdflib
+        run: pip install rdflib pytest
+
+      # 데이터 검증: 추출 변수가 레시피 원문 근거와 맞지 않으면 배포 중단
+      - name: Run data tests
+        run: python -m pytest tests -q
 
       # 4. RDF → JSON 변환 + 정적 자산 복사
       - name: Generate JSON from RDF and copy assets to docs

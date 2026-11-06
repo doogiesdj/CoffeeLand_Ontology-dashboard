@@ -374,6 +374,61 @@
         }
         .legend-swatch { flex-shrink: 0; box-sizing: border-box; }
 
+        /* Recipe brew-parameter panel */
+        .brew-panel {
+            margin: 0 0 1.25rem;
+            padding: 1rem 1.1rem 0.85rem;
+            border: 1px solid rgba(139, 92, 246, 0.35);
+            border-left: 4px solid #8b5cf6;
+            border-radius: 10px;
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.08), rgba(139, 92, 246, 0.02));
+        }
+        .brew-panel-head {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.5rem;
+            margin-bottom: 0.85rem;
+        }
+        .brew-panel-title { margin: 0; font-size: 1rem; font-weight: 700; color: var(--text-primary); }
+        .brew-panel-title i { color: #8b5cf6; margin-right: 0.35rem; }
+        .brew-method-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            padding: 0.25rem 0.7rem;
+            border-radius: 999px;
+            background: #8b5cf6;
+            color: #fff;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        .brew-method-cat {
+            padding: 0.05rem 0.45rem;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.22);
+            font-weight: 500;
+            font-size: 0.72rem;
+        }
+        .brew-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 0.6rem;
+            margin: 0;
+        }
+        .brew-item {
+            padding: 0.55rem 0.7rem;
+            border-radius: 8px;
+            background: var(--bg-elevated);
+            border: 1px solid var(--border);
+        }
+        .brew-item dt { font-size: 0.72rem; color: var(--text-secondary); margin-bottom: 0.2rem; }
+        .brew-item dt i { width: 14px; color: #a78bfa; }
+        .brew-item dd { margin: 0; font-size: 1.05rem; font-weight: 700; color: var(--text-primary); font-variant-numeric: tabular-nums; }
+        .brew-panel-empty { margin: 0; font-size: 0.85rem; color: var(--text-secondary); }
+        .brew-panel-note { margin: 0.7rem 0 0; font-size: 0.7rem; color: var(--text-secondary); }
+
         /* Category List */
         .category-list {
             display: flex;
@@ -2893,6 +2948,130 @@
         }
 
         // Show instance detail in modal
+        // ── Recipe brew parameters panel (data: data/coffeeland_brewing.ttl) ──
+        const BREW_RANGE_PROPS = ['hasDoseGrams', 'hasYieldMl', 'hasBrewWaterMl', 'hasWaterTempC', 'hasBrewTimeSec'];
+        const BREW_PROP_NAMES = new Set([
+            ...BREW_RANGE_PROPS.flatMap(p => [p + 'Min', p + 'Max']),
+            'hasPressureBar', 'hasGrindSize', 'hasEspressoShots', 'hasBrewRatio', 'usesBrewMethod'
+        ]);
+        const GRIND_SIZE_LABELS = {
+            ExtraFine: '아주 고움 (밀가루 수준)', Fine: '고움', MediumFine: '중간-고움', Medium: '중간', Coarse: '굵음'
+        };
+        const BREW_CATEGORY_LABELS = {
+            Pressure: '가압식', Percolation: '여과식', Immersion: '침지식', Decoction: '달임식'
+        };
+
+        function escapeHtml(value) {
+            return String(value).replace(/[&<>"']/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch]));
+        }
+
+        function firstPropValue(props, name) {
+            const vals = props[name];
+            return vals && vals.length ? vals[0].value : null;
+        }
+
+        function brewRange(props, base) {
+            const min = firstPropValue(props, base + 'Min');
+            const max = firstPropValue(props, base + 'Max');
+            return min === null ? null : { min: Number(min), max: max === null ? null : Number(max) };
+        }
+
+        function formatBrewDuration(sec) {
+            if (sec >= 3600 && sec % 3600 === 0) return `${sec / 3600}시간`;
+            const m = Math.floor(sec / 60), s = sec % 60;
+            if (m === 0) return `${s}초`;
+            return s ? `${m}분 ${s}초` : `${m}분`;
+        }
+
+        // Numeric range with a unit: "18 g", "92–94 °C", "40 ml 이상"
+        function formatBrewRange(range, unit) {
+            if (!range) return null;
+            if (range.max === null) return `${range.min} ${unit} 이상`;
+            if (range.min === range.max) return `${range.min} ${unit}`;
+            return `${range.min}–${range.max} ${unit}`;
+        }
+
+        // Duration range: "25–30초", "12–18시간", "2분 30초 – 3분", "40초 이상"
+        function formatBrewTimeRange(range) {
+            if (!range) return null;
+            if (range.max === null) return `${formatBrewDuration(range.min)} 이상`;
+            if (range.min === range.max) return formatBrewDuration(range.min);
+            const { min, max } = range;
+            if (min % 3600 === 0 && max % 3600 === 0) return `${min / 3600}–${max / 3600}시간`;
+            if (max < 60) return `${min}–${max}초`;
+            return `${formatBrewDuration(min)} – ${formatBrewDuration(max)}`;
+        }
+
+        function brewMethodInfo(props) {
+            const raw = firstPropValue(props, 'usesBrewMethod');
+            if (!raw) return null;
+            const id = raw.replace(/\s+/g, '_');
+            const inst = ontologyData && ontologyData.instanceMap[BASE_NS + id];
+            const category = inst ? firstPropValue(inst.properties, 'hasBrewCategory') : null;
+            const name = id.replace(/^BM_/, '').replace(/([a-z])([A-Z])/g, '$1 $2');
+            return { name, category: category ? (BREW_CATEGORY_LABELS[category] || category) : null };
+        }
+
+        // Ratio: stated in the recipe text, or computed from dose and water/yield.
+        function brewRatioInfo(props, dose, water, yieldMl) {
+            const stated = firstPropValue(props, 'hasBrewRatio');
+            if (stated) return { text: stated, computed: false };
+            const liquid = water || yieldMl;
+            if (!dose || !liquid || dose.max === null || liquid.max === null) return null;
+            const mid = r => (r.min + r.max) / 2;
+            const ratio = mid(liquid) / mid(dose);
+            const basis = water ? '원두:물' : '원두:추출량';
+            return { text: `≈ 1:${ratio < 10 ? ratio.toFixed(1) : Math.round(ratio)}`, computed: true, basis };
+        }
+
+        function renderBrewParamsPanel(props) {
+            const method = brewMethodInfo(props);
+            const dose = brewRange(props, 'hasDoseGrams');
+            const yieldMl = brewRange(props, 'hasYieldMl');
+            const water = brewRange(props, 'hasBrewWaterMl');
+            const temp = brewRange(props, 'hasWaterTempC');
+            const time = brewRange(props, 'hasBrewTimeSec');
+            const pressure = firstPropValue(props, 'hasPressureBar');
+            const grind = firstPropValue(props, 'hasGrindSize');
+            const shots = firstPropValue(props, 'hasEspressoShots');
+            const ratio = brewRatioInfo(props, dose, water, yieldMl);
+
+            const items = [
+                dose     && ['fa-weight-hanging', '원두량', formatBrewRange(dose, 'g')],
+                yieldMl  && ['fa-tint', '추출량', formatBrewRange(yieldMl, 'ml')],
+                water    && ['fa-faucet', '물 양', formatBrewRange(water, 'ml')],
+                temp     && ['fa-thermometer-half', '물 온도', formatBrewRange(temp, '°C')],
+                time     && ['fa-stopwatch', '추출 시간', formatBrewTimeRange(time)],
+                pressure && ['fa-tachometer-alt', '압력', `${pressure} bar`],
+                grind    && ['fa-braille', '분쇄도', GRIND_SIZE_LABELS[grind] || grind],
+                shots    && ['fa-coffee', '에스프레소', Number(shots) === 1 ? '싱글 (1샷)' : Number(shots) === 2 ? '더블 (2샷)' : `${shots}샷`],
+                ratio    && ['fa-balance-scale', ratio.computed ? `추출 비율 (${ratio.basis}, 계산값)` : '추출 비율', ratio.text],
+            ].filter(Boolean);
+
+            if (!method && !items.length) return '';
+            let html = '<section class="brew-panel" aria-labelledby="brewPanelTitle">';
+            html += '<div class="brew-panel-head">';
+            html += '<h3 class="brew-panel-title" id="brewPanelTitle"><i class="fas fa-flask"></i> 추출 정보</h3>';
+            if (method) {
+                html += `<span class="brew-method-chip">${escapeHtml(method.name)}`;
+                if (method.category) html += `<span class="brew-method-cat">${escapeHtml(method.category)}</span>`;
+                html += '</span>';
+            }
+            html += '</div>';
+            if (items.length) {
+                html += '<dl class="brew-grid">';
+                items.forEach(([icon, label, value]) => {
+                    html += `<div class="brew-item"><dt><i class="fas ${icon}"></i> ${escapeHtml(label)}</dt><dd>${escapeHtml(value)}</dd></div>`;
+                });
+                html += '</dl>';
+            } else {
+                html += '<p class="brew-panel-empty">이 레시피의 조리법에는 추출 수치가 적혀 있지 않아요.</p>';
+            }
+            html += '<p class="brew-panel-note">레시피 조리법 원문에 적힌 값만 표시해요.</p>';
+            html += '</section>';
+            return html;
+        }
+
         function showInstanceDetailModal(instance, className) {
             console.log('📝 Showing modal for:', instance.name);
 
@@ -3386,9 +3565,15 @@
                     html += `<span>${instance.description}</span>`;
                     html += `</div>`;
                 }
-                if (Object.keys(instance.properties).length > 0) {
+                // Recipes: structured brew parameters on top; those props are
+                // then left out of the generic property grid below.
+                const isRecipeInst = className.toLowerCase() === 'recipe';
+                if (isRecipeInst) html += renderBrewParamsPanel(instance.properties);
+                const genericProps = Object.entries(instance.properties)
+                    .filter(([propName]) => !(isRecipeInst && BREW_PROP_NAMES.has(propName)));
+                if (genericProps.length > 0) {
                     html += '<div class="property-grid">';
-                    Object.entries(instance.properties).forEach(([propName, values]) => {
+                    genericProps.forEach(([propName, values]) => {
                         html += `<div class="property-card">`;
                         html += `<div class="property-name">${cleanPropName(propName)}</div>`;
                         values.forEach(val => {

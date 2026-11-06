@@ -1,0 +1,242 @@
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+@prefix cof:  <http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#> .
+
+# ================================================================
+# 커피랜드 온톨로지 — 1단계: 추출(Brewing) 지식
+#
+# - BrewMethod 클래스와 추출 방식 인스턴스
+# - Recipe → BrewMethod 연결 (usesBrewMethod)
+# - Recipe 추출 변수 (원두량·추출량·물 양·물 온도·추출 시간·압력·분쇄도·샷 수·추출 비율)
+#
+# 출처 원칙: 레시피의 추출 변수는 모두 해당 레시피의 hasInstructions
+# 원문에 적힌 값만 옮겼다. 원문에 없는 값은 비워 둔다.
+# 값마다 근거 문구는 tests/test_brewing.py 의 EVIDENCE 표에 있고,
+# 테스트가 근거 문구가 원문에 그대로 있는지 검사한다.
+# ================================================================
+
+
+# ----------------------------------------------------------------
+# 1. 스키마
+# ----------------------------------------------------------------
+
+cof:BrewMethod a owl:Class ;
+    rdfs:subClassOf cof:QualityAndProcessing ;
+    rdfs:label "추출 방식"@ko , "Brew Method"@en ;
+    rdfs:comment "원두에서 커피 성분을 뽑아내는 방식. 추출 원리에 따라 가압(Pressure), 여과(Percolation), 침지(Immersion), 달임(Decoction)으로 나뉜다."@ko .
+
+cof:usesBrewMethod a owl:ObjectProperty ;
+    rdfs:domain cof:Recipe ;
+    rdfs:range cof:BrewMethod ;
+    rdfs:label "추출 방식 사용"@ko ;
+    rdfs:comment "레시피가 커피를 추출할 때 쓰는 방식."@ko .
+
+cof:hasBrewCategory a owl:DatatypeProperty ;
+    rdfs:domain cof:BrewMethod ;
+    rdfs:range xsd:string ;
+    rdfs:comment "추출 원리 분류: Pressure | Percolation | Immersion | Decoction"@ko .
+
+# 범위형 값은 Min/Max 쌍으로 저장한다 (기존 hasCuppingScoreMin/Max 와 같은 방식).
+# 값이 하나면 Min = Max, 하한만 있으면 ("40초 이상") Max 를 비운다.
+
+cof:hasDoseGramsMin a owl:DatatypeProperty ; rdfs:domain cof:Recipe ; rdfs:range xsd:integer ;
+    rdfs:comment "원두 사용량 하한 (g)"@ko .
+cof:hasDoseGramsMax a owl:DatatypeProperty ; rdfs:domain cof:Recipe ; rdfs:range xsd:integer ;
+    rdfs:comment "원두 사용량 상한 (g)"@ko .
+
+cof:hasYieldMlMin a owl:DatatypeProperty ; rdfs:domain cof:Recipe ; rdfs:range xsd:integer ;
+    rdfs:comment "에스프레소 추출량 하한 (ml)"@ko .
+cof:hasYieldMlMax a owl:DatatypeProperty ; rdfs:domain cof:Recipe ; rdfs:range xsd:integer ;
+    rdfs:comment "에스프레소 추출량 상한 (ml)"@ko .
+
+cof:hasBrewWaterMlMin a owl:DatatypeProperty ; rdfs:domain cof:Recipe ; rdfs:range xsd:integer ;
+    rdfs:comment "추출에 쓰는 물 양 하한 (ml). 추출 후 희석하는 물은 포함하지 않는다."@ko .
+cof:hasBrewWaterMlMax a owl:DatatypeProperty ; rdfs:domain cof:Recipe ; rdfs:range xsd:integer ;
+    rdfs:comment "추출에 쓰는 물 양 상한 (ml)"@ko .
+
+cof:hasWaterTempCMin a owl:DatatypeProperty ; rdfs:domain cof:Recipe ; rdfs:range xsd:integer ;
+    rdfs:comment "추출 물 온도 하한 (°C)"@ko .
+cof:hasWaterTempCMax a owl:DatatypeProperty ; rdfs:domain cof:Recipe ; rdfs:range xsd:integer ;
+    rdfs:comment "추출 물 온도 상한 (°C)"@ko .
+
+cof:hasBrewTimeSecMin a owl:DatatypeProperty ; rdfs:domain cof:Recipe ; rdfs:range xsd:integer ;
+    rdfs:comment "물과 원두가 닿아 있는 추출 시간 하한 (초)"@ko .
+cof:hasBrewTimeSecMax a owl:DatatypeProperty ; rdfs:domain cof:Recipe ; rdfs:range xsd:integer ;
+    rdfs:comment "추출 시간 상한 (초)"@ko .
+
+cof:hasPressureBar a owl:DatatypeProperty ; rdfs:domain cof:Recipe ; rdfs:range xsd:integer ;
+    rdfs:comment "추출 압력 (bar)"@ko .
+
+cof:hasGrindSize a owl:DatatypeProperty ; rdfs:domain cof:Recipe ; rdfs:range xsd:string ;
+    rdfs:comment "분쇄도: ExtraFine | Fine | MediumFine | Medium | Coarse"@ko .
+
+cof:hasEspressoShots a owl:DatatypeProperty ; rdfs:domain cof:Recipe ; rdfs:range xsd:integer ;
+    rdfs:comment "들어가는 에스프레소 샷 수 (싱글 1, 더블 2)"@ko .
+
+cof:hasBrewRatio a owl:DatatypeProperty ; rdfs:domain cof:Recipe ; rdfs:range xsd:string ;
+    rdfs:comment "원문에 명시된 원두:물 비율 (예: 1:8). 원두량과 물 양으로 계산되는 비율은 저장하지 않고 화면에서 계산한다."@ko .
+
+
+# ----------------------------------------------------------------
+# 2. 추출 방식 인스턴스
+# ----------------------------------------------------------------
+
+cof:BM_Espresso a owl:NamedIndividual , cof:BrewMethod ;
+    rdfs:label "에스프레소"@ko , "Espresso"@en ;
+    cof:hasBrewCategory "Pressure"^^xsd:string ;
+    cof:hasDescription "곱게 간 원두를 다져 담고 9bar 안팎의 압력으로 뜨거운 물을 짧은 시간 통과시켜 진하게 뽑아내는 방식. 라떼·아메리카노 등 대부분의 매장 음료의 기반이 된다."^^xsd:string .
+
+cof:BM_PourOver a owl:NamedIndividual , cof:BrewMethod ;
+    rdfs:label "푸어오버"@ko , "Pour Over"@en ;
+    cof:hasBrewCategory "Percolation"^^xsd:string ;
+    cof:hasDescription "필터에 담은 원두 위로 물을 나눠 부어 중력으로 통과시키는 여과식 추출. 뜸 들이기(블루밍)와 붓는 속도로 맛을 조절한다."^^xsd:string .
+
+cof:BM_FrenchPress a owl:NamedIndividual , cof:BrewMethod ;
+    rdfs:label "프렌치프레스"@ko , "French Press"@en ;
+    cof:hasBrewCategory "Immersion"^^xsd:string ;
+    cof:hasDescription "굵게 간 원두를 물에 일정 시간 담가 우린 뒤 금속 필터를 눌러 거르는 침지식 추출. 기름 성분이 남아 바디감이 묵직하다."^^xsd:string .
+
+cof:BM_AeroPress a owl:NamedIndividual , cof:BrewMethod ;
+    rdfs:label "에어로프레스"@ko , "AeroPress"@en ;
+    cof:hasBrewCategory "Immersion"^^xsd:string ;
+    cof:hasDescription "챔버 안에서 원두를 물에 우린 뒤 손으로 눌러 종이 필터로 밀어내는 방식. 침지 후 가볍게 압력을 더한다."^^xsd:string .
+
+cof:BM_MokaPot a owl:NamedIndividual , cof:BrewMethod ;
+    rdfs:label "모카포트"@ko , "Moka Pot"@en ;
+    cof:hasBrewCategory "Pressure"^^xsd:string ;
+    cof:hasDescription "하단 챔버의 물을 가열해 생긴 증기압으로 물을 밀어 올려 원두를 통과시키는 스토브용 추출 기구."^^xsd:string .
+
+cof:BM_ColdBrew a owl:NamedIndividual , cof:BrewMethod ;
+    rdfs:label "콜드브루"@ko , "Cold Brew"@en ;
+    cof:hasBrewCategory "Immersion"^^xsd:string ;
+    cof:hasDescription "굵게 간 원두를 찬물에 오랜 시간 담가 우리는 저온 침지식 추출. 산미와 쓴맛이 적은 원액을 만든다."^^xsd:string .
+
+cof:BM_Phin a owl:NamedIndividual , cof:BrewMethod ;
+    rdfs:label "핀(베트남 드리퍼)"@ko , "Phin"@en ;
+    cof:hasBrewCategory "Percolation"^^xsd:string ;
+    cof:hasDescription "잔 위에 올린 금속 필터에 원두를 담고 물이 천천히 떨어지게 하는 베트남식 여과 추출."^^xsd:string .
+
+cof:BM_Cezve a owl:NamedIndividual , cof:BrewMethod ;
+    rdfs:label "체즈베(이브릭)"@ko , "Cezve"@en ;
+    cof:hasBrewCategory "Decoction"^^xsd:string ;
+    cof:hasDescription "아주 곱게 간 원두를 물과 함께 작은 포트에서 데워 거품을 올리는 터키식 달임 추출. 거르지 않아 가루가 잔에 남는다."^^xsd:string .
+
+cof:BM_Jebena a owl:NamedIndividual , cof:BrewMethod ;
+    rdfs:label "제베나"@ko , "Jebena"@en ;
+    cof:hasBrewCategory "Decoction"^^xsd:string ;
+    cof:hasDescription "에티오피아 전통 커피 의식에서 쓰는 목이 긴 토기 주전자에 원두와 물을 넣고 여러 번 끓여 내는 방식."^^xsd:string .
+
+cof:BM_StovetopDecoction a owl:NamedIndividual , cof:BrewMethod ;
+    rdfs:label "냄비 달임"@ko , "Stovetop Decoction"@en ;
+    cof:hasBrewCategory "Decoction"^^xsd:string ;
+    cof:hasDescription "원두(와 향신료)를 물과 함께 냄비에 넣고 약불에서 우린 뒤 체로 걸러 내는 방식."^^xsd:string .
+
+
+# ----------------------------------------------------------------
+# 3. 레시피 → 추출 방식 + 추출 변수 (원문 근거: tests/test_brewing.py)
+# ----------------------------------------------------------------
+
+# ── 에스프레소 계열 ──
+cof:Recipe_ClassicEspresso cof:usesBrewMethod cof:BM_Espresso ;
+    cof:hasDoseGramsMin 18 ; cof:hasDoseGramsMax 18 ;
+    cof:hasYieldMlMin 36 ; cof:hasYieldMlMax 36 ;
+    cof:hasWaterTempCMin 92 ; cof:hasWaterTempCMax 94 ;
+    cof:hasPressureBar 9 ;
+    cof:hasBrewTimeSecMin 25 ; cof:hasBrewTimeSecMax 30 ;
+    cof:hasGrindSize "Fine"^^xsd:string ;
+    cof:hasEspressoShots 2 .
+
+cof:Recipe_Doppio cof:usesBrewMethod cof:BM_Espresso ;
+    cof:hasDoseGramsMin 18 ; cof:hasDoseGramsMax 20 ;
+    cof:hasYieldMlMin 60 ; cof:hasYieldMlMax 70 ;
+    cof:hasBrewTimeSecMin 25 ; cof:hasBrewTimeSecMax 30 ;
+    cof:hasEspressoShots 2 .
+
+cof:Recipe_Ristretto cof:usesBrewMethod cof:BM_Espresso ;
+    cof:hasDoseGramsMin 18 ; cof:hasDoseGramsMax 18 ;
+    cof:hasYieldMlMin 15 ; cof:hasYieldMlMax 20 ;
+    cof:hasBrewTimeSecMin 25 ; cof:hasBrewTimeSecMax 30 .
+
+cof:Recipe_Lungo cof:usesBrewMethod cof:BM_Espresso ;
+    cof:hasDoseGramsMin 18 ; cof:hasDoseGramsMax 18 ;
+    cof:hasYieldMlMin 50 ; cof:hasYieldMlMax 60 ;
+    cof:hasBrewTimeSecMin 40 .
+
+cof:Recipe_Americano cof:usesBrewMethod cof:BM_Espresso ;
+    cof:hasYieldMlMin 60 ; cof:hasYieldMlMax 60 ;
+    cof:hasEspressoShots 2 .
+
+cof:Recipe_Cappuccino cof:usesBrewMethod cof:BM_Espresso .
+
+cof:Recipe_FlatWhite cof:usesBrewMethod cof:BM_Espresso ;
+    cof:hasYieldMlMin 40 ; cof:hasYieldMlMax 40 ;
+    cof:hasEspressoShots 2 .
+
+cof:Recipe_CaffeLatte        cof:usesBrewMethod cof:BM_Espresso ; cof:hasEspressoShots 1 .
+cof:Recipe_Macchiato         cof:usesBrewMethod cof:BM_Espresso ; cof:hasEspressoShots 1 .
+cof:Recipe_CaramelMacchiato  cof:usesBrewMethod cof:BM_Espresso ; cof:hasEspressoShots 2 .
+cof:Recipe_Cortado           cof:usesBrewMethod cof:BM_Espresso ; cof:hasEspressoShots 2 .
+cof:Recipe_Mocha             cof:usesBrewMethod cof:BM_Espresso ; cof:hasEspressoShots 1 .
+cof:Recipe_Affogato          cof:usesBrewMethod cof:BM_Espresso ; cof:hasEspressoShots 1 .
+cof:Recipe_IcedAmericano     cof:usesBrewMethod cof:BM_Espresso ; cof:hasEspressoShots 2 .
+cof:Recipe_Shakerato         cof:usesBrewMethod cof:BM_Espresso ; cof:hasEspressoShots 2 .
+cof:Recipe_HoneyLatte        cof:usesBrewMethod cof:BM_Espresso ; cof:hasEspressoShots 1 .
+cof:Recipe_VanillaLatte      cof:usesBrewMethod cof:BM_Espresso ; cof:hasEspressoShots 1 .
+cof:Recipe_CubanCoffee       cof:usesBrewMethod cof:BM_Espresso .
+cof:Recipe_EspressoConPanna  cof:usesBrewMethod cof:BM_Espresso .
+
+# ── 콜드브루 ──
+cof:Recipe_ColdBrewConcentrate cof:usesBrewMethod cof:BM_ColdBrew ;
+    cof:hasBrewRatio "1:8"^^xsd:string ;
+    cof:hasBrewTimeSecMin 43200 ; cof:hasBrewTimeSecMax 64800 ;   # 12-18시간
+    cof:hasGrindSize "Coarse"^^xsd:string .
+
+cof:Recipe_NitroColdBrew cof:usesBrewMethod cof:BM_ColdBrew .
+
+# ── 수동 추출 ──
+cof:Recipe_PourOverV60 cof:usesBrewMethod cof:BM_PourOver ;
+    cof:hasDoseGramsMin 20 ; cof:hasDoseGramsMax 20 ;
+    cof:hasGrindSize "Medium"^^xsd:string ;
+    cof:hasWaterTempCMin 92 ; cof:hasWaterTempCMax 92 ;
+    cof:hasBrewWaterMlMin 320 ; cof:hasBrewWaterMlMax 320 ;
+    cof:hasBrewTimeSecMin 150 ; cof:hasBrewTimeSecMax 180 .      # 2분30초-3분
+
+cof:Recipe_FrenchPress cof:usesBrewMethod cof:BM_FrenchPress ;
+    cof:hasDoseGramsMin 30 ; cof:hasDoseGramsMax 30 ;
+    cof:hasGrindSize "Coarse"^^xsd:string ;
+    cof:hasWaterTempCMin 95 ; cof:hasWaterTempCMax 96 ;
+    cof:hasBrewWaterMlMin 500 ; cof:hasBrewWaterMlMax 500 ;
+    cof:hasBrewTimeSecMin 240 ; cof:hasBrewTimeSecMax 240 .      # 4분
+
+cof:Recipe_Aeropress cof:usesBrewMethod cof:BM_AeroPress ;
+    cof:hasDoseGramsMin 17 ; cof:hasDoseGramsMax 17 ;
+    cof:hasGrindSize "Fine"^^xsd:string ;
+    cof:hasWaterTempCMin 85 ; cof:hasWaterTempCMax 90 ;
+    cof:hasBrewWaterMlMin 250 ; cof:hasBrewWaterMlMax 250 ;
+    cof:hasBrewTimeSecMin 130 ; cof:hasBrewTimeSecMax 130 .      # 원문 단계가 차례로 이어짐: 젓기 10 + 우리기 90 + 압착 30초
+
+# 원문의 "5-6분간 가열"은 불에 올려 두는 시간이라 추출 시간으로 쓰지 않는다.
+cof:Recipe_MokaPot cof:usesBrewMethod cof:BM_MokaPot ;
+    cof:hasGrindSize "MediumFine"^^xsd:string .
+
+# ── 세계 전통 ──
+cof:Recipe_TurkishCoffee cof:usesBrewMethod cof:BM_Cezve ;
+    cof:hasDoseGramsMin 7 ; cof:hasDoseGramsMax 7 ;
+    cof:hasBrewWaterMlMin 80 ; cof:hasBrewWaterMlMax 80 ;
+    cof:hasGrindSize "ExtraFine"^^xsd:string .
+
+cof:Recipe_VietnameseIcedCoffee cof:usesBrewMethod cof:BM_Phin ;
+    cof:hasDoseGramsMin 15 ; cof:hasDoseGramsMax 15 ;
+    cof:hasGrindSize "Coarse"^^xsd:string ;
+    cof:hasBrewTimeSecMin 300 ; cof:hasBrewTimeSecMax 300 .      # 5분
+
+cof:Recipe_VietnameseEggCoffee cof:usesBrewMethod cof:BM_Phin .
+
+cof:Recipe_EthiopianBuna cof:usesBrewMethod cof:BM_Jebena ;
+    cof:hasGrindSize "Fine"^^xsd:string .
+
+cof:Recipe_MoroccanSpicedCoffee cof:usesBrewMethod cof:BM_StovetopDecoction ;
+    cof:hasGrindSize "Fine"^^xsd:string ;
+    cof:hasBrewTimeSecMin 300 ; cof:hasBrewTimeSecMax 300 .      # 5분 정도

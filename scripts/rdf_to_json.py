@@ -4,6 +4,7 @@ CoffeeLand RDF → JSON 변환 스크립트
 RDF/TTL 파일을 읽어서 dashboard.html과 coffeeland-web이 사용하는 JSON을 생성합니다.
 """
 
+import glob
 import json
 import os
 import re
@@ -13,8 +14,11 @@ from rdflib import Graph, Namespace, RDF, RDFS, OWL, URIRef
 # ── 경로 설정 ──────────────────────────────────────────────
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 RDF_FILE = os.path.join(BASE_DIR, 'data', 'coffeeland_final_v4.rdf')
-TTL_FILE = os.path.join(BASE_DIR, 'data', 'coffeeland_data_enrichment.ttl')
-OUT_DIR  = os.path.join(BASE_DIR, 'docs')
+# data/ 안의 모든 TTL 보강 파일을 이름순으로 읽는다
+# (coffeeland_brewing.ttl, coffeeland_data_enrichment.ttl, ...)
+TTL_FILES = sorted(glob.glob(os.path.join(BASE_DIR, 'data', '*.ttl')))
+# 테스트에서 출력 위치를 바꿀 수 있도록 환경변수 허용 (기본: docs/)
+OUT_DIR  = os.environ.get('COFFEELAND_OUT_DIR') or os.path.join(BASE_DIR, 'docs')
 os.makedirs(OUT_DIR, exist_ok=True)
 
 NS = "http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#"
@@ -32,9 +36,9 @@ g = Graph()
 g.parse(RDF_FILE, format='xml')
 print(f"   메인 RDF: {len(g)} 트리플")
 
-if os.path.exists(TTL_FILE):
-    g.parse(TTL_FILE, format='turtle')
-    print(f"   TTL 보강: {len(g)} 트리플 (합계)")
+for ttl_file in TTL_FILES:
+    g.parse(ttl_file, format='turtle')
+    print(f"   TTL 보강 ({os.path.basename(ttl_file)}): {len(g)} 트리플 (합계)")
 
 total_triples = len(g)
 
@@ -181,7 +185,7 @@ ontology_json = {
     'meta': {
         'totalClasses': len(all_classes),
         'objectProperties': len(obj_props),
-        'dataProperties': 20,
+        'dataProperties': len(set(g.subjects(RDF.type, OWL.DatatypeProperty))),
         'totalTriples': total_triples,
         'version': '2.0',
     },
