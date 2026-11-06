@@ -606,6 +606,66 @@
         .flavor-result i { font-size: 0.7rem; color: var(--text-secondary); }
         .flavor-source-note { margin-top: 1.25rem; font-size: 0.72rem; color: var(--text-secondary); }
 
+        /* Curriculum section in training-program modal */
+        .cur-section {
+            margin: 1rem 0 0;
+            padding: 1rem 1.1rem;
+            border-radius: 10px;
+            border: 1px solid color-mix(in srgb, var(--cur-accent) 35%, transparent);
+            border-left: 4px solid var(--cur-accent);
+            background: color-mix(in srgb, var(--cur-accent) 6%, transparent);
+        }
+        .cur-title { margin: 0 0 0.75rem; font-size: 1rem; font-weight: 700; color: var(--text-primary); }
+        .cur-title i { color: var(--cur-accent); margin-right: 0.35rem; }
+        .cur-skill-row { display: flex; gap: 0.75rem; align-items: baseline; padding: 0.35rem 0; border-bottom: 1px dashed var(--border); }
+        .cur-skill-row:last-of-type { border-bottom: none; }
+        .cur-area { flex: 0 0 6.5rem; font-size: 0.72rem; font-weight: 700; color: var(--cur-accent); }
+        .cur-skills { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+        .cur-skill {
+            padding: 0.2rem 0.6rem; border-radius: 999px; font-size: 0.78rem;
+            background: var(--bg-elevated); border: 1px solid var(--border); color: var(--text-primary);
+            cursor: help;
+        }
+        .cur-empty { margin: 0; font-size: 0.85rem; color: var(--text-secondary); }
+        .cur-path {
+            display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem;
+            margin-top: 0.9rem; padding-top: 0.9rem; border-top: 1px solid var(--border);
+        }
+        .cur-path-step { display: flex; flex-direction: column; gap: 0.25rem; }
+        .cur-path-label { font-size: 0.66rem; font-weight: 700; letter-spacing: 0.05em; color: var(--text-secondary); }
+        .cur-path-arrow { color: var(--text-secondary); font-size: 0.8rem; }
+        .cur-path-current { font-weight: 700; font-size: 0.85rem; color: var(--cur-accent); }
+        .cur-path-link {
+            padding: 0.3rem 0.7rem; border-radius: 6px; font: inherit; font-size: 0.8rem; text-align: left;
+            background: var(--bg-elevated); border: 1px solid var(--border); color: var(--text-primary); cursor: pointer;
+            transition: border-color 150ms ease, background-color 150ms ease;
+        }
+        .cur-path-link:hover { border-color: var(--cur-accent); }
+        .cur-path-link:focus-visible, .cur-graph-btn:focus-visible { outline: 2px solid var(--cur-accent); outline-offset: 2px; }
+        .cur-graph-btn {
+            display: inline-flex; align-items: center; gap: 0.5rem; margin-top: 0.9rem;
+            padding: 0.6rem 1rem; border-radius: 8px; border: none; font: inherit; font-size: 0.85rem; font-weight: 600;
+            background: var(--cur-accent); color: #fff; cursor: pointer;
+            transition: filter 150ms ease, transform 150ms ease;
+        }
+        .cur-graph-btn:hover { filter: brightness(1.1); transform: translateY(-1px); }
+
+        /* Graph focus banner (curriculum → graph) */
+        .graph-focus-banner {
+            position: absolute; top: 16px; left: 50%; transform: translateX(-50%); z-index: 3;
+            display: flex; align-items: center; gap: 0.6rem; max-width: calc(100% - 32px);
+            padding: 0.5rem 0.6rem 0.5rem 0.9rem; border-radius: 999px;
+            background: var(--bg-elevated); border: 1px solid #FFD700; color: var(--text-primary);
+            font-size: 0.82rem; box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+        }
+        .graph-focus-banner[hidden] { display: none; }
+        .graph-focus-banner > i { color: #FFD700; }
+        .graph-focus-clear {
+            padding: 0.25rem 0.7rem; border-radius: 999px; border: 1px solid var(--border);
+            background: transparent; color: var(--text-secondary); font: inherit; font-size: 0.75rem; cursor: pointer;
+        }
+        .graph-focus-clear:hover { color: var(--text-primary); border-color: var(--text-secondary); }
+
         .brew-panel-empty { margin: 0; font-size: 0.85rem; color: var(--text-secondary); }
         .brew-panel-note { margin: 0.7rem 0 0; font-size: 0.7rem; color: var(--text-secondary); }
 
@@ -1480,6 +1540,9 @@
             .modal-title { font-size: 1.05rem; min-width: 0; overflow-wrap: anywhere; }
             .modal-body { padding: 1rem; max-height: calc(100dvh - 1rem - 64px); }
             .brew-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+            .cur-skill-row { flex-direction: column; gap: 0.3rem; }
+            .cur-area { flex: none; }
+            .graph-focus-banner { top: 8px; font-size: 0.75rem; border-radius: 12px; }
 
             /* Graph: shorter canvas, legend collapses to a scrollable strip */
             #cy { height: 60vh; }
@@ -1806,6 +1869,11 @@
             </div>
             <div class="card graph-card" id="graphCard">
                 <div id="cy"></div>
+                <div class="graph-focus-banner" id="graphFocusBanner" role="status" hidden>
+                    <i class="fas fa-sitemap" aria-hidden="true"></i>
+                    <span class="graph-focus-text"></span>
+                    <button type="button" id="graphFocusClear" class="graph-focus-clear">지우기</button>
+                </div>
                 <div class="graph-legend" id="graphLegend" role="group" aria-label="Graph legend — click an item to highlight it">
                     <div class="graph-legend-title">Legend <span class="graph-legend-hint">클릭하면 강조</span></div>
                     <div class="graph-legend-list">
@@ -2617,6 +2685,10 @@
             }
         }
 
+        // Classes whose list page uses the curated cards below even though the
+        // ontology now has individuals for them (data/coffeeland_training.ttl).
+        const CURATED_CARD_CLASSES = new Set(['TrainingProgram']);
+
         // Demo instances for classes with no RDF individuals defined yet
         function getDemoInstances(className) {
             const demos = {
@@ -2927,6 +2999,129 @@
             return                             { accent:'#3b82f6', rgb:'59,130,246', grad:'linear-gradient(135deg,#3b82f6,#1d4ed8)', label:'Training Program',    tag:'사내' };
         }
 
+        // ── Curriculum map (data: data/coffeeland_training.ttl) ────────────
+        const SKILL_AREA_LABELS = {
+            Fundamentals: '커피 기초', Brewing: '추출', Milk: '우유·라떼아트', Sensory: '관능·커핑',
+            Roasting: '로스팅', GreenCoffee: '생두·가공', Equipment: '장비·물',
+            Service: '서비스·판매', Operations: '매장 운영', Safety: '위생·안전'
+        };
+
+        function instancesOfClass(className) {
+            return Object.values(ontologyData.instanceMap).filter(i => i.classURIs.includes(BASE_NS + className));
+        }
+
+        function programInstanceByName(name) {
+            return instancesOfClass('TrainingProgram').find(i => firstPropValue(i.properties, 'hasProgramName') === name) || null;
+        }
+
+        function objectIds(inst, prop) {
+            return (inst.properties[prop] || []).map(v => toLocalId(v.value));
+        }
+
+        function curriculumOf(programInst) {
+            const skills = objectIds(programInst, 'teachesSkill')
+                .map(id => ontologyData.instanceMap[BASE_NS + id]).filter(Boolean);
+            const concepts = [...new Set(skills.flatMap(s => objectIds(s, 'relatesToConcept')))];
+            const prereqs = objectIds(programInst, 'hasPrerequisite')
+                .map(id => ontologyData.instanceMap[BASE_NS + id]).filter(Boolean);
+            const nexts = instancesOfClass('TrainingProgram')
+                .filter(p => objectIds(p, 'hasPrerequisite').includes(programInst.name));
+            return { skills, concepts, prereqs, nexts };
+        }
+
+        function renderCurriculumSection(demo, accent) {
+            if (!ontologyData) return '';
+            const inst = programInstanceByName(demo.name);
+            if (!inst) return '';
+            const { skills, concepts, prereqs, nexts } = curriculumOf(inst);
+            if (!skills.length && !prereqs.length && !nexts.length) return '';
+
+            const byArea = {};
+            skills.forEach(s => {
+                const area = firstPropValue(s.properties, 'hasSkillArea') || 'Operations';
+                (byArea[area] = byArea[area] || []).push(s);
+            });
+            const skillRows = Object.keys(SKILL_AREA_LABELS).filter(a => byArea[a]).map(area => `
+                <div class="cur-skill-row">
+                    <span class="cur-area">${escapeHtml(SKILL_AREA_LABELS[area])}</span>
+                    <span class="cur-skills">${byArea[area].map(s => {
+                        const rel = objectIds(s, 'relatesToConcept');
+                        return `<span class="cur-skill" title="${escapeHtml(rel.length ? '관련 개념: ' + rel.join(', ') : '연결된 개념 없음')}">${escapeHtml(s.label || s.name)}</span>`;
+                    }).join('')}</span>
+                </div>`).join('');
+
+            const progLink = p => `<button type="button" class="cur-path-link" data-program-name="${escapeHtml(firstPropValue(p.properties, 'hasProgramName') || p.name)}">${escapeHtml(p.label || p.name)}</button>`;
+            const path = (prereqs.length || nexts.length) ? `
+                <div class="cur-path" aria-label="학습 경로">
+                    ${prereqs.length ? `<div class="cur-path-step"><span class="cur-path-label">선수 과정</span>${prereqs.map(progLink).join('')}</div><i class="fas fa-arrow-right cur-path-arrow" aria-hidden="true"></i>` : ''}
+                    <div class="cur-path-step is-current"><span class="cur-path-label">이 과정</span><span class="cur-path-current">${escapeHtml(inst.label || demo.name)}</span></div>
+                    ${nexts.length ? `<i class="fas fa-arrow-right cur-path-arrow" aria-hidden="true"></i><div class="cur-path-step"><span class="cur-path-label">다음 과정</span>${nexts.map(progLink).join('')}</div>` : ''}
+                </div>` : '';
+
+            const graphBtn = concepts.length ? `
+                <button type="button" class="cur-graph-btn" data-graph-concepts="${escapeHtml(concepts.join(','))}"
+                        data-graph-title="${escapeHtml(inst.label || demo.name)}" style="--cur-accent:${accent}">
+                    <i class="fas fa-project-diagram" aria-hidden="true"></i> 그래프에서 관련 개념 ${concepts.length}개 보기
+                </button>` : '';
+
+            return `<section class="cur-section" style="--cur-accent:${accent}" aria-label="배우는 기술과 학습 경로">
+                <h3 class="cur-title"><i class="fas fa-sitemap" aria-hidden="true"></i> 배우는 기술</h3>
+                ${skills.length ? skillRows : '<p class="cur-empty">이 과정의 주제는 자격·인증 절차 위주라 기술로 분류하지 않았어요.</p>'}
+                ${path}
+                ${graphBtn}
+            </section>`;
+        }
+
+        // Switch to Graph View and highlight the given ontology classes.
+        function showConceptsInGraph(classNames, title) {
+            document.getElementById('instanceModal')?.classList.remove('active');
+            document.querySelector('.nav-item[data-view="graph"]')?.click();
+            const started = Date.now();
+            const tryHighlight = () => {
+                if (typeof cy === 'undefined' || !cy || cy.nodes().length === 0) {
+                    if (Date.now() - started < 8000) setTimeout(tryHighlight, 100);
+                    return;
+                }
+                const selector = classNames.map(c => `node[label = "${c.replace(/"/g, '')}"]`).join(', ');
+                autoFitActive = false;
+                const count = highlightGraphSelection(selector);
+                setActiveLegendItem(null);
+                const matched = cy.elements(selector);
+                if (matched.length) cy.animate({ fit: { eles: matched, padding: 80 }, duration: 500 });
+                showGraphFocusBanner(`‘${title}’에서 배우는 개념 ${count}개를 강조했어요`);
+            };
+            setTimeout(tryHighlight, 350);
+        }
+
+        function showGraphFocusBanner(text) {
+            const banner = document.getElementById('graphFocusBanner');
+            if (!banner) return;
+            banner.querySelector('.graph-focus-text').textContent = text;
+            banner.hidden = false;
+        }
+
+        function hideGraphFocusBanner() {
+            const banner = document.getElementById('graphFocusBanner');
+            if (banner) banner.hidden = true;
+        }
+
+        function setupCurriculum() {
+            document.addEventListener('click', (evt) => {
+                const link = evt.target.closest('[data-program-name]');
+                if (link) {
+                    const demo = (getDemoInstances('TrainingProgram') || []).find(d => d.name === link.dataset.programName);
+                    if (demo) showTrainingProgramModal(demo);
+                    return;
+                }
+                const btn = evt.target.closest('[data-graph-concepts]');
+                if (btn) {
+                    showConceptsInGraph(btn.dataset.graphConcepts.split(',').filter(Boolean), btn.dataset.graphTitle);
+                    return;
+                }
+                if (evt.target.closest('#graphFocusClear')) clearGraphHighlight();
+            });
+        }
+
         // Detail modal for a training program card
         function showTrainingProgramModal(demo) {
             const th = trainingTheme(demo);
@@ -2951,6 +3146,8 @@
                 </div>
 
                 ${demo.summary ? `<div class="modal-description" style="border-left-color:${th.accent};background:rgba(${th.rgb},.08);line-height:1.7">${demo.summary}</div>` : ''}
+
+                ${renderCurriculumSection(demo, th.accent)}
 
                 <div class="property-grid" style="margin-top:1rem">
                     <div class="property-card" style="border-left-color:${th.accent}">
@@ -3032,7 +3229,9 @@
                 const instanceList = document.getElementById('instanceList');
                 instanceList.innerHTML = '';
                 
-                if (data.instances && data.instances.length > 0) {
+                // Classes with curated card designs keep them even after their
+                // individuals were added to the ontology (TrainingProgram: phase 3).
+                if (data.instances && data.instances.length > 0 && !CURATED_CARD_CLASSES.has(className)) {
                     // Country: split into producer / consumer sections
                     let instancesToRender = data.instances;
                     let producerCount = 0;
@@ -8490,6 +8689,7 @@
 
         function clearGraphHighlight() {
             setActiveLegendItem(null);
+            hideGraphFocusBanner();
             if (!cy) return;
             cy.elements().removeClass('highlighted').style('opacity', 1);
         }
@@ -8525,6 +8725,7 @@
                 }
                 highlightGraphSelection(item.dataset.legendSelector);
                 setActiveLegendItem(item);
+                hideGraphFocusBanner();
             });
         }
 
@@ -8702,6 +8903,7 @@
             safeSetup('Graph legend', setupGraphLegend);
             safeSetup('Graph fullscreen', setupGraphFullscreen);
             safeSetup('Flavor Explorer', setupFlavorExplorer);
+            safeSetup('Curriculum map', setupCurriculum);
 
             // Navigation items (Dashboard, Graph, Categories, Statistics)
             document.querySelectorAll('.nav-item[data-view]').forEach(item => {
