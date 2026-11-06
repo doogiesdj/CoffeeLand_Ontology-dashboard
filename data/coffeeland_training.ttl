@@ -1,0 +1,442 @@
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+@prefix cof:  <http://www.semanticweb.org/boogi/ontologies/2025/11/untitled-ontology-2#> .
+
+# ================================================================
+# 커피랜드 온톨로지 — 3단계: 교육 과정(커리큘럼) 지도
+# 자동 생성 파일 — 직접 고치지 말고 scripts/build_training_ttl.py 를 수정한 뒤
+#   python scripts/build_training_ttl.py
+# 로 다시 만드세요. (tests/test_training.py 가 최신 상태인지 검사합니다)
+#
+# 출처: dashboard.html 의 TrainingProgram 목록 (topics / facts / 기본 정보)
+# ================================================================
+
+cof:Skill a owl:Class ;
+    rdfs:subClassOf cof:ShopOperation ;
+    rdfs:label "기술(역량)"@ko , "Skill"@en ;
+    rdfs:comment "교육 과정에서 배우는 역량. relatesToConcept 로 온톨로지의 관련 클래스와 연결된다."@ko .
+
+cof:teachesSkill a owl:ObjectProperty ;
+    rdfs:domain cof:TrainingProgram ; rdfs:range cof:Skill ;
+    rdfs:label "가르치는 기술"@ko .
+
+cof:hasPrerequisite a owl:ObjectProperty ;
+    rdfs:domain cof:TrainingProgram ; rdfs:range cof:TrainingProgram ;
+    rdfs:label "선수 과정"@ko ;
+    rdfs:comment "이 과정을 듣기 전에 이수·취득해야 하는 과정 (원문 facts 근거)."@ko .
+
+cof:relatesToConcept a owl:ObjectProperty ;
+    rdfs:domain cof:Skill ;
+    rdfs:label "관련 개념"@ko ;
+    rdfs:comment "기술이 다루는 온톨로지 클래스 (OWL 2 punning: 클래스 IRI 를 값으로 사용)."@ko .
+
+cof:hasSkillArea a owl:DatatypeProperty ; rdfs:domain cof:Skill ; rdfs:range xsd:string ;
+    rdfs:comment "Fundamentals | Brewing | Milk | Sensory | Roasting | GreenCoffee | Equipment | Service | Operations | Safety"@ko .
+cof:hasProgramName a owl:DatatypeProperty ; rdfs:domain cof:TrainingProgram ; rdfs:range xsd:string .
+cof:hasProgramOrigin a owl:DatatypeProperty ; rdfs:domain cof:TrainingProgram ; rdfs:range xsd:string ;
+    rdfs:comment "InHouse(사내) | Domestic(국내) | International(해외)"@ko .
+cof:hasProgramLevel a owl:DatatypeProperty ; rdfs:domain cof:TrainingProgram ; rdfs:range xsd:string .
+cof:hasModuleCount a owl:DatatypeProperty ; rdfs:domain cof:TrainingProgram ; rdfs:range xsd:integer .
+cof:hasDuration a owl:DatatypeProperty ; rdfs:domain cof:TrainingProgram ; rdfs:range xsd:string .
+cof:hasTopic a owl:DatatypeProperty ; rdfs:domain cof:TrainingProgram ; rdfs:range xsd:string ;
+    rdfs:comment "원문 주제 표기 그대로 (teachesSkill 분류의 근거)."@ko .
+cof:hasWebsite a owl:DatatypeProperty ; rdfs:domain cof:TrainingProgram ; rdfs:range xsd:anyURI .
+
+# ── 기술 ──
+cof:SK_CoffeeFundamentals a owl:NamedIndividual , cof:Skill ;
+    rdfs:label "커피 기초 지식"@ko , "Coffee Fundamentals"@en ;
+    cof:hasSkillArea "Fundamentals"^^xsd:string ;
+    cof:relatesToConcept cof:CoffeeVariety , cof:ProcessingMethod , cof:RoastLevel , cof:BrewMethod .
+cof:SK_CoffeeOrigins a owl:NamedIndividual , cof:Skill ;
+    rdfs:label "산지 이해"@ko , "Coffee Origins"@en ;
+    cof:hasSkillArea "Fundamentals"^^xsd:string ;
+    cof:relatesToConcept cof:Country , cof:Farm , cof:Harvest , cof:CoffeeVariety .
+cof:SK_CoffeeTerminology a owl:NamedIndividual , cof:Skill ;
+    rdfs:label "커피 용어(영어)"@ko , "Coffee Terminology"@en ;
+    cof:hasSkillArea "Fundamentals"^^xsd:string .
+cof:SK_EspressoExtraction a owl:NamedIndividual , cof:Skill ;
+    rdfs:label "에스프레소 추출"@ko , "Espresso Extraction"@en ;
+    cof:hasSkillArea "Brewing"^^xsd:string ;
+    cof:relatesToConcept cof:BrewMethod , cof:EspressoMachine , cof:Grinder , cof:Recipe .
+cof:SK_EspressoCalibration a owl:NamedIndividual , cof:Skill ;
+    rdfs:label "추출 보정(캘리브레이션)"@ko , "Espresso Calibration"@en ;
+    cof:hasSkillArea "Brewing"^^xsd:string ;
+    cof:relatesToConcept cof:BrewMethod , cof:EspressoMachine , cof:Grinder , cof:Recipe .
+cof:SK_GrindProfile a owl:NamedIndividual , cof:Skill ;
+    rdfs:label "분쇄 프로파일"@ko , "Grind Profile"@en ;
+    cof:hasSkillArea "Brewing"^^xsd:string ;
+    cof:relatesToConcept cof:Grinder .
+cof:SK_ExtractionTheory a owl:NamedIndividual , cof:Skill ;
+    rdfs:label "추출 이론·설계"@ko , "Extraction Theory & Design"@en ;
+    cof:hasSkillArea "Brewing"^^xsd:string ;
+    cof:relatesToConcept cof:BrewMethod , cof:Recipe .
+cof:SK_FilterBrewing a owl:NamedIndividual , cof:Skill ;
+    rdfs:label "핸드드립·추출 기구"@ko , "Filter Brewing & Brew Tools"@en ;
+    cof:hasSkillArea "Brewing"^^xsd:string ;
+    cof:relatesToConcept cof:BrewMethod , cof:Recipe .
+cof:SK_MilkSteaming a owl:NamedIndividual , cof:Skill ;
+    rdfs:label "우유 스티밍"@ko , "Milk Steaming"@en ;
+    cof:hasSkillArea "Milk"^^xsd:string ;
+    cof:relatesToConcept cof:Milk , cof:EspressoMachine .
+cof:SK_LatteArt a owl:NamedIndividual , cof:Skill ;
+    rdfs:label "라떼아트"@ko , "Latte Art"@en ;
+    cof:hasSkillArea "Milk"^^xsd:string ;
+    cof:relatesToConcept cof:Milk , cof:BeverageMenu .
+cof:SK_Cupping a owl:NamedIndividual , cof:Skill ;
+    rdfs:label "커핑"@ko , "Cupping"@en ;
+    cof:hasSkillArea "Sensory"^^xsd:string ;
+    cof:relatesToConcept cof:FlavorNote , cof:QualityGrade , cof:CuppingCompetition .
+cof:SK_SensorySkills a owl:NamedIndividual , cof:Skill ;
+    rdfs:label "감각 훈련(후각·미각·유기산)"@ko , "Sensory Skills"@en ;
+    cof:hasSkillArea "Sensory"^^xsd:string ;
+    cof:relatesToConcept cof:FlavorNote .
+cof:SK_FlavorEvaluation a owl:NamedIndividual , cof:Skill ;
+    rdfs:label "향미 평가·프로파일링"@ko , "Flavor Evaluation"@en ;
+    cof:hasSkillArea "Sensory"^^xsd:string ;
+    cof:relatesToConcept cof:FlavorNote , cof:ProcessingMethod , cof:RoastLevel .
+cof:SK_CoffeeValueAssessment a owl:NamedIndividual , cof:Skill ;
+    rdfs:label "CVA 품질 평가"@ko , "Coffee Value Assessment"@en ;
+    cof:hasSkillArea "Sensory"^^xsd:string ;
+    cof:relatesToConcept cof:FlavorNote , cof:QualityGrade .
+cof:SK_RoastLevelIdentification a owl:NamedIndividual , cof:Skill ;
+    rdfs:label "로스트 레벨 식별"@ko , "Roast Level Identification"@en ;
+    cof:hasSkillArea "Sensory"^^xsd:string ;
+    cof:relatesToConcept cof:RoastLevel .
+cof:SK_Roasting a owl:NamedIndividual , cof:Skill ;
+    rdfs:label "로스팅 이론·프로파일"@ko , "Roasting"@en ;
+    cof:hasSkillArea "Roasting"^^xsd:string ;
+    cof:relatesToConcept cof:RoastLevel , cof:RoasterMachine .
+cof:SK_GreenCoffeeGrading a owl:NamedIndividual , cof:Skill ;
+    rdfs:label "생두 분류·결점두 그레이딩"@ko , "Green Coffee Grading"@en ;
+    cof:hasSkillArea "GreenCoffee"^^xsd:string ;
+    cof:relatesToConcept cof:QualityGrade , cof:CoffeeVariety .
+cof:SK_Processing a owl:NamedIndividual , cof:Skill ;
+    rdfs:label "가공 방식·품질관리"@ko , "Processing"@en ;
+    cof:hasSkillArea "GreenCoffee"^^xsd:string ;
+    cof:relatesToConcept cof:ProcessingMethod , cof:ProcessingMill .
+cof:SK_EquipmentMaintenance a owl:NamedIndividual , cof:Skill ;
+    rdfs:label "장비 관리·정비"@ko , "Equipment Maintenance"@en ;
+    cof:hasSkillArea "Equipment"^^xsd:string ;
+    cof:relatesToConcept cof:EspressoMachine , cof:Grinder , cof:MaintenanceService .
+cof:SK_WaterQuality a owl:NamedIndividual , cof:Skill ;
+    rdfs:label "물·수질 관리"@ko , "Water Quality"@en ;
+    cof:hasSkillArea "Equipment"^^xsd:string ;
+    cof:relatesToConcept cof:WaterFilter .
+cof:SK_CustomerService a owl:NamedIndividual , cof:Skill ;
+    rdfs:label "고객 서비스"@ko , "Customer Service"@en ;
+    cof:hasSkillArea "Service"^^xsd:string ;
+    cof:relatesToConcept cof:Consumer .
+cof:SK_Sales a owl:NamedIndividual , cof:Skill ;
+    rdfs:label "판매·업셀링"@ko , "Sales & Upselling"@en ;
+    cof:hasSkillArea "Service"^^xsd:string ;
+    cof:relatesToConcept cof:BeverageMenu .
+cof:SK_MenuPreparation a owl:NamedIndividual , cof:Skill ;
+    rdfs:label "메뉴 조리"@ko , "Menu Preparation"@en ;
+    cof:hasSkillArea "Operations"^^xsd:string ;
+    cof:relatesToConcept cof:Recipe , cof:BeverageMenu , cof:Ingredient .
+cof:SK_CafeOperations a owl:NamedIndividual , cof:Skill ;
+    rdfs:label "카페 실무·운영"@ko , "Cafe Operations"@en ;
+    cof:hasSkillArea "Operations"^^xsd:string ;
+    cof:relatesToConcept cof:BeverageMenu , cof:Ingredient , cof:Consumable .
+cof:SK_POSOperation a owl:NamedIndividual , cof:Skill ;
+    rdfs:label "POS 사용"@ko , "POS Operation"@en ;
+    cof:hasSkillArea "Operations"^^xsd:string ;
+    cof:relatesToConcept cof:PosSystem .
+cof:SK_Instruction a owl:NamedIndividual , cof:Skill ;
+    rdfs:label "교육·지도"@ko , "Instruction"@en ;
+    cof:hasSkillArea "Operations"^^xsd:string ;
+    cof:relatesToConcept cof:TrainingProgram .
+cof:SK_CompetitionPrep a owl:NamedIndividual , cof:Skill ;
+    rdfs:label "대회 준비"@ko , "Competition Preparation"@en ;
+    cof:hasSkillArea "Operations"^^xsd:string .
+cof:SK_FoodSafety a owl:NamedIndividual , cof:Skill ;
+    rdfs:label "식품 위생·안전"@ko , "Food Safety & Hygiene"@en ;
+    cof:hasSkillArea "Safety"^^xsd:string ;
+    cof:relatesToConcept cof:Ingredient .
+
+# ── 교육 과정 ──
+cof:TP_BaristaBasics a owl:NamedIndividual , cof:TrainingProgram ;
+    rdfs:label "Barista Basics" ;
+    cof:hasProgramName "Barista Basics"^^xsd:string ;
+    cof:hasProgramOrigin "InHouse"^^xsd:string ;
+    cof:hasProgramLevel "Beginner"^^xsd:string ;
+    cof:hasDuration "2 Weeks"^^xsd:string ;
+    cof:hasDescription "신규 입사 바리스타가 매장 실무에 투입되기 전 이수하는 사내 기본 과정. 에스프레소 추출과 우유 스티밍 등 핵심 기술을 2주에 걸쳐 익힌다."^^xsd:string ;
+    cof:hasModuleCount 5 ;
+    cof:hasTopic "Espresso Fundamentals"^^xsd:string , "Milk Steaming"^^xsd:string , "Coffee Origins"^^xsd:string , "Equipment Care"^^xsd:string , "POS Usage"^^xsd:string ;
+    cof:teachesSkill cof:SK_EspressoExtraction , cof:SK_MilkSteaming , cof:SK_CoffeeOrigins , cof:SK_EquipmentMaintenance , cof:SK_POSOperation .
+cof:TP_AdvancedEspresso a owl:NamedIndividual , cof:TrainingProgram ;
+    rdfs:label "Advanced Espresso" ;
+    cof:hasProgramName "Advanced Espresso"^^xsd:string ;
+    cof:hasProgramOrigin "InHouse"^^xsd:string ;
+    cof:hasProgramLevel "Advanced"^^xsd:string ;
+    cof:hasDuration "4 Weeks"^^xsd:string ;
+    cof:hasDescription "추출 변수를 스스로 설계·보정할 수 있는 숙련 바리스타 양성 과정. 커핑과 향미 프로파일링을 포함하며 대회 준비 과정까지 다룬다."^^xsd:string ;
+    cof:hasModuleCount 8 ;
+    cof:hasTopic "Espresso Calibration"^^xsd:string , "Grind Profile"^^xsd:string , "Latte Art"^^xsd:string , "Cupping"^^xsd:string , "Flavor Profiling"^^xsd:string , "Competition Prep"^^xsd:string ;
+    cof:teachesSkill cof:SK_EspressoCalibration , cof:SK_GrindProfile , cof:SK_LatteArt , cof:SK_Cupping , cof:SK_FlavorEvaluation , cof:SK_CompetitionPrep ;
+    cof:hasPrerequisite cof:TP_BaristaBasics .
+cof:TP_CustomerService a owl:NamedIndividual , cof:TrainingProgram ;
+    rdfs:label "Customer Service" ;
+    cof:hasProgramName "Customer Service"^^xsd:string ;
+    cof:hasProgramOrigin "InHouse"^^xsd:string ;
+    cof:hasProgramLevel "Beginner"^^xsd:string ;
+    cof:hasDuration "1 Week"^^xsd:string ;
+    cof:hasDescription "응대 화법과 컴플레인 처리, 업셀링을 다루는 단기 서비스 과정. 전 직군이 공통으로 이수한다."^^xsd:string ;
+    cof:hasModuleCount 3 ;
+    cof:hasTopic "Communication Skills"^^xsd:string , "Complaint Handling"^^xsd:string , "Upselling Techniques"^^xsd:string ;
+    cof:teachesSkill cof:SK_CustomerService , cof:SK_Sales .
+cof:TP_FoodSafety a owl:NamedIndividual , cof:TrainingProgram ;
+    rdfs:label "Food Safety & Hygiene" ;
+    cof:hasProgramName "Food Safety & Hygiene"^^xsd:string ;
+    cof:hasProgramOrigin "InHouse"^^xsd:string ;
+    cof:hasProgramLevel "Mandatory"^^xsd:string ;
+    cof:hasDuration "3 Weeks"^^xsd:string ;
+    cof:hasDescription "HACCP 원칙과 알레르겐 관리, 온도·세척 관리를 다루는 필수 위생 과정. 이수 시 사내 인증이 부여된다."^^xsd:string ;
+    cof:hasModuleCount 6 ;
+    cof:hasTopic "HACCP Principles"^^xsd:string , "Allergen Awareness"^^xsd:string , "Temperature Control"^^xsd:string , "Cleaning Procedures"^^xsd:string , "Personal Hygiene"^^xsd:string , "Certification"^^xsd:string ;
+    cof:teachesSkill cof:SK_FoodSafety .
+cof:TP_KCA_Barista2 a owl:NamedIndividual , cof:TrainingProgram ;
+    rdfs:label "바리스타 2급 (KCA Barista Level 2)" ;
+    cof:hasProgramName "바리스타 2급 (KCA Barista Level 2)"^^xsd:string ;
+    cof:hasProgramOrigin "Domestic"^^xsd:string ;
+    cof:hasProgramLevel "Beginner"^^xsd:string ;
+    cof:hasDuration "필기 + 실기 검정"^^xsd:string ;
+    cof:hasDescription "국내에서 가장 널리 통용되는 바리스타 입문 민간자격. 협회 인증 교육기관에서 과정을 이수한 뒤 필기와 실기 검정을 각각 치른다. 상위 자격인 바리스타 1급의 응시 전제 조건이기도 하다."^^xsd:string ;
+    cof:hasModuleCount 5 ;
+    cof:hasProvider "(사)한국커피협회 (KCA)"^^xsd:string ;
+    cof:hasWebsite "https://www.kca-coffee.org/cms/FrCon/index.do?MENU_ID=610"^^xsd:anyURI ;
+    cof:hasTopic "커피학 개론"^^xsd:string , "에스프레소 추출"^^xsd:string , "우유 스티밍"^^xsd:string , "위생·매장 관리"^^xsd:string , "서비스 기술"^^xsd:string ;
+    cof:teachesSkill cof:SK_CoffeeFundamentals , cof:SK_EspressoExtraction , cof:SK_MilkSteaming , cof:SK_FoodSafety , cof:SK_CafeOperations , cof:SK_CustomerService .
+cof:TP_KCA_Barista1 a owl:NamedIndividual , cof:TrainingProgram ;
+    rdfs:label "바리스타 1급 (KCA Barista Level 1)" ;
+    cof:hasProgramName "바리스타 1급 (KCA Barista Level 1)"^^xsd:string ;
+    cof:hasProgramOrigin "Domestic"^^xsd:string ;
+    cof:hasProgramLevel "Advanced"^^xsd:string ;
+    cof:hasDuration "인증기관 교육 24시간 이상"^^xsd:string ;
+    cof:hasDescription "바리스타 2급 취득자가 도전하는 상위 자격. 로스팅과 향미 평가까지 출제 범위가 넓어지고, 실기는 평가자 2명이 기술적·감각적 항목을 함께 채점한다."^^xsd:string ;
+    cof:hasModuleCount 6 ;
+    cof:hasProvider "(사)한국커피협회 (KCA)"^^xsd:string ;
+    cof:hasWebsite "https://www.kca-coffee.org/cms/FrCon/index.do?MENU_ID=620"^^xsd:anyURI ;
+    cof:hasTopic "커피학 개론"^^xsd:string , "로스팅·향미 평가"^^xsd:string , "추출 이론"^^xsd:string , "에스프레소·카푸치노 시연"^^xsd:string , "서비스 기술"^^xsd:string , "영어 커피 용어"^^xsd:string ;
+    cof:teachesSkill cof:SK_CoffeeFundamentals , cof:SK_Roasting , cof:SK_FlavorEvaluation , cof:SK_ExtractionTheory , cof:SK_EspressoExtraction , cof:SK_MilkSteaming , cof:SK_CustomerService , cof:SK_CoffeeTerminology ;
+    cof:hasPrerequisite cof:TP_KCA_Barista2 .
+cof:TP_KCA_CoffeeInstructor a owl:NamedIndividual , cof:TrainingProgram ;
+    rdfs:label "커피지도사 1·2급 (Coffee Instructor)" ;
+    cof:hasProgramName "커피지도사 1·2급 (Coffee Instructor)"^^xsd:string ;
+    cof:hasProgramOrigin "Domestic"^^xsd:string ;
+    cof:hasProgramLevel "Instructor"^^xsd:string ;
+    cof:hasDuration "전 과정 72시간"^^xsd:string ;
+    cof:hasDescription "커피를 \"가르치는 사람\"을 양성하는 과정평가형 자격. 홈카페마스터부터 커피지도사 1급까지 총 72시간을 단계적으로 이수하며, 추출 설계와 메뉴 조리·고객 서비스를 지도하는 역량을 평가한다."^^xsd:string ;
+    cof:hasModuleCount 6 ;
+    cof:hasProvider "(사)한국커피협회 (KCA)"^^xsd:string ;
+    cof:hasWebsite "https://www.kca-coffee.org/cms/FrCon/index.do?MENU_ID=660"^^xsd:anyURI ;
+    cof:hasTopic "홈카페마스터 18h"^^xsd:string , "커피지도사 2급 27h"^^xsd:string , "커피지도사 1급 27h"^^xsd:string , "추출 설계"^^xsd:string , "메뉴 조리 지도"^^xsd:string , "고객 서비스 지도"^^xsd:string ;
+    cof:teachesSkill cof:SK_ExtractionTheory , cof:SK_MenuPreparation , cof:SK_Instruction , cof:SK_CustomerService ;
+    cof:hasPrerequisite cof:TP_KCA_HomeCafeMaster .
+cof:TP_KCA_RoastMaster a owl:NamedIndividual , cof:TrainingProgram ;
+    rdfs:label "로스트마스터 (Roast Master)" ;
+    cof:hasProgramName "로스트마스터 (Roast Master)"^^xsd:string ;
+    cof:hasProgramOrigin "Domestic"^^xsd:string ;
+    cof:hasProgramLevel "Intermediate"^^xsd:string ;
+    cof:hasDuration "이론 + 실습 과정"^^xsd:string ;
+    cof:hasDescription "로스팅 기술의 표준을 제시하고 커피 가공 기술의 이해도를 검증하는 심사평가형 자격. 늘어나는 홈 로스터와 소규모 로스터리 카페 창업자를 주요 대상으로 한다."^^xsd:string ;
+    cof:hasModuleCount 6 ;
+    cof:hasProvider "(사)한국커피협회 (KCA)"^^xsd:string ;
+    cof:hasWebsite "https://www.kca-coffee.org/cms/FrCon/index.do?MENU_ID=670"^^xsd:anyURI ;
+    cof:hasTopic "생두 분류"^^xsd:string , "로스팅 이론"^^xsd:string , "로스트 프로파일"^^xsd:string , "결점두 식별"^^xsd:string , "향미 평가"^^xsd:string , "로스터리 카페 운영"^^xsd:string ;
+    cof:teachesSkill cof:SK_GreenCoffeeGrading , cof:SK_Roasting , cof:SK_FlavorEvaluation , cof:SK_CafeOperations .
+cof:TP_KCA_HomeCafeMaster a owl:NamedIndividual , cof:TrainingProgram ;
+    rdfs:label "홈카페마스터 (Home Cafe Master)" ;
+    cof:hasProgramName "홈카페마스터 (Home Cafe Master)"^^xsd:string ;
+    cof:hasProgramOrigin "Domestic"^^xsd:string ;
+    cof:hasProgramLevel "Beginner"^^xsd:string ;
+    cof:hasDuration "18시간"^^xsd:string ;
+    cof:hasDescription "가정이나 사무실에서 수준 높은 커피를 다룰 수 있게 하는 입문 과정. 원두커피를 즐기는 일반인에게 올바른 커피 기술을 알리는 것이 목적이며, 이수자는 커피지도사 1급에 도전할 자격을 얻는다."^^xsd:string ;
+    cof:hasModuleCount 4 ;
+    cof:hasProvider "(사)한국커피협회 (KCA)"^^xsd:string ;
+    cof:hasWebsite "https://www.kca-coffee.org/cms/FrCon/index.do?MENU_ID=2060"^^xsd:anyURI ;
+    cof:hasTopic "커피학 개론"^^xsd:string , "추출 기구 활용"^^xsd:string , "핸드드립"^^xsd:string , "향미 평가"^^xsd:string ;
+    cof:teachesSkill cof:SK_CoffeeFundamentals , cof:SK_FilterBrewing , cof:SK_FlavorEvaluation .
+cof:TP_SCA_CSP_Korea a owl:NamedIndividual , cof:TrainingProgram ;
+    rdfs:label "SCA 커피 스킬즈 프로그램 (CSP) — 한국" ;
+    cof:hasProgramName "SCA 커피 스킬즈 프로그램 (CSP) — 한국"^^xsd:string ;
+    cof:hasProgramOrigin "Domestic"^^xsd:string ;
+    cof:hasProgramLevel "Foundation~Professional"^^xsd:string ;
+    cof:hasDuration "모듈별 1~5일"^^xsd:string ;
+    cof:hasDescription "국제 스페셜티커피협회(SCA)의 표준 교육을 한국챕터와 국내 공인 트레이너(AST)가 운영한다. 2017년 SCA 통합·개칭 이후 매년 프로그램 내용과 체계가 개선되어 왔다."^^xsd:string ;
+    cof:hasModuleCount 6 ;
+    cof:hasProvider "SCA 한국챕터 · 공인 트레이너(AST)"^^xsd:string ;
+    cof:hasWebsite "https://korea.sca.coffee/education/csp"^^xsd:anyURI ;
+    cof:hasTopic "Introduction to Coffee"^^xsd:string , "Barista Skills"^^xsd:string , "Brewing"^^xsd:string , "Green Coffee"^^xsd:string , "Roasting"^^xsd:string , "Sensory Skills"^^xsd:string ;
+    cof:teachesSkill cof:SK_CoffeeFundamentals , cof:SK_EspressoExtraction , cof:SK_MilkSteaming , cof:SK_FilterBrewing , cof:SK_GreenCoffeeGrading , cof:SK_Roasting , cof:SK_SensorySkills .
+cof:TP_QGrader_Korea a owl:NamedIndividual , cof:TrainingProgram ;
+    rdfs:label "Q 그레이더 (Q Arabica Grader) — 한국" ;
+    cof:hasProgramName "Q 그레이더 (Q Arabica Grader) — 한국"^^xsd:string ;
+    cof:hasProgramOrigin "Domestic"^^xsd:string ;
+    cof:hasProgramLevel "Professional"^^xsd:string ;
+    cof:hasDuration "6일 집중 + 22개 시험"^^xsd:string ;
+    cof:hasDescription "커피의 품질을 국제 기준으로 평가하는 감별 전문가 자격. 일주일간의 집중 교육 뒤 22개의 서로 다른 시험을 모두 통과해야 인정되며, 국내에서 취득 가능한 인증기관은 6개소다."^^xsd:string ;
+    cof:hasModuleCount 6 ;
+    cof:hasProvider "국내 Q 인증 교육기관 (6개소)"^^xsd:string ;
+    cof:hasWebsite "https://korea.sca.coffee/q-grader"^^xsd:anyURI ;
+    cof:hasTopic "커핑 프로토콜"^^xsd:string , "트라이앵귤레이션"^^xsd:string , "아로마 식별"^^xsd:string , "유기산 판별"^^xsd:string , "결점두 그레이딩"^^xsd:string , "로스트 레벨 식별"^^xsd:string ;
+    cof:teachesSkill cof:SK_Cupping , cof:SK_SensorySkills , cof:SK_GreenCoffeeGrading , cof:SK_RoastLevelIdentification .
+cof:TP_NaeilBaeum_Barista a owl:NamedIndividual , cof:TrainingProgram ;
+    rdfs:label "국민내일배움카드 바리스타 양성과정" ;
+    cof:hasProgramName "국민내일배움카드 바리스타 양성과정"^^xsd:string ;
+    cof:hasProgramOrigin "Domestic"^^xsd:string ;
+    cof:hasProgramLevel "Beginner"^^xsd:string ;
+    cof:hasDuration "약 31일 (출석 80% 이상)"^^xsd:string ;
+    cof:hasDescription "고용노동부의 국민내일배움카드로 훈련비를 지원받아 수강하는 국비 직업훈련. 커피를 처음 접하는 교육생도 참여할 수 있도록 기초 이론부터 실습 중심으로 구성되며, 통상 20일 정도면 바리스타 자격 검정에 도전할 수 있는 수준에 이른다."^^xsd:string ;
+    cof:hasModuleCount 6 ;
+    cof:hasProvider "고용노동부 지정 훈련기관 (HRD-Net)"^^xsd:string ;
+    cof:hasWebsite "https://www.hrd.go.kr"^^xsd:anyURI ;
+    cof:hasTopic "커피 기초 이론"^^xsd:string , "에스프레소 추출"^^xsd:string , "우유 스티밍"^^xsd:string , "머신 사용·위생 관리"^^xsd:string , "카페 실무"^^xsd:string , "자격 검정 대비"^^xsd:string ;
+    cof:teachesSkill cof:SK_CoffeeFundamentals , cof:SK_EspressoExtraction , cof:SK_MilkSteaming , cof:SK_EquipmentMaintenance , cof:SK_FoodSafety , cof:SK_CafeOperations .
+cof:TP_Starbucks_CoffeeMaster a owl:NamedIndividual , cof:TrainingProgram ;
+    rdfs:label "스타벅스 커피 마스터 (Coffee Master)" ;
+    cof:hasProgramName "스타벅스 커피 마스터 (Coffee Master)"^^xsd:string ;
+    cof:hasProgramOrigin "Domestic"^^xsd:string ;
+    cof:hasProgramLevel "In-house"^^xsd:string ;
+    cof:hasDuration "6개월 이상"^^xsd:string ;
+    cof:hasDescription "스타벅스가 운영하는 사내 자격이자 커피 지식 교육 프로그램. 최소 6개월이 넘는 교육과 시험을 거쳐야 하며, 취득한 파트너만 녹색이 아닌 검은색 앞치마를 착용한다."^^xsd:string ;
+    cof:hasModuleCount 5 ;
+    cof:hasProvider "스타벅스 코리아 (사내 인증)"^^xsd:string ;
+    cof:hasWebsite "https://www.shinsegaegroupnewsroom.com/starbucks-coffee-expert-training-center/"^^xsd:anyURI ;
+    cof:hasTopic "커피 지식"^^xsd:string , "추출 실습"^^xsd:string , "커핑·테이스팅"^^xsd:string , "사이버 교육"^^xsd:string , "고객 경험"^^xsd:string ;
+    cof:teachesSkill cof:SK_CoffeeFundamentals , cof:SK_EspressoExtraction , cof:SK_Cupping , cof:SK_CustomerService .
+cof:TP_KCRO_MachineEngineer a owl:NamedIndividual , cof:TrainingProgram ;
+    rdfs:label "커피머신 엔지니어 1·2급" ;
+    cof:hasProgramName "커피머신 엔지니어 1·2급"^^xsd:string ;
+    cof:hasProgramOrigin "Domestic"^^xsd:string ;
+    cof:hasProgramLevel "Technical"^^xsd:string ;
+    cof:hasDuration "2급 → 1급 단계 과정"^^xsd:string ;
+    cof:hasDescription "커피머신 엔지니어링 공학을 기반으로 머신의 기능 관리 전반을 다루는 국내 특화 자격. 추출 기술뿐 아니라 장비의 정비·진단 역량을 갖춘 바리스타를 양성한다."^^xsd:string ;
+    cof:hasModuleCount 5 ;
+    cof:hasProvider "한국커피연구원 (KCRO)"^^xsd:string ;
+    cof:hasWebsite "https://kcro.kr/certificate/engineer_2"^^xsd:anyURI ;
+    cof:hasTopic "머신 구조·부품"^^xsd:string , "정비·트러블슈팅"^^xsd:string , "수질·정수 관리"^^xsd:string , "추출 압력·온도 세팅"^^xsd:string , "안전 관리"^^xsd:string ;
+    cof:teachesSkill cof:SK_EquipmentMaintenance , cof:SK_WaterQuality , cof:SK_EspressoCalibration , cof:SK_FoodSafety .
+cof:TP_SCA_CSP_Global a owl:NamedIndividual , cof:TrainingProgram ;
+    rdfs:label "SCA 커피 스킬즈 프로그램 (Global CSP)" ;
+    cof:hasProgramName "SCA 커피 스킬즈 프로그램 (Global CSP)"^^xsd:string ;
+    cof:hasProgramOrigin "International"^^xsd:string ;
+    cof:hasProgramLevel "Foundation~Professional"^^xsd:string ;
+    cof:hasDuration "모듈별 1~5일"^^xsd:string ;
+    cof:hasDescription "전 세계에서 통용되는 스페셜티 커피 표준 교육 체계. 1일짜리 Introduction to Coffee와 5개 전문 모듈로 구성되며, 각 전문 모듈은 Foundation·Intermediate·Professional 3단계로 나뉜다."^^xsd:string ;
+    cof:hasModuleCount 6 ;
+    cof:hasProvider "Specialty Coffee Association (SCA)"^^xsd:string ;
+    cof:hasWebsite "https://education.sca.coffee/"^^xsd:anyURI ;
+    cof:hasTopic "Introduction to Coffee"^^xsd:string , "Barista Skills"^^xsd:string , "Brewing"^^xsd:string , "Green Coffee"^^xsd:string , "Roasting"^^xsd:string , "Sensory Skills"^^xsd:string ;
+    cof:teachesSkill cof:SK_CoffeeFundamentals , cof:SK_EspressoExtraction , cof:SK_MilkSteaming , cof:SK_FilterBrewing , cof:SK_GreenCoffeeGrading , cof:SK_Roasting , cof:SK_SensorySkills .
+cof:TP_SCA_SkillsDiploma a owl:NamedIndividual , cof:TrainingProgram ;
+    rdfs:label "SCA 스킬즈 디플로마 (Skills Diploma)" ;
+    cof:hasProgramName "SCA 스킬즈 디플로마 (Skills Diploma)"^^xsd:string ;
+    cof:hasProgramOrigin "International"^^xsd:string ;
+    cof:hasProgramLevel "Diploma"^^xsd:string ;
+    cof:hasDuration "인증서 누적 취득"^^xsd:string ;
+    cof:hasDescription "CSP 모듈 인증서를 모아 취득하는 상위 디플로마. 관심 분야와 직무에 맞춰 모듈을 선택해 쌓아가는 방식이며, 2024년 1월 기존 100점 체계를 대체했다."^^xsd:string ;
+    cof:hasModuleCount 4 ;
+    cof:hasProvider "Specialty Coffee Association (SCA)"^^xsd:string ;
+    cof:hasWebsite "https://education.sca.coffee/sca-skills-diploma"^^xsd:anyURI ;
+    cof:hasTopic "역할 기반 학습 경로"^^xsd:string , "모듈 인증서 누적"^^xsd:string , "전문 분야 심화"^^xsd:string , "국제 통용 디플로마"^^xsd:string ;
+    cof:hasPrerequisite cof:TP_SCA_CSP_Global .
+cof:TP_SCA_AST a owl:NamedIndividual , cof:TrainingProgram ;
+    rdfs:label "공인 SCA 트레이너 (AST)" ;
+    cof:hasProgramName "공인 SCA 트레이너 (AST)"^^xsd:string ;
+    cof:hasProgramOrigin "International"^^xsd:string ;
+    cof:hasProgramLevel "Trainer"^^xsd:string ;
+    cof:hasDuration "3년 라이선스"^^xsd:string ;
+    cof:hasDescription "SCA 인증 교육을 직접 강의할 수 있는 트레이너 라이선스. 가르치려는 모듈의 상위 인증서를 보유해야 하며, 심사·지식평가·온라인 과정을 거쳐 3년 단위 라이선스 계약을 맺는다."^^xsd:string ;
+    cof:hasModuleCount 5 ;
+    cof:hasProvider "Specialty Coffee Association (SCA)"^^xsd:string ;
+    cof:hasWebsite "https://education.sca.coffee/become-a-trainer"^^xsd:anyURI ;
+    cof:hasTopic "경력·자격 심사"^^xsd:string , "프로그램 지식 평가"^^xsd:string , "온라인 과정 + 라이브 세션"^^xsd:string , "라이선스 계약"^^xsd:string , "지속적 전문성 개발(CPD)"^^xsd:string ;
+    cof:hasPrerequisite cof:TP_SCA_CSP_Global .
+cof:TP_QGrader_Evolved a owl:NamedIndividual , cof:TrainingProgram ;
+    rdfs:label "Q 그레이더 (Evolved / CVA 기반)" ;
+    cof:hasProgramName "Q 그레이더 (Evolved / CVA 기반)"^^xsd:string ;
+    cof:hasProgramOrigin "International"^^xsd:string ;
+    cof:hasProgramLevel "Professional"^^xsd:string ;
+    cof:hasDuration "집중 과정 + 시험"^^xsd:string ;
+    cof:hasDescription "커피 품질을 국제 기준으로 감별하는 대표 자격. 2025년 10월 1일부터 SCA가 운영을 맡아 2023년 도입된 Coffee Value Assessment(CVA)를 기반으로 개편되었고, 2004년 레거시 커핑 폼은 더 이상 사용되지 않는다."^^xsd:string ;
+    cof:hasModuleCount 6 ;
+    cof:hasProvider "SCA (2025.10.1 CQI에서 이관)"^^xsd:string ;
+    cof:hasWebsite "https://education.sca.coffee/"^^xsd:anyURI ;
+    cof:hasTopic "CVA 평가 체계"^^xsd:string , "커핑 프로토콜"^^xsd:string , "후각·미각 판별"^^xsd:string , "유기산 식별"^^xsd:string , "트라이앵귤레이션"^^xsd:string , "생두·원두 그레이딩"^^xsd:string ;
+    cof:teachesSkill cof:SK_CoffeeValueAssessment , cof:SK_Cupping , cof:SK_SensorySkills , cof:SK_GreenCoffeeGrading .
+cof:TP_CQI_RGrader a owl:NamedIndividual , cof:TrainingProgram ;
+    rdfs:label "Q 로부스타 그레이더 (R Grader)" ;
+    cof:hasProgramName "Q 로부스타 그레이더 (R Grader)"^^xsd:string ;
+    cof:hasProgramOrigin "International"^^xsd:string ;
+    cof:hasProgramLevel "Professional"^^xsd:string ;
+    cof:hasDuration "5~6일 + 22개 시험"^^xsd:string ;
+    cof:hasDescription "아라비카가 아닌 로부스타(파인 로부스타) 품질을 감별하는 국제 자격. 9개 모듈 20여 개 시험으로 구성된 5일 일정에서 총 22개 개별 테스트를 모두 통과해야 한다."^^xsd:string ;
+    cof:hasModuleCount 9 ;
+    cof:hasProvider "Coffee Quality Institute (CQI)"^^xsd:string ;
+    cof:hasWebsite "https://www.coffeeinstitute.org/page/q-grader-exams-and-calibrations"^^xsd:anyURI ;
+    cof:hasTopic "커핑 프로토콜"^^xsd:string , "후각·미각 감각"^^xsd:string , "생두·원두 그레이딩"^^xsd:string , "유기산 식별"^^xsd:string , "트라이앵귤레이션"^^xsd:string , "로스트 레벨 식별"^^xsd:string , "가공 방식 평가"^^xsd:string ;
+    cof:teachesSkill cof:SK_Cupping , cof:SK_SensorySkills , cof:SK_GreenCoffeeGrading , cof:SK_RoastLevelIdentification , cof:SK_Processing .
+cof:TP_CQI_QProcessing a owl:NamedIndividual , cof:TrainingProgram ;
+    rdfs:label "CQI Q 프로세싱 (Level 1~3)" ;
+    cof:hasProgramName "CQI Q 프로세싱 (Level 1~3)"^^xsd:string ;
+    cof:hasProgramOrigin "International"^^xsd:string ;
+    cof:hasProgramLevel "Generalist~Expert"^^xsd:string ;
+    cof:hasDuration "Level 1: 2일 / Level 2: 현장 과정"^^xsd:string ;
+    cof:hasDescription "수확 후 가공(post-harvest processing) 역량을 3단계로 인증하는 과정. Level 1 Generalist, Level 2 Professional, Level 3 Expert 순으로 올라가며 생산자·프로세서·품질관리자를 주 대상으로 한다."^^xsd:string ;
+    cof:hasModuleCount 3 ;
+    cof:hasProvider "Coffee Quality Institute (CQI)"^^xsd:string ;
+    cof:hasWebsite "https://www.coffeeinstitute.org/"^^xsd:anyURI ;
+    cof:hasTopic "가공 표준 용어"^^xsd:string , "비교 커핑"^^xsd:string , "주요 가공 방식"^^xsd:string , "후처리 품질관리 시스템"^^xsd:string , "플레이버 프로파일 설계"^^xsd:string ;
+    cof:teachesSkill cof:SK_Processing , cof:SK_Cupping , cof:SK_FlavorEvaluation .
+cof:TP_SCA_CVA a owl:NamedIndividual , cof:TrainingProgram ;
+    rdfs:label "커피 밸류 어세스먼트 (CVA for Cuppers)" ;
+    cof:hasProgramName "커피 밸류 어세스먼트 (CVA for Cuppers)"^^xsd:string ;
+    cof:hasProgramOrigin "International"^^xsd:string ;
+    cof:hasProgramLevel "Professional"^^xsd:string ;
+    cof:hasDuration "단기 집중 과정"^^xsd:string ;
+    cof:hasDescription "향미뿐 아니라 커피를 특별하게 만드는 여러 속성까지 평가 범위를 넓힌 SCA의 새 평가 체계. 2004년부터 쓰이던 레거시 커핑 폼을 대체했으며, 개편된 Q 그레이더 프로그램의 기준이 된다."^^xsd:string ;
+    cof:hasModuleCount 4 ;
+    cof:hasProvider "Specialty Coffee Association (SCA)"^^xsd:string ;
+    cof:hasWebsite "https://education.sca.coffee/cva-for-cuppers-course"^^xsd:anyURI ;
+    cof:hasTopic "CVA 프레임워크"^^xsd:string , "기술적(Technical) 평가"^^xsd:string , "기술서술적(Descriptive) 평가"^^xsd:string , "정서적(Affective) 평가"^^xsd:string , "외재적 가치 평가"^^xsd:string ;
+    cof:teachesSkill cof:SK_CoffeeValueAssessment .
+cof:TP_BaristaHustle_Online a owl:NamedIndividual , cof:TrainingProgram ;
+    rdfs:label "Barista Hustle 온라인 인증 과정" ;
+    cof:hasProgramName "Barista Hustle 온라인 인증 과정"^^xsd:string ;
+    cof:hasProgramOrigin "International"^^xsd:string ;
+    cof:hasProgramLevel "Online"^^xsd:string ;
+    cof:hasDuration "과정별 최대 약 30시간"^^xsd:string ;
+    cof:hasDescription "현직 바리스타와 홈 바리스타 모두를 대상으로 한 온라인 심화 교육. 추출과 균질성(evenness)에 대한 이해를 심화하고 감각 인지를 훈련하며, 각 과정은 이해도 테스트와 최종 평가를 통과해야 인증된다."^^xsd:string ;
+    cof:hasModuleCount 4 ;
+    cof:hasProvider "Barista Hustle (호주)"^^xsd:string ;
+    cof:hasWebsite "https://www.baristahustle.com/"^^xsd:anyURI ;
+    cof:hasTopic "Advanced Coffee Making"^^xsd:string , "The Water Course"^^xsd:string , "The Espresso Machine"^^xsd:string , "Advanced Espresso"^^xsd:string , "추출·균질성 이론"^^xsd:string , "감각 훈련"^^xsd:string ;
+    cof:teachesSkill cof:SK_ExtractionTheory , cof:SK_WaterQuality , cof:SK_EquipmentMaintenance , cof:SK_EspressoExtraction , cof:SK_SensorySkills .
+cof:TP_IIAC_EspressoSpecialist a owl:NamedIndividual , cof:TrainingProgram ;
+    rdfs:label "에스프레소 이탈리아노 스페셜리스트" ;
+    cof:hasProgramName "에스프레소 이탈리아노 스페셜리스트"^^xsd:string ;
+    cof:hasProgramOrigin "International"^^xsd:string ;
+    cof:hasProgramLevel "Specialist"^^xsd:string ;
+    cof:hasDuration "2일 + 시험"^^xsd:string ;
+    cof:hasDescription "이탈리아식 에스프레소의 정통 추출 기준을 인증하는 과정. 2일간의 교육과 시험을 통과하면 Espresso Italiano Specialist 라이선스를 받으며, 바(bar) 현장에서 인증 이탈리안 에스프레소를 제공할 수 있다."^^xsd:string ;
+    cof:hasModuleCount 5 ;
+    cof:hasProvider "IIAC · Istituto Espresso Italiano (이탈리아)"^^xsd:string ;
+    cof:hasWebsite "https://www.assaggiatoricaffe.org/"^^xsd:anyURI ;
+    cof:hasTopic "이탈리안 에스프레소 역사"^^xsd:string , "블렌드와 물"^^xsd:string , "그라인딩·추출"^^xsd:string , "카푸치노"^^xsd:string , "관능 패널 테스트"^^xsd:string ;
+    cof:teachesSkill cof:SK_CoffeeFundamentals , cof:SK_WaterQuality , cof:SK_GrindProfile , cof:SK_EspressoExtraction , cof:SK_MilkSteaming , cof:SK_SensorySkills .
+cof:TP_JCQA_Instructor a owl:NamedIndividual , cof:TrainingProgram ;
+    rdfs:label "J.C.Q.A. 커피 인스트럭터 검정 (일본)" ;
+    cof:hasProgramName "J.C.Q.A. 커피 인스트럭터 검정 (일본)"^^xsd:string ;
+    cof:hasProgramOrigin "International"^^xsd:string ;
+    cof:hasProgramLevel "3급~감정사"^^xsd:string ;
+    cof:hasDuration "급수별 검정"^^xsd:string ;
+    cof:hasDescription "일본의 대표적인 커피 자격 체계. 커피 판매·제조 종사자를 대상으로 기초 지식과 테이스팅 기법을 단계적으로 검정하며, 최상위에는 커피 감정사(鑑定士) 과정이 있다."^^xsd:string ;
+    cof:hasModuleCount 4 ;
+    cof:hasProvider "전일본커피검정위원회 (J.C.Q.A.)"^^xsd:string ;
+    cof:hasWebsite "https://kentei.jcqa.org/"^^xsd:anyURI ;
+    cof:hasTopic "커피 기초 지식"^^xsd:string , "테이스팅 기법"^^xsd:string , "품질 감별"^^xsd:string , "제조·판매 실무"^^xsd:string ;
+    cof:teachesSkill cof:SK_CoffeeFundamentals , cof:SK_Cupping , cof:SK_GreenCoffeeGrading , cof:SK_MenuPreparation , cof:SK_Sales .
